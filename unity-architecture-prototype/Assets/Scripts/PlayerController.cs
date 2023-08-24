@@ -94,6 +94,11 @@ public class PlayerController : MonoBehaviour
             {
                 
             }
+            
+            if(other.CompareTag("Spawn Indicator"))
+            {
+                Destroy(other.gameObject);   
+            }
         }
         
         private void SetUI()

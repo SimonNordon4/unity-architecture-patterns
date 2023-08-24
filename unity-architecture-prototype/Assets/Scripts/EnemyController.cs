@@ -12,7 +12,6 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        // Move towards the player.
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
 
@@ -22,13 +21,17 @@ public class EnemyController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(dir);
         }
         
-        // Attack cooldown timer.
+        // for damage cooldown
         _timeSinceLastDamage += Time.deltaTime;
     }
     
+    private void OnTriggerEnter(Collider other)
+    {
+
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        // Continuously attack the player while in contact with them.
         if (other.CompareTag("Player"))
         {
             var playerController = other.GetComponent<PlayerController>();
