@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         private void Update()
         {
+            if(!GameManager.instance.isGameActive) return;
             if (isDead) return;
             
             // Get Closest enemy target.

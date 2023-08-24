@@ -39,6 +39,8 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.isGameActive == false) return;
+
         _timeSinceLastSpawn += Time.deltaTime;
         if (_timeSinceLastSpawn > CalculateSpawnInterval())
         {
@@ -54,6 +56,12 @@ public class EnemyManager : MonoBehaviour
         randomPoint.y =1;
         var spawnIndicator = Instantiate(spawnIndicatorPrefab, randomPoint, Quaternion.identity);
         yield return new WaitForSeconds(1f);
+        
+        // Suspend the coroutine until the game is active
+        while (GameManager.instance.isGameActive == false)
+        {
+            yield return null;
+        }
         
         // Check if spawnIndicator still exists, if it was destroyed abort the spawn
         if (spawnIndicator == null)

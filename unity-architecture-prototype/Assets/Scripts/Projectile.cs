@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -12,6 +13,8 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.instance.isGameActive == false) return;
+        
         if(_timeAlive > projectileLifetime)
             Destroy(gameObject);
         

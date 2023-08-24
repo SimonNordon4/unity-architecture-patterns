@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -25,6 +26,8 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.instance.isGameActive == false) return;
+        
         // Direction towards player.
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
