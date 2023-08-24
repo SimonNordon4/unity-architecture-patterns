@@ -205,8 +205,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883858374b3946c4986504b743f5b301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyManager: {fileID: 0}
   playerTarget: {fileID: 0}
   moveSpeed: 3
+  repulsionForce: 2
+  currentHealth: 5
   damageAmount: 1
   damageCooldown: 1
 --- !u!54 &530209539643456954
