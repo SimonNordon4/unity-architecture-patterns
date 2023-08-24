@@ -23,13 +23,15 @@ public class PlayerController : MonoBehaviour
         public int maxHealth = 10;
         public bool isDead = false;
         
-        [Header("Weapon")]
+        [Header("Pistol")]
         public GameObject projectilePrefab;
         public float fireRate = 0.5f;
-        public float range = 5;
+        public float pistolRange = 5;
         public int damage = 1;
         private float _timeSinceLastFire = 0.0f;
         private Transform _currentTarget = null;
+        private Transform _closestTarget = null;
+
         
         [Header("UI")]
         public TextMeshProUGUI healthText;
@@ -49,23 +51,22 @@ public class PlayerController : MonoBehaviour
         private void Update()
         {
             if(!GameManager.instance.isGameActive) return;
-            if (isDead) return;
             
             // Get Closest enemy target.
             var closestDistance = Mathf.Infinity;
-            Transform closestTarget = null;
+            _closestTarget = null;
             foreach (var enemy in enemyManager.enemies)
             {
                 var distance = Vector3.Distance(_transform.position, enemy.transform.position);
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
-                    closestTarget = enemy.transform;
+                    _closestTarget = enemy.transform;
                 }
             }
        
-            if(closestDistance <= range)
-                _currentTarget = closestTarget;
+            if(closestDistance <= pistolRange)
+                _currentTarget = _closestTarget;
             else
                 _currentTarget = null;
             
@@ -82,7 +83,6 @@ public class PlayerController : MonoBehaviour
                     _timeSinceLastFire = 0.0f;
                 }
             }
-            
             
             var dir = Vector3.zero;
                 
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
-                isDead = true;
+                gameManager.LoseGame();
             }
             SetUI();
         }
@@ -178,5 +178,13 @@ public class PlayerController : MonoBehaviour
         {
             healthText.text = $"{currentHealth}/{maxHealth}";
             healthBar.localScale = new Vector3((float)currentHealth / maxHealth, 1, 1);
+        }
+
+        public void ResetPlayer()
+        {
+            transform.SetPositionAndRotation(Vector3.up, Quaternion.identity);
+            isDead = false;
+            currentHealth = maxHealth;
+            SetUI();
         }
 }

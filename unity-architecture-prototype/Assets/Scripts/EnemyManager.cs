@@ -31,10 +31,23 @@ public class EnemyManager : MonoBehaviour
         return spawnRate / Mathf.Sqrt(_spawnedEnemies + 1);
     }
 
+    // Will destroy all alive enemies.
+    public void ResetEnemyManager()
+    {
+        foreach (var enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+        enemies.Clear();
+        _spawnedEnemies = 0;
+        _aliveEnemies = 0;
+        _timeSinceLastSpawn = 0f;
+        StopAllCoroutines();
+    }
+
     private void Start()
     {
         StopAllCoroutines();
-        StartCoroutine(IndicateSpawn());
     }
 
     private void Update()

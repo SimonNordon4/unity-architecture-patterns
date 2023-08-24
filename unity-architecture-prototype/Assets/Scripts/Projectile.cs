@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     public float projectileLifetime = 5f;
     private float _timeAlive = 0f;
 
+    
     // Update is called once per frame
     void Update()
     {
