@@ -16,11 +16,15 @@ public class EnemyManager : MonoBehaviour
     [Header("Stats")] 
     public int totalEnemies = 20;
     private int _spawnedEnemies = 0;
+    private int _aliveEnemies = 0;
     public float spawnRate = 4f;
 
     private float _timeSinceLastSpawn;
     
     public float spawnRadius = 10f;
+    
+    [Header("Enemies")]
+    public List<GameObject> enemies = new List<GameObject>();
     
     private float CalculateSpawnInterval()
     {
@@ -61,15 +65,18 @@ public class EnemyManager : MonoBehaviour
         Destroy(spawnIndicator);
     }
 
-    public void CancelSpawn(int spawnId)
-    {
-        
-    }
-
     private void SpawnEnemy(Vector3 position)
     {
         var newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
         newEnemy.GetComponent<EnemyController>().playerTarget = playerTarget;
+        newEnemy.GetComponent<EnemyController>().enemyManager = this;
         _spawnedEnemies++;
+        enemies.Add(newEnemy);
+
+    }
+
+    public void EnemyDied(GameObject enemy)
+    {
+        enemies.Remove(enemy);
     }
 }

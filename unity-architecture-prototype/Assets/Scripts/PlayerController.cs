@@ -11,8 +11,9 @@ public class PlayerController : MonoBehaviour
         public Camera camera;
         private Vector3 _cameraOffset;
 
-        [Header("GameManager")]
+        [Header("References")]
         public GameManager gameManager;
+        public EnemyManager enemyManager;
         
         [Header("Movement")]
         public float moveSpeed = 5f;
@@ -23,9 +24,12 @@ public class PlayerController : MonoBehaviour
         public bool isDead = false;
         
         [Header("Weapon")]
+        public GameObject projectilePrefab;
         public float fireRate = 0.5f;
         public float range = 5;
         public int damage = 1;
+        private float _timeSinceLastFire = 0.0f;
+        private Transform _currentTarget = null;
         
         [Header("UI")]
         public TextMeshProUGUI healthText;
@@ -45,6 +49,39 @@ public class PlayerController : MonoBehaviour
         private void Update()
         {
             if (isDead) return;
+            
+            // Get Closest enemy target.
+            var closestDistance = Mathf.Infinity;
+            Transform closestTarget = null;
+            foreach (var enemy in enemyManager.enemies)
+            {
+                var distance = Vector3.Distance(_transform.position, enemy.transform.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTarget = enemy.transform;
+                }
+            }
+       
+            if(closestDistance <= range)
+                _currentTarget = closestTarget;
+            else
+                _currentTarget = null;
+            
+            // Fire Weapon if possible.
+            _timeSinceLastFire += Time.deltaTime;
+            
+            if(_timeSinceLastFire > fireRate)
+            {
+                if (_currentTarget != null)
+                {
+                    var directionToTarget = Vector3.ProjectOnPlane(_currentTarget.position - _transform.position, Vector3.up).normalized;
+                    var projectile = Instantiate(projectilePrefab, _transform.position, Quaternion.LookRotation(directionToTarget));
+                    projectile.GetComponent<Projectile>().damage = damage;
+                    _timeSinceLastFire = 0.0f;
+                }
+            }
+            
             
             var dir = Vector3.zero;
                 

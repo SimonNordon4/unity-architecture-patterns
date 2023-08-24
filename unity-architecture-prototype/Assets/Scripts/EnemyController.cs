@@ -5,6 +5,12 @@ public class EnemyController : MonoBehaviour
     public Transform playerTarget;
     public float moveSpeed = 5f;
     
+    [Header("References")]
+    public EnemyManager enemyManager;
+
+    [Header("Health")] 
+    public int currentHealth = 5;
+    
     [Header("Attack")]
     public int damageAmount = 1;
     public float damageCooldown = 0.2f;
@@ -24,14 +30,22 @@ public class EnemyController : MonoBehaviour
         // for damage cooldown
         _timeSinceLastDamage += Time.deltaTime;
     }
-    
-    private void OnTriggerEnter(Collider other)
+
+    public void TakeDamage(int damage)
     {
-
+        // Take damage, die if at 0.
+        currentHealth -= damage;
+        
+        if (currentHealth <= 0)
+        {
+            enemyManager.EnemyDied(gameObject);
+            Destroy(gameObject);
+        }
     }
-
+    
     private void OnTriggerStay(Collider other)
     {
+        // Continuously damage the player.
         if (other.CompareTag("Player"))
         {
             var playerController = other.GetComponent<PlayerController>();

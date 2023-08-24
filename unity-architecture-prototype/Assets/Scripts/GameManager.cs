@@ -13,7 +13,8 @@ namespace DefaultNamespace
         
         public Vector2 levelBounds = new Vector2(25f, 25f);
 
-        [Header("UI")] public TextMeshProUGUI roundTimeText;
+        [Header("UI")] 
+        public TextMeshProUGUI roundTimeText;
 
 
         private void Update()
