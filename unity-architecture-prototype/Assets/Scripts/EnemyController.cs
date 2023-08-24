@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public Transform playerTarget;
     public float moveSpeed = 5f;
     public float repulsionForce = 0.5f;
+    private bool _isKnockedBack = false;
 
     [Header("Health")] 
     public int currentHealth = 5;
@@ -27,6 +29,8 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         if(GameManager.instance.isGameActive == false) return;
+        
+        if(_isKnockedBack) return;
         
         // Direction towards player.
         if (playerTarget == null) return;
@@ -128,4 +132,39 @@ public class EnemyController : MonoBehaviour
                 _nearbyEnemies.Remove(other.transform);
         }
     }
+
+    public void ApplyKnockBack(Vector3 direction, float intensity)
+    {
+        if(_isKnockedBack) StopAllCoroutines();
+        _isKnockedBack = true;
+        StartCoroutine(KnockBackRoutine(direction * intensity));
+    }
+    
+    // Create a coroutine that will move the enemy in the direction of the knockback for 0.4 seconds with the given intensity being the distance the enemy will move.
+    private IEnumerator KnockBackRoutine(Vector3 knockBackVector)
+    {
+        float knockBackTime = 0.20f * knockBackVector.magnitude;
+        float elapsedTime = 0f;
+
+        Vector3 originalPosition = transform.position;
+        Vector3 targetPosition = originalPosition + knockBackVector;
+
+        while (elapsedTime < knockBackTime)
+        {
+            // first we need to normalize the elapsed time.
+            var normalizedTime = elapsedTime / knockBackTime;
+            
+            // Apply cubic easing-out function to the normalized time.
+            normalizedTime = 1 - Mathf.Pow(1 - normalizedTime, 3);
+            
+            // Now we can lerp via the normalized time.
+            transform.position = Vector3.Lerp(originalPosition, targetPosition, normalizedTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+        _isKnockedBack = false;
+    }
+    
 }

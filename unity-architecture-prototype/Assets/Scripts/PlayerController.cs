@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
         private float _timeSinceLastFire = 0.0f;
         private Transform _currentTarget = null;
         private Transform _closestTarget = null;
+        public float knockBackIntensity = 1;
 
         
         [Header("UI")]
@@ -78,8 +79,10 @@ public class PlayerController : MonoBehaviour
                 if (_currentTarget != null)
                 {
                     var directionToTarget = Vector3.ProjectOnPlane(_currentTarget.position - _transform.position, Vector3.up).normalized;
-                    var projectile = Instantiate(projectilePrefab, _transform.position, Quaternion.LookRotation(directionToTarget));
-                    projectile.GetComponent<Projectile>().damage = damage;
+                    var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.LookRotation(directionToTarget));
+                    var projectile = projectileGo.GetComponent<Projectile>();
+                    projectile.damage = damage;
+                    projectile.knockBackIntensity = knockBackIntensity;
                     _timeSinceLastFire = 0.0f;
                 }
             }

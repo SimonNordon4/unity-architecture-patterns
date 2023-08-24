@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public int damage = 1;
     public float projectileLifetime = 5f;
     private float _timeAlive = 0f;
+    public float knockBackIntensity = 1;
 
     
     // Update is called once per frame
@@ -31,6 +32,10 @@ public class Projectile : MonoBehaviour
             // get enemy controller component
             var enemyController = other.GetComponent<EnemyController>();
             enemyController.TakeDamage(damage);
+            
+            // We have to ensure we didn't just kill the enemy.
+            if(enemyController != null)
+                enemyController.ApplyKnockBack(transform.forward, knockBackIntensity);
             Destroy(this.gameObject);
         }
     }
