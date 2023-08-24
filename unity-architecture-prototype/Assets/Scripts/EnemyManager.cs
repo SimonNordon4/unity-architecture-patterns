@@ -1,19 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [Header("References")]
+    public GameManager gameManager;
+    
     [Header("Prefabs")]
     public GameObject enemyPrefab;
     public GameObject spawnIndicatorPrefab;
     public Transform playerTarget;
-    
-    public float spawnRate = 1f;
+
+    [Header("Stats")] 
+    public int totalEnemies = 20;
+    private int _spawnedEnemies = 0;
+    public float spawnRate = 4f;
+
     private float _timeSinceLastSpawn;
-    private List<GameObject> _enemies = new List<GameObject>();
     
     public float spawnRadius = 10f;
+    
+    private float CalculateSpawnInterval()
+    {
+        return spawnRate / Mathf.Sqrt(_spawnedEnemies + 1);
+    }
 
     private void Start()
     {
@@ -24,7 +36,7 @@ public class EnemyManager : MonoBehaviour
     private void Update()
     {
         _timeSinceLastSpawn += Time.deltaTime;
-        if (_timeSinceLastSpawn > spawnRate)
+        if (_timeSinceLastSpawn > CalculateSpawnInterval())
         {
             StartCoroutine(IndicateSpawn());
             _timeSinceLastSpawn = 0f;
@@ -58,6 +70,6 @@ public class EnemyManager : MonoBehaviour
     {
         var newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
         newEnemy.GetComponent<EnemyController>().playerTarget = playerTarget;
-        _enemies.Add(newEnemy);
+        _spawnedEnemies++;
     }
 }

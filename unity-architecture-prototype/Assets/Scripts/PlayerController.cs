@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class PlayerController : MonoBehaviour
 
         public Camera camera;
         private Vector3 _cameraOffset;
+
+        [Header("GameManager")]
+        public GameManager gameManager;
         
         [Header("Movement")]
         public float moveSpeed = 5f;
@@ -52,13 +56,44 @@ public class PlayerController : MonoBehaviour
                 dir += Vector3.forward;
             if(Input.GetKey(KeyCode.S))
                 dir += Vector3.back;
+            
+            // Check if the player is at the level bounds, if they are, make sure they cant move in the direction of the bound
+            if (_transform.position.x <= -gameManager.levelBounds.x && dir.x < 0)
+                dir.x = 0;
+            if (_transform.position.x >= gameManager.levelBounds.x && dir.x > 0)
+                dir.x = 0;
+            if (_transform.position.z <= -gameManager.levelBounds.y && dir.z < 0)
+                dir.z = 0;
+            if (_transform.position.z >= gameManager.levelBounds.y && dir.z > 0)
+                dir.z = 0;
+            
+            // Apply movement
             if (dir.magnitude > 0)
             {
                 _transform.position += dir.normalized * (Time.deltaTime * moveSpeed);
                 _transform.rotation = Quaternion.LookRotation(dir);
             }
             
-            camera.transform.position = _transform.position + _cameraOffset;
+            
+            // Camera position.
+            var cameraWishPosition = _transform.position + _cameraOffset;
+            
+            // We want the same level bound logic for the camera, but it stops its position if the player is within 5m of the level bounds
+            if (_transform.position.x <= -gameManager.levelBounds.x + 5 ||
+                _transform.position.x >= gameManager.levelBounds.x - 5)
+            {
+                cameraWishPosition =
+                    new Vector3(camera.transform.position.x, cameraWishPosition.y, cameraWishPosition.z);
+            }
+
+            if (_transform.position.z <= -gameManager.levelBounds.y + 5 ||
+                _transform.position.z >= gameManager.levelBounds.y - 5)
+            {
+                cameraWishPosition =
+                    new Vector3(cameraWishPosition.x, cameraWishPosition.y, camera.transform.position.z);
+            }
+            
+            camera.transform.position = cameraWishPosition;
         }
 
         public void TakeDamage(int damageAmount)
