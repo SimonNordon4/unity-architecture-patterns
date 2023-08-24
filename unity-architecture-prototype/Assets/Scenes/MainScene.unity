@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2956,13 +2956,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 801546265}
-  enemyPrefab: {fileID: 7881158457640272451, guid: 6da49f7eb69c8fc49964a213d0376127,
-    type: 3}
+  enemySpawnBlocks:
+  - enemyManager: {fileID: 644039390}
+    totalEnemies: 2
+    spawnTimings: []
+    spawnRateCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.100398175
+        inSlope: 0.8996018
+        outSlope: 0.8996018
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.8996018
+        outSlope: 0.8996018
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    enemySpawnChances:
+    - enemyPrefab: {fileID: 7881158457640272451, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      spawnChance: 100
+    eliteSpawnTimings: 
+    eliteEnemies: []
+    bossEnemy: {fileID: 7881158457640272451, guid: 6da49f7eb69c8fc49964a213d0376127,
+      type: 3}
+    blockTime: 2
+  - enemyManager: {fileID: 644039390}
+    totalEnemies: 2
+    spawnTimings: []
+    spawnRateCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.0020100505
+        value: 0.5023585
+        inSlope: 0.49864382
+        outSlope: 0.49864382
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0.49864382
+        outSlope: 0.49864382
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    enemySpawnChances:
+    - enemyPrefab: {fileID: 7881158457640272451, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      spawnChance: 100
+    eliteSpawnTimings: 
+    eliteEnemies: []
+    bossEnemy: {fileID: 7881158457640272451, guid: 6da49f7eb69c8fc49964a213d0376127,
+      type: 3}
+    blockTime: 2
   spawnIndicatorPrefab: {fileID: 4479240645565134242, guid: 929c12e65cb355d4fbf6ed4a3ff62e54,
     type: 3}
   playerTarget: {fileID: 460763660}
-  totalEnemies: 146
-  spawnRate: 1
   spawnRadius: 10
   enemies: []
 --- !u!4 &644039391
