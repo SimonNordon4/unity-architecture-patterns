@@ -66,6 +66,18 @@ namespace DefaultNamespace
             _roundTime = 0f;
         }
 
+        public void WinGame()
+        {
+            Debug.Log("Game Won!");
+            mainMenu.SetActive(false);
+            gameMenu.SetActive(false);
+            pauseMenu.SetActive(false);
+            gameOverMenu.SetActive(false);
+            winMenu.SetActive(true);
+            isGameActive = false;
+            _roundTime = 0f;
+        }
+
         public void ResetGame()
         {
             Debug.Log("Reset Game");
