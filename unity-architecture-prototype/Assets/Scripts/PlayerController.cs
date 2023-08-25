@@ -243,6 +243,7 @@ public class PlayerController : MonoBehaviour
         public void ResetPlayer()
         {
             transform.SetPositionAndRotation(Vector3.up, Quaternion.identity);
+            camera.transform.position = _transform.position + _cameraOffset;
             isDead = false;
             currentHealth = maxHealth;
             SetUI();
