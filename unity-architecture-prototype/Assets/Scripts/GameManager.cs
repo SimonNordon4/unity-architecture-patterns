@@ -32,7 +32,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject winMenu;
     public GameObject chestItemMenu;
-    public List<ChestItemButton> chestItemButtons;
+    public RectTransform chestItemButtonContainer;
+    public ChestItemButton chestItemButtonPrefab;
+    private readonly List<ChestItemButton> _chestItemButtons = new();
 
     [Header("Chests")] public List<ChestItem> chestItems;
 
@@ -147,6 +149,12 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
         HideAll();
         chestItemMenu.SetActive(true);
+
+        foreach (var cib in _chestItemButtons)
+        {
+            Destroy(cib.gameObject);
+        }
+        _chestItemButtons.Clear();
         
         // we wanted a weight average between 2 - 5 items spawning, with odds being increased by luck, which will be added later.
         var itemsChance = Random.Range(0, 100);
@@ -170,8 +178,8 @@ public class GameManager : MonoBehaviour
 
         for (var i = 0; i < numberOfItems; i++)
         {
-            // We want to activate an item UI element.
-            chestItemButtons[i].gameObject.SetActive(true);
+            var newChestItemButton = Instantiate(chestItemButtonPrefab, chestItemButtonContainer);
+            _chestItemButtons.Add(newChestItemButton);
             
             // Collect all items with a tier equal to or less than the chest tier
             var possibleItems = new List<ChestItem>();
@@ -200,7 +208,7 @@ public class GameManager : MonoBehaviour
                 if (randomSpawnChance >= currentSpawnChance) continue;
                 // We have found the item to spawn
                 var item = possibleItems[x];
-                chestItemButtons[i].Initialize(item);
+                newChestItemButton.Initialize(item);
                 break;
             }
             
@@ -211,10 +219,6 @@ public class GameManager : MonoBehaviour
     public void ApplyItem(ChestItem item)
     {
         Debug.Log("Applying Item " + item.name);
-        foreach(var chestItemButton in GameManager.instance.chestItemButtons)
-        {
-            chestItemButton.gameObject.SetActive(false);
-        }
         HideAll();
         gameMenu.SetActive(true);
         isGameActive = true;

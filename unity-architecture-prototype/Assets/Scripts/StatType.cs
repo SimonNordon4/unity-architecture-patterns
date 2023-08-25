@@ -12,3 +12,9 @@
     PlayerHealth,
     EnemySpawnRate
 }
+
+public enum ModifierType
+{
+    Flat,
+    Percentage,
+}
