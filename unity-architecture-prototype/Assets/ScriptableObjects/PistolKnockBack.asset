@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: Smelly Undies
+  m_Name: PistolKnockBack
   m_EditorClassIdentifier: 
+  itemName: Fat Slug
   tier: 1
-  spawnChance: 100
+  spawnChance: 50
   modifiers:
-  - statType: 10
-    modifierType: 1
-    modifierValue: 0.05
+  - statType: 3
+    modifierType: 0
+    modifierValue: 0.5

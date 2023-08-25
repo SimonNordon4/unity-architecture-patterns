@@ -23,7 +23,7 @@ namespace DefaultNamespace
             }
             _descriptions.Clear();
             
-            Title.text = item.name;
+            Title.text = item.itemName;
             chestItem = item;
 
             foreach (var border in borders)

@@ -13,6 +13,8 @@ public class Stat
     }
     
     public float initialValue = 1f;
+    public float minimumValue = 0f;
+    public float maximumValue = float.PositiveInfinity;
     
     private readonly List<Modifier> _modifiers = new();
 
@@ -36,7 +38,7 @@ public class Stat
             }
         }
 
-        value = (initialValue + flatSum) * percentageSum;
+        value = Mathf.Clamp((initialValue + flatSum) * percentageSum, minimumValue, maximumValue);
     }
     
     public void Reset()

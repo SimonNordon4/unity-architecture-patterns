@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: Quick Reload
+  m_Name: PistolRange
   m_EditorClassIdentifier: 
-  spawnChance: 50
+  itemName: Scope
   tier: 1
-  title: Quick Reload
-  sprite: {fileID: 0}
+  spawnChance: 50
   modifiers:
-  - statType: 0
+  - statType: 2
+    modifierType: 0
     modifierValue: 0.5

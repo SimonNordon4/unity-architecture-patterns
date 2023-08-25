@@ -10,9 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: Fat Slug
+  m_Name: PistolScope
   m_EditorClassIdentifier: 
-  spawnChance: 50
+  itemName: Sniper Scope
+  tier: 1
+  spawnChance: 25
   modifiers:
-  - statType: 3
-    modifierValue: 0.5
+  - statType: 2
+    modifierType: 0
+    modifierValue: 3
+  - statType: 0
+    modifierType: 0
+    modifierValue: -1
