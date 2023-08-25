@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using DefaultNamespace;
 using TMPro;
 using UnityEngine;
 
@@ -224,25 +222,11 @@ public class PlayerController : MonoBehaviour
 
         public void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Health Pickup"))
+            if (other.CompareTag("Mini Chest"))
             {
-                // Get health pickup component.
+                GameManager.instance.CreateChest(1);
             }
 
-            if (other.CompareTag("FireRate Pickup"))
-            {
-                
-            }
-
-            if (other.CompareTag("Damage Pickup"))
-            {
-                
-            }
-            
-            if(other.CompareTag("Range Pickup"))
-            {
-                
-            }
             
             if(other.CompareTag("Spawn Indicator"))
             {
