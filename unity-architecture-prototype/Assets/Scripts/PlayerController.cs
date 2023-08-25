@@ -27,16 +27,25 @@ public class PlayerController : MonoBehaviour
         public GameObject projectilePrefab;
         public float fireRate = 0.5f;
         public float pistolRange = 5;
-        public int damage = 1;
+        public int pistolDamage = 1;
         private float _timeSinceLastFire = 0.0f;
-        private Transform _currentTarget = null;
         private Transform _closestTarget = null;
         public float knockBackIntensity = 1;
 
-        
+        [Header("Sword")] public Transform SwordPivot;
+        public float attackSpeed = 3;
+        public float swordRange = 1;
+        public int swordDamage = 3;
+        public float swordKnockBackIntensity = 3;
+        private float _timeSinceLastSwing = 0.0f;
+        private bool _isSwingingLeftToRight = true;
+
         [Header("UI")]
         public TextMeshProUGUI healthText;
         public RectTransform healthBar;
+
+        [Header("Debug")] public bool isDebugMode = false;
+        
         
         private void Awake()
         {
@@ -46,6 +55,7 @@ public class PlayerController : MonoBehaviour
 
         private void Start()
         {
+            SwordPivot.gameObject.SetActive(false);
             SetUI();
         }
 
@@ -55,6 +65,7 @@ public class PlayerController : MonoBehaviour
             
             // Get Closest enemy target.
             var closestDistance = Mathf.Infinity;
+            var targetIsNull = true;
             _closestTarget = null;
             foreach (var enemy in enemyManager.enemies)
             {
@@ -63,27 +74,46 @@ public class PlayerController : MonoBehaviour
                 {
                     closestDistance = distance;
                     _closestTarget = enemy.transform;
+                    targetIsNull = false;
                 }
             }
+
+            if (isDebugMode)
+            {
+                var targetPos = targetIsNull ? _transform.position : _closestTarget.position;
+                Debug.DrawLine(_transform.position, targetPos, Color.red);
+            }
        
-            if(closestDistance <= pistolRange)
-                _currentTarget = _closestTarget;
-            else
-                _currentTarget = null;
-            
-            // Fire Weapon if possible.
+            // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
-            
             if(_timeSinceLastFire > fireRate)
             {
-                if (_currentTarget != null)
+                if (!targetIsNull)
                 {
-                    var directionToTarget = Vector3.ProjectOnPlane(_currentTarget.position - _transform.position, Vector3.up).normalized;
-                    var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.LookRotation(directionToTarget));
-                    var projectile = projectileGo.GetComponent<Projectile>();
-                    projectile.damage = damage;
-                    projectile.knockBackIntensity = knockBackIntensity;
-                    _timeSinceLastFire = 0.0f;
+                    if (closestDistance <= pistolRange)
+                    {
+                        var directionToTarget = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
+                        var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.LookRotation(directionToTarget));
+                        var projectile = projectileGo.GetComponent<Projectile>();
+                        projectile.damage = pistolDamage;
+                        projectile.knockBackIntensity = knockBackIntensity;
+                        _timeSinceLastFire = 0.0f;
+                    }
+                }
+            }
+            
+            // Swing sword if possible.
+            _timeSinceLastSwing += Time.deltaTime;
+            if (_timeSinceLastSwing > attackSpeed)
+            {
+                if (!targetIsNull)
+                {
+                    if (closestDistance <= swordRange)
+                    {
+                        StopAllCoroutines();
+                        StartCoroutine(SwordAttack());
+                        _timeSinceLastSwing = 0.0f;
+                    }
                 }
             }
             
@@ -137,6 +167,49 @@ public class PlayerController : MonoBehaviour
             camera.transform.position = cameraWishPosition;
         }
 
+        private IEnumerator SwordAttack()
+        {
+            // Enable the sword gameobject.
+            SwordPivot.gameObject.SetActive(true);
+            SwordPivot.localScale = new Vector3(1f, 1f, swordRange);
+    
+            // Base rotation values.
+            var leftRotation = Quaternion.Euler(0, -45, 0);
+            var rightRotation = Quaternion.Euler(0, 45, 0);
+    
+            // The start rotation needs to be directed to the closest target.
+            var directionToTarget = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
+            SwordPivot.forward = directionToTarget;
+    
+            // Determine the start and end rotation based on the current swing direction.
+            Quaternion startRotation, endRotation;
+            if (_isSwingingLeftToRight)
+            {
+                startRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
+                endRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
+            }
+            else
+            {
+                startRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
+                endRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
+            }
+
+            // Lerp the sword rotation from start to end over 0.5 seconds.
+            var t = 0.0f;
+            var swingTime = 0.2f;
+            while (t < swingTime)
+            {
+                t += Time.deltaTime;
+                SwordPivot.rotation = Quaternion.Lerp(startRotation, endRotation, t / swingTime);
+                yield return null;
+            }
+    
+            // Toggle the swing direction for the next attack.
+            _isSwingingLeftToRight = !_isSwingingLeftToRight;
+    
+            // Disable the sword gameobject.
+            SwordPivot.gameObject.SetActive(false);
+        }
         public void TakeDamage(int damageAmount)
         {
             currentHealth -= damageAmount;

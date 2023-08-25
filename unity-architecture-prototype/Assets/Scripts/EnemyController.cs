@@ -79,6 +79,13 @@ public class EnemyController : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(dir);
         }
         
+        // if the position is over the boundary, clamp it back to the boundary
+        var pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, -GameManager.instance.levelBounds.x, GameManager.instance.levelBounds.x);
+        pos.z = Mathf.Clamp(pos.z, -GameManager.instance.levelBounds.y, GameManager.instance.levelBounds.y);
+        transform.position = pos;
+        
+        
         // Track Attack cooldown.
         _timeSinceLastDamage += Time.deltaTime;
     }
