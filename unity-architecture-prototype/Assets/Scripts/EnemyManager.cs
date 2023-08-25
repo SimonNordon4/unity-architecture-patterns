@@ -74,7 +74,7 @@ public class EnemyManager : MonoBehaviour
     {
         // select a random point on the circle
         var randomPoint = Random.insideUnitSphere.normalized * spawnRadius;
-        randomPoint.y = 1;
+        randomPoint.y = enemyPrefab.transform.localScale.y;
         var spawnIndicator = Instantiate(spawnIndicatorPrefab, randomPoint, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         

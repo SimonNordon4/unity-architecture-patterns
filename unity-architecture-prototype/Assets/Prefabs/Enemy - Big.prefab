@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b371b7930967104f8d71b8945c28abc, type: 2}
+  - {fileID: 2100000, guid: 2a8c198f08660944a87a5a62950d03ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5359127175643623455}
   - component: {fileID: 530209539643456954}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy - Big
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,12 +113,12 @@ Transform:
   m_GameObject: {fileID: 7881158457640272451}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -4.63}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7211695934753918174}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8003764069084738890
 MeshFilter:
@@ -148,7 +148,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b371b7930967104f8d71b8945c28abc, type: 2}
+  - {fileID: 2100000, guid: 2a8c198f08660944a87a5a62950d03ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -207,9 +207,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   playerTarget: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 2
   repulsionForce: 2
-  currentHealth: 5
+  knockBackFactor: 0.5
+  currentHealth: 10
   damageAmount: 1
   damageCooldown: 1
 --- !u!54 &530209539643456954

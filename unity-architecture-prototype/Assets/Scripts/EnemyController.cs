@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public Transform playerTarget;
     public float moveSpeed = 5f;
     public float repulsionForce = 0.5f;
+    public float knockBackFactor = 1f;
     private bool _isKnockedBack = false;
 
     [Header("Health")] 
@@ -34,6 +35,12 @@ public class EnemyController : MonoBehaviour
         // Direction towards player.
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
+        
+        // if dir magnitude is less than 0.5f, we want to stop moving towards the player, as we dont want to sit directly inside them
+        if (dir.magnitude < 0.5f)
+        {
+            dir = Vector3.zero;
+        }
         
         // Push away from close enemies.
         // TODO: We need to make the avoidance direction STRONGER the closer the enemy is.
@@ -153,7 +160,7 @@ public class EnemyController : MonoBehaviour
         float elapsedTime = 0f;
 
         Vector3 originalPosition = transform.position;
-        Vector3 targetPosition = originalPosition + knockBackVector;
+        Vector3 targetPosition = originalPosition + knockBackVector * knockBackFactor;
 
         while (elapsedTime < knockBackTime)
         {
