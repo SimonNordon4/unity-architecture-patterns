@@ -3660,36 +3660,58 @@ MonoBehaviour:
   playerCurrentHealth: 10
   playerMaxHealth:
     initialValue: 10
+    minimumValue: 1
+    maximumValue: Infinity
     value: 10
   playerSpeed:
     initialValue: 5
+    minimumValue: 0.5
+    maximumValue: Infinity
     value: 5
   pistolDamage:
     initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
     value: 1
   pistolRange:
     initialValue: 5
+    minimumValue: 1
+    maximumValue: Infinity
     value: 5
   pistolFireRate:
     initialValue: 0.5
+    minimumValue: 0.1
+    maximumValue: Infinity
     value: 0.5
   pistolKnockBack:
     initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
     value: 1
   swordDamage:
     initialValue: 3
+    minimumValue: 0
+    maximumValue: Infinity
     value: 3
   swordRange:
     initialValue: 1
+    minimumValue: 1
+    maximumValue: Infinity
     value: 1
   swordAttackSpeed:
     initialValue: 3
+    minimumValue: 0.1
+    maximumValue: Infinity
     value: 3
   swordKnockBack:
     initialValue: 3
+    minimumValue: 0
+    maximumValue: Infinity
     value: 3
   enemySpawnRate:
     initialValue: 1
+    minimumValue: 0.1
+    maximumValue: Infinity
     value: 1
   roundTimeText: {fileID: 615096172}
   mainMenu: {fileID: 1428806657}
@@ -3712,6 +3734,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42351c12182d6e94d963c4e95ec168af, type: 2}
   - {fileID: 11400000, guid: 944dfd75419ffa54b8fd3d4af89b917f, type: 2}
   - {fileID: 11400000, guid: b4f57cffeb260034ebd06e80dd60abac, type: 2}
+  - {fileID: 11400000, guid: 2d7b939d805301a4bb11ec5af3a4b33a, type: 2}
+  - {fileID: 11400000, guid: 6e7e56c164576454a96bcef4cfd86272, type: 2}
 --- !u!4 &801546266
 Transform:
   m_ObjectHideFlags: 0
