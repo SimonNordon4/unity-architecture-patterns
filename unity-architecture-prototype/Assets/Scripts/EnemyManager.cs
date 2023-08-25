@@ -18,8 +18,9 @@ public class EnemyManager : MonoBehaviour
     private bool _blocksCompleted = false;
 
     [Header("Stats")] 
-    
     public float spawnRadius = 10f;
+
+    
     
     [Header("Enemies")]
     public List<GameObject> enemies = new List<GameObject>();

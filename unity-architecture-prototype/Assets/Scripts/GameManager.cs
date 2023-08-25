@@ -25,6 +25,22 @@ public class GameManager : MonoBehaviour
     public bool isGameActive = false;
     public Vector2 levelBounds = new Vector2(25f, 25f);
 
+
+    [Header("Stats")] public int playerCurrentHealth = 10;
+    public Stat playerMaxHealth = new(10);
+    public Stat playerSpeed = new(5);
+    public Stat pistolDamage = new(1);
+    public Stat pistolRange = new(5);
+    public Stat pistolFireRate = new(0.5f);
+    public Stat pistolKnockBack = new(1);
+    public Stat swordDamage = new(3);
+    public Stat swordRange = new(1);
+    public Stat swordAttackSpeed = new(3);
+    public Stat swordKnockBack = new(3);
+    public Stat enemySpawnRate = new(1);
+    private readonly Dictionary<StatType, Stat> _stats = new();
+    public readonly List<ChestItem> currentlyHeldItems = new();
+
     [Header("UI")] public TextMeshProUGUI roundTimeText;
     public GameObject mainMenu;
     public GameObject pauseMenu;
@@ -36,12 +52,29 @@ public class GameManager : MonoBehaviour
     public ChestItemButton chestItemButtonPrefab;
     private readonly List<ChestItemButton> _chestItemButtons = new();
 
-    [Header("Chests")] public List<ChestItem> chestItems;
-
+    [Header("Chests")]
+    public List<ChestItem> chestItems;
 
     private void Start()
     {
         GoToMainMenu();
+        PopulateStats();
+    }
+
+    private void PopulateStats()
+    {
+        _stats.Add(StatType.PlayerHealth, playerMaxHealth);
+        _stats.Add(StatType.PlayerSpeed, playerSpeed);
+        _stats.Add(StatType.PistolDamage, pistolDamage);
+        _stats.Add(StatType.PistolRange, pistolRange);
+        _stats.Add(StatType.PistolFireRate, pistolFireRate);
+        _stats.Add(StatType.PistolKnockBack, pistolKnockBack);
+        _stats.Add(StatType.SwordDamage, swordDamage);
+        _stats.Add(StatType.SwordRange, swordRange);
+        _stats.Add(StatType.SwordAttackSpeed, swordAttackSpeed);
+        _stats.Add(StatType.SwordKnockBack, swordKnockBack);
+        _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
+        playerCurrentHealth = (int)playerMaxHealth.value;
     }
 
     private void HideAll()
@@ -114,6 +147,11 @@ public class GameManager : MonoBehaviour
         foreach (var spawnIndicator in spawnIndicators)
         {
             Destroy(spawnIndicator);
+        }
+        
+        foreach(var val in _stats.Values)
+        {
+            val.Reset();
         }
     }
 
@@ -211,7 +249,6 @@ public class GameManager : MonoBehaviour
                 newChestItemButton.Initialize(item);
                 break;
             }
-            
         }
 
 
@@ -221,6 +258,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("Applying Item " + item.name);
         HideAll();
         gameMenu.SetActive(true);
+
+        // Add modifiers to the stats.
+        foreach (var mod in item.modifiers)
+        {
+            var stat = _stats[mod.statType];
+            stat.AddModifier(mod);
+
+            // If it's a max health mod, we need to also increase the current health.
+            if (mod.statType == StatType.PlayerHealth)
+            {
+                playerCurrentHealth += (int)mod.modifierValue;
+            }
+        }
+        
+        // apply the item to the correct stat based on it's stat type
+        
+        
         isGameActive = true;
     }
 }

@@ -13,28 +13,13 @@ public class PlayerController : MonoBehaviour
         public GameManager gameManager;
         public EnemyManager enemyManager;
         
-        [Header("Movement")]
-        public float moveSpeed = 5f;
-
-        [Header("Health")]
-        public int currentHealth = 10;
-        public int maxHealth = 10;
-        public bool isDead = false;
-        
         [Header("Pistol")]
         public GameObject projectilePrefab;
-        public float fireRate = 0.5f;
-        public float pistolRange = 5;
-        public int pistolDamage = 1;
         private float _timeSinceLastFire = 0.0f;
         private Transform _closestTarget = null;
-        public float knockBackIntensity = 1;
 
-        [Header("Sword")] public Transform SwordPivot;
-        public float attackSpeed = 3;
-        public float swordRange = 1;
-        public int swordDamage = 3;
-        public float swordKnockBackIntensity = 3;
+        [Header("Sword")]
+        public Transform SwordPivot;
         private float _timeSinceLastSwing = 0.0f;
         private bool _isSwingingLeftToRight = true;
 
@@ -84,17 +69,17 @@ public class PlayerController : MonoBehaviour
        
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
-            if(_timeSinceLastFire > fireRate)
+            if(_timeSinceLastFire > gameManager.pistolFireRate.value)
             {
                 if (!targetIsNull)
                 {
-                    if (closestDistance <= pistolRange)
+                    if (closestDistance <= gameManager.pistolRange.value)
                     {
                         var directionToTarget = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
                         var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.LookRotation(directionToTarget));
                         var projectile = projectileGo.GetComponent<Projectile>();
-                        projectile.damage = pistolDamage;
-                        projectile.knockBackIntensity = knockBackIntensity;
+                        projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
+                        projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
                         _timeSinceLastFire = 0.0f;
                     }
                 }
@@ -102,11 +87,11 @@ public class PlayerController : MonoBehaviour
             
             // Swing sword if possible.
             _timeSinceLastSwing += Time.deltaTime;
-            if (_timeSinceLastSwing > attackSpeed)
+            if (_timeSinceLastSwing > gameManager.swordAttackSpeed.value)
             {
                 if (!targetIsNull)
                 {
-                    if (closestDistance <= swordRange)
+                    if (closestDistance <= gameManager.swordRange.value)
                     {
                         StopAllCoroutines();
                         StartCoroutine(SwordAttack());
@@ -139,7 +124,7 @@ public class PlayerController : MonoBehaviour
             // Apply movement
             if (dir.magnitude > 0)
             {
-                _transform.position += dir.normalized * (Time.deltaTime * moveSpeed);
+                _transform.position += dir.normalized * (Time.deltaTime * gameManager.playerSpeed.value);
                 _transform.rotation = Quaternion.LookRotation(dir);
             }
             
@@ -163,13 +148,14 @@ public class PlayerController : MonoBehaviour
             }
             
             camera.transform.position = cameraWishPosition;
+            SetUI();
         }
 
         private IEnumerator SwordAttack()
         {
             // Enable the sword gameobject.
             SwordPivot.gameObject.SetActive(true);
-            SwordPivot.localScale = new Vector3(1f, 1f, swordRange);
+            SwordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
     
             // Base rotation values.
             var leftRotation = Quaternion.Euler(0, -45, 0);
@@ -208,13 +194,14 @@ public class PlayerController : MonoBehaviour
             // Disable the sword gameobject.
             SwordPivot.gameObject.SetActive(false);
         }
+        
         public void TakeDamage(int damageAmount)
         {
-            currentHealth -= damageAmount;
+            gameManager.playerCurrentHealth -= damageAmount;
 
-            if (currentHealth <= 0)
+            if (gameManager.playerCurrentHealth <= 0)
             {
-                currentHealth = 0;
+                gameManager.playerCurrentHealth = 0;
                 gameManager.LoseGame();
             }
             SetUI();
@@ -236,16 +223,14 @@ public class PlayerController : MonoBehaviour
         
         private void SetUI()
         {
-            healthText.text = $"{currentHealth}/{maxHealth}";
-            healthBar.localScale = new Vector3((float)currentHealth / maxHealth, 1, 1);
+            healthText.text = $"{gameManager.playerCurrentHealth}/{(int)gameManager.playerMaxHealth.value}";
+            healthBar.localScale = new Vector3(gameManager.playerCurrentHealth / gameManager.playerMaxHealth.value, 1f, 1f);
         }
 
         public void ResetPlayer()
         {
             transform.SetPositionAndRotation(Vector3.up, Quaternion.identity);
             camera.transform.position = _transform.position + _cameraOffset;
-            isDead = false;
-            currentHealth = maxHealth;
             SetUI();
         }
 }
