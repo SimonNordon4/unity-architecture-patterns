@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
        
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
-            if(_timeSinceLastFire > gameManager.pistolFireRate.value)
+            if(_timeSinceLastFire > 1 / gameManager.pistolFireRate.value)
             {
                 if (!targetIsNull)
                 {
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
             
             // Swing sword if possible.
             _timeSinceLastSwing += Time.deltaTime;
-            if (_timeSinceLastSwing > gameManager.swordAttackSpeed.value)
+            if (_timeSinceLastSwing > 1 / gameManager.swordAttackSpeed.value)
             {
                 if (!targetIsNull)
                 {

@@ -40,6 +40,9 @@ public class EnemyManager : MonoBehaviour
         enemies.Clear();
         StopAllCoroutines();
         _blocksCompleted = false;
+        _elapsedBlockTime = 0f;
+        _currentBlockIndex = 0;
+        _currentBlockSpawnedEnemies = 0;
         _currentBlock = enemySpawnBlocks[0];
     }
 
