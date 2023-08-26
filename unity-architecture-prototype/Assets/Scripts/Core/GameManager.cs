@@ -43,10 +43,16 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")] public TextMeshProUGUI roundTimeText;
     public GameObject mainMenu;
+    
+    // Pause Menu
     public GameObject pauseMenu;
+    public RectTransform StatContainer;
+    public Dictionary<StatType,TextMeshProUGUI> statTexts = new Dictionary<StatType, TextMeshProUGUI>();
     public GameObject gameMenu;
     public GameObject gameOverMenu;
     public GameObject winMenu;
+    
+    // Chest Item
     public GameObject chestItemMenu;
     public RectTransform chestItemButtonContainer;
     public ChestItemButton chestItemButtonPrefab;
@@ -59,6 +65,7 @@ public class GameManager : MonoBehaviour
     {
         GoToMainMenu();
         PopulateStats();
+        PopulateStatsUI();
     }
 
     private void PopulateStats()
@@ -75,6 +82,51 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.SwordKnockBack, swordKnockBack);
         _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
         playerCurrentHealth = (int)playerMaxHealth.value;
+    }
+
+    private void PopulateStatsUI()
+    {
+        foreach (var key in _stats.Keys)
+        {
+            var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(), StatContainer);
+            newStatText.fontSize = 32;
+            // set the width of the text transform to 400
+            newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
+            statTexts.Add(key, newStatText);
+        }
+        UpdateStatsUI();
+    }
+
+    private void UpdateStatsUI()
+    {
+        foreach (var key in statTexts.Keys)
+        {
+            var statTypeText = key.ToString();
+            for (var i = 1; i < statTypeText.Length; i++)
+            {
+                if (char.IsUpper(statTypeText[i]))
+                {
+                    statTypeText = statTypeText.Insert(i, " ");
+                    i++;
+                }
+            }
+            
+            var newStatText = statTexts[key];
+            newStatText.text = $"{statTypeText}: {_stats[key].value}";
+            // check if the stat value is above, below or equal to the initial value.
+            if (_stats[key].value > _stats[key].initialValue)
+            {
+                newStatText.color = new Color(0.75f, 1f, 0.75f);
+            }
+            else if (_stats[key].value < _stats[key].initialValue)
+            {
+                newStatText.color = new Color(1f, 0.75f, 0.75f);
+            }
+            else
+            {
+                newStatText.color = new Color(0.8f, 0.8f, 0.8f);
+            }
+        }
     }
 
     private void HideAll()
@@ -272,8 +324,7 @@ public class GameManager : MonoBehaviour
             }
         }
         
-        // apply the item to the correct stat based on it's stat type
-        
+        UpdateStatsUI();
         
         isGameActive = true;
     }
