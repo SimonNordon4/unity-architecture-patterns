@@ -15,16 +15,20 @@ public class EnemyManager : MonoBehaviour
     public GameObject spawnIndicatorPrefab;
     public Transform playerTarget;
 
-    private bool _blocksCompleted = false;
+
 
     [Header("Stats")] 
     public float spawnRadius = 10f;
-
-    
     
     [Header("Enemies")]
     public List<GameObject> enemies = new List<GameObject>();
     
+    // Block data
+    private bool _blocksCompleted = false;
+    private float _elapsedBlockTime = 0f;
+    private int _currentBlockIndex = 0;
+    private int _currentBlockSpawnedEnemies = 0;
+    private float[] _spawnTimings;
 
     // Will destroy all alive enemies.
     public void ResetEnemyManager()
@@ -35,24 +39,27 @@ public class EnemyManager : MonoBehaviour
         }
         enemies.Clear();
         StopAllCoroutines();
-        foreach (var spawnBlock in enemySpawnBlocks)
-        {
-            spawnBlock.Start();
-        }
         _blocksCompleted = false;
         _currentBlock = enemySpawnBlocks[0];
-        
     }
 
     private void Start()
     {
-        foreach (var spawnBlock in enemySpawnBlocks)
-        {
-            spawnBlock.Start();
-        }
         _currentBlock = enemySpawnBlocks[0];
-        
         StopAllCoroutines();
+        InitializeNewBlock();
+    }
+
+    private void InitializeNewBlock()
+    {
+        _elapsedBlockTime = 0f;
+        _currentBlockSpawnedEnemies = 0;
+        // Get the spawn timing of each enemy evaluated against the animation curve
+        _spawnTimings = new float[_currentBlock.totalEnemies];
+        for (var i = 0; i < _currentBlock.totalEnemies; i++)
+        {
+            _spawnTimings[i] = _currentBlock.spawnRateCurve.Evaluate((float) i / _currentBlock.totalEnemies) * _currentBlock.blockTime;
+        }
     }
 
     private void Update()
@@ -61,7 +68,55 @@ public class EnemyManager : MonoBehaviour
 
         if (!_blocksCompleted)
         {
-            _currentBlock.Update();
+            _elapsedBlockTime += Time.deltaTime;
+
+            if (_currentBlockSpawnedEnemies < _currentBlock.totalEnemies)
+            {
+                if (_elapsedBlockTime > _spawnTimings[_currentBlockSpawnedEnemies])
+                {
+                    // Spawn one the enemies inside the spawn chances based on their spawn chance
+                    var totalSpawnChance = 0;
+                    foreach (var enemySpawnChance in _currentBlock.enemySpawnActions)
+                    {
+                        totalSpawnChance += enemySpawnChance.spawnChance;
+                    }
+                
+                    var randomSpawnChance = Random.Range(0, totalSpawnChance);
+                    var currentSpawnChance = 0;
+                
+                    for (var i = 0; i < _currentBlock.enemySpawnActions.Count; i++)
+                    {
+                        var x = i;
+                        currentSpawnChance += _currentBlock.enemySpawnActions[x].spawnChance;
+
+                        if (randomSpawnChance >= currentSpawnChance)
+                        {
+                            Debug.Log("Less than spawn chance, skipping");
+                            continue;
+                        }
+                        StartCoroutine(IndicateSpawn(_currentBlock.enemySpawnActions[x].enemyPrefab));
+                        Debug.Log("Spawning Enemy");
+                        _currentBlockSpawnedEnemies++;
+                        break;
+                    }
+                }
+            }
+            
+
+            // for (var i = 0; i < eliteSpawnTimings.Length; i++)
+            // {
+            //     if(Mathf.FloorToInt(_elapsedTime) % eliteSpawnTimings[i] == 0)
+            //     {
+            //         // Spawn Elite
+            //     }
+            // }
+            
+            if(_currentBlockSpawnedEnemies >= _currentBlock.totalEnemies)
+            {
+                // Spawn Boss
+                Debug.Log("Spawning Boss");
+                NextBlock();
+            }
         }
         else
         {
@@ -119,104 +174,6 @@ public class EnemyManager : MonoBehaviour
         }
         
         _currentBlock = enemySpawnBlocks[currentIndex + 1];
-    }
-
-    [Serializable]
-    public class EnemySpawnBlock
-    {
-        public EnemyManager enemyManager;
-        public int totalEnemies = 100;
-        private int _spawnedEnemies = 0;
-        private float[] spawnTimings;
-        public AnimationCurve spawnRateCurve = new(new Keyframe(0, 0), new Keyframe(1, 1));
-        
-        public List<EnemySpawnChance> enemySpawnChances = new();
-        public int[] eliteSpawnTimings = {120};
-        public List<GameObject> eliteEnemies = new();
-        public GameObject bossEnemy;
-        
-        public float blockTime = 300f;
-        private float _elapsedTime;
-
-        private void GetSpawnTimings()
-        {
-            // Get the spawn timing of each enemy evaluated against the animation curve
-            spawnTimings = new float[totalEnemies];
-            for (int i = 0; i < totalEnemies; i++)
-            {
-                spawnTimings[i] = spawnRateCurve.Evaluate((float) i / totalEnemies) * blockTime;
-            }
-        }
-        
-        public void Start()
-        {
-            _elapsedTime = 0f;
-            _spawnedEnemies = 0;
-            // There's a issue if the block time is less than 2 seconds, because enemies only spawn after 1 second.
-            // This means the block with finish before the first enemy spawns, instantly moving to the next block.
-            // Or winning the game.
-            blockTime = blockTime < 2 ? 2 : blockTime;
-            GetSpawnTimings();
-        }
-
-        public void Update()
-        {
-            _elapsedTime += Time.deltaTime;
-
-            if (_spawnedEnemies < totalEnemies)
-            {
-                if (_elapsedTime > spawnTimings[_spawnedEnemies])
-                {
-                    // Spawn one the enemies inside the spawn chances based on their spawn chance
-                    var totalSpawnChance = 0;
-                    foreach (var enemySpawnChance in enemySpawnChances)
-                    {
-                        totalSpawnChance += enemySpawnChance.spawnChance;
-                    }
-                
-                    var randomSpawnChance = Random.Range(0, totalSpawnChance);
-                    var currentSpawnChance = 0;
-                
-                    for (var i = 0; i < enemySpawnChances.Count; i++)
-                    {
-                        var x = i;
-                        currentSpawnChance += enemySpawnChances[x].spawnChance;
-
-                        if (randomSpawnChance >= currentSpawnChance)
-                        {
-                            Debug.Log("Less than spawn chance, skipping");
-                            continue;
-                        }
-                        enemyManager.StartCoroutine(enemyManager.IndicateSpawn(enemySpawnChances[x].enemyPrefab));
-                        Debug.Log("Spawning Enemy");
-                        _spawnedEnemies++;
-                        break;
-                    }
-                }
-            }
-            
-
-            // for (var i = 0; i < eliteSpawnTimings.Length; i++)
-            // {
-            //     if(Mathf.FloorToInt(_elapsedTime) % eliteSpawnTimings[i] == 0)
-            //     {
-            //         // Spawn Elite
-            //     }
-            // }
-            
-            if(_spawnedEnemies >= totalEnemies)
-            {
-                // Spawn Boss
-                Debug.Log("Spawning Boss");
-                enemyManager.NextBlock();
-            }
-        }
-    }
-
-    [Serializable]
-    public struct EnemySpawnChance
-    {
-        public GameObject enemyPrefab;
-        public int spawnChance;
+        InitializeNewBlock();
     }
 }
