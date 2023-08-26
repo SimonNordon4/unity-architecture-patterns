@@ -7,7 +7,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
-
     public static GameManager instance
     {
         get
@@ -18,10 +17,12 @@ public class GameManager : MonoBehaviour
         }
         private set => _instance = value;
     }
+    
+    #region Variables
 
     [Header("Round")] public float roundDuration = 20f;
     private float _roundTime;
-
+    public bool isPaused = false;
     public bool isGameActive = false;
     public Vector2 levelBounds = new Vector2(25f, 25f);
 
@@ -43,7 +44,6 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")] public TextMeshProUGUI roundTimeText;
     public GameObject mainMenu;
-    
     // Pause Menu
     public GameObject pauseMenu;
     public RectTransform StatContainer;
@@ -60,13 +60,140 @@ public class GameManager : MonoBehaviour
 
     [Header("Chests")]
     public List<ChestItem> chestItems;
+    
+    #endregion
 
+    #region Unity Functions
     private void Start()
     {
         GoToMainMenu();
         PopulateStats();
         PopulateStatsUI();
     }
+    
+    private void Update()
+    {
+        if (isGameActive)
+        {
+            _roundTime += Time.deltaTime;
+            roundTimeText.text = $"Round Time: {(int)(_roundTime)}";
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePauseGame();
+        }
+    }
+    #endregion
+
+    #region Application State
+
+    public void StartNewGame()
+    {
+        Debug.Log("Start New Game");
+        HideAll();
+        gameMenu.SetActive(true);
+        isGameActive = true;
+        _roundTime = 0f;
+    }
+    
+    public void GoToMainMenu()
+    {
+        Debug.Log("Go to Main Menu");
+        HideAll();
+        mainMenu.SetActive(true);
+        isGameActive = false;
+        ResetGame();
+    }
+    
+    private void TogglePauseGame()
+    {
+        // If the game is active and we're not already paused.
+        if(isGameActive && !isPaused)
+        {
+            HideAll();
+            isGameActive = false;
+            isPaused = true;
+            pauseMenu.SetActive(true);
+        }
+        // If the game is not active and we are paused.
+        else if (!isGameActive && isPaused)
+        {
+            HideAll();
+            isGameActive = true;
+            isPaused = false;
+            gameMenu.SetActive(true);
+        }
+        // Do nothing otherwise.
+    }
+    
+    public void ResetGame()
+    {
+        Debug.Log("Reset Game");
+        var playerController = FindObjectOfType<PlayerController>();
+        playerController.ResetPlayer();
+
+        var enemyManager = FindObjectOfType<EnemyManager>();
+        enemyManager.ResetEnemyManager();
+
+        var projectiles = FindObjectsOfType<Projectile>();
+        foreach (var projectile in projectiles)
+        {
+            Destroy(projectile.gameObject);
+        }
+
+        // find all objects with tag "Spawn Indicator" and destroy them.
+        var spawnIndicators = GameObject.FindGameObjectsWithTag("Spawn Indicator");
+        foreach (var spawnIndicator in spawnIndicators)
+        {
+            Destroy(spawnIndicator);
+        }
+        
+        foreach(var val in _stats.Values)
+        {
+            val.Reset();
+        }
+    }
+    
+    public void WinGame()
+    {
+        Debug.Log("Game Won!");
+        HideAll();
+        winMenu.SetActive(true);
+        isGameActive = false;
+        _roundTime = 0f;
+    }
+    
+    public void LoseGame()
+    {
+        Debug.Log("Lose Game");
+        HideAll();
+        gameOverMenu.SetActive(true);
+        isGameActive = false;
+    }
+    
+    private void HideAll()
+    {
+        mainMenu.SetActive(false);
+        gameMenu.SetActive(false);
+        pauseMenu.SetActive(false);
+        gameOverMenu.SetActive(false);
+        winMenu.SetActive(false);
+        chestItemMenu.SetActive(false);
+    }
+
+    public void QuitApplication()
+    {
+        Debug.Log("Quit Application");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+
+        Application.Quit();
+    }
+    #endregion
+        
+    #region Stats
 
     private void PopulateStats()
     {
@@ -128,112 +255,9 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-    private void HideAll()
-    {
-        mainMenu.SetActive(false);
-        gameMenu.SetActive(false);
-        pauseMenu.SetActive(false);
-        gameOverMenu.SetActive(false);
-        winMenu.SetActive(false);
-        chestItemMenu.SetActive(false);
-    }
-
-    private void Update()
-    {
-        if (isGameActive)
-        {
-            _roundTime += Time.deltaTime;
-            roundTimeText.text = $"Round Time: {(int)(_roundTime)}";
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            TogglePauseGame();
-        }
-    }
-
-    public void TogglePauseGame()
-    {
-        HideAll();
-        isGameActive = !isGameActive;
-        pauseMenu.SetActive(!isGameActive);
-        gameMenu.SetActive(isGameActive);
-    }
-
-    public void StartNewGame()
-    {
-        Debug.Log("Start New Game");
-        HideAll();
-        gameMenu.SetActive(true);
-        isGameActive = true;
-        _roundTime = 0f;
-    }
-
-    public void WinGame()
-    {
-        Debug.Log("Game Won!");
-        HideAll();
-        winMenu.SetActive(true);
-        isGameActive = false;
-        _roundTime = 0f;
-    }
-
-    public void ResetGame()
-    {
-        Debug.Log("Reset Game");
-        var playerController = FindObjectOfType<PlayerController>();
-        playerController.ResetPlayer();
-
-        var enemyManager = FindObjectOfType<EnemyManager>();
-        enemyManager.ResetEnemyManager();
-
-        var projectiles = FindObjectsOfType<Projectile>();
-        foreach (var projectile in projectiles)
-        {
-            Destroy(projectile.gameObject);
-        }
-
-        // find all objects with tag "Spawn Indicator" and destroy them.
-        var spawnIndicators = GameObject.FindGameObjectsWithTag("Spawn Indicator");
-        foreach (var spawnIndicator in spawnIndicators)
-        {
-            Destroy(spawnIndicator);
-        }
-        
-        foreach(var val in _stats.Values)
-        {
-            val.Reset();
-        }
-    }
-
-    public void GoToMainMenu()
-    {
-        Debug.Log("Go to Main Menu");
-        HideAll();
-        mainMenu.SetActive(true);
-        isGameActive = false;
-        ResetGame();
-    }
-
-    public void LoseGame()
-    {
-        Debug.Log("Lose Game");
-        HideAll();
-        gameOverMenu.SetActive(true);
-        isGameActive = false;
-    }
-
-    public void QuitApplication()
-    {
-        Debug.Log("Quit Application");
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
-
-        Application.Quit();
-    }
-
+    #endregion
+    
+    #region Chest Creation
     public void CreateChest(int chestTier)
     {
         isGameActive = false;
@@ -328,4 +352,5 @@ public class GameManager : MonoBehaviour
         
         isGameActive = true;
     }
+    #endregion
 }
