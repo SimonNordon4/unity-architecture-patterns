@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     public ChestItemButton chestItemButtonPrefab;
     private readonly List<ChestItemButton> _chestItemButtons = new();
 
-    [Header("Chests")]
+    [Header("Chests")] public Vector2 chestBounds = new Vector2(20f, 20f);
     public List<ChestItem> chestItems;
     public float miniChestCooldown = 15f;
     private float _timeSinceLastMiniChest = 0.0f;
@@ -85,6 +85,10 @@ public class GameManager : MonoBehaviour
         
         // start the game with one mini chest on the map.
         SpawnMiniChest();
+
+        // Chest has to spawn inside the level.
+        if (chestBounds.magnitude > levelBounds.magnitude)
+            chestBounds = levelBounds;
     }
     
     private void Update()
@@ -287,18 +291,21 @@ public class GameManager : MonoBehaviour
     
     #region Chest Creation
 
+    private Vector3 GetRandomChestPosition()
+    {
+        return new Vector3(Random.Range(-chestBounds.x, chestBounds.x), 0, Random.Range(-chestBounds.y, chestBounds.y));
+    }
+
     private void SpawnMiniChest()
     {
-        var randomPosition = new Vector3(Random.Range(-levelBounds.x, levelBounds.x), 0, Random.Range(-levelBounds.y, levelBounds.y));
-        var miniChest = Instantiate(miniChestPrefab, randomPosition, Quaternion.identity);
+        var miniChest = Instantiate(miniChestPrefab, GetRandomChestPosition(), Quaternion.identity);
         miniChest.minTier = 1;
         miniChest.maxTier = 1;
     }
 
     public void SpawnMediumChest()
     {
-        var randomPosition = new Vector3(Random.Range(-levelBounds.x, levelBounds.x), 0, Random.Range(-levelBounds.y, levelBounds.y));
-        var mediumChest = Instantiate(mediumChestPrefab,randomPosition, Quaternion.identity);
+        var mediumChest = Instantiate(mediumChestPrefab,GetRandomChestPosition(), Quaternion.identity);
         mediumChest.chestType = ChestType.Medium;
         mediumChest.minTier = 2;
         mediumChest.maxTier = 3;
@@ -306,8 +313,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnLargeChest()
     {
-        var randomPosition = new Vector3(Random.Range(-levelBounds.x, levelBounds.x), 0, Random.Range(-levelBounds.y, levelBounds.y));
-        var largeChest = Instantiate(largeChestPrefab,randomPosition, Quaternion.identity);
+        var largeChest = Instantiate(largeChestPrefab,GetRandomChestPosition(), Quaternion.identity);
         largeChest.chestType = ChestType.Large;
         largeChest.minTier = 3;
         largeChest.maxTier = 5;
