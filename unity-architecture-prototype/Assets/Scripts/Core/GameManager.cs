@@ -67,6 +67,12 @@ public class GameManager : MonoBehaviour
 
     [Header("Chests")]
     public List<ChestItem> chestItems;
+    public float miniChestCooldown = 15f;
+    private float _timeSinceLastMiniChest = 0.0f;
+    private bool _nextMiniChest = false;
+    public Chest miniChestPrefab;
+    public Chest mediumChestPrefab;
+    public Chest largeChestPrefab;
     
     #endregion
 
@@ -76,6 +82,9 @@ public class GameManager : MonoBehaviour
         GoToMainMenu();
         PopulateStats();
         PopulateStatsUI();
+        
+        // start the game with one mini chest on the map.
+        SpawnMiniChest();
     }
     
     private void Update()
@@ -84,6 +93,18 @@ public class GameManager : MonoBehaviour
         {
             _roundTime += Time.deltaTime;
             roundTimeText.text = $"Round Time: {(int)(_roundTime)}";
+
+            if (_nextMiniChest)
+            {
+                _timeSinceLastMiniChest += Time.deltaTime;
+                if(_timeSinceLastMiniChest > miniChestCooldown)
+                {
+                    SpawnMiniChest();
+                    _timeSinceLastMiniChest = 0.0f;
+                    _nextMiniChest = false;
+                }
+            }
+
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -265,8 +286,40 @@ public class GameManager : MonoBehaviour
     #endregion
     
     #region Chest Creation
-    public void CreateChest(int chestTier)
+
+    private void SpawnMiniChest()
     {
+        var randomPosition = new Vector3(Random.Range(-levelBounds.x, levelBounds.x), 0, Random.Range(-levelBounds.y, levelBounds.y));
+        var miniChest = Instantiate(miniChestPrefab, randomPosition, Quaternion.identity);
+        miniChest.minTier = 1;
+        miniChest.maxTier = 1;
+    }
+
+    public void SpawnMediumChest()
+    {
+        var randomPosition = new Vector3(Random.Range(-levelBounds.x, levelBounds.x), 0, Random.Range(-levelBounds.y, levelBounds.y));
+        var mediumChest = Instantiate(mediumChestPrefab,randomPosition, Quaternion.identity);
+        mediumChest.chestType = ChestType.Medium;
+        mediumChest.minTier = 2;
+        mediumChest.maxTier = 3;
+    }
+
+    public void SpawnLargeChest()
+    {
+        var randomPosition = new Vector3(Random.Range(-levelBounds.x, levelBounds.x), 0, Random.Range(-levelBounds.y, levelBounds.y));
+        var largeChest = Instantiate(largeChestPrefab,randomPosition, Quaternion.identity);
+        largeChest.chestType = ChestType.Large;
+        largeChest.minTier = 3;
+        largeChest.maxTier = 5;
+    }
+    
+    public void PickupChest(Chest chest)
+    {
+        // If we pickup a mini chest, we can start spawning the next mini chest.
+        if (chest.chestType == ChestType.Mini)
+        {
+            _nextMiniChest = true;
+        }
         isGameActive = false;
         HideAll();
         chestItemMenu.SetActive(true);
@@ -306,7 +359,7 @@ public class GameManager : MonoBehaviour
             var possibleItems = new List<ChestItem>();
             foreach (var chestItem in chestItems)
             {
-                if (chestItem.tier <= chestTier)
+                if (chestItem.tier >= chest.minTier && chestItem.tier <= chest.maxTier)
                 {
                     possibleItems.Add(chestItem);
                 }

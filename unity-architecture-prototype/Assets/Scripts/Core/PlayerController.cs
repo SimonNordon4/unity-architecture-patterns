@@ -209,11 +209,6 @@ public class PlayerController : MonoBehaviour
 
         public void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Mini Chest"))
-            {
-                GameManager.instance.CreateChest(1);
-            }
-
             
             if(other.CompareTag("Spawn Indicator"))
             {
