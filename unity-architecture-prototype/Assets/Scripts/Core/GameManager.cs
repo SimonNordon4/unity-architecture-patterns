@@ -185,6 +185,13 @@ public class GameManager : MonoBehaviour
         {
             val.Reset();
         }
+        
+        // Remove all chests.
+        var chests = FindObjectsOfType<Chest>();
+        foreach (var chest in chests)
+        {
+            Destroy(chest.gameObject);
+        }
     }
     
     public void WinGame()

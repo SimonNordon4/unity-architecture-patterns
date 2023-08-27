@@ -11,14 +11,14 @@ public class EnemyController : MonoBehaviour
     [Header("UI")]
     public GameObject healthBarUI;
     public TextMeshProUGUI healthText;
-    private Quaternion uiStartRotation;
+    protected Quaternion uiStartRotation;
     
     [Header("Movement")]
     public Transform playerTarget;
     public float moveSpeed = 5f;
     public float repulsionForce = 0.5f;
     public float knockBackFactor = 1f;
-    private bool _isKnockedBack = false;
+    protected bool _isKnockedBack = false;
 
     [Header("Health")] 
     public int currentHealth = 5;
@@ -26,11 +26,10 @@ public class EnemyController : MonoBehaviour
     [Header("Attack")]
     public int damageAmount = 1;
     public float damageCooldown = 0.2f;
-    private float _timeSinceLastDamage;
-    
-    private readonly List<Transform> _nearbyEnemies = new(4);
+    protected float _timeSinceLastDamage;
+    protected readonly List<Transform> _nearbyEnemies = new(4);
 
-    private void Start()
+    protected virtual void Start()
     {
         // de-parent so we don't follow the enemy rotation.
         uiStartRotation = healthBarUI.transform.rotation;
@@ -38,24 +37,40 @@ public class EnemyController : MonoBehaviour
         UpdateHealthText();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(GameManager.instance.isGameActive == false) return;
         
         if(_isKnockedBack) return;
         
-        // Direction towards player.
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
-        
-        // if dir magnitude is less than 0.5f, we want to stop moving towards the player, as we dont want to sit directly inside them
         if (dir.magnitude < 0.5f)
         {
             dir = Vector3.zero;
         }
+
+        var avoidanceDirection = GetAvoidanceFromOtherEnemies();
+        var updatedDir = (dir + avoidanceDirection * repulsionForce).normalized;
+
+        // Apply direction to transform.
+        if (dir.magnitude > 0)
+        {
+            transform.position += updatedDir * (Time.deltaTime * moveSpeed);
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
         
+        ClampTransformToLevelBounds();
+        
+        // Track Attack cooldown.
+        _timeSinceLastDamage += Time.deltaTime;
+        
+        healthBarUI.transform.rotation = uiStartRotation;
+    }
+
+    protected Vector3 GetAvoidanceFromOtherEnemies()
+    {
         // Push away from close enemies.
-        // TODO: We need to make the avoidance direction STRONGER the closer the enemy is.
         // The avoidance direction will be zero at 1m apart.
         // We will add the avoidance directions together, and then divide by total enemies to scale it down.
         // This means if the enemies are overlapping, avoidance will contribute 50% of the direction.
@@ -64,6 +79,7 @@ public class EnemyController : MonoBehaviour
         var avoidanceDirection = Vector3.zero;
         for(var i = 0; i < totalEnemies; i++)
         {
+
             var enemy = _nearbyEnemies[i];
             if (enemy == null)
             {
@@ -86,28 +102,16 @@ public class EnemyController : MonoBehaviour
                 avoidanceDirection -= enemyDir * scale;
             }
         }
-        
-        
-        var updatedDir = (dir + avoidanceDirection * repulsionForce).normalized;
 
-        // Apply direction to transform.
-        if (dir.magnitude > 0)
-        {
-            transform.position += updatedDir * (Time.deltaTime * moveSpeed);
-            transform.rotation = Quaternion.LookRotation(dir);
-        }
-        
+        return avoidanceDirection;
+    }
+    protected void ClampTransformToLevelBounds()
+    {
         // if the position is over the boundary, clamp it back to the boundary
         var pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, -GameManager.instance.levelBounds.x, GameManager.instance.levelBounds.x);
         pos.z = Mathf.Clamp(pos.z, -GameManager.instance.levelBounds.y, GameManager.instance.levelBounds.y);
         transform.position = pos;
-        
-        
-        // Track Attack cooldown.
-        _timeSinceLastDamage += Time.deltaTime;
-        
-        healthBarUI.transform.rotation = uiStartRotation;
     }
     
     public void SetHealthBarVisibility(bool visible)
@@ -115,7 +119,7 @@ public class EnemyController : MonoBehaviour
         healthBarUI.SetActive(visible);
     }
 
-    private void UpdateHealthText()
+    protected void UpdateHealthText()
     {
         healthText.text = currentHealth.ToString();
     }
@@ -130,8 +134,6 @@ public class EnemyController : MonoBehaviour
             enemyManager.EnemyDied(gameObject);
             Destroy(gameObject);
         }
-        
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -172,7 +174,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void ApplyKnockBack(Vector3 direction, float intensity)
+    public virtual void ApplyKnockBack(Vector3 direction, float intensity)
     {
         if(_isKnockedBack) StopAllCoroutines();
         _isKnockedBack = true;
@@ -180,7 +182,7 @@ public class EnemyController : MonoBehaviour
     }
     
     // Create a coroutine that will move the enemy in the direction of the knockback for 0.4 seconds with the given intensity being the distance the enemy will move.
-    private IEnumerator KnockBackRoutine(Vector3 knockBackVector)
+    protected virtual IEnumerator KnockBackRoutine(Vector3 knockBackVector)
     {
         float knockBackTime = 0.20f * knockBackVector.magnitude;
         float elapsedTime = 0f;
