@@ -7,7 +7,10 @@ public class Projectile : MonoBehaviour
     public float projectileLifetime = 5f;
     private float _timeAlive = 0f;
     public float knockBackIntensity = 1;
+    public int pierceCount = 1;
 
+    public bool canAttackPlayer = false;
+    public bool canAttackEnemy = true;
     
     // Update is called once per frame
     void Update()
@@ -24,8 +27,9 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (canAttackEnemy && other.CompareTag("Enemy"))
         {
+
             // get enemy controller component
             var enemyController = other.GetComponent<EnemyController>();
             enemyController.TakeDamage(damage);
@@ -33,7 +37,20 @@ public class Projectile : MonoBehaviour
             // We have to ensure we didn't just kill the enemy.
             if(enemyController != null)
                 enemyController.ApplyKnockBack(transform.forward, knockBackIntensity);
-            Destroy(this.gameObject);
+            pierceCount--;
+            
+            if(pierceCount <= 0)
+                Destroy(gameObject);
+        }
+
+        if (canAttackPlayer && other.CompareTag("Player"))
+        {
+
+            var playerController = other.GetComponent<PlayerController>();
+            playerController.TakeDamage(damage);
+            pierceCount--;
+            if(pierceCount <= 0)
+                Destroy(gameObject);
         }
     }
 }
