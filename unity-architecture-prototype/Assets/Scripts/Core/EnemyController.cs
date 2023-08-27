@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-
-    
     [Header("References")]
     public EnemyManager enemyManager;
+    
+    [Header("UI")]
+    public GameObject healthBarUI;
+    public TextMeshProUGUI healthText;
+    private Quaternion uiStartRotation;
     
     [Header("Movement")]
     public Transform playerTarget;
@@ -25,6 +29,14 @@ public class EnemyController : MonoBehaviour
     private float _timeSinceLastDamage;
     
     private readonly List<Transform> _nearbyEnemies = new(4);
+
+    private void Start()
+    {
+        // de-parent so we don't follow the enemy rotation.
+        uiStartRotation = healthBarUI.transform.rotation;
+        healthBarUI.SetActive(SettingsManager.instance.showEnemyHealthBars);
+        UpdateHealthText();
+    }
 
     private void Update()
     {
@@ -94,18 +106,32 @@ public class EnemyController : MonoBehaviour
         
         // Track Attack cooldown.
         _timeSinceLastDamage += Time.deltaTime;
+        
+        healthBarUI.transform.rotation = uiStartRotation;
+    }
+    
+    public void SetHealthBarVisibility(bool visible)
+    {
+        healthBarUI.SetActive(visible);
+    }
+
+    private void UpdateHealthText()
+    {
+        healthText.text = currentHealth.ToString();
     }
 
     public void TakeDamage(int damage)
     {
         // Take damage, die if at 0.
         currentHealth -= damage;
-        
+        UpdateHealthText();
         if (currentHealth <= 0)
         {
             enemyManager.EnemyDied(gameObject);
             Destroy(gameObject);
         }
+        
+
     }
 
     private void OnTriggerEnter(Collider other)
