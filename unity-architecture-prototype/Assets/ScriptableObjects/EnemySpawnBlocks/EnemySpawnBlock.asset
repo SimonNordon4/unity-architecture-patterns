@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: EnemySpawnBlock
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
-  totalEnemies: 4
+  totalEnemies: 120
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -40,7 +40,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   enemySpawnActions:
   - {fileID: 11400000, guid: bdbda0f4bc999c9418e66f6179a6e37f, type: 2}
+  - {fileID: 11400000, guid: f80a2ecf14150664fbb96fd02681d318, type: 2}
+  - {fileID: 11400000, guid: 57d33e28ba80fd644a6e05dec13f0771, type: 2}
   eliteSpawnTimings: 78000000
   eliteEnemies: []
   bossEnemy: {fileID: 0}
-  blockTime: 4
+  blockTime: 150

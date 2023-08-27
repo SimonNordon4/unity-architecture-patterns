@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 992837262857138370, guid: 6da49f7eb69c8fc49964a213d0376127,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 992837262857138370, guid: 6da49f7eb69c8fc49964a213d0376127,
         type: 3}
@@ -78,10 +78,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4287962518910849492, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4be5b2936dbd2b248955a0db3f40a270, type: 2}
     - target: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
         type: 3}
       propertyPath: m_Name
       value: Enemy - Fast
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      propertyPath: damageAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      propertyPath: currentHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      propertyPath: repulsionForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      propertyPath: knockBackFactor
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6953155014685121329, guid: 6da49f7eb69c8fc49964a213d0376127,
         type: 3}

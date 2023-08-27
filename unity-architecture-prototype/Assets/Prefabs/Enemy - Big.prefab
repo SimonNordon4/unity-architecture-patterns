@@ -13,6 +13,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy - Big
       objectReference: {fileID: 0}
+    - target: {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb,
+        type: 3}
+      propertyPath: damageAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb,
+        type: 3}
+      propertyPath: currentHealth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2558643445511387455, guid: 8484d40e5461e59478c18489957a7ceb,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -21,7 +36,7 @@ PrefabInstance:
     - target: {fileID: 5637368978482451148, guid: 8484d40e5461e59478c18489957a7ceb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5637368978482451148, guid: 8484d40e5461e59478c18489957a7ceb,
         type: 3}
@@ -88,6 +103,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8682190472602514394, guid: 8484d40e5461e59478c18489957a7ceb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2a8c198f08660944a87a5a62950d03ce, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

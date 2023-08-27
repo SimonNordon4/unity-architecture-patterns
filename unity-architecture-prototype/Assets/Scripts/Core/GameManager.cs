@@ -134,7 +134,7 @@ public class GameManager : MonoBehaviour
         ResetGame();
     }
     
-    private void TogglePauseGame()
+    public void TogglePauseGame()
     {
         // If the game is active and we're not already paused.
         if(isGameActive && !isPaused)
