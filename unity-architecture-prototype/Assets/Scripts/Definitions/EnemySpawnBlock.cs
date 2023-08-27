@@ -12,7 +12,7 @@ public class EnemySpawnBlock : ScriptableObject
     public List<EnemySpawnAction> enemySpawnActions = new();
     public int[] eliteSpawnTimings = { 120 };
     public List<GameObject> eliteEnemies = new();
-    public GameObject bossEnemy;
+    public EnemySpawnAction bossAction;
 
     public float blockTime = 300f;
 

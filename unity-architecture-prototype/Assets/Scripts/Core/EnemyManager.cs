@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Definitions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,10 +16,8 @@ public class EnemyManager : MonoBehaviour
     public GameObject spawnIndicatorPrefab;
     public Transform playerTarget;
 
-
-
     [Header("Stats")] 
-    public float spawnRadius = 10f;
+    public float spawnRadius = 15f;
     
     [Header("Enemies")]
     public List<GameObject> enemies = new List<GameObject>();
@@ -29,6 +28,7 @@ public class EnemyManager : MonoBehaviour
     private int _currentBlockIndex = 0;
     private int _currentBlockSpawnedEnemies = 0;
     private float[] _spawnTimings;
+    private int _currentBlockAliveEnemies = 0;
 
     // Will destroy all alive enemies.
     public void ResetEnemyManager()
@@ -97,9 +97,8 @@ public class EnemyManager : MonoBehaviour
                             Debug.Log("Less than spawn chance, skipping");
                             continue;
                         }
-                        StartCoroutine(IndicateSpawn(_currentBlock.enemySpawnActions[x].enemyPrefab));
-                        Debug.Log("Spawning Enemy");
-                        _currentBlockSpawnedEnemies++;
+                        Debug.Log("Starting Spawn Action from Update");
+                        StartCoroutine(StartSpawnAction(_currentBlock.enemySpawnActions[x]));
                         break;
                     }
                 }
@@ -118,23 +117,60 @@ public class EnemyManager : MonoBehaviour
             {
                 // Spawn Boss
                 Debug.Log("Spawning Boss");
+                if(_currentBlock.bossAction != null)
+                   StartCoroutine(StartSpawnAction(_currentBlock.bossAction));
                 NextBlock();
             }
         }
         else
         {
-            if(enemies.Count <= 0)
+            if(_currentBlockAliveEnemies <= 0)
                 gameManager.WinGame();
         }
 
     }
 
-    private IEnumerator IndicateSpawn(GameObject enemyPrefab)
+    private IEnumerator StartSpawnAction(EnemySpawnAction action)
     {
-        // select a random point on the circle
-        var randomPoint = Random.insideUnitSphere.normalized * spawnRadius;
-        randomPoint.y = enemyPrefab.transform.localScale.y;
-        var spawnIndicator = Instantiate(spawnIndicatorPrefab, randomPoint, Quaternion.identity);
+        // We need to pre populate the number of spawned enemies, otherwise it will continuously spawn enemies.
+        // When we yield return null.
+        _currentBlockSpawnedEnemies += action.numberOfEnemiesToSpawn;
+        // Clamp the number of enemies to spawn to the total enemies in the block
+        if(_currentBlockSpawnedEnemies > _currentBlock.totalEnemies)
+            _currentBlockSpawnedEnemies = _currentBlock.totalEnemies;
+        
+        _currentBlockAliveEnemies += action.numberOfEnemiesToSpawn;
+        
+        Debug.Log("Starting enemy spawn action");
+        var startPoint = Random.insideUnitSphere.normalized * spawnRadius;
+
+        var lastSpawnPoint = startPoint;
+        for (var i = 0; i < action.numberOfEnemiesToSpawn; i++)
+        {
+            // The first spawn is always on target.
+            if (i == 0)
+            {
+                StartCoroutine(IndicateSpawn(action.enemyPrefab, startPoint));
+                continue;
+            }
+
+            var delay = Random.Range(0.05f, 0.5f);
+
+            lastSpawnPoint = Random.insideUnitSphere.normalized + lastSpawnPoint;
+            yield return new WaitForSeconds(delay);
+            StartCoroutine(IndicateSpawn(action.enemyPrefab, lastSpawnPoint));
+        }
+
+
+
+        yield return null;
+    }
+
+    private IEnumerator IndicateSpawn(GameObject enemyPrefab, Vector3 spawnPoint)
+    {
+        
+        spawnPoint.y = enemyPrefab.transform.localScale.y;
+        var spawnIndicator = Instantiate(spawnIndicatorPrefab, spawnPoint, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         
         // Suspend the coroutine until the game is active
@@ -146,10 +182,11 @@ public class EnemyManager : MonoBehaviour
         // Check if spawnIndicator still exists, if it was destroyed abort the spawn
         if (spawnIndicator == null)
         {
+            _currentBlockAliveEnemies--;
             yield break;
         }
         
-        SpawnEnemy(enemyPrefab, randomPoint);
+        SpawnEnemy(enemyPrefab, spawnPoint);
         Destroy(spawnIndicator);
     }
 
@@ -163,6 +200,7 @@ public class EnemyManager : MonoBehaviour
 
     public void EnemyDied(GameObject enemy)
     {
+        _currentBlockAliveEnemies--;
         enemies.Remove(enemy);
     }
 
