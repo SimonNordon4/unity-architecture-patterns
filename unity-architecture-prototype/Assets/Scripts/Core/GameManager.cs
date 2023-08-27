@@ -44,13 +44,20 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")] public TextMeshProUGUI roundTimeText;
     public GameObject mainMenu;
-    // Pause Menu
     public GameObject pauseMenu;
-    public RectTransform StatContainer;
-    public Dictionary<StatType,TextMeshProUGUI> statTexts = new Dictionary<StatType, TextMeshProUGUI>();
     public GameObject gameMenu;
     public GameObject gameOverMenu;
     public GameObject winMenu;
+    
+    [Header("Stat UI")]
+    public RectTransform StatContainer;
+    private Dictionary<StatType,TextMeshProUGUI> statTexts = new();
+    
+    [Header("Item UI")]
+    public RectTransform itemHoverImageContainer;
+    private readonly List<GameObject> _itemHoverImages = new();
+    public ChestItemHoverImage itemHoverImagePrefab;
+
     
     // Chest Item
     public GameObject chestItemMenu;
@@ -193,7 +200,7 @@ public class GameManager : MonoBehaviour
     }
     #endregion
         
-    #region Stats
+    #region Stats UI
 
     private void PopulateStats()
     {
@@ -334,6 +341,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Applying Item " + item.name);
         HideAll();
         gameMenu.SetActive(true);
+        currentlyHeldItems.Add(item);
 
         // Add modifiers to the stats.
         foreach (var mod in item.modifiers)
@@ -349,8 +357,41 @@ public class GameManager : MonoBehaviour
         }
         
         UpdateStatsUI();
-        
+        UpdateItemUI();
         isGameActive = true;
+    }
+
+    private void UpdateItemUI()
+    {
+        Debug.Log("Updating Item UI");
+        foreach (var item in _itemHoverImages)
+        {
+            Destroy(item);
+        }
+        _itemHoverImages.Clear();
+        
+        // Create a dictionary of every item and how many of them there are.
+        var itemDictionary = new Dictionary<ChestItem, int>();
+        foreach (var item in currentlyHeldItems)
+        {
+            if (itemDictionary.ContainsKey(item))
+            {
+                itemDictionary[item]++;
+            }
+            else
+            {
+                itemDictionary.Add(item, 1);
+            }
+        }
+        
+        // Create a new item hover image for each item in the dictionary.
+        foreach (var item in itemDictionary.Keys)
+        {
+            var newHoverImage = Instantiate(itemHoverImagePrefab, itemHoverImageContainer);
+            newHoverImage.Initialize(item, itemDictionary[item]);
+            _itemHoverImages.Add(newHoverImage.gameObject);
+        }
+
     }
     #endregion
 }
