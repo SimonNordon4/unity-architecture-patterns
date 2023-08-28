@@ -3724,7 +3724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 801546265}
   enemySpawnBlocks:
-  - {fileID: 11400000, guid: 2b3c21340f63a4c449401d698a85c31c, type: 2}
+  - {fileID: 11400000, guid: 662b61b56ca5fad4ead178320eb6fbb3, type: 2}
   spawnIndicatorPrefab: {fileID: 4479240645565134242, guid: 929c12e65cb355d4fbf6ed4a3ff62e54,
     type: 3}
   playerTarget: {fileID: 460763660}
@@ -7886,11 +7886,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3760da61d7d40f8a317f22c29a105fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalGold: 0
+  totalGold: 10000
   storeItems:
-  - sprite: {fileID: 0}
-    itemName: Metalugry
-    tiers: 5
+  - name: Extended Magazine
+    sprite: {fileID: 0}
+    tiers: 3
+    tierModifiers:
+    - statType: 0
+      modifierType: 0
+      modifierValue: 0.1
+    - statType: 0
+      modifierType: 0
+      modifierValue: 0.25
+    - statType: 0
+      modifierType: 0
+      modifierValue: 0.5
+    - statType: 0
+      modifierType: 0
+      modifierValue: 1
+    pricePerTier: 64000000f4010000e8030000d0070000
+    currentTier: 0
+  - name: Metalurgy
+    sprite: {fileID: 0}
+    tiers: 3
     tierModifiers:
     - statType: 4
       modifierType: 0
@@ -7903,11 +7921,8 @@ MonoBehaviour:
       modifierValue: 3
     - statType: 4
       modifierType: 0
-      modifierValue: 4
-    - statType: 4
-      modifierType: 0
       modifierValue: 5
-    pricePerTier: 64000000f4010000e8030000d007000088130000
+    pricePerTier: 64000000f4010000e8030000d00700008813000010270000
     currentTier: 0
   debugSkipLoad: 1
 --- !u!1 &1492026863

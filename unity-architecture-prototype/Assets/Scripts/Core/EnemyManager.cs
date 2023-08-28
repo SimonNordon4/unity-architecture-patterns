@@ -31,6 +31,7 @@ public class EnemyManager : MonoBehaviour
     private int _currentBlockSpawnedEnemies = 0;
     private float[] _spawnTimings;
     private int _currentBlockAliveEnemies = 0;
+    private bool _blockBossSpawned = false;
 
     // Will destroy all alive enemies.
     public void ResetEnemyManager()
@@ -115,12 +116,20 @@ public class EnemyManager : MonoBehaviour
             //     }
             // }
             
-            if(_currentBlockSpawnedEnemies >= _currentBlock.totalEnemies)
+            // If we have spawned all enemies and the boss has not been spawned yet, spawn the boss.
+            if(_currentBlockSpawnedEnemies >= _currentBlock.totalEnemies && _blockBossSpawned == false)
             {
                 // Spawn Boss
                 Debug.Log("Spawning Boss");
-                if(_currentBlock.bossAction != null)
-                   StartCoroutine(StartSpawnAction(_currentBlock.bossAction));
+                if (_currentBlock.bossAction != null)
+                {
+                    StartCoroutine(StartSpawnAction(_currentBlock.bossAction));
+                }
+                _blockBossSpawned = true;
+            }
+            // spawning the boss will then increase the currentBlockSpawnEnemies, so once that is zero
+            else if(_currentBlockAliveEnemies <= 0 && _blockBossSpawned == true)
+            {
                 NextBlock();
             }
         }
