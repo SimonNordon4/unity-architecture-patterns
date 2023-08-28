@@ -10,7 +10,8 @@
     SwordAttackSpeed,
     PlayerSpeed,
     PlayerHealth,
-    EnemySpawnRate
+    EnemySpawnRate,
+    HealthPackSpawnRate
 }
 
 public enum ModifierType

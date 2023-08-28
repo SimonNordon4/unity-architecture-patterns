@@ -205,6 +205,7 @@ public class EnemyManager : MonoBehaviour
         _currentBlockAliveEnemies--;
         totalEnemiesKilled++;
         enemies.Remove(enemy);
+        GameManager.instance.OnEnemyDied(enemy);
     }
 
     public void NextBlock()

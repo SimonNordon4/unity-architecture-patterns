@@ -4133,6 +4133,11 @@ MonoBehaviour:
     minimumValue: 0.1
     maximumValue: Infinity
     value: 1
+  healthPackSpawnRate:
+    initialValue: 5
+    minimumValue: 0
+    maximumValue: 100
+    value: 5
   roundTimeText: {fileID: 615096172}
   mainMenu: {fileID: 1428806657}
   pauseMenu: {fileID: 56815765}
@@ -4168,6 +4173,8 @@ MonoBehaviour:
   mediumChestPrefab: {fileID: 7632869134034703769, guid: 467159eec05542c45a00f31f13f867de,
     type: 3}
   largeChestPrefab: {fileID: 7632869134034703769, guid: 8d8af5a9e9980e94294e900bdb4a6312,
+    type: 3}
+  HealthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175,
     type: 3}
 --- !u!4 &801546266
 Transform:

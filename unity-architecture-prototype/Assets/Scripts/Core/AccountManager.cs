@@ -27,7 +27,7 @@ namespace Core
 
         private void OnEnable()
         {
-            Load();
+            Load(); 
         }
         private void OnDisable()
         {
@@ -35,7 +35,7 @@ namespace Core
         }
 
 
-        public void Save()
+        private void Save()
         {
             var accountSave = new AccountSave();
             accountSave.totalGold = totalGold;
@@ -43,8 +43,8 @@ namespace Core
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
         }
-        
-        public void Load()
+
+        private void Load()
         {
             var json = PlayerPrefs.GetString("account");
             if (string.IsNullOrEmpty(json))

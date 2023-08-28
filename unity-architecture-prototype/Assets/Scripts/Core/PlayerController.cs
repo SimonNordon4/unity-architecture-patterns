@@ -214,6 +214,16 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(other.gameObject);   
             }
+
+            if (other.CompareTag("Health Pack"))
+            {
+                GameManager.instance.playerCurrentHealth =
+                   (int)Mathf.Clamp( (GameManager.instance.playerCurrentHealth * 1.1f + 1), 
+                        0f, 
+                        GameManager.instance.playerMaxHealth.value);
+                
+                Destroy(other.gameObject);
+            }
         }
         
         private void SetUI()

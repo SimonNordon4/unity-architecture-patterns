@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     public Stat swordAttackSpeed = new(3);
     public Stat swordKnockBack = new(3);
     public Stat enemySpawnRate = new(1);
+    public Stat healthPackSpawnRate = new(5);
     private readonly Dictionary<StatType, Stat> _stats = new();
     public readonly List<ChestItem> currentlyHeldItems = new();
 
@@ -76,6 +77,9 @@ public class GameManager : MonoBehaviour
     public Chest miniChestPrefab;
     public Chest mediumChestPrefab;
     public Chest largeChestPrefab;
+    
+    [Header("Health Packs")]
+    public GameObject HealthPackPrefab;
     
     #endregion
 
@@ -265,6 +269,7 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.SwordAttackSpeed, swordAttackSpeed);
         _stats.Add(StatType.SwordKnockBack, swordKnockBack);
         _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
+        _stats.Add(StatType.HealthPackSpawnRate, healthPackSpawnRate);
         playerCurrentHealth = (int)playerMaxHealth.value;
     }
 
@@ -476,6 +481,18 @@ public class GameManager : MonoBehaviour
             _itemHoverImages.Add(newHoverImage.gameObject);
         }
 
+    }
+    #endregion
+    
+    #region Enemy Died Events
+
+    public void OnEnemyDied(GameObject enemy)
+    {
+        var randomChance = Random.Range(0, 100);
+        if(randomChance < healthPackSpawnRate.value)
+        {
+            var healthPack = Instantiate(HealthPackPrefab, enemy.transform.position, Quaternion.identity);
+        }
     }
     #endregion
 }
