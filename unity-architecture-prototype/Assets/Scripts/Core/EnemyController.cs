@@ -136,7 +136,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         // Add nearby enemies to list.
         if (other.CompareTag("Enemy"))
@@ -146,7 +146,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         // Continuously damage the player.
         if (other.CompareTag("Player"))
@@ -154,7 +154,7 @@ public class EnemyController : MonoBehaviour
             var playerController = other.GetComponent<PlayerController>();
             if (playerController != null)
             {
-                if (_timeSinceLastDamage > damageCooldown)
+                if (_timeSinceLastDamage >= damageCooldown)
                 {
                     playerController.TakeDamage(damageAmount);
                     _timeSinceLastDamage = 0f;
@@ -164,7 +164,7 @@ public class EnemyController : MonoBehaviour
         }
     }
     
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         // Remove nearby enemies from list.
         if (other.CompareTag("Enemy"))
