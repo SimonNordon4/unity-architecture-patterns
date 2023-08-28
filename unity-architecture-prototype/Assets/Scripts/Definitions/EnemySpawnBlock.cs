@@ -12,15 +12,9 @@ public class EnemySpawnBlock : ScriptableObject
     public int totalEnemies = 100;
     public float blockTime = 300f;
     public AnimationCurve spawnRateCurve = new(new Keyframe(0, 0), new Keyframe(1, 1));
-    public int[] eliteSpawnTimings = { 120 };
-    public List<GameObject> eliteEnemies = new();
     public EnemySpawnAction bossAction;
-
-    [Header("Modifiers")]
-    public float healthMultiplier = 1f;
-    public float healthMultiplierTolerance = 0.0f;
-    public float damageMultiplier = 1f;
-    public float damageMultiplierTolerance = 0.0f;
+    public int bossChestTier = 2;
+    public int bossChestItems = 3;
 
     public void OnValidate()
     {

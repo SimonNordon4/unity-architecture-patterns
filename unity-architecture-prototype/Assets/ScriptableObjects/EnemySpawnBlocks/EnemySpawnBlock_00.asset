@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
-  - {fileID: 11400000, guid: bdbda0f4bc999c9418e66f6179a6e37f, type: 2}
+  - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
+      type: 3}
+    health: 5
+    damage: 1
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 100
   totalEnemies: 10
   blockTime: 30
   spawnRateCurve:
@@ -43,8 +48,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   eliteSpawnTimings: 
   eliteEnemies: []
-  bossAction: {fileID: 11400000, guid: 57d33e28ba80fd644a6e05dec13f0771, type: 2}
-  healthMultiplier: 1
-  healthMultiplierTolerance: 0
-  damageMultiplier: 1
-  damageMultiplierTolerance: 0
+  bossAction:
+    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+      type: 3}
+    health: 10
+    damage: 3
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 100

@@ -1,13 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Definitions
 {
-    [CreateAssetMenu(fileName = "EnemySpawnAction", menuName = "Prototype/EnemySpawnAction", order = 1)]
-    public class EnemySpawnAction : ScriptableObject
+    [Serializable]
+    public class EnemySpawnAction
     {
         public GameObject enemyPrefab;
-        public int numberOfEnemiesToSpawn;
-        public int spawnChance;
+        public int health = 5;
+        public int damage = 1;
+        public int numberOfEnemiesToSpawn = 1;
+        public int spawnChance = 100;
     }
 }

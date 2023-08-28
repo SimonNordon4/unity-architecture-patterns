@@ -161,7 +161,7 @@ public class EnemyManager : MonoBehaviour
             // The first spawn is always on target.
             if (i == 0)
             {
-                StartCoroutine(IndicateSpawn(action.enemyPrefab, startPoint));
+                StartCoroutine(IndicateSpawn(action, startPoint));
                 continue;
             }
 
@@ -169,7 +169,7 @@ public class EnemyManager : MonoBehaviour
 
             lastSpawnPoint = Random.insideUnitSphere.normalized + lastSpawnPoint;
             yield return new WaitForSeconds(delay);
-            StartCoroutine(IndicateSpawn(action.enemyPrefab, lastSpawnPoint));
+            StartCoroutine(IndicateSpawn(action, lastSpawnPoint));
         }
 
 
@@ -177,10 +177,10 @@ public class EnemyManager : MonoBehaviour
         yield return null;
     }
 
-    private IEnumerator IndicateSpawn(GameObject enemyPrefab, Vector3 spawnPoint)
+    private IEnumerator IndicateSpawn(EnemySpawnAction enemyAction, Vector3 spawnPoint)
     {
         
-        spawnPoint.y = enemyPrefab.transform.localScale.y;
+        spawnPoint.y = enemyAction.enemyPrefab.transform.localScale.y;
         var spawnIndicator = Instantiate(spawnIndicatorPrefab, spawnPoint, Quaternion.identity);
         yield return new WaitForSeconds(1f);
         
@@ -197,26 +197,19 @@ public class EnemyManager : MonoBehaviour
             yield break;
         }
         
-        SpawnEnemy(enemyPrefab, spawnPoint);
+        SpawnEnemy(enemyAction, spawnPoint);
         Destroy(spawnIndicator);
     }
 
-    private void SpawnEnemy(GameObject enemyPrefab, Vector3 position)
+    private void SpawnEnemy(EnemySpawnAction enemyAction, Vector3 position)
     {
-        var newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
+        var newEnemy = Instantiate(enemyAction.enemyPrefab, position, Quaternion.identity);
         var enemyController = newEnemy.GetComponent<EnemyController>();
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
         
-        var enemyHealth = enemyController.currentHealth * _currentBlock.healthMultiplier;
-        var enemyHealthVariance = Random.Range(-_currentBlock.healthMultiplierTolerance, _currentBlock.healthMultiplierTolerance);
-        enemyHealth = enemyHealth + enemyHealth * enemyHealthVariance;
-        enemyController.currentHealth = Mathf.RoundToInt(enemyHealth);
-        
-        var enemyDamage = enemyController.damageAmount * _currentBlock.damageMultiplier;
-        var enemyDamageVariance = Random.Range(-_currentBlock.damageMultiplierTolerance, _currentBlock.damageMultiplierTolerance);
-        enemyDamage = enemyDamage + enemyDamage * enemyDamageVariance;
-        enemyController.damageAmount = Mathf.RoundToInt(enemyDamage);
+        enemyController.currentHealth = enemyAction.health;
+        enemyController.damageAmount = enemyAction.damage;
         
         enemies.Add(newEnemy);
     }
