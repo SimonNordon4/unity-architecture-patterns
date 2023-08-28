@@ -333,11 +333,9 @@ public class GameManager : MonoBehaviour
         var storeItems = AccountManager.instance.storeItems;
         foreach (var store in storeItems)
         {
-            foreach(var mod in store.modifiers)
-            {
-                var stat = _stats[mod.statType];
-                stat.AddModifier(mod);
-            }
+            var currentModifier = store.tierModifiers[store.currentTier];
+            var stat = _stats[currentModifier.statType];
+            stat.AddModifier(currentModifier);
         }
         UpdateStatsUI();
     }

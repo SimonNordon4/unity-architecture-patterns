@@ -39,12 +39,11 @@ using UnityEngine.UI;
             // Create
             
             itemImage.sprite = item.sprite;
-            itemNameText.text = item.itemName;
-            var itemCost = item.price + item.currentTier * item.priceIncreasePerTier;
+            itemNameText.text = item.name;
+            var itemCost = item.pricePerTier[item.currentTier];
             itemPriceText.text = (int)itemCost + "G";
             
-            foreach(var mod in item.modifiers)
-            {
+            var mod = item.tierModifiers[item.currentTier];
                 var statSign = mod.modifierValue > 0 ? "+" : "-";                
 
                 // Format stat value.
@@ -72,10 +71,9 @@ using UnityEngine.UI;
                 itemModifierText.color = mod.modifierValue > 0 ?
                     new Color(0.75f, 1, 0.75f):
                     new Color(1, 0.75f, 0.75f);
-            }
             
             
-            Debug.Log("Total Gold: " + AccountManager.instance.totalGold + " Item Cost: " + itemCost + " Can Afford: " + (AccountManager.instance.totalGold >= itemCost));
+            
             if (AccountManager.instance.totalGold < itemCost)
             {
                 purchaseButton.enabled = false;

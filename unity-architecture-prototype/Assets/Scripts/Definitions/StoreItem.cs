@@ -10,14 +10,18 @@ using UnityEngine;
 [Serializable]
 public class StoreItem 
 {
+    public string name = "New Item";
     public Sprite sprite;
-    public string itemName = "New Item";
-    public Modifier[] modifiers;
-    public float tierModifierMultiplier = 1f;
-    public int price = 100;
     public int tiers = 3;
-    public float priceIncreasePerTier = 10f;
+    public Modifier[] tierModifiers;
+    public int[] pricePerTier;
     public int currentTier = 0;
+    
+    public StoreItem()
+    {
+        tierModifiers = new Modifier[tiers];
+        pricePerTier = new int[tiers];
+    }
 }
 
 
