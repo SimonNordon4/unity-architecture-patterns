@@ -10,14 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: EnemySpawnBlock_01
+  m_Name: EnemySpawnBlock_00
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
   - {fileID: 11400000, guid: bdbda0f4bc999c9418e66f6179a6e37f, type: 2}
-  - {fileID: 11400000, guid: f80a2ecf14150664fbb96fd02681d318, type: 2}
-  - {fileID: 11400000, guid: 6488cadd2b1d1eb4aa24aa4d586a28a5, type: 2}
-  totalEnemies: 30
+  totalEnemies: 10
   blockTime: 30
   spawnRateCurve:
     serializedVersion: 2
@@ -25,18 +23,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -45,8 +43,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   eliteSpawnTimings: 
   eliteEnemies: []
-  bossAction: {fileID: 11400000, guid: 3e7859484edaa914f8eb23298bb75a8a, type: 2}
-  healthMultiplier: 1.5
+  bossAction: {fileID: 11400000, guid: 57d33e28ba80fd644a6e05dec13f0771, type: 2}
+  healthMultiplier: 1
   healthMultiplierTolerance: 0
-  damageMultiplier: 1.5
+  damageMultiplier: 1
   damageMultiplierTolerance: 0

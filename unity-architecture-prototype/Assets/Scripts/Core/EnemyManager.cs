@@ -204,8 +204,20 @@ public class EnemyManager : MonoBehaviour
     private void SpawnEnemy(GameObject enemyPrefab, Vector3 position)
     {
         var newEnemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-        newEnemy.GetComponent<EnemyController>().playerTarget = playerTarget;
-        newEnemy.GetComponent<EnemyController>().enemyManager = this;
+        var enemyController = newEnemy.GetComponent<EnemyController>();
+        enemyController.playerTarget = playerTarget;
+        enemyController.enemyManager = this;
+        
+        var enemyHealth = enemyController.currentHealth * _currentBlock.healthMultiplier;
+        var enemyHealthVariance = Random.Range(-_currentBlock.healthMultiplierTolerance, _currentBlock.healthMultiplierTolerance);
+        enemyHealth = enemyHealth + enemyHealth * enemyHealthVariance;
+        enemyController.currentHealth = Mathf.RoundToInt(enemyHealth);
+        
+        var enemyDamage = enemyController.damageAmount * _currentBlock.damageMultiplier;
+        var enemyDamageVariance = Random.Range(-_currentBlock.damageMultiplierTolerance, _currentBlock.damageMultiplierTolerance);
+        enemyDamage = enemyDamage + enemyDamage * enemyDamageVariance;
+        enemyController.damageAmount = Mathf.RoundToInt(enemyDamage);
+        
         enemies.Add(newEnemy);
     }
 
