@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Core;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
@@ -89,6 +88,7 @@ public class GameManager : MonoBehaviour
         GoToMainMenu();
         PopulateStats();
         PopulateStatsUI();
+        LoadStoreItemsIntoStats();
         
         // start the game with one mini chest on the map.
         SpawnMiniChest();
@@ -134,6 +134,8 @@ public class GameManager : MonoBehaviour
         gameMenu.SetActive(true);
         isGameActive = true;
         _roundTime = 0f;
+        playerCurrentHealth = (int)playerMaxHealth.value;
+        LoadStoreItemsIntoStats();
     }
     
     public void GoToMainMenu()
@@ -142,6 +144,7 @@ public class GameManager : MonoBehaviour
         HideAll();
         mainMenu.SetActive(true);
         isGameActive = false;
+        isPaused = false;
         ResetGame();
     }
     
@@ -168,6 +171,8 @@ public class GameManager : MonoBehaviour
     
     public void ResetGame()
     {
+        isPaused = false;
+        playerCurrentHealth = (int)playerMaxHealth.value;
         Debug.Log("Reset Game");
         var playerController = FindObjectOfType<PlayerController>();
         playerController.ResetPlayer();
@@ -316,6 +321,25 @@ public class GameManager : MonoBehaviour
                 newStatText.color = new Color(0.8f, 0.8f, 0.8f);
             }
         }
+    }
+
+    public void LoadStoreItemsIntoStats()
+    {
+        Debug.Log("Loading Store items!");
+        foreach (var stat in _stats.Values)
+        {
+            stat.Reset();
+        }
+        var storeItems = AccountManager.instance.storeItems;
+        foreach (var store in storeItems)
+        {
+            foreach(var mod in store.modifiers)
+            {
+                var stat = _stats[mod.statType];
+                stat.AddModifier(mod);
+            }
+        }
+        UpdateStatsUI();
     }
     #endregion
     

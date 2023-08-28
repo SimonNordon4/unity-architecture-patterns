@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Core
-{
+[DefaultExecutionOrder(-10)]
     public class AccountManager : MonoBehaviour
     {
         private static AccountManager _instance;
@@ -19,15 +18,37 @@ namespace Core
         }
         
         public int totalGold;
+        public List<StoreItem> storeItems = new();
 
+        public bool debugSkipLoad = false;
+        
         public void AddGold(int amount)
         {
             totalGold += amount;
         }
 
+        public void PurchaseStoreItem(StoreItem item)
+        {
+            totalGold -= (int)(item.price + item.currentTier * item.priceIncreasePerTier);
+            // find the item in the store items list
+            var storeItem = storeItems.Find(x => x.itemName == item.itemName);
+            // increase the tier
+            storeItem.currentTier = Mathf.Clamp(storeItem.currentTier + 1,0, storeItem.tiers);
+            
+            foreach(var mod in storeItem.modifiers)
+            {
+                mod.modifierValue = mod.modifierValue + storeItem.tierModifierMultiplier * storeItem.currentTier;
+            }
+            // refresh the ui
+            FindObjectOfType<StoreMenuManager>().UpdateStoreMenu();
+        }
+
         private void OnEnable()
         {
-            Load(); 
+            if(debugSkipLoad) return;
+            
+            Load();
+
         }
         private void OnDisable()
         {
@@ -39,6 +60,7 @@ namespace Core
         {
             var accountSave = new AccountSave();
             accountSave.totalGold = totalGold;
+            accountSave.storeItems = storeItems.ToArray();
             
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
@@ -55,6 +77,7 @@ namespace Core
 
             var accountSave = JsonUtility.FromJson<AccountSave>(json);
             totalGold = accountSave.totalGold;
+            storeItems = new List<StoreItem>(accountSave.storeItems);
         }
     }
 
@@ -62,5 +85,5 @@ namespace Core
     public struct AccountSave
     {
         public int totalGold;
+        public StoreItem[] storeItems;
     }
-}
