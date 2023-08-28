@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
@@ -48,6 +49,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameMenu;
     public GameObject gameOverMenu;
     public GameObject winMenu;
+    
+    public List<TextMeshProUGUI> GoldTexts = new();
     
     [Header("Stat UI")]
     public RectTransform StatContainer;
@@ -201,6 +204,7 @@ public class GameManager : MonoBehaviour
         winMenu.SetActive(true);
         isGameActive = false;
         _roundTime = 0f;
+        AddGoldWhenGameEnds();
     }
     
     public void LoseGame()
@@ -209,6 +213,20 @@ public class GameManager : MonoBehaviour
         HideAll();
         gameOverMenu.SetActive(true);
         isGameActive = false;
+        
+        AddGoldWhenGameEnds();
+    }
+
+    private void AddGoldWhenGameEnds()
+    {
+        // get the enemy manager
+        var enemyManager = FindObjectOfType<EnemyManager>();
+        AccountManager.instance.AddGold(enemyManager.totalEnemiesKilled);
+
+        foreach (var txt in GoldTexts)
+        {
+            txt.text = $"Gold Added: {enemyManager.totalEnemiesKilled}";
+        }
     }
     
     private void HideAll()

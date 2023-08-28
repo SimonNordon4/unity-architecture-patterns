@@ -21,6 +21,8 @@ public class EnemyManager : MonoBehaviour
     
     [Header("Enemies")]
     public List<GameObject> enemies = new List<GameObject>();
+
+    public int totalEnemiesKilled = 0;
     
     // Block data
     private bool _blocksCompleted = false;
@@ -201,6 +203,7 @@ public class EnemyManager : MonoBehaviour
     public void EnemyDied(GameObject enemy)
     {
         _currentBlockAliveEnemies--;
+        totalEnemiesKilled++;
         enemies.Remove(enemy);
     }
 
