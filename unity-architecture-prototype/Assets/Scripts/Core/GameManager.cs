@@ -30,16 +30,24 @@ public class GameManager : MonoBehaviour
     [Header("Stats")] public int playerCurrentHealth = 10;
     public Stat playerMaxHealth = new(10);
     public Stat playerSpeed = new(5);
+    
     public Stat pistolDamage = new(1);
     public Stat pistolRange = new(5);
     public Stat pistolFireRate = new(0.5f);
     public Stat pistolKnockBack = new(1);
+    public Stat pistolPierce = new(0);
+    
     public Stat swordDamage = new(3);
     public Stat swordRange = new(1);
     public Stat swordAttackSpeed = new(3);
     public Stat swordKnockBack = new(3);
+    public Stat swordArc = new(45);
+    
+    public Stat luck = new(0);
     public Stat enemySpawnRate = new(1);
     public Stat healthPackSpawnRate = new(5);
+    
+    
     private readonly Dictionary<StatType, Stat> _stats = new();
     public readonly List<ChestItem> currentlyHeldItems = new();
 
@@ -69,7 +77,12 @@ public class GameManager : MonoBehaviour
     private readonly List<ChestItemButton> _chestItemButtons = new();
 
     [Header("Chests")] public Vector2 chestBounds = new Vector2(20f, 20f);
-    public List<ChestItem> chestItems;
+    public ChestItemsConfig tier1ChestItems;
+    public ChestItemsConfig tier2ChestItems;
+    public ChestItemsConfig tier3ChestItems;
+    public ChestItemsConfig tier4ChestItems;
+    public ChestItemsConfig tier5ChestItems;
+    private ChestItem[][] _allItems;
     public float miniChestCooldown = 15f;
     private float _timeSinceLastMiniChest = 0.0f;
     private bool _nextMiniChest = false;
@@ -92,6 +105,15 @@ public class GameManager : MonoBehaviour
         
         // start the game with one mini chest on the map.
         SpawnMiniChest();
+        
+        _allItems = new[]
+        {
+            tier1ChestItems.chestItems.ToArray(),
+            tier2ChestItems.chestItems.ToArray(),
+            tier3ChestItems.chestItems.ToArray(),
+            tier4ChestItems.chestItems.ToArray(),
+            tier5ChestItems.chestItems.ToArray()
+        };
 
         // Chest has to spawn inside the level.
         if (chestBounds.magnitude > levelBounds.magnitude)
@@ -265,14 +287,20 @@ public class GameManager : MonoBehaviour
     {
         _stats.Add(StatType.PlayerHealth, playerMaxHealth);
         _stats.Add(StatType.PlayerSpeed, playerSpeed);
+        
         _stats.Add(StatType.PistolDamage, pistolDamage);
         _stats.Add(StatType.PistolRange, pistolRange);
         _stats.Add(StatType.PistolFireRate, pistolFireRate);
         _stats.Add(StatType.PistolKnockBack, pistolKnockBack);
+        _stats.Add(StatType.PistolPierce, pistolPierce);
+        
         _stats.Add(StatType.SwordDamage, swordDamage);
         _stats.Add(StatType.SwordRange, swordRange);
         _stats.Add(StatType.SwordAttackSpeed, swordAttackSpeed);
         _stats.Add(StatType.SwordKnockBack, swordKnockBack);
+        _stats.Add(StatType.SwordArc, swordArc);
+        
+        _stats.Add(StatType.Luck, luck);
         _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
         _stats.Add(StatType.HealthPackSpawnRate, healthPackSpawnRate);
         playerCurrentHealth = (int)playerMaxHealth.value;
@@ -354,22 +382,6 @@ public class GameManager : MonoBehaviour
         miniChest.minTier = 1;
         miniChest.maxTier = 1;
     }
-
-    public void SpawnMediumChest()
-    {
-        var mediumChest = Instantiate(mediumChestPrefab,GetRandomChestPosition(), Quaternion.identity);
-        mediumChest.chestType = ChestType.Medium;
-        mediumChest.minTier = 2;
-        mediumChest.maxTier = 3;
-    }
-
-    public void SpawnLargeChest()
-    {
-        var largeChest = Instantiate(largeChestPrefab,GetRandomChestPosition(), Quaternion.identity);
-        largeChest.chestType = ChestType.Large;
-        largeChest.minTier = 3;
-        largeChest.maxTier = 5;
-    }
     
     public void PickupChest(Chest chest)
     {
@@ -392,6 +404,9 @@ public class GameManager : MonoBehaviour
         var itemsChance = Random.Range(0, 100);
         int numberOfItems = 0;
 
+        var luckFactor = luck.value * 10f;
+        itemsChance += (int)luckFactor;
+
         switch (itemsChance)
         {
             case > 98:
@@ -407,20 +422,26 @@ public class GameManager : MonoBehaviour
                 numberOfItems = 2;
                 break;
         }
+        
+        // Store a hashset of all the items we have already added to the options, so we don't display duplicates.
+        HashSet<ChestItem> alreadyAddedItems = new HashSet<ChestItem>();
 
         for (var i = 0; i < numberOfItems; i++)
         {
+            
             var newChestItemButton = Instantiate(chestItemButtonPrefab, chestItemButtonContainer);
             _chestItemButtons.Add(newChestItemButton);
             
+            // Get the tier of the item to be spawned.
+            var tier = GetRandomChestItemTier(chest);
+            
             // Collect all items with a tier equal to or less than the chest tier
             var possibleItems = new List<ChestItem>();
-            foreach (var chestItem in chestItems)
+            foreach (var chestItem in _allItems[tier-1])
             {
-                if (chestItem.tier >= chest.minTier && chestItem.tier <= chest.maxTier)
-                {
-                    possibleItems.Add(chestItem);
-                }
+                // check if the chest item has already been added.
+                if (alreadyAddedItems.Contains(chestItem)) continue;
+                possibleItems.Add(chestItem);
             }
             
             // Now randomly select one of these possible items based on its probabilty
@@ -440,13 +461,45 @@ public class GameManager : MonoBehaviour
                 if (randomSpawnChance >= currentSpawnChance) continue;
                 // We have found the item to spawn
                 var item = possibleItems[x];
+                alreadyAddedItems.Add(item);
                 newChestItemButton.Initialize(item);
                 break;
             }
         }
-
-
     }
+
+    // Return the tier
+    private int GetRandomChestItemTier(Chest chest)
+    {
+        if(chest.minTier == chest.maxTier)
+            return chest.minTier;
+
+        int tier = 0;
+        var chance = Random.Range(0, 100) + luck.value * 10f;
+
+        switch (chance)
+        {
+            case < 50:
+                tier = 1;
+                break;
+            case <70:
+                tier = 2;
+                break;
+            case < 80:
+                tier = 3;
+                break;
+            case <90:
+                tier = 4;
+                break;
+            case < 95:
+                tier = 5;
+                break;
+        }
+        
+        tier = Mathf.Clamp(tier, chest.minTier, chest.maxTier);
+        return tier;
+    }
+    
     public void ApplyItem(ChestItem item)
     {
         HideAll();

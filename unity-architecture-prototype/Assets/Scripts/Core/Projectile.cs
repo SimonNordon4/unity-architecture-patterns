@@ -21,7 +21,6 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
         
         _timeAlive += Time.deltaTime;
-        
         transform.position += transform.forward * (projectileSpeed * Time.deltaTime);
     }
 

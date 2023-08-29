@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour
                         var projectile = projectileGo.GetComponent<Projectile>();
                         projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
                         projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
+                        projectile.pierceCount = (int)gameManager.pistolPierce.value;
                         _timeSinceLastFire = 0.0f;
                     }
                 }
@@ -158,8 +159,8 @@ public class PlayerController : MonoBehaviour
             SwordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
     
             // Base rotation values.
-            var leftRotation = Quaternion.Euler(0, -45, 0);
-            var rightRotation = Quaternion.Euler(0, 45, 0);
+            var leftRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value, 0);
+            var rightRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value, 0);
     
             // The start rotation needs to be directed to the closest target.
             var directionToTarget = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;

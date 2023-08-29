@@ -4,14 +4,17 @@
     PistolDamage,
     PistolRange,
     PistolKnockBack,
+    PistolPierce,
     SwordDamage,
     SwordKnockBack,
     SwordRange,
     SwordAttackSpeed,
+    SwordArc,
     PlayerSpeed,
     PlayerHealth,
     EnemySpawnRate,
-    HealthPackSpawnRate
+    HealthPackSpawnRate,
+    Luck
 }
 
 public enum ModifierType
