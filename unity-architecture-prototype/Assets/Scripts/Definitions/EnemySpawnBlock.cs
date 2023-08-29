@@ -13,8 +13,8 @@ public class EnemySpawnBlock : ScriptableObject
     public float blockTime = 300f;
     public AnimationCurve spawnRateCurve = new(new Keyframe(0, 0), new Keyframe(1, 1));
     public EnemySpawnAction bossAction;
-    public int bossChestTier = 2;
-    public int bossChestItems = 3;
+    public int bossChestTier = 1;
+    public int bossChestItems = 1;
 
     public void OnValidate()
     {

@@ -58,8 +58,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  eliteSpawnTimings: 
-  eliteEnemies: []
   bossAction:
     enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
@@ -67,3 +65,5 @@ MonoBehaviour:
     damage: 1
     numberOfEnemiesToSpawn: 5
     spawnChance: 1
+  bossChestTier: 1
+  bossChestItems: 2

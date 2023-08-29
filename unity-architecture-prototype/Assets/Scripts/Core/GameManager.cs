@@ -394,13 +394,13 @@ public class GameManager : MonoBehaviour
 
         switch (itemsChance)
         {
-            case >98:
+            case > 98:
                 numberOfItems = 5;
                 break;
-            case >90:
+            case > 90:
                 numberOfItems = 4;
                 break;
-            case >75:
+            case > 75:
                 numberOfItems = 3;
                 break;
             default:
