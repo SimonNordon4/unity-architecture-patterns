@@ -449,7 +449,6 @@ public class GameManager : MonoBehaviour
     }
     public void ApplyItem(ChestItem item)
     {
-        Debug.Log("Applying Item " + item.name);
         HideAll();
         gameMenu.SetActive(true);
         currentlyHeldItems.Add(item);
@@ -516,5 +515,11 @@ public class GameManager : MonoBehaviour
             var healthPack = Instantiate(HealthPackPrefab, enemy.transform.position, Quaternion.identity);
         }
     }
+
+    public void OnBossEnemyDied(GameObject enemy)
+    {
+        
+    }
+    
     #endregion
 }

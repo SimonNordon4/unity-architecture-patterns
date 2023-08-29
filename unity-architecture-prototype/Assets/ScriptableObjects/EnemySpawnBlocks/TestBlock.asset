@@ -10,10 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: EnemySpawnBlock
+  m_Name: TestBlock
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
-  totalEnemies: 120
+  enemySpawnActions:
+  - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
+      type: 3}
+    health: 1
+    damage: 0
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 100
+  totalEnemies: 5
+  blockTime: 3
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
@@ -38,11 +46,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  enemySpawnActions:
-  - {fileID: 11400000, guid: bdbda0f4bc999c9418e66f6179a6e37f, type: 2}
-  - {fileID: 11400000, guid: f80a2ecf14150664fbb96fd02681d318, type: 2}
-  - {fileID: 11400000, guid: 57d33e28ba80fd644a6e05dec13f0771, type: 2}
-  eliteSpawnTimings: 78000000
-  eliteEnemies: []
-  bossEnemy: {fileID: 0}
-  blockTime: 150
+  bossAction:
+    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+      type: 3}
+    health: 1
+    damage: 0
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 100
+  bossChestTier: 1
+  bossChestItems: 1

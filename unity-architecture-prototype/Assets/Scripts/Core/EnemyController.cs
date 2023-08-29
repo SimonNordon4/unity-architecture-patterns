@@ -7,6 +7,8 @@ public class EnemyController : MonoBehaviour
 {
     [Header("References")]
     public EnemyManager enemyManager;
+
+    public bool isBoss = false;
     
     [Header("UI")]
     public GameObject healthBarUI;
@@ -132,7 +134,6 @@ public class EnemyController : MonoBehaviour
         if (currentHealth <= 0)
         {
             enemyManager.EnemyDied(gameObject);
-            Destroy(gameObject);
         }
     }
 

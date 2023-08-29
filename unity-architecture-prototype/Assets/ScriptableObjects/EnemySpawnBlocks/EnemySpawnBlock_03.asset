@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
-  - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
+  - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
-    health: 8
+    health: 1
     damage: 1
     numberOfEnemiesToSpawn: 1
     spawnChance: 100
@@ -24,15 +24,9 @@ MonoBehaviour:
       type: 3}
     health: 1
     damage: 1
-    numberOfEnemiesToSpawn: 2
-    spawnChance: 100
-  - enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
-      type: 3}
-    health: 15
-    damage: 1
-    numberOfEnemiesToSpawn: 2
+    numberOfEnemiesToSpawn: 3
     spawnChance: 50
-  totalEnemies: 25
+  totalEnemies: 35
   blockTime: 30
   spawnRateCurve:
     serializedVersion: 2
@@ -58,8 +52,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  eliteSpawnTimings: 
-  eliteEnemies: []
   bossAction:
     enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
@@ -67,3 +59,5 @@ MonoBehaviour:
     damage: 1
     numberOfEnemiesToSpawn: 5
     spawnChance: 1
+  bossChestTier: 1
+  bossChestItems: 3

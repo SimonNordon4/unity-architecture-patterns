@@ -3723,15 +3723,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 801546265}
-  enemySpawnBlocks:
-  - {fileID: 11400000, guid: f388db22eafe0744797437986fd5152e, type: 2}
-  - {fileID: 11400000, guid: 662b61b56ca5fad4ead178320eb6fbb3, type: 2}
+  playerTarget: {fileID: 460763660}
   spawnIndicatorPrefab: {fileID: 4479240645565134242, guid: 929c12e65cb355d4fbf6ed4a3ff62e54,
     type: 3}
-  playerTarget: {fileID: 460763660}
+  mediumChestPrefab: {fileID: 3922492998747134388, guid: 467159eec05542c45a00f31f13f867de,
+    type: 3}
+  largeChestPrefab: {fileID: 3922492998747134388, guid: 8d8af5a9e9980e94294e900bdb4a6312,
+    type: 3}
   spawnRadius: 10
+  enemySpawnBlocks:
+  - {fileID: 11400000, guid: 2b3c21340f63a4c449401d698a85c31c, type: 2}
   enemies: []
   totalEnemiesKilled: 0
+  currentPhase: 1
 --- !u!4 &644039391
 Transform:
   m_ObjectHideFlags: 0
