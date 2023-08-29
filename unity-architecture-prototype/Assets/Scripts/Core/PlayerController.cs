@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
         private void Start()
         {
+            SwordPivot.transform.parent = null;
             SwordPivot.gameObject.SetActive(false);
             SetUI();
         }
@@ -45,6 +46,8 @@ public class PlayerController : MonoBehaviour
         private void Update()
         {
             if(!GameManager.instance.isGameActive) return;
+            
+            SwordPivot.transform.position = _transform.position;
             
             // Get Closest enemy target.
             var closestDistance = Mathf.Infinity;
@@ -159,8 +162,8 @@ public class PlayerController : MonoBehaviour
             SwordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
     
             // Base rotation values.
-            var leftRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value, 0);
-            var rightRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value, 0);
+            var leftRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value * -0.5f, 0);
+            var rightRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value * 0.5f, 0);
     
             // The start rotation needs to be directed to the closest target.
             var directionToTarget = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
