@@ -18,6 +18,8 @@ using UnityEngine;
         }
         
         public int totalGold;
+        
+        public StoreItemConfig storeItemConfig;
         public List<StoreItem> storeItems = new();
 
         public bool debugSkipLoad = false;
@@ -42,8 +44,8 @@ using UnityEngine;
 
         private void OnEnable()
         {
+            storeItems = storeItemConfig.storeItems;
             if(debugSkipLoad) return;
-            
             Load();
 
         }

@@ -27,6 +27,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject largeChestPrefab;
 
     [Header("Stats")] public float spawnRadius = 15f;
+    public EnemySpawnConfig enemySpawnConfig;
     public List<EnemySpawnBlock> enemySpawnBlocks = new();
     private EnemySpawnBlock _currentBlock;
 
@@ -81,12 +82,14 @@ public class EnemyManager : MonoBehaviour
         totalEnemiesKilled = 0;
         currentPhase = EnemySpawnPhase.Normal;
         _currentBlock = enemySpawnBlocks[0];
+        InitializeNewBlock();
         
         
     }
 
     private void Start()
     {
+        enemySpawnBlocks = enemySpawnConfig.enemySpawnBlocks;
         _currentBlock = enemySpawnBlocks[0];
         StopAllCoroutines();
         InitializeNewBlock();
@@ -98,6 +101,8 @@ public class EnemyManager : MonoBehaviour
         _currentBlockSpawnedEnemies = 0;
         _currentBlockAliveEnemies = 0;
         currentPhase = EnemySpawnPhase.Normal;
+
+        Debug.Log("Initializing new spawn block with " + _currentBlock.totalEnemies + " enemies.");
         // Get the spawn timing of each enemy evaluated against the animation curve
         _spawnTimings = new float[_currentBlock.totalEnemies];
         for (var i = 0; i < _currentBlock.totalEnemies; i++)
