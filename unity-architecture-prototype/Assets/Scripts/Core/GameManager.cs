@@ -473,7 +473,6 @@ public class GameManager : MonoBehaviour
 
     private void UpdateItemUI()
     {
-        Debug.Log("Updating Item UI");
         foreach (var item in _itemHoverImages)
         {
             Destroy(item);

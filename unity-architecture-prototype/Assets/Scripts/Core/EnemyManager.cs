@@ -66,12 +66,23 @@ public class EnemyManager : MonoBehaviour
         _elapsedBlockTime = 0f;
         _currentBlockAliveEnemies = 0;
         _currentBlockSpawnedEnemies = 0;
-        _currentBlock = enemySpawnBlocks[0];
+
+
+        foreach (var enemy in bossEnemies)
+        {
+            Destroy(enemy);
+        }
+        
         bossEnemies.Clear();
         _bossEnemiesCount = 0;
         _positionOfLastBossDeath = Vector3.zero;
         _bossChest = null;
         _blockIndex = 0;
+        totalEnemiesKilled = 0;
+        currentPhase = EnemySpawnPhase.Normal;
+        _currentBlock = enemySpawnBlocks[0];
+        
+        
     }
 
     private void Start()
