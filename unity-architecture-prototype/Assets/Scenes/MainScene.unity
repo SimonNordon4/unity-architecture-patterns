@@ -4463,12 +4463,12 @@ MonoBehaviour:
     maximumValue: Infinity
     value: 3
   swordRange:
-    initialValue: 1.5
+    initialValue: 4
     minimumValue: 1
     maximumValue: Infinity
-    value: 1.5
+    value: 4
   swordAttackSpeed:
-    initialValue: 0.3
+    initialValue: 1
     minimumValue: 0.1
     maximumValue: Infinity
     value: 0.3
@@ -7902,43 +7902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalGold: 10000
   storeItemConfig: {fileID: 11400000, guid: e667245f8b3d1c443bd0cf872ee638bc, type: 2}
-  storeItems:
-  - name: Extended Magazine
-    sprite: {fileID: 0}
-    tiers: 3
-    tierModifiers:
-    - statType: 0
-      modifierType: 0
-      modifierValue: 0.1
-    - statType: 0
-      modifierType: 0
-      modifierValue: 0.25
-    - statType: 0
-      modifierType: 0
-      modifierValue: 0.5
-    - statType: 0
-      modifierType: 0
-      modifierValue: 1
-    pricePerTier: 64000000f4010000e8030000d0070000
-    currentTier: 0
-  - name: Metalurgy
-    sprite: {fileID: 0}
-    tiers: 3
-    tierModifiers:
-    - statType: 4
-      modifierType: 0
-      modifierValue: 1
-    - statType: 4
-      modifierType: 0
-      modifierValue: 2
-    - statType: 4
-      modifierType: 0
-      modifierValue: 3
-    - statType: 4
-      modifierType: 0
-      modifierValue: 5
-    pricePerTier: 64000000f4010000e8030000d00700008813000010270000
-    currentTier: 0
+  storeItems: []
   debugSkipLoad: 1
 --- !u!1 &1492026863
 GameObject:
