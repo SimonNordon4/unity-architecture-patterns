@@ -47,7 +47,8 @@ public class EnemyController : MonoBehaviour
         
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
-        if (dir.magnitude < 0.5f)
+        var distance = Vector3.Distance(playerTarget.position, transform.position);
+        if (distance < 0.5f)
         {
             dir = Vector3.zero;
         }

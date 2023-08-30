@@ -205,7 +205,6 @@ public class EnemyManager : MonoBehaviour
 
     private void HandleSpawnBoss()
     {
-        _bossEnemiesCount = _currentBlock.bossAction.numberOfEnemiesToSpawn;
         StartCoroutine(StartBossSpawnAction(_currentBlock.bossAction));
         currentPhase = EnemySpawnPhase.BossAlive;
     }
@@ -302,7 +301,7 @@ public class EnemyManager : MonoBehaviour
 
             lastSpawnPoint = Random.insideUnitSphere.normalized + lastSpawnPoint;
             yield return new WaitForSeconds(delay);
-            StartCoroutine(IndicateSpawn(action, lastSpawnPoint));
+            StartCoroutine(IndicateBossSpawn(action, lastSpawnPoint));
         }
 
         yield return null;
@@ -338,7 +337,6 @@ public class EnemyManager : MonoBehaviour
         var enemyController = newEnemy.GetComponent<EnemyController>();
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
-
         enemyController.currentHealth = enemyAction.health;
         enemyController.damageAmount = enemyAction.damage;
         enemyController.isBoss = true;
@@ -372,6 +370,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (enemy.GetComponent<EnemyController>().isBoss)
         {
+            Debug.Log("Boss died");
             _positionOfLastBossDeath = enemy.transform.position;
             _bossEnemiesCount--;
             bossEnemies.Remove(enemy);

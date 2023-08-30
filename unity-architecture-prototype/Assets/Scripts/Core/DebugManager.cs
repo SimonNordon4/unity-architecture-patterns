@@ -17,5 +17,17 @@ public class DebugManager : MonoBehaviour
         {
             FindObjectOfType<PlayerController>().TakeDamage(1000);
         }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+           // double time speed
+           Time.timeScale *= 2;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            // half time speed
+            Time.timeScale /= 2;
+        }
     }
 }

@@ -103,9 +103,6 @@ public class GameManager : MonoBehaviour
         PopulateStatsUI();
         LoadStoreItemsIntoStats();
         
-        // start the game with one mini chest on the map.
-        SpawnMiniChest();
-        
         _allItems = new[]
         {
             tier1ChestItems.chestItems.ToArray(),

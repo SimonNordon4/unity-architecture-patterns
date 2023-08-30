@@ -28,7 +28,6 @@ public class Projectile : MonoBehaviour
     {
         if (canAttackEnemy && other.CompareTag("Enemy"))
         {
-
             // get enemy controller component
             var enemyController = other.GetComponent<EnemyController>();
             enemyController.TakeDamage(damage);
@@ -36,8 +35,8 @@ public class Projectile : MonoBehaviour
             // We have to ensure we didn't just kill the enemy.
             if(enemyController != null)
                 enemyController.ApplyKnockBack(transform.forward, knockBackIntensity);
-            pierceCount--;
             
+            pierceCount--;
             if(pierceCount <= 0)
                 Destroy(gameObject);
         }
