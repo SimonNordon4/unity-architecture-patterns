@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
         var swordArc = gameManager.swordArc.value;
         // Enable the sword gameobject.
         SwordPivot.gameObject.SetActive(true);
-        SwordPivot.localScale = new Vector3(1f, 1f, 5f);
+        SwordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
     
         // Base rotation values.
         var leftRotation = Quaternion.Euler(0, swordArc * -0.5f, 0);

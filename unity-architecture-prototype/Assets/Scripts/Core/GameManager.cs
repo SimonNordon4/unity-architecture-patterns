@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
         _roundTime = 0f;
         playerCurrentHealth = (int)playerMaxHealth.value;
         LoadStoreItemsIntoStats();
+        SpawnMiniChest();
     }
     
     public void GoToMainMenu()
