@@ -6,4 +6,6 @@ using UnityEngine;
 public class EnemySpawnConfig : ScriptableObject
 {
     public List<EnemySpawnBlock> enemySpawnBlocks = new();
+
+
 }

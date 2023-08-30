@@ -361,7 +361,9 @@ public class GameManager : MonoBehaviour
         var storeItems = AccountManager.instance.storeItems;
         foreach (var store in storeItems)
         {
-            var currentModifier = store.tierModifiers[store.currentTier];
+            // If the item tier is 0, it hasn't been purchased yet.
+            if(store.currentTier == 0) continue;
+            var currentModifier = store.tierModifiers[store.currentTier - 1];
             var stat = _stats[currentModifier.statType];
             stat.AddModifier(currentModifier);
         }

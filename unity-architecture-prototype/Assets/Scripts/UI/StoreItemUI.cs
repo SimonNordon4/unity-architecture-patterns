@@ -8,7 +8,8 @@ using UnityEngine.UI;
         public Image itemImage;
         public TextMeshProUGUI itemNameText;
         public TextMeshProUGUI itemPriceText;
-        public TextMeshProUGUI itemModifierText;
+        public TextMeshProUGUI itemCurrentModifierText;
+        public TextMeshProUGUI itemNextModifierText;
         public Button purchaseButton;
 
 
@@ -40,56 +41,46 @@ using UnityEngine.UI;
             
             itemImage.sprite = item.sprite;
             itemNameText.text = item.name;
-            var itemCost = item.pricePerTier[item.currentTier];
-            itemPriceText.text = (int)itemCost + "G";
-            
-            var mod = item.tierModifiers[item.currentTier];
-                var statSign = mod.modifierValue > 0 ? "+" : "-";                
 
-                // Format stat value.
-                var statValueString = mod.modifierType != ModifierType.Percentage ?
-                    statSign + (mod.modifierValue) :
-                    $"{statSign}{mod.modifierValue * 100}%";
-
-                    
-                // Format stat type name.
-                var statTypeString = mod.statType.ToString();
-                    
-                for (var i = 1; i < statTypeString.Length; i++)
-                {
-                    if (char.IsUpper(statTypeString[i]))
-                    {
-                        statTypeString = statTypeString.Insert(i, " ");
-                        i++;
-                    }
-                }
-
-                statTypeString = statTypeString.ToLower();
-                    
-                itemModifierText.text += statValueString + " " + statTypeString + "\n";
-                // make the text green
-                itemModifierText.color = mod.modifierValue > 0 ?
-                    new Color(0.75f, 1, 0.75f):
-                    new Color(1, 0.75f, 0.75f);
-            
-            
-            
-            if (AccountManager.instance.totalGold < itemCost)
+            // We've hit the Maximum tier, no more upgrades are available.
+            if (item.currentTier == item.tiers)
             {
-                purchaseButton.enabled = false;
-                itemPriceText.color = Color.red;
-            }
-
-            if (item.currentTier >= item.tiers)
-            {
+                itemCurrentModifierText.text = FormatModifierValue(item.tierModifiers[item.currentTier-1]);
+                itemNextModifierText.text = "MAX";
                 purchaseButton.enabled = false;
                 itemPriceText.text = "MAX";
             }
-            
-            purchaseButton.onClick.AddListener(() =>
+            else
             {
-                AccountManager.instance.PurchaseStoreItem(item);
-            });
+                var itemCost = item.pricePerTier[item.currentTier];
+                itemPriceText.text = (int)itemCost + "G";
+            
+                var mod = item.tierModifiers[item.currentTier];
+                    
+                itemNextModifierText.text += FormatModifierValue(mod)  + "\n";
+                itemNextModifierText.color = mod.modifierValue > 0 ?
+                    new Color(0.75f, 1, 0.75f):
+                    new Color(1, 0.75f, 0.75f);
+
+                if (item.currentTier > 0)
+                {
+                    itemCurrentModifierText.text += FormatModifierValue(item.tierModifiers[item.currentTier - 1]) + "\n";
+                    itemCurrentModifierText.color = item.tierModifiers[item.currentTier - 1].modifierValue > 0 ?
+                        new Color(0.75f, 1, 0.75f):
+                        new Color(1, 0.75f, 0.75f);
+                }
+
+                if (AccountManager.instance.totalGold < item.pricePerTier[item.currentTier])
+                {
+                    purchaseButton.enabled = false;
+                    itemPriceText.color = Color.red;
+                }
+
+                purchaseButton.onClick.AddListener(() =>
+                {
+                    AccountManager.instance.PurchaseStoreItem(item);
+                });
+            }
             
             // create
             for(var i = 0; i < item.tiers; i++)
@@ -98,7 +89,32 @@ using UnityEngine.UI;
                 tierIndicator.GetComponent<Image>().color = i < item.currentTier ? activeColor : inActiveColor;
                 tierIndicatorInactive.Add(tierIndicator);
             }
-            
+        }
+        
+        private string FormatModifierValue(Modifier mod)
+        {
+            var statSign = mod.modifierValue > 0 ? "+" : "-";                
 
+            // Format stat value.
+            var statValueString = mod.modifierType != ModifierType.Percentage ?
+                statSign + (mod.modifierValue) :
+                $"{statSign}{mod.modifierValue * 100}%";
+
+                    
+            // Format stat type name.
+            var statTypeString = mod.statType.ToString();
+                    
+            for (var i = 1; i < statTypeString.Length; i++)
+            {
+                if (char.IsUpper(statTypeString[i]))
+                {
+                    statTypeString = statTypeString.Insert(i, " ");
+                    i++;
+                }
+            }
+
+            statTypeString = statTypeString.ToLower();
+            
+            return statValueString + " " + statTypeString;
         }
     }

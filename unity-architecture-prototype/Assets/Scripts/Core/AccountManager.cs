@@ -52,6 +52,11 @@ using UnityEngine;
         private void OnDisable()
         {
             Save();
+            // reset all current tier values in teh scriptable object
+            foreach (var storeItem in storeItemConfig.storeItems)
+            {
+                storeItem.currentTier = 0;
+            }
         }
 
 
