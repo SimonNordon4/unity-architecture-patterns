@@ -57,16 +57,47 @@ public class SwordSwingDebug : MonoBehaviour
             startRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
             endRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
         }
-
-        // Lerp the sword rotation from start to end over 0.5 seconds.
-        var t = 0.0f;
+        
+        var total180Arcs = Mathf.FloorToInt(swordArc / 180f);
         var swingTime = 0.2f;
-        while (t < swingTime)
+
+        if (total180Arcs > 0)
         {
-            t += Time.deltaTime;
-            SwordPivot.rotation = Quaternion.Lerp(startRotation, endRotation, t / swingTime);
-            yield return null;
+            var lastStart = startRotation;
+            var directionSign = _isSwingingLeftToRight ? 1 : -1;
+            var lastEnd = startRotation * Quaternion.Euler(0, 179.9f * directionSign, 0);
+            
+            for (var i = 0; i < total180Arcs; i++)
+            {
+                var t = 0.0f;
+                var swing = true;
+                while (swing)
+                {
+                    t += Time.deltaTime;
+                    SwordPivot.rotation = Quaternion.Lerp(lastStart, lastEnd, t / swingTime);
+                    yield return null;
+                    if (!(t >= swingTime)) continue;
+                    lastStart = SwordPivot.rotation;
+                    lastEnd = lastStart * Quaternion.Euler(0, 179.9f * directionSign, 0);
+                    swing = false;
+
+                }
+            }
         }
+        else
+        {
+            // Lerp the sword rotation from start to end over 0.5 seconds.
+            var t = 0.0f;
+
+            while (t < swingTime)
+            {
+                t += Time.deltaTime;
+                SwordPivot.rotation = Quaternion.Lerp(startRotation, endRotation, t / swingTime);
+                yield return null;
+            }
+        }
+
+
     
         // Toggle the swing direction for the next attack.
         _isSwingingLeftToRight = !_isSwingingLeftToRight;

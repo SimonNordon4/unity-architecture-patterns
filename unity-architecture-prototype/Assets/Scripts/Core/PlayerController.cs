@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
         public Transform SwordPivot;
         private float _timeSinceLastSwing = 0.0f;
         private bool _isSwingingLeftToRight = true;
+        private bool _isSwordAttacking = false;
 
         [Header("UI")]
         public TextMeshProUGUI healthText;
@@ -91,7 +92,7 @@ public class PlayerController : MonoBehaviour
             
             // Swing sword if possible.
             _timeSinceLastSwing += Time.deltaTime;
-            if (_timeSinceLastSwing > 1 / gameManager.swordAttackSpeed.value)
+            if (_timeSinceLastSwing > 1 / gameManager.swordAttackSpeed.value && !_isSwordAttacking)
             {
                 if (!targetIsNull)
                 {
@@ -156,48 +157,81 @@ public class PlayerController : MonoBehaviour
         }
 
         private IEnumerator SwordAttack()
+    {
+        _isSwordAttacking = true;
+        var swordArc = gameManager.swordArc.value;
+        // Enable the sword gameobject.
+        SwordPivot.gameObject.SetActive(true);
+        SwordPivot.localScale = new Vector3(1f, 1f, 5f);
+    
+        // Base rotation values.
+        var leftRotation = Quaternion.Euler(0, swordArc * -0.5f, 0);
+        var rightRotation = Quaternion.Euler(0, swordArc * 0.5f, 0);
+    
+        // The start rotation needs to be directed to the closest target.
+        var directionToTarget = Vector3.ProjectOnPlane( _closestTarget.transform.position - transform.position, Vector3.up).normalized;
+        SwordPivot.forward = directionToTarget;
+    
+        // Determine the start and end rotation based on the current swing direction.
+        Quaternion startRotation, endRotation;
+        if (_isSwingingLeftToRight)
         {
-            // Enable the sword gameobject.
-            SwordPivot.gameObject.SetActive(true);
-            SwordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
-    
-            // Base rotation values.
-            var leftRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value * -0.5f, 0);
-            var rightRotation = Quaternion.Euler(0, GameManager.instance.swordArc.value * 0.5f, 0);
-    
-            // The start rotation needs to be directed to the closest target.
-            var directionToTarget = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
-            SwordPivot.forward = directionToTarget;
-    
-            // Determine the start and end rotation based on the current swing direction.
-            Quaternion startRotation, endRotation;
-            if (_isSwingingLeftToRight)
-            {
-                startRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
-                endRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
-            }
-            else
-            {
-                startRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
-                endRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
-            }
+            startRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
+            endRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
+        }
+        else
+        {
+            startRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
+            endRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
+        }
+        
+        var total180Arcs = Mathf.FloorToInt(swordArc / 180f);
+        var swingTime = 0.2f;
 
+        if (total180Arcs > 0)
+        {
+            var lastStart = startRotation;
+            var directionSign = _isSwingingLeftToRight ? 1 : -1;
+            var lastEnd = startRotation * Quaternion.Euler(0, 179.9f * directionSign, 0);
+            
+            for (var i = 0; i < total180Arcs; i++)
+            {
+                var t = 0.0f;
+                var swing = true;
+                while (swing)
+                {
+                    t += Time.deltaTime;
+                    SwordPivot.rotation = Quaternion.Lerp(lastStart, lastEnd, t / swingTime);
+                    yield return null;
+                    if (!(t >= swingTime)) continue;
+                    lastStart = SwordPivot.rotation;
+                    lastEnd = lastStart * Quaternion.Euler(0, 179.9f * directionSign, 0);
+                    swing = false;
+
+                }
+            }
+        }
+        else
+        {
             // Lerp the sword rotation from start to end over 0.5 seconds.
             var t = 0.0f;
-            var swingTime = 0.2f;
+
             while (t < swingTime)
             {
                 t += Time.deltaTime;
                 SwordPivot.rotation = Quaternion.Lerp(startRotation, endRotation, t / swingTime);
                 yield return null;
             }
-    
-            // Toggle the swing direction for the next attack.
-            _isSwingingLeftToRight = !_isSwingingLeftToRight;
-    
-            // Disable the sword gameobject.
-            SwordPivot.gameObject.SetActive(false);
         }
+
+        _isSwordAttacking = false;
+    
+        // Toggle the swing direction for the next attack.
+        _isSwingingLeftToRight = !_isSwingingLeftToRight;
+    
+        // Disable the sword gameobject.
+        SwordPivot.gameObject.SetActive(false);
+    }
         
         public void TakeDamage(int damageAmount)
         {
