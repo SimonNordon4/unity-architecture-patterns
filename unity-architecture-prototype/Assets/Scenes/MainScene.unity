@@ -4459,7 +4459,7 @@ MonoBehaviour:
     maximumValue: Infinity
     value: 1
   pistolPierce:
-    initialValue: 0
+    initialValue: 1
     minimumValue: 0
     maximumValue: 10
     value: 1
@@ -7906,10 +7906,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3760da61d7d40f8a317f22c29a105fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalGold: 10000
+  totalGold: 0
   storeItemConfig: {fileID: 11400000, guid: e667245f8b3d1c443bd0cf872ee638bc, type: 2}
   storeItems: []
-  debugSkipLoad: 1
+  debugSkipLoad: 0
 --- !u!1 &1492026863
 GameObject:
   m_ObjectHideFlags: 0
