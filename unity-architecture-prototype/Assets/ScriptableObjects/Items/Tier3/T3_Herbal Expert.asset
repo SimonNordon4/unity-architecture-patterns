@@ -10,19 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: T3_PistolDamage - Bazbloomka
+  m_Name: T3_Herbal Expert
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  itemName: Bazbloomka
+  itemName: Sword Arc
   tier: 1
   spawnChance: 100
   modifiers:
-  - statType: 1
-    modifierType: 0
-    modifierValue: 5
-  - statType: 3
-    modifierType: 0
-    modifierValue: 5
   - statType: 11
     modifierType: 0
-    modifierValue: -20
+    modifierValue: 10
+  - statType: 13
+    modifierType: 0
+    modifierValue: 1
+  - statType: 5
+    modifierType: 0
+    modifierValue: -1
+  - statType: 1
+    modifierType: 0
+    modifierValue: -1

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
   m_Name: T1_SwordKnockBack
   m_EditorClassIdentifier: 
+  sprite: {fileID: 0}
   itemName: Heavy Sword
   tier: 1
   spawnChance: 50
   modifiers:
-  - statType: 5
+  - statType: 6
     modifierType: 0
     modifierValue: 1
