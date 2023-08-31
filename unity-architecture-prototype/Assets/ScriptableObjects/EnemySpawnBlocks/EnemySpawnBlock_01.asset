@@ -25,7 +25,7 @@ MonoBehaviour:
     health: 1
     damage: 1
     numberOfEnemiesToSpawn: 1
-    spawnChance: 100
+    spawnChance: 50
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
     health: 5
@@ -63,7 +63,7 @@ MonoBehaviour:
       type: 3}
     health: 1
     damage: 1
-    numberOfEnemiesToSpawn: 3
+    numberOfEnemiesToSpawn: 5
     spawnChance: 1
   bossChestTier: 1
   bossChestItems: 2
