@@ -17,11 +17,23 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
     health: 1
+    damage: 5
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 100
+  - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
+      type: 3}
+    health: 1
     damage: 0
     numberOfEnemiesToSpawn: 1
     spawnChance: 100
+  - enemyPrefab: {fileID: 3859028022664314501, guid: dd5272bd10cb7324291201b5bcf23e3e,
+      type: 3}
+    health: 1
+    damage: 0
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 50
   totalEnemies: 5
-  blockTime: 3
+  blockTime: 5
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:

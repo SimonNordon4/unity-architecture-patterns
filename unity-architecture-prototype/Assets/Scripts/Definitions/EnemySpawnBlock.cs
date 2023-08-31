@@ -80,23 +80,7 @@ public class EnemySpawnBlockEditor : Editor
             
             enemyStat.totalHealth = (int)(enemyStat.averageHealth * enemyStat.totalEnemies);
             enemyStat.totalDamage = (int)(enemyStat.averageDamage * enemyStat.totalEnemies);
-            // draw a box
-            EditorGUILayout.BeginVertical("box");
-            
-            EditorGUILayout.LabelField($"{enemyStat.name}",EditorStyles.boldLabel);
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"Total Enemies: {enemyStat.totalEnemies}");
-            EditorGUILayout.LabelField($"Probability: {enemyStat.probability * 100}%");
-            EditorGUILayout.EndHorizontal();
 
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.LabelField($"Total Health: {enemyStat.totalHealth}");
-            EditorGUILayout.LabelField($"Average Health: {enemyStat.averageHealth}");
-            EditorGUILayout.EndHorizontal();
-            
-            EditorGUILayout.EndVertical();
-            
-  
         }
         
         // now we want to publish total stats.
@@ -115,11 +99,26 @@ public class EnemySpawnBlockEditor : Editor
         var fiveHitCombo = averageDamagePerHit * 5;
         EditorGUILayout.LabelField("Player Health: " + fiveHitCombo);
         EditorGUILayout.EndHorizontal();
-        
-
-
-        
         EditorGUILayout.EndVertical();
+
+        foreach (var enemyStat in enemyStats)
+        {
+            // draw a box
+            EditorGUILayout.BeginVertical("box");
+            
+            EditorGUILayout.LabelField($"{enemyStat.name}",EditorStyles.boldLabel);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField($"Total Enemies: {enemyStat.totalEnemies}");
+            EditorGUILayout.LabelField($"Probability: {enemyStat.probability * 100}%");
+            EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField($"Total Health: {enemyStat.totalHealth}");
+            EditorGUILayout.LabelField($"Average Health: {enemyStat.averageHealth}");
+            EditorGUILayout.EndHorizontal();
+            
+            EditorGUILayout.EndVertical();
+        }
         
         base.OnInspectorGUI();
     }

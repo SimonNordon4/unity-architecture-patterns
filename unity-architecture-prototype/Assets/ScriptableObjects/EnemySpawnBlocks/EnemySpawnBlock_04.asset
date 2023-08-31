@@ -16,14 +16,14 @@ MonoBehaviour:
   enemySpawnActions:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    health: 10
-    damage: 1
+    health: 5
+    damage: 2
     numberOfEnemiesToSpawn: 1
     spawnChance: 10
   - enemyPrefab: {fileID: 6537234263106401617, guid: 369029da34577a949a3f5024d45fa564,
       type: 3}
     health: 5
-    damage: 1
+    damage: 2
     numberOfEnemiesToSpawn: 1
     spawnChance: 5
   totalEnemies: 60
