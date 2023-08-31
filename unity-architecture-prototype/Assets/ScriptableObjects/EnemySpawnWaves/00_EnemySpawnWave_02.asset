@@ -16,22 +16,16 @@ MonoBehaviour:
   enemySpawnActions:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    health: 5
-    damage: 1
     numberOfEnemiesToSpawn: 1
-    spawnChance: 100
+    spawnWeight: 100
   - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
-    health: 1
-    damage: 1
-    numberOfEnemiesToSpawn: 2
-    spawnChance: 25
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 100
   - enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
       type: 3}
-    health: 15
-    damage: 3
     numberOfEnemiesToSpawn: 1
-    spawnChance: 20
+    spawnWeight: 50
   totalEnemies: 25
   blockTime: 30
   spawnRateCurve:
@@ -61,9 +55,5 @@ MonoBehaviour:
   bossAction:
     enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
       type: 3}
-    health: 15
-    damage: 3
     numberOfEnemiesToSpawn: 5
-    spawnChance: 1
-  bossChestTier: 1
-  bossChestItems: 2
+    spawnWeight: 100

@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Ranged Weak
+      value: Enemy - Ranged
       objectReference: {fileID: 0}
     - target: {fileID: 4759737150053253292, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -145,10 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
+  isBoss: 0
   healthBarUI: {fileID: 2823431276768393582}
   healthText: {fileID: 3180124130259449989}
   playerTarget: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 3.5
   repulsionForce: 0.5
   knockBackFactor: 1
   currentHealth: 5
