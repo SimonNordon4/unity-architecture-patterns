@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: EnemySpawnBlock_02
+  m_Name: 00_EnemySpawnWave_05
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
@@ -19,21 +19,15 @@ MonoBehaviour:
     health: 5
     damage: 1
     numberOfEnemiesToSpawn: 1
-    spawnChance: 100
-  - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
-      type: 3}
-    health: 1
-    damage: 1
-    numberOfEnemiesToSpawn: 2
-    spawnChance: 25
+    spawnChance: 10
   - enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
       type: 3}
     health: 15
-    damage: 3
+    damage: 1
     numberOfEnemiesToSpawn: 1
-    spawnChance: 20
-  totalEnemies: 25
-  blockTime: 30
+    spawnChance: 10
+  totalEnemies: 60
+  blockTime: 60
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
@@ -59,11 +53,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bossAction:
-    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+    enemyPrefab: {fileID: 4480519586362331185, guid: db4682bc0d9c6994da682d08cc960706,
       type: 3}
-    health: 15
-    damage: 3
-    numberOfEnemiesToSpawn: 5
+    health: 25
+    damage: 1
+    numberOfEnemiesToSpawn: 1
     spawnChance: 1
-  bossChestTier: 1
+  bossChestTier: 2
   bossChestItems: 2

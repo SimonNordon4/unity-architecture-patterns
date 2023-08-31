@@ -10,48 +10,48 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: TestBlock_00
+  m_Name: 00_EnemySpawnWave_01
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    health: 1
-    damage: 5
+    health: 3
+    damage: 1
     numberOfEnemiesToSpawn: 1
     spawnChance: 100
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    health: 1
-    damage: 0
-    numberOfEnemiesToSpawn: 1
-    spawnChance: 100
-  - enemyPrefab: {fileID: 3859028022664314501, guid: dd5272bd10cb7324291201b5bcf23e3e,
+    health: 3
+    damage: 1
+    numberOfEnemiesToSpawn: 2
+    spawnChance: 50
+  - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
     health: 1
-    damage: 0
+    damage: 1
     numberOfEnemiesToSpawn: 1
     spawnChance: 50
-  totalEnemies: 5
-  blockTime: 5
+  totalEnemies: 20
+  blockTime: 30
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -59,11 +59,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bossAction:
-    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+    enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
     health: 1
-    damage: 0
-    numberOfEnemiesToSpawn: 1
-    spawnChance: 100
-  bossChestTier: 5
-  bossChestItems: 5
+    damage: 1
+    numberOfEnemiesToSpawn: 5
+    spawnChance: 1
+  bossChestTier: 1
+  bossChestItems: 2

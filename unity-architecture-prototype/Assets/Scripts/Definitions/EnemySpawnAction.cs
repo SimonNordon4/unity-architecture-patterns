@@ -8,9 +8,7 @@ namespace Definitions
     public class EnemySpawnAction
     {
         public GameObject enemyPrefab;
-        public int health = 5;
-        public int damage = 1;
         public int numberOfEnemiesToSpawn = 1;
-        public int spawnChance = 100;
+        public int spawnWeight = 100;
     }
 }

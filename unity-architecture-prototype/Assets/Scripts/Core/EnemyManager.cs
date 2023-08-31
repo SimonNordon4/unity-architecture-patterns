@@ -26,22 +26,28 @@ public class EnemyManager : MonoBehaviour
     public GameObject mediumChestPrefab;
     public GameObject largeChestPrefab;
 
-    [Header("Stats")] public float spawnRadius = 15f;
-    public EnemySpawnConfig enemySpawnConfig;
-    public List<EnemySpawnBlock> enemySpawnBlocks = new();
-    private EnemySpawnBlock _currentBlock;
+    [Header("Stats")] 
+    public float spawnRadius = 15f;
+    public EnemySpawnRound enemySpawnRound;
 
-    [Header("Enemies")] public List<GameObject> enemies = new List<GameObject>();
+    private readonly List<EnemySpawnBlock> _enemySpawnBlocks = new();
+    private EnemySpawnBlock _currentBlock;
+    private int _blockIndex;
+    
+    private List<EnemySpawnWave> _currentSpawnWaves = new();
+    private EnemySpawnWave _currentWave;
+
+    [Header("Enemies")] public readonly List<GameObject> enemies = new List<GameObject>();
 
     public int totalEnemiesKilled = 0;
     private Vector3 _lastSpawnPoint;
 
     // Block data
-    private float _elapsedBlockTime = 0f;
-    private int _currentBlockSpawnedEnemies = 0;
-    private int _currentBlockAliveEnemies = 0;
+    private float _elapsedWaveTime = 0f;
+    private int _currentWaveSpawnedEnemies = 0;
+    private int _currentWaveAliveEnemies = 0;
     private float[] _spawnTimings;
-    private int _blockIndex = 0;
+    private int _waveIndex = 0;
 
     public EnemySpawnPhase currentPhase = EnemySpawnPhase.Normal;
 
@@ -61,12 +67,14 @@ public class EnemyManager : MonoBehaviour
         {
             Destroy(enemy);
         }
+        
+
 
         enemies.Clear();
         StopAllCoroutines();
-        _elapsedBlockTime = 0f;
-        _currentBlockAliveEnemies = 0;
-        _currentBlockSpawnedEnemies = 0;
+        _elapsedWaveTime = 0f;
+        _currentWaveAliveEnemies = 0;
+        _currentWaveSpawnedEnemies = 0;
 
 
         foreach (var enemy in bossEnemies)
@@ -78,37 +86,40 @@ public class EnemyManager : MonoBehaviour
         _bossEnemiesCount = 0;
         _positionOfLastBossDeath = Vector3.zero;
         _bossChest = null;
-        _blockIndex = 0;
+        _waveIndex = 0;
         totalEnemiesKilled = 0;
         currentPhase = EnemySpawnPhase.Normal;
-        _currentBlock = enemySpawnBlocks[0];
-        InitializeNewBlock();
+        _currentBlock = enemySpawnRound.enemySpawnBlocks[0];
+        _currentSpawnWaves = _currentBlock.spawnWaves;
+        _blockIndex = 0;
+        _currentWave = _currentSpawnWaves[0];
+        InitializeNewWave();
         
         
     }
 
     private void Start()
     {
-        enemySpawnBlocks = enemySpawnConfig.enemySpawnBlocks;
-        _currentBlock = enemySpawnBlocks[0];
+        _currentBlock = enemySpawnRound.enemySpawnBlocks[0];
+        _currentWave = _currentBlock.spawnWaves[0];
         StopAllCoroutines();
-        InitializeNewBlock();
+        InitializeNewWave();
     }
 
-    private void InitializeNewBlock()
+    private void InitializeNewWave()
     {
-        _elapsedBlockTime = 0f;
-        _currentBlockSpawnedEnemies = 0;
-        _currentBlockAliveEnemies = 0;
+        _elapsedWaveTime = 0f;
+        _currentWaveSpawnedEnemies = 0;
+        _currentWaveAliveEnemies = 0;
         currentPhase = EnemySpawnPhase.Normal;
 
-        Debug.Log("Initializing new spawn block with " + _currentBlock.totalEnemies + " enemies.");
+        Debug.Log("Initializing new spawn block with " + _currentWave.totalEnemies + " enemies.");
         // Get the spawn timing of each enemy evaluated against the animation curve
-        _spawnTimings = new float[_currentBlock.totalEnemies];
-        for (var i = 0; i < _currentBlock.totalEnemies; i++)
+        _spawnTimings = new float[_currentWave.totalEnemies];
+        for (var i = 0; i < _currentWave.totalEnemies; i++)
         {
-            _spawnTimings[i] = _currentBlock.spawnRateCurve.Evaluate((float)i / _currentBlock.totalEnemies) *
-                               _currentBlock.blockTime;
+            _spawnTimings[i] = _currentWave.spawnRateCurve.Evaluate((float)i / _currentWave.totalEnemies) *
+                               _currentWave.blockTime;
         }
     }
 
@@ -125,13 +136,13 @@ public class EnemyManager : MonoBehaviour
                 HandleSpawnBoss();
                 break;
             case(EnemySpawnPhase.BossAlive):
-                if (_bossEnemiesCount <= 0 && _currentBlockAliveEnemies <= 0)
+                if (_bossEnemiesCount <= 0 && _currentWaveAliveEnemies <= 0)
                 {
                     currentPhase = EnemySpawnPhase.BossDead;
                 }
                 break;
             case(EnemySpawnPhase.BossDead):
-                if (_blockIndex >= enemySpawnBlocks.Count - 1)
+                if (_waveIndex >= _currentSpawnWaves.Count - 1)
                 {
                     GameManager.instance.WinGame();
                     return;
@@ -149,7 +160,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 break;
             case (EnemySpawnPhase.ChestCollected):
-                NextBlock();
+                NextWave();
                 break;
         }
     }
@@ -158,9 +169,9 @@ public class EnemyManager : MonoBehaviour
 
     private void HandleNormalEnemies()
     {
-        _elapsedBlockTime += Time.deltaTime;
+        _elapsedWaveTime += Time.deltaTime;
 
-        if (_elapsedBlockTime > _currentBlock.blockTime)
+        if (_elapsedWaveTime > _currentWave.blockTime)
         {
             Debug.Log("Block time exceeded, spawning boss");
             currentPhase = EnemySpawnPhase.SpawnBoss;
@@ -168,34 +179,34 @@ public class EnemyManager : MonoBehaviour
         }
         
         // We don't want to continue spawning after we've reached max enemies.
-        if(_currentBlockSpawnedEnemies >= _currentBlock.totalEnemies)
+        if(_currentWaveSpawnedEnemies >= _currentWave.totalEnemies)
             return;
         
-        if (_elapsedBlockTime > _spawnTimings[_currentBlockSpawnedEnemies])
+        if (_elapsedWaveTime > _spawnTimings[_currentWaveSpawnedEnemies])
         {
             // Spawn one the enemies inside the spawn chances based on their spawn chance
             var totalSpawnChance = 0;
-            foreach (var enemySpawnChance in _currentBlock.enemySpawnActions)
+            foreach (var enemySpawnChance in _currentWave.enemySpawnActions)
             {
-                totalSpawnChance += enemySpawnChance.spawnChance;
+                totalSpawnChance += enemySpawnChance.spawnWeight;
             }
 
             var randomSpawnChance = Random.Range(0, totalSpawnChance);
             var currentSpawnChance = 0;
 
-            for (var i = 0; i < _currentBlock.enemySpawnActions.Count; i++)
+            for (var i = 0; i < _currentWave.enemySpawnActions.Count; i++)
             {
                 var x = i;
-                currentSpawnChance += _currentBlock.enemySpawnActions[x].spawnChance;
+                currentSpawnChance += _currentWave.enemySpawnActions[x].spawnWeight;
 
                 if (randomSpawnChance >= currentSpawnChance)
                 {
                     continue;
                 }
 
-                var spawnAction = _currentBlock.enemySpawnActions[x];
-                _currentBlockAliveEnemies += spawnAction.numberOfEnemiesToSpawn;
-                _currentBlockSpawnedEnemies += spawnAction.numberOfEnemiesToSpawn;
+                var spawnAction = _currentWave.enemySpawnActions[x];
+                _currentWaveAliveEnemies += spawnAction.numberOfEnemiesToSpawn;
+                _currentWaveSpawnedEnemies += spawnAction.numberOfEnemiesToSpawn;
                 
                 StartCoroutine(StartSpawnAction(spawnAction));
                 break;
@@ -205,7 +216,7 @@ public class EnemyManager : MonoBehaviour
 
     private void HandleSpawnBoss()
     {
-        StartCoroutine(StartBossSpawnAction(_currentBlock.bossAction));
+        StartCoroutine(StartBossSpawnAction(_currentWave.bossAction));
         currentPhase = EnemySpawnPhase.BossAlive;
     }
 
@@ -216,8 +227,8 @@ public class EnemyManager : MonoBehaviour
     private IEnumerator StartSpawnAction(EnemySpawnAction action)
     {
         // Clamp the number of enemies to spawn to the total enemies in the block
-        if (_currentBlockSpawnedEnemies > _currentBlock.totalEnemies)
-            _currentBlockSpawnedEnemies = _currentBlock.totalEnemies;
+        if (_currentWaveSpawnedEnemies > _currentWave.totalEnemies)
+            _currentWaveSpawnedEnemies = _currentWave.totalEnemies;
 
         var startPoint = Random.insideUnitSphere.normalized * spawnRadius;
 
@@ -256,7 +267,7 @@ public class EnemyManager : MonoBehaviour
         if (spawnIndicator == null)
         {
             // Cancelling a spawn is assumed as killing an enemy.
-            _currentBlockAliveEnemies--;
+            _currentWaveAliveEnemies--;
             yield break;
         }
 
@@ -271,8 +282,9 @@ public class EnemyManager : MonoBehaviour
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
 
-        enemyController.currentHealth = enemyAction.health;
-        enemyController.damageAmount = enemyAction.damage;
+        var healthMultiplier = 
+        enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentBlock.healthMultiplier.x, _currentBlock.healthMultiplier.y));
+        enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentBlock.damageMultiplier.x, _currentBlock.damageMultiplier.y));
 
         enemies.Add(newEnemy);
     }
@@ -323,7 +335,7 @@ public class EnemyManager : MonoBehaviour
         if (spawnIndicator == null)
         {
             // Cancelling a spawn is assumed as killing an enemy.
-            _currentBlockAliveEnemies--;
+            _currentWaveAliveEnemies--;
             yield break;
         }
 
@@ -337,8 +349,8 @@ public class EnemyManager : MonoBehaviour
         var enemyController = newEnemy.GetComponent<EnemyController>();
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
-        enemyController.currentHealth = enemyAction.health;
-        enemyController.damageAmount = enemyAction.damage;
+        enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentBlock.healthMultiplier.x, _currentBlock.healthMultiplier.y));
+        enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentBlock.damageMultiplier.x, _currentBlock.damageMultiplier.y));
         enemyController.isBoss = true;
 
         enemies.Add(newEnemy);
@@ -349,7 +361,7 @@ public class EnemyManager : MonoBehaviour
     {
         Chest chestController;
         // if max tier is 3 spawn a medium chest.
-        if (_currentBlock.bossChestTier <= 3)
+        if (_currentBlock.bossChestTier.y <= 3)
         {
             _bossChest = Instantiate(mediumChestPrefab, _positionOfLastBossDeath, Quaternion.identity);
             chestController = _bossChest.GetComponent<Chest>();
@@ -360,8 +372,9 @@ public class EnemyManager : MonoBehaviour
             chestController = _bossChest.GetComponent<Chest>();
         }
 
-        chestController.minTier = _currentBlock.bossChestTier;
-        chestController.maxTier = _currentBlock.bossChestItems;
+        chestController.minTier = _currentBlock.bossChestTier.x;
+        chestController.maxTier = _currentBlock.bossChestTier.y;
+        chestController.options = _currentBlock.bossChestChoices;
     }
 
     #endregion
@@ -381,17 +394,38 @@ public class EnemyManager : MonoBehaviour
             return;
         }
 
-        _currentBlockAliveEnemies--;
+        _currentWaveAliveEnemies--;
         totalEnemiesKilled++;
         enemies.Remove(enemy);
         GameManager.instance.OnEnemyDied(enemy);
         Destroy(enemy);
     }
 
-    public void NextBlock()
+    public void NextWave()
     {
-        _blockIndex++;
-        _currentBlock = enemySpawnBlocks[_blockIndex];
-        InitializeNewBlock();
+        _waveIndex++;
+        
+        // If we've reached the end of the block, go to the next block
+        if (_waveIndex >= _currentSpawnWaves.Count)
+        {
+            BlockBeaten();
+            _blockIndex++;
+            if (_blockIndex >= _enemySpawnBlocks.Count)
+            {
+                GameManager.instance.WinGame();
+                return;
+            }
+            _currentBlock = _enemySpawnBlocks[_blockIndex];
+            _currentSpawnWaves = _currentBlock.spawnWaves;
+            _waveIndex = 0;
+        }
+        
+        _currentWave = _currentSpawnWaves[_waveIndex];
+        InitializeNewWave();
+    }
+
+    public void BlockBeaten()
+    {
+        Debug.Log("Block beaten");
     }
 }

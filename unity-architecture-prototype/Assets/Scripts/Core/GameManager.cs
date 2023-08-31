@@ -423,6 +423,13 @@ public class GameManager : MonoBehaviour
                 break;
         }
         
+        // If the chest has a set number of items, then random range that number, evenly distributed.
+        // Used for boss chests.
+        if(chest.options.magnitude > 0)
+        {
+            numberOfItems = Random.Range(chest.options.x, chest.options.y);
+        }
+        
         // Store a hashset of all the items we have already added to the options, so we don't display duplicates.
         HashSet<ChestItem> alreadyAddedItems = new HashSet<ChestItem>();
 

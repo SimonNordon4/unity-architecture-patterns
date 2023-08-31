@@ -10,36 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: TestBlock_01
+  m_Name: 00_EnemySpawnWave_04
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    health: 1
-    damage: 0
-    numberOfEnemiesToSpawn: 10
-    spawnChance: 100
-  totalEnemies: 10
-  blockTime: 6
+    health: 5
+    damage: 2
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 10
+  - enemyPrefab: {fileID: 6537234263106401617, guid: 369029da34577a949a3f5024d45fa564,
+      type: 3}
+    health: 5
+    damage: 2
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 5
+  totalEnemies: 60
+  blockTime: 60
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
@@ -47,11 +53,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bossAction:
-    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+    enemyPrefab: {fileID: 4480519586362331185, guid: db4682bc0d9c6994da682d08cc960706,
       type: 3}
-    health: 1
-    damage: 0
-    numberOfEnemiesToSpawn: 5
-    spawnChance: 100
-  bossChestTier: 4
-  bossChestItems: 5
+    health: 25
+    damage: 1
+    numberOfEnemiesToSpawn: 1
+    spawnChance: 1
+  bossChestTier: 2
+  bossChestItems: 2
