@@ -83,6 +83,7 @@ using UnityEngine.UI;
 
                 purchaseButton.onClick.AddListener(() =>
                 {
+                    Debug.Log("Adding item listener for: "  + item.name);
                     AccountManager.instance.PurchaseStoreItem(item);
                 });
             }

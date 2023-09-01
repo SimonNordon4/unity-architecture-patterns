@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63663e17ab8939743b3bd0f2a11ff1c4, type: 3}
+  m_Name: Store_PistolDamage
+  m_EditorClassIdentifier: 
+  name: Pistol Damage
+  sprite: {fileID: 0}
+  tiers: 3
+  tierModifiers:
+  - statType: 1
+    modifierType: 0
+    modifierValue: 1
+  - statType: 1
+    modifierType: 0
+    modifierValue: 2
+  - statType: 1
+    modifierType: 0
+    modifierValue: 4
+  - statType: 1
+    modifierType: 0
+    modifierValue: 8
+  pricePerTier: 1900000064000000e803000088130000
+  currentTier: 0

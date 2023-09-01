@@ -31,6 +31,7 @@ using UnityEngine;
 
         public void PurchaseStoreItem(StoreItem item)
         {
+            Debug.Log("Purchasing item: " + item.name);
             var itemPrice = item.pricePerTier[item.currentTier];
             totalGold -= itemPrice;
             // find the item in the store items list
