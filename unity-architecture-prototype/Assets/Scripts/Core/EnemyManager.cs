@@ -282,7 +282,6 @@ public class EnemyManager : MonoBehaviour
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
 
-        var healthMultiplier = 
         enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentBlock.healthMultiplier.x, _currentBlock.healthMultiplier.y));
         enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentBlock.damageMultiplier.x, _currentBlock.damageMultiplier.y));
 
