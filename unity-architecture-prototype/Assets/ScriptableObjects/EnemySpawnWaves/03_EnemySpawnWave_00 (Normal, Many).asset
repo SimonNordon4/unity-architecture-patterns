@@ -10,50 +10,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: 01_EnemySpawnWave_00
+  m_Name: 03_EnemySpawnWave_00 (Normal, Many)
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    numberOfEnemiesToSpawn: 1
+    numberOfEnemiesToSpawn: 5
     spawnWeight: 100
-  - enemyPrefab: {fileID: 3859028022664314501, guid: dd5272bd10cb7324291201b5bcf23e3e,
-      type: 3}
-    numberOfEnemiesToSpawn: 1
-    spawnWeight: 100
-  - enemyPrefab: {fileID: 6537234263106401617, guid: 369029da34577a949a3f5024d45fa564,
-      type: 3}
-    numberOfEnemiesToSpawn: 1
-    spawnWeight: 100
-  totalEnemies: 60
-  blockTime: 60
+  totalEnemies: 300
+  blockTime: 120
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 1.5018868
+      outSlope: 1.5018868
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.050251257
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0.4493673
+      outSlope: 0.4493673
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.047236204
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   bossAction:
-    enemyPrefab: {fileID: 4480519586362331185, guid: db4682bc0d9c6994da682d08cc960706,
+    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
       type: 3}
-    numberOfEnemiesToSpawn: 1
+    numberOfEnemiesToSpawn: 10
     spawnWeight: 100
