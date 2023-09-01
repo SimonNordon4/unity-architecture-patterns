@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63663e17ab8939743b3bd0f2a11ff1c4, type: 3}
-  m_Name: Store_PistolDamage
+  m_Name: Store_SwordDamage
   m_EditorClassIdentifier: 
-  type: 1
-  name: Pistol Damage
+  type: 5
+  name: Sword Damage
   sprite: {fileID: 0}
   tierModifiers:
-  - statType: 1
+  - statType: 5
     modifierType: 0
     modifierValue: 1
-  - statType: 1
+  - statType: 5
     modifierType: 0
     modifierValue: 2
-  - statType: 1
+  - statType: 5
     modifierType: 0
     modifierValue: 4
-  - statType: 1
+  - statType: 5
     modifierType: 0
     modifierValue: 8
   pricePerTier: 1900000064000000e803000088130000

@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63663e17ab8939743b3bd0f2a11ff1c4, type: 3}
   m_Name: Store_PistolPierce
   m_EditorClassIdentifier: 
+  type: 4
   name: Pistol Pierce
   sprite: {fileID: 0}
-  tiers: 3
   tierModifiers:
   - statType: 4
     modifierType: 0
     modifierValue: 1
-  - statType: 2
+  - statType: 4
     modifierType: 0
     modifierValue: 2
   pricePerTier: d007000010270000
