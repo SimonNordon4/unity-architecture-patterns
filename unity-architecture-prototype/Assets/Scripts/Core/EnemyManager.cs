@@ -31,7 +31,6 @@ public class EnemyManager : MonoBehaviour
     public float spawnRadius = 15f;
     public EnemySpawnRound enemySpawnRound;
 
-    private readonly List<EnemySpawnBlock> _enemySpawnBlocks = new();
     private EnemySpawnBlock _currentBlock;
     private int _blockIndex;
     
@@ -98,7 +97,9 @@ public class EnemyManager : MonoBehaviour
         _currentWave = _currentSpawnWaves[0];
         InitializeNewWave();
         
-        
+        totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
+        thisWave = 1;
+        gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
     }
 
     private void Start()
@@ -119,7 +120,7 @@ public class EnemyManager : MonoBehaviour
         _currentWaveAliveEnemies = 0;
         currentPhase = EnemySpawnPhase.Normal;
 
-        Debug.Log("Initializing new spawn block with " + _currentWave.totalEnemies + " enemies.");
+        Debug.Log("Initializing new spawn wave with " + _currentWave.totalEnemies + " enemies.");
         // Get the spawn timing of each enemy evaluated against the animation curve
         _spawnTimings = new float[_currentWave.totalEnemies];
         for (var i = 0; i < _currentWave.totalEnemies; i++)
@@ -148,7 +149,7 @@ public class EnemyManager : MonoBehaviour
                 }
                 break;
             case(EnemySpawnPhase.BossDead):
-                if (_waveIndex >= _currentSpawnWaves.Count - 1)
+                if (_waveIndex >= _currentSpawnWaves.Count - 1 && _blockIndex >= enemySpawnRound.enemySpawnBlocks.Count)
                 {
                     GameManager.instance.WinGame();
                     return;
@@ -410,22 +411,27 @@ public class EnemyManager : MonoBehaviour
     {
         _waveIndex++;
         
+        Debug.Log($"Starting wave: {_waveIndex} in block {_blockIndex} which contains {_currentSpawnWaves.Count} waves.");
+        
         // If we've reached the end of the block, go to the next block
         if (_waveIndex >= _currentSpawnWaves.Count)
         {
             BlockBeaten();
             _blockIndex++;
-            if (_blockIndex >= _enemySpawnBlocks.Count)
+            if (_blockIndex >= enemySpawnRound.enemySpawnBlocks.Count)
             {
                 GameManager.instance.WinGame();
                 return;
             }
-            thisWave++;
-            _currentBlock = _enemySpawnBlocks[_blockIndex];
+
+            _currentBlock = enemySpawnRound.enemySpawnBlocks[_blockIndex];
             _currentSpawnWaves = _currentBlock.spawnWaves;
             _waveIndex = 0;
-            gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
+
         }
+        
+        thisWave++;
+        gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
         
         _currentWave = _currentSpawnWaves[_waveIndex];
         InitializeNewWave();
