@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Ranged
+      value: Enemy - Ranged - T1
       objectReference: {fileID: 0}
     - target: {fileID: 4759737150053253292, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -160,6 +160,6 @@ MonoBehaviour:
   range: 6
   targetDistance: 5.5
   bulletCount: 1
-  projectileSpeed: 3
+  projectileSpeed: 6
   startLoaded: 1
   bulletSpread: 15

@@ -25,6 +25,16 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 65d3b77b34d6a494b8dfd366fda478d8, type: 2}
     - target: {fileID: 7477888130972651128, guid: dd5272bd10cb7324291201b5bcf23e3e,
         type: 3}
+      propertyPath: damageAmount
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477888130972651128, guid: dd5272bd10cb7324291201b5bcf23e3e,
+        type: 3}
+      propertyPath: currentHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477888130972651128, guid: dd5272bd10cb7324291201b5bcf23e3e,
+        type: 3}
       propertyPath: chargeCooldown
       value: 2
       objectReference: {fileID: 0}

@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: 00_EnemySpawnWave_05
+  m_Name: 01_EnemySpawnWave_00
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    health: 5
-    damage: 1
     numberOfEnemiesToSpawn: 1
-    spawnChance: 10
-  - enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+    spawnWeight: 100
+  - enemyPrefab: {fileID: 3859028022664314501, guid: dd5272bd10cb7324291201b5bcf23e3e,
       type: 3}
-    health: 15
-    damage: 1
     numberOfEnemiesToSpawn: 1
-    spawnChance: 10
+    spawnWeight: 100
+  - enemyPrefab: {fileID: 6537234263106401617, guid: 369029da34577a949a3f5024d45fa564,
+      type: 3}
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 100
   totalEnemies: 60
   blockTime: 60
   spawnRateCurve:
@@ -55,9 +55,5 @@ MonoBehaviour:
   bossAction:
     enemyPrefab: {fileID: 4480519586362331185, guid: db4682bc0d9c6994da682d08cc960706,
       type: 3}
-    health: 25
-    damage: 1
     numberOfEnemiesToSpawn: 1
-    spawnChance: 1
-  bossChestTier: 2
-  bossChestItems: 2
+    spawnWeight: 100
