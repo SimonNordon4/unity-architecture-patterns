@@ -381,8 +381,8 @@ public class GameManager : MonoBehaviour
     private void SpawnMiniChest()
     {
         var miniChest = Instantiate(miniChestPrefab, GetRandomChestPosition(), Quaternion.identity);
-        miniChest.minTier = 1;
-        miniChest.maxTier = 1;
+        miniChest.minTier = luck.value >= 10 ? 2 : 1;
+        miniChest.maxTier = luck.value >= 5 ? 2 : 1;
     }
     
     public void PickupChest(Chest chest)

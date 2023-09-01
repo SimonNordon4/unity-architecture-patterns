@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: Blunder Buss
+  m_Name: T3_Baseball Bat
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  itemName: Blunder Buss
+  itemName: Baseball Bat
   tier: 2
   spawnChance: 100
   modifiers:
-  - statType: 1
+  - statType: 6
     modifierType: 0
     modifierValue: 3
-  - statType: 0
+  - statType: 5
     modifierType: 0
-    modifierValue: -0.5
+    modifierValue: -1

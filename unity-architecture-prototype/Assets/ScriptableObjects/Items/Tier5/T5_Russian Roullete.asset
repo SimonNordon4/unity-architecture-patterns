@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: T5_KnifeShot
+  m_Name: T5_Russian Roullete
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  itemName: KnifeShot
+  itemName: Russian Roltter
   tier: 1
   spawnChance: 100
   modifiers:
-  - statType: 4
-    modifierType: 0
-    modifierValue: 1
+  - statType: 1
+    modifierType: 1
+    modifierValue: 2
+  - statType: 2
+    modifierType: 1
+    modifierValue: 0.5

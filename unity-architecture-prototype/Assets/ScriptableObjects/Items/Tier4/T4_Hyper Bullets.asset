@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: T3_SwordArc - Poke
+  m_Name: T4_Hyper Bullets
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  itemName: Poke
+  itemName: Hyper Bullets
   tier: 1
   spawnChance: 100
   modifiers:
-  - statType: 7
+  - statType: 1
+    modifierType: 0
+    modifierValue: 5
+  - statType: 2
     modifierType: 0
     modifierValue: 2
-  - statType: 5
+  - statType: 4
     modifierType: 0
-    modifierValue: 4
-  - statType: 9
+    modifierValue: 1
+  - statType: 10
     modifierType: 0
-    modifierValue: -30
-  - statType: 6
-    modifierType: 0
-    modifierValue: -2
+    modifierValue: -0.5

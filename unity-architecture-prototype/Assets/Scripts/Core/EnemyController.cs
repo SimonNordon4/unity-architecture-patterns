@@ -202,6 +202,10 @@ public class EnemyController : MonoBehaviour
             
             // Now we can lerp via the normalized time.
             transform.position = Vector3.Lerp(originalPosition, targetPosition, normalizedTime);
+            
+            // check if we're at the bounds of the level
+            ClampTransformToLevelBounds();
+            
             elapsedTime += Time.deltaTime;
             yield return null;
         }
