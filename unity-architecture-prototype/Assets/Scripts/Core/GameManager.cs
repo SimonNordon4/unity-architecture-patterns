@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class GameManager : MonoBehaviour
     #region Variables
 
     [Header("Round")] public float roundDuration = 20f;
-    private float _roundTime;
+    public float roundTime;
     public bool isPaused = false;
     public bool isGameActive = false;
     public Vector2 levelBounds = new Vector2(25f, 25f);
@@ -123,8 +124,8 @@ public class GameManager : MonoBehaviour
     {
         if (isGameActive)
         {
-            _roundTime += Time.deltaTime;
-            roundTimeText.text = $"Round Time: {(int)(_roundTime)}";
+            roundTime += Time.deltaTime;
+            roundTimeText.text = $"Round Time: {(int)(roundTime)}";
 
             if (_nextMiniChest)
             {
@@ -154,7 +155,7 @@ public class GameManager : MonoBehaviour
         HideAll();
         gameMenu.SetActive(true);
         isGameActive = true;
-        _roundTime = 0f;
+        roundTime = 0f;
         playerCurrentHealth = (int)playerMaxHealth.value;
         LoadStoreItemsIntoStats();
         SpawnMiniChest();
@@ -234,7 +235,7 @@ public class GameManager : MonoBehaviour
         HideAll();
         winMenu.SetActive(true);
         isGameActive = false;
-        _roundTime = 0f;
+        roundTime = 0f;
         AddGoldWhenGameEnds();
     }
     
@@ -252,11 +253,14 @@ public class GameManager : MonoBehaviour
     {
         // get the enemy manager
         var enemyManager = FindObjectOfType<EnemyManager>();
-        AccountManager.instance.AddGold(enemyManager.totalEnemiesKilled);
+        
+        var totalGold = enemyManager.BlockDatas.Sum(data => data.totalGold);
+        
+        AccountManager.instance.AddGold(totalGold);
 
         foreach (var txt in GoldTexts)
         {
-            txt.text = $"Gold Added: {enemyManager.totalEnemiesKilled}";
+            txt.text = $"Gold Added: {totalGold}";
         }
     }
     
@@ -353,7 +357,6 @@ public class GameManager : MonoBehaviour
 
     public void LoadStoreItemsIntoStats()
     {
-        Debug.Log("Loading Store items!");
         foreach (var stat in _stats.Values)
         {
             stat.Reset();

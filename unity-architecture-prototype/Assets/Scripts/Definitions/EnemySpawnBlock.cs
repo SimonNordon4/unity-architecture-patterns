@@ -15,6 +15,7 @@ public class EnemySpawnBlock : ScriptableObject
     public Vector2 damageMultiplier = new Vector2(1, 1);
     public Vector2Int bossChestTier = new Vector2Int(1, 2);
     public Vector2Int bossChestChoices = new Vector2Int(3, 3);
+    public float goldMultiplier = 1;
     
     public List<EnemySpawnWave> spawnWaves = new();
 }
@@ -39,9 +40,18 @@ public class EnemySpawnBlockEditor : Editor
         var seconds = (int)(totalSeconds % 60);
         var formattedTime = $"{minutes}m {seconds}s";
 
+        var totalEnemies = block.spawnWaves.Sum(wave =>
+        {
+            if (wave == null)
+                return 0;
+            return wave.totalEnemies;
+        });
+        
         EditorGUILayout.LabelField($"Block Time: {formattedTime}");
-        EditorGUILayout.LabelField($@"Total Enemies: {block.spawnWaves.Sum(wave =>
-            wave == null ? 0 : wave.totalEnemies)}");
+        EditorGUILayout.LabelField($@"Total Enemies: {totalEnemies}");
+        
+        EditorGUILayout.LabelField($"Base Gold: {block.goldMultiplier * totalEnemies}");
+        
         EditorGUILayout.EndVertical();
         
         base.OnInspectorGUI();

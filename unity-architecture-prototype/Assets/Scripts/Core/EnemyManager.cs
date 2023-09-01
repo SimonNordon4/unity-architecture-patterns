@@ -62,6 +62,10 @@ public class EnemyManager : MonoBehaviour
 
     // Chest data
     private GameObject _bossChest;
+    
+    // Block Data
+    private BlockRuntimeData _currentBlockData;
+    public readonly List<BlockRuntimeData> BlockDatas = new List<BlockRuntimeData>();
 
 
     // Will destroy all alive enemies.
@@ -100,6 +104,12 @@ public class EnemyManager : MonoBehaviour
         totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
         thisWave = 1;
         gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
+        
+        _currentBlockData = new BlockRuntimeData();
+        _currentBlockData.startTime = gameManager.roundTime;
+        BlockDatas.Clear();
+        BlockDatas.Add(_currentBlockData);
+        
     }
 
     private void Start()
@@ -424,7 +434,13 @@ public class EnemyManager : MonoBehaviour
                 return;
             }
 
+            // create a new block data.
             _currentBlock = enemySpawnRound.enemySpawnBlocks[_blockIndex];
+            _currentBlockData = new BlockRuntimeData();
+            _currentBlockData.startTime = gameManager.roundTime;
+            _currentBlockData.startEnemies = totalEnemiesKilled;
+            
+            BlockDatas.Add(_currentBlockData);
             _currentSpawnWaves = _currentBlock.spawnWaves;
             _waveIndex = 0;
 
@@ -439,6 +455,31 @@ public class EnemyManager : MonoBehaviour
 
     public void BlockBeaten()
     {
-        Debug.Log("Block beaten");
+        _currentBlockData.finishTime = gameManager.roundTime;
+        
+        var timeDifference = _currentBlockData.finishTime - _currentBlockData.startTime;
+        var bonusPercentage = 100 - timeDifference;
+        
+        var killedDifference = totalEnemiesKilled - _currentBlockData.startEnemies;
+
+        _currentBlockData.baseGold = Mathf.RoundToInt(killedDifference * _currentBlock.goldMultiplier);
+        
+        bonusPercentage = Mathf.Clamp(bonusPercentage, 0, 100);
+        _currentBlockData.bonusGold = Mathf.RoundToInt(_currentBlockData.baseGold * (bonusPercentage / 100));
+        _currentBlockData.totalGold = _currentBlockData.baseGold + _currentBlockData.bonusGold;
+        
+        Debug.Log("Enemies killed: " + killedDifference);
+        Debug.Log("Block beaten earning " + _currentBlockData.totalGold + " gold.");
+    }
+
+    public class BlockRuntimeData
+    {
+        public float startTime;
+        public float finishTime;
+        public int startEnemies;
+        public int endEnemies;
+        public int baseGold;
+        public int bonusGold;
+        public int totalGold;
     }
 }
