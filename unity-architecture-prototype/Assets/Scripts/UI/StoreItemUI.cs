@@ -48,7 +48,7 @@ using UnityEngine.UI;
             itemNameText.text = item.name;
 
             // We've hit the Maximum tier, no more upgrades are available.
-            if (item.currentTier == item.tiers)
+            if (item.currentTier == item.pricePerTier.Length)
             {
                 itemCurrentModifierText.text = FormatModifierValue(item.tierModifiers[item.currentTier-1]);
                 itemNextModifierText.text = "MAX";
@@ -89,7 +89,7 @@ using UnityEngine.UI;
             }
             
             // create
-            for(var i = 0; i < item.tiers; i++)
+            for(var i = 0; i < item.pricePerTier.Length; i++)
             {
                 var tierIndicator = Instantiate(tierIndicatorPrefab, tierIndicatorContainer);
                 tierIndicator.GetComponent<Image>().color = i < item.currentTier ? activeColor : inActiveColor;

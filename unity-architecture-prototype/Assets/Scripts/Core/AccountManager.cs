@@ -37,7 +37,7 @@ using UnityEngine;
             // find the item in the store items list
             var storeItem = storeItems.Find(x => x.name == item.name);
             // increase the tier
-            storeItem.currentTier = Mathf.Clamp(storeItem.currentTier + 1,0, storeItem.tiers);
+            storeItem.currentTier = Mathf.Clamp(storeItem.currentTier + 1,0, storeItem.pricePerTier.Length);
             
             // refresh the ui
             FindObjectOfType<StoreMenuManager>().UpdateStoreMenu();

@@ -13,16 +13,9 @@ public class StoreItem : ScriptableObject
 {
     public string name = "New Item";
     public Sprite sprite;
-    public int tiers = 3;
     public Modifier[] tierModifiers;
     public int[] pricePerTier;
     public int currentTier = 0;
-    
-    public StoreItem()
-    {
-        tierModifiers = new Modifier[tiers];
-        pricePerTier = new int[tiers];
-    }
 }
 
 
