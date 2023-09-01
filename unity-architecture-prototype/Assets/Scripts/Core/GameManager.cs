@@ -51,7 +51,9 @@ public class GameManager : MonoBehaviour
     private readonly Dictionary<StatType, Stat> _stats = new();
     public readonly List<ChestItem> currentlyHeldItems = new();
 
-    [Header("UI")] public TextMeshProUGUI roundTimeText;
+    [Header("UI")]
+    public TextMeshProUGUI roundTimeText;
+    public TextMeshProUGUI waveText;
     public GameObject mainMenu;
     public GameObject pauseMenu;
     public GameObject gameMenu;

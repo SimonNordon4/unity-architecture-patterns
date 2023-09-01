@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Definitions;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -36,6 +37,10 @@ public class EnemyManager : MonoBehaviour
     
     private List<EnemySpawnWave> _currentSpawnWaves = new();
     private EnemySpawnWave _currentWave;
+    
+    // for UI purposes.
+    private int totalWaves = 0;
+    private int thisWave = 0;
 
     [Header("Enemies")] public readonly List<GameObject> enemies = new List<GameObject>();
 
@@ -67,8 +72,6 @@ public class EnemyManager : MonoBehaviour
         {
             Destroy(enemy);
         }
-        
-
 
         enemies.Clear();
         StopAllCoroutines();
@@ -104,6 +107,9 @@ public class EnemyManager : MonoBehaviour
         _currentWave = _currentBlock.spawnWaves[0];
         StopAllCoroutines();
         InitializeNewWave();
+        totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
+        thisWave = 1;
+        gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
     }
 
     private void InitializeNewWave()
@@ -414,9 +420,11 @@ public class EnemyManager : MonoBehaviour
                 GameManager.instance.WinGame();
                 return;
             }
+            thisWave++;
             _currentBlock = _enemySpawnBlocks[_blockIndex];
             _currentSpawnWaves = _currentBlock.spawnWaves;
             _waveIndex = 0;
+            gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
         }
         
         _currentWave = _currentSpawnWaves[_waveIndex];
