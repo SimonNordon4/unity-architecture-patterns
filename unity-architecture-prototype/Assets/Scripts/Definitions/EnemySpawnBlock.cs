@@ -28,13 +28,20 @@ public class EnemySpawnBlockEditor : Editor
         var block = (EnemySpawnBlock) target;
         
         EditorGUILayout.BeginVertical("box");
-        var totalSeconds = block.spawnWaves.Sum(wave => wave.blockTime);
+        if (block == null || block.spawnWaves == null) return;
+        var totalSeconds = block.spawnWaves.Sum(wave =>
+        {
+            if (wave == null)
+                return 0;
+            return wave.blockTime;
+        });
         var minutes = (int)(totalSeconds / 60);
         var seconds = (int)(totalSeconds % 60);
         var formattedTime = $"{minutes}m {seconds}s";
 
         EditorGUILayout.LabelField($"Block Time: {formattedTime}");
-        EditorGUILayout.LabelField($"Total Enemies: {block.spawnWaves.Sum(wave => wave.totalEnemies)}");
+        EditorGUILayout.LabelField($@"Total Enemies: {block.spawnWaves.Sum(wave =>
+            wave == null ? 0 : wave.totalEnemies)}");
         EditorGUILayout.EndVertical();
         
         base.OnInspectorGUI();

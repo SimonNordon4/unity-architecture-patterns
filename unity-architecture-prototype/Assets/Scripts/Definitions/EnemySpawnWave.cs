@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 #endif
-[CreateAssetMenu(fileName = "EnemySpawnWave", menuName = "Prototype/EnemySpawnBlock", order = 1)]
+[CreateAssetMenu(fileName = "EnemySpawnWave", menuName = "Prototype/EnemySpawnWave", order = 1)]
 public class EnemySpawnWave : ScriptableObject
 {
     public EnemyManager enemyManager;
@@ -110,6 +110,8 @@ public class EnemySpawnWave : ScriptableObject
         {
             totalProbability += spawnAction.spawnWeight * spawnAction.numberOfEnemiesToSpawn;
 
+            if (spawnAction.enemyPrefab == null) return new List<EnemyType>();
+            
             var prefabName = spawnAction.enemyPrefab.name;
             // check if enemyStats already contains this name
             var enemyType = enemyStats.FirstOrDefault(x => x.name == prefabName);
