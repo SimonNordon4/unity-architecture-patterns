@@ -407,6 +407,8 @@ public class EnemyManager : MonoBehaviour
             totalEnemiesKilled++;
             GameManager.instance.OnBossEnemyDied(enemy);
             Destroy(enemy);
+            AccountManager.instance.statistics.totalBossKills++;
+            AccountManager.instance.statistics.totalKills++;
             return;
         }
 
@@ -414,6 +416,9 @@ public class EnemyManager : MonoBehaviour
         totalEnemiesKilled++;
         enemies.Remove(enemy);
         GameManager.instance.OnEnemyDied(enemy);
+        
+        AccountManager.instance.statistics.totalKills++;
+        
         Destroy(enemy);
     }
 

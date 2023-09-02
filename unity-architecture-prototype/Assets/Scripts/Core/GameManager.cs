@@ -155,6 +155,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Start New Game");
         HideAll();
+        AccountManager.instance.statistics.gamesPlayed++;
         gameMenu.SetActive(true);
         isGameActive = true;
         roundTime = 0f;
@@ -237,7 +238,16 @@ public class GameManager : MonoBehaviour
         HideAll();
         winMenu.SetActive(true);
         isGameActive = false;
+        AccountManager.instance.statistics.gamesWon++;
+        
+        // check if faster time
+        if (AccountManager.instance.statistics.fastestWin == 0 || roundTime < AccountManager.instance.statistics.fastestWin)
+        {
+            AccountManager.instance.statistics.fastestWin = roundTime;
+        }
+        
         roundTime = 0f;
+
         AddGoldWhenGameEnds();
     }
     
@@ -259,6 +269,9 @@ public class GameManager : MonoBehaviour
         var totalGold = enemyManager.BlockDatas.Sum(data => data.totalGold);
         
         AccountManager.instance.AddGold(totalGold);
+        
+        // add to stats.
+        AccountManager.instance.statistics.totalGoldEarned += totalGold;
 
         foreach (var txt in GoldTexts)
         {
@@ -371,6 +384,7 @@ public class GameManager : MonoBehaviour
             var currentModifier = store.tierModifiers[store.currentTier - 1];
             var stat = _stats[currentModifier.statType];
             stat.AddModifier(currentModifier);
+            AccountManager.instance.CheckIfHighestStat(currentModifier.statType, stat.value);
         }
         UpdateStatsUI();
     }
@@ -392,6 +406,9 @@ public class GameManager : MonoBehaviour
     
     public void PickupChest(Chest chest)
     {
+        // monitor stats.
+        AccountManager.instance.statistics.totalChestsOpened++;
+        
         // If we pickup a mini chest, we can start spawning the next mini chest.
         if (chest.chestType == ChestType.Mini)
         {
@@ -534,9 +551,13 @@ public class GameManager : MonoBehaviour
             var stat = _stats[mod.statType];
             stat.AddModifier(mod);
 
+            // TODO: This might be broken.
+            AccountManager.instance.CheckIfHighestStat(mod.statType, stat.value);
+            
             // If it's a max health mod, we need to also increase the current health.
             if (mod.statType == StatType.PlayerHealth)
             {
+                AccountManager.instance.statistics.totalDamageHealed += (int)mod.modifierValue;
                 playerCurrentHealth += (int)mod.modifierValue;
             }
         }

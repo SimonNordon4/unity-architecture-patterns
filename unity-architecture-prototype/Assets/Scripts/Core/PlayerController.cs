@@ -235,11 +235,14 @@ public class PlayerController : MonoBehaviour
         
         public void TakeDamage(int damageAmount)
         {
+            AccountManager.instance.statistics.totalDamageTaken += damageAmount;
+            
             gameManager.playerCurrentHealth -= damageAmount;
 
             if (gameManager.playerCurrentHealth <= 0)
             {
                 gameManager.playerCurrentHealth = 0;
+                AccountManager.instance.statistics.totalDeaths++;
                 gameManager.LoseGame();
             }
             SetUI();
@@ -255,10 +258,12 @@ public class PlayerController : MonoBehaviour
 
             if (other.CompareTag("Health Pack"))
             {
-                GameManager.instance.playerCurrentHealth =
-                   (int)Mathf.Clamp( (GameManager.instance.playerCurrentHealth * 1.1f + 1), 
-                        0f, 
-                        GameManager.instance.playerMaxHealth.value);
+                var healthGained = (int)Mathf.Clamp( (GameManager.instance.playerMaxHealth.value * 0.1f + 1), 
+                    0f, 
+                    GameManager.instance.playerMaxHealth.value - GameManager.instance.playerCurrentHealth);
+                
+                AccountManager.instance.statistics.totalDamageHealed += healthGained;
+                GameManager.instance.playerCurrentHealth = healthGained;
                 
                 Destroy(other.gameObject);
             }

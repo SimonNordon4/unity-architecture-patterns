@@ -129,6 +129,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        AccountManager.instance.statistics.totalDamageDealt += damage;
         // Take damage, die if at 0.
         currentHealth -= damage;
         UpdateHealthText();
