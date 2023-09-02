@@ -77,6 +77,10 @@ public class ChargeEnemyController : EnemyController
             transform.Translate(dir * distanceThisFrame);
 
             chargedDistance += distanceThisFrame;
+            
+            if(GameManager.instance.isGameActive == false) yield break;
+            
+            ClampTransformToLevelBounds();
 
             yield return null; // Wait for next frame
         }

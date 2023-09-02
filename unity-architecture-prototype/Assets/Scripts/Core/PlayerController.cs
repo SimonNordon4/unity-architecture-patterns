@@ -258,9 +258,9 @@ public class PlayerController : MonoBehaviour
 
             if (other.CompareTag("Health Pack"))
             {
-                var healthGained = (int)Mathf.Clamp( (GameManager.instance.playerMaxHealth.value * 0.1f + 1), 
+                var healthGained = (int)Mathf.Clamp( (GameManager.instance.playerCurrentHealth + GameManager.instance.playerMaxHealth.value * 0.1f + 1), 
                     0f, 
-                    GameManager.instance.playerMaxHealth.value - GameManager.instance.playerCurrentHealth);
+                    GameManager.instance.playerMaxHealth.value);
                 
                 AccountManager.instance.statistics.totalDamageHealed += healthGained;
                 GameManager.instance.playerCurrentHealth = healthGained;

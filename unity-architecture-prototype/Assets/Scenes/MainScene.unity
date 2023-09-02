@@ -5674,7 +5674,7 @@ MonoBehaviour:
   largeChestPrefab: {fileID: 3922492998747134388, guid: 8d8af5a9e9980e94294e900bdb4a6312,
     type: 3}
   spawnRadius: 20
-  enemySpawnRound: {fileID: 11400000, guid: 5e1d1c7a26c56e64eaffb157407eab8a, type: 2}
+  enemySpawnRound: {fileID: 11400000, guid: ca1520d8e0b536748a2e1f3795b74d23, type: 2}
   totalEnemiesKilled: 0
   currentPhase: 1
 --- !u!4 &644039391
@@ -6775,10 +6775,10 @@ MonoBehaviour:
     maximumValue: Infinity
     value: 5
   playerSpeed:
-    initialValue: 4
+    initialValue: 4.5
     minimumValue: 0.5
     maximumValue: Infinity
-    value: 4
+    value: 4.5
   pistolDamage:
     initialValue: 1
     minimumValue: 0
