@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
         private Transform _closestTarget = null;
 
         [Header("Sword")]
-        public Transform SwordPivot;
+        public Transform swordPivot;
         private float _timeSinceLastSwing = 0.0f;
         private bool _isSwingingLeftToRight = true;
         private bool _isSwordAttacking = false;
@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour
 
         private void Start()
         {
-            SwordPivot.transform.parent = null;
-            SwordPivot.gameObject.SetActive(false);
+            swordPivot.transform.parent = null;
+            swordPivot.gameObject.SetActive(false);
             SetUI();
         }
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             if(!GameManager.instance.isGameActive) return;
             
-            SwordPivot.transform.position = _transform.position;
+            swordPivot.transform.position = _transform.position;
             
             // Get Closest enemy target.
             var closestDistance = Mathf.Infinity;
@@ -163,8 +163,8 @@ public class PlayerController : MonoBehaviour
         _isSwordAttacking = true;
         var swordArc = gameManager.swordArc.value;
         // Enable the sword gameobject.
-        SwordPivot.gameObject.SetActive(true);
-        SwordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
+        swordPivot.gameObject.SetActive(true);
+        swordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
     
         // Base rotation values.
         var leftRotation = Quaternion.Euler(0, swordArc * -0.5f, 0);
@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour
     
         // The start rotation needs to be directed to the closest target.
         var directionToTarget = Vector3.ProjectOnPlane( _closestTarget.transform.position - transform.position, Vector3.up).normalized;
-        SwordPivot.forward = directionToTarget;
+        swordPivot.forward = directionToTarget;
     
         // Determine the start and end rotation based on the current swing direction.
         Quaternion startRotation, endRotation;
@@ -203,10 +203,10 @@ public class PlayerController : MonoBehaviour
                 while (swing)
                 {
                     t += Time.deltaTime;
-                    SwordPivot.rotation = Quaternion.Lerp(lastStart, lastEnd, t / swingTime);
+                    swordPivot.rotation = Quaternion.Lerp(lastStart, lastEnd, t / swingTime);
                     yield return null;
                     if (!(t >= swingTime)) continue;
-                    lastStart = SwordPivot.rotation;
+                    lastStart = swordPivot.rotation;
                     lastEnd = lastStart * Quaternion.Euler(0, 179.9f * directionSign, 0);
                     swing = false;
 
@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
             while (t < swingTime)
             {
                 t += Time.deltaTime;
-                SwordPivot.rotation = Quaternion.Lerp(startRotation, endRotation, t / swingTime);
+                swordPivot.rotation = Quaternion.Lerp(startRotation, endRotation, t / swingTime);
                 yield return null;
             }
         }
@@ -232,15 +232,16 @@ public class PlayerController : MonoBehaviour
         _isSwingingLeftToRight = !_isSwingingLeftToRight;
     
         // Disable the sword gameobject.
-        SwordPivot.gameObject.SetActive(false);
+        swordPivot.gameObject.SetActive(false);
     }
         
         public void TakeDamage(int damageAmount)
         {
             damageAmount -= (int)gameManager.block.value;
+            // We should never be invincible imo.
             if (damageAmount <= 0)
             {
-                return;
+                damageAmount = 1;
             }
             
             AccountManager.instance.statistics.totalDamageTaken += damageAmount;

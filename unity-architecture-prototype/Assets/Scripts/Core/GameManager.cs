@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 
 public class GameManager : MonoBehaviour
@@ -442,8 +444,16 @@ public class GameManager : MonoBehaviour
     private void SpawnMiniChest()
     {
         var miniChest = Instantiate(miniChestPrefab, GetRandomChestPosition(), Quaternion.identity);
-        miniChest.minTier = luck.value >= 10 ? 2 : 1;
-        miniChest.maxTier = luck.value >= 5 ? 2 : 1;
+        // Figure out an algorithm for min tier to random between 1-2 based on luck. Always 1 at 0 luck, always 2 at 10 luck.
+        var chance = Random.Range(0, 9);
+        
+        
+        miniChest.minTier = chance < luck.value ? 2 : 1;
+        miniChest.maxTier = Mathf.Clamp((int)(luck.value * 0.5f), 1, 5);
+        Debug.Log("Mini chest max tier: " + miniChest.maxTier);
+        
+        if(miniChest.maxTier < miniChest.minTier)
+            miniChest.maxTier = miniChest.minTier;
     }
 
     public void PickupChest(Chest chest)
@@ -554,28 +564,27 @@ public class GameManager : MonoBehaviour
             return chest.minTier;
 
         var tier = 0;
-        var chance = Random.Range(0, 100) + luck.value * 10f;
+        if (luck.value > 10) luck.value = 10;
+        var chance = Random.Range(0, 50) + luck.value * 10f;
+        
+        Debug.Log("Chance: " + chance);
 
-        switch (chance)
+        tier = chance switch
         {
-            case < 50:
-                tier = 1;
-                break;
-            case < 70:
-                tier = 2;
-                break;
-            case < 80:
-                tier = 3;
-                break;
-            case < 90:
-                tier = 4;
-                break;
-            case < 95:
-                tier = 5;
-                break;
-        }
+            < 50 => 1,
+            < 70 => 2,
+            < 80 => 3,
+            < 95 => 4,
+            _ => 5
+        };
+
+        Debug.Log("Pre clamped tier: " + tier);
 
         tier = Mathf.Clamp(tier, chest.minTier, chest.maxTier);
+
+        Debug.Log("given chest range: " + chest.minTier + " - " + chest.maxTier);
+        Debug.Log("Return tier: " + tier);
+        
         return tier;
     }
 
