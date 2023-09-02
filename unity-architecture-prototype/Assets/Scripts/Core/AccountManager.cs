@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -28,11 +29,7 @@ using UnityEngine;
         public StoreItemConfig storeItemConfig;
         public List<StoreItem> storeItems = new();
 
-
-
-        
-        
-        
+        public AchievementSave achievementSave = new();
         public bool debugSkipLoad = false;
         
         public void AddGold(int amount)
@@ -52,6 +49,25 @@ using UnityEngine;
             
             // refresh the ui
             FindObjectOfType<StoreMenuManager>().UpdateStoreMenu();
+            
+            
+            
+            var buyAllStoreItemsAchiev = achievementSave.achievements.First(x=>x.name == AchievementName.BuyAllStoreItems);
+            
+            if(buyAllStoreItemsAchiev.isCompleted)
+            {
+                // total store items by summing up the tiers
+                var totalStoreItems = storeItems.Sum(x => x.currentTier);
+                // currently bought store items
+                var boughtStoreItems = storeItems.Count(x => x.currentTier > 0);
+                buyAllStoreItemsAchiev.progress = boughtStoreItems;
+                if (totalStoreItems == boughtStoreItems)
+                {
+                    buyAllStoreItemsAchiev.isCompleted = true;
+                    AchievementUnlocked(buyAllStoreItemsAchiev);
+                }
+            }
+
         }
 
         private void OnEnable()
@@ -110,6 +126,162 @@ using UnityEngine;
                 return;
             }
             statistics = JsonUtility.FromJson<StatisticsSave>(json);
+        }
+
+        private void CreateAchievements()
+        {
+            var achievements = new List<Achievement>
+            {
+                new Achievement()
+                {
+                    name = AchievementName.Kill100Enemies,
+                    uiName = "Kill 100 Enemies",
+                    goal = 100,
+                    rewardGold = 50
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Kill1000Enemies,
+                    uiName = "Kill 1000 Enemies",
+                    goal = 1000,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Kill10000Enemies,
+                    uiName = "Kill 10000 Enemies",
+                    goal = 10000,
+                    rewardGold = 2500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Kill100000Enemies,
+                    uiName = "Kill 100000 Enemies",
+                    goal = 100000,
+                    rewardGold = 10000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Kill100Bosses,
+                    uiName = "Kill 100 Bosses",
+                    goal = 100,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Kill1000Bosses,
+                    uiName = "Kill 1000 Bosses",
+                    goal = 1000,
+                    rewardGold = 5000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Die,
+                    uiName = "Die",
+                    goal = 1,
+                    rewardGold = 50
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Die50Times,
+                    uiName = "Die 50 Times",
+                    goal = 50,
+                    rewardGold = 250
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Die100Times,
+                    uiName = "Die 100 Times",
+                    goal = 100,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Open100Chests,
+                    uiName = "Open 100 Chests",
+                    goal = 100,
+                    rewardGold = 250
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Open1000Chests,
+                    uiName = "Open 1000 Chests",
+                    goal = 1000,
+                    rewardGold = 2500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Earn100Gold,
+                    uiName = "Earn 100 Gold",
+                    goal = 100,
+                    rewardGold = 50
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Earn1000Gold,
+                    uiName = "Earn 1000 Gold",
+                    goal = 1000,
+                    rewardGold = 250
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Earn10000Gold,
+                    uiName = "Earn 10000 Gold",
+                    goal = 10000,
+                    rewardGold = 2000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Earn100000Gold,
+                    uiName = "Earn 100000 Gold",
+                    goal = 100000,
+                    rewardGold = 10000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BeatTheGame,
+                    uiName = "Beat The Game",
+                    goal = 1,
+                    rewardGold = 5000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BeatTheGame10Times,
+                    uiName = "Beat The Game 10 Times",
+                    goal = 10,
+                    rewardGold = 25000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.WinInUnder1Hour,
+                    uiName = "Win In Under 1 Hour",
+                    goal = 3600,
+                    rewardGold = 2500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.WinInUnder45Minutes,
+                    uiName = "Win In Under 45 Minutes",
+                    goal = 2700,
+                    rewardGold = 5000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.WinInUnder30Minutes,
+                    uiName = "Win In Under 30 Minutes",
+                    goal = 1800,
+                    rewardGold = 10000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BuyAllStoreItems,
+                    uiName = "Buy All Store Items",
+                    goal = 1,
+                    rewardGold = 1
+                }
+            };
+
+            achievementSave.achievements = achievements.ToArray();
         }
         
         public void CheckIfHighestStat(StatType type, float value)
@@ -178,6 +350,11 @@ using UnityEngine;
                     break;
             }
         }
+
+        public void AchievementUnlocked(Achievement achievement)
+        {
+            // display something.
+        }
     }
 
 
@@ -224,5 +401,46 @@ public struct StatisticsSave
     public int highestLuck;
     
     public int highestBlock;
+}
 
+[Serializable]
+public class AchievementSave
+{
+    public Achievement[] achievements;
+}
+
+[Serializable]
+public class Achievement
+{
+    public AchievementName name;
+    public string uiName;
+    public int rewardGold;
+    public bool isCompleted;
+    public int progress;
+    public int goal;
+}
+
+public enum AchievementName
+{
+    Kill100Enemies,
+    Kill1000Enemies,
+    Kill10000Enemies,
+    Kill100000Enemies,
+    Kill100Bosses,
+    Kill1000Bosses,
+    Die,
+    Die50Times,
+    Die100Times,
+    Open100Chests,
+    Open1000Chests,
+    Earn100Gold,
+    Earn1000Gold,
+    Earn10000Gold,
+    Earn100000Gold,
+    BeatTheGame,
+    BeatTheGame10Times,
+    WinInUnder1Hour,
+    WinInUnder45Minutes,
+    WinInUnder30Minutes,
+    BuyAllStoreItems
 }

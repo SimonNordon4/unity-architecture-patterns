@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -127,7 +128,11 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             roundTime += Time.deltaTime;
-            roundTimeText.text = $"Round Time: {(int)roundTime}";
+            
+            //format round time in MM:SS
+            var minutes = Mathf.FloorToInt(roundTime / 60f);
+            var seconds = Mathf.FloorToInt(roundTime % 60f);
+            roundTimeText.text = $"Round Time: {minutes:00}:{seconds:00}";
 
             if (_nextMiniChest)
             {
@@ -230,7 +235,55 @@ public class GameManager : MonoBehaviour
             roundTime < AccountManager.instance.statistics.fastestWin)
             AccountManager.instance.statistics.fastestWin = roundTime;
 
+        List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+            .Where(a => a.name == AchievementName.BeatTheGame ||
+                        a.name == AchievementName.BeatTheGame10Times).ToList();
+        foreach (var a in achievements)
+        {
+            if (a.isCompleted) return;
+            a.progress++;
+            if (a.progress >= a.goal)
+            {
+                a.isCompleted = true;
+                AccountManager.instance.AchievementUnlocked(a);
+            }
+        }
+        
+        var under1hour = AccountManager.instance.achievementSave.achievements
+            .First(x => x.name == AchievementName.WinInUnder1Hour);
+
+        if (!under1hour.isCompleted)
+        {
+            if(under1hour.progress > roundTime)
+                under1hour.progress = (int)roundTime;
+            under1hour.isCompleted = roundTime < under1hour.goal;
+        }
+            
+        
+        var under45mins = AccountManager.instance.achievementSave.achievements
+            .First(x => x.name == AchievementName.WinInUnder45Minutes);
+
+        if (!under45mins.isCompleted)
+        {
+            if(under45mins.progress > roundTime)
+                under45mins.progress = (int)roundTime;
+            under45mins.isCompleted = roundTime < under45mins.goal;
+        }
+           
+        
+        var under30mins = AccountManager.instance.achievementSave.achievements
+            .First(x => x.name == AchievementName.WinInUnder30Minutes);
+        
+        if(!under30mins.isCompleted)
+        {
+            if(under30mins.progress > roundTime)
+                under30mins.progress = (int)roundTime;
+            under30mins.isCompleted = roundTime < under30mins.goal;
+        }
+        
         roundTime = 0f;
+        
+
 
         AddGoldWhenGameEnds();
     }
@@ -251,6 +304,22 @@ public class GameManager : MonoBehaviour
         var enemyManager = FindObjectOfType<EnemyManager>();
 
         var totalGold = enemyManager.BlockDatas.Sum(data => data.totalGold);
+        
+        List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+            .Where(a => a.name == AchievementName.Earn100Gold ||
+                        a.name == AchievementName.Earn1000Gold ||
+                        a.name == AchievementName.Earn10000Gold ||
+                        a.name == AchievementName.Earn100000Gold).ToList();
+        foreach (var a in achievements)
+        {
+            if (a.isCompleted) return;
+            a.progress += totalGold;
+            if (a.progress >= a.goal)
+            {
+                a.isCompleted = true;
+                AccountManager.instance.AchievementUnlocked(a);
+            }
+        }
 
         AccountManager.instance.AddGold(totalGold);
 
@@ -384,6 +453,20 @@ public class GameManager : MonoBehaviour
     {
         // monitor stats.
         AccountManager.instance.statistics.totalChestsOpened++;
+        
+        List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+            .Where(a => a.name == AchievementName.Open100Chests ||
+                        a.name == AchievementName.Open1000Chests).ToList();
+        foreach (var a in achievements)
+        {
+            if (a.isCompleted) return;
+            a.progress++;
+            if (a.progress >= a.goal)
+            {
+                a.isCompleted = true;
+                AccountManager.instance.AchievementUnlocked(a);
+            }
+        }
 
         // If we pickup a mini chest, we can start spawning the next mini chest.
         if (chest.chestType == ChestType.Mini) _nextMiniChest = true;
@@ -560,10 +643,55 @@ public class GameManager : MonoBehaviour
         {
             var healthPack = Instantiate(HealthPackPrefab, enemy.transform.position, Quaternion.identity);
         }
+        AccountManager.instance.statistics.totalKills++;
+
+        // get all boss enemy achievements
+        List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+            .Where(a => a.name == AchievementName.Kill1000Enemies ||
+                        a.name == AchievementName.Kill10000Enemies ||
+                        a.name == AchievementName.Kill100000Enemies ||
+                        a.name == AchievementName.Kill100Enemies).ToList();
+
+        foreach (var a in bossEnemyAchievements)
+        {
+            if (a.isCompleted) return;
+            a.progress++;
+            if (a.progress >= a.goal)
+            {
+                a.isCompleted = true;
+                AccountManager.instance.AchievementUnlocked(a);
+            }
+        }
+        
+           
+        
+        
     }
 
     public void OnBossEnemyDied(GameObject enemy)
     {
+        // get all boss enemy achievements
+        List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+            .Where(a => a.name == AchievementName.Kill100Bosses ||
+                        a.name == AchievementName.Kill1000Bosses ||
+                        a.name == AchievementName.Kill1000Enemies ||
+                        a.name == AchievementName.Kill10000Enemies ||
+                        a.name == AchievementName.Kill100000Enemies ||
+                        a.name == AchievementName.Kill100Enemies).ToList();
+
+        foreach (var a in bossEnemyAchievements)
+        {
+            if (a.isCompleted) return;
+            a.progress++;
+            if (a.progress >= a.goal)
+            {
+                a.isCompleted = true;
+                AccountManager.instance.AchievementUnlocked(a);
+            }
+        }
+        
+        AccountManager.instance.statistics.totalBossKills++;
+        AccountManager.instance.statistics.totalKills++;
     }
 
     #endregion

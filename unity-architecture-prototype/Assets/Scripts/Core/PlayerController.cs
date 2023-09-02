@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -250,6 +252,21 @@ public class PlayerController : MonoBehaviour
                 gameManager.playerCurrentHealth = 0;
                 AccountManager.instance.statistics.totalDeaths++;
                 gameManager.LoseGame();
+                
+                List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+                    .Where(a => a.name == AchievementName.Die ||
+                                a.name == AchievementName.Die50Times ||
+                                a.name == AchievementName.Die100Times).ToList();
+                foreach (var a in bossEnemyAchievements)
+                {
+                    if (a.isCompleted) return;
+                    a.progress++;
+                    if (a.progress >= a.goal)
+                    {
+                        a.isCompleted = true;
+                        AccountManager.instance.AchievementUnlocked(a);
+                    }
+                }
             }
             SetUI();
         }
