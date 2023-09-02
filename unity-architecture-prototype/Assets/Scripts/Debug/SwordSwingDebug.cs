@@ -7,10 +7,10 @@ public class SwordSwingDebug : MonoBehaviour
     public Transform SwordPivot;
 
     public float swordArc = 45;
-    
+
     private float _timeSinceLastSwing = 0.0f;
     public float timeBetweenSwings = 1f;
-    
+
     public bool _isSwingingLeftToRight = true;
 
     private void Start()
@@ -20,7 +20,7 @@ public class SwordSwingDebug : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         _timeSinceLastSwing += Time.deltaTime;
         if (_timeSinceLastSwing >= timeBetweenSwings)
@@ -30,21 +30,21 @@ public class SwordSwingDebug : MonoBehaviour
             StartCoroutine(SwordAttack());
         }
     }
-    
+
     private IEnumerator SwordAttack()
     {
         // Enable the sword gameobject.
         SwordPivot.gameObject.SetActive(true);
         SwordPivot.localScale = new Vector3(1f, 1f, 5f);
-    
+
         // Base rotation values.
         var leftRotation = Quaternion.Euler(0, swordArc * -0.5f, 0);
         var rightRotation = Quaternion.Euler(0, swordArc * 0.5f, 0);
-    
+
         // The start rotation needs to be directed to the closest target.
         var directionToTarget = Vector3.ProjectOnPlane(Vector3.right, Vector3.up).normalized;
         SwordPivot.forward = directionToTarget;
-    
+
         // Determine the start and end rotation based on the current swing direction.
         Quaternion startRotation, endRotation;
         if (_isSwingingLeftToRight)
@@ -57,7 +57,7 @@ public class SwordSwingDebug : MonoBehaviour
             startRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
             endRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
         }
-        
+
         var total180Arcs = Mathf.FloorToInt(swordArc / 180f);
         var swingTime = 0.2f;
 
@@ -66,7 +66,7 @@ public class SwordSwingDebug : MonoBehaviour
             var lastStart = startRotation;
             var directionSign = _isSwingingLeftToRight ? 1 : -1;
             var lastEnd = startRotation * Quaternion.Euler(0, 179.9f * directionSign, 0);
-            
+
             for (var i = 0; i < total180Arcs; i++)
             {
                 var t = 0.0f;
@@ -80,7 +80,6 @@ public class SwordSwingDebug : MonoBehaviour
                     lastStart = SwordPivot.rotation;
                     lastEnd = lastStart * Quaternion.Euler(0, 179.9f * directionSign, 0);
                     swing = false;
-
                 }
             }
         }
@@ -98,10 +97,9 @@ public class SwordSwingDebug : MonoBehaviour
         }
 
 
-    
         // Toggle the swing direction for the next attack.
         _isSwingingLeftToRight = !_isSwingingLeftToRight;
-    
+
         // Disable the sword gameobject.
         SwordPivot.gameObject.SetActive(false);
     }

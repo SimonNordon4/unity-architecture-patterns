@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 [DefaultExecutionOrder(-10)]
@@ -17,13 +18,21 @@ using UnityEngine;
             private set => _instance = value;
         }
         
+        [Header("Gold")]
         public int totalGold;
 
+        [Header("Statistics")]
         public StatisticsSave statistics = new();
         
+        [Header("Store")]
         public StoreItemConfig storeItemConfig;
         public List<StoreItem> storeItems = new();
 
+
+
+        
+        
+        
         public bool debugSkipLoad = false;
         
         public void AddGold(int amount)

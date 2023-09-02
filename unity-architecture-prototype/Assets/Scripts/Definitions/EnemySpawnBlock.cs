@@ -11,12 +11,12 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "EnemySpawnBlock", menuName = "Prototype/EnemySpawnBlock", order = 1)]
 public class EnemySpawnBlock : ScriptableObject
 {
-    public Vector2 healthMultiplier = new Vector2(1, 1);
-    public Vector2 damageMultiplier = new Vector2(1, 1);
-    public Vector2Int bossChestTier = new Vector2Int(1, 2);
-    public Vector2Int bossChestChoices = new Vector2Int(3, 3);
+    public Vector2 healthMultiplier = new(1, 1);
+    public Vector2 damageMultiplier = new(1, 1);
+    public Vector2Int bossChestTier = new(1, 2);
+    public Vector2Int bossChestChoices = new(3, 3);
     public float goldMultiplier = 1;
-    
+
     public List<EnemySpawnWave> spawnWaves = new();
 }
 
@@ -26,8 +26,8 @@ public class EnemySpawnBlockEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        var block = (EnemySpawnBlock) target;
-        
+        var block = (EnemySpawnBlock)target;
+
         EditorGUILayout.BeginVertical("box");
         if (block == null || block.spawnWaves == null) return;
         var totalSeconds = block.spawnWaves.Sum(wave =>
@@ -46,14 +46,14 @@ public class EnemySpawnBlockEditor : Editor
                 return 0;
             return wave.totalEnemies;
         });
-        
+
         EditorGUILayout.LabelField($"Block Time: {formattedTime}");
         EditorGUILayout.LabelField($@"Total Enemies: {totalEnemies}");
-        
+
         EditorGUILayout.LabelField($"Base Gold: {block.goldMultiplier * totalEnemies}");
-        
+
         EditorGUILayout.EndVertical();
-        
+
         base.OnInspectorGUI();
     }
 }

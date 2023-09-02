@@ -7,9 +7,6 @@ public class EscButtonSelector : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            backButton.onClick.Invoke();
-        }
+        if (Input.GetKeyDown(KeyCode.Escape)) backButton.onClick.Invoke();
     }
 }

@@ -16,18 +16,18 @@ public class RangedEnemyController : EnemyController
     {
         base.Start();
         // start with a bullet in the chamber!
-        if(startLoaded)
+        if (startLoaded)
             _timeSinceLastDamage = damageCooldown;
     }
-    
+
     protected override void Update()
     {
-        if(GameManager.instance.isGameActive == false) return;
-        
-        if(_isKnockedBack) return;
-        
+        if (GameManager.instance.isGameActive == false) return;
+
+        if (_isKnockedBack) return;
+
         if (playerTarget == null) return;
-        var difference =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up);
+        var difference = Vector3.ProjectOnPlane(playerTarget.position - transform.position, Vector3.up);
         var distance = difference.magnitude;
         difference = difference.normalized;
         var wishDir = Vector3.zero;
@@ -43,41 +43,36 @@ public class RangedEnemyController : EnemyController
         var updatedDir = (wishDir + avoidanceDirection * repulsionForce).normalized;
 
         transform.position += updatedDir * (Time.deltaTime * moveSpeed);
-        if (distance > 0)
-        {
-            transform.rotation = Quaternion.LookRotation(difference.normalized);
-        }
-        
+        if (distance > 0) transform.rotation = Quaternion.LookRotation(difference.normalized);
+
         ClampTransformToLevelBounds();
-        
+
         _timeSinceLastDamage += Time.deltaTime;
         if (_timeSinceLastDamage > damageCooldown && difference.magnitude < range)
         {
             Shoot(difference);
             _timeSinceLastDamage = 0;
         }
-        
+
         healthBarUI.transform.rotation = uiStartRotation;
     }
 
     private void Shoot(Vector3 direction)
     {
-        
-
         // Calculate total spread angle.
-        float totalSpread = bulletSpread * (bulletCount - 1);
+        var totalSpread = bulletSpread * (bulletCount - 1);
 
         // Determine the starting angle. If the bulletCount is odd, 
         // there will always be one bullet going directly forward.
-        float startAngle = (bulletCount % 2 == 1) ? -(totalSpread / 2) : (-totalSpread / 2) + (bulletSpread / 2);
+        var startAngle = bulletCount % 2 == 1 ? -(totalSpread / 2) : -totalSpread / 2 + bulletSpread / 2;
 
         // Get the rotation that will take the Vector3.forward to the 'direction' vector
-        Quaternion toDirection = Quaternion.FromToRotation(Vector3.forward, direction);
+        var toDirection = Quaternion.FromToRotation(Vector3.forward, direction);
 
-        for (int i = 0; i < bulletCount; i++)
+        for (var i = 0; i < bulletCount; i++)
         {
             // Rotate the direction by the current angle to get the bullet direction
-            var dir = toDirection * Quaternion.Euler(0, startAngle + (i * bulletSpread), 0) * Vector3.forward;
+            var dir = toDirection * Quaternion.Euler(0, startAngle + i * bulletSpread, 0) * Vector3.forward;
 
             // Create and setup the projectile
             var projectileGo = Instantiate(projectilePrefab, transform.position, Quaternion.LookRotation(dir));
@@ -88,6 +83,4 @@ public class RangedEnemyController : EnemyController
 
         _timeSinceLastDamage = 0;
     }
-
-
 }

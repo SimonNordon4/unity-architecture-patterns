@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,15 +9,15 @@ public class WasdButtonSelector : MonoBehaviour
         Vertical,
         Horizontal
     }
-    
+
     public List<Button> buttons = new();
     private Button _selectedButton;
     private int _selectedIndex = 0;
 
     public bool startSelected = true;
-    
+
     public Direction direction = Direction.Vertical;
-    
+
     private KeyCode _upKeyCode = KeyCode.W;
     private KeyCode _downKeyCode = KeyCode.S;
 
@@ -29,17 +28,14 @@ public class WasdButtonSelector : MonoBehaviour
             _upKeyCode = KeyCode.A;
             _downKeyCode = KeyCode.D;
         }
-        
-        else if(direction == Direction.Vertical)
+
+        else if (direction == Direction.Vertical)
         {
             _upKeyCode = KeyCode.W;
             _downKeyCode = KeyCode.S;
         }
-        
-        if (buttons.Count > 1 && startSelected)
-        {
-            _selectedButton = buttons[0];
-        }
+
+        if (buttons.Count > 1 && startSelected) _selectedButton = buttons[0];
     }
 
     private void Update()
@@ -52,6 +48,7 @@ public class WasdButtonSelector : MonoBehaviour
                 _selectedButton.Select();
                 return;
             }
+
             _selectedIndex--;
             if (_selectedIndex < 0)
                 _selectedIndex = buttons.Count - 1;
@@ -60,15 +57,16 @@ public class WasdButtonSelector : MonoBehaviour
             Debug.Log("Selecting Button: " + _selectedButton.name + " at index: " + _selectedIndex +
                       " in list of size: " + buttons.Count);
         }
-    
+
         if (Input.GetKeyDown(_downKeyCode)) // This should check for downKeyCode, not upKeyCode
         {
-            if(_selectedButton == null)
+            if (_selectedButton == null)
             {
                 _selectedButton = buttons[^1];
                 _selectedButton.Select();
                 return;
             }
+
             _selectedIndex++;
             if (_selectedIndex >= buttons.Count)
                 _selectedIndex = 0;
@@ -80,14 +78,10 @@ public class WasdButtonSelector : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (_selectedButton == null)
-            {
-                return;
-            }
+            if (_selectedButton == null) return;
 
             Debug.Log("Invoking button: " + _selectedButton.name);
             _selectedButton.onClick.Invoke();
         }
     }
-
 }
