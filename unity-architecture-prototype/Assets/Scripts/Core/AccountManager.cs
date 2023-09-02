@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -28,12 +29,19 @@ using UnityEngine;
         [Header("Store")]
         public StoreItemConfig storeItemConfig;
         public List<StoreItem> storeItems = new();
-
+        
+        [Header("Achievements")]
         public AchievementSave achievementSave = new();
+        public GameObject achievementPopup;
+        public TextMeshProUGUI achievementPopupText;
+        
+        
+        
         public bool debugSkipLoad = false;
         
         public void AddGold(int amount)
         {
+            statistics.totalGoldEarned += amount;
             totalGold += amount;
         }
 
@@ -73,8 +81,10 @@ using UnityEngine;
         private void OnEnable()
         {
             storeItems = storeItemConfig.storeItems;
+            CreateAchievements();
             if(debugSkipLoad) return;
             Load();
+            achievementPopup.SetActive(false);
 
         }
         private void OnDisable()
@@ -97,9 +107,11 @@ using UnityEngine;
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
             
-            
             json = JsonUtility.ToJson(statistics);
             PlayerPrefs.SetString("statistics", json);
+            
+            json = JsonUtility.ToJson(achievementSave);
+            PlayerPrefs.SetString("achievements", json);
             
         }
 
@@ -109,12 +121,15 @@ using UnityEngine;
             if (string.IsNullOrEmpty(json))
             {
                 totalGold = 0;
-                return;
+            }
+            else
+            {
+                var accountSave = JsonUtility.FromJson<AccountSave>(json);
+                totalGold = accountSave.totalGold;
+                storeItems = new List<StoreItem>(accountSave.storeItems);
             }
 
-            var accountSave = JsonUtility.FromJson<AccountSave>(json);
-            totalGold = accountSave.totalGold;
-            storeItems = new List<StoreItem>(accountSave.storeItems);
+           
             
             json = PlayerPrefs.GetString("statistics");
             if (string.IsNullOrEmpty(json))
@@ -123,13 +138,28 @@ using UnityEngine;
                 {
                     fastestWin = 999f
                 };
-                return;
             }
-            statistics = JsonUtility.FromJson<StatisticsSave>(json);
+            else
+            {
+                statistics = JsonUtility.FromJson<StatisticsSave>(json);
+            }
+            
+            
+            json = PlayerPrefs.GetString("achievements");
+            if (string.IsNullOrEmpty(json))
+            {
+                CreateAchievements();
+            }
+            else
+            {
+                achievementSave = JsonUtility.FromJson<AchievementSave>(json);
+            }
+
         }
 
         private void CreateAchievements()
         {
+            Debug.Log("Creating achievements");
             var achievements = new List<Achievement>
             {
                 new Achievement()
@@ -281,7 +311,10 @@ using UnityEngine;
                 }
             };
 
-            achievementSave.achievements = achievements.ToArray();
+            achievementSave = new AchievementSave
+            {
+                achievements = achievements.ToArray()
+            };
         }
         
         public void CheckIfHighestStat(StatType type, float value)
@@ -353,7 +386,22 @@ using UnityEngine;
 
         public void AchievementUnlocked(Achievement achievement)
         {
-            // display something.
+            achievement.isCompleted = true;
+            StartCoroutine(ShowAchievementPopup(achievement));
+        }
+
+        public void AchievementClaimed(Achievement achievement)
+        {
+            achievement.isClaimed = true;
+            AddGold(achievement.rewardGold);
+        }
+        
+        private IEnumerator ShowAchievementPopup(Achievement achievement)
+        {
+            achievementPopup.SetActive(true);
+            achievementPopupText.text = $"Achievement Unlocked:\n{achievement.uiName}";
+            yield return new WaitForSeconds(3f);
+            achievementPopup.SetActive(false);
         }
     }
 
@@ -418,6 +466,7 @@ public class Achievement
     public bool isCompleted;
     public int progress;
     public int goal;
+    public bool isClaimed;
 }
 
 public enum AchievementName

@@ -323,9 +323,6 @@ public class GameManager : MonoBehaviour
 
         AccountManager.instance.AddGold(totalGold);
 
-        // add to stats.
-        AccountManager.instance.statistics.totalGoldEarned += totalGold;
-
         foreach (var txt in GoldTexts) txt.text = $"Gold Added: {totalGold}";
     }
 
