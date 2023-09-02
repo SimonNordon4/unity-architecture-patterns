@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DefaultNamespace;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -92,6 +92,8 @@ public class GameManager : MonoBehaviour
     public Chest miniChestPrefab;
     public Chest mediumChestPrefab;
     public Chest largeChestPrefab;
+    
+    public WasdButtonSelector _chestItemsWasdSelector;
     
     [Header("Health Packs")]
     public GameObject HealthPackPrefab;
@@ -477,6 +479,14 @@ public class GameManager : MonoBehaviour
                 newChestItemButton.Initialize(item);
                 break;
             }
+            
+            // For keyboard input.
+            _chestItemsWasdSelector.buttons.Clear();
+            foreach (var chestItemUI in _chestItemButtons)
+            {
+                _chestItemsWasdSelector.buttons.Add(chestItemUI.GetComponent<Button>());
+            }
+            
         }
     }
 

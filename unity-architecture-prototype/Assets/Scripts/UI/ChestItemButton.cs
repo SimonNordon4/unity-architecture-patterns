@@ -3,8 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace DefaultNamespace
-{
+
     public class ChestItemButton : MonoBehaviour
     {
         public ChestItem chestItem;
@@ -82,4 +81,3 @@ namespace DefaultNamespace
             
         }
     }
-}

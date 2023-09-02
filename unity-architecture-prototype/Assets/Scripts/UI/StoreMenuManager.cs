@@ -9,6 +9,8 @@ public class StoreMenuManager : MonoBehaviour
     public List<StoreItemUI> StoreItemUis = new List<StoreItemUI>();
     public TextMeshProUGUI goldText;
 
+    public WasdButtonSelector ButtonSelector;
+
     private void OnEnable()
     {
         Init();
@@ -23,12 +25,16 @@ public class StoreMenuManager : MonoBehaviour
     void Init()
     {
         // Populate all the store item uis.
+        var buttons = new List<UnityEngine.UI.Button>();
         foreach (var storeItem in AccountManager.instance.storeItems)
         {
             var storeItemUi = Instantiate(StoreItemUIPrefab, StoreItemContainer);
             storeItemUi.Initialize(storeItem);
             StoreItemUis.Add(storeItemUi);
+            buttons.Add(storeItemUi.purchaseButton);
         }
+        
+        ButtonSelector.buttons = buttons;
         goldText.text =$"GOLD: {AccountManager.instance.totalGold.ToString()}";
     }
 
@@ -40,6 +46,7 @@ public class StoreMenuManager : MonoBehaviour
             if(storeItemUi != null)
                 Destroy(storeItemUi.gameObject);
         }
+        ButtonSelector.buttons.Clear();
         StoreItemUis.Clear();
     }
     

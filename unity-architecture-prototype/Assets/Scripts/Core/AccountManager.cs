@@ -92,3 +92,5 @@ using UnityEngine;
         public int totalGold;
         public StoreItem[] storeItems;
     }
+
+
