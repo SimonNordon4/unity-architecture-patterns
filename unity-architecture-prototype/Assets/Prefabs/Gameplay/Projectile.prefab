@@ -146,6 +146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37909ee19846194988a70f4264f9410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
+  projectileSpeed: 20
   damage: 1
   projectileLifetime: 5
+  knockBackIntensity: 1
+  pierceCount: 1
+  canAttackPlayer: 0
+  canAttackEnemy: 1
