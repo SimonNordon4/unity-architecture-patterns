@@ -103,7 +103,10 @@ using UnityEngine;
             json = PlayerPrefs.GetString("statistics");
             if (string.IsNullOrEmpty(json))
             {
-                statistics = new StatisticsSave();
+                statistics = new StatisticsSave
+                {
+                    fastestWin = 999f
+                };
                 return;
             }
             statistics = JsonUtility.FromJson<StatisticsSave>(json);
@@ -169,6 +172,10 @@ using UnityEngine;
                     if (value > statistics.highestLuck)
                         statistics.highestLuck = (int) value;
                     break;
+                case StatType.Block:
+                    if (value > statistics.highestBlock)
+                        statistics.highestBlock = (int) value;
+                    break;
             }
         }
     }
@@ -215,5 +222,7 @@ public struct StatisticsSave
 
     public int highestHealthPackSpawnRate;
     public int highestLuck;
+    
+    public int highestBlock;
 
 }

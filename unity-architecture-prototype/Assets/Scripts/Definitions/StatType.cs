@@ -14,7 +14,8 @@
     PlayerHealth,
     EnemySpawnRate,
     HealthPackSpawnRate,
-    Luck
+    Luck,
+    Block
 }
 
 public enum ModifierType

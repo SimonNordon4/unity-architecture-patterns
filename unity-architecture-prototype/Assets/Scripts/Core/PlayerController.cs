@@ -235,6 +235,12 @@ public class PlayerController : MonoBehaviour
         
         public void TakeDamage(int damageAmount)
         {
+            damageAmount -= (int)gameManager.block.value;
+            if (damageAmount <= 0)
+            {
+                return;
+            }
+            
             AccountManager.instance.statistics.totalDamageTaken += damageAmount;
             
             gameManager.playerCurrentHealth -= damageAmount;

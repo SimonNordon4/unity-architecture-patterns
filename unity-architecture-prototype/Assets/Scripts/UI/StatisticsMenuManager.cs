@@ -33,6 +33,7 @@ public class StatisticsMenuManager : MonoBehaviour
     public TextMeshProUGUI highestSwordArcText;
     public TextMeshProUGUI highestHealthPackSpawnRateText;
     public TextMeshProUGUI highestLuckText;
+    public TextMeshProUGUI highestBlockText;
 
     public void UpdateUI()
     {
@@ -78,6 +79,8 @@ public class StatisticsMenuManager : MonoBehaviour
             $"<color=#{label}>Highest Health Pack Spawn Rate:</color> <color=#{stat}>{AccountManager.instance.statistics.highestHealthPackSpawnRate}</color>";
         highestLuckText.text =
             $"<color=#{label}>Highest Luck:</color> <color=#{stat}>{AccountManager.instance.statistics.highestLuck}</color>";
+        highestBlockText.text =
+            $"<color=#{label}>Highest Block:</color> <color=#{stat}>{AccountManager.instance.statistics.highestBlock}</color>";
     }
 
     private void OnEnable()

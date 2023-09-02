@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     [Header("Stats")] public int playerCurrentHealth = 10;
     public Stat playerMaxHealth = new(10);
     public Stat playerSpeed = new(5);
+    public Stat block = new(0);
 
     public Stat pistolDamage = new(1);
     public Stat pistolRange = new(5);
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
         PopulateStats();
         PopulateStatsUI();
         LoadStoreItemsIntoStats();
+        playerCurrentHealth = (int)playerMaxHealth.value;
 
         _allItems = new[]
         {
@@ -154,8 +156,8 @@ public class GameManager : MonoBehaviour
         gameMenu.SetActive(true);
         isGameActive = true;
         roundTime = 0f;
-        playerCurrentHealth = (int)playerMaxHealth.value;
         LoadStoreItemsIntoStats();
+        playerCurrentHealth = (int)playerMaxHealth.value;
         SpawnMiniChest();
     }
 
@@ -286,6 +288,7 @@ public class GameManager : MonoBehaviour
     {
         _stats.Add(StatType.PlayerHealth, playerMaxHealth);
         _stats.Add(StatType.PlayerSpeed, playerSpeed);
+        _stats.Add(StatType.Block, block);
 
         _stats.Add(StatType.PistolDamage, pistolDamage);
         _stats.Add(StatType.PistolRange, pistolRange);
