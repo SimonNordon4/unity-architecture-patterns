@@ -6240,7 +6240,7 @@ MonoBehaviour:
   largeChestPrefab: {fileID: 3922492998747134388, guid: 8d8af5a9e9980e94294e900bdb4a6312,
     type: 3}
   spawnRadius: 20
-  enemySpawnRound: {fileID: 11400000, guid: 5e1d1c7a26c56e64eaffb157407eab8a, type: 2}
+  enemySpawnRound: {fileID: 11400000, guid: ca1520d8e0b536748a2e1f3795b74d23, type: 2}
   totalEnemiesKilled: 0
   currentPhase: 1
 --- !u!4 &644039391
@@ -7401,14 +7401,14 @@ MonoBehaviour:
     maximumValue: 720
     value: 45
   luck:
-    initialValue: 10
+    initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
-    value: 10
+    value: 0
   enemySpawnRate:
     initialValue: 1
-    minimumValue: 0.1
-    maximumValue: Infinity
+    minimumValue: 1
+    maximumValue: 10
     value: 1
   healthPackSpawnRate:
     initialValue: 5
@@ -13350,6 +13350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showEnemyHealthBars: 1
+  isNormalSpawnRate: 0
 --- !u!1 &1616887648
 GameObject:
   m_ObjectHideFlags: 0

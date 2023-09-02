@@ -17,6 +17,7 @@ public class SettingsManager : MonoBehaviour
     }
     
     public bool showEnemyHealthBars = true;
+    public bool isNormalSpawnRate = true;
 
     public void SetShowEnemyHealthBars(bool show)
     {

@@ -186,7 +186,10 @@ public class EnemyManager : MonoBehaviour
 
     private void HandleNormalEnemies()
     {
-        _elapsedWaveTime += Time.deltaTime;
+        if(!SettingsManager.instance.isNormalSpawnRate)
+            _elapsedWaveTime += Time.deltaTime * gameManager.enemySpawnRate.value;
+        else
+            _elapsedWaveTime += Time.deltaTime;
 
         if (_elapsedWaveTime > _currentWave.blockTime)
         {
