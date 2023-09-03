@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   itemName: Hyper Bullets
-  tier: 1
+  tier: 4
   spawnChance: 100
   modifiers:
   - statType: 1
@@ -27,5 +27,8 @@ MonoBehaviour:
     modifierType: 0
     modifierValue: 1
   - statType: 10
+    modifierType: 0
+    modifierValue: -0.5
+  - statType: 3
     modifierType: 0
     modifierValue: -0.5

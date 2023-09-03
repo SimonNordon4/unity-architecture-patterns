@@ -166,6 +166,10 @@ public class GameManager : MonoBehaviour
         LoadStoreItemsIntoStats();
         playerCurrentHealth = (int)playerMaxHealth.value;
         SpawnMiniChest();
+        // clear all items
+        currentlyHeldItems.Clear();
+        UpdateItemUI();
+        
     }
 
     public void GoToMainMenu()

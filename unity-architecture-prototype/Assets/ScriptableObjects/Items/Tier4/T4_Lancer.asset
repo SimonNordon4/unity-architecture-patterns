@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
   itemName: Lancer
-  tier: 1
+  tier: 4
   spawnChance: 100
   modifiers:
   - statType: 11
     modifierType: 0
     modifierValue: 25
-  - statType: 6
-    modifierType: 0
-    modifierValue: 3
   - statType: 5
     modifierType: 0
-    modifierValue: -1
+    modifierValue: 3
+  - statType: 9
+    modifierType: 0
+    modifierValue: -30
