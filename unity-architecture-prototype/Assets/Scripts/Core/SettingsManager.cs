@@ -30,4 +30,9 @@ public class SettingsManager : MonoBehaviour
             enemy.SetHealthBarVisibility(showEnemyHealthBars);
         }
     }
+    
+    public void SetNormalSpawnRate(bool normal)
+    {
+        isNormalSpawnRate = normal;
+    }
 }
