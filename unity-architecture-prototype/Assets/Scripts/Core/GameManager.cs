@@ -67,8 +67,8 @@ public class GameManager : MonoBehaviour
 
     public List<TextMeshProUGUI> GoldTexts = new();
 
-    [Header("Stat UI")] public RectTransform StatContainer;
-    private Dictionary<StatType, TextMeshProUGUI> statTexts = new();
+    [Header("Stat UI")] public List<RectTransform> StatContainers = new();
+    private Dictionary<StatType,List<TextMeshProUGUI>> statTexts = new();
 
     [Header("Item UI")] public RectTransform itemHoverImageContainer;
     private readonly List<GameObject> _itemHoverImages = new();
@@ -382,14 +382,29 @@ public class GameManager : MonoBehaviour
 
     private void PopulateStatsUI()
     {
-        foreach (var key in _stats.Keys)
+
+        foreach (var statContainer in StatContainers)
         {
-            var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
-                StatContainer);
-            newStatText.fontSize = 32;
-            // set the width of the text transform to 400
-            newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
-            statTexts.Add(key, newStatText);
+            // get all the children of the stat container and destroy them.
+            foreach (Transform child in statContainer) Destroy(child.gameObject);
+            
+            foreach (var key in _stats.Keys)
+            {
+                var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
+                    statContainer);
+                newStatText.fontSize = 24;
+                // set the width of the text transform to 400
+                newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
+
+                if (statTexts.ContainsKey(key))
+                {
+                    statTexts[key].Add(newStatText);
+                }
+                else
+                {
+                    statTexts.Add(key, new List<TextMeshProUGUI>(){newStatText});
+                }
+            }
         }
 
         UpdateStatsUI();
@@ -407,15 +422,17 @@ public class GameManager : MonoBehaviour
                     i++;
                 }
 
-            var newStatText = statTexts[key];
-            newStatText.text = $"{statTypeText}: {_stats[key].value}";
-            // check if the stat value is above, below or equal to the initial value.
-            if (_stats[key].value > _stats[key].initialValue)
-                newStatText.color = new Color(0.75f, 1f, 0.75f);
-            else if (_stats[key].value < _stats[key].initialValue)
-                newStatText.color = new Color(1f, 0.75f, 0.75f);
-            else
-                newStatText.color = new Color(0.8f, 0.8f, 0.8f);
+            foreach (var newStatText in statTexts[key])
+            {
+                newStatText.text = $"{statTypeText}: {_stats[key].value}";
+                // check if the stat value is above, below or equal to the initial value.
+                if (_stats[key].value > _stats[key].initialValue)
+                    newStatText.color = new Color(0.75f, 1f, 0.75f);
+                else if (_stats[key].value < _stats[key].initialValue)
+                    newStatText.color = new Color(1f, 0.75f, 0.75f);
+                else
+                    newStatText.color = new Color(0.8f, 0.8f, 0.8f);
+            }
         }
     }
 
