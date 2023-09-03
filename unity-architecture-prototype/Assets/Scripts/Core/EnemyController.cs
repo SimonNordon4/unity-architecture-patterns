@@ -14,6 +14,7 @@ public class EnemyController : MonoBehaviour
     public GameObject healthBarUI;
     public TextMeshProUGUI healthText;
     protected Quaternion uiStartRotation;
+    public TextMeshProUGUI damageText;
     
     [Header("Movement")]
     public Transform playerTarget;
@@ -30,6 +31,9 @@ public class EnemyController : MonoBehaviour
     public float damageCooldown = 0.2f;
     protected float _timeSinceLastDamage;
     protected readonly List<Transform> _nearbyEnemies = new(4);
+
+    private Coroutine damageTextCoroutine = null;
+    public Coroutine knockBackCoroutine = null;
 
     protected virtual void Start()
     {
@@ -137,6 +141,11 @@ public class EnemyController : MonoBehaviour
         {
             enemyManager.EnemyDied(gameObject);
         }
+        else
+        {
+            if(damageTextCoroutine != null) StopCoroutine(damageTextCoroutine);
+            damageTextCoroutine = StartCoroutine(ShowDamageText(damage));
+        }
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -179,9 +188,9 @@ public class EnemyController : MonoBehaviour
 
     public virtual void ApplyKnockBack(Vector3 direction, float intensity)
     {
-        if(_isKnockedBack) StopAllCoroutines();
+        if(_isKnockedBack && knockBackCoroutine != null) StopCoroutine(knockBackCoroutine);
         _isKnockedBack = true;
-        StartCoroutine(KnockBackRoutine(direction * intensity));
+        knockBackCoroutine = StartCoroutine(KnockBackRoutine(direction * intensity));
     }
     
     // Create a coroutine that will move the enemy in the direction of the knockback for 0.4 seconds with the given intensity being the distance the enemy will move.
@@ -213,6 +222,35 @@ public class EnemyController : MonoBehaviour
 
         transform.position = targetPosition;
         _isKnockedBack = false;
+    }
+    
+    protected virtual IEnumerator ShowDamageText(int damage)
+    {
+
+        damageText.text = damage.ToString();
+        GameObject o = damageText.gameObject;
+        o.SetActive(true);
+        var elapsedTime = 0f;
+        var t = o.transform;
+        
+        var startPosition = Vector3.right;
+        var targetPosition = Vector3.up + Vector3.right * 1f;
+
+        var startScale = Vector3.one * 0.25f;
+        var targetScale = Vector3.one;
+        
+        while (elapsedTime < 0.6f)
+        {
+            elapsedTime += Time.deltaTime;
+            var normalizedTime = elapsedTime / 0.4f;
+            var quadraticTime = normalizedTime * normalizedTime;
+            var inversedQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
+            t.position = Vector3.Lerp(startPosition + transform.position, targetPosition + transform.position, inversedQuadraticTime);
+            t.localScale = Vector3.Lerp(startScale, targetScale, inversedQuadraticTime);
+            yield return new WaitForEndOfFrame();
+        }
+        damageText.gameObject.SetActive(false);
+        yield return null;
     }
     
 }

@@ -15,7 +15,8 @@ public class SettingsManager : MonoBehaviour
         }
         private set => _instance = value;
     }
-    
+
+    public bool showDamageNumbers = true;
     public bool showEnemyHealthBars = true;
     public bool isNormalSpawnRate = true;
 
