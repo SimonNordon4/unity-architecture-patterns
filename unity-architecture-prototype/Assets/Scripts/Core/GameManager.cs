@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Unity Functions
-
+    
     private void Start()
     {
         GoToMainMenu();
@@ -174,7 +174,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        Debug.Log("Go to Main Menu");
+        AccountManager.instance.Save();
         HideAll();
         mainMenu.SetActive(true);
         isGameActive = false;
@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        Debug.Log("Game Won!");
+        AccountManager.instance.Save();
         HideAll();
         winMenu.SetActive(true);
         isGameActive = false;
@@ -309,7 +309,9 @@ public class GameManager : MonoBehaviour
         // get the enemy manager
         var enemyManager = FindObjectOfType<EnemyManager>();
 
-        var totalGold = enemyManager.BlockDatas.Sum(data => data.totalGold);
+        var totalGold = enemyManager.WaveDatas.Sum(data => data.totalGold);
+        
+        Debug.Log("Total gold: " + totalGold);
         
         List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
             .Where(a => a.name == AchievementName.Earn100Gold ||
@@ -344,6 +346,8 @@ public class GameManager : MonoBehaviour
 
     public void QuitApplication()
     {
+        AccountManager.instance.Save();
+        
         Debug.Log("Quit Application");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

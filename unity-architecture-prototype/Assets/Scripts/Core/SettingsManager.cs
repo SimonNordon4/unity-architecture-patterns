@@ -36,4 +36,9 @@ public class SettingsManager : MonoBehaviour
     {
         isNormalSpawnRate = normal;
     }
+    
+    public void ShowDamageNumbers(bool show)
+    {
+        showDamageNumbers = show;
+    }
 }

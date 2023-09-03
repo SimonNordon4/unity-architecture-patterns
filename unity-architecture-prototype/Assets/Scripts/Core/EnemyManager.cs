@@ -63,9 +63,9 @@ public class EnemyManager : MonoBehaviour
     // Chest data
     private GameObject _bossChest;
     
-    // Block Data
-    private BlockRuntimeData _currentBlockData;
-    public readonly List<BlockRuntimeData> BlockDatas = new List<BlockRuntimeData>();
+    // Wave Data
+    public readonly List<WaveRuntimeData> WaveDatas = new();
+    private WaveRuntimeData _currentWaveData;
 
 
     // Will destroy all alive enemies.
@@ -105,10 +105,12 @@ public class EnemyManager : MonoBehaviour
         thisWave = 1;
         gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
         
-        _currentBlockData = new BlockRuntimeData();
-        _currentBlockData.startTime = gameManager.roundTime;
-        BlockDatas.Clear();
-        BlockDatas.Add(_currentBlockData);
+        _currentWaveData = new WaveRuntimeData
+        {
+            startTime = gameManager.roundTime
+        };
+        WaveDatas.Clear();
+        WaveDatas.Add(_currentWaveData);
         
     }
 
@@ -425,7 +427,19 @@ public class EnemyManager : MonoBehaviour
     {
         _waveIndex++;
         
-        Debug.Log($"Starting wave: {_waveIndex} in block {_blockIndex} which contains {_currentSpawnWaves.Count} waves.");
+        // add gold to the block data.
+        var goldEarnedThisWave = (int)(_currentWave.totalEnemies * _currentBlock.goldMultiplier);
+        _currentWaveData.currentGold += goldEarnedThisWave;
+        
+        // to get the bonus gold we need to get the time difference between the start and end of the block.
+        var timeDifference = gameManager.roundTime - _currentWaveData.startTime;
+        // assuming max bonus is the duration of the wave, and at double time we have no bonus.
+        var bonusPercentage = _currentWave.blockTime * 2 - timeDifference;
+        // clamp the bonus percentage to 0 - 100
+        bonusPercentage = Mathf.Clamp(bonusPercentage, 0, 100);
+        // get the bonus gold based on the percentage.
+        _currentWaveData.bonusGold = Mathf.RoundToInt(goldEarnedThisWave * (bonusPercentage / 100));
+        _currentWaveData.totalGold = _currentWaveData.currentGold + _currentWaveData.bonusGold;
         
         // If we've reached the end of the block, go to the next block
         if (_waveIndex >= _currentSpawnWaves.Count)
@@ -440,40 +454,34 @@ public class EnemyManager : MonoBehaviour
 
             // create a new block data.
             _currentBlock = enemySpawnRound.enemySpawnBlocks[_blockIndex];
-            _currentBlockData = new BlockRuntimeData();
-            _currentBlockData.startTime = gameManager.roundTime;
-            _currentBlockData.startEnemies = totalEnemiesKilled;
-            
-            BlockDatas.Add(_currentBlockData);
             _currentSpawnWaves = _currentBlock.spawnWaves;
             _waveIndex = 0;
-
         }
         
         thisWave++;
         gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
         
         _currentWave = _currentSpawnWaves[_waveIndex];
+        _currentWaveData = new WaveRuntimeData
+        {
+            startTime = gameManager.roundTime
+        };
+        WaveDatas.Add(_currentWaveData);
         InitializeNewWave();
     }
 
     public void BlockBeaten()
     {
-        _currentBlockData.finishTime = gameManager.roundTime;
         
-        var timeDifference = _currentBlockData.finishTime - _currentBlockData.startTime;
-        var bonusPercentage = 100 - timeDifference;
-        
-        var killedDifference = totalEnemiesKilled - _currentBlockData.startEnemies;
+    }
 
-        _currentBlockData.baseGold = Mathf.RoundToInt(killedDifference * _currentBlock.goldMultiplier);
-        
-        bonusPercentage = Mathf.Clamp(bonusPercentage, 0, 100);
-        _currentBlockData.bonusGold = Mathf.RoundToInt(_currentBlockData.baseGold * (bonusPercentage / 100));
-        _currentBlockData.totalGold = _currentBlockData.baseGold + _currentBlockData.bonusGold;
-        
-        Debug.Log("Enemies killed: " + killedDifference);
-        Debug.Log("Block beaten earning " + _currentBlockData.totalGold + " gold.");
+    public class WaveRuntimeData
+    {
+        public float startTime;
+        public float finishTime;
+        public int currentGold;
+        public int bonusGold;
+        public int totalGold;
     }
 
     public class BlockRuntimeData
@@ -481,8 +489,7 @@ public class EnemyManager : MonoBehaviour
         public float startTime;
         public float finishTime;
         public int startEnemies;
-        public int endEnemies;
-        public int baseGold;
+        public int currentGold;
         public int bonusGold;
         public int totalGold;
     }

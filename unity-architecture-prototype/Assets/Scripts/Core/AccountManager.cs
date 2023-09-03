@@ -110,7 +110,7 @@ using UnityEngine;
             }
         }
 
-        private void Save()
+        public void Save()
         {
             var accountSave = new AccountSave();
             accountSave.totalGold = totalGold;
@@ -124,6 +124,8 @@ using UnityEngine;
             
             json = JsonUtility.ToJson(achievementSave);
             PlayerPrefs.SetString("achievements", json);
+            
+            PlayerPrefs.Save();
         }
 
         private void Load()
