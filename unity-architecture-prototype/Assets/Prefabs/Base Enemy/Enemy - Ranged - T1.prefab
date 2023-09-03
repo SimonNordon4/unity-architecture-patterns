@@ -46,7 +46,7 @@ PrefabInstance:
     - target: {fileID: 7186381532623135110, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7186381532623135110, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -126,6 +126,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4797554202362716022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4560450972172494899, guid: 4816712a64f5c7c46804fde9077abbb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9069598600487384901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6537234263106401617 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
@@ -148,6 +160,7 @@ MonoBehaviour:
   isBoss: 0
   healthBarUI: {fileID: 2823431276768393582}
   healthText: {fileID: 3180124130259449989}
+  damageText: {fileID: 4797554202362716022}
   playerTarget: {fileID: 0}
   moveSpeed: 3.5
   repulsionForce: 0.5

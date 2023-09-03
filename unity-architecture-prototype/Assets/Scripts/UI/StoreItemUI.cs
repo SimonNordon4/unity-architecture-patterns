@@ -22,11 +22,6 @@ using UnityEngine.UI;
 
         public void Initialize(StoreItem item)
         {
-            if (item == null)
-            {
-                Debug.LogError("Item is null",this);
-            }
-            
             purchaseButton.onClick.RemoveAllListeners();
             // reset values
             if(itemImage.sprite != null)

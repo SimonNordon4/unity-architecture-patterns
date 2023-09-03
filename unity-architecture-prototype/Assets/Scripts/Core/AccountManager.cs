@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Definitions;
 using TMPro;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ using UnityEngine;
         
         [Header("Store")]
         public StoreItemConfig storeItemConfig;
-        public List<StoreItem> storeItems = new();
+        public StoreItem[] storeItems;
         
         [Header("Achievements")]
         public AchievementSave achievementSave = new();
@@ -50,29 +51,32 @@ using UnityEngine;
             Debug.Log("Purchasing item: " + item.name);
             var itemPrice = item.pricePerTier[item.currentTier];
             totalGold -= itemPrice;
-            // find the item in the store items list
-            var storeItem = storeItems.Find(x => x.name == item.name);
-            // increase the tier
-            storeItem.currentTier = Mathf.Clamp(storeItem.currentTier + 1,0, storeItem.pricePerTier.Length);
+            
+            for (var i = 0; i < storeItems.Length; i++)
+            {
+                var buffer = storeItems[i];
+                if (buffer.name == item.name)
+                {
+                    storeItems[i].currentTier = Mathf.Clamp(storeItems[i].currentTier + 1,0, storeItems[i].pricePerTier.Length);
+                }
+            }
             
             // refresh the ui
             FindObjectOfType<StoreMenuManager>().UpdateStoreMenu();
             
+            var buyAllStoreItemsAchieve = achievementSave.achievements.First(x=>x.name == AchievementName.BuyAllStoreItems);
             
-            
-            var buyAllStoreItemsAchiev = achievementSave.achievements.First(x=>x.name == AchievementName.BuyAllStoreItems);
-            
-            if(buyAllStoreItemsAchiev.isCompleted)
+            if(buyAllStoreItemsAchieve.isCompleted)
             {
                 // total store items by summing up the tiers
                 var totalStoreItems = storeItems.Sum(x => x.currentTier);
                 // currently bought store items
                 var boughtStoreItems = storeItems.Count(x => x.currentTier > 0);
-                buyAllStoreItemsAchiev.progress = boughtStoreItems;
+                buyAllStoreItemsAchieve.progress = boughtStoreItems;
                 if (totalStoreItems == boughtStoreItems)
                 {
-                    buyAllStoreItemsAchiev.isCompleted = true;
-                    AchievementUnlocked(buyAllStoreItemsAchiev);
+                    buyAllStoreItemsAchieve.isCompleted = true;
+                    AchievementUnlocked(buyAllStoreItemsAchieve);
                 }
             }
 
@@ -80,29 +84,37 @@ using UnityEngine;
 
         private void OnEnable()
         {
-            storeItems = storeItemConfig.storeItems;
             CreateAchievements();
-            if(debugSkipLoad) return;
-            Load();
+
             achievementPopup.SetActive(false);
+            if(debugSkipLoad)
+            {
+                PopulateStoreItems();
+                return;
+            }
+            Load();
 
         }
         private void OnDisable()
         {
             Save();
-            // reset all current tier values in teh scriptable object
-            foreach (var storeItem in storeItemConfig.storeItems)
-            {
-                storeItem.currentTier = 0;
-            }
         }
 
+        private void PopulateStoreItems()
+        {
+            Debug.Log("Populating store items");
+            storeItems = new StoreItem[storeItemConfig.storeItemDefinitions.Count];
+            for(var i = 0; i < storeItemConfig.storeItemDefinitions.Count; i++)
+            {
+                storeItems[i] = new StoreItem(storeItemConfig.storeItemDefinitions[i]);
+            }
+        }
 
         private void Save()
         {
             var accountSave = new AccountSave();
             accountSave.totalGold = totalGold;
-            accountSave.storeItems = storeItems.ToArray();
+            accountSave.storeItems = storeItems;
             
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
@@ -112,7 +124,6 @@ using UnityEngine;
             
             json = JsonUtility.ToJson(achievementSave);
             PlayerPrefs.SetString("achievements", json);
-            
         }
 
         private void Load()
@@ -121,12 +132,13 @@ using UnityEngine;
             if (string.IsNullOrEmpty(json))
             {
                 totalGold = 0;
+                PopulateStoreItems();
             }
             else
             {
                 var accountSave = JsonUtility.FromJson<AccountSave>(json);
                 totalGold = accountSave.totalGold;
-                storeItems = new List<StoreItem>(accountSave.storeItems);
+                storeItems = accountSave.storeItems;
             }
 
            

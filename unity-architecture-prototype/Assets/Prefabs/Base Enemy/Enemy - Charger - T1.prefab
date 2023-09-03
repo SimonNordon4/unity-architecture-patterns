@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Charge Weak Variant
+      value: Enemy - Charger - T1
       objectReference: {fileID: 0}
     - target: {fileID: 7186381532623135110, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -78,6 +78,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7477888130972651128}
   m_SourcePrefab: {fileID: 100100000, guid: 4816712a64f5c7c46804fde9077abbb8, type: 3}
+--- !u!114 &3288393296007926946 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4560450972172494899, guid: 4816712a64f5c7c46804fde9077abbb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1363255572915895441}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3859028022664314501 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
@@ -97,8 +109,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
+  isBoss: 0
   healthBarUI: {fileID: 3859028022664314501}
   healthText: {fileID: 4833765838464234321}
+  damageText: {fileID: 3288393296007926946}
   playerTarget: {fileID: 0}
   moveSpeed: 5
   repulsionForce: 0.5
