@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour
     public Stat playerMaxHealth = new(10);
     public Stat playerSpeed = new(5);
     public Stat block = new(0);
+    public Stat dodge = new(0);
+    public Stat revives = new(0);
+    public Stat dashes = new(0);
 
     public Stat pistolDamage = new(1);
     public Stat pistolRange = new(5);
@@ -365,6 +368,9 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.PlayerHealth, playerMaxHealth);
         _stats.Add(StatType.PlayerSpeed, playerSpeed);
         _stats.Add(StatType.Block, block);
+        _stats.Add(StatType.Dodge,dodge);
+        _stats.Add(StatType.Revives,revives);
+        _stats.Add(StatType.Dashes,dashes);
 
         _stats.Add(StatType.PistolDamage, pistolDamage);
         _stats.Add(StatType.PistolRange, pistolRange);
@@ -381,12 +387,12 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.Luck, luck);
         _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
         _stats.Add(StatType.HealthPackSpawnRate, healthPackSpawnRate);
+        
         playerCurrentHealth = (int)playerMaxHealth.value;
     }
 
     private void PopulateStatsUI()
     {
-
         foreach (var statContainer in StatContainers)
         {
             // get all the children of the stat container and destroy them.

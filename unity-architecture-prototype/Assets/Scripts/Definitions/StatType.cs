@@ -15,7 +15,10 @@
     EnemySpawnRate,
     HealthPackSpawnRate,
     Luck,
-    Block
+    Block,
+    Dodge,
+    Revives,
+    Dashes
 }
 
 public enum ModifierType

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
         public GameManager gameManager;
         public EnemyManager enemyManager;
         
+        
         [Header("Pistol")]
         public GameObject projectilePrefab;
         private float _timeSinceLastFire = 0.0f;
@@ -29,6 +30,20 @@ public class PlayerController : MonoBehaviour
         [Header("UI")]
         public TextMeshProUGUI healthText;
         public RectTransform healthBar;
+        public Transform localCanvas;
+        public GameObject dodgeTextGo;
+        public GameObject damageTextGo;
+        private Quaternion _startRotation;
+
+        private Coroutine _dodgeTextCoroutine;
+        private Coroutine _damageTextCoroutine;
+        private Coroutine _dashCoroutine;
+        private bool _isDashing;
+        private bool _canTakeDamage = true;
+        
+        [Header("Dash")]
+        public float dashDistance = 5f;
+        public float dashTime = 0.2f;
 
         [Header("Debug")] public bool isDebugMode = false;
         
@@ -43,14 +58,52 @@ public class PlayerController : MonoBehaviour
         {
             swordPivot.transform.parent = null;
             swordPivot.gameObject.SetActive(false);
+            _startRotation = localCanvas.rotation;
             SetUI();
+        }
+
+        private IEnumerator Dash()
+        {
+            _isDashing = true;
+            gameManager.dashes.value--;
+            
+            var elapsedTime = 0f;
+            var startPosition = transform.position;
+            var dashDestination = transform.forward * dashDistance + transform.position;
+            
+            while (elapsedTime < dashTime)
+            {
+                elapsedTime += Time.deltaTime;
+
+                var normalizedTime = elapsedTime / dashTime;
+                var inverseQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
+                
+                transform.position = Vector3.Lerp(startPosition, dashDestination, inverseQuadraticTime);
+                
+                if (!gameManager.isGameActive)
+                {
+                    yield break;
+                }
+                
+                yield return new WaitForEndOfFrame();
+            }
+            
+            _isDashing = false;
+
         }
 
         private void Update()
         {
             if(!GameManager.instance.isGameActive) return;
+
+            if (Input.GetKeyDown(KeyCode.Space) && (int)gameManager.dashes.value > 0 && !_isDashing)
+            {
+                _dashCoroutine = StartCoroutine(Dash());
+            }
             
             swordPivot.transform.position = _transform.position;
+
+            if (_isDashing) return;
             
             // Get Closest enemy target.
             var closestDistance = Mathf.Infinity;
@@ -72,17 +125,19 @@ public class PlayerController : MonoBehaviour
                 var targetPos = targetIsNull ? _transform.position : _closestTarget.position;
                 Debug.DrawLine(_transform.position, targetPos, Color.red);
             }
-       
+
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
-            if(_timeSinceLastFire > 1 / gameManager.pistolFireRate.value)
+            if (_timeSinceLastFire > 1 / gameManager.pistolFireRate.value)
             {
                 if (!targetIsNull)
                 {
                     if (closestDistance <= gameManager.pistolRange.value)
                     {
-                        var directionToTarget = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
-                        var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.LookRotation(directionToTarget));
+                        var directionToTarget = Vector3
+                            .ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
+                        var projectileGo = Instantiate(projectilePrefab, _transform.position,
+                            Quaternion.LookRotation(directionToTarget));
                         var projectile = projectileGo.GetComponent<Projectile>();
                         projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
                         projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
@@ -91,7 +146,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            
+
             // Swing sword if possible.
             _timeSinceLastSwing += Time.deltaTime;
             if (_timeSinceLastSwing > 1 / gameManager.swordAttackSpeed.value && !_isSwordAttacking)
@@ -106,18 +161,18 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-            
+
             var dir = Vector3.zero;
-                
-            if(Input.GetKey(KeyCode.A))
+
+            if (Input.GetKey(KeyCode.A))
                 dir += Vector3.left;
-            if(Input.GetKey(KeyCode.D))
+            if (Input.GetKey(KeyCode.D))
                 dir += Vector3.right;
             if (Input.GetKey(KeyCode.W))
                 dir += Vector3.forward;
-            if(Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.S))
                 dir += Vector3.back;
-            
+
             // Check if the player is at the level bounds, if they are, make sure they cant move in the direction of the bound
             if (_transform.position.x <= -gameManager.levelBounds.x && dir.x < 0)
                 dir.x = 0;
@@ -127,15 +182,23 @@ public class PlayerController : MonoBehaviour
                 dir.z = 0;
             if (_transform.position.z >= gameManager.levelBounds.y && dir.z > 0)
                 dir.z = 0;
-            
+
             // Apply movement
             if (dir.magnitude > 0)
             {
                 _transform.position += dir.normalized * (Time.deltaTime * gameManager.playerSpeed.value);
                 _transform.rotation = Quaternion.LookRotation(dir);
             }
-            
-            
+
+
+
+        }
+        
+      
+
+        private void LateUpdate()
+        {
+            localCanvas.rotation = _startRotation;
             // Camera position.
             var cameraWishPosition = _transform.position + _cameraOffset;
             
@@ -237,12 +300,30 @@ public class PlayerController : MonoBehaviour
         
         public void TakeDamage(int damageAmount)
         {
+            if (!_canTakeDamage) return;
+            // Check if damage is dodged.
+            var hitChance = Random.Range(0, 100);
+
+            if (hitChance < gameManager.dodge.value)
+            {
+                if(_dodgeTextCoroutine != null) StopCoroutine(_dodgeTextCoroutine);
+                _dodgeTextCoroutine = StartCoroutine(ShowDodgeText());
+                return;
+            }
+            
             damageAmount -= (int)gameManager.block.value;
             // We should never be invincible imo.
             if (damageAmount <= 0)
             {
                 damageAmount = 1;
             }
+
+            if (_damageTextCoroutine != null)
+            {
+                StopCoroutine(_damageTextCoroutine);
+            }
+
+            _damageTextCoroutine = StartCoroutine(ShowDamageText(damageAmount));
             
             AccountManager.instance.statistics.totalDamageTaken += damageAmount;
             
@@ -251,14 +332,37 @@ public class PlayerController : MonoBehaviour
             if (gameManager.playerCurrentHealth <= 0)
             {
                 gameManager.playerCurrentHealth = 0;
+
+                if ((int)gameManager.revives.value > 0)
+                {
+                    gameManager.revives.value--;
+                    
+                    var enemyCount = enemyManager.enemies.Count;
+                    var enemies = enemyManager.enemies.ToArray();
+                    for (var i = 0; i < enemyCount - 1; i++)
+                    {
+                        var controller = enemies[i].GetComponent<EnemyController>();
+                        if (controller != null)
+                        {
+                            controller.TakeDamage(9999);
+                        }
+                            
+                    }
+                    
+                    gameManager.playerCurrentHealth = (int)gameManager.playerMaxHealth.value;
+                    StartCoroutine(InvincibilityFrames());
+
+                    return;
+                }
+                
                 AccountManager.instance.statistics.totalDeaths++;
                 gameManager.LoseGame();
                 
-                List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+                List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
                     .Where(a => a.name == AchievementName.Die ||
                                 a.name == AchievementName.Die50Times ||
                                 a.name == AchievementName.Die100Times).ToList();
-                foreach (var a in bossEnemyAchievements)
+                foreach (var a in dieAchievements)
                 {
                     if (a.isCompleted) return;
                     a.progress++;
@@ -270,6 +374,66 @@ public class PlayerController : MonoBehaviour
                 }
             }
             SetUI();
+        }
+        
+        private IEnumerator InvincibilityFrames()
+        {
+            _canTakeDamage = false;
+            yield return new WaitForSeconds(0.5f);
+            _canTakeDamage = true;
+        }
+
+        private IEnumerator ShowDodgeText()
+        {
+            dodgeTextGo.SetActive(true);
+            var elapsedTime = 0f;
+            var t = dodgeTextGo.transform;
+        
+            var startPosition = Vector3.right;
+            var targetPosition = Vector3.up + Vector3.right * 1f;
+
+            var startScale = Vector3.one * 0.25f;
+            var targetScale = Vector3.one;
+        
+            while (elapsedTime < 0.6f)
+            {
+                elapsedTime += Time.deltaTime;
+                var normalizedTime = elapsedTime / 0.4f;
+                var inversedQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
+                t.position = Vector3.Lerp(startPosition + transform.position, targetPosition + transform.position, inversedQuadraticTime);
+                t.localScale = Vector3.Lerp(startScale, targetScale, inversedQuadraticTime);
+                yield return new WaitForEndOfFrame();
+            }
+            dodgeTextGo.SetActive(false);
+            yield return null;
+        }
+
+        private IEnumerator ShowDamageText(int damageAmount)
+        {
+            var dmgText = damageTextGo.GetComponent<TextMeshProUGUI>();
+            damageTextGo.SetActive(true);
+            dmgText.text = damageAmount.ToString();
+            var elapsedTime = 0f;
+            var t = damageTextGo.transform;
+        
+            var startPosition = Vector3.right;
+            var targetPosition = Vector3.up + Vector3.right * 1f;
+
+            var startScale = Vector3.one * 0.25f;
+            var targetScale = Vector3.one;
+        
+            while (elapsedTime < 0.6f)
+            {
+                elapsedTime += Time.deltaTime;
+                var normalizedTime = elapsedTime / 0.4f;
+                var quadraticTime = normalizedTime * normalizedTime;
+                var inversedQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
+                t.position = Vector3.Lerp(startPosition + transform.position, targetPosition + transform.position, inversedQuadraticTime);
+                t.localScale = Vector3.Lerp(startScale, targetScale, inversedQuadraticTime);
+                yield return new WaitForEndOfFrame();
+            }
+            damageTextGo.SetActive(false);
+            yield return null;
         }
 
         public void OnTriggerEnter(Collider other)
