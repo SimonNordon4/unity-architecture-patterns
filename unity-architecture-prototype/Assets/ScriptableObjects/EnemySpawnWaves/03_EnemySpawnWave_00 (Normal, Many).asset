@@ -21,8 +21,8 @@ MonoBehaviour:
   - enemyPrefab: {fileID: 5267285107322196816, guid: 46eaf2c2ca56695459fbb255f7a91453,
       type: 3}
     numberOfEnemiesToSpawn: 5
-    spawnWeight: 100
-  totalEnemies: 150
+    spawnWeight: 50
+  totalEnemies: 170
   blockTime: 60
   spawnRateCurve:
     serializedVersion: 2
@@ -49,7 +49,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bossAction:
-    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+    enemyPrefab: {fileID: 5267285107322196816, guid: 46eaf2c2ca56695459fbb255f7a91453,
       type: 3}
-    numberOfEnemiesToSpawn: 10
+    numberOfEnemiesToSpawn: 30
     spawnWeight: 100

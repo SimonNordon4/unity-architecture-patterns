@@ -386,14 +386,16 @@ public class EnemyManager : MonoBehaviour
     {
         Chest chestController;
         // if max tier is 3 spawn a medium chest.
+        var projectedPosition = new Vector3(_positionOfLastBossDeath.x, 0, _positionOfLastBossDeath.z);
+        
         if (_currentBlock.bossChestTier.y <= 3)
         {
-            _bossChest = Instantiate(mediumChestPrefab, _positionOfLastBossDeath, Quaternion.identity);
+            _bossChest = Instantiate(mediumChestPrefab, projectedPosition, Quaternion.identity);
             chestController = _bossChest.GetComponent<Chest>();
         }
         else
         {
-            _bossChest = Instantiate(largeChestPrefab, _positionOfLastBossDeath, Quaternion.identity);
+            _bossChest = Instantiate(largeChestPrefab, projectedPosition, Quaternion.identity);
             chestController = _bossChest.GetComponent<Chest>();
         }
 

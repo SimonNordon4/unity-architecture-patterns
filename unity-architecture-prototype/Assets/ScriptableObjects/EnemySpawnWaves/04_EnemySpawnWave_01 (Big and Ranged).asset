@@ -10,15 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: 03_EnemySpawnWave_02 (Just Fast)
+  m_Name: 04_EnemySpawnWave_01 (Big and Ranged)
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
-  - enemyPrefab: {fileID: 785199637160735070, guid: 703656e0cd744624aafca113d09cae1c,
+  - enemyPrefab: {fileID: 4620172570121229727, guid: dbf619238e0c2d946a7813f9a2f07585,
+      type: 3}
+    numberOfEnemiesToSpawn: 4
+    spawnWeight: 100
+  - enemyPrefab: {fileID: 6537234263106401617, guid: c353f26a0b60cf84c981a76558c0e9f7,
       type: 3}
     numberOfEnemiesToSpawn: 3
     spawnWeight: 100
-  totalEnemies: 150
+  totalEnemies: 120
   blockTime: 60
   spawnRateCurve:
     serializedVersion: 2
@@ -45,7 +49,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bossAction:
-    enemyPrefab: {fileID: 522889589156199753, guid: 2d92c8b8d9dc3e445836879a0dd0a5ba,
+    enemyPrefab: {fileID: 7176683490113969161, guid: a1662aeccf899e742bef41674e29f0b9,
       type: 3}
-    numberOfEnemiesToSpawn: 1
+    numberOfEnemiesToSpawn: 5
     spawnWeight: 100

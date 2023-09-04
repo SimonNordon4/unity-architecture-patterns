@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using TMPro;
@@ -229,6 +230,10 @@ public class GameManager : MonoBehaviour
         // Remove all chests.
         var chests = FindObjectsOfType<Chest>();
         foreach (var chest in chests) Destroy(chest.gameObject);
+        
+        // Remove all healthpacks
+        var healthPacks = FindObjectsOfType<HealthPackController>();
+        foreach (var healthPack in healthPacks) Destroy(healthPack.gameObject);
     }
 
     public void WinGame()
@@ -291,8 +296,6 @@ public class GameManager : MonoBehaviour
         }
         
         roundTime = 0f;
-        
-
 
         AddGoldWhenGameEnds();
     }
@@ -641,6 +644,15 @@ public class GameManager : MonoBehaviour
 
         UpdateStatsUI();
         UpdateItemUI();
+        
+        // Attempt to not dash when pressing space to select an item in teh chest menu.
+        StartCoroutine(WaitOneFrameToUnpause());
+
+    }
+
+    private IEnumerator WaitOneFrameToUnpause()
+    {
+        yield return new WaitForEndOfFrame();
         isGameActive = true;
     }
 

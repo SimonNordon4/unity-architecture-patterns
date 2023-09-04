@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
     public bool isUnstoppable = false;
     protected bool _isKnockedBack = false;
     protected Vector3 randomPosition = Vector3.zero;
+    private float _radius = 0.5f;
 
     [Header("Health")] 
     public int currentHealth = 5;
@@ -49,6 +50,7 @@ public class EnemyController : MonoBehaviour
         uiStartRotation = healthBarUI.transform.rotation;
         healthBarUI.SetActive(SettingsManager.instance.showEnemyHealthBars);
         UpdateHealthText();
+        _radius = transform.localScale.x;
         randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
     }
 
@@ -99,9 +101,14 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void RandomLocation()
     {
-        var dir =  Vector3.ProjectOnPlane(randomPosition - transform.position,Vector3.up).normalized;
-        var distance = Vector3.Distance(randomPosition, transform.position);
-        if (distance < 1.1f)
+        var position = transform.position;
+        var dir =  Vector3.ProjectOnPlane(randomPosition - position,Vector3.up).normalized;
+        var projectedPosition = new Vector3(position.x, 0, position.y);
+        var distance = Vector3.Distance(randomPosition, projectedPosition);
+        
+        // tolerance is the radius of the enemy + 1
+        var tolerance = transform.localScale.x;
+        if (distance < tolerance + 1f) 
         {
             randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
         }
@@ -146,11 +153,17 @@ public class EnemyController : MonoBehaviour
             var enemyDir = Vector3.ProjectOnPlane(toEnemy, Vector3.up).normalized;
 
             // Scale the direction based on distance (closer enemies have stronger influence)
-            if (distance < 1.0f)  // We don't want to divide by zero or a negative number
+            var enemyRadius = enemy.localScale.x;
+            var touchDistance = _radius + enemyRadius;
+            if (distance < touchDistance)  // We don't want to divide by zero or a negative number
             {
-                // Using the inverse of distance to scale direction
-                var scale = 1.0f - distance;
-                avoidanceDirection -= enemyDir * scale;
+                // normalize the distance.
+                var normalizedDistance = distance / touchDistance;
+                // We inverse the force so it's weak when far away, and very strong when close.
+                var force = 1 - normalizedDistance;
+                // make it REALLY weak when far away.
+                var polynomialForce = force * force * force;
+                avoidanceDirection -= enemyDir * polynomialForce;
             }
         }
 
