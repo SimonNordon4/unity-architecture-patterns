@@ -15,8 +15,11 @@ public class AchievementUI : MonoBehaviour
     {
         this.parent = parent;
         titleText.text = achievement.uiName;
-        progressText.text = $"{achievement.progress}/{achievement.goal}";
-        progressBar.transform.localScale = new Vector3(achievement.progress / (float) achievement.goal, 1, 1);
+        
+        var progress = Mathf.Clamp(achievement.progress,0,achievement.goal);
+        progressText.text = $"{progress}/{achievement.goal}";
+        var progressScale = Mathf.Clamp((achievement.progress / (float) achievement.goal), 0, 1);
+        progressBar.transform.localScale = new Vector3(progressScale, 1, 1);
         collectButton.interactable = achievement.isCompleted;
 
         if (achievement.isClaimed)

@@ -469,16 +469,8 @@ public class GameManager : MonoBehaviour
     private void SpawnMiniChest()
     {
         var miniChest = Instantiate(miniChestPrefab, GetRandomChestPosition(), Quaternion.identity);
-        // Figure out an algorithm for min tier to random between 1-2 based on luck. Always 1 at 0 luck, always 2 at 10 luck.
-        var chance = Random.Range(0, 9);
-        
-        
-        miniChest.minTier = chance < luck.value ? 2 : 1;
-        miniChest.maxTier = Mathf.Clamp((int)(luck.value * 0.5f), 1, 5);
-        Debug.Log("Mini chest max tier: " + miniChest.maxTier);
-        
-        if(miniChest.maxTier < miniChest.minTier)
-            miniChest.maxTier = miniChest.minTier;
+        miniChest.minTier = 1;
+        miniChest.maxTier = 5;
     }
 
     public void PickupChest(Chest chest)
@@ -518,7 +510,7 @@ public class GameManager : MonoBehaviour
 
         switch (itemsChance)
         {
-            case > 98:
+            case > 99:
                 numberOfItems = 5;
                 break;
             case > 90:
@@ -589,18 +581,23 @@ public class GameManager : MonoBehaviour
             return chest.minTier;
 
         var tier = 0;
-        if (luck.value > 10) luck.value = 10;
-        var chance = Random.Range(0, 50) + luck.value * 10f;
+
+        var chance = Random.Range(0, 100 - luck.value * 10f) + luck.value * 10f;
+        
+        // 0 luck = 0 - 100.
+        // 1 luck = 10 - 100.
+        // 5 luck = 50 - 100.
+        // 7 luck = 70 - 100.
         
         Debug.Log("Chance: " + chance);
 
         tier = chance switch
         {
-            < 50 => 1,
-            < 70 => 2,
-            < 80 => 3,
-            < 95 => 4,
-            _ => 5
+            > 99 => 5,
+            > 95 => 4,
+            > 88 => 3,
+            > 75 => 2,
+            _ => 1
         };
 
         Debug.Log("Pre clamped tier: " + tier);
