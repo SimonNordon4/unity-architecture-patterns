@@ -39,7 +39,6 @@ public class Stat
             }
         }
 
-        Debug.Log("Percentage Sum =" + percentageSum);
         value = Mathf.Clamp((initialValue + flatSum) * (percentageSum), minimumValue, maximumValue);
     }
     

@@ -1,19 +1,8 @@
 ﻿Bugs:
 
-[x] Make sure player damage text disappears.
-[x] Increase time for health packs to despawn.
-[x] Always end with at least 25 Gold.
-[x] Remove double '--' from chest items
-[x] Check block 01 spawn rate.
-[x] Reduce starting sword knock back power
-
-Changes:
-
-- Starting sword knock back power reduced from 3 -> 1.5
-- Health pack lifetime increased from 5s -> 15s
-- Ending a game always gives at least 25 gold.
-- Reduced Gold multipliers for all blocks.
-- Fixed spawn rate being too high for block 01.
-- Remove double '--' from chest items.
-- Player Coroutines should no longer be cancelled.
+[x] make sure chest item title fits on line
+[] add / adjust store items.
+[x] slightly reduce ranged spawns on wave 3.
+[x] Gold can only be added twice.
+[x] Clamp current health to max health and 1 when taking - max health modifier.
 

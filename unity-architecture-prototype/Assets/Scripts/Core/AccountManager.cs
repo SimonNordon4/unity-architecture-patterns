@@ -42,8 +42,11 @@ using UnityEngine;
         
         public void AddGold(int amount)
         {
+            
             statistics.totalGoldEarned += amount;
             totalGold += amount;
+            Debug.Log($"Added {amount} gold. Total gold: {totalGold}");
+            Save();
         }
 
         public void PurchaseStoreItem(StoreItem item)

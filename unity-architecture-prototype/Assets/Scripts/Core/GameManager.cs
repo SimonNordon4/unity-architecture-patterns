@@ -315,18 +315,22 @@ public class GameManager : MonoBehaviour
         // get the enemy manager
         var enemyManager = FindObjectOfType<EnemyManager>();
 
-        var totalGold = enemyManager.WaveDatas.Sum(data => data.totalGold) + 25;
-        
-        Debug.Log("Total gold: " + totalGold);
+        var totalGold = enemyManager.WaveDatas.Sum(data => data.totalGold);
+
+        AccountManager.instance.AddGold(totalGold);
+
+        foreach (var txt in GoldTexts) txt.text = $"Gold Added: {totalGold}";
         
         List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
             .Where(a => a.name == AchievementName.Earn100Gold ||
                         a.name == AchievementName.Earn1000Gold ||
                         a.name == AchievementName.Earn10000Gold ||
                         a.name == AchievementName.Earn100000Gold).ToList();
+        Debug.Log("Achievements Found:" + achievements.Count);
+        
         foreach (var a in achievements)
         {
-            if (a.isCompleted) return;
+            if (a.isCompleted) continue;
             a.progress += totalGold;
             if (a.progress >= a.goal)
             {
@@ -334,10 +338,6 @@ public class GameManager : MonoBehaviour
                 AccountManager.instance.AchievementUnlocked(a);
             }
         }
-
-        AccountManager.instance.AddGold(totalGold);
-
-        foreach (var txt in GoldTexts) txt.text = $"Gold Added: {totalGold}";
     }
 
     private void HideAll()
@@ -608,13 +608,8 @@ public class GameManager : MonoBehaviour
             _ => 1
         };
 
-        Debug.Log("Pre clamped tier: " + tier);
 
         tier = Mathf.Clamp(tier, chest.minTier, chest.maxTier);
-
-        Debug.Log("given chest range: " + chest.minTier + " - " + chest.maxTier);
-        Debug.Log("Return tier: " + tier);
-        
         return tier;
     }
 
@@ -637,7 +632,10 @@ public class GameManager : MonoBehaviour
             if (mod.statType == StatType.PlayerHealth)
             {
                 AccountManager.instance.statistics.totalDamageHealed += (int)mod.modifierValue;
-                playerCurrentHealth += (int)mod.modifierValue;
+
+                var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue,1,(int)playerMaxHealth.value);
+
+                playerCurrentHealth = newHealth;
             }
         }
 

@@ -132,7 +132,6 @@ public class EnemyManager : MonoBehaviour
         _currentWaveAliveEnemies = 0;
         currentPhase = EnemySpawnPhase.Normal;
 
-        Debug.Log("Initializing new spawn wave with " + _currentWave.totalEnemies + " enemies.");
         // Get the spawn timing of each enemy evaluated against the animation curve
         _spawnTimings = new float[_currentWave.totalEnemies];
         for (var i = 0; i < _currentWave.totalEnemies; i++)
@@ -192,19 +191,16 @@ public class EnemyManager : MonoBehaviour
         // Enemy Spawn Rate now doubles the spawn time of the block up until the next block.
         if ((int)gameManager.enemySpawnRate.value > _blockIndex)
         {
-            Debug.Log("Using Double Spawn!");
             _elapsedWaveTime += Time.deltaTime * 2;
         }
         else
         {
-            Debug.Log("Using Normal Spawn!");
             _elapsedWaveTime += Time.deltaTime;
         }
             
 
         if (_elapsedWaveTime > _currentWave.blockTime)
         {
-            Debug.Log("Block time exceeded, spawning boss");
             currentPhase = EnemySpawnPhase.SpawnBoss;
             return;
         }
