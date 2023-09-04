@@ -26,24 +26,48 @@ public class RangedEnemyController : EnemyController
 
         if (_isKnockedBack) return;
 
+        
         if (playerTarget == null) return;
         var difference = Vector3.ProjectOnPlane(playerTarget.position - transform.position, Vector3.up);
         var distance = difference.magnitude;
         difference = difference.normalized;
-        var wishDir = Vector3.zero;
 
-        // Move towards if far away, move away if too close, don't move if just right.
-        if (distance < targetDistance - 0.5f)
-            wishDir = -difference.normalized;
+        if (moveBehaviour == MoveBehaviour.TowardsPlayer)
+        {
+            var wishDir = Vector3.zero;
 
-        else if (distance > targetDistance + 0.5f)
-            wishDir = difference.normalized;
+            // Move towards if far away, move away if too close, don't move if just right.
+            if (distance < targetDistance - 0.5f)
+                wishDir = -difference.normalized;
 
-        var avoidanceDirection = GetAvoidanceFromOtherEnemies();
-        var updatedDir = (wishDir + avoidanceDirection * repulsionForce).normalized;
+            else if (distance > targetDistance + 0.5f)
+                wishDir = difference.normalized;
 
-        transform.position += updatedDir * (Time.deltaTime * moveSpeed);
-        if (distance > 0) transform.rotation = Quaternion.LookRotation(difference.normalized);
+            var avoidanceDirection = GetAvoidanceFromOtherEnemies();
+            var updatedDir = (wishDir + avoidanceDirection * repulsionForce).normalized;
+
+            transform.position += updatedDir * (Time.deltaTime * moveSpeed);
+            if (distance > 0) transform.rotation = Quaternion.LookRotation(difference);
+        }
+        else if (moveBehaviour == MoveBehaviour.RandomLocation)
+        {
+            var dir =  Vector3.ProjectOnPlane(randomPosition - transform.position,Vector3.up).normalized;
+            var distanceToDestination = Vector3.Distance(randomPosition, transform.position);
+            if (distanceToDestination < 1.1f)
+            {
+                randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+            }
+        
+            var avoidanceDirection = GetAvoidanceFromOtherEnemies();
+            var updatedDir = (dir + avoidanceDirection * repulsionForce).normalized;
+
+            // Apply direction to transform.
+            if (dir.magnitude > 0)
+            {
+                transform.position += updatedDir * (Time.deltaTime * moveSpeed);
+                transform.rotation = Quaternion.LookRotation(dir);
+            }
+        }
 
         ClampTransformToLevelBounds();
 
@@ -56,6 +80,7 @@ public class RangedEnemyController : EnemyController
 
         healthBarUI.transform.rotation = uiStartRotation;
     }
+
 
     private void Shoot(Vector3 direction)
     {

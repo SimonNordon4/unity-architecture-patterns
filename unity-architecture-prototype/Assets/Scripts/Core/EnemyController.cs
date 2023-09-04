@@ -5,9 +5,14 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public enum MoveBehaviour
+    {
+        TowardsPlayer,
+        RandomLocation
+    }
+    
     [Header("References")]
     public EnemyManager enemyManager;
-
     public bool isBoss = false;
     
     [Header("UI")]
@@ -15,6 +20,7 @@ public class EnemyController : MonoBehaviour
     public TextMeshProUGUI healthText;
     protected Quaternion uiStartRotation;
     public TextMeshProUGUI damageText;
+    public MoveBehaviour moveBehaviour = MoveBehaviour.TowardsPlayer;
     
     [Header("Movement")]
     public Transform playerTarget;
@@ -22,6 +28,7 @@ public class EnemyController : MonoBehaviour
     public float repulsionForce = 0.5f;
     public float knockBackFactor = 1f;
     protected bool _isKnockedBack = false;
+    protected Vector3 randomPosition = Vector3.zero;
 
     [Header("Health")] 
     public int currentHealth = 5;
@@ -41,6 +48,7 @@ public class EnemyController : MonoBehaviour
         uiStartRotation = healthBarUI.transform.rotation;
         healthBarUI.SetActive(SettingsManager.instance.showEnemyHealthBars);
         UpdateHealthText();
+        randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
     }
 
     protected virtual void Update()
@@ -48,7 +56,25 @@ public class EnemyController : MonoBehaviour
         if(GameManager.instance.isGameActive == false) return;
         
         if(_isKnockedBack) return;
+
+        switch (moveBehaviour)
+        {
+            case(MoveBehaviour.TowardsPlayer):
+                TowardsPlayer();
+                break;
+            case(MoveBehaviour.RandomLocation):
+                RandomLocation();
+                break;
+        }
         
+        // Track Attack cooldown.
+        _timeSinceLastDamage += Time.deltaTime;
+        
+        healthBarUI.transform.rotation = uiStartRotation;
+    }
+
+    protected virtual void TowardsPlayer()
+    {
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
         var distance = Vector3.Distance(playerTarget.position, transform.position);
@@ -68,11 +94,28 @@ public class EnemyController : MonoBehaviour
         }
         
         ClampTransformToLevelBounds();
+    }
+
+    protected virtual void RandomLocation()
+    {
+        var dir =  Vector3.ProjectOnPlane(randomPosition - transform.position,Vector3.up).normalized;
+        var distance = Vector3.Distance(randomPosition, transform.position);
+        if (distance < 1.1f)
+        {
+            randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+        }
         
-        // Track Attack cooldown.
-        _timeSinceLastDamage += Time.deltaTime;
+        var avoidanceDirection = GetAvoidanceFromOtherEnemies();
+        var updatedDir = (dir + avoidanceDirection * repulsionForce).normalized;
+
+        // Apply direction to transform.
+        if (dir.magnitude > 0)
+        {
+            transform.position += updatedDir * (Time.deltaTime * moveSpeed);
+            transform.rotation = Quaternion.LookRotation(dir);
+        }
         
-        healthBarUI.transform.rotation = uiStartRotation;
+        ClampTransformToLevelBounds();
     }
 
     protected Vector3 GetAvoidanceFromOtherEnemies()

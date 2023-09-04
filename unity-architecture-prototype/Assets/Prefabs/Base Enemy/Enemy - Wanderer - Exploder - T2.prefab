@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1363255572915895441
+--- !u!1001 &9069598600487384901
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -12,31 +12,51 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 65d3b77b34d6a494b8dfd366fda478d8, type: 2}
+      objectReference: {fileID: 2100000, guid: 56a09504d9ce25d49b4a284b72be2071, type: 2}
     - target: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Charger - T1
+      value: Enemy - Wanderer - Exploder - T2
       objectReference: {fileID: 0}
+    - target: {fileID: 4759737150053253292, guid: 4816712a64f5c7c46804fde9077abbb8,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 6196254785741373584, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 65d3b77b34d6a494b8dfd366fda478d8, type: 2}
+      objectReference: {fileID: 2100000, guid: 56a09504d9ce25d49b4a284b72be2071, type: 2}
+    - target: {fileID: 6438303556230869343, guid: 4816712a64f5c7c46804fde9077abbb8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438303556230869343, guid: 4816712a64f5c7c46804fde9077abbb8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.25000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6438303556230869343, guid: 4816712a64f5c7c46804fde9077abbb8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7149289984790204046, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: enemyColor.b
-      value: 0.23113209
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7149289984790204046, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: enemyColor.g
-      value: 0.71299404
+      value: 0.8791201
       objectReference: {fileID: 0}
     - target: {fileID: 7149289984790204046, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: enemyColor.r
-      value: 1
+      value: 0.41176474
       objectReference: {fileID: 0}
     - target: {fileID: 7186381532623135110, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -56,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 7186381532623135110, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.801
       objectReference: {fileID: 0}
     - target: {fileID: 7186381532623135110, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -101,13 +121,19 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7477888130972651128}
+      addedObject: {fileID: 2867387066201989286}
   m_SourcePrefab: {fileID: 100100000, guid: 4816712a64f5c7c46804fde9077abbb8, type: 3}
---- !u!114 &3288393296007926946 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4560450972172494899, guid: 4816712a64f5c7c46804fde9077abbb8,
+--- !u!1 &2823431276768393582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6553713921573768747, guid: 4816712a64f5c7c46804fde9077abbb8,
     type: 3}
-  m_PrefabInstance: {fileID: 1363255572915895441}
+  m_PrefabInstance: {fileID: 9069598600487384901}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3180124130259449989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5908649954107002816, guid: 4816712a64f5c7c46804fde9077abbb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9069598600487384901}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -115,49 +141,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &3859028022664314501 stripped
+--- !u!114 &4797554202362716022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4560450972172494899, guid: 4816712a64f5c7c46804fde9077abbb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 9069598600487384901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6537234263106401617 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
     type: 3}
-  m_PrefabInstance: {fileID: 1363255572915895441}
+  m_PrefabInstance: {fileID: 9069598600487384901}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7477888130972651128
+--- !u!114 &2867387066201989286
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859028022664314501}
+  m_GameObject: {fileID: 6537234263106401617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f590ab4ec1c78b842965290279076663, type: 3}
+  m_Script: {fileID: 11500000, guid: acbe7cbc611f4bc290e8f04121b314cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   isBoss: 0
-  healthBarUI: {fileID: 3859028022664314501}
-  healthText: {fileID: 4833765838464234321}
-  damageText: {fileID: 3288393296007926946}
+  healthBarUI: {fileID: 2823431276768393582}
+  healthText: {fileID: 3180124130259449989}
+  damageText: {fileID: 4797554202362716022}
+  moveBehaviour: 1
   playerTarget: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 4
   repulsionForce: 0.5
   knockBackFactor: 1
-  currentHealth: 8
-  damageAmount: 2
-  damageCooldown: 0.2
-  chargeSpeed: 10
-  chargeDistance: 5
-  chargeCooldown: 3
-  chargeUpTime: 0.3
---- !u!114 &4833765838464234321 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5908649954107002816, guid: 4816712a64f5c7c46804fde9077abbb8,
+  currentHealth: 5
+  damageAmount: 1
+  damageCooldown: 3
+  projectilePrefab: {fileID: 652769875280677792, guid: c870654b17240b94cbfebd5581f1b369,
     type: 3}
-  m_PrefabInstance: {fileID: 1363255572915895441}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  range: 15
+  targetDistance: 5.5
+  bulletCount: 8
+  projectileSpeed: 6
+  startLoaded: 1
+  bulletSpread: 45
