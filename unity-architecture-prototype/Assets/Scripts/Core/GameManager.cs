@@ -315,7 +315,7 @@ public class GameManager : MonoBehaviour
         // get the enemy manager
         var enemyManager = FindObjectOfType<EnemyManager>();
 
-        var totalGold = enemyManager.WaveDatas.Sum(data => data.totalGold);
+        var totalGold = enemyManager.WaveDatas.Sum(data => data.totalGold) + 25;
         
         Debug.Log("Total gold: " + totalGold);
         
@@ -598,7 +598,6 @@ public class GameManager : MonoBehaviour
         // 5 luck = 50 - 100.
         // 7 luck = 70 - 100.
         
-        Debug.Log("Chance: " + chance);
 
         tier = chance switch
         {

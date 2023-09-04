@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         public GameObject damageTextGo;
         private Quaternion _startRotation;
 
+        private Coroutine _swordCoroutine;
         private Coroutine _dodgeTextCoroutine;
         private Coroutine _damageTextCoroutine;
         private Coroutine _dashCoroutine;
@@ -155,8 +156,8 @@ public class PlayerController : MonoBehaviour
                 {
                     if (closestDistance <= gameManager.swordRange.value)
                     {
-                        StopAllCoroutines();
-                        StartCoroutine(SwordAttack());
+                        if(_swordCoroutine != null) StopCoroutine(_swordCoroutine);
+                        _swordCoroutine = StartCoroutine(SwordAttack());
                         _timeSinceLastSwing = 0.0f;
                     }
                 }

@@ -192,10 +192,15 @@ public class EnemyManager : MonoBehaviour
         // Enemy Spawn Rate now doubles the spawn time of the block up until the next block.
         if ((int)gameManager.enemySpawnRate.value > _blockIndex)
         {
+            Debug.Log("Using Double Spawn!");
             _elapsedWaveTime += Time.deltaTime * 2;
         }
         else
+        {
+            Debug.Log("Using Normal Spawn!");
             _elapsedWaveTime += Time.deltaTime;
+        }
+            
 
         if (_elapsedWaveTime > _currentWave.blockTime)
         {

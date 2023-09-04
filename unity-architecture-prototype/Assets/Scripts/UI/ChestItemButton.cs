@@ -43,7 +43,8 @@ using UnityEngine.UI;
                 // create a new description text
                 var description = Instantiate(DescriptionPrefab, DescriptionContainer);
                 
-                    var statSign = mod.modifierValue > 0 ? "+" : "-";                
+                // we don't need a minus because negative values will already have a minus
+                    var statSign = mod.modifierValue > 0 ? "+" : "";                
 
                     // Format stat value.
                     var statValueString = mod.modifierType != ModifierType.Percentage ?
