@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6954410487899854514}
   - component: {fileID: 2679289562865219146}
   - component: {fileID: 918302613223723135}
-  - component: {fileID: 5872803941829919757}
   m_Layer: 0
   m_Name: Shield_01
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8538343487444569306}
   m_LocalRotation: {x: -0, y: 0.38268322, z: -0, w: 0.9238797}
   m_LocalPosition: {x: 0.416, y: 0.089, z: 0.35600004}
-  m_LocalScale: {x: 0.64429164, y: 1.0208939, z: -0.077548005}
+  m_LocalScale: {x: 0.64429164, y: 1.0208939, z: 0.077548}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5637368978482451148}
@@ -84,27 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5872803941829919757
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8538343487444569306}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &4898985164905783822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -201,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Fast - Shielded
+      value: Enemy - Fast - Shielded - T1
       objectReference: {fileID: 0}
     - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
         type: 3}
@@ -217,6 +195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentHealth
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
+        type: 3}
+      propertyPath: isUnstoppable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127,
         type: 3}

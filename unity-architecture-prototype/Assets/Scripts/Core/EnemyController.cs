@@ -27,6 +27,7 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed = 5f;
     public float repulsionForce = 0.5f;
     public float knockBackFactor = 1f;
+    public bool isUnstoppable = false;
     protected bool _isKnockedBack = false;
     protected Vector3 randomPosition = Vector3.zero;
 
@@ -231,6 +232,7 @@ public class EnemyController : MonoBehaviour
 
     public virtual void ApplyKnockBack(Vector3 direction, float intensity)
     {
+        if (isUnstoppable) return;
         if(_isKnockedBack && knockBackCoroutine != null) StopCoroutine(knockBackCoroutine);
         _isKnockedBack = true;
         knockBackCoroutine = StartCoroutine(KnockBackRoutine(direction * intensity));

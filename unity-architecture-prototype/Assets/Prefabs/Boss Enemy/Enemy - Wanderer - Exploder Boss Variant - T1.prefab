@@ -65,6 +65,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
         type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
+        type: 3}
       propertyPath: bulletCount
       value: 16
       objectReference: {fileID: 0}
@@ -85,6 +90,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
         type: 3}
+      propertyPath: isUnstoppable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
+        type: 3}
       propertyPath: damageCooldown
       value: 2
       objectReference: {fileID: 0}
@@ -96,7 +106,7 @@ PrefabInstance:
     - target: {fileID: 6537234263106401617, guid: c353f26a0b60cf84c981a76558c0e9f7,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Wanderer - Exploder Boss Variant
+      value: Enemy - Wanderer - Exploder Boss Variant - T1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

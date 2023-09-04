@@ -16,7 +16,8 @@ public class Stat
     public float minimumValue = 0f;
     public float maximumValue = float.PositiveInfinity;
     
-    private readonly List<Modifier> _modifiers = new();
+    [SerializeField]
+    private List<Modifier> _modifiers = new();
 
     public float value = 1f;
 
@@ -34,11 +35,12 @@ public class Stat
             else if (modifier.modifierType == ModifierType.Percentage)
             {
                 // Convert percentage to a multiplier. e.g., 10% becomes 1.10, -20% becomes 0.80
-                percentageSum += modifier.modifierValue / 100;
+                percentageSum += modifier.modifierValue;
             }
         }
 
-        value = Mathf.Clamp((initialValue + flatSum) * percentageSum, minimumValue, maximumValue);
+        Debug.Log("Percentage Sum =" + percentageSum);
+        value = Mathf.Clamp((initialValue + flatSum) * (percentageSum), minimumValue, maximumValue);
     }
     
     public void Reset()

@@ -85,6 +85,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5963634728595224897, guid: 8debcb394b618d74c8fda6a50c2f492d,
         type: 3}
+      propertyPath: isBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963634728595224897, guid: 8debcb394b618d74c8fda6a50c2f492d,
+        type: 3}
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
@@ -92,6 +97,11 @@ PrefabInstance:
         type: 3}
       propertyPath: currentHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963634728595224897, guid: 8debcb394b618d74c8fda6a50c2f492d,
+        type: 3}
+      propertyPath: isUnstoppable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5963634728595224897, guid: 8debcb394b618d74c8fda6a50c2f492d,
         type: 3}
