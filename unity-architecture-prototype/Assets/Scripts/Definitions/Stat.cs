@@ -31,6 +31,15 @@ public class Stat
             if (modifier.modifierType == ModifierType.Flat)
             {
                 flatSum += modifier.modifierValue;
+
+                // We clamp the flatSum.
+                // This improves gameplay, player can take a heavy penalty early (-8 damage),
+                // but if they only have 2 damage, then the penalty is only -2.
+                if (flatSum < minimumValue)
+                {
+                    flatSum = minimumValue;
+                }
+                
             }
             else if (modifier.modifierType == ModifierType.Percentage)
             {

@@ -11,6 +11,7 @@ public class RangedEnemyController : EnemyController
     public float projectileSpeed = 2f;
     public bool startLoaded = true;
     public float bulletSpread = 15f;
+    public float inaccuracySpread = 15f;
 
     protected override void Start()
     {
@@ -90,6 +91,9 @@ public class RangedEnemyController : EnemyController
         // Determine the starting angle. If the bulletCount is odd, 
         // there will always be one bullet going directly forward.
         var startAngle = bulletCount % 2 == 1 ? -(totalSpread / 2) : -totalSpread / 2 + bulletSpread / 2;
+        
+        // add a 15 degree random spread to the bullet.
+        startAngle += Random.Range(-inaccuracySpread, inaccuracySpread);
 
         // Get the rotation that will take the Vector3.forward to the 'direction' vector
         var toDirection = Quaternion.FromToRotation(Vector3.forward, direction);

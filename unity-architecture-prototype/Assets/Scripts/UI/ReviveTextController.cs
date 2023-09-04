@@ -15,6 +15,12 @@ public class ReviveTextController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _textMeshProUGUI.text = "Revives: " +((int)GameManager.instance.revives.value).ToString();
+
+            var revives = ((int)GameManager.instance.revives.value);
+            var color = revives > 0 ? new Color(0.66f,1f,0.66f): new Color(1f,0.5f,0.5f);
+            var htmlColor = ColorUtility.ToHtmlStringRGB(color);
+            
+            _textMeshProUGUI.text = $"Dashes: <color=#{htmlColor}>{revives}</color>";
+        
     }
 }

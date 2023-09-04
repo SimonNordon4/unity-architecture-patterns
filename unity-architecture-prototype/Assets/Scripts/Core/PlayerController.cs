@@ -316,7 +316,7 @@ public class PlayerController : MonoBehaviour
             // We should never be invincible imo.
             if (damageAmount <= 0)
             {
-                damageAmount = 1;
+                damageAmount = 0;
             }
 
             if (_damageTextCoroutine != null)

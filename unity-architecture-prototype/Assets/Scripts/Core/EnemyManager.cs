@@ -419,10 +419,9 @@ public class EnemyManager : MonoBehaviour
             totalEnemiesKilled++;
             GameManager.instance.OnBossEnemyDied(enemy);
             Destroy(enemy);
-
             return;
         }
-
+        _currentWaveData.currentGold += _currentBlock.goldMultiplier;
         _currentWaveAliveEnemies--;
         totalEnemiesKilled++;
         enemies.Remove(enemy);
@@ -433,11 +432,6 @@ public class EnemyManager : MonoBehaviour
     public void NextWave()
     {
         _waveIndex++;
-        
-        // add gold to the block data.
-        var goldEarnedThisWave = (int)(_currentWave.totalEnemies * _currentBlock.goldMultiplier);
-        _currentWaveData.currentGold += goldEarnedThisWave;
-        
         // to get the bonus gold we need to get the time difference between the start and end of the block.
         var timeDifference = gameManager.roundTime - _currentWaveData.startTime;
         // assuming max bonus is the duration of the wave, and at double time we have no bonus.
@@ -445,8 +439,7 @@ public class EnemyManager : MonoBehaviour
         // clamp the bonus percentage to 0 - 100
         bonusPercentage = Mathf.Clamp(bonusPercentage, 0, 100);
         // get the bonus gold based on the percentage.
-        _currentWaveData.bonusGold = Mathf.RoundToInt(goldEarnedThisWave * (bonusPercentage / 100));
-        _currentWaveData.totalGold = _currentWaveData.currentGold + _currentWaveData.bonusGold;
+        _currentWaveData.bonusGold = _currentWaveData.currentGold * (bonusPercentage / 100);
         
         // If we've reached the end of the block, go to the next block
         if (_waveIndex >= _currentSpawnWaves.Count)
@@ -486,18 +479,7 @@ public class EnemyManager : MonoBehaviour
     {
         public float startTime;
         public float finishTime;
-        public int currentGold;
-        public int bonusGold;
-        public int totalGold;
-    }
-
-    public class BlockRuntimeData
-    {
-        public float startTime;
-        public float finishTime;
-        public int startEnemies;
-        public int currentGold;
-        public int bonusGold;
-        public int totalGold;
+        public float currentGold = 0;
+        public float bonusGold = 0;
     }
 }

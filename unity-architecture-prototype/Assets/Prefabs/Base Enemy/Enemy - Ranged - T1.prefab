@@ -176,10 +176,12 @@ MonoBehaviour:
   healthBarUI: {fileID: 2823431276768393582}
   healthText: {fileID: 3180124130259449989}
   damageText: {fileID: 4797554202362716022}
+  moveBehaviour: 0
   playerTarget: {fileID: 0}
-  moveSpeed: 3
+  moveSpeed: 2
   repulsionForce: 0.5
   knockBackFactor: 1
+  isUnstoppable: 0
   currentHealth: 5
   damageAmount: 1
   damageCooldown: 3

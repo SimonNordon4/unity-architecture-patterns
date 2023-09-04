@@ -161,6 +161,7 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
+        
         Debug.Log("Start New Game");
         HideAll();
         AccountManager.instance.statistics.gamesPlayed++;
@@ -173,7 +174,9 @@ public class GameManager : MonoBehaviour
         // clear all items
         currentlyHeldItems.Clear();
         UpdateItemUI();
-        
+        TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
+        TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
+        TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Dash, 22f);
     }
 
     public void GoToMainMenu()
@@ -308,6 +311,8 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
 
         AddGoldWhenGameEnds();
+        
+        TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Buy, 2f);
     }
 
     private void AddGoldWhenGameEnds()
@@ -315,7 +320,7 @@ public class GameManager : MonoBehaviour
         // get the enemy manager
         var enemyManager = FindObjectOfType<EnemyManager>();
 
-        var totalGold = enemyManager.WaveDatas.Sum(data => data.totalGold);
+        var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
 
         AccountManager.instance.AddGold(totalGold);
 
@@ -487,19 +492,7 @@ public class GameManager : MonoBehaviour
         // monitor stats.
         AccountManager.instance.statistics.totalChestsOpened++;
         
-        List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
-            .Where(a => a.name == AchievementName.Open100Chests ||
-                        a.name == AchievementName.Open1000Chests).ToList();
-        foreach (var a in achievements)
-        {
-            if (a.isCompleted) return;
-            a.progress++;
-            if (a.progress >= a.goal)
-            {
-                a.isCompleted = true;
-                AccountManager.instance.AchievementUnlocked(a);
-            }
-        }
+
 
         // If we pickup a mini chest, we can start spawning the next mini chest.
         if (chest.chestType == ChestType.Mini) _nextMiniChest = true;
@@ -575,11 +568,27 @@ public class GameManager : MonoBehaviour
                 newChestItemButton.Initialize(item);
                 break;
             }
+            
+            List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+                .Where(a => a.name == AchievementName.Open100Chests ||
+                            a.name == AchievementName.Open1000Chests).ToList();
+            foreach (var a in achievements)
+            {
+                if (a.isCompleted) continue;
+                a.progress++;
+                if (a.progress >= a.goal)
+                {
+                    a.isCompleted = true;
+                    AccountManager.instance.AchievementUnlocked(a);
+                }
+            }
 
             // For keyboard input.
             _chestItemsWasdSelector.buttons.Clear();
             foreach (var chestItemUI in _chestItemButtons)
                 _chestItemsWasdSelector.buttons.Add(chestItemUI.GetComponent<Button>());
+            
+            
         }
     }
 
