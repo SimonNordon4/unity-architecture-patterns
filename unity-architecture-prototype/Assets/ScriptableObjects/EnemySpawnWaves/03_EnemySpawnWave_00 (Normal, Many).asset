@@ -18,8 +18,12 @@ MonoBehaviour:
       type: 3}
     numberOfEnemiesToSpawn: 5
     spawnWeight: 100
-  totalEnemies: 300
-  blockTime: 120
+  - enemyPrefab: {fileID: 5267285107322196816, guid: 46eaf2c2ca56695459fbb255f7a91453,
+      type: 3}
+    numberOfEnemiesToSpawn: 5
+    spawnWeight: 100
+  totalEnemies: 120
+  blockTime: 60
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:

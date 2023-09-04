@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9500e69c9ccd4fd3b4cd0de14c90b773, type: 3}
   m_Name: EnemySpawnBlock_02
   m_EditorClassIdentifier: 
-  healthMultiplier: {x: 4, y: 6}
-  damageMultiplier: {x: 3, y: 4}
-  bossChestTier: {x: 2, y: 4}
+  healthMultiplier: {x: 2, y: 3.5}
+  damageMultiplier: {x: 2, y: 3.5}
+  bossChestTier: {x: 2, y: 5}
   bossChestChoices: {x: 3, y: 5}
   goldMultiplier: 4
   spawnWaves:
   - {fileID: 11400000, guid: 0e888c7c5afd6e04197d09d8c3db8a1a, type: 2}
   - {fileID: 11400000, guid: 70d9b0e6d6752fd41b445a769e308068, type: 2}
+  - {fileID: 11400000, guid: f9a1353e88f842f4da2f6a0ec9c048e4, type: 2}
+  - {fileID: 11400000, guid: b612e8051ee39254583921bf49659175, type: 2}
