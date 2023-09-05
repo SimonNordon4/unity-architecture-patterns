@@ -600,20 +600,20 @@ public class GameManager : MonoBehaviour
 
         var tier = 0;
 
-        var chance = Random.Range(0, 100 - luck.value * 10f) + luck.value * 10f;
+        var chance = Random.Range(0, 200 - luck.value * 20f) + luck.value * 20f;
         
-        // 0 luck = 0 - 100.
-        // 1 luck = 10 - 100.
-        // 5 luck = 50 - 100.
-        // 7 luck = 70 - 100.
+        // 0 luck = 0 - 200.
+        // 1 luck = 20 - 200.
+        // 5 luck = 100 - 200.
+        // 7 luck = 140 - 200.
         
 
         tier = chance switch
         {
-            > 99 => 5,
-            > 95 => 4,
-            > 88 => 3,
-            > 75 => 2,
+            > 199 => 5,
+            > 192 => 4,
+            > 184 => 3,
+            > 150 => 2,
             _ => 1
         };
 

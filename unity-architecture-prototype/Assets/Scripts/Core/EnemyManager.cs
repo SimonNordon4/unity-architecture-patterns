@@ -321,7 +321,12 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator StartBossSpawnAction(EnemySpawnAction action)
     {
-        var startPoint = Random.insideUnitSphere.normalized * spawnRadius;
+        var t = Random.value;
+        float angle = t * Mathf.PI * 2;
+        
+        var distance = 1 - Mathf.Pow(t, 2) * spawnRadius;
+        
+        var startPoint = new Vector3(MathF.Cos(angle),0f,MathF.Sin(angle)) * distance;
         
         _bossEnemiesCount = action.numberOfEnemiesToSpawn;
 

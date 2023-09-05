@@ -102,13 +102,14 @@ public class EnemyController : MonoBehaviour
     protected virtual void RandomLocation()
     {
         var position = transform.position;
-        var dir =  Vector3.ProjectOnPlane(randomPosition - position,Vector3.up).normalized;
-        var projectedPosition = new Vector3(position.x, 0, position.y);
+        var projectedPosition = new Vector3(position.x, 0, position.z);
+        var dir =  Vector3.ProjectOnPlane(randomPosition - projectedPosition,Vector3.up).normalized;
         var distance = Vector3.Distance(randomPosition, projectedPosition);
         
-        // tolerance is the radius of the enemy + 1
-        var tolerance = transform.localScale.x;
-        if (distance < tolerance + 1f) 
+        // tolerance is the radius of the enemy.
+        var tolerance = transform.localScale.x * 0.5f;
+        
+        if (distance < tolerance + 0.5f) 
         {
             randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
         }

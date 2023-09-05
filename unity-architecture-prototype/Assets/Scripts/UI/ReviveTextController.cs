@@ -20,7 +20,7 @@ public class ReviveTextController : MonoBehaviour
             var color = revives > 0 ? new Color(0.66f,1f,0.66f): new Color(1f,0.5f,0.5f);
             var htmlColor = ColorUtility.ToHtmlStringRGB(color);
             
-            _textMeshProUGUI.text = $"Dashes: <color=#{htmlColor}>{revives}</color>";
+            _textMeshProUGUI.text = $"Revives: <color=#{htmlColor}>{revives}</color>";
         
     }
 }

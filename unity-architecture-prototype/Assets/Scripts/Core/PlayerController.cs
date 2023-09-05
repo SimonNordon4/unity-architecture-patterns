@@ -252,7 +252,7 @@ public class PlayerController : MonoBehaviour
         }
         
         var total180Arcs = Mathf.FloorToInt(swordArc / 180f);
-        var swingTime = 0.2f;
+        var swingTime = gameManager.swordRange.value * 0.08f;
 
         if (total180Arcs > 0)
         {
