@@ -16,6 +16,13 @@ public class EnemySpawnBlock : ScriptableObject
 
     [Inline]
     public List<EnemySpawnWave> spawnWaves = new();
+
+    public int TotalEnemyCount()
+    {
+        var normalEnemies = spawnWaves.Sum(wave => wave.totalEnemies);
+        var bossEnemies = spawnWaves.Sum(wave => wave.eliteAction.Sum(action => action.numberOfEnemiesToSpawn));
+        return normalEnemies + bossEnemies;
+    }
 }
 
 #if UNITY_EDITOR

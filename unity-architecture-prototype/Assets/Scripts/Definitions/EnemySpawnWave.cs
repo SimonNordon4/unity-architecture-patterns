@@ -23,6 +23,12 @@ public class EnemySpawnWave : ScriptableObject
     public Vector2Int bossChestTier = new(1, 2);
     public Vector2Int bossChestChoices = new(3, 3);
     
+    public int TotalEnemyCount()
+    {
+        var bossEnemies = eliteAction.Sum(action => action.numberOfEnemiesToSpawn);
+        return totalEnemies + bossEnemies;
+    }
+    
     #if UNITY_EDITOR
     public void OnValidate()
     {

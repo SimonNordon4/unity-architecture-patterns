@@ -30,6 +30,25 @@ public class DebugManager : MonoBehaviour
             Time.timeScale /= 2;
         }
 
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+
+            var gm = GameManager.instance;
+
+            gm.pistolDamage.initialValue = 999;
+            gm.pistolDamage.value = 999;
+
+            gm.pistolFireRate.initialValue = 3;
+            gm.pistolFireRate.value = 3;
+
+            gm.pistolRange.initialValue = 25;
+            gm.pistolRange.value = 25;
+            
+            gm.block.value = 99999;
+            gm.block.initialValue = 99999;
+
+        }
+
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             // increase all stats by 10%

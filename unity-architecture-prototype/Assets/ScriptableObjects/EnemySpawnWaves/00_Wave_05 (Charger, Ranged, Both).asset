@@ -55,12 +55,12 @@ MonoBehaviour:
   eliteAction:
   - enemyPrefab: {fileID: 2508053800739370752, guid: 10abf6de3beb8f14d99c3707b8da5b61,
       type: 3}
-    numberOfEnemiesToSpawn: 0
-    spawnWeight: 0
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 100
   - enemyPrefab: {fileID: 4480519586362331185, guid: db4682bc0d9c6994da682d08cc960706,
       type: 3}
-    numberOfEnemiesToSpawn: 0
-    spawnWeight: 0
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 100
   healthMultiplier: {x: 1, y: 2}
   damageMultiplier: {x: 1, y: 1}
   bossChestTier: {x: 2, y: 3}

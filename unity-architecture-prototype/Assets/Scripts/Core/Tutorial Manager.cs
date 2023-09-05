@@ -43,8 +43,6 @@ public class TutorialManager : MonoBehaviour
     public void ShowTip(TutorialMessage message, float delay = 0f)
     {
         // Show tips for the first game only.
-        Debug.Log("Showing Tip!");
-        Debug.Log("Games Played: " + AccountManager.instance.statistics.gamesPlayed);
         if(AccountManager.instance.statistics.gamesPlayed > 1) return;
         StartCoroutine(ShowPopup(Tips[message], delay));
     }

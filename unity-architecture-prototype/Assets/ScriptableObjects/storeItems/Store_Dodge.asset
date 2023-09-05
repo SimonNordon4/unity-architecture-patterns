@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63663e17ab8939743b3bd0f2a11ff1c4, type: 3}
-  m_Name: Store_SwordAttackSpeed
+  m_Name: Store_Dodge
   m_EditorClassIdentifier: 
-  type: 8
-  name: Sword Attack Speed
+  type: 16
+  name: Dodge
   sprite: {fileID: 0}
   tierModifiers:
-  - statType: 8
+  - statType: 16
     modifierType: 0
-    modifierValue: 0.1
-  - statType: 8
+    modifierValue: 5
+  - statType: 16
     modifierType: 0
-    modifierValue: 0.2
-  - statType: 8
+    modifierValue: 10
+  - statType: 16
     modifierType: 0
-    modifierValue: 0.4
-  - statType: 8
+    modifierValue: 20
+  - statType: 16
     modifierType: 0
-    modifierValue: 0.8
-  pricePerTier: 3200000064000000e803000088130000
+    modifierValue: 40
+  pricePerTier: 32000000fa000000e803000088130000

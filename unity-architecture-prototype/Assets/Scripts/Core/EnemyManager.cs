@@ -189,7 +189,7 @@ public class EnemyManager : MonoBehaviour
     {
         
         // Half the spawn rate on the first 2 waves if the player hasn't played a game yet.
-        if (AccountManager.instance.statistics.gamesPlayed < 1 && _blockIndex < 2)
+        if (AccountManager.instance.statistics.gamesPlayed < 2 && _blockIndex < 2)
         {
             _elapsedWaveTime += Time.deltaTime * 0.5f;
         }
@@ -304,6 +304,7 @@ public class EnemyManager : MonoBehaviour
         {
             // Cancelling a spawn is assumed as killing an enemy.
             _currentWaveAliveEnemies--;
+            totalEnemiesKilled++;
             yield break;
         }
 
@@ -346,6 +347,7 @@ public class EnemyManager : MonoBehaviour
             if (i == 0)
             {
                 StartCoroutine(IndicateBossSpawn(action, startPoint));
+                
                 continue;
             }
 
@@ -376,6 +378,7 @@ public class EnemyManager : MonoBehaviour
         {
             // Cancelling a spawn is assumed as killing an enemy.
             _currentWaveAliveEnemies--;
+            totalEnemiesKilled++;
             yield break;
         }
 
