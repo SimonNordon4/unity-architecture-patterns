@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class NotificationsManager : MonoBehaviour
 {
@@ -12,9 +13,38 @@ public class NotificationsManager : MonoBehaviour
     public GameObject storeNotification;
     public TextMeshProUGUI storeText;
 
+    public bool highLightShop = false;
+    public Color _defaultColor;
+
+    public Button shopButton;
+    
+
     private void OnEnable()
     {
         CalculateNotifications();
+    }
+
+    private void OnDisable()
+    {
+        if (achievementNotification != null)
+        {
+            achievementNotification.SetActive(false);
+        }
+
+        if (storeNotification != null)
+        {
+            storeNotification.SetActive(false);
+        }
+        
+        shopButton.colors = new ColorBlock
+        {
+            normalColor =_defaultColor,
+            highlightedColor = shopButton.colors.highlightedColor,
+            pressedColor = shopButton.colors.pressedColor,
+            selectedColor = shopButton.colors.selectedColor,
+            disabledColor = shopButton.colors.disabledColor,
+            colorMultiplier = 1
+        };
     }
 
     private void CalculateNotifications()
@@ -61,15 +91,35 @@ public class NotificationsManager : MonoBehaviour
                     numberOfStoreItems++;
                 }
             }
+            
+            Debug.Log("Number of store items: " + numberOfStoreItems);
         
             if (numberOfStoreItems > 0)
             {
                 storeNotification.SetActive(true);
                 storeText.text = numberOfStoreItems.ToString();
+                shopButton.colors = new ColorBlock
+                {
+                    normalColor = new Color(0.75f,1f,0.75f),
+                    highlightedColor = shopButton.colors.highlightedColor,
+                    pressedColor = shopButton.colors.pressedColor,
+                    selectedColor = shopButton.colors.selectedColor,
+                    disabledColor = shopButton.colors.disabledColor,
+                    colorMultiplier = 1
+                };
             }
             else
             {
                 storeNotification.SetActive(false);
+                shopButton.colors = new ColorBlock
+                {
+                    normalColor =_defaultColor,
+                    highlightedColor = shopButton.colors.highlightedColor,
+                    pressedColor = shopButton.colors.pressedColor,
+                    selectedColor = shopButton.colors.selectedColor,
+                    disabledColor = shopButton.colors.disabledColor,
+                    colorMultiplier = 1
+                };
             }
         }
     }

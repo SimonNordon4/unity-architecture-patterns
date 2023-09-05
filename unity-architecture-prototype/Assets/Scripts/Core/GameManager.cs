@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     public GameObject winMenu;
 
     public List<TextMeshProUGUI> GoldTexts = new();
+    public List<TextMeshProUGUI> GoldSubTexts = new();
 
     [Header("Stat UI")] public List<RectTransform> StatContainers = new();
     private Dictionary<StatType,List<TextMeshProUGUI>> statTexts = new();
@@ -324,7 +325,11 @@ public class GameManager : MonoBehaviour
 
         AccountManager.instance.AddGold(totalGold);
 
-        foreach (var txt in GoldTexts) txt.text = $"Gold Added: {totalGold}";
+        foreach (var txt in GoldTexts) txt.text = $"+{totalGold}G";
+        foreach (var txt in GoldSubTexts)
+        {
+            txt.text = $"Total: {AccountManager.instance.totalGold}G";
+        }
         
         List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
             .Where(a => a.name == AchievementName.Earn100Gold ||
