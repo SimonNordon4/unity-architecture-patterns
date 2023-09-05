@@ -38,8 +38,8 @@ public class EnemyManager : MonoBehaviour
     private EnemySpawnWave _currentWave;
     
     // for UI purposes.
-    private int totalWaves = 0;
-    private int thisWave = 0;
+    private int _totalWaves;
+    private int _thisWave;
 
     [Header("Enemies")] public readonly List<GameObject> enemies = new List<GameObject>();
 
@@ -101,9 +101,9 @@ public class EnemyManager : MonoBehaviour
         _currentWave = _currentSpawnWaves[0];
         InitializeNewWave();
         
-        totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
-        thisWave = 1;
-        gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
+        _totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
+        _thisWave = 1;
+        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
         
         _currentWaveData = new WaveRuntimeData
         {
@@ -120,9 +120,9 @@ public class EnemyManager : MonoBehaviour
         _currentWave = _currentBlock.spawnWaves[0];
         StopAllCoroutines();
         InitializeNewWave();
-        totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
-        thisWave = 1;
-        gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
+        _totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
+        _thisWave = 1;
+        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
     }
 
     private void InitializeNewWave()
@@ -188,10 +188,10 @@ public class EnemyManager : MonoBehaviour
     private void HandleNormalEnemies()
     {
         
-        // Enemy Spawn Rate now doubles the spawn time of the block up until the next block.
-        if ((int)gameManager.enemySpawnRate.value > _blockIndex)
+        // Half the spawn rate on the first 2 waves if the player hasn't played a game yet.
+        if (AccountManager.instance.statistics.gamesPlayed < 1 && _blockIndex < 2)
         {
-            _elapsedWaveTime += Time.deltaTime * 2;
+            _elapsedWaveTime += Time.deltaTime * 0.5f;
         }
         else
         {
@@ -243,7 +243,11 @@ public class EnemyManager : MonoBehaviour
 
     private void HandleSpawnBoss()
     {
-        StartCoroutine(StartBossSpawnAction(_currentWave.bossAction));
+        foreach (var action in _currentWave.eliteAction)
+        {
+            StartCoroutine(StartBossSpawnAction(action));
+        }
+        
         currentPhase = EnemySpawnPhase.BossAlive;
     }
 
@@ -257,7 +261,12 @@ public class EnemyManager : MonoBehaviour
         if (_currentWaveSpawnedEnemies > _currentWave.totalEnemies)
             _currentWaveSpawnedEnemies = _currentWave.totalEnemies;
 
-        var startPoint = Random.insideUnitSphere.normalized * spawnRadius;
+        var t = Random.value;
+        float angle = t * Mathf.PI * 2;
+        
+        var distance = (1 - Mathf.Pow(t, 2)) * spawnRadius;
+        
+        var startPoint = new Vector3(MathF.Cos(angle),0f,MathF.Sin(angle)) * distance;
 
         var lastSpawnPoint = startPoint;
         for (var i = 0; i < action.numberOfEnemiesToSpawn; i++)
@@ -309,8 +318,8 @@ public class EnemyManager : MonoBehaviour
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
 
-        enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentBlock.healthMultiplier.x, _currentBlock.healthMultiplier.y));
-        enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentBlock.damageMultiplier.x, _currentBlock.damageMultiplier.y));
+        enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
+        enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
 
         enemies.Add(newEnemy);
     }
@@ -324,7 +333,7 @@ public class EnemyManager : MonoBehaviour
         var t = Random.value;
         float angle = t * Mathf.PI * 2;
         
-        var distance = 1 - Mathf.Pow(t, 2) * spawnRadius;
+        var distance = (1 - Mathf.Pow(t, 2)) * spawnRadius;
         
         var startPoint = new Vector3(MathF.Cos(angle),0f,MathF.Sin(angle)) * distance;
         
@@ -380,8 +389,8 @@ public class EnemyManager : MonoBehaviour
         var enemyController = newEnemy.GetComponent<EnemyController>();
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
-        enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentBlock.healthMultiplier.x, _currentBlock.healthMultiplier.y));
-        enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentBlock.damageMultiplier.x, _currentBlock.damageMultiplier.y));
+        enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
+        enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
         enemyController.isBoss = true;
 
         enemies.Add(newEnemy);
@@ -394,7 +403,7 @@ public class EnemyManager : MonoBehaviour
         // if max tier is 3 spawn a medium chest.
         var projectedPosition = new Vector3(_positionOfLastBossDeath.x, 0, _positionOfLastBossDeath.z);
         
-        if (_currentBlock.bossChestTier.y <= 3)
+        if (_currentWave.bossChestTier.y <= 3)
         {
             _bossChest = Instantiate(mediumChestPrefab, projectedPosition, Quaternion.identity);
             chestController = _bossChest.GetComponent<Chest>();
@@ -405,9 +414,9 @@ public class EnemyManager : MonoBehaviour
             chestController = _bossChest.GetComponent<Chest>();
         }
 
-        chestController.minTier = _currentBlock.bossChestTier.x;
-        chestController.maxTier = _currentBlock.bossChestTier.y;
-        chestController.options = _currentBlock.bossChestChoices;
+        chestController.minTier = _currentWave.bossChestTier.x;
+        chestController.maxTier = _currentWave.bossChestTier.y;
+        chestController.options = _currentWave.bossChestChoices;
     }
 
     #endregion
@@ -463,8 +472,8 @@ public class EnemyManager : MonoBehaviour
             _waveIndex = 0;
         }
         
-        thisWave++;
-        gameManager.waveText.text = "Wave " + thisWave + "/" + totalWaves;
+        _thisWave++;
+        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
         
         _currentWave = _currentSpawnWaves[_waveIndex];
         _currentWaveData = new WaveRuntimeData

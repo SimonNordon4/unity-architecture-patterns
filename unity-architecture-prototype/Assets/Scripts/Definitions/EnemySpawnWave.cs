@@ -16,22 +16,23 @@ public class EnemySpawnWave : ScriptableObject
     public int totalEnemies = 100;
     public float blockTime = 300f;
     public AnimationCurve spawnRateCurve = new(new Keyframe(0, 0), new Keyframe(1, 1));
-    public EnemySpawnAction bossAction;
+    public List<EnemySpawnAction> eliteAction;
+    
+    public Vector2 healthMultiplier = new Vector2(1, 1);
+    public Vector2 damageMultiplier = new Vector2(1, 1);
+    public Vector2Int bossChestTier = new(1, 2);
+    public Vector2Int bossChestChoices = new(3, 3);
     
     #if UNITY_EDITOR
     public void OnValidate()
     {
         blockTime = blockTime < 2 ? 2 : blockTime;
-        _parentBlock = GetParentBlock();
-        _isParentNull = _parentBlock == null;
     }
-    
-
     #region Stat Tracking
 
     private List<EnemyType> _enemyTypes = new();
     private EnemySpawnBlock _parentBlock;
-    private bool _isParentNull = false;
+    private bool _hasParentBlock = false;
     
     [Serializable]
     public class EnemyType
@@ -77,33 +78,11 @@ public class EnemySpawnWave : ScriptableObject
             averageDamage = Mathf.RoundToInt(enemyTypes.Sum(x => x.averageDamage)),
             idealDps = totalHealth / blockTime,
             idealHealth = Mathf.RoundToInt(averageDamage * 10),
-            parentBlock = _isParentNull ? "None" : _parentBlock.name
         };
-    }
-
-    private EnemySpawnBlock GetParentBlock()
-    {
-        string[] guids = AssetDatabase.FindAssets("t:EnemySpawnBlock");
-        foreach (string guid in guids)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guid);
-            EnemySpawnBlock block = AssetDatabase.LoadAssetAtPath<EnemySpawnBlock>(path);
-
-            foreach (var spawnWave in block.spawnWaves)
-            {
-                if (spawnWave == this)
-                {
-                    return block; 
-                }
-            }
-        }
-        return null; 
     }
 
     private List<EnemyType> GetEnemyTypesList()
     {
-        var parentBlock = _parentBlock;
-
         var enemyStats = new List<EnemyType>();
         int totalProbability = 0;
         foreach (var spawnAction in enemySpawnActions)
@@ -140,10 +119,10 @@ public class EnemySpawnWave : ScriptableObject
                 probability += action.spawnWeight * action.numberOfEnemiesToSpawn;
                 var enemyController = action.enemyPrefab.GetComponent<EnemyController>();
                 
-                var healthMultiplier = _isParentNull ? 1 : (parentBlock.healthMultiplier.x + parentBlock.healthMultiplier.y) / 2;
+                var healthMultiplier = (this.healthMultiplier.x + this.healthMultiplier.y) / 2;
                 health += Mathf.RoundToInt(enemyController.currentHealth * action.numberOfEnemiesToSpawn * healthMultiplier);
                 
-                var damageMultiplier = _isParentNull ? 1 : (parentBlock.damageMultiplier.x + parentBlock.damageMultiplier.y) / 2;
+                var damageMultiplier = (this.damageMultiplier.x + this.damageMultiplier.y) / 2;
                 damage += Mathf.RoundToInt(enemyController.damageAmount * action.numberOfEnemiesToSpawn * damageMultiplier);
             }
 

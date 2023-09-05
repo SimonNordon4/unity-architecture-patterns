@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: 00_EnemySpawnWave_00 (Easy Normal)
+  m_Name: 00_Wave_01 (Tutorial)
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
@@ -18,8 +18,12 @@ MonoBehaviour:
       type: 3}
     numberOfEnemiesToSpawn: 1
     spawnWeight: 100
-  totalEnemies: 10
-  blockTime: 30
+  - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
+      type: 3}
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 50
+  totalEnemies: 15
+  blockTime: 15
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
@@ -44,8 +48,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  bossAction:
-    enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
+  eliteAction:
+  - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
-    numberOfEnemiesToSpawn: 1
+    numberOfEnemiesToSpawn: 5
     spawnWeight: 100
+  healthMultiplier: {x: 0.6, y: 0.6}
+  damageMultiplier: {x: 1, y: 1}
+  bossChestTier: {x: 1, y: 2}
+  bossChestChoices: {x: 3, y: 3}

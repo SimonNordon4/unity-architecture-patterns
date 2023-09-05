@@ -6,5 +6,6 @@ using UnityEngine;
 public class EnemySpawnRound : ScriptableObject
 {
     public int[] tierBreaks;
+    [Inline]
     public List<EnemySpawnBlock> enemySpawnBlocks = new();
 }

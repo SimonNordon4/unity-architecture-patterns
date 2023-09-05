@@ -11,12 +11,10 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "EnemySpawnBlock", menuName = "Prototype/EnemySpawnBlock", order = 1)]
 public class EnemySpawnBlock : ScriptableObject
 {
-    public Vector2 healthMultiplier = new(1, 1);
-    public Vector2 damageMultiplier = new(1, 1);
-    public Vector2Int bossChestTier = new(1, 2);
-    public Vector2Int bossChestChoices = new(3, 3);
     public float goldMultiplier = 1;
+    public int tier;
 
+    [Inline]
     public List<EnemySpawnWave> spawnWaves = new();
 }
 
