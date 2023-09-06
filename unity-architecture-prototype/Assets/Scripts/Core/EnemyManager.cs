@@ -461,7 +461,6 @@ public class EnemyManager : MonoBehaviour
         // If we've reached the end of the block, go to the next block
         if (_waveIndex >= _currentSpawnWaves.Count)
         {
-            BlockBeaten();
             _blockIndex++;
             if (_blockIndex >= enemySpawnRound.enemySpawnBlocks.Count)
             {
@@ -487,9 +486,32 @@ public class EnemyManager : MonoBehaviour
         InitializeNewWave();
     }
 
-    public void BlockBeaten()
+    public EnemySpawnWave GetCurrentWave()
     {
+        return _currentWave;
+    }
+
+    public EnemySpawnWave GetNextWave()
+    {
+        Debug.Log($"_waveIndex: {_waveIndex}");
+        Debug.Log($"_currentSpawnWaves.Count: {_currentSpawnWaves.Count}");
         
+        // If we've reached the end of the block, go to the next block
+        if (_waveIndex >= _currentSpawnWaves.Count - 1)
+        {
+            Debug.Log("Getting wave in next block.");
+            var nextIndex = _blockIndex + 1;
+            if (nextIndex >= enemySpawnRound.enemySpawnBlocks.Count)
+            {
+                return _currentSpawnWaves[^1];
+            }
+            var block = enemySpawnRound.enemySpawnBlocks[nextIndex];
+            return block.spawnWaves[0];
+        }
+        else
+        {
+            return _currentSpawnWaves[_waveIndex + 1];
+        }
     }
 
     public class WaveRuntimeData

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,6 +20,11 @@ public class ProgressionManagerUI : MonoBehaviour
     public RectTransform waveContainer;
     public RectTransform waveMarker;
     
+    [Header("Notification")]
+    public GameObject notificationObject;
+    public TextMeshProUGUI notificationText;
+    
+    [Header("Colors")]
     public Color defaultColor;
     public Color progressedColor;
     
@@ -26,6 +32,7 @@ public class ProgressionManagerUI : MonoBehaviour
     private BlockProgressData[] _blocks;
     
     private BlockProgressData _currentBlock;
+    private float _lastMarkerHeight;
 
     private void Awake()
     {
@@ -154,13 +161,16 @@ public class ProgressionManagerUI : MonoBehaviour
         progressMarker.anchoredPosition = new Vector2(0, progressHeight);
         progressTrail.sizeDelta = new Vector2(progressTrail.sizeDelta.x, progressHeight);
         
+        progressMarker.gameObject.SetActive(true);
+        progressTrail.gameObject.SetActive(true);
+        
         // Clean Up.
         blockMarker.gameObject.SetActive(false);
         waveMarker.gameObject.SetActive(false);
     }
     
 
-    void Update()
+    void LateUpdate()
     {
         MoveProgressBar();
         CheckWaveProgression();
@@ -176,6 +186,7 @@ public class ProgressionManagerUI : MonoBehaviour
         // now we can extrapolate the current progress.
         var progressHeight = _currentBlock.currentWave.waveMarkerPosition + waveProgress * _currentBlock.currentWave.waveHeight;
         // Apply to UI.
+        
         progressMarker.anchoredPosition = new Vector2(0, progressHeight);
         progressTrail.sizeDelta = new Vector2(progressTrail.sizeDelta.x, progressHeight);
     }
@@ -215,6 +226,20 @@ public class ProgressionManagerUI : MonoBehaviour
         // Otherwise, move to the next block.
         _currentBlock = _blocks[_currentBlock.number];
         _currentBlock.currentWave = _currentBlock.waves[0];
+
+        StartCoroutine(ShowProgressNotification());
+    }
+
+    private IEnumerator ShowProgressNotification()
+    {
+        var currentWave = _enemyManager.GetNextWave();
+        var healthIncrease = (currentWave.healthMultiplier.x + currentWave.healthMultiplier.y) * 0.5f;
+        var damageIncrease = (currentWave.damageMultiplier.x + currentWave.damageMultiplier.y) * 0.5f;
+        var newText = $"+{healthIncrease * 100}% enemy health\n{damageIncrease * 100}% enemy damage";
+        notificationText.text = newText;
+        notificationObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        notificationObject.SetActive(false);
     }
     
     private void OnDisable()
@@ -231,6 +256,9 @@ public class ProgressionManagerUI : MonoBehaviour
         }
         
         _blocks = null;
+        
+        progressMarker.gameObject.SetActive(false);
+        progressTrail.gameObject.SetActive(false);
     }
 
     [Serializable]
@@ -259,6 +287,5 @@ public class ProgressionManagerUI : MonoBehaviour
         public int enemiesInWave;
         public int enemiesUpToWave;
         public float waveProgress;
-        
     }
 }
