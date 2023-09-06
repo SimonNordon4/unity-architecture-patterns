@@ -176,6 +176,7 @@ public class EnemyController : MonoBehaviour
         // if the position is over the boundary, clamp it back to the boundary
         var pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, -GameManager.instance.levelBounds.x, GameManager.instance.levelBounds.x);
+        pos.y = transform.localScale.y;
         pos.z = Mathf.Clamp(pos.z, -GameManager.instance.levelBounds.y, GameManager.instance.levelBounds.y);
         transform.position = pos;
     }

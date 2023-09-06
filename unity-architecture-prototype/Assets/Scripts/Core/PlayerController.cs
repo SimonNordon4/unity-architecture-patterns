@@ -346,7 +346,7 @@ public class PlayerController : MonoBehaviour
         public void TakeDamage(int damageAmount)
         {
             if (!_canTakeDamage) return;
-            if (!_isDashing) return;
+            if (_isDashing) return;
             // Check if damage is dodged.
             var hitChance = Random.Range(0, 100);
 

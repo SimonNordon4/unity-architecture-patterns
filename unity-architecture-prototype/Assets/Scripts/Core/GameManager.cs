@@ -523,7 +523,7 @@ public class GameManager : MonoBehaviour
             case > 90:
                 numberOfItems = 4;
                 break;
-            case > 75:
+            case > 45:
                 numberOfItems = 3;
                 break;
             default:

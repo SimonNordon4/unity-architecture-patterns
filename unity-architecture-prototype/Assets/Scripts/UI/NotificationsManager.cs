@@ -53,6 +53,8 @@ public class NotificationsManager : MonoBehaviour
         {
             // Get all achievements that are completed but not collected.
             int numberOfCompletedAchievements = 0;
+            Debug.Log("Number of achievements: " + numberOfCompletedAchievements);
+            
 
             var achievementCount = AccountManager.instance.achievementSave.achievements.Length;
         
