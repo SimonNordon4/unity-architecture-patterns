@@ -78,6 +78,7 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void TowardsPlayer()
     {
+        Debug.Log("TowardsPlayer");
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
         var distance = Vector3.Distance(playerTarget.position, transform.position);
@@ -108,7 +109,7 @@ public class EnemyController : MonoBehaviour
         
         // tolerance is the radius of the enemy.
         var tolerance = transform.localScale.x * 0.5f;
-        
+
         if (distance < tolerance + 0.5f) 
         {
             randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));

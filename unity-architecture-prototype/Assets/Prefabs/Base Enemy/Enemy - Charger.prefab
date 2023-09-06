@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Charger - T1
+      value: Enemy - Charger
       objectReference: {fileID: 0}
     - target: {fileID: 6196254785741373584, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -138,16 +138,18 @@ MonoBehaviour:
   healthBarUI: {fileID: 3859028022664314501}
   healthText: {fileID: 4833765838464234321}
   damageText: {fileID: 3288393296007926946}
+  moveBehaviour: 0
   playerTarget: {fileID: 0}
   moveSpeed: 5
   repulsionForce: 0.5
   knockBackFactor: 1
+  isUnstoppable: 0
   currentHealth: 8
   damageAmount: 2
   damageCooldown: 0.2
   chargeSpeed: 10
   chargeDistance: 5
-  chargeCooldown: 3
+  chargeCooldown: 4
   chargeUpTime: 0.3
 --- !u!114 &4833765838464234321 stripped
 MonoBehaviour:

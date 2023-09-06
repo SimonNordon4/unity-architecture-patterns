@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Definitions;
 using UnityEngine;
+using System.Linq;
 #if UNITY_EDITOR
 using UnityEditor;
-using System.Linq;
 #endif
 [CreateAssetMenu(fileName = "EnemySpawnWave", menuName = "Prototype/EnemySpawnWave", order = 1)]
 public class EnemySpawnWave : ScriptableObject

@@ -178,9 +178,10 @@ MonoBehaviour:
   damageText: {fileID: 4797554202362716022}
   moveBehaviour: 1
   playerTarget: {fileID: 0}
-  moveSpeed: 7
+  moveSpeed: 5
   repulsionForce: 0.5
   knockBackFactor: 1
+  isUnstoppable: 0
   currentHealth: 5
   damageAmount: 1
   damageCooldown: 3
@@ -192,3 +193,4 @@ MonoBehaviour:
   projectileSpeed: 6
   startLoaded: 1
   bulletSpread: 15
+  inaccuracySpread: 15

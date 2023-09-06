@@ -227,7 +227,7 @@ public class ProgressionManagerUI : MonoBehaviour
         _currentBlock = _blocks[_currentBlock.number];
         _currentBlock.currentWave = _currentBlock.waves[0];
 
-        StartCoroutine(ShowProgressNotification());
+        GameManager.instance.StartCoroutine(ShowProgressNotification());
     }
 
     private IEnumerator ShowProgressNotification()

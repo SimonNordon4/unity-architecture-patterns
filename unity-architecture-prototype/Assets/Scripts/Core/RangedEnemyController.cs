@@ -21,6 +21,11 @@ public class RangedEnemyController : EnemyController
             _timeSinceLastDamage = damageCooldown;
     }
 
+    protected override void TowardsPlayer()
+    {
+        
+    }
+
     protected override void Update()
     {
         if (GameManager.instance.isGameActive == false) return;
@@ -52,9 +57,15 @@ public class RangedEnemyController : EnemyController
         }
         else if (moveBehaviour == MoveBehaviour.RandomLocation)
         {
-            var dir =  Vector3.ProjectOnPlane(randomPosition - transform.position,Vector3.up).normalized;
-            var distanceToDestination = Vector3.Distance(randomPosition, transform.position);
-            if (distanceToDestination < 1.1f)
+            var position = transform.position;
+            var projectedPosition = new Vector3(position.x, 0, position.z);
+            var dir =  Vector3.ProjectOnPlane(randomPosition - projectedPosition,Vector3.up).normalized;
+            var distanceToRandom = Vector3.Distance(randomPosition, projectedPosition);
+        
+            // tolerance is the radius of the enemy.
+            var tolerance = transform.localScale.x * 0.5f;
+
+            if (distanceToRandom < tolerance + 0.5f) 
             {
                 randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
             }

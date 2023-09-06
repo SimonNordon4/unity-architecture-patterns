@@ -221,7 +221,6 @@ public class EnemyManager : MonoBehaviour
 
     private void HandleNormalEnemies()
     {
-        Debug.Log(CalculateSpawnRatePenalty().ToString("F"));
         _elapsedWaveTime += Time.deltaTime * CalculateSpawnRatePenalty();
 
         if (_elapsedWaveTime > _currentWave.blockTime)

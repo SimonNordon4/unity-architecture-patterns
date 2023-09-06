@@ -1,20 +1,29 @@
 ﻿Bugs:
 
+[x] Make sure chargers are facing the way they're moving!
+[x] Ensure milestone popup dissapears (coroutine gameobject was disbaled)!
+[x] Random move enemies are STILL getting stuck (elites only)
 [x] make sure first time spawn timer working as intended.
-[] Achievement Text is broken in achievement menu.
-[] Store and Achievement Notifications not working in game over screen.
-[] reduce wanderer speed
-[] Shoot enemies where they're going to be (trig)
+[x] Achievement Text is broken in achievement menu.
+[x] Store and Achievement Notifications not working in game over screen.
+[x] reduce wanderer speed
+[x] Shoot enemies where they're going to be (trig)
+
 
 Balance:
-
-[] health scaling.
-[] While enemies alive < 3, speed up the spawn rate.
+[] Set idealEnemies and handicap per Wave.
 [] Achievements for getting to different tiers (waves).
 [] Achievements for reaching high stat.
-[x] Add UI showing tier progression.
 [] Improve pause menu stats container layout.
-[] Add more store increments.
+[x] Incremental health rate during a block.
+[x] Make invincible while dashing.
+[x] Reduce charge cooldown.
+[x] Add more store increments.
+[x] make all base enemies faster by 0.5
+[x] Add UI showing tier progression.
+[x] health scaling.
+[x] While enemies alive < 3, speed up the spawn rate.
+
 
 New Features:
 [] Enemy type that guards chest.

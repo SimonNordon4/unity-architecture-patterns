@@ -45,6 +45,7 @@ public class ChargeEnemyController : EnemyController
             else if(distanceToPlayer > chargeDistance)
             {
                 transform.Translate(dir * (moveSpeed * Time.deltaTime));
+                transform.rotation = Quaternion.LookRotation(dir);
             }
             else
             {
@@ -69,6 +70,8 @@ public class ChargeEnemyController : EnemyController
 
         float chargedDistance = 0; // Track how much distance the enemy has covered during the charge
 
+        transform.forward = dir; // Face the player
+        
         // While the enemy hasn't charged the desired distance
         while (chargedDistance < (2 * chargeDistance))
         {

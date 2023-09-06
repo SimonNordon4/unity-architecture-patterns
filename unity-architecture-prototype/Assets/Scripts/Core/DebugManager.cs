@@ -46,7 +46,17 @@ public class DebugManager : MonoBehaviour
             
             gm.block.value = 99999;
             gm.block.initialValue = 99999;
+        }
 
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            var gm = GameManager.instance;
+            gm.block.value = 99999;
+            gm.block.initialValue = 99999;
+            gm.pistolDamage.initialValue = 0;
+            gm.pistolDamage.value = 0;
+            gm.pistolKnockBack.initialValue = 0;
+            gm.pistolKnockBack.value = 0;
         }
 
         if (Input.GetKeyUp(KeyCode.UpArrow))
