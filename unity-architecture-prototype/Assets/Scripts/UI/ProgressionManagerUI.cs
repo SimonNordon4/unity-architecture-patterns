@@ -1,156 +1,264 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+// The progress bas is evenly divided into each block.
+// Each block is evenly divided into each wave.
+// Each time an enemy is killed, the progress bar is incremented by the wave height * waveProgress.
+
 [DefaultExecutionOrder(100)]
 public class ProgressionManagerUI : MonoBehaviour
 {
+    [Header("UI")]
     public RectTransform progressionContainer;
-    public RectTransform currentProgression;
-    public RectTransform blockMarker;
+    public RectTransform progressMarker;
     public RectTransform progressTrail;
-    
     public RectTransform blockContainer;
-
-    private float _containerHeight;
-    private float _progressIncrement;
-    private float _blockIncrement;
-    private int _numberOfBlocks;
-
+    public RectTransform blockMarker;
+    public RectTransform waveContainer;
+    public RectTransform waveMarker;
+    
     public Color defaultColor;
     public Color progressedColor;
-
-    private List<RectTransform> _blockMarkers = new();
-    private BlockProgressData[] _blocks;
     
     private EnemyManager _enemyManager;
-    private float _currentMarketHeight = 0;
-    private int _currentBlockIndex = 0;
-    private int _currentWaveIndex = 0;
+    private BlockProgressData[] _blocks;
+    
+    private BlockProgressData _currentBlock;
+
+    private void Awake()
+    {
+        // Normalize colors for permanent UI elements.
+        progressMarker.GetComponent<Image>().color = progressedColor;
+        progressTrail.GetComponent<Image>().color = progressedColor;
+    }
 
     private void OnEnable()
     {
-        currentProgression.GetComponent<Image>().color = progressedColor;
-        progressTrail.GetComponent<Image>().color = progressedColor;
-        
-        _containerHeight = progressionContainer.rect.height;
-        
-        // get total number of blocks
+        // Validate.
         _enemyManager = FindObjectOfType<EnemyManager>();
-
         if (_enemyManager == null) return;
         
-        _numberOfBlocks = _enemyManager.enemySpawnRound.enemySpawnBlocks.Count;
-        _blockIncrement = _containerHeight / _numberOfBlocks;
-        
-        _blocks = new BlockProgressData[_numberOfBlocks];
+        #region Build Data
+        var numberOfBlocks = _enemyManager.enemySpawnRound.enemySpawnBlocks.Count;
+        var blockIncrement = progressionContainer.rect.height / numberOfBlocks;
+        _blocks = new BlockProgressData[numberOfBlocks];
 
-        // Initialization Loop.
-        for (var i = 0; i < _numberOfBlocks; i++)
+        float previousBlockPosition = 0;
+        int lastWaveEnemyCount = 0;
+        for (var i = 0; i < numberOfBlocks; i++)
         {
-            var newBlock = new BlockProgressData();
-            newBlock.waves = _enemyManager.enemySpawnRound.enemySpawnBlocks[i].spawnWaves.Count;
-            newBlock.enemyWaveCount = new int[newBlock.waves];
-            _blocks[i] = newBlock;
-        }
-
-        var lastBlockCount = 0;
-        for(var i = 0; i < _numberOfBlocks; i++)
-        {
-            var block = _enemyManager.enemySpawnRound.enemySpawnBlocks[i];
-            var data = new BlockProgressData
+            var waveCount = _enemyManager.enemySpawnRound.enemySpawnBlocks[i].spawnWaves.Count;
+            var newBlockMarker =Instantiate(blockMarker, blockContainer);
+            newBlockMarker.gameObject.SetActive(true);
+            
+            var blockData = new BlockProgressData
             {
-                enemyBlockCount = block.TotalEnemyCount() + lastBlockCount
+                blockMarker = newBlockMarker,
+                blockMarkerImage = newBlockMarker.GetComponent<Image>(),
+                blockMarkerPosition = (i + 1) * blockIncrement,
+                number = i + 1,
+                waveHeight = blockIncrement / waveCount,
+                waveCount = waveCount,
+                waves = new WaveProgressData[waveCount]
             };
 
-            lastBlockCount = data.enemyBlockCount;
-            
-            // We also want to instantiate a block marker for each block.
-            var blockMarkerInstance = Instantiate(blockMarker, blockContainer);
-            data.blockHeight = _blockIncrement * (i + 1);
-            blockMarkerInstance.anchoredPosition = new Vector2(0,  data.blockHeight);
-            blockMarkerInstance.gameObject.SetActive(true);
-            blockMarkerInstance.GetComponentInChildren<TextMeshProUGUI>().text = $"{i + 1}";
-            
-            var blockAmountReached = data.enemyBlockCount <= _enemyManager.totalEnemiesKilled;
-            blockMarkerInstance.GetComponent<Image>().color = blockAmountReached ? progressedColor : defaultColor;
-            _blockMarkers.Add(blockMarkerInstance);
-            _blocks[i] = data;
-        }
-        
-        blockMarker.gameObject.SetActive(false);
-        
-        _progressIncrement = _blockIncrement / _blocks[0].enemyBlockCount;
-        
-        currentProgression.gameObject.SetActive(true);
-        progressTrail.gameObject.SetActive(true);
-        
-        
-        currentProgression.anchoredPosition = new Vector2(0, _currentMarketHeight);
-        progressTrail.sizeDelta = new Vector2(progressTrail.sizeDelta.x, _currentMarketHeight);
-        
-    }
-    private void OnDisable()
-    {
-        foreach(var blockData in _blocks)
-        {
-            foreach (var marker in blockData.waveMarkers)
+            for (var j = 0; j < blockData.waveCount; j++)
             {
-                Destroy(marker.gameObject);
+                var waveEnemyCount = _enemyManager.enemySpawnRound.enemySpawnBlocks[i].spawnWaves[j].TotalEnemyCount();
+                var newWaveMarker = Instantiate(waveMarker, waveContainer);
+                newWaveMarker.gameObject.SetActive(true);
+                
+                var waveData = new WaveProgressData
+                {
+                    number = j + 1,
+                    waveMarker = newWaveMarker,
+                    waveMarkerImage = newWaveMarker.GetComponent<Image>(),
+                    waveMarkerPosition = (j + 1) * blockData.waveHeight + previousBlockPosition,
+                    waveHeight = blockData.waveHeight,
+                    enemiesInWave = waveEnemyCount,
+                    enemiesUpToWave = waveEnemyCount + lastWaveEnemyCount,
+                    waveProgress = 0
+                };
+                
+                lastWaveEnemyCount += waveEnemyCount;
+                
+                blockData.waves[j] = waveData;
+            }
+            
+            previousBlockPosition += blockIncrement;
+            
+            _blocks[i] = blockData;
+        }
+        #endregion
+        
+        // Active objects to be instantiated.
+        blockMarker.gameObject.SetActive(true);
+        waveMarker.gameObject.SetActive(true);
+        
+        #region Build UI
+
+        var blocksCompleted = 0;
+        var wavesCompletedInBlock = 0;
+        foreach (var block in _blocks)
+        {
+            foreach (var wave in block.waves)
+            {
+                wave.waveMarker.anchoredPosition = new Vector2(0, wave.waveMarkerPosition);
+                var isWaveCompleted = wave.enemiesUpToWave <= _enemyManager.totalEnemiesKilled;
+                wave.waveMarkerImage.color = isWaveCompleted ? progressedColor : defaultColor;
+
+                if (isWaveCompleted)
+                {
+                    wavesCompletedInBlock++;
+                }
+            }
+            
+            block.blockMarker.anchoredPosition = new Vector2(0, block.blockMarkerPosition);
+            block.blockMarker.GetComponentInChildren<TextMeshProUGUI>().text = $"{block.number}";
+            var isBlockCompleted = block.waves[^1].enemiesUpToWave <= _enemyManager.totalEnemiesKilled;
+            block.blockMarkerImage.color = isBlockCompleted ? progressedColor : defaultColor;
+
+            if (isBlockCompleted)
+            {
+                blocksCompleted++;
+                wavesCompletedInBlock = 0;
             }
         }
-        
-        foreach (var marker in _blockMarkers)
+
+        var progressHeight = _blocks[^1].blockMarkerPosition;
+        // We only set the blocks and waves if there are any left to complete.
+        if(blocksCompleted < _blocks.Length)
         {
-            Destroy(marker.gameObject);
+            _currentBlock = _blocks[blocksCompleted];
+            var currentWave = _currentBlock.waves[wavesCompletedInBlock];
+
+            if (currentWave == null)
+            {
+                throw new Exception("Current wave is null");
+            }
+        
+            currentWave.waveProgress =
+                (float)(currentWave.enemiesUpToWave - _enemyManager.totalEnemiesKilled) / currentWave.enemiesInWave;
+        
+            progressHeight = currentWave.waveMarkerPosition + currentWave.waveProgress * currentWave.waveHeight;
+        
+            _currentBlock.currentWave = currentWave;
         }
-        _blockMarkers.Clear();
         
-        _currentMarketHeight = currentProgression.anchoredPosition.y;
+        #endregion
         
-        progressTrail.sizeDelta = new Vector2(progressTrail.sizeDelta.x, 0);
-        progressTrail.gameObject.SetActive(false);
+        // Update Progress.
         
-        currentProgression.anchoredPosition = new Vector2(0, 0);
-        currentProgression.gameObject.SetActive(false);
-
+        progressMarker.anchoredPosition = new Vector2(0, progressHeight);
+        progressTrail.sizeDelta = new Vector2(progressTrail.sizeDelta.x, progressHeight);
+        
+        // Clean Up.
+        blockMarker.gameObject.SetActive(false);
+        waveMarker.gameObject.SetActive(false);
     }
+    
 
-    // Update is called once per frame
     void Update()
     {
-        var currentProgressionHeight = Mathf.Lerp(currentProgression.anchoredPosition.y, _progressIncrement * _enemyManager.totalEnemiesKilled, Time.deltaTime); 
-        currentProgression.anchoredPosition = new Vector2(0, currentProgressionHeight);
-        progressTrail.sizeDelta = new Vector2(progressTrail.sizeDelta.x, currentProgressionHeight);
+        MoveProgressBar();
+        CheckWaveProgression();
+    }
+
+    private void MoveProgressBar()
+    {
+        // First we need to get the progress of the current wave every frame.
+        // First we take the total enemies killed and subtract the enemies up to the current wave,
+        var enemiesKilledSinceLastWave = _enemyManager.totalEnemiesKilled - _currentBlock.currentWave.enemiesUpToWave;
+        // Now we get the proportion of the current wave that has been completed.
+        var waveProgress = (float)enemiesKilledSinceLastWave / _currentBlock.currentWave.enemiesInWave;
+        // now we can extrapolate the current progress.
+        var progressHeight = _currentBlock.currentWave.waveMarkerPosition + waveProgress * _currentBlock.currentWave.waveHeight;
+        // Apply to UI.
+        progressMarker.anchoredPosition = new Vector2(0, progressHeight);
+        progressTrail.sizeDelta = new Vector2(progressTrail.sizeDelta.x, progressHeight);
+    }
+
+
+    private void CheckWaveProgression()
+    {
+        // The wave is finished when the total enemies killed is greater than the enemies up to the current wave.
+        if (_enemyManager.totalEnemiesKilled < _currentBlock.currentWave.enemiesUpToWave) return;
         
-        // check if the currentProgressionHeight is greater than the current block marker.
-        if (_enemyManager.totalEnemiesKilled >= _blocks[_currentBlockIndex].enemyBlockCount)
+        // Set the wave marker color to completed.
+        _currentBlock.currentWave.waveMarkerImage.color = progressedColor;
+        
+        // Now we must increment the wave.
+        
+        // If we're not the last wave in the block, simply move to the next one.
+        if (_currentBlock.currentWave.number < _currentBlock.waveCount)
         {
-            _blockMarkers[_currentBlockIndex].GetComponent<Image>().color = progressedColor;
-            _currentWaveIndex = 0;
-            if (_currentBlockIndex + 1 < _blocks.Length)
+            _currentBlock.currentWave = _currentBlock.waves[_currentBlock.currentWave.number];
+            return;
+        }
+        
+        // If we are the last wave in the block, then that means the block has been completed at this point.
+        FinishCurrentBlock();
+
+    }
+    
+    private void FinishCurrentBlock()
+    {
+        // Set the block marker color to completed.
+        _currentBlock.blockMarkerImage.color = progressedColor;
+        
+        // If we're the last block, then do nothing return.
+        // This will repeat every frame until the game ends.
+        if (_currentBlock.number == _blocks.Length) return;
+        
+        // Otherwise, move to the next block.
+        _currentBlock = _blocks[_currentBlock.number];
+        _currentBlock.currentWave = _currentBlock.waves[0];
+    }
+    
+    private void OnDisable()
+    {
+        // Clean up instantiated objects.
+        foreach (var block in _blocks)
+        {
+            foreach (var wave in block.waves)
             {
-                _currentBlockIndex++;
+                Destroy(wave.waveMarker.gameObject);
             }
             
-            _progressIncrement = _blockIncrement / (_blocks[_currentBlockIndex].enemyBlockCount - _blocks[_currentBlockIndex - 1].enemyBlockCount);
+            Destroy(block.blockMarker.gameObject);
         }
-
-
+        
+        _blocks = null;
     }
 
     [Serializable]
     public class BlockProgressData
     {
-        public float blockHeight;
-        public int enemyBlockCount;
-        public int waves;
-        public int[] enemyWaveCount;
-        public List<RectTransform> waveMarkers = new();
+        public RectTransform blockMarker;
+        public Image blockMarkerImage;
+        public float blockMarkerPosition;
+        public int number;
 
+        public WaveProgressData currentWave;
+        public float waveHeight;
+        public int waveCount;
+        public WaveProgressData[] waves;
+    }
 
+    [Serializable]
+    public class WaveProgressData
+    {
+        public RectTransform waveMarker;
+        public Image waveMarkerImage;
+        
+        public int number;
+        public float waveMarkerPosition;
+        public float waveHeight;
+        public int enemiesInWave;
+        public int enemiesUpToWave;
+        public float waveProgress;
+        
     }
 }
