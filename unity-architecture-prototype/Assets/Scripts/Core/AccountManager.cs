@@ -174,6 +174,17 @@ using UnityEngine;
 
         }
 
+        public void ResetProgress()
+        {
+            // delete all player prefs.
+            PlayerPrefs.DeleteAll();
+                        
+            totalGold = 0;
+            statistics = new StatisticsSave();
+            CreateAchievements();
+            PopulateStoreItems();
+        }
+
         private void CreateAchievements()
         {
             Debug.Log("Creating achievements");
