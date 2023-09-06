@@ -36,9 +36,7 @@ public class EnemySpawnWave : ScriptableObject
     }
     #region Stat Tracking
 
-    private List<EnemyType> _enemyTypes = new();
     private EnemySpawnBlock _parentBlock;
-    private bool _hasParentBlock = false;
     
     [Serializable]
     public class EnemyType
@@ -125,11 +123,11 @@ public class EnemySpawnWave : ScriptableObject
                 probability += action.spawnWeight * action.numberOfEnemiesToSpawn;
                 var enemyController = action.enemyPrefab.GetComponent<EnemyController>();
                 
-                var healthMultiplier = (this.healthMultiplier.x + this.healthMultiplier.y) / 2;
-                health += Mathf.RoundToInt(enemyController.currentHealth * action.numberOfEnemiesToSpawn * healthMultiplier);
+                var healthMult = (this.healthMultiplier.x + this.healthMultiplier.y) / 2;
+                health += Mathf.RoundToInt(enemyController.currentHealth * action.numberOfEnemiesToSpawn * healthMult);
                 
-                var damageMultiplier = (this.damageMultiplier.x + this.damageMultiplier.y) / 2;
-                damage += Mathf.RoundToInt(enemyController.damageAmount * action.numberOfEnemiesToSpawn * damageMultiplier);
+                var damageMult = (this.damageMultiplier.x + this.damageMultiplier.y) / 2;
+                damage += Mathf.RoundToInt(enemyController.damageAmount * action.numberOfEnemiesToSpawn * damageMult);
             }
 
             enemyStat.probability = (float)probability / totalProbability;

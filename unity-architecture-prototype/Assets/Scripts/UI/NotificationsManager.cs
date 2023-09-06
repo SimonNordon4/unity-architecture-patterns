@@ -66,7 +66,6 @@ public class NotificationsManager : MonoBehaviour
             }
 
        
-            Debug.Log($"Number of completed achievements: {numberOfCompletedAchievements}");
             if (numberOfCompletedAchievements > 0)
             {
                 achievementNotification.SetActive(true);

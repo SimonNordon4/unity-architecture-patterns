@@ -54,8 +54,6 @@ public class WasdButtonSelector : MonoBehaviour
                 _selectedIndex = buttons.Count - 1;
             _selectedButton = buttons[_selectedIndex];
             _selectedButton.Select();
-            Debug.Log("Selecting Button: " + _selectedButton.name + " at index: " + _selectedIndex +
-                      " in list of size: " + buttons.Count);
         }
 
         if (Input.GetKeyDown(_downKeyCode)) // This should check for downKeyCode, not upKeyCode

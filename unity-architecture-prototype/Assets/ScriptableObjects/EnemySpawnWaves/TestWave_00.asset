@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
-  - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
+  - enemyPrefab: {fileID: 7176683490113969161, guid: a1662aeccf899e742bef41674e29f0b9,
       type: 3}
     numberOfEnemiesToSpawn: 1
     spawnWeight: 1
-  totalEnemies: 5
-  blockTime: 5
+  totalEnemies: 30
+  blockTime: 15
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:

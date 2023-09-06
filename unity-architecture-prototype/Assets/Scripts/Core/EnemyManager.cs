@@ -338,7 +338,7 @@ public class EnemyManager : MonoBehaviour
         
         var startPoint = new Vector3(MathF.Cos(angle),0f,MathF.Sin(angle)) * distance;
         
-        _bossEnemiesCount = action.numberOfEnemiesToSpawn;
+        _bossEnemiesCount += action.numberOfEnemiesToSpawn;
 
         var lastSpawnPoint = startPoint;
         for (var i = 0; i < action.numberOfEnemiesToSpawn; i++)
@@ -379,6 +379,7 @@ public class EnemyManager : MonoBehaviour
             // Cancelling a spawn is assumed as killing an enemy.
             _currentWaveAliveEnemies--;
             totalEnemiesKilled++;
+            _bossEnemiesCount--;
             yield break;
         }
 

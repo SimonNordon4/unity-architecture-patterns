@@ -10,28 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: 00_Wave_02 (Easy Normal, Fast and Big)
+  m_Name: 01_Wave_03 (Exploder Wanderer)
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
-  - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
+  - enemyPrefab: {fileID: 6537234263106401617, guid: c353f26a0b60cf84c981a76558c0e9f7,
       type: 3}
-    numberOfEnemiesToSpawn: 2
-    spawnWeight: 100
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 120
   - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
       type: 3}
     numberOfEnemiesToSpawn: 2
-    spawnWeight: 50
-  - enemyPrefab: {fileID: 4620172570121229727, guid: 8debcb394b618d74c8fda6a50c2f492d,
-      type: 3}
-    numberOfEnemiesToSpawn: 2
-    spawnWeight: 50
+    spawnWeight: 25
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
     numberOfEnemiesToSpawn: 1
-    spawnWeight: 100
-  totalEnemies: 35
-  blockTime: 30
+    spawnWeight: 50
+  totalEnemies: 75
+  blockTime: 60
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
@@ -57,11 +53,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   eliteAction:
-  - enemyPrefab: {fileID: 2991740694319516258, guid: 85f16814ab695244ebb62b31c360ca24,
+  - enemyPrefab: {fileID: 5933844709874660637, guid: dcb647f9e14c5c0439f72ab7f9083aad,
       type: 3}
     numberOfEnemiesToSpawn: 1
     spawnWeight: 100
-  healthMultiplier: {x: 1, y: 1}
-  damageMultiplier: {x: 1, y: 1}
-  bossChestTier: {x: 1, y: 2}
-  bossChestChoices: {x: 3, y: 3}
+  healthMultiplier: {x: 2, y: 3}
+  damageMultiplier: {x: 2, y: 3}
+  bossChestTier: {x: 2, y: 4}
+  bossChestChoices: {x: 3, y: 5}

@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
+[DefaultExecutionOrder(10)]
 public class PlayerController : MonoBehaviour
 {
         private Transform _transform;
@@ -123,12 +124,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (isDebugMode)
-            {
-                var targetPos = targetIsNull ? _transform.position : _closestTarget.position;
-                Debug.DrawLine(_transform.position, targetPos, Color.red);
-            }
-
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
             if (_timeSinceLastFire > 1 / gameManager.pistolFireRate.value)
@@ -137,15 +132,7 @@ public class PlayerController : MonoBehaviour
                 {
                     if (closestDistance <= gameManager.pistolRange.value)
                     {
-                        var directionToTarget = Vector3
-                            .ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
-                        var projectileGo = Instantiate(projectilePrefab, _transform.position,
-                            Quaternion.LookRotation(directionToTarget));
-                        var projectile = projectileGo.GetComponent<Projectile>();
-                        projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
-                        projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
-                        projectile.pierceCount = (int)gameManager.pistolPierce.value;
-                        _timeSinceLastFire = 0.0f;
+                        ShootPredictive();
                     }
                 }
             }
@@ -192,9 +179,64 @@ public class PlayerController : MonoBehaviour
                 _transform.position += dir.normalized * (Time.deltaTime * gameManager.playerSpeed.value);
                 _transform.rotation = Quaternion.LookRotation(dir);
             }
+        }
 
+        private void Shoot()
+        {
+            var directionToTarget = Vector3
+                .ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
+            var projectileGo = Instantiate(projectilePrefab, _transform.position,
+                Quaternion.LookRotation(directionToTarget));
+            var projectile = projectileGo.GetComponent<Projectile>();
+            projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
+            projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
+            projectile.pierceCount = (int)gameManager.pistolPierce.value;
+            _timeSinceLastFire = 0.0f;
+        }
 
+        private void ShootPredictive()
+        {
 
+            
+            
+                var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.identity);
+                var projectile = projectileGo.GetComponent<Projectile>();
+    
+                // Calculate the time it would take for the projectile to reach the target's current position
+                var distanceToTarget = Vector3.Distance(_transform.position, _closestTarget.position);
+                var timeToTarget = distanceToTarget / projectile.projectileSpeed;
+
+                // Predict the target's position after the time it would take for the projectile to reach it
+                var enemy = _closestTarget.GetComponent<EnemyController>();
+                var enemyVelocity = _closestTarget.forward * enemy.moveSpeed;
+                var predictedTargetPosition = _closestTarget.position + enemyVelocity * timeToTarget;
+                
+                // now get the distance to that position
+                distanceToTarget = Vector3.Distance(_transform.position, predictedTargetPosition);
+                timeToTarget = distanceToTarget / projectile.projectileSpeed;
+                predictedTargetPosition = _closestTarget.position + enemyVelocity * timeToTarget;
+                
+                // iterate again
+                distanceToTarget = Vector3.Distance(_transform.position, predictedTargetPosition);
+                timeToTarget = distanceToTarget / projectile.projectileSpeed;
+                predictedTargetPosition = _closestTarget.position + enemyVelocity * timeToTarget;
+
+                // Aim the projectile towards the predicted position
+                var shootDirection = (predictedTargetPosition - _transform.position).normalized;
+
+                if (isDebugMode)
+                {
+                    // draw a line from the player to the predicted position
+                    Debug.DrawLine(_transform.position, predictedTargetPosition, Color.green,
+                        1 / gameManager.pistolFireRate.value);
+
+                }
+                
+                projectileGo.transform.forward = shootDirection;
+                projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
+                projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
+                projectile.pierceCount = (int)gameManager.pistolPierce.value;
+                _timeSinceLastFire = 0.0f;
         }
         
       

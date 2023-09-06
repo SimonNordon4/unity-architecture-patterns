@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f08e2719d9ad984e845b999b80b6352, type: 3}
-  m_Name: Enemy Spawn Debug
+  m_Script: {fileID: 11500000, guid: 9500e69c9ccd4fd3b4cd0de14c90b773, type: 3}
+  m_Name: TestBlock_00
   m_EditorClassIdentifier: 
-  enemySpawnBlocks:
-  - {fileID: 11400000, guid: 4db010721a52d5b4386010865fdd4403, type: 2}
+  goldMultiplier: 1
+  tier: 0
+  spawnWaves:
+  - {fileID: 11400000, guid: 8103133431b277a469a60b3c3701ceb0, type: 2}
