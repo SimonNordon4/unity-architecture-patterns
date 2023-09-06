@@ -41,9 +41,12 @@ public class EnemyManager : MonoBehaviour
     private int _totalWaves;
     private int _thisWave;
 
-    [Header("Enemies")] public readonly List<GameObject> enemies = new List<GameObject>();
-
+    [Header("Enemies")] 
+    public readonly List<GameObject> enemies = new List<GameObject>();
     public int totalEnemiesKilled = 0;
+
+    [Header("Spawn Rate")] 
+    public float[] penaltySpawnRates;
     private Vector3 _lastSpawnPoint;
 
     // Block data
@@ -185,19 +188,41 @@ public class EnemyManager : MonoBehaviour
 
     #region Spawn Phases
 
+    private float CalculateSpawnRatePenalty()
+    {
+        // We want the enemies to spawn A LOT faster if the player is killing them very frequently
+        // until we've once again reached the ideal enemies alive count.
+
+        // Do not apply a spawn rate penalty if there's an ideal number of enemies.
+        var targetEnemies = penaltySpawnRates.Length;
+        if (_currentWaveAliveEnemies > targetEnemies)
+        {
+            return 1f;
+        }
+        
+        // assuming 3 enemies alive is the ideal number.
+        // [6,5,4,3,2,1,0,-1]
+        var handicap = targetEnemies * 2 - _currentWaveSpawnedEnemies;
+        if (handicap < 0) handicap = 0;
+
+        var index = targetEnemies - _currentWaveAliveEnemies - handicap;
+        index = Mathf.Clamp(index, -1, targetEnemies - 1);
+
+        if (index == -1)
+        {
+            return 1f;
+        }
+        
+        var penalty = penaltySpawnRates[index];
+        
+        return penalty;
+
+    }
+
     private void HandleNormalEnemies()
     {
-        
-        // Half the spawn rate on the first 2 waves if the player hasn't played a game yet.
-        if (AccountManager.instance.statistics.gamesPlayed < 2 && _blockIndex < 2)
-        {
-            _elapsedWaveTime += Time.deltaTime * 0.5f;
-        }
-        else
-        {
-            _elapsedWaveTime += Time.deltaTime;
-        }
-            
+        Debug.Log(CalculateSpawnRatePenalty().ToString("F"));
+        _elapsedWaveTime += Time.deltaTime * CalculateSpawnRatePenalty();
 
         if (_elapsedWaveTime > _currentWave.blockTime)
         {
@@ -379,7 +404,7 @@ public class EnemyManager : MonoBehaviour
             // Cancelling a spawn is assumed as killing an enemy.
             _currentWaveAliveEnemies--;
             totalEnemiesKilled++;
-            _bossEnemiesCount--;
+            _bossEnemiesCount--; 
             yield break;
         }
 
