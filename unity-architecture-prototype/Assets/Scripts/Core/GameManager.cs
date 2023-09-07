@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     public List<TextMeshProUGUI> GoldSubTexts = new();
 
     [Header("Stat UI")] public List<RectTransform> StatContainers = new();
-    private Dictionary<StatType,List<TextMeshProUGUI>> statTexts = new();
+    private Dictionary<StatType, List<TextMeshProUGUI>> statTexts = new();
 
     [Header("Item UI")] public RectTransform itemHoverImageContainer;
     private readonly List<GameObject> _itemHoverImages = new();
@@ -100,6 +100,9 @@ public class GameManager : MonoBehaviour
     public Chest mediumChestPrefab;
     public Chest largeChestPrefab;
 
+    private int _pityLuck;
+    public float pityLuckScaling = 1f;
+
     public WasdButtonSelector _chestItemsWasdSelector;
 
     [Header("Health Packs")] public GameObject HealthPackPrefab;
@@ -107,7 +110,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Unity Functions
-    
+
     private void Start()
     {
         GoToMainMenu();
@@ -135,7 +138,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             roundTime += Time.deltaTime;
-            
+
             //format round time in MM:SS
             var minutes = Mathf.FloorToInt(roundTime / 60f);
             var seconds = Mathf.FloorToInt(roundTime % 60f);
@@ -162,7 +165,6 @@ public class GameManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        
         Debug.Log("Start New Game");
         HideAll();
         AccountManager.instance.statistics.gamesPlayed++;
@@ -234,7 +236,7 @@ public class GameManager : MonoBehaviour
         // Remove all chests.
         var chests = FindObjectsOfType<Chest>();
         foreach (var chest in chests) Destroy(chest.gameObject);
-        
+
         // Remove all healthpacks
         var healthPacks = FindObjectsOfType<HealthPackController>();
         foreach (var healthPack in healthPacks) Destroy(healthPack.gameObject);
@@ -266,39 +268,39 @@ public class GameManager : MonoBehaviour
                 AccountManager.instance.AchievementUnlocked(a);
             }
         }
-        
+
         var under1hour = AccountManager.instance.achievementSave.achievements
             .First(x => x.name == AchievementName.WinInUnder1Hour);
 
         if (!under1hour.isCompleted)
         {
-            if(under1hour.progress > roundTime)
+            if (under1hour.progress > roundTime)
                 under1hour.progress = (int)roundTime;
             under1hour.isCompleted = roundTime < under1hour.goal;
         }
-            
-        
+
+
         var under45mins = AccountManager.instance.achievementSave.achievements
             .First(x => x.name == AchievementName.WinInUnder45Minutes);
 
         if (!under45mins.isCompleted)
         {
-            if(under45mins.progress > roundTime)
+            if (under45mins.progress > roundTime)
                 under45mins.progress = (int)roundTime;
             under45mins.isCompleted = roundTime < under45mins.goal;
         }
-           
-        
+
+
         var under30mins = AccountManager.instance.achievementSave.achievements
             .First(x => x.name == AchievementName.WinInUnder30Minutes);
-        
-        if(!under30mins.isCompleted)
+
+        if (!under30mins.isCompleted)
         {
-            if(under30mins.progress > roundTime)
+            if (under30mins.progress > roundTime)
                 under30mins.progress = (int)roundTime;
             under30mins.isCompleted = roundTime < under30mins.goal;
         }
-        
+
         roundTime = 0f;
 
         AddGoldWhenGameEnds();
@@ -312,7 +314,7 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
 
         AddGoldWhenGameEnds();
-        
+
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Buy, 2f);
     }
 
@@ -330,14 +332,14 @@ public class GameManager : MonoBehaviour
         {
             txt.text = $"Total: {AccountManager.instance.totalGold}G";
         }
-        
+
         List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
             .Where(a => a.name == AchievementName.Earn100Gold ||
                         a.name == AchievementName.Earn1000Gold ||
                         a.name == AchievementName.Earn10000Gold ||
                         a.name == AchievementName.Earn100000Gold).ToList();
         Debug.Log("Achievements Found:" + achievements.Count);
-        
+
         foreach (var a in achievements)
         {
             if (a.isCompleted) continue;
@@ -363,7 +365,7 @@ public class GameManager : MonoBehaviour
     public void QuitApplication()
     {
         AccountManager.instance.Save();
-        
+
         Debug.Log("Quit Application");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -381,9 +383,9 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.PlayerHealth, playerMaxHealth);
         _stats.Add(StatType.PlayerSpeed, playerSpeed);
         _stats.Add(StatType.Block, block);
-        _stats.Add(StatType.Dodge,dodge);
-        _stats.Add(StatType.Revives,revives);
-        _stats.Add(StatType.Dashes,dashes);
+        _stats.Add(StatType.Dodge, dodge);
+        _stats.Add(StatType.Revives, revives);
+        _stats.Add(StatType.Dashes, dashes);
 
         _stats.Add(StatType.PistolDamage, pistolDamage);
         _stats.Add(StatType.PistolRange, pistolRange);
@@ -400,7 +402,7 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.Luck, luck);
         _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
         _stats.Add(StatType.HealthPackSpawnRate, healthPackSpawnRate);
-        
+
         playerCurrentHealth = (int)playerMaxHealth.value;
     }
 
@@ -410,7 +412,7 @@ public class GameManager : MonoBehaviour
         {
             // get all the children of the stat container and destroy them.
             foreach (Transform child in statContainer) Destroy(child.gameObject);
-            
+
             foreach (var key in _stats.Keys)
             {
                 var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
@@ -425,7 +427,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    statTexts.Add(key, new List<TextMeshProUGUI>(){newStatText});
+                    statTexts.Add(key, new List<TextMeshProUGUI>() { newStatText });
                 }
             }
         }
@@ -496,7 +498,6 @@ public class GameManager : MonoBehaviour
     {
         // monitor stats.
         AccountManager.instance.statistics.totalChestsOpened++;
-        
 
 
         // If we pickup a mini chest, we can start spawning the next mini chest.
@@ -573,7 +574,7 @@ public class GameManager : MonoBehaviour
                 newChestItemButton.Initialize(item);
                 break;
             }
-            
+
             List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
                 .Where(a => a.name == AchievementName.Open100Chests ||
                             a.name == AchievementName.Open1000Chests).ToList();
@@ -592,8 +593,6 @@ public class GameManager : MonoBehaviour
             _chestItemsWasdSelector.buttons.Clear();
             foreach (var chestItemUI in _chestItemButtons)
                 _chestItemsWasdSelector.buttons.Add(chestItemUI.GetComponent<Button>());
-            
-            
         }
     }
 
@@ -605,25 +604,54 @@ public class GameManager : MonoBehaviour
 
         var tier = 0;
 
-        var chance = Random.Range(0, 200 - luck.value * 20f) + luck.value * 20f;
-        
+        var chance = Random.Range(0, (200 - (luck.value * 20f))) + luck.value * 20f;
+
         // 0 luck = 0 - 200.
         // 1 luck = 20 - 200.
         // 5 luck = 100 - 200.
         // 7 luck = 140 - 200.
-        
 
-        tier = chance switch
+
+        var tier5Chance = 0.005f + _pityLuck * 0.0005f;
+        var tier5Break = 200 - 200 * tier5Chance;
+
+        var tier4Chance = 0.02f + _pityLuck * 0.002f;
+        var tier4Break = tier5Break - 200 * tier4Chance;
+
+        var tier3Chance = 0.08f + _pityLuck * 0.008f;
+        var tier3Break = tier4Break - 200 * tier3Chance;
+
+        // T2 remains at 16% and does not scale.
+        var tier2Break = tier3Break - 200 * 0.16f;
+
+        if (chance >= tier5Break)
+            tier = 5;
+        else if (chance >= tier4Break)
+            tier = 4;
+        else if (chance >= tier3Break)
+            tier = 3;
+        else if (chance >= tier2Break)
+            tier = 2;
+        else
+            tier = 1;
+
+        if (tier < 3)
         {
-            > 199 => 5,
-            > 192 => 4,
-            > 184 => 3,
-            > 150 => 2,
-            _ => 1
-        };
+            _pityLuck++;
+        }
+        else
+        {
+            _pityLuck = 0;
+        }
 
 
         tier = Mathf.Clamp(tier, chest.minTier, chest.maxTier);
+        Debug.Log(
+            $"Item Tier:{tier} Pity: {_pityLuck} " +
+            $"chance of T5: {(tier5Chance * 100):F1}% - " +
+            $"T4: {(tier4Chance * 100):F1}% - " +
+            $"T3: {(tier3Chance * 100):F1}%");
+        
         return tier;
     }
 
@@ -647,7 +675,8 @@ public class GameManager : MonoBehaviour
             {
                 AccountManager.instance.statistics.totalDamageHealed += (int)mod.modifierValue;
 
-                var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue,1,(int)playerMaxHealth.value);
+                var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue, 1,
+                    (int)playerMaxHealth.value);
 
                 playerCurrentHealth = newHealth;
             }
@@ -655,10 +684,9 @@ public class GameManager : MonoBehaviour
 
         UpdateStatsUI();
         UpdateItemUI();
-        
+
         // Attempt to not dash when pressing space to select an item in teh chest menu.
         StartCoroutine(WaitOneFrameToUnpause());
-
     }
 
     private IEnumerator WaitOneFrameToUnpause()
@@ -700,6 +728,7 @@ public class GameManager : MonoBehaviour
         {
             var healthPack = Instantiate(HealthPackPrefab, enemy.transform.position, Quaternion.identity);
         }
+
         AccountManager.instance.statistics.totalKills++;
 
         // get all boss enemy achievements
@@ -719,10 +748,6 @@ public class GameManager : MonoBehaviour
                 AccountManager.instance.AchievementUnlocked(a);
             }
         }
-        
-           
-        
-        
     }
 
     public void OnBossEnemyDied(GameObject enemy)
@@ -746,7 +771,7 @@ public class GameManager : MonoBehaviour
                 AccountManager.instance.AchievementUnlocked(a);
             }
         }
-        
+
         AccountManager.instance.statistics.totalBossKills++;
         AccountManager.instance.statistics.totalKills++;
     }
