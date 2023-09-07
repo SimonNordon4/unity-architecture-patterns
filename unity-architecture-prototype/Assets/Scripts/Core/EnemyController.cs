@@ -78,7 +78,6 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void TowardsPlayer()
     {
-        Debug.Log("TowardsPlayer");
         if (playerTarget == null) return;
         var dir =  Vector3.ProjectOnPlane(playerTarget.position - transform.position,Vector3.up).normalized;
         var distance = Vector3.Distance(playerTarget.position, transform.position);

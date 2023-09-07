@@ -179,7 +179,7 @@ using UnityEngine;
             // delete all player prefs.
             PlayerPrefs.DeleteAll();
                         
-            totalGold = 0;
+            totalGold = 40;
             statistics = new StatisticsSave();
             CreateAchievements();
             PopulateStoreItems();

@@ -22,6 +22,9 @@ public class EnemySpawnWave : ScriptableObject
     public Vector2 damageMultiplier = new Vector2(1, 1);
     public Vector2Int bossChestTier = new(1, 2);
     public Vector2Int bossChestChoices = new(3, 3);
+
+    [Header("Spawn Rate")] public int idealEnemiesAlive = 5;
+    public int decay = 5;
     
     public int TotalEnemyCount()
     {

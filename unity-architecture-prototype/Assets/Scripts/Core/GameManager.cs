@@ -153,7 +153,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) TogglePauseGame();
+        if (Input.GetKeyDown(KeyCode.F)) TogglePauseGame();
     }
 
     #endregion
@@ -523,7 +523,7 @@ public class GameManager : MonoBehaviour
             case > 90:
                 numberOfItems = 4;
                 break;
-            case > 45:
+            case > 70:
                 numberOfItems = 3;
                 break;
             default:

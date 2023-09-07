@@ -194,19 +194,18 @@ public class EnemyManager : MonoBehaviour
         // until we've once again reached the ideal enemies alive count.
 
         // Do not apply a spawn rate penalty if there's an ideal number of enemies.
-        var targetEnemies = penaltySpawnRates.Length;
-        if (_currentWaveAliveEnemies > targetEnemies)
+        if (_currentWaveAliveEnemies > _currentWave.idealEnemiesAlive)
         {
             return 1f;
         }
         
         // assuming 3 enemies alive is the ideal number.
         // [6,5,4,3,2,1,0,-1]
-        var handicap = targetEnemies * 2 - _currentWaveSpawnedEnemies;
+        var handicap = _currentWave.idealEnemiesAlive + _currentWave.decay - _currentWaveSpawnedEnemies;
         if (handicap < 0) handicap = 0;
 
-        var index = targetEnemies - _currentWaveAliveEnemies - handicap;
-        index = Mathf.Clamp(index, -1, targetEnemies - 1);
+        var index = _currentWave.idealEnemiesAlive - _currentWaveAliveEnemies - handicap;
+        index = Mathf.Clamp(index, -1, penaltySpawnRates.Length - 1);
 
         if (index == -1)
         {

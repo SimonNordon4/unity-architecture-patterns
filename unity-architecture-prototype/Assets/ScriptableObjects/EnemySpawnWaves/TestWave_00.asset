@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
-  - enemyPrefab: {fileID: 5933844709874660637, guid: dcb647f9e14c5c0439f72ab7f9083aad,
+  - enemyPrefab: {fileID: 3859028022664314501, guid: dd5272bd10cb7324291201b5bcf23e3e,
       type: 3}
     numberOfEnemiesToSpawn: 1
     spawnWeight: 1
-  totalEnemies: 1
-  blockTime: 2
+  totalEnemies: 50
+  blockTime: 50
   spawnRateCurve:
     serializedVersion: 2
     m_Curve:
@@ -49,7 +49,7 @@ MonoBehaviour:
       type: 3}
     numberOfEnemiesToSpawn: 1
     spawnWeight: 1
-  healthMultiplier: {x: 1, y: 1}
-  damageMultiplier: {x: 1, y: 1}
+  healthMultiplier: {x: 100, y: 100}
+  damageMultiplier: {x: 0, y: 0}
   bossChestTier: {x: 1, y: 2}
   bossChestChoices: {x: 3, y: 3}
