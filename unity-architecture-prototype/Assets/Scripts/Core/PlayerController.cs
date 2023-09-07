@@ -84,6 +84,7 @@ public class PlayerController : MonoBehaviour
                 
                 if (!gameManager.isGameActive)
                 {
+                    _isDashing = false;
                     yield break;
                 }
                 
