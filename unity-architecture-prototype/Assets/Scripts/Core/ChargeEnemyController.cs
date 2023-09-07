@@ -55,13 +55,12 @@ public class ChargeEnemyController : EnemyController
 
 
         _timeSinceLastCharge += Time.deltaTime;
-       // ClampTransformToLevelBounds();
-        healthBarUI.transform.rotation = uiStartRotation;
-        
+        ClampTransformToLevelBounds();
         if (dir.magnitude > 0 && !_isCharging)
         {
             transform.forward = dir;
         }
+        healthBarUI.transform.rotation = uiStartRotation;
     }
 
     private IEnumerator ChargeAtPlayer(Vector3 dir)

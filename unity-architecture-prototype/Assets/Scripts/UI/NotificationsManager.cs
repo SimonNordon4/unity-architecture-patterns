@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 
+[DefaultExecutionOrder(150)]
 public class NotificationsManager : MonoBehaviour
 {
     public GameObject achievementNotification;
