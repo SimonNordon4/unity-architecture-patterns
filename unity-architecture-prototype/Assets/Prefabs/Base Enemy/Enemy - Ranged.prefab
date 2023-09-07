@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: 2838750125501055508, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
       propertyPath: m_Name
-      value: Enemy - Ranged - T1
+      value: Enemy - Ranged
       objectReference: {fileID: 0}
     - target: {fileID: 4759737150053253292, guid: 4816712a64f5c7c46804fde9077abbb8,
         type: 3}
@@ -182,7 +182,7 @@ MonoBehaviour:
   repulsionForce: 0.5
   knockBackFactor: 1
   isUnstoppable: 0
-  currentHealth: 5
+  currentHealth: 8
   damageAmount: 1
   damageCooldown: 3
   projectilePrefab: {fileID: 652769875280677792, guid: c870654b17240b94cbfebd5581f1b369,
@@ -193,3 +193,4 @@ MonoBehaviour:
   projectileSpeed: 6
   startLoaded: 1
   bulletSpread: 15
+  inaccuracySpread: 15

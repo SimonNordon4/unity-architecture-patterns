@@ -144,13 +144,14 @@ MonoBehaviour:
   repulsionForce: 0.5
   knockBackFactor: 1
   isUnstoppable: 0
-  currentHealth: 8
+  currentHealth: 10
   damageAmount: 2
   damageCooldown: 0.2
   chargeSpeed: 10
   chargeDistance: 5
   chargeCooldown: 4
   chargeUpTime: 0.3
+  _isCharging: 0
 --- !u!114 &4833765838464234321 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5908649954107002816, guid: 4816712a64f5c7c46804fde9077abbb8,

@@ -23,7 +23,7 @@ public class ChargeEnemyController : EnemyController
     protected override void Update()
     {
         if(GameManager.instance.isGameActive == false) return;
-        if(_isKnockedBack) return;
+        if(isKnockedBack) return;
         if(_isCharging) return;
     
         if (playerTarget == null) return;

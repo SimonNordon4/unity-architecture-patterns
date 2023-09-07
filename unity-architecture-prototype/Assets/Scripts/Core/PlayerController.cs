@@ -133,7 +133,21 @@ public class PlayerController : MonoBehaviour
                 {
                     if (closestDistance <= gameManager.pistolRange.value)
                     {
-                        ShootPredictive();
+                        var isKnockBack = false;
+                        if(_closestTarget.TryGetComponent<EnemyController>(out var enemyController))
+                        {
+                            isKnockBack = enemyController.isKnockedBack;
+                        }
+
+                        if (isKnockBack)
+                        {
+                            Shoot();
+                        }
+                        else
+                        {
+                            ShootPredictive();    
+                        }
+                        
                     }
                 }
             }

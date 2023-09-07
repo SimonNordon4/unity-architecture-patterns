@@ -30,7 +30,7 @@ public class RangedEnemyController : EnemyController
     {
         if (GameManager.instance.isGameActive == false) return;
 
-        if (_isKnockedBack) return;
+        if (isKnockedBack) return;
 
         
         if (playerTarget == null) return;

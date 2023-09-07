@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour
     public float repulsionForce = 0.5f;
     public float knockBackFactor = 1f;
     public bool isUnstoppable = false;
-    protected bool _isKnockedBack = false;
+    public bool isKnockedBack = false;
     protected Vector3 randomPosition = Vector3.zero;
     private float _radius = 0.5f;
 
@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour
     {
         if(GameManager.instance.isGameActive == false) return;
         
-        if(_isKnockedBack) return;
+        if(isKnockedBack) return;
 
         switch (moveBehaviour)
         {
@@ -248,8 +248,8 @@ public class EnemyController : MonoBehaviour
     public virtual void ApplyKnockBack(Vector3 direction, float intensity)
     {
         if (isUnstoppable) return;
-        if(_isKnockedBack && knockBackCoroutine != null) StopCoroutine(knockBackCoroutine);
-        _isKnockedBack = true;
+        if(isKnockedBack && knockBackCoroutine != null) StopCoroutine(knockBackCoroutine);
+        isKnockedBack = true;
         knockBackCoroutine = StartCoroutine(KnockBackRoutine(direction * intensity));
     }
     
@@ -281,7 +281,7 @@ public class EnemyController : MonoBehaviour
         }
 
         transform.position = targetPosition;
-        _isKnockedBack = false;
+        isKnockedBack = false;
     }
     
     protected virtual IEnumerator ShowDamageText(int damage)
