@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class DebugManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject graphy;
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            var isActive = graphy.activeSelf;
+            graphy.SetActive(!isActive);
+        }
+        
+        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
         {
             FindObjectOfType<PlayerController>().TakeDamage(1000);
@@ -84,5 +87,6 @@ public class DebugManager : MonoBehaviour
             gameManager.swordAttackSpeed.value /= 1.1f;
             gameManager.swordRange.value /= 1.1f;
         }
+        #endif
     }
 }

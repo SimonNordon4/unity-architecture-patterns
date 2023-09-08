@@ -12,7 +12,8 @@ public class TutorialManager : MonoBehaviour
         OnDamage,
         Chest,
         Enemy,
-        Buy
+        Buy,
+        Pause
     }
     
     private static TutorialManager _instance;
@@ -37,7 +38,8 @@ public class TutorialManager : MonoBehaviour
         { TutorialMessage.Dash , "Press Space to Dash."},
         {TutorialMessage.OnDamage,"When your health reaches 0, you lose"},
         {TutorialMessage.Chest, "Pickup Chests to improve your strength"},
-        {TutorialMessage.Buy,"Buy items in the store to get permanently stronger."}
+        {TutorialMessage.Buy,"Buy items in the store to get permanently stronger."},
+        {TutorialMessage.Pause,"Press F to pause the game."}
     };
     
     public void ShowTip(TutorialMessage message, float delay = 0f)

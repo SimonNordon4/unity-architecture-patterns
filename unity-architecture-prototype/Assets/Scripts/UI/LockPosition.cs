@@ -2,24 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(RectTransform))]
 public class LockPosition : MonoBehaviour
 {
-    public Vector3 position;
+    private RectTransform _rectTransform;
+
+    public float positionX;
+    public float positionY;
     // Start is called before the first frame update
     void Start()
     {
-        this.transform.position = position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _rectTransform = GetComponent<RectTransform>();
+        _rectTransform.anchoredPosition = new Vector2(positionX, positionY);
     }
 
     [ContextMenu("Save Position")]
     public void SavePosition()
     {
-        position = this.transform.position;
+        positionX = _rectTransform.anchoredPosition.x;
+        positionY = _rectTransform.anchoredPosition.y;
+    }
+
+    private void OnValidate()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+        SavePosition();
     }
 }

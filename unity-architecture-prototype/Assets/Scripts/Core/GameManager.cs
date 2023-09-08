@@ -180,6 +180,7 @@ public class GameManager : MonoBehaviour
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Dash, 22f);
+        TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Pause, 28f);
     }
 
     public void GoToMainMenu()
