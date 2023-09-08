@@ -10,23 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
-  m_Name: 01_Wave_01 (Wanderer)
+  m_Name: 03_Wave_00 (Normal Horde)
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   enemySpawnActions:
-  - enemyPrefab: {fileID: 5267285107322196816, guid: 2bed1f53d4a30fc43951d2bf1fcafe7e,
-      type: 3}
-    numberOfEnemiesToSpawn: 1
-    spawnWeight: 120
   - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
       type: 3}
-    numberOfEnemiesToSpawn: 2
+    numberOfEnemiesToSpawn: 5
     spawnWeight: 50
-  - enemyPrefab: {fileID: 522889589156199753, guid: 2d92c8b8d9dc3e445836879a0dd0a5ba,
+  - enemyPrefab: {fileID: 2991740694319516258, guid: 85f16814ab695244ebb62b31c360ca24,
       type: 3}
-    numberOfEnemiesToSpawn: 2
+    numberOfEnemiesToSpawn: 3
     spawnWeight: 50
-  totalEnemies: 75
+  totalEnemies: 120
   blockTime: 60
   spawnRateCurve:
     serializedVersion: 2
@@ -53,13 +49,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   eliteAction:
-  - enemyPrefab: {fileID: 7176683490113969161, guid: a1662aeccf899e742bef41674e29f0b9,
+  - enemyPrefab: {fileID: 2991740694319516258, guid: 85f16814ab695244ebb62b31c360ca24,
       type: 3}
-    numberOfEnemiesToSpawn: 1
+    numberOfEnemiesToSpawn: 15
     spawnWeight: 100
-  healthMultiplier: {x: 5, y: 7}
-  damageMultiplier: {x: 2, y: 3}
-  bossChestTier: {x: 2, y: 4}
+  healthMultiplier: {x: 14, y: 16}
+  damageMultiplier: {x: 4, y: 5}
+  bossChestTier: {x: 2, y: 5}
   bossChestChoices: {x: 3, y: 5}
   idealEnemiesAlive: 10
   decay: 5
