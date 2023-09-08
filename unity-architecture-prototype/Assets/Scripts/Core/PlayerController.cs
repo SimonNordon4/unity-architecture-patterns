@@ -80,7 +80,12 @@ public class PlayerController : MonoBehaviour
                 var normalizedTime = elapsedTime / dashTime;
                 var inverseQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
                 
-                transform.position = Vector3.Lerp(startPosition, dashDestination, inverseQuadraticTime);
+                var desiredPos = Vector3.Lerp(startPosition, dashDestination, inverseQuadraticTime);
+                
+                // clamp the position to the level bounds
+                transform.position = new Vector3(Mathf.Clamp(desiredPos.x, -gameManager.levelBounds.x, gameManager.levelBounds.x),
+                    transform.position.y,
+                    Mathf.Clamp(desiredPos.z, -gameManager.levelBounds.y, gameManager.levelBounds.y));
                 
                 if (!gameManager.isGameActive)
                 {

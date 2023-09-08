@@ -215,6 +215,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        _pityLuck = 0;
         isPaused = false;
         playerCurrentHealth = (int)playerMaxHealth.value;
         Debug.Log("Reset Game");
