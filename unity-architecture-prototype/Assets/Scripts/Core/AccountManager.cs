@@ -300,7 +300,7 @@ using UnityEngine;
                     name = AchievementName.BeatTheGame,
                     uiName = "Beat The Game",
                     goal = 1,
-                    rewardGold = 5000
+                    rewardGold = 10000
                 },
                 new Achievement()
                 {
@@ -336,7 +336,154 @@ using UnityEngine;
                     uiName = "Buy All Store Items",
                     goal = 1,
                     rewardGold = 1
-                }
+                },
+                new Achievement
+                {
+                    name = AchievementName.Reach50PistolDamage,
+                    uiName = "Reach 50 Pistol Damage",
+                    goal = 50,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach25PistolRange,
+                    uiName = "Reach 25 Pistol Range",
+                    goal = 25,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach15PistolFireRate,
+                    uiName = "Reach 15 Pistol Fire Rate",
+                    goal = 15,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach10PistolKnockBack,
+                    uiName = "Reach 10 Pistol Knock Back",
+                    goal = 10,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach3PistolPierce,
+                    uiName = "Reach 3 Pistol Pierce",
+                    goal = 3,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach100PlayerHealth,
+                    uiName = "Reach 100 Player Health",
+                    goal = 100,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach10PlayerSpeed,
+                    uiName = "Reach 10 Player Speed",
+                    goal = 10,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach50SwordDamage,
+                    uiName = "Reach 50 Sword Damage",
+                    goal = 50,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach10SwordRange,
+                    uiName = "Reach 10 Sword Range",
+                    goal = 10,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach8SwordAttackSpeed,
+                    uiName = "Reach 8Sword Attack Speed",
+                    goal = 8,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach10SwordKnockBack,
+                    uiName = "Reach 10 Sword Knock Back",
+                    goal = 10,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach540SwordArc,
+                    uiName = "Reach 540 Sword Arc",
+                    goal = 540,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach10HealthPackSpawnRate,
+                    uiName = "Reach 10 Health Pack Spawn Rate",
+                    goal = 10,
+                    rewardGold = 2500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach7Luck,
+                    uiName = "Reach 7 Luck",
+                    goal = 10,
+                    rewardGold = 2500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach5Block,
+                    uiName = "Reach 5 Block",
+                    goal = 5,
+                    rewardGold = 2500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.Reach60Dodge,
+                    uiName = "Reach 60 Dodge",
+                    goal = 60,
+                    rewardGold = 500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BeatRound1,
+                    uiName = "Beat Round 1",
+                    goal = 1,
+                    rewardGold = 1500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BeatRound2,
+                    uiName = "Beat Round 2",
+                    goal = 1,
+                    rewardGold = 2500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BeatRound3,
+                    uiName = "Beat Round 3",
+                    goal = 1,
+                    rewardGold = 5000
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BeatRound4,
+                    uiName = "Beat Round 4",
+                    goal = 1,
+                    rewardGold = 7500
+                },
+                new Achievement()
+                {
+                    name = AchievementName.BeatRound5,
+                    uiName = "Beat Round 5",
+                    goal = 1,
+                    rewardGold = 10000
+                },
             };
 
             achievementSave = new AchievementSave
@@ -345,6 +492,7 @@ using UnityEngine;
             };
         }
         
+        // We can also add our own custom achievements here.
         public void CheckIfHighestStat(StatType type, float value)
         {
             switch (type)
@@ -352,62 +500,92 @@ using UnityEngine;
                 case StatType.PistolDamage:
                     if (value > statistics.highestPistolDamage)
                         statistics.highestPistolDamage = (int) value;
+                    if(value >= 50)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach50PistolDamage));
                     break;
                 case StatType.PistolRange:
                     if (value > statistics.highestPistolRange)
                         statistics.highestPistolRange = (int) value;
+                    if(value >= 25)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach25PistolRange));
                     break;
                 case StatType.PistolFireRate:
                     if (value > statistics.highestPistolFireRate)
                         statistics.highestPistolFireRate = (int) value;
+                    if(value >= 15)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach15PistolFireRate));
                     break;
                 case StatType.PistolKnockBack:
                     if (value > statistics.highestPistolKnockBack)
                         statistics.highestPistolKnockBack = (int) value;
+                    if(value >= 10)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach10PistolKnockBack));
                     break;
                 case StatType.PistolPierce:
                     if (value > statistics.highestPistolPierce)
                         statistics.highestPistolPierce = (int) value;
+                    if(value >= 3)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach3PistolPierce));
                     break;
                 case StatType.PlayerHealth:
                     if (value > statistics.highestPlayerHealth)
                         statistics.highestPlayerHealth = (int) value;
+                    if(value >= 100)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach100PlayerHealth));
                     break;
                 case StatType.PlayerSpeed:
                     if (value > statistics.highestPlayerSpeed)
                         statistics.highestPlayerSpeed = (int) value;
+                    if(value >= 10)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach10PlayerSpeed));
                     break;
                 case StatType.SwordDamage:
                     if (value > statistics.highestSwordDamage)
                         statistics.highestSwordDamage = (int) value;
+                    if(value >= 50)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach50SwordDamage));
                     break;
                 case StatType.SwordRange:
                     if (value > statistics.highestSwordRange)
                         statistics.highestSwordRange = (int) value;
+                    if(value >= 10)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach10SwordRange));
                     break;
                 case StatType.SwordAttackSpeed:
                     if (value > statistics.highestSwordAttackSpeed)
                         statistics.highestSwordAttackSpeed = (int) value;
+                    if(value >= 8)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach8SwordAttackSpeed));
                     break;
                 case StatType.SwordKnockBack:
                     if (value > statistics.highestSwordKnockBack)
                         statistics.highestSwordKnockBack = (int) value;
+                    if(value >= 10)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach10SwordKnockBack));
                     break;
                 case StatType.SwordArc:
                     if (value > statistics.highestSwordArc)
                         statistics.highestSwordArc = (int) value;
+                    if(value >= 540)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach540SwordArc));
                     break;
                 case StatType.HealthPackSpawnRate:
                     if (value > statistics.highestHealthPackSpawnRate)
                         statistics.highestHealthPackSpawnRate = (int) value;
+                    if(value >= 10)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach10HealthPackSpawnRate));
                     break;
                 case StatType.Luck:
                     if (value > statistics.highestLuck)
                         statistics.highestLuck = (int) value;
+                    if(value >= 7)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach7Luck));
                     break;
                 case StatType.Block:
                     if (value > statistics.highestBlock)
                         statistics.highestBlock = (int) value;
+                    if(value >= 5)
+                        AchievementUnlocked(achievementSave.achievements.First(x=>x.name == AchievementName.Reach5Block));
                     break;
             }
         }
@@ -519,5 +697,26 @@ public enum AchievementName
     WinInUnder1Hour,
     WinInUnder45Minutes,
     WinInUnder30Minutes,
-    BuyAllStoreItems
+    BuyAllStoreItems,
+    Reach50PistolDamage,
+    Reach25PistolRange,
+    Reach15PistolFireRate,
+    Reach10PistolKnockBack,
+    Reach3PistolPierce,
+    Reach100PlayerHealth,
+    Reach10PlayerSpeed,
+    Reach50SwordDamage,
+    Reach10SwordRange,
+    Reach8SwordAttackSpeed,
+    Reach10SwordKnockBack,
+    Reach540SwordArc,
+    Reach10HealthPackSpawnRate,
+    Reach7Luck,
+    Reach5Block,
+    Reach60Dodge,
+    BeatRound1,
+    BeatRound2,
+    BeatRound3,
+    BeatRound4,
+    BeatRound5
 }
