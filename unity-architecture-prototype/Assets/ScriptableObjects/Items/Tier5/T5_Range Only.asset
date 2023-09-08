@@ -10,16 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: T3_Dodge
+  m_Name: T5_Range Only
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  itemName: Phaser
-  tier: 3
+  itemName: Marksman
+  tier: 5
   spawnChance: 50
   modifiers:
-  - statType: 16
+  - statType: 1
     modifierType: 0
-    modifierValue: 8
-  - statType: 10
+    modifierValue: 6
+  - statType: 0
     modifierType: 0
-    modifierValue: -0.25
+    modifierValue: 1
+  - statType: 2
+    modifierType: 0
+    modifierValue: 2
+  - statType: 3
+    modifierType: 0
+    modifierValue: 1
+  - statType: 4
+    modifierType: 0
+    modifierValue: 1
+  - statType: 5
+    modifierType: 1
+    modifierValue: -1
+  - statType: 3
+    modifierType: 1
+    modifierValue: -1

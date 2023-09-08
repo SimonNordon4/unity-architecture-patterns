@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 8936793609180788840}
   - component: {fileID: 2947685893817151261}
   - component: {fileID: 3192198831856927187}
+  - component: {fileID: 8307044379298783376}
   m_Layer: 5
   m_Name: Button Back
   m_TagString: Untagged
@@ -611,7 +612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 196.72614, y: -122}
+  m_AnchoredPosition: {x: 196.72614, y: -110}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &8936793609180788840
@@ -720,6 +721,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+--- !u!114 &8307044379298783376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6898614174147345246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4214bb7cd0fed49965940b5013a557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 98.36307, y: 545, z: 0}
 --- !u!1 &7565718961536027706
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,6 +823,7 @@ GameObject:
   - component: {fileID: 9116882438740537814}
   - component: {fileID: 530460806516522714}
   - component: {fileID: 3161470406228918197}
+  - component: {fileID: 9208211146639887921}
   m_Layer: 5
   m_Name: 'Gold:'
   m_TagString: Untagged
@@ -833,7 +848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 235.827, y: 0}
+  m_AnchoredPosition: {x: 235.827, y: 100}
   m_SizeDelta: {x: 398.777, y: 84.133}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &530460806516522714
@@ -933,6 +948,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &9208211146639887921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9188354766556662838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4214bb7cd0fed49965940b5013a557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 117.91351, y: 50, z: 0}
 --- !u!1 &9200589352240652626
 GameObject:
   m_ObjectHideFlags: 0

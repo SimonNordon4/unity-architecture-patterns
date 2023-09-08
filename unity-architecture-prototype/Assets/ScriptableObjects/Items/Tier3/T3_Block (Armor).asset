@@ -10,22 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a901b66dc25213d4abea9bc4483f444b, type: 3}
-  m_Name: T4_Dash
+  m_Name: T3_Block (Armor)
   m_EditorClassIdentifier: 
   sprite: {fileID: 0}
-  itemName: Ghost
-  tier: 4
+  itemName: Armor
+  tier: 3
   spawnChance: 50
   modifiers:
-  - statType: 18
+  - statType: 15
     modifierType: 0
-    modifierValue: 8
-  - statType: 10
+    modifierValue: 1
+  - statType: 1
     modifierType: 0
-    modifierValue: 0.25
-  - statType: 6
+    modifierValue: -1
+  - statType: 0
     modifierType: 0
-    modifierValue: -2
-  - statType: 3
-    modifierType: 0
-    modifierValue: -2
+    modifierValue: -0.2
