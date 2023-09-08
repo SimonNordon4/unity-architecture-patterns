@@ -23,13 +23,22 @@ public class StoreItemDefinition : ScriptableObject
     {
         var n = type.ToString();
         // add a space inbetween every capital letter
-        n = System.Text.RegularExpressions.Regex.Replace(name, "([a-z])([A-Z])", "$1 $2");
-        if(modifierType == ModifierType.Percentage)
-            n += " %";
-
-        name = n;
-        foreach(var mod in tierModifiers)
-        {mod.statType = type;}
+        n = System.Text.RegularExpressions.Regex.Replace(n, "([a-z])([A-Z])", "$1 $2");
+        if (modifierType == ModifierType.Percentage)
+        {
+            name = n + " %";
+        }
+        else
+        {
+            name = n;
+        }
+        
+        
+        foreach (var mod in tierModifiers)
+        {
+            mod.statType = type;
+            mod.modifierType = modifierType;
+        }
     }
 }
 
