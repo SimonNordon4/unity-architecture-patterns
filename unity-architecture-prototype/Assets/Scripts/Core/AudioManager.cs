@@ -29,7 +29,7 @@ using UnityEngine;
         private EnemyManager _enemyManager;
         public int maxEnemyVolume = 20;
         private int musicIndex = 0;
-        
+
         public AudioClip[] gameMusic;
         
         void Start()

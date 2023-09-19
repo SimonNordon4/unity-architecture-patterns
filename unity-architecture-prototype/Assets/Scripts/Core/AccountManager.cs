@@ -36,6 +36,9 @@ using UnityEngine;
         public GameObject achievementPopup;
         public TextMeshProUGUI achievementPopupText;
         
+        [Header("Settings")]
+        public SettingsSave settingsSave = new();
+        
         
         
         public bool debugSkipLoad = false;
@@ -128,6 +131,9 @@ using UnityEngine;
             json = JsonUtility.ToJson(achievementSave);
             PlayerPrefs.SetString("achievements", json);
             
+            json = JsonUtility.ToJson(settingsSave);
+            PlayerPrefs.SetString("settings", json);
+            
             PlayerPrefs.Save();
         }
 
@@ -170,6 +176,16 @@ using UnityEngine;
             else
             {
                 achievementSave = JsonUtility.FromJson<AchievementSave>(json);
+            }
+            
+            json = PlayerPrefs.GetString("settings");
+            if (string.IsNullOrEmpty(json))
+            {
+                settingsSave = new SettingsSave();
+            }
+            else
+            {
+                settingsSave = JsonUtility.FromJson<SettingsSave>(json);
             }
 
         }
@@ -670,6 +686,16 @@ public struct StatisticsSave
 public class AchievementSave
 {
     public Achievement[] achievements;
+}
+
+[Serializable]
+public class SettingsSave
+{
+    public float musicVolume = 0.5f;
+    public float sfxVolume = 0.5f;
+    public bool showDamageNumbers = true;
+    public bool showEnemyHealthBars = true;
+    public bool isHyperMode = false;
 }
 
 [Serializable]

@@ -16,12 +16,37 @@ public class SettingsManager : MonoBehaviour
         private set => _instance = value;
     }
 
+    private void Start()
+    {
+        Debug.Log("SettingsManager Start");
+        musicVolume = AccountManager.instance.settingsSave.musicVolume;
+        sfxVolume = AccountManager.instance.settingsSave.sfxVolume;
+        showDamageNumbers = AccountManager.instance.settingsSave.showDamageNumbers;
+        showEnemyHealthBars = AccountManager.instance.settingsSave.showEnemyHealthBars;
+        isHyperMode = AccountManager.instance.settingsSave.isHyperMode;
+    }
+
     public bool showDamageNumbers = true;
     public bool showEnemyHealthBars = true;
-    public bool isNormalSpawnRate = true;
     
     public float musicVolume = 1f;
     public float sfxVolume = 1f;
+    
+    public bool isHyperMode = false;
+    
+    public void SetMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        AccountManager.instance.settingsSave.musicVolume = volume;
+        AccountManager.instance.Save();
+    }
+    
+    public void SetSfxVolume(float volume)
+    {
+        sfxVolume = volume;
+        AccountManager.instance.settingsSave.sfxVolume = volume;
+        AccountManager.instance.Save();
+    }
     
     public void SetShowEnemyHealthBars(bool show)
     {
@@ -33,23 +58,30 @@ public class SettingsManager : MonoBehaviour
         {
             enemy.SetHealthBarVisibility(showEnemyHealthBars);
         }
-    }
-    
-    public void SetNormalSpawnRate(bool normal)
-    {
-        isNormalSpawnRate = normal;
+        AccountManager.instance.settingsSave.showEnemyHealthBars = show;
+        AccountManager.instance.Save();
     }
     
     public void ShowDamageNumbers(bool show)
     {
         showDamageNumbers = show;
+        AccountManager.instance.settingsSave.showDamageNumbers = show;
+        AccountManager.instance.Save();
     }
 
     public void ToggleTimeScale()
     {
-        if(Time.timeScale - 1 < 0.01f)
-            Time.timeScale = 2f;
-        else
+        if (isHyperMode)
+        {
             Time.timeScale = 1f;
+            isHyperMode = false;
+        }
+        else
+        {
+            Time.timeScale = 2f;
+            isHyperMode = true;
+        }
+        AccountManager.instance.settingsSave.isHyperMode = isHyperMode;
+        AccountManager.instance.Save();
     }
 }
