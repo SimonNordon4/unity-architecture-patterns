@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: eb5f3e68e004b3641b8d2cab4caacffb, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.99999905, g: 0.99999905, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9460,12 +9460,6 @@ MeshRenderer:
 --- !u!23 &670496587 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4441346415331328837, guid: 2cbc103dc72e6274d825d00061c36609,
-    type: 3}
-  m_PrefabInstance: {fileID: 670496573}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &670496588 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7407406909178826379, guid: 2cbc103dc72e6274d825d00061c36609,
     type: 3}
   m_PrefabInstance: {fileID: 670496573}
   m_PrefabAsset: {fileID: 0}
@@ -22344,7 +22338,7 @@ MonoBehaviour:
   bakedRenderers:
   - {fileID: 670496576}
   - {fileID: 670496587}
-  - {fileID: 670496588}
+  - {fileID: 0}
   - {fileID: 670496589}
   - {fileID: 670496586}
   - {fileID: 670496581}
@@ -22410,7 +22404,7 @@ MonoBehaviour:
     bakedRenderers:
     - {fileID: 670496576}
     - {fileID: 670496587}
-    - {fileID: 670496588}
+    - {fileID: 0}
     - {fileID: 670496589}
     - {fileID: 670496586}
     - {fileID: 670496581}
@@ -25889,8 +25883,8 @@ MonoBehaviour:
   gameMusic:
   - {fileID: 8300000, guid: 50f0f3c17b68def4186e98c8a3fba505, type: 3}
   - {fileID: 8300000, guid: ec55162519650a84b9787d3008990b5a, type: 3}
-  - {fileID: 8300000, guid: 45d424d38a04f42449212273153880f4, type: 3}
   - {fileID: 8300000, guid: b4b25dbb741d17843aec59bc0d8266be, type: 3}
+  - {fileID: 8300000, guid: 45d424d38a04f42449212273153880f4, type: 3}
 --- !u!4 &1926671863
 Transform:
   m_ObjectHideFlags: 0
