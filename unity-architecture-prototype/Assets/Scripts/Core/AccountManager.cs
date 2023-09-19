@@ -691,7 +691,7 @@ public class AchievementSave
 [Serializable]
 public class SettingsSave
 {
-    public float musicVolume = 0.5f;
+    public float musicVolume = 0.25f;
     public float sfxVolume = 0.5f;
     public bool showDamageNumbers = true;
     public bool showEnemyHealthBars = true;

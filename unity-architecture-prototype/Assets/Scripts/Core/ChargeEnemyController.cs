@@ -86,7 +86,7 @@ public class ChargeEnemyController : EnemyController
         }
 
         float chargedDistance = 0; // Track how much distance the enemy has covered during the charge
-
+        transform.rotation = Quaternion.LookRotation(dir);
         // While the enemy hasn't charged the desired distance
         while (chargedDistance < (2 * chargeDistance))
         {
@@ -104,7 +104,6 @@ public class ChargeEnemyController : EnemyController
             }
             yield return new WaitForEndOfFrame(); // Wait for next frame
         }
-        transform.rotation = Quaternion.LookRotation(dir);
 
         _isCharging = false;
     }

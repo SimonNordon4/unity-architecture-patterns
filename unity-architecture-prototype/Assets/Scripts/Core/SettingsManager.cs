@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class SettingsManager : MonoBehaviour
         private set => _instance = value;
     }
 
+    public Toggle hyperModeToggle;
+    public GameObject hyperText;
+
     private void Start()
     {
         Debug.Log("SettingsManager Start");
@@ -24,6 +28,8 @@ public class SettingsManager : MonoBehaviour
         showDamageNumbers = AccountManager.instance.settingsSave.showDamageNumbers;
         showEnemyHealthBars = AccountManager.instance.settingsSave.showEnemyHealthBars;
         isHyperMode = AccountManager.instance.settingsSave.isHyperMode;
+        
+        hyperModeToggle.isOn = isHyperMode;
     }
 
     public bool showDamageNumbers = true;
@@ -69,17 +75,20 @@ public class SettingsManager : MonoBehaviour
         AccountManager.instance.Save();
     }
 
-    public void ToggleTimeScale()
+    public void BindHyperScale()
     {
-        if (isHyperMode)
+        var value = hyperModeToggle.isOn;
+        if (!value)
         {
             Time.timeScale = 1f;
             isHyperMode = false;
+            hyperText.SetActive(false);
         }
         else
         {
             Time.timeScale = 2f;
             isHyperMode = true;
+            hyperText.SetActive(true);
         }
         AccountManager.instance.settingsSave.isHyperMode = isHyperMode;
         AccountManager.instance.Save();

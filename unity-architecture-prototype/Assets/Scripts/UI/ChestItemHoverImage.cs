@@ -41,6 +41,7 @@ public class ChestItemHoverImage : MonoBehaviour, IPointerEnterHandler, IPointer
         foreach (var mod in _item.modifiers)
         {
             var newDescription = Instantiate(descriptionPrefab, hoverInfoBox.transform);
+            newDescription.fontSize = 18;
             
             var statSign = mod.modifierValue > 0 ? "+" : "-";                
 

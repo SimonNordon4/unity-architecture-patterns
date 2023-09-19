@@ -25,7 +25,6 @@ using UnityEngine;
         public AudioClip buttonClick;
         
         private float _musicVolume = 0f;
-        private float _actionVolume = 0f;
         private EnemyManager _enemyManager;
         public int maxEnemyVolume = 20;
         private int musicIndex = 0;
@@ -73,14 +72,9 @@ using UnityEngine;
             }
  
             
-            if (_enemyManager.enemies.Count > 8)
-            {
-                _actionVolume = (_enemyManager.enemies.Count / maxEnemyVolume) * 0.2f;
-            }
-            
             if (GameManager.instance.isGameActive)
             {
-                _musicVolume = Mathf.Lerp(_musicVolume, (0.3f + _actionVolume) * SettingsManager.instance.musicVolume, Time.deltaTime);
+                _musicVolume = Mathf.Lerp(_musicVolume, SettingsManager.instance.musicVolume, Time.deltaTime);
             }
             else
             {
