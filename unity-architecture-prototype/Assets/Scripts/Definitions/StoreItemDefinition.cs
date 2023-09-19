@@ -40,6 +40,18 @@ public class StoreItemDefinition : ScriptableObject
             mod.modifierType = modifierType;
         }
     }
+    
+#if UNITY_EDITOR
+        [ContextMenu("Rename Image")]
+        public void RenameImage()
+        {
+            var path = UnityEditor.AssetDatabase.GetAssetPath(sprite);
+            var fileName = System.IO.Path.GetFileNameWithoutExtension(path);
+            // rename image to the name of this scriptable object
+
+            UnityEditor.AssetDatabase.RenameAsset(path, "Store_" + this.name.Replace(" ","_"));
+        }
+#endif
 }
 
 

@@ -10,7 +10,9 @@ using UnityEngine.UI;
         public TextMeshProUGUI Title;
         public TextMeshProUGUI DescriptionPrefab;
         public RectTransform DescriptionContainer;
-        public Image[] borders;
+        public Image borderImage;
+        public Sprite[] borderTiers;
+        public Image itemSprite;
         
         private List<TextMeshProUGUI> _descriptions = new List<TextMeshProUGUI>();
 
@@ -24,19 +26,10 @@ using UnityEngine.UI;
             
             Title.text = item.itemName;
             chestItem = item;
+            
+            itemSprite.sprite = item.sprite;
 
-            foreach (var border in borders)
-            {
-                border.color = item.tier switch
-                {
-                    1 => new Color(0.7f,0.7f,0.7f),
-                    2 => new Color(0.5f,1f,0.3f),
-                    3 => new Color(0.5f,0.5f,1f),
-                    4 => new Color(0.8f,0.5f,0.8f),
-                    5 => new Color(1f,0.5f,0.5f),
-                    _ => new Color(0.5f,0.5f,0.5f),
-                };
-            }
+            borderImage.sprite = borderTiers[chestItem.tier - 1];
 
             foreach (var mod in chestItem.modifiers)
             {
@@ -79,6 +72,5 @@ using UnityEngine.UI;
         public void ApplyItem()
         {
             GameManager.instance.ApplyItem(chestItem);
-            
         }
     }

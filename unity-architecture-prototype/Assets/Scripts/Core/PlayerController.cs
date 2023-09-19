@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 [DefaultExecutionOrder(10)]
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
         public Camera camera;
         private Vector3 _cameraOffset;
+
+        public Vector3 targetDirection;
 
         [Header("References")]
         public GameManager gameManager;
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
         [Header("UI")]
         public TextMeshProUGUI healthText;
-        public RectTransform healthBar;
+        public Image healthBar;
         public Transform localCanvas;
         public GameObject dodgeTextGo;
         public GameObject damageTextGo;
@@ -47,9 +50,22 @@ public class PlayerController : MonoBehaviour
         public float dashDistance = 5f;
         public float dashTime = 0.2f;
 
+        [Header("Effects")]
+        public ParticleSystem shootEffect;
+        public ParticleSystem dashParticle;
+        public ParticleSystem reviveParticle;
+
         [Header("Debug")] public bool isDebugMode = false;
         
-        
+        [Header("Sound")]
+        public SoundDefinition swordSound;
+        public SoundDefinition shootSound;
+        public SoundDefinition dashSound;
+        public SoundDefinition deathSound;
+        public SoundDefinition healthPackSound;
+        public SoundDefinition takeDamageSound;
+        public SoundDefinition blockSound;
+
         private void Awake()
         {
             _transform = transform;
@@ -106,6 +122,8 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && (int)gameManager.dashes.value > 0 && !_isDashing)
             {
+                AudioManager.instance.PlaySound(dashSound);
+                dashParticle.Play();
                 _dashCoroutine = StartCoroutine(Dash());
             }
             
@@ -130,6 +148,16 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            if (!targetIsNull)
+            {
+                targetDirection = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
+                if(targetDirection.magnitude < 0.1f) targetDirection = transform.forward;
+            }
+            else
+            {
+                targetDirection = transform.forward;
+            }
+
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
             if (_timeSinceLastFire > 1 / gameManager.pistolFireRate.value)
@@ -144,6 +172,8 @@ public class PlayerController : MonoBehaviour
                             isKnockBack = enemyController.isKnockedBack;
                         }
 
+                        AudioManager.instance.PlaySound(shootSound);
+                        shootEffect.Play();
                         if (isKnockBack)
                         {
                             Shoot();
@@ -166,6 +196,7 @@ public class PlayerController : MonoBehaviour
                     if (closestDistance <= gameManager.swordRange.value)
                     {
                         if(_swordCoroutine != null) StopCoroutine(_swordCoroutine);
+                        AudioManager.instance.PlaySound(swordSound);
                         _swordCoroutine = StartCoroutine(SwordAttack());
                         _timeSinceLastSwing = 0.0f;
                     }
@@ -216,9 +247,6 @@ public class PlayerController : MonoBehaviour
 
         private void ShootPredictive()
         {
-
-            
-            
                 var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.identity);
                 var projectile = projectileGo.GetComponent<Projectile>();
     
@@ -390,6 +418,8 @@ public class PlayerController : MonoBehaviour
             }
 
             _damageTextCoroutine = StartCoroutine(ShowDamageText(damageAmount));
+
+            AudioManager.instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
             
             AccountManager.instance.statistics.totalDamageTaken += damageAmount;
             
@@ -401,6 +431,7 @@ public class PlayerController : MonoBehaviour
 
                 if ((int)gameManager.revives.value > 0)
                 {
+                    reviveParticle.Play();
                     gameManager.revives.value--;
                     
                     var enemyCount = enemyManager.enemies.Count;
@@ -422,6 +453,7 @@ public class PlayerController : MonoBehaviour
                 }
                 
                 AccountManager.instance.statistics.totalDeaths++;
+                AudioManager.instance.PlaySound(deathSound);
                 gameManager.LoseGame();
                 
                 List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
@@ -512,6 +544,7 @@ public class PlayerController : MonoBehaviour
 
             if (other.CompareTag("Health Pack"))
             {
+                AudioManager.instance.PlaySound(healthPackSound);
                 var healthGained = (int)Mathf.Clamp( (GameManager.instance.playerCurrentHealth + GameManager.instance.playerMaxHealth.value * 0.1f + 1), 
                     0f, 
                     GameManager.instance.playerMaxHealth.value);
@@ -526,7 +559,7 @@ public class PlayerController : MonoBehaviour
         private void SetUI()
         {
             healthText.text = $"{gameManager.playerCurrentHealth}/{(int)gameManager.playerMaxHealth.value}";
-            healthBar.localScale = new Vector3(gameManager.playerCurrentHealth / gameManager.playerMaxHealth.value, 1f, 1f);
+            healthBar.fillAmount =  (float)gameManager.playerCurrentHealth / (float)gameManager.playerMaxHealth.value;
         }
 
         public void ResetPlayer()

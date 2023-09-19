@@ -9,7 +9,6 @@ public class HealthPackController : MonoBehaviour
     private float _aliveTime = 0f;
     // Start is called before the first frame update
 
-
     // Update is called once per frame
     void Update()
     {

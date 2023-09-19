@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -11,6 +12,8 @@ public class Projectile : MonoBehaviour
 
     public bool canAttackPlayer = false;
     public bool canAttackEnemy = true;
+    
+    public ParticleSystem hitEffect;
 
     // Update is called once per frame
     private void Update()
@@ -38,7 +41,7 @@ public class Projectile : MonoBehaviour
 
             pierceCount--;
             if (pierceCount <= 0)
-                Destroy(gameObject);
+                Die();
         }
 
         if (canAttackPlayer && other.CompareTag("Player"))
@@ -47,7 +50,24 @@ public class Projectile : MonoBehaviour
             playerController.TakeDamage(damage);
             pierceCount--;
             if (pierceCount <= 0)
-                Destroy(gameObject);
+                Die();
+
         }
+    }
+
+    private void Die()
+    {
+        if (hitEffect != null)
+        {
+            var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
+            GameManager.instance.StartCoroutine(DestroyAfter(effect));
+        }
+        Destroy(gameObject);
+    }
+
+    private IEnumerator DestroyAfter(ParticleSystem effect)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(effect.gameObject);
     }
 }

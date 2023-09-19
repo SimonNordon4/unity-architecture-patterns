@@ -3,7 +3,7 @@ using UnityEngine;
 
 
     [Serializable]
-    public struct StoreItem
+    public class StoreItem
     {
         public StatType type;
         public string name;
@@ -11,6 +11,8 @@ using UnityEngine;
         public Modifier[] tierModifiers;
         public int[] pricePerTier;
         public int currentTier;
+        
+        public StoreItemDefinition definition;
 
         public StoreItem(StoreItemDefinition def)
         {

@@ -40,6 +40,17 @@ public class EnemyController : MonoBehaviour
     public float damageCooldown = 0.2f;
     protected float _timeSinceLastDamage;
     protected readonly List<Transform> _nearbyEnemies = new(4);
+    
+    [Header("Effects")]
+    public ParticleSystem deathEffect;
+
+    public GameObject spawnIndicator;
+    
+    [Header("Sounds")]
+    public SoundDefinition deathSound;
+
+    public SoundDefinition onHitSound;
+    public SoundDefinition attackSound;
 
     private Coroutine damageTextCoroutine = null;
     public Coroutine knockBackCoroutine = null;
@@ -198,13 +209,25 @@ public class EnemyController : MonoBehaviour
         UpdateHealthText();
         if (currentHealth <= 0)
         {
+            AudioManager.instance.PlaySound(deathSound);
+            var pos = transform.position;
+            var projectedPosition = new Vector3(pos.x, 0,pos.z);
+            var dead = Instantiate(this.deathEffect, projectedPosition, Quaternion.identity);
+            GameManager.instance.StartCoroutine(DestroyAfter(dead.gameObject));
             enemyManager.EnemyDied(gameObject);
         }
         else
         {
+            AudioManager.instance.PlaySound(onHitSound);
             if(damageTextCoroutine != null) StopCoroutine(damageTextCoroutine);
             damageTextCoroutine = StartCoroutine(ShowDamageText(damage));
         }
+    }
+
+    private IEnumerator DestroyAfter(GameObject obj)
+    {
+        yield return new WaitForSeconds(1f);
+        Destroy(obj);
     }
 
     protected virtual void OnTriggerEnter(Collider other)
@@ -227,6 +250,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (_timeSinceLastDamage >= damageCooldown)
                 {
+                    
                     playerController.TakeDamage(damageAmount);
                     _timeSinceLastDamage = 0f;
                 }

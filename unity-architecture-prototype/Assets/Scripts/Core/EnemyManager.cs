@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
     [Header("References")] public GameManager gameManager;
     public Transform playerTarget;
 
-    [Header("Prefabs")] public GameObject spawnIndicatorPrefab;
+    [Header("Prefabs")] 
     public GameObject mediumChestPrefab;
     public GameObject largeChestPrefab;
 
@@ -312,7 +312,8 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator IndicateSpawn(EnemySpawnAction enemyAction, Vector3 spawnPoint)
     {
-        spawnPoint.y = enemyAction.enemyPrefab.transform.localScale.y;
+        spawnPoint = new Vector3(spawnPoint.x, 0f, spawnPoint.z);
+        var spawnIndicatorPrefab = enemyAction.enemyPrefab.GetComponent<EnemyController>().spawnIndicator;
         var spawnIndicator = Instantiate(spawnIndicatorPrefab, spawnPoint, Quaternion.identity);
         yield return new WaitForSeconds(1f);
 
@@ -386,7 +387,8 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator IndicateBossSpawn(EnemySpawnAction enemyAction, Vector3 spawnPoint)
     {
-        spawnPoint.y = enemyAction.enemyPrefab.transform.localScale.y;
+        spawnPoint = new Vector3(spawnPoint.x, 0f, spawnPoint.z);
+        var spawnIndicatorPrefab = enemyAction.enemyPrefab.GetComponent<EnemyController>().spawnIndicator;
         var spawnIndicator = Instantiate(spawnIndicatorPrefab, spawnPoint, Quaternion.identity);
         yield return new WaitForSeconds(1f);
 
@@ -428,7 +430,7 @@ public class EnemyManager : MonoBehaviour
     {
         Chest chestController;
         // if max tier is 3 spawn a medium chest.
-        var projectedPosition = new Vector3(_positionOfLastBossDeath.x, 0, _positionOfLastBossDeath.z);
+        var projectedPosition = new Vector3(_positionOfLastBossDeath.x, 0.5f, _positionOfLastBossDeath.z);
         
         if (_currentWave.bossChestTier.y <= 3)
         {
@@ -458,6 +460,7 @@ public class EnemyManager : MonoBehaviour
             bossEnemies.Remove(enemy);
             enemies.Remove(enemy);
             totalEnemiesKilled++;
+            Debug.Log("Boss Enemies alive: " + _bossEnemiesCount);
             GameManager.instance.OnBossEnemyDied(enemy);
             Destroy(enemy);
             return;
@@ -465,6 +468,9 @@ public class EnemyManager : MonoBehaviour
         _currentWaveData.currentGold += _currentBlock.goldMultiplier;
         _currentWaveAliveEnemies--;
         totalEnemiesKilled++;
+        
+        Debug.Log("Enemies alive: " + _currentWaveAliveEnemies);
+        
         enemies.Remove(enemy);
         GameManager.instance.OnEnemyDied(enemy);
         Destroy(enemy);

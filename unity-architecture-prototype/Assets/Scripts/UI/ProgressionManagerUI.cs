@@ -57,13 +57,13 @@ public class ProgressionManagerUI : MonoBehaviour
         for (var i = 0; i < numberOfBlocks; i++)
         {
             var waveCount = _enemyManager.enemySpawnRound.enemySpawnBlocks[i].spawnWaves.Count;
-            var newBlockMarker =Instantiate(blockMarker, blockContainer);
+            var newBlockMarker = Instantiate(blockMarker, blockContainer);
             newBlockMarker.gameObject.SetActive(true);
             
             var blockData = new BlockProgressData
             {
                 blockMarker = newBlockMarker,
-                blockMarkerImage = newBlockMarker.GetComponent<Image>(),
+                blockMarkerImage = newBlockMarker.GetComponentsInChildren<Image>()[1],
                 blockMarkerPosition = (i + 1) * blockIncrement,
                 number = i + 1,
                 waveHeight = blockIncrement / waveCount,

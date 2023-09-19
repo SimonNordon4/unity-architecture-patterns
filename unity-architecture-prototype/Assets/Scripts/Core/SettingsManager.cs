@@ -19,7 +19,10 @@ public class SettingsManager : MonoBehaviour
     public bool showDamageNumbers = true;
     public bool showEnemyHealthBars = true;
     public bool isNormalSpawnRate = true;
-
+    
+    public float musicVolume = 1f;
+    public float sfxVolume = 1f;
+    
     public void SetShowEnemyHealthBars(bool show)
     {
         showEnemyHealthBars = show;
@@ -40,5 +43,13 @@ public class SettingsManager : MonoBehaviour
     public void ShowDamageNumbers(bool show)
     {
         showDamageNumbers = show;
+    }
+
+    public void ToggleTimeScale()
+    {
+        if(Time.timeScale - 1 < 0.01f)
+            Time.timeScale = 2f;
+        else
+            Time.timeScale = 1f;
     }
 }

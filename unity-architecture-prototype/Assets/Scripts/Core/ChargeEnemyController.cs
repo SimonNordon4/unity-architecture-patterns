@@ -13,6 +13,7 @@ public class ChargeEnemyController : EnemyController
     public bool _isCharging = false;
     
     private Vector3 _randomDestination;
+    private Vector3 _lastDir;
     
     protected override void Start()
     {
@@ -23,6 +24,7 @@ public class ChargeEnemyController : EnemyController
     protected override void Update()
     {
         if(GameManager.instance.isGameActive == false) return;
+        healthBarUI.transform.rotation = uiStartRotation;
         if(isKnockedBack) return;
         if(_isCharging) return;
     
@@ -34,9 +36,9 @@ public class ChargeEnemyController : EnemyController
         }
 
         dir = dir.normalized;
+        _lastDir = dir;
 
         float distanceToPlayer = Vector3.Distance(playerTarget.position, transform.position);
-
 
             if(distanceToPlayer <= chargeDistance && _timeSinceLastCharge >= chargeCooldown)
             {
@@ -58,9 +60,17 @@ public class ChargeEnemyController : EnemyController
         ClampTransformToLevelBounds();
         if (dir.magnitude > 0 && !_isCharging)
         {
-            transform.forward = dir;
+            transform.rotation = Quaternion.LookRotation(dir);
         }
-        healthBarUI.transform.rotation = uiStartRotation;
+        
+    }
+
+    private void LateUpdate()
+    {
+        if(_lastDir.magnitude > 0 && !_isCharging)
+        {
+            transform.rotation = Quaternion.LookRotation(_lastDir);
+        }
     }
 
     private IEnumerator ChargeAtPlayer(Vector3 dir)
@@ -83,7 +93,7 @@ public class ChargeEnemyController : EnemyController
             // Calculate the distance to move in this frame
             float distanceThisFrame = chargeSpeed * Time.deltaTime;
             transform.position += dir * distanceThisFrame;
-            transform.forward = dir;
+            
             chargedDistance += distanceThisFrame;
             ClampTransformToLevelBounds();
             
@@ -94,6 +104,7 @@ public class ChargeEnemyController : EnemyController
             }
             yield return new WaitForEndOfFrame(); // Wait for next frame
         }
+        transform.rotation = Quaternion.LookRotation(dir);
 
         _isCharging = false;
     }

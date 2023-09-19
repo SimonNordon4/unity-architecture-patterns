@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 2867387066201989286, guid: 369029da34577a949a3f5024d45fa564,
         type: 3}
       propertyPath: isBoss
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2867387066201989286, guid: 369029da34577a949a3f5024d45fa564,
         type: 3}
@@ -128,7 +128,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Elite Enemy - Ranged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2227820027837659595, guid: 369029da34577a949a3f5024d45fa564, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

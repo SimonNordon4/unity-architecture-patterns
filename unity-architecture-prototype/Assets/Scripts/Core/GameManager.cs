@@ -74,6 +74,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Stat UI")] public List<RectTransform> StatContainers = new();
     private Dictionary<StatType, List<TextMeshProUGUI>> statTexts = new();
+    public Color defaultStatColor;
+    public Color plusStatColor;
+    public Color minusStatColor;
+    public TMP_FontAsset statFont;
 
     [Header("Item UI")] public RectTransform itemHoverImageContainer;
     private readonly List<GameObject> _itemHoverImages = new();
@@ -181,6 +185,7 @@ public class GameManager : MonoBehaviour
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Dash, 22f);
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Pause, 28f);
+        AudioManager.instance.OnStartGame();
     }
 
     public void GoToMainMenu()
@@ -306,10 +311,12 @@ public class GameManager : MonoBehaviour
         roundTime = 0f;
 
         AddGoldWhenGameEnds();
+        AudioManager.instance.StopMusic();
     }
 
     public void LoseGame()
     {
+        AudioManager.instance.StopMusic();
         Debug.Log("Lose Game");
         HideAll();
         gameOverMenu.SetActive(true);
@@ -420,6 +427,8 @@ public class GameManager : MonoBehaviour
                 var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
                     statContainer);
                 newStatText.fontSize = 24;
+                newStatText.font = statFont;
+                newStatText.color = defaultStatColor;
                 // set the width of the text transform to 400
                 newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
 
@@ -451,14 +460,14 @@ public class GameManager : MonoBehaviour
 
             foreach (var newStatText in statTexts[key])
             {
-                newStatText.text = $"{statTypeText}: {_stats[key].value}";
+                newStatText.text = $"{statTypeText}: {_stats[key].value:F1}";
                 // check if the stat value is above, below or equal to the initial value.
                 if (_stats[key].value > _stats[key].initialValue)
-                    newStatText.color = new Color(0.75f, 1f, 0.75f);
+                    newStatText.color = plusStatColor; 
                 else if (_stats[key].value < _stats[key].initialValue)
-                    newStatText.color = new Color(1f, 0.75f, 0.75f);
+                    newStatText.color = minusStatColor;
                 else
-                    newStatText.color = new Color(0.8f, 0.8f, 0.8f);
+                    newStatText.color = defaultStatColor;
             }
         }
     }
@@ -486,7 +495,7 @@ public class GameManager : MonoBehaviour
 
     private Vector3 GetRandomChestPosition()
     {
-        return new Vector3(Random.Range(-chestBounds.x, chestBounds.x), 0, Random.Range(-chestBounds.y, chestBounds.y));
+        return new Vector3(Random.Range(-chestBounds.x, chestBounds.x), 0.5f, Random.Range(-chestBounds.y, chestBounds.y));
     }
 
     private void SpawnMiniChest()
@@ -728,7 +737,9 @@ public class GameManager : MonoBehaviour
         var randomChance = Random.Range(0, 100);
         if (randomChance < healthPackSpawnRate.value)
         {
-            var healthPack = Instantiate(HealthPackPrefab, enemy.transform.position, Quaternion.identity);
+            var position = enemy.transform.position;
+            var pos = new Vector3(position.x, 0f, position.z);
+            var healthPack = Instantiate(HealthPackPrefab, pos, Quaternion.identity);
         }
 
         AccountManager.instance.statistics.totalKills++;

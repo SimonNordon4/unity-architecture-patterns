@@ -9,6 +9,25 @@ using UnityEditor;
 public class ChestItemsConfig : ScriptableObject
 {
     public List<ChestItem> chestItems;
+    
+    #if UNITY_EDITOR
+    [ContextMenu("Get All")]
+    public void GetAll()
+    {
+        // Get all chest items in the project
+        var guids = AssetDatabase.FindAssets("t:ChestItem");
+        chestItems = new List<ChestItem>();
+        foreach (var guid in guids)
+        {
+            var path = AssetDatabase.GUIDToAssetPath(guid);
+            var chestItem = AssetDatabase.LoadAssetAtPath<ChestItem>(path);
+            chestItems.Add(chestItem);
+        }
+        // save
+        EditorUtility.SetDirty(this);
+        AssetDatabase.SaveAssets();
+    }
+    #endif
 }
 
 #if UNITY_EDITOR

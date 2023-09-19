@@ -19,13 +19,13 @@ using UnityEngine.UI;
         public Color inActiveColor;
         public Color activeColor;
 
+        public Color noMoneyColor;
+
 
         public void Initialize(StoreItem item)
         {
             purchaseButton.onClick.RemoveAllListeners();
             // reset values
-            if(itemImage.sprite != null)
-                itemImage.sprite = null;
             itemNameText.text = "";
             itemPriceText.text = "";
             purchaseButton.enabled = true;
@@ -38,7 +38,8 @@ using UnityEngine.UI;
             tierIndicatorInactive.Clear();
             
             // Create
-            
+
+            itemImage.color = Color.white;
             itemImage.sprite = item.sprite;
             itemNameText.text = item.name;
 
@@ -72,8 +73,10 @@ using UnityEngine.UI;
 
                 if (AccountManager.instance.totalGold < item.pricePerTier[item.currentTier])
                 {
-                    purchaseButton.enabled = false;
-                    itemPriceText.color = Color.red;
+                    purchaseButton.interactable = false;
+                    itemPriceText.color = noMoneyColor;
+                    itemNextModifierText.color = inActiveColor;
+                    
                 }
 
                 purchaseButton.onClick.AddListener(() =>
@@ -87,7 +90,12 @@ using UnityEngine.UI;
             for(var i = 0; i < item.pricePerTier.Length; i++)
             {
                 var tierIndicator = Instantiate(tierIndicatorPrefab, tierIndicatorContainer);
-                tierIndicator.GetComponent<Image>().color = i < item.currentTier ? activeColor : inActiveColor;
+                
+                if(i < item.currentTier)
+                    tierIndicator.transform.GetChild(0).gameObject.SetActive(true);
+                else
+                    tierIndicator.transform.GetChild(0).gameObject.SetActive(false);
+                
                 tierIndicatorInactive.Add(tierIndicator);
             }
         }

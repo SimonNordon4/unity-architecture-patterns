@@ -19,15 +19,29 @@ public class AchievementUI : MonoBehaviour
         var progress = Mathf.Clamp(achievement.progress,0,achievement.goal);
         progressText.text = $"{progress}/{achievement.goal}";
         var progressScale = Mathf.Clamp((achievement.progress / (float) achievement.goal), 0, 1);
-        progressBar.transform.localScale = new Vector3(progressScale, 1, 1);
-        collectButton.interactable = achievement.isCompleted;
-
+        progressBar.GetComponent<Image>().fillAmount = progressScale;
+        
         if (achievement.isClaimed)
         {
             Collected();
         }
-        
-        collectButtonText.text = achievement.isCompleted ? $"Collect {achievement.rewardGold}G" : "Locked";
+
+        Debug.Log("Completed? " + achievement.isCompleted + " Claimed? " + achievement.isClaimed);
+        if (achievement.isCompleted && !achievement.isClaimed)
+        {
+            collectButton.interactable = true;
+            collectButtonText.text = $"Collect {achievement.rewardGold}G";
+        }
+        else if(achievement.isClaimed)
+        {
+            collectButton.interactable = false;
+            collectButtonText.text = $"Claimed";
+        }
+        else
+        {
+            collectButton.interactable = false;
+            collectButtonText.text = $"Locked";
+        }
         
         collectButton.onClick.AddListener(() =>
         {
@@ -41,15 +55,7 @@ public class AchievementUI : MonoBehaviour
         if(parent!=null)
             parent.UpdateGoldText();
         
-        collectButton.interactable = false;
         collectButtonText.text = "Claimed";
-        collectButton.colors = new ColorBlock()
-        {
-            normalColor = Color.gray,
-            highlightedColor = Color.gray,
-            pressedColor = Color.gray,
-            selectedColor = Color.gray,
-            disabledColor = new Color(0.5f,0.75f,0.5f)
-        };
+        collectButton.interactable = false;
     }
 }
