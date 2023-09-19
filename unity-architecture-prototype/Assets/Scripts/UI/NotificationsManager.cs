@@ -22,7 +22,7 @@ public class NotificationsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        CalculateNotifications();
+       StartCoroutine(CalculateNotifications());
     }
 
     private void OnDisable()
@@ -48,8 +48,10 @@ public class NotificationsManager : MonoBehaviour
         };
     }
 
-    private void CalculateNotifications()
+    private IEnumerator CalculateNotifications()
     {
+
+        yield return new WaitForSeconds(0.1f);
         if (achievementNotification != null)
         {
             // Get all achievements that are completed but not collected.

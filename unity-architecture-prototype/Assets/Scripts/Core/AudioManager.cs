@@ -75,7 +75,7 @@ using UnityEngine;
             
             if (_enemyManager.enemies.Count > 8)
             {
-                _actionVolume = (_enemyManager.enemies.Count / maxEnemyVolume) * 0.5f;
+                _actionVolume = (_enemyManager.enemies.Count / maxEnemyVolume) * 0.2f;
             }
             
             if (GameManager.instance.isGameActive)

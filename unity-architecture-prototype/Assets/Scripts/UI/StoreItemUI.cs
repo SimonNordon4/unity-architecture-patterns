@@ -24,6 +24,7 @@ using UnityEngine.UI;
 
         public void Initialize(StoreItem item)
         {
+            Debug.Log("Initializing store item ui for: " + item.name);
             purchaseButton.onClick.RemoveAllListeners();
             // reset values
             itemNameText.text = "";
@@ -40,6 +41,12 @@ using UnityEngine.UI;
             // Create
 
             itemImage.color = Color.white;
+
+            if (item.sprite == null)
+            {
+                Debug.LogError("Missing sprite?");
+            }
+            
             itemImage.sprite = item.sprite;
             itemNameText.text = item.name;
 

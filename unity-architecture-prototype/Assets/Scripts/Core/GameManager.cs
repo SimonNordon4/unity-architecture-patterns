@@ -239,6 +239,7 @@ public class GameManager : MonoBehaviour
         foreach (var spawnIndicator in spawnIndicators) Destroy(spawnIndicator);
 
         foreach (var val in _stats.Values) val.Reset();
+        UpdateStatsUI();
 
         // Remove all chests.
         var chests = FindObjectsOfType<Chest>();
@@ -424,6 +425,7 @@ public class GameManager : MonoBehaviour
 
             foreach (var key in _stats.Keys)
             {
+                Debug.Log("Creating stat for: " + key);
                 var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
                     statContainer);
                 newStatText.fontSize = 24;
@@ -442,6 +444,15 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        
+        // clean up bonky stats created in the hierarchy.
+        var bonkyStats = FindObjectsOfType<TextMeshProUGUI>();
+        foreach (var bonkyText in bonkyStats)
+        {
+            if (bonkyText.transform.parent == null)
+                Destroy(bonkyText.gameObject);
+        }
+        
 
         UpdateStatsUI();
     }
