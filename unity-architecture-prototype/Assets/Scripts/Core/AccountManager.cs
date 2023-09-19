@@ -192,6 +192,13 @@ using UnityEngine;
             {
                 new Achievement()
                 {
+                    name = AchievementName.Die,
+                    uiName = "Die",
+                    goal = 1,
+                    rewardGold = 50
+                },
+                new Achievement()
+                {
                     name = AchievementName.Kill100Enemies,
                     uiName = "Kill 100 Enemies",
                     goal = 100,
@@ -231,13 +238,6 @@ using UnityEngine;
                     uiName = "Kill 1000 Bosses",
                     goal = 1000,
                     rewardGold = 5000
-                },
-                new Achievement()
-                {
-                    name = AchievementName.Die,
-                    uiName = "Die",
-                    goal = 1,
-                    rewardGold = 50
                 },
                 new Achievement()
                 {

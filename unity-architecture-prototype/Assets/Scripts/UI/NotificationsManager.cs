@@ -51,7 +51,7 @@ public class NotificationsManager : MonoBehaviour
     private IEnumerator CalculateNotifications()
     {
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForEndOfFrame();
         if (achievementNotification != null)
         {
             // Get all achievements that are completed but not collected.
