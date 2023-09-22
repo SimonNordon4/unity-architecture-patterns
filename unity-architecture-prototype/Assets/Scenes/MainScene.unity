@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: eb5f3e68e004b3641b8d2cab4caacffb, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.99999905, g: 0, b: 0.99999905, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -22017,7 +22017,7 @@ MonoBehaviour:
   renderSettingsRTPVHDR: 0
   renderSettingsRTPVWidth: 640
   renderSettingsRTPVHeight: 360
-  lastBakeTime: 71
+  lastBakeTime: 77
   enlightenWarningShown: 0
   enlightenWarningShown2: 0
   uniqueLights:
@@ -22453,7 +22453,14 @@ MonoBehaviour:
   lightmapHasRNM: 00000000000000
   modifiedAssetPathList: []
   modifiedAssets: []
-  maps: []
+  maps:
+  - {fileID: 2800000, guid: d5029e0de02c8e34fa75e7a33f809126, type: 3}
+  - {fileID: 2800000, guid: 41b55948af94570438e2729ea6efa364, type: 3}
+  - {fileID: 2800000, guid: 24dd05cd1093a9347b43ef90394710e6, type: 3}
+  - {fileID: 2800000, guid: e91f01f6ce8f6ba4d9e61ab794be6f73, type: 3}
+  - {fileID: 2800000, guid: 2155d6b66a15ff04c891f50cdfe6da9c, type: 3}
+  - {fileID: 2800000, guid: 39eb27e6cca66804997c4daf33e8d9e3, type: 3}
+  - {fileID: 2800000, guid: 8183d9441ac4b8c41a391ccfac01c046, type: 3}
   masks: []
   dirMaps: []
   rnmMaps0: []
