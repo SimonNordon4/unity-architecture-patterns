@@ -14,8 +14,6 @@
             if(other.CompareTag("Player"))
             {
                 AudioManager.instance.PlaySound(openSound);
-                GameManager.instance.PickupChest(this);
-                
                 Destroy(gameObject);
             }
         }

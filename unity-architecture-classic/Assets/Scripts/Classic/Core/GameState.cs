@@ -5,7 +5,7 @@ namespace Classic.Core
 {
     public class GameState : MonoBehaviour
     {
-        public GameStateEnum currentState = GameStateEnum.Idle;
+        public GameStateEnum currentState { get; private set; } = GameStateEnum.Idle;
         
         public UnityEvent onStateChanged { get; } = new();
         public UnityEvent onGameStart { get; } = new();

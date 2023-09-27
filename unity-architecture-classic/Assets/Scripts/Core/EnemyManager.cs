@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Classic.Items;
 using Definitions;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -20,12 +21,10 @@ public enum EnemySpawnPhase
 
 public class EnemyManager : MonoBehaviour
 {
+    [Header("Dependencies")] public ChestSpawner chestSpawner;
+    
     [Header("References")] public GameManager gameManager;
     public Transform playerTarget;
-
-    [Header("Prefabs")] 
-    public GameObject mediumChestPrefab;
-    public GameObject largeChestPrefab;
 
     [Header("Stats")] 
     public float spawnRadius = 15f;
@@ -434,18 +433,12 @@ public class EnemyManager : MonoBehaviour
         
         if (_currentWave.bossChestTier.y <= 3)
         {
-            _bossChest = Instantiate(mediumChestPrefab, projectedPosition, Quaternion.identity);
-            chestController = _bossChest.GetComponent<Chest>();
+            _bossChest = chestSpawner.SpawnChest(ChestType.Medium, projectedPosition).gameObject;
         }
         else
         {
-            _bossChest = Instantiate(largeChestPrefab, projectedPosition, Quaternion.identity);
-            chestController = _bossChest.GetComponent<Chest>();
+            _bossChest = chestSpawner.SpawnChest(ChestType.Large, projectedPosition).gameObject;
         }
-
-        chestController.minTier = _currentWave.bossChestTier.x;
-        chestController.maxTier = _currentWave.bossChestTier.y;
-        chestController.options = _currentWave.bossChestChoices;
     }
 
     #endregion

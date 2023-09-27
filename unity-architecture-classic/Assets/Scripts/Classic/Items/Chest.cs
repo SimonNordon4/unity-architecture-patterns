@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Classic.Core
+namespace Classic.Items
 {
     public class Chest : MonoBehaviour
     {
@@ -17,18 +17,12 @@ namespace Classic.Core
         [field:SerializeField] public int numberOfItems { get; set; }
         [field:SerializeField] public ChestItem[] chestItems { get; set; }
 
-        public void Construct(ChestDefinition def)
-        {
-            tiers = def.tiers;
-            options = def.options;
-            chestType = def.chestType;
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (playerLayer != (playerLayer | (1 << other.gameObject.layer))) return;
+            Debug.Log("Player entered chest trigger");
             OnChestPickedUp.Invoke(this);
-            Destroy(gameObject);
+            onPickedUp.Invoke();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Classic.UI;
 using UnityEngine;
 
 namespace Classic.Core
@@ -7,6 +8,7 @@ namespace Classic.Core
     {
         [SerializeField] private KeyCode pauseKey = KeyCode.F;
         [SerializeField] private GameState gameState;
+        [SerializeField] private UIState uiState;
 
         private void Update()
         {
@@ -16,9 +18,11 @@ namespace Classic.Core
                 {
                     case GameStateEnum.Active:
                         gameState.PauseGame();
+                        uiState.GoToPauseMenu();
                         break;
                     case GameStateEnum.Paused:
                         gameState.ResumeGame();
+                        uiState.GoToHud();
                         break;
                     case GameStateEnum.Idle:
                         break;

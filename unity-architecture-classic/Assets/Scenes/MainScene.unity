@@ -4243,6 +4243,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 361919822}
+        m_TargetAssemblyTypeName: Classic.UI.UIState, Assembly-CSharp
+        m_MethodName: GoToHud
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &296086815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4512,6 +4524,7 @@ GameObject:
   - component: {fileID: 361919820}
   - component: {fileID: 361919822}
   - component: {fileID: 361919823}
+  - component: {fileID: 361919824}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -4546,7 +4559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e11d41e63244498d0a32b0ec078c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 1358396559}
   <currentState>k__BackingField: 0
 --- !u!114 &361919823
 MonoBehaviour:
@@ -4572,6 +4584,20 @@ MonoBehaviour:
   - {fileID: 1272078997}
   - {fileID: 588618301}
   - {fileID: 1261297454}
+--- !u!114 &361919824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361919818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a4ae973e8e1e284ea7788fb09294e11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 0}
+  uiState: {fileID: 0}
 --- !u!1 &370404026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5464,7 +5490,7 @@ GameObject:
   - component: {fileID: 460763657}
   - component: {fileID: 460763656}
   - component: {fileID: 460763661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -10270,17 +10296,7 @@ MonoBehaviour:
   itemHoverImagePrefab: {fileID: 5215998619264568895, guid: cf497b26d0c0c5b46bb75e5f2b659b96, type: 3}
   chestItemMenu: {fileID: 1261297451}
   chestItemButtonContainer: {fileID: 952481878}
-  chestItemButtonPrefab: {fileID: 8204247807775811352, guid: d77e9d7149fac464081a3009eb04bd3d, type: 3}
-  chestBounds: {x: 15, y: 15}
-  tier1ChestItems: {fileID: 11400000, guid: 625754b36b3c578438c6e0f8d14c5719, type: 2}
-  tier2ChestItems: {fileID: 11400000, guid: d62170bf436df664f81766c01da95f3c, type: 2}
-  tier3ChestItems: {fileID: 11400000, guid: e201e996f62344f4b81b49e8451dbcf5, type: 2}
-  tier4ChestItems: {fileID: 11400000, guid: 905f09154c722cc4c906617c1eb202a9, type: 2}
-  tier5ChestItems: {fileID: 11400000, guid: 698f76f665837404cac104626729f466, type: 2}
-  miniChestCooldown: 6.5
-  miniChestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42, type: 3}
-  mediumChestPrefab: {fileID: 7632869134034703769, guid: 467159eec05542c45a00f31f13f867de, type: 3}
-  largeChestPrefab: {fileID: 7632869134034703769, guid: 8d8af5a9e9980e94294e900bdb4a6312, type: 3}
+  uiChestItemButtonPrefab: {fileID: 0}
   pityLuck: 0
   pityLuckScaling: 1
   _chestItemsWasdSelector: {fileID: 1261297453}
@@ -16005,6 +16021,7 @@ GameObject:
   - component: {fileID: 1261297452}
   - component: {fileID: 1261297454}
   - component: {fileID: 1261297453}
+  - component: {fileID: 1261297455}
   m_Layer: 5
   m_Name: Chest Item Menu
   m_TagString: Untagged
@@ -16062,6 +16079,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <activationState>k__BackingField: 9
+--- !u!114 &1261297455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261297451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8be44fb2558fd454ba273a5fde250083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestOpenHandler: {fileID: 1839149888}
+  chestItemButtonContainer: {fileID: 952481878}
+  chestItemButtonPrefab: {fileID: 8204247807775811352, guid: d77e9d7149fac464081a3009eb04bd3d, type: 3}
 --- !u!1 &1262519347
 GameObject:
   m_ObjectHideFlags: 0
@@ -18402,7 +18434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbfc2afd3592f1e41869d433feccdf88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
 --- !u!4 &1358396560
 Transform:
   m_ObjectHideFlags: 0
@@ -18432,6 +18463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseKey: 102
   gameState: {fileID: 1358396559}
+  uiState: {fileID: 361919822}
 --- !u!114 &1358396562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23775,6 +23807,7 @@ GameObject:
   - component: {fileID: 1839149886}
   - component: {fileID: 1839149887}
   - component: {fileID: 1839149885}
+  - component: {fileID: 1839149888}
   m_Layer: 0
   m_Name: Chest Manager
   m_TagString: Untagged
@@ -23834,6 +23867,20 @@ MonoBehaviour:
   chestSpawner: {fileID: 1839149885}
   gameState: {fileID: 1358396559}
   miniChestSpawnRate: 8
+--- !u!114 &1839149888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fac2f7018a4924b590e811df24dc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1358396559}
+  uiState: {fileID: 361919822}
 --- !u!1 &1840059381
 GameObject:
   m_ObjectHideFlags: 0

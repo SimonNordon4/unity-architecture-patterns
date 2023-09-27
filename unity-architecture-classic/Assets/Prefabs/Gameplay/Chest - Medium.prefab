@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3578237509715363046}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000000475031, y: -0.70710576, z: 0.000000047502965, w: 0.70710784}
-  m_LocalPosition: {x: 0.045, y: -0.5, z: -0.05}
+  m_LocalPosition: {x: 0.045, y: 0, z: -0.05}
   m_LocalScale: {x: 2.6666667, y: 4, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -111,7 +111,6 @@ GameObject:
   - component: {fileID: 4990230491750309805}
   - component: {fileID: 472263637998658278}
   - component: {fileID: 8640349275599438586}
-  - component: {fileID: 7632869134034703769}
   - component: {fileID: 8435337731301990341}
   m_Layer: 0
   m_Name: Chest - Medium
@@ -129,7 +128,7 @@ Transform:
   m_GameObject: {fileID: 3922492998747134388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -207,24 +206,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7632869134034703769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3922492998747134388}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a847b670bf84ea1b18401abfbf912cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minTier: 2
-  maxTier: 3
-  options: {x: 0, y: 0}
-  chestType: 1
-  openSound: {fileID: 11400000, guid: c13e0c3716d8d9e428c464fc0be88c9c, type: 2}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &8435337731301990341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb8ed7881b646e4be813893f1c7d943, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onChestPickedUp:
+  onPickedUp:
     m_PersistentCalls:
       m_Calls: []
   playerLayer:
@@ -471,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 412002, guid: 6636c1495911f9b4780166963bc196cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.471
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 412002, guid: 6636c1495911f9b4780166963bc196cf, type: 3}
       propertyPath: m_LocalPosition.z

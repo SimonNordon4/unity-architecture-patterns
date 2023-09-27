@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Classic.Core;
+using UnityEngine;
 
-namespace Classic.Core
+namespace Classic.Items
 {
     public class RoundMiniChestSpawner : MonoBehaviour
     {
@@ -13,7 +14,7 @@ namespace Classic.Core
 
         private void OnEnable()
         {
-            gameState.onGameStart.AddListener(ResetChestTimer);
+            gameState.onGameStart.AddListener(SpawnMiniChest);
         }
 
         private void Update()

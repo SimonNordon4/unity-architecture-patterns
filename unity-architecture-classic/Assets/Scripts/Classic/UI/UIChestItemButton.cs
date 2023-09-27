@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-    public class ChestItemButton : MonoBehaviour
+    public class UIChestItemButton : MonoBehaviour
     {
         public ChestItem chestItem;
         public TextMeshProUGUI Title;

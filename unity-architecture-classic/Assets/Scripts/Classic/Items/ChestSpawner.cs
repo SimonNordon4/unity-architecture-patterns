@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Classic.Core;
 using UnityEngine;
 
-namespace Classic.Core
+namespace Classic.Items
 {
     public class ChestSpawner : MonoBehaviour
     {
@@ -56,10 +57,9 @@ namespace Classic.Core
             return chest;
         }
 
-        public Chest SpawnChest(ChestDefinition chestDefinition)
+        public Chest SpawnChest(ChestType chestType)
         {
-            var chest = Instantiate(_chestTypes[chestDefinition.chestType], transform.position, Quaternion.identity);
-            chest.Construct(chestDefinition);
+            var chest = Instantiate(_chestTypes[chestType], transform.position, Quaternion.identity);
             chest.numberOfItems = CalculateNumberOfItems(chest);
             chest.chestItems = CalculateChestItems(chest);
             
@@ -73,10 +73,9 @@ namespace Classic.Core
             return chest;
         }
 
-        public Chest SpawnChest(ChestDefinition chestDefinition, Vector3 position)
+        public Chest SpawnChest(ChestType chestType, Vector3 position)
         {
-            var chest = Instantiate(_chestTypes[chestDefinition.chestType], transform.position, Quaternion.identity);
-            chest.Construct(chestDefinition);
+            var chest = Instantiate(_chestTypes[chestType], transform.position, Quaternion.identity);
             chest.numberOfItems = CalculateNumberOfItems(chest);
             chest.chestItems = CalculateChestItems(chest);
             chest.transform.position = position;

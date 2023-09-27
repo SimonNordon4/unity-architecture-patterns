@@ -7,23 +7,10 @@ namespace Classic.UI
 {
     public class UIState : MonoBehaviour
     {
-        [Header("Dependencies")]
-        [SerializeField]private GameState gameState;
-        
         private readonly Stack<UIStateEnum> _previousStates = new();
         [field: SerializeField]
         public UIStateEnum currentState { get; private set; } = UIStateEnum.MainMenu;
         public UnityEvent<UIStateEnum> onStateChanged { get; } = new();
-        
-        private void OnEnable()
-        {
-            gameState.onGameStart.AddListener(GoToHud);
-            gameState.onGamePause.AddListener(GoToPauseMenu);
-            gameState.onGameResume.AddListener(GoToHud);
-            gameState.onGameReturnToMainMenu.AddListener(GoToMainMenu);
-            gameState.onGameWon.AddListener(GoToGameWonMenu);
-            gameState.onGameLost.AddListener(GoToGameOverMenu);
-        }
 
         private void Start()
         {
