@@ -1,0 +1,316 @@
+fileFormatVersion: 2
+guid: 2cbc103dc72e6274d825d00061c36609
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ground
+    second: {fileID: 2100000, guid: b2eb2c6a0bb6cef49b7db5221a0cc4f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: crypts
+    second: {fileID: 2100000, guid: af3676ea220cf4a43b43b0095f4d9ae4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dead_bush_01
+    second: {fileID: 2100000, guid: 19a9798f00cb7f744ad80997dbf1d0b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_01
+    second: {fileID: 2100000, guid: 8eaefa893bd17b64eba957603b0e1d66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_01_leafs
+    second: {fileID: 2100000, guid: 685b096be6786684cab45bd5f58826c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_02
+    second: {fileID: 2100000, guid: e046ff408287b924ab6dbc3ac1aff58d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_02_leafs
+    second: {fileID: 2100000, guid: c4a45222257c3b343bb4a3ac25c26a09, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_03_leafs
+    second: {fileID: 2100000, guid: 54ac980dfab6155459570562be0c60cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: entourage_set_01_4096
+    second: {fileID: 2100000, guid: 8053ccc5f4bf7074c864bdc8f52a64af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert10
+    second: {fileID: 2100000, guid: 5898c382bba208a498c2d791a8738ce0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert11
+    second: {fileID: 2100000, guid: 29e266c1271a54b4aa2c09e1b6ea3fd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 1924fa0779d520c4f8b677ad899c68c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert4
+    second: {fileID: 2100000, guid: 18d3448bd2d80b8498b0cef94f0877b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert6
+    second: {fileID: 2100000, guid: bef8a667e16cc5d44a26a7f1680c3424, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert7
+    second: {fileID: 2100000, guid: 24c6a10494c313f4eb34dc922fed034e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert8
+    second: {fileID: 2100000, guid: d5801a467b6616b4c86a100639c9a554, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: orc_stronghold_mat
+    second: {fileID: 2100000, guid: 60230ead80d660c41ad26d0068893ed2, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BarrelColor
+    second: {fileID: 2800000, guid: 8ab2131d6cdf43a4fa5f15e2c955fc41, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PillarColor
+    second: {fileID: 2800000, guid: 1fb7c0ed0b66951448a0501af816c425, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: RockColor
+    second: {fileID: 2800000, guid: 771f6c01715a9ec42bb31ce3699a0a87, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TileColor
+    second: {fileID: 2800000, guid: 9a72339d61118354cb0b002b29aa3cec, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall1Color
+    second: {fileID: 2800000, guid: 2c42e2431a35a01429786e1f9a8a7f10, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wall3Color
+    second: {fileID: 2800000, guid: 29027fbe0a6436d4bbc434b5c776e666, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crypts_diffuse
+    second: {fileID: 2800000, guid: 13a69bae1a5f917459b7745b698e49f5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_bush_01_alpha
+    second: {fileID: 2800000, guid: 9a44b28cd17a7384caa0b26fb304d4f7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_bush_01_diffuse
+    second: {fileID: 2800000, guid: 019942389d39f1f45bd104441ef42f7f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_01_diffuse
+    second: {fileID: 2800000, guid: 761b772d635c77e45ad389c95e89c712, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_01_leafs_alpha
+    second: {fileID: 2800000, guid: 097eab53216a73c4bb7b21aca80439ea, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_01_leafs_diffuse
+    second: {fileID: 2800000, guid: e555ce9cd493549499eaf8a119e9e540, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_02_diffuse
+    second: {fileID: 2800000, guid: 36e09234c9bb4b5428cb5e5c3157777f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_02_leafs_alpha
+    second: {fileID: 2800000, guid: 33fc9d78d1065c2478c23bc0342be185, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_02_leafs_diffuse
+    second: {fileID: 2800000, guid: 37edcfcb11099e1448352f84ebf44f6a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_03_leafs_alpha
+    second: {fileID: 2800000, guid: ee71449cb2213ac45bee3dad249b8473, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: dead_tree_03_leafs_diffuse
+    second: {fileID: 2800000, guid: f27e2bade95cf074c9bcc3305be0c056, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: entourage_set_01_4096_alpha
+    second: {fileID: 2800000, guid: f02c40fedf71b2c42b636156f4fc98fc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: entourage_set_01_4096_diffuse
+    second: {fileID: 2800000, guid: 648ee33163b7c0f4e9d334c80c393605, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_6
+    second: {fileID: 2800000, guid: 32fc9561e73210947adabb204b874292, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: orc_stronghold_atlas.tga
+    second: {fileID: 2800000, guid: 815a51849c22a214e80486e8e89f1b49, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: orc_stronghold_atlas_glow.tga
+    second: {fileID: 2800000, guid: f06bfbea7b578d5479d6ca595025c0ed, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: orc_stronghold_atlas_metal.tga
+    second: {fileID: 2800000, guid: 83b92907718dd4947b53605f331efaca, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: orc_stronghold_atlas_rough.tga
+    second: {fileID: 2800000, guid: d9c823396eea01848a871edd1026759c, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties:
+    - '#BAKERY{"meshName":["entourage_set_01_4096_69.006","crypts","entourage_set_01_4096_60.001","entourage_set_01_4096_69.008","entourage_set_01_4096_69.007","crypts.014","crypts.007","entourage_set_01_4096_68.001","crypts.013","entourage_set_01_4096_68.002","Rock_01.001","entourage_set_01_4096_45.001","crypts.001","entourage_set_01_4096_69.010","entourage_set_01_4096_69.005","crypts.003","entourage_set_01_4096_69.002","entourage_set_01_4096_69.001","low-poly-ground","crypts.004","entourage_set_01_4096_69.009","high-res-ground","entourage_set_01_4096_69.003","Rock2_01.001","entourage_set_01_4096_69.004","BarrelBroken_01","crypts.009","crypts.008","crypts.015","crypts.005","Wall_03.001","Tile1_026.010","crypts.002","crypts.006","Walls","Tiles","Props","Low
+      Resolution Ground","High Resolution Ground","Bones"],"padding":[63,155,61,63,63,155,65,63,155,63,46,49,95,63,63,178,63,63,1,123,63,8,63,122,63,23,150,55,155,94,1,1,233,94,4,4,4,8,8,2],"unwrapper":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]}'
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 2
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
