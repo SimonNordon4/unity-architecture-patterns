@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")] public TextMeshProUGUI roundTimeText;
     public TextMeshProUGUI waveText;
-    public GameObject mainMenu;
     public GameObject pauseMenu;
     public GameObject gameMenu;
     public GameObject gameOverMenu;
@@ -190,7 +189,6 @@ public class GameManager : MonoBehaviour
     {
         AccountManager.instance.Save();
         HideAll();
-        mainMenu.SetActive(true);
         isGameActive = false;
         isPaused = false;
         ResetGame();
@@ -362,7 +360,6 @@ public class GameManager : MonoBehaviour
 
     private void HideAll()
     {
-        mainMenu.SetActive(false);
         gameMenu.SetActive(false);
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);

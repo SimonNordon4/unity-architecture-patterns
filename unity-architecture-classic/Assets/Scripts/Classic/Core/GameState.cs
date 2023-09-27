@@ -13,7 +13,12 @@ namespace Classic.Core
         public UnityEvent onGameResume { get; }= new();
         public UnityEvent onGameWon { get; } = new();
         public UnityEvent onGameLost { get; } = new();
-        public UnityEvent onGameQuit { get; } = new();
+        public UnityEvent onGameReturnToMainMenu { get; } = new();
+
+        private void Start()
+        {
+            GoToMainMenu();
+        }
 
         public void StartNewGame()
         {
@@ -50,10 +55,10 @@ namespace Classic.Core
             onStateChanged.Invoke();
         }
         
-        public void QuitGame()
+        public void GoToMainMenu()
         {
             currentState = GameStateEnum.Idle;
-            onGameQuit.Invoke();
+            onGameReturnToMainMenu.Invoke();
             onStateChanged.Invoke();
         }
     }

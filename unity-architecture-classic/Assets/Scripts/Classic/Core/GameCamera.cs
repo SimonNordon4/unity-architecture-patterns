@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Classic.Core
@@ -7,6 +8,7 @@ namespace Classic.Core
         [Header("Dependencies")]
         [SerializeField] private Transform characterTransform;
         [SerializeField] private Level level;
+
 
         [Header("Settings")]
         [SerializeField] private float edgeDistance = 5f;
@@ -39,6 +41,14 @@ namespace Classic.Core
             }
 
             transform.position = cameraWishPosition;
+        }
+
+        private void OnValidate()
+        {
+            if (level == null)
+            {
+                level = FindObjectsByType<Level>(FindObjectsSortMode.None).First();
+            }
         }
     }
 }
