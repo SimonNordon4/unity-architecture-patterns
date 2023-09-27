@@ -6,7 +6,6 @@ namespace Classic.Core
     public class GameKeyboardInput : MonoBehaviour
     {
         [SerializeField] private KeyCode pauseKey = KeyCode.F;
-        
         [SerializeField] private GameState gameState;
 
         private void Update()
@@ -26,6 +25,14 @@ namespace Classic.Core
                     default:
                         break;
                 }
+            }
+        }
+
+        private void OnValidate()
+        {
+            if (gameState == null)
+            {
+                gameState = FindObjectsByType<GameState>(FindObjectsSortMode.None)[0];
             }
         }
     }

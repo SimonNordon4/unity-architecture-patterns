@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")] public TextMeshProUGUI roundTimeText;
     public TextMeshProUGUI waveText;
-    public GameObject pauseMenu;
     public GameObject gameMenu;
     public GameObject gameOverMenu;
     public GameObject winMenu;
@@ -202,7 +201,6 @@ public class GameManager : MonoBehaviour
             HideAll();
             isGameActive = false;
             isPaused = true;
-            pauseMenu.SetActive(true);
         }
         // If the game is not active and we are paused.
         else if (!isGameActive && isPaused)
@@ -361,7 +359,6 @@ public class GameManager : MonoBehaviour
     private void HideAll()
     {
         gameMenu.SetActive(false);
-        pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
         winMenu.SetActive(false);
         chestItemMenu.SetActive(false);
