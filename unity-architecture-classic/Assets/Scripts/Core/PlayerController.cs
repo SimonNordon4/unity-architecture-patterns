@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 [DefaultExecutionOrder(10)]
 public class PlayerController : MonoBehaviour
 {
+    
+        public UnityEvent onPlayerDeath = new();
+    
         private Transform _transform;
 
         private Vector3 _cameraOffset;
@@ -434,6 +438,7 @@ public class PlayerController : MonoBehaviour
                 AccountManager.instance.statistics.totalDeaths++;
                 AudioManager.instance.PlaySound(deathSound);
                 gameManager.LoseGame();
+                onPlayerDeath.Invoke();
                 
                 List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
                     .Where(a => a.name == AchievementName.Die ||

@@ -10,7 +10,7 @@ namespace Classic.UI
         [Header("Dependencies")]
         [SerializeField]private GameState gameState;
         
-        private readonly Queue<UIStateEnum> _previousStates = new();
+        private readonly Stack<UIStateEnum> _previousStates = new();
         [field: SerializeField]
         public UIStateEnum currentState { get; private set; } = UIStateEnum.MainMenu;
         public UnityEvent<UIStateEnum> onStateChanged { get; } = new();
@@ -38,7 +38,7 @@ namespace Classic.UI
         
         public void GoToState(UIStateEnum state)
         {
-            _previousStates.Enqueue(currentState);
+            _previousStates.Push(currentState);
             currentState = state;
             onStateChanged.Invoke(currentState);
         }
@@ -46,7 +46,7 @@ namespace Classic.UI
         public void GoToPreviousState()
         {
             if (_previousStates.Count <= 0) return;
-            currentState = _previousStates.Dequeue();
+            currentState = _previousStates.Pop();
             onStateChanged.Invoke(currentState);
         }
 
@@ -66,17 +66,17 @@ namespace Classic.UI
             GoToState(UIStateEnum.PauseMenu);
         }
 
-        public void GoToStoreMenu()
+        public void GoToStore()
         {
             GoToState(UIStateEnum.Store);
         }
         
-        public void GoToAchievementsMenu()
+        public void GoToAchievements()
         {
             GoToState(UIStateEnum.Achievements);
         }
         
-        public void GoToSettingsMenu()
+        public void GoToSettings()
         {
             GoToState(UIStateEnum.Settings);
         }

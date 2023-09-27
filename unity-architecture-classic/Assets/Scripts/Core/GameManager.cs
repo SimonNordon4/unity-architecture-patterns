@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 
 public class GameManager : MonoBehaviour
 {
+
+    public UnityEvent tempGameWon = new();
     private static GameManager _instance;
 
     public static GameManager instance
@@ -61,9 +64,6 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")] public TextMeshProUGUI roundTimeText;
     public TextMeshProUGUI waveText;
-    public GameObject gameMenu;
-    public GameObject gameOverMenu;
-    public GameObject winMenu;
 
     public List<TextMeshProUGUI> GoldTexts = new();
     public List<TextMeshProUGUI> GoldSubTexts = new();
@@ -168,7 +168,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Start New Game");
         HideAll();
         AccountManager.instance.statistics.gamesPlayed++;
-        gameMenu.SetActive(true);
         isGameActive = true;
         roundTime = 0f;
         LoadStoreItemsIntoStats();
@@ -208,7 +207,6 @@ public class GameManager : MonoBehaviour
             HideAll();
             isGameActive = true;
             isPaused = false;
-            gameMenu.SetActive(true);
         }
         // Do nothing otherwise.
     }
@@ -246,9 +244,9 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        tempGameWon.Invoke();
         AccountManager.instance.Save();
         HideAll();
-        winMenu.SetActive(true);
         isGameActive = false;
         AccountManager.instance.statistics.gamesWon++;
 
@@ -314,7 +312,6 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.StopMusic();
         Debug.Log("Lose Game");
         HideAll();
-        gameOverMenu.SetActive(true);
         isGameActive = false;
 
         AddGoldWhenGameEnds();
@@ -358,9 +355,6 @@ public class GameManager : MonoBehaviour
 
     private void HideAll()
     {
-        gameMenu.SetActive(false);
-        gameOverMenu.SetActive(false);
-        winMenu.SetActive(false);
         chestItemMenu.SetActive(false);
     }
 
@@ -672,7 +666,6 @@ public class GameManager : MonoBehaviour
     public void ApplyItem(ChestItem item)
     {
         HideAll();
-        gameMenu.SetActive(true);
         currentlyHeldItems.Add(item);
 
         // Add modifiers to the stats.
