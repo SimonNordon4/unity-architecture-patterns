@@ -25,6 +25,7 @@ namespace Classic.Core
             currentState = GameStateEnum.Active;
             onGameStart.Invoke();
             onStateChanged.Invoke();
+            GameTime.timeScale = 1f;
         }
         
         public void PauseGame()
@@ -32,6 +33,7 @@ namespace Classic.Core
             currentState = GameStateEnum.Paused;
             onGamePause.Invoke();
             onStateChanged.Invoke();
+            GameTime.timeScale = 0f;
         }
         
         public void ResumeGame()
@@ -39,6 +41,7 @@ namespace Classic.Core
             currentState = GameStateEnum.Active;
             onGameResume.Invoke();
             onStateChanged.Invoke();
+            GameTime.timeScale = 1f;
         }
 
         public void WinGame()
@@ -46,6 +49,7 @@ namespace Classic.Core
             currentState = GameStateEnum.Idle;
             onGameWon.Invoke();
             onStateChanged.Invoke();
+            GameTime.timeScale = 0f;
         }
         
         public void LoseGame()
@@ -53,6 +57,7 @@ namespace Classic.Core
             currentState = GameStateEnum.Idle;
             onGameLost.Invoke();
             onStateChanged.Invoke();
+            GameTime.timeScale = 0f;
         }
         
         public void GoToMainMenu()
@@ -60,6 +65,7 @@ namespace Classic.Core
             currentState = GameStateEnum.Idle;
             onGameReturnToMainMenu.Invoke();
             onStateChanged.Invoke();
+            GameTime.timeScale = 0f;
         }
     }
     

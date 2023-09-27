@@ -7555,6 +7555,7 @@ GameObject:
   - component: {fileID: 615096171}
   - component: {fileID: 615096173}
   - component: {fileID: 615096172}
+  - component: {fileID: 615096174}
   m_Layer: 5
   m_Name: Round Timer
   m_TagString: Untagged
@@ -7678,6 +7679,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615096170}
   m_CullTransparentMesh: 1
+--- !u!114 &615096174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615096170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14cd6188c7ecccf428b13f6b8786df8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundTimer: {fileID: 1358396562}
 --- !u!1 &627023981
 GameObject:
   m_ObjectHideFlags: 0
@@ -10239,7 +10253,6 @@ MonoBehaviour:
     maximumValue: 100
     _modifiers: []
     value: 5
-  roundTimeText: {fileID: 615096172}
   waveText: {fileID: 2073183644}
   GoldTexts:
   - {fileID: 832612759}
@@ -18355,6 +18368,7 @@ GameObject:
   - component: {fileID: 1358396559}
   - component: {fileID: 1358396558}
   - component: {fileID: 1358396561}
+  - component: {fileID: 1358396562}
   m_Layer: 0
   m_Name: Game Manager (new)
   m_TagString: Untagged
@@ -18417,6 +18431,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseKey: 102
   gameState: {fileID: 1358396559}
+--- !u!114 &1358396562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358396557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb39c66eac024b7a957615a1432f7862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  <roundTime>k__BackingField: 0
 --- !u!1 &1359933850
 GameObject:
   m_ObjectHideFlags: 0

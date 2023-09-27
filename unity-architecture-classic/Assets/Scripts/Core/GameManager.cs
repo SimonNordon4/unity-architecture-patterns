@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
     private readonly Dictionary<StatType, Stat> _stats = new();
     public readonly List<ChestItem> currentlyHeldItems = new();
 
-    [Header("UI")] public TextMeshProUGUI roundTimeText;
+    [Header("UI")] 
     public TextMeshProUGUI waveText;
 
     public List<TextMeshProUGUI> GoldTexts = new();
@@ -137,13 +137,6 @@ public class GameManager : MonoBehaviour
     {
         if (isGameActive)
         {
-            roundTime += Time.deltaTime;
-
-            //format round time in MM:SS
-            var minutes = Mathf.FloorToInt(roundTime / 60f);
-            var seconds = Mathf.FloorToInt(roundTime % 60f);
-            roundTimeText.text = $"Round Time: {minutes:00}:{seconds:00}";
-
             if (_nextMiniChest)
             {
                 _timeSinceLastMiniChest += Time.deltaTime;
