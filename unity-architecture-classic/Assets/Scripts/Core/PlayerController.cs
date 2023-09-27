@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
 {
         private Transform _transform;
 
-        public Camera camera;
         private Vector3 _cameraOffset;
 
         public Vector3 targetDirection;
@@ -69,7 +68,6 @@ public class PlayerController : MonoBehaviour
         private void Awake()
         {
             _transform = transform;
-            _cameraOffset = camera.transform.position - _transform.position;
         }
 
         private void Start()
@@ -292,25 +290,6 @@ public class PlayerController : MonoBehaviour
         private void LateUpdate()
         {
             localCanvas.rotation = _startRotation;
-            // Camera position.
-            var cameraWishPosition = _transform.position + _cameraOffset;
-            
-            // We want the same level bound logic for the camera, but it stops its position if the player is within 5m of the level bounds
-            if (_transform.position.x <= -gameManager.levelBounds.x + 5 ||
-                _transform.position.x >= gameManager.levelBounds.x - 5)
-            {
-                cameraWishPosition =
-                    new Vector3(camera.transform.position.x, cameraWishPosition.y, cameraWishPosition.z);
-            }
-
-            if (_transform.position.z <= -gameManager.levelBounds.y + 5 ||
-                _transform.position.z >= gameManager.levelBounds.y - 5)
-            {
-                cameraWishPosition =
-                    new Vector3(cameraWishPosition.x, cameraWishPosition.y, camera.transform.position.z);
-            }
-            
-            camera.transform.position = cameraWishPosition;
             SetUI();
         }
 
@@ -565,7 +544,6 @@ public class PlayerController : MonoBehaviour
         public void ResetPlayer()
         {
             transform.SetPositionAndRotation(Vector3.up, Quaternion.identity);
-            camera.transform.position = _transform.position + _cameraOffset;
             SetUI();
         }
 }
