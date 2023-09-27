@@ -26,6 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3578237509715363046}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.0000000475031, y: -0.70710576, z: 0.000000047502965, w: 0.70710784}
   m_LocalPosition: {x: 0.045, y: -0.5, z: -0.05}
   m_LocalScale: {x: 2.6666667, y: 4, z: 2}
@@ -34,7 +35,6 @@ Transform:
   - {fileID: 8139873343866376270}
   - {fileID: 5781092169661672548}
   m_Father: {fileID: 6356033281834782768}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &3898899360920123742
 MeshFilter:
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 472263637998658278}
   - component: {fileID: 8640349275599438586}
   - component: {fileID: 7632869134034703769}
+  - component: {fileID: 8435337731301990341}
   m_Layer: 0
   m_Name: Chest - Medium
   m_TagString: Untagged
@@ -126,6 +127,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3922492998747134388}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1.5}
@@ -134,7 +136,6 @@ Transform:
   - {fileID: 8215943997959547097}
   - {fileID: 5566812492833141789}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4990230491750309805
 MeshFilter:
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3922492998747134388}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a847b670bf84ea1b18401abfbf912cb, type: 3}
   m_Name: 
@@ -224,6 +225,29 @@ MonoBehaviour:
   options: {x: 0, y: 0}
   chestType: 1
   openSound: {fileID: 11400000, guid: c13e0c3716d8d9e428c464fc0be88c9c, type: 2}
+--- !u!114 &8435337731301990341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922492998747134388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb8ed7881b646e4be813893f1c7d943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onChestPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  <tiers>k__BackingField: {x: 2, y: 5}
+  <options>k__BackingField: {x: 3, y: 5}
+  <chestType>k__BackingField: 1
+  <numberOfItems>k__BackingField: 0
+  <chestItems>k__BackingField: []
 --- !u!1 &5306868402056619538
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,13 +273,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5306868402056619538}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.0000001892221, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0.1783793, y: 0.21005061, z: -0.16547592}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8215943997959547097}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1032500268044234411
 MeshFilter:
@@ -333,13 +357,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7230550297326574073}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.50000066, y: 0.5000011, z: -0.49999607, w: 0.50000226}
   m_LocalPosition: {x: 0.058, y: -0, z: 0.04}
   m_LocalScale: {x: 0.7206675, y: 0.7206675, z: 0.7206675}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8215943997959547097}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: -89.999}
 --- !u!33 &5052012314826977860
 MeshFilter:
@@ -500,7 +524,6 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 6636c1495911f9b4780166963bc196cf, type: 3}
 --- !u!4 &5566812492833141789 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 412002, guid: 6636c1495911f9b4780166963bc196cf,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 412002, guid: 6636c1495911f9b4780166963bc196cf, type: 3}
   m_PrefabInstance: {fileID: 5566812492832767359}
   m_PrefabAsset: {fileID: 0}

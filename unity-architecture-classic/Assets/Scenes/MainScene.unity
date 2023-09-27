@@ -10281,6 +10281,7 @@ MonoBehaviour:
   miniChestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42, type: 3}
   mediumChestPrefab: {fileID: 7632869134034703769, guid: 467159eec05542c45a00f31f13f867de, type: 3}
   largeChestPrefab: {fileID: 7632869134034703769, guid: 8d8af5a9e9980e94294e900bdb4a6312, type: 3}
+  pityLuck: 0
   pityLuckScaling: 1
   _chestItemsWasdSelector: {fileID: 1261297453}
   HealthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175, type: 3}
@@ -23763,6 +23764,76 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1839149884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839149886}
+  - component: {fileID: 1839149887}
+  - component: {fileID: 1839149885}
+  m_Layer: 0
+  m_Name: Chest Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1839149885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5f676b38314865a972d89aeaf5bc43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 1358396558}
+  edgeBuffer: {x: 2, y: 2}
+  tier1ChestItems: {fileID: 11400000, guid: 625754b36b3c578438c6e0f8d14c5719, type: 2}
+  tier2ChestItems: {fileID: 11400000, guid: d62170bf436df664f81766c01da95f3c, type: 2}
+  tier3ChestItems: {fileID: 11400000, guid: e201e996f62344f4b81b49e8451dbcf5, type: 2}
+  tier4ChestItems: {fileID: 11400000, guid: 905f09154c722cc4c906617c1eb202a9, type: 2}
+  tier5ChestItems: {fileID: 11400000, guid: 698f76f665837404cac104626729f466, type: 2}
+  miniChest: {fileID: -3552448706168455709, guid: 05009adb41849034c9c826be32ae1a42, type: 3}
+  mediumChest: {fileID: 8435337731301990341, guid: 467159eec05542c45a00f31f13f867de, type: 3}
+  largeChest: {fileID: -1926560604005978956, guid: 8d8af5a9e9980e94294e900bdb4a6312, type: 3}
+--- !u!4 &1839149886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839149884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1839149887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839149884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8833ee60464aeeb0c6c86e0547d644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestSpawner: {fileID: 1839149885}
+  gameState: {fileID: 1358396559}
+  miniChestSpawnRate: 8
 --- !u!1 &1840059381
 GameObject:
   m_ObjectHideFlags: 0
@@ -34558,6 +34629,7 @@ SceneRoots:
   - {fileID: 1358396560}
   - {fileID: 1611055695}
   - {fileID: 1645930826}
+  - {fileID: 1839149886}
   - {fileID: 644039391}
   - {fileID: 1926671863}
   - {fileID: 2020342963}

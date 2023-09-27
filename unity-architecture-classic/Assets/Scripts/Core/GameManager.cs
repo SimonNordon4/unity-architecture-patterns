@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     public Chest mediumChestPrefab;
     public Chest largeChestPrefab;
 
-    private int _pityLuck;
+    public int pityLuck;
     public float pityLuckScaling = 1f;
 
     public WasdButtonSelector _chestItemsWasdSelector;
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        _pityLuck = 0;
+        pityLuck = 0;
         isPaused = false;
         playerCurrentHealth = (int)playerMaxHealth.value;
         Debug.Log("Reset Game");
@@ -613,13 +613,13 @@ public class GameManager : MonoBehaviour
         // 7 luck = 140 - 200.
 
 
-        var tier5Chance = 0.005f + _pityLuck * 0.0005f;
+        var tier5Chance = 0.005f + pityLuck * 0.0005f;
         var tier5Break = 200 - 200 * tier5Chance;
 
-        var tier4Chance = 0.02f + _pityLuck * 0.002f;
+        var tier4Chance = 0.02f + pityLuck * 0.002f;
         var tier4Break = tier5Break - 200 * tier4Chance;
 
-        var tier3Chance = 0.08f + _pityLuck * 0.008f;
+        var tier3Chance = 0.08f + pityLuck * 0.008f;
         var tier3Break = tier4Break - 200 * tier3Chance;
 
         // T2 remains at 16% and does not scale.
@@ -638,17 +638,17 @@ public class GameManager : MonoBehaviour
 
         if (tier < 3)
         {
-            _pityLuck++;
+            pityLuck++;
         }
         else
         {
-            _pityLuck = 0;
+            pityLuck = 0;
         }
 
 
         tier = Mathf.Clamp(tier, chest.minTier, chest.maxTier);
         Debug.Log(
-            $"Item Tier:{tier} Pity: {_pityLuck} " +
+            $"Item Tier:{tier} Pity: {pityLuck} " +
             $"chance of T5: {(tier5Chance * 100):F1}% - " +
             $"T4: {(tier4Chance * 100):F1}% - " +
             $"T3: {(tier3Chance * 100):F1}%");
