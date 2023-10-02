@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Classic.Core;
 using Definitions;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,8 @@ using UnityEngine;
 [DefaultExecutionOrder(-10)]
     public class AccountManager : MonoBehaviour
     {
+        public Inventory inventory;
+        
         private static AccountManager _instance;
         public static AccountManager instance
         {
@@ -29,7 +32,6 @@ using UnityEngine;
         
         [Header("Store")]
         public StoreItemConfig storeItemConfig;
-        public StoreItem[] storeItems;
         
         [Header("Achievements")]
         public AchievementSave achievementSave = new();
@@ -58,12 +60,12 @@ using UnityEngine;
             var itemPrice = item.pricePerTier[item.currentTier];
             totalGold -= itemPrice;
             
-            for (var i = 0; i < storeItems.Length; i++)
+            for (var i = 0; i < inventory.storeItems.Count; i++)
             {
-                var buffer = storeItems[i];
+                var buffer = inventory.storeItems[i];
                 if (buffer.name == item.name)
                 {
-                    storeItems[i].currentTier = Mathf.Clamp(storeItems[i].currentTier + 1,0, storeItems[i].pricePerTier.Length);
+                    inventory.storeItems[i].currentTier = Mathf.Clamp(inventory.storeItems[i].currentTier + 1,0, inventory.storeItems[i].pricePerTier.Length);
                 }
             }
             
@@ -75,9 +77,9 @@ using UnityEngine;
             if(buyAllStoreItemsAchieve.isCompleted)
             {
                 // total store items by summing up the tiers
-                var totalStoreItems = storeItems.Sum(x => x.currentTier);
+                var totalStoreItems = inventory.storeItems.Sum(x => x.currentTier);
                 // currently bought store items
-                var boughtStoreItems = storeItems.Count(x => x.currentTier > 0);
+                var boughtStoreItems = inventory.storeItems.Count(x => x.currentTier > 0);
                 buyAllStoreItemsAchieve.progress = boughtStoreItems;
                 if (totalStoreItems == boughtStoreItems)
                 {
@@ -109,10 +111,11 @@ using UnityEngine;
         private void PopulateStoreItems()
         {
             Debug.Log("Populating store items");
-            storeItems = new StoreItem[storeItemConfig.storeItemDefinitions.Count];
+            var storeItems = new StoreItem[storeItemConfig.storeItemDefinitions.Count];
             for(var i = 0; i < storeItemConfig.storeItemDefinitions.Count; i++)
             {
                 storeItems[i] = new StoreItem(storeItemConfig.storeItemDefinitions[i]);
+                inventory.AddStoreItem(storeItems[i]);
             }
         }
 
@@ -120,7 +123,7 @@ using UnityEngine;
         {
             var accountSave = new AccountSave();
             accountSave.totalGold = totalGold;
-            accountSave.storeItems = storeItems;
+            accountSave.storeItems = inventory.storeItems.ToArray();
             
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
@@ -149,7 +152,11 @@ using UnityEngine;
             {
                 var accountSave = JsonUtility.FromJson<AccountSave>(json);
                 totalGold = accountSave.totalGold;
-                storeItems = accountSave.storeItems;
+                var storeItems = accountSave.storeItems;
+                foreach (var t in storeItems)
+                {
+                    inventory.AddStoreItem(t);
+                }
             }
 
            

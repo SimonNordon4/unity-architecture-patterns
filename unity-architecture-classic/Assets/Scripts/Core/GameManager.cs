@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Classic.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +12,8 @@ using Debug = UnityEngine.Debug;
 public class GameManager : MonoBehaviour
 {
 
+    public Inventory inventory;
+    
     public UnityEvent tempGameWon = new();
     private static GameManager _instance;
 
@@ -60,7 +63,6 @@ public class GameManager : MonoBehaviour
 
 
     private readonly Dictionary<StatType, Stat> _stats = new();
-    public readonly List<ChestItem> currentlyHeldItems = new();
 
     [Header("UI")] 
     public TextMeshProUGUI waveText;
@@ -104,8 +106,6 @@ public class GameManager : MonoBehaviour
         PopulateStatsUI();
         LoadStoreItemsIntoStats();
         playerCurrentHealth = (int)playerMaxHealth.value;
-
-
     }
 
     private void Update()
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
         LoadStoreItemsIntoStats();
         playerCurrentHealth = (int)playerMaxHealth.value;
         // clear all items
-        currentlyHeldItems.Clear();
+        inventory.ClearAll();
         UpdateItemUI();
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
@@ -425,7 +425,7 @@ public class GameManager : MonoBehaviour
     public void LoadStoreItemsIntoStats()
     {
         foreach (var stat in _stats.Values) stat.Reset();
-        var storeItems = AccountManager.instance.storeItems;
+        var storeItems = inventory.storeItems;
         foreach (var store in storeItems)
         {
             // If the item tier is 0, it hasn't been purchased yet.
@@ -554,7 +554,7 @@ public class GameManager : MonoBehaviour
     public void ApplyItem(ChestItem item)
     {
         HideAll();
-        currentlyHeldItems.Add(item);
+        inventory.AddChestItem(item);
 
         // Add modifiers to the stats.
         foreach (var mod in item.modifiers)
@@ -597,7 +597,7 @@ public class GameManager : MonoBehaviour
 
         // Create a dictionary of every item and how many of them there are.
         var itemDictionary = new Dictionary<ChestItem, int>();
-        foreach (var item in currentlyHeldItems)
+        foreach (var item in inventory.chestItems)
             if (itemDictionary.ContainsKey(item))
                 itemDictionary[item]++;
             else

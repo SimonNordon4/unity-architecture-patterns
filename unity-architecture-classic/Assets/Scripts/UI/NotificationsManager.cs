@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
+using Classic.Core;
 using UnityEngine.UI;
 
 [DefaultExecutionOrder(150)]
 public class NotificationsManager : MonoBehaviour
 {
+    [SerializeField] private Inventory inventory;
+    
     public GameObject achievementNotification;
     public TextMeshProUGUI achievementText;
 
@@ -86,7 +89,7 @@ public class NotificationsManager : MonoBehaviour
         {
             // Check how many store items can be bought
             int numberOfStoreItems = 0;
-            foreach (var storeItem in AccountManager.instance.storeItems)
+            foreach (var storeItem in inventory.storeItems)
             {
                 if(storeItem.currentTier >= storeItem.pricePerTier.Length) continue;
             
@@ -125,6 +128,14 @@ public class NotificationsManager : MonoBehaviour
                     colorMultiplier = 1
                 };
             }
+        }
+    }
+
+    private void OnValidate()
+    {
+        if (inventory == null)
+        {
+            inventory = FindObjectsByType<Inventory>(FindObjectsSortMode.None).First();
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Classic.Core;
 using TMPro;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class StoreMenuManager : MonoBehaviour
     public List<StoreItemUI> StoreItemUis = new List<StoreItemUI>();
     public TextMeshProUGUI goldText;
 
+    [SerializeField] private Inventory inventory;
 
     private void OnEnable()
     {
@@ -25,7 +27,7 @@ public class StoreMenuManager : MonoBehaviour
     {
         // Populate all the store item uis.
         var buttons = new List<UnityEngine.UI.Button>();
-        foreach (var storeItem in AccountManager.instance.storeItems)
+        foreach (var storeItem in inventory.storeItems)
         {
             var storeItemUi = Instantiate(StoreItemUIPrefab, StoreItemContainer);
             storeItemUi.Initialize(storeItem);
@@ -50,5 +52,13 @@ public class StoreMenuManager : MonoBehaviour
     private void OnDisable()
     {
         Clear();
+    }
+    
+    private void OnValidate()
+    {
+        if (inventory == null)
+        {
+            inventory = FindObjectsByType<Inventory>(FindObjectsSortMode.None)[0];
+        }
     }
 }

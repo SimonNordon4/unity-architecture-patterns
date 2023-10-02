@@ -4596,8 +4596,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a4ae973e8e1e284ea7788fb09294e11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 0}
-  uiState: {fileID: 0}
 --- !u!1 &370404026
 GameObject:
   m_ObjectHideFlags: 0
@@ -5316,6 +5314,58 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &439529836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 439529838}
+  - component: {fileID: 439529837}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &439529837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439529836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af15aef877ce4e1ba9c1e251a70cef03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <storeItems>k__BackingField: []
+  <chestItems>k__BackingField: []
+  onStoreItemAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  onChestItemAdded:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &439529838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439529836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &451635909
 GameObject:
   m_ObjectHideFlags: 0
@@ -7081,6 +7131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8132684392523c345adb452d26dd38d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 439529837}
   achievementNotification: {fileID: 1804122074}
   achievementText: {fileID: 521406326}
   storeNotification: {fileID: 2018975192}
@@ -8219,10 +8270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3191bd27c2ea6f43a936b40c18bf4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chestSpawner: {fileID: 1839149885}
   gameManager: {fileID: 801546265}
   playerTarget: {fileID: 460763660}
-  mediumChestPrefab: {fileID: 3922492998747134388, guid: 467159eec05542c45a00f31f13f867de, type: 3}
-  largeChestPrefab: {fileID: 3922492998747134388, guid: 8d8af5a9e9980e94294e900bdb4a6312, type: 3}
   spawnRadius: 17
   enemySpawnRound: {fileID: 11400000, guid: ca1520d8e0b536748a2e1f3795b74d23, type: 2}
   totalEnemiesKilled: 0
@@ -10144,6 +10194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb60339036ad7e84d9b215de184f3e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 439529837}
   tempGameWon:
     m_PersistentCalls:
       m_Calls:
@@ -19272,6 +19323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8132684392523c345adb452d26dd38d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 439529837}
   achievementNotification: {fileID: 1137562141}
   achievementText: {fileID: 1126367851}
   storeNotification: {fileID: 701688177}
@@ -19958,6 +20010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3760da61d7d40f8a317f22c29a105fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 439529837}
   totalGold: 40
   statistics:
     totalKills: 0
@@ -19987,7 +20040,6 @@ MonoBehaviour:
     highestLuck: 0
     highestBlock: 0
   storeItemConfig: {fileID: 11400000, guid: e667245f8b3d1c443bd0cf872ee638bc, type: 2}
-  storeItems: []
   achievementSave:
     achievements: []
   achievementPopup: {fileID: 1832033938}
@@ -30220,6 +30272,7 @@ MonoBehaviour:
   StoreItemUIPrefab: {fileID: 4554925857579793994, guid: 525aef4d235c0164e9da2e379ea663e2, type: 3}
   StoreItemUis: []
   goldText: {fileID: 3509112124626251546}
+  inventory: {fileID: 439529837}
 --- !u!222 &3538497276804201082
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34674,6 +34727,7 @@ SceneRoots:
   - {fileID: 1489974773}
   - {fileID: 801546266}
   - {fileID: 1358396560}
+  - {fileID: 439529838}
   - {fileID: 1611055695}
   - {fileID: 1645930826}
   - {fileID: 1839149886}
