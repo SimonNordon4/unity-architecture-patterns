@@ -535,12 +535,12 @@ public class PlayerController : MonoBehaviour
             if (other.CompareTag("Health Pack"))
             {
                 AudioManager.instance.PlaySound(healthPackSound);
-                var healthGained = (int)Mathf.Clamp( (GameManager.instance.playerCurrentHealth + GameManager.instance.playerMaxHealth.value * 0.1f + 1), 
+                var healthGained = (int)Mathf.Clamp( (playerCurrentHealth + stats.playerHealth.value * 0.1f + 1), 
                     0f, 
-                    GameManager.instance.playerMaxHealth.value);
+                    stats.playerHealth.value);
                 
                 AccountManager.instance.statistics.totalDamageHealed += healthGained;
-                GameManager.instance.playerCurrentHealth = healthGained;
+                playerCurrentHealth = healthGained;
                 
                 Destroy(other.gameObject);
             }

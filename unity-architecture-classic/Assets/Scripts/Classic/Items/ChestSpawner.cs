@@ -6,6 +6,7 @@ namespace Classic.Items
 {
     public class ChestSpawner : MonoBehaviour
     {
+        [SerializeField] private Stats stats;
         [SerializeField] private Level level;
         [SerializeField] private Vector2 edgeBuffer = new Vector2(2f, 2f);
         
@@ -88,7 +89,7 @@ namespace Classic.Items
             var itemsChance = Random.Range(0, 100);
             var numberOfItems = 0;
 
-            var luckFactor = GameManager.instance.luck.value * 10f;
+            var luckFactor = stats.luck.value * 10f;
             itemsChance += (int)luckFactor;
 
             switch (itemsChance)
@@ -161,8 +162,8 @@ namespace Classic.Items
 
             var tier = 0;
 
-            var chance = Random.Range(0, (200 - (GameManager.instance.luck.value * 20f))) +
-                         GameManager.instance.luck.value * 20f;
+            var chance = Random.Range(0, (200 - (stats.luck.value * 20f))) +
+                         stats.luck.value * 20f;
 
             // 0 luck = 0 - 200.
             // 1 luck = 20 - 200.
@@ -203,6 +204,19 @@ namespace Classic.Items
             }
             tier = Mathf.Clamp(tier, chest.tiers.x, chest.tiers.y);
             return tier;
+        }
+
+        private void OnValidate()
+        {
+            if (stats == null)
+            {
+                stats = FindObjectsByType<Stats>(FindObjectsSortMode.None)[0];
+            }
+
+            if (level == null)
+            {
+                level = FindObjectsByType<Level>(FindObjectsSortMode.None)[0];
+            }
         }
     }
 }

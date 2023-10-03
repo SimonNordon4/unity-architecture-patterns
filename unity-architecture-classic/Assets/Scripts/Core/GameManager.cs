@@ -11,7 +11,7 @@ using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour
 {
-
+    public Stats stats;
     public Inventory inventory;
     
     public UnityEvent tempGameWon = new();
@@ -34,58 +34,19 @@ public class GameManager : MonoBehaviour
     public float roundTime;
     public bool isPaused = false;
     public bool isGameActive = false;
-    public Vector2 levelBounds = new(25f, 25f);
 
-
-    [Header("Stats")] public int playerCurrentHealth = 10;
-    public Stat playerMaxHealth = new(10);
-    public Stat playerSpeed = new(5);
-    public Stat block = new(0);
-    public Stat dodge = new(0);
-    public Stat revives = new(0);
-    public Stat dashes = new(0);
-
-    public Stat pistolDamage = new(1);
-    public Stat pistolRange = new(5);
-    public Stat pistolFireRate = new(0.5f);
-    public Stat pistolKnockBack = new(1);
-    public Stat pistolPierce = new(0);
-
-    public Stat swordDamage = new(3);
-    public Stat swordRange = new(1);
-    public Stat swordAttackSpeed = new(3);
-    public Stat swordKnockBack = new(3);
-    public Stat swordArc = new(45);
-
-    public Stat luck = new(0);
-    public Stat enemySpawnRate = new(1);
-    public Stat healthPackSpawnRate = new(5);
-
-    private readonly Dictionary<StatType, Stat> _stats = new();
 
     [Header("UI")] 
     public TextMeshProUGUI waveText;
-
     public List<TextMeshProUGUI> GoldTexts = new();
     public List<TextMeshProUGUI> GoldSubTexts = new();
 
-    [Header("Stat UI")] public List<RectTransform> StatContainers = new();
-    private Dictionary<StatType, List<TextMeshProUGUI>> statTexts = new();
-    public Color defaultStatColor;
-    public Color plusStatColor;
-    public Color minusStatColor;
-    public TMP_FontAsset statFont;
 
-    [Header("Item UI")] public RectTransform itemHoverImageContainer;
+    [Header("Item UI")] 
+    public RectTransform itemHoverImageContainer;
     private readonly List<GameObject> _itemHoverImages = new();
     public ChestItemHoverImage itemHoverImagePrefab;
 
-
-    // Chest Item
-    public GameObject chestItemMenu;
-    public RectTransform chestItemButtonContainer;
-    public UIChestItemButton uiChestItemButtonPrefab;
-    private readonly List<UIChestItemButton> _chestItemButtons = new();
 
     public int pityLuck;
     public float pityLuckScaling = 1f;
@@ -119,12 +80,10 @@ public class GameManager : MonoBehaviour
     public void StartNewGame()
     {
         Debug.Log("Start New Game");
-        HideAll();
         AccountManager.instance.statistics.gamesPlayed++;
         isGameActive = true;
         roundTime = 0f;
         //LoadStoreItemsIntoStats();
-        playerCurrentHealth = (int)playerMaxHealth.value;
         // clear all items
         //inventory.ClearAll();
         UpdateItemUI();
@@ -138,7 +97,6 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         AccountManager.instance.Save();
-        HideAll();
         isGameActive = false;
         isPaused = false;
         ResetGame();
@@ -149,14 +107,12 @@ public class GameManager : MonoBehaviour
         // If the game is active and we're not already paused.
         if (isGameActive && !isPaused)
         {
-            HideAll();
             isGameActive = false;
             isPaused = true;
         }
         // If the game is not active and we are paused.
         else if (!isGameActive && isPaused)
         {
-            HideAll();
             isGameActive = true;
             isPaused = false;
         }
@@ -167,7 +123,6 @@ public class GameManager : MonoBehaviour
     {
         pityLuck = 0;
         isPaused = false;
-        playerCurrentHealth = (int)playerMaxHealth.value;
         Debug.Log("Reset Game");
         var playerController = FindObjectOfType<PlayerController>();
         playerController.ResetPlayer();
@@ -182,9 +137,6 @@ public class GameManager : MonoBehaviour
         var spawnIndicators = GameObject.FindGameObjectsWithTag("Spawn Indicator");
         foreach (var spawnIndicator in spawnIndicators) Destroy(spawnIndicator);
 
-        foreach (var val in _stats.Values) val.Reset();
-        UpdateStatsUI();
-
         // Remove all chests.
         var chests = FindObjectsOfType<Chest>();
         foreach (var chest in chests) Destroy(chest.gameObject);
@@ -198,7 +150,6 @@ public class GameManager : MonoBehaviour
     {
         tempGameWon.Invoke();
         AccountManager.instance.Save();
-        HideAll();
         isGameActive = false;
         AccountManager.instance.statistics.gamesWon++;
 
@@ -263,7 +214,6 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.instance.StopMusic();
         Debug.Log("Lose Game");
-        HideAll();
         isGameActive = false;
 
         AddGoldWhenGameEnds();
@@ -305,10 +255,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void HideAll()
-    {
-        chestItemMenu.SetActive(false);
-    }
 
     public void QuitApplication()
     {
@@ -324,267 +270,8 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    #region Stats UI
-
-    private void PopulateStats()
-    {
-        return;
-        _stats.Add(StatType.PlayerHealth, playerMaxHealth);
-        _stats.Add(StatType.PlayerSpeed, playerSpeed);
-        _stats.Add(StatType.Block, block);
-        _stats.Add(StatType.Dodge, dodge);
-        _stats.Add(StatType.Revives, revives);
-        _stats.Add(StatType.Dashes, dashes);
-
-        _stats.Add(StatType.RangeDamage, pistolDamage);
-        _stats.Add(StatType.Range, pistolRange);
-        _stats.Add(StatType.FireRate, pistolFireRate);
-        _stats.Add(StatType.ProjectileKnockBack, pistolKnockBack);
-        _stats.Add(StatType.ProjectilePierce, pistolPierce);
-
-        _stats.Add(StatType.MeleeDamage, swordDamage);
-        _stats.Add(StatType.MeleeRange, swordRange);
-        _stats.Add(StatType.AttackSpeed, swordAttackSpeed);
-        _stats.Add(StatType.MeleeKnockBack, swordKnockBack);
-        _stats.Add(StatType.Arc, swordArc);
-
-        _stats.Add(StatType.Luck, luck);
-        _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
-        _stats.Add(StatType.HealthPackSpawnRate, healthPackSpawnRate);
-
-        playerCurrentHealth = (int)playerMaxHealth.value;
-    }
-
-    private void PopulateStatsUI()
-    {
-        return;
-        foreach (var statContainer in StatContainers)
-        {
-            // get all the children of the stat container and destroy them.
-            foreach (Transform child in statContainer) Destroy(child.gameObject);
-
-            foreach (var key in _stats.Keys)
-            {
-                Debug.Log("Creating stat for: " + key);
-                var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
-                    statContainer);
-                newStatText.fontSize = 24;
-                newStatText.font = statFont;
-                newStatText.color = defaultStatColor;
-                // set the width of the text transform to 400
-                newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
-
-                if (statTexts.ContainsKey(key))
-                {
-                    statTexts[key].Add(newStatText);
-                }
-                else
-                {
-                    statTexts.Add(key, new List<TextMeshProUGUI>() { newStatText });
-                }
-            }
-        }
-        
-        // clean up bonky stats created in the hierarchy.
-        var bonkyStats = FindObjectsOfType<TextMeshProUGUI>();
-        foreach (var bonkyText in bonkyStats)
-        {
-            if (bonkyText.transform.parent == null)
-                Destroy(bonkyText.gameObject);
-        }
-        
-
-        UpdateStatsUI();
-    }
-
-    private void UpdateStatsUI()
-    {
-        foreach (var key in statTexts.Keys)
-        {
-            var statTypeText = key.ToString();
-            for (var i = 1; i < statTypeText.Length; i++)
-                if (char.IsUpper(statTypeText[i]))
-                {
-                    statTypeText = statTypeText.Insert(i, " ");
-                    i++;
-                }
-
-            foreach (var newStatText in statTexts[key])
-            {
-                newStatText.text = $"{statTypeText}: {_stats[key].value:F1}";
-                // check if the stat value is above, below or equal to the initial value.
-                if (_stats[key].value > _stats[key].initialValue)
-                    newStatText.color = plusStatColor; 
-                else if (_stats[key].value < _stats[key].initialValue)
-                    newStatText.color = minusStatColor;
-                else
-                    newStatText.color = defaultStatColor;
-            }
-        }
-    }
-
-    public void LoadStoreItemsIntoStats()
-    {
-        foreach (var stat in _stats.Values) stat.Reset();
-        var storeItems = inventory.storeItems;
-        foreach (var store in storeItems)
-        {
-            // If the item tier is 0, it hasn't been purchased yet.
-            if (store.currentTier == 0) continue;
-            var currentModifier = store.tierModifiers[store.currentTier - 1];
-            var stat = _stats[currentModifier.statType];
-            stat.AddModifier(currentModifier);
-            AccountManager.instance.CheckIfHighestStat(currentModifier.statType, stat.value);
-        }
-
-        UpdateStatsUI();
-    }
-
-    #endregion
-
     #region Chest Creation
 
-
-
-
-
-    // public void PickupChest(Chest chest)
-    // {
-    //     // monitor stats.
-    //     AccountManager.instance.statistics.totalChestsOpened++;
-    //
-    //
-    //     // If we pickup a mini chest, we can start spawning the next mini chest.
-    //     if (chest.chestType == ChestType.Mini) _nextMiniChest = true;
-    //     isGameActive = false;
-    //     HideAll();
-    //     chestItemMenu.SetActive(true);
-    //
-    //     foreach (var cib in _chestItemButtons) Destroy(cib.gameObject);
-    //     _chestItemButtons.Clear();
-    //
-    //     // we wanted a weight average between 2 - 5 items spawning, with odds being increased by luck, which will be added later.
-    //     var itemsChance = Random.Range(0, 100);
-    //     var numberOfItems = 0;
-    //
-    //     var luckFactor = luck.value * 10f;
-    //     itemsChance += (int)luckFactor;
-    //
-    //     switch (itemsChance)
-    //     {
-    //         case > 99:
-    //             numberOfItems = 5;
-    //             break;
-    //         case > 90:
-    //             numberOfItems = 4;
-    //             break;
-    //         case > 70:
-    //             numberOfItems = 3;
-    //             break;
-    //         default:
-    //             numberOfItems = 2;
-    //             break;
-    //     }
-    //
-    //     // If the chest has a set number of items, then random range that number, evenly distributed.
-    //     // Used for boss chests.
-    //     if (chest.options.magnitude > 0) numberOfItems = Random.Range(chest.options.x, chest.options.y);
-    //
-    //     // Store a hashset of all the items we have already added to the options, so we don't display duplicates.
-    //     var alreadyAddedItems = new HashSet<ChestItem>();
-    //
-    //     for (var i = 0; i < numberOfItems; i++)
-    //     {
-    //         var newChestItemButton = Instantiate(chestItemButtonPrefab, chestItemButtonContainer);
-    //         _chestItemButtons.Add(newChestItemButton);
-    //
-    //         // Get the tier of the item to be spawned.
-    //         var tier = GetRandomChestItemTier(chest);
-    //
-    //         // Collect all items with a tier equal to or less than the chest tier
-    //         var possibleItems = new List<ChestItem>();
-    //         foreach (var chestItem in _allItems[tier - 1])
-    //         {
-    //             // check if the chest item has already been added.
-    //             if (alreadyAddedItems.Contains(chestItem)) continue;
-    //             possibleItems.Add(chestItem);
-    //         }
-    //
-    //         // Now randomly select one of these possible items based on its probabilty
-    //         var totalSpawnChance = 0;
-    //         foreach (var chestItem in possibleItems) totalSpawnChance += chestItem.spawnChance;
-    //
-    //         var randomSpawnChance = Random.Range(0, totalSpawnChance);
-    //         var currentSpawnChance = 0;
-    //         for (var j = 0; j < possibleItems.Count; j++)
-    //         {
-    //             var x = j;
-    //             currentSpawnChance += possibleItems[x].spawnChance;
-    //
-    //             if (randomSpawnChance >= currentSpawnChance) continue;
-    //             // We have found the item to spawn
-    //             var item = possibleItems[x];
-    //             alreadyAddedItems.Add(item);
-    //             newChestItemButton.Initialize(item);
-    //             break;
-    //         }
-    //
-    //         List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
-    //             .Where(a => a.name == AchievementName.Open100Chests ||
-    //                         a.name == AchievementName.Open1000Chests).ToList();
-    //         foreach (var a in achievements)
-    //         {
-    //             if (a.isCompleted) continue;
-    //             a.progress++;
-    //             if (a.progress >= a.goal)
-    //             {
-    //                 a.isCompleted = true;
-    //                 AccountManager.instance.AchievementUnlocked(a);
-    //             }
-    //         }
-    //
-    //         // For keyboard input.
-    //         _chestItemsWasdSelector.buttons.Clear();
-    //         foreach (var chestItemUI in _chestItemButtons)
-    //             _chestItemsWasdSelector.buttons.Add(chestItemUI.GetComponent<Button>());
-    //     }
-    // }
-
-    
-
-    public void ApplyItem(ChestItem item)
-    {
-        return;
-        HideAll();
-        inventory.AddChestItem(item);
-
-        // Add modifiers to the stats.
-        foreach (var mod in item.modifiers)
-        {
-            var stat = _stats[mod.statType];
-            stat.AddModifier(mod);
-
-            // TODO: This might be broken.
-            AccountManager.instance.CheckIfHighestStat(mod.statType, stat.value);
-
-            // If it's a max health mod, we need to also increase the current health.
-            if (mod.statType == StatType.PlayerHealth)
-            {
-                AccountManager.instance.statistics.totalDamageHealed += (int)mod.modifierValue;
-
-                var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue, 1,
-                    (int)playerMaxHealth.value);
-
-                playerCurrentHealth = newHealth;
-            }
-        }
-
-        UpdateStatsUI();
-        UpdateItemUI();
-
-        // Attempt to not dash when pressing space to select an item in teh chest menu.
-        StartCoroutine(WaitOneFrameToUnpause());
-    }
 
     private IEnumerator WaitOneFrameToUnpause()
     {
@@ -621,7 +308,7 @@ public class GameManager : MonoBehaviour
     public void OnEnemyDied(GameObject enemy)
     {
         var randomChance = Random.Range(0, 100);
-        if (randomChance < healthPackSpawnRate.value)
+        if (randomChance < stats.healthPackSpawnRate.value)
         {
             var position = enemy.transform.position;
             var pos = new Vector3(position.x, 0f, position.z);

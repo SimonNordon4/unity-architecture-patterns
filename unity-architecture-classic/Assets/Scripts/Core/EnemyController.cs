@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Classic.Core;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class EnemyController : MonoBehaviour
         TowardsPlayer,
         RandomLocation
     }
+
+    [Header("Dependencies")] public Level level;
     
     [Header("References")]
     public EnemyManager enemyManager;
@@ -62,7 +65,7 @@ public class EnemyController : MonoBehaviour
         healthBarUI.SetActive(SettingsManager.instance.showEnemyHealthBars);
         UpdateHealthText();
         _radius = transform.localScale.x;
-        randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+        randomPosition = new Vector3(Random.Range(level.bounds.x * -1, level.bounds.x), 0, Random.Range(level.bounds.y * -1, level.bounds.y));
     }
 
     protected virtual void Update()
@@ -122,7 +125,7 @@ public class EnemyController : MonoBehaviour
 
         if (distance < tolerance + 0.5f) 
         {
-            randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+            randomPosition = new Vector3(Random.Range(level.bounds.x * -1, level.bounds.x), 0, Random.Range(level.bounds.y * -1, level.bounds.y));
         }
         
         var avoidanceDirection = GetAvoidanceFromOtherEnemies();
@@ -185,9 +188,9 @@ public class EnemyController : MonoBehaviour
     {
         // if the position is over the boundary, clamp it back to the boundary
         var pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, -GameManager.instance.levelBounds.x, GameManager.instance.levelBounds.x);
+        pos.x = Mathf.Clamp(pos.x, -level.bounds.x, level.bounds.x);
         pos.y = transform.localScale.y;
-        pos.z = Mathf.Clamp(pos.z, -GameManager.instance.levelBounds.y, GameManager.instance.levelBounds.y);
+        pos.z = Mathf.Clamp(pos.z, -level.bounds.y, level.bounds.y);
         transform.position = pos;
     }
     

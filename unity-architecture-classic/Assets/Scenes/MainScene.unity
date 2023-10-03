@@ -1896,18 +1896,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801546265}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoToMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 1358396559}
         m_TargetAssemblyTypeName: Classic.Core.GameState, Assembly-CSharp
         m_MethodName: GoToMainMenu
@@ -8552,6 +8540,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawner: {fileID: 1839149885}
+  level: {fileID: 1358396558}
+  gameState: {fileID: 1358396559}
   gameManager: {fileID: 801546265}
   playerTarget: {fileID: 460763660}
   spawnRadius: 17
@@ -10475,6 +10465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb60339036ad7e84d9b215de184f3e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 439529839}
   inventory: {fileID: 439529837}
   tempGameWon:
     m_PersistentCalls:
@@ -10495,159 +10486,14 @@ MonoBehaviour:
   roundTime: 0
   isPaused: 0
   isGameActive: 0
-  levelBounds: {x: 17.5, y: 17.5}
-  playerCurrentHealth: 10
-  playerMaxHealth:
-    initialValue: 5
-    minimumValue: 1
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 5
-  playerSpeed:
-    initialValue: 5
-    minimumValue: 0.5
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 5
-  block:
-    initialValue: 0
-    minimumValue: 0
-    maximumValue: 50
-    statType: 0
-    _modifiers: []
-    value: 0
-  dodge:
-    initialValue: 0
-    minimumValue: 0
-    maximumValue: 60
-    statType: 0
-    _modifiers: []
-    value: 0
-  revives:
-    initialValue: 0
-    minimumValue: 0
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 0
-  dashes:
-    initialValue: 1
-    minimumValue: 0
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 1
-  pistolDamage:
-    initialValue: 1
-    minimumValue: 0
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 1
-  pistolRange:
-    initialValue: 5
-    minimumValue: 1
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 5
-  pistolFireRate:
-    initialValue: 1
-    minimumValue: 0.1
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 1
-  pistolKnockBack:
-    initialValue: 1
-    minimumValue: 0
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 1
-  pistolPierce:
-    initialValue: 1
-    minimumValue: 0
-    maximumValue: 10
-    statType: 0
-    _modifiers: []
-    value: 1
-  swordDamage:
-    initialValue: 1
-    minimumValue: 0
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 1
-  swordRange:
-    initialValue: 1.5
-    minimumValue: 1
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 1.5
-  swordAttackSpeed:
-    initialValue: 0.6
-    minimumValue: 0.1
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 0.6
-  swordKnockBack:
-    initialValue: 1.5
-    minimumValue: 0
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 1.5
-  swordArc:
-    initialValue: 45
-    minimumValue: 30
-    maximumValue: 720
-    statType: 0
-    _modifiers: []
-    value: 45
-  luck:
-    initialValue: 0
-    minimumValue: 0
-    maximumValue: 7
-    statType: 0
-    _modifiers: []
-    value: 0
-  enemySpawnRate:
-    initialValue: 0
-    minimumValue: 1
-    maximumValue: Infinity
-    statType: 0
-    _modifiers: []
-    value: 0
-  healthPackSpawnRate:
-    initialValue: 5
-    minimumValue: 0
-    maximumValue: 100
-    statType: 0
-    _modifiers: []
-    value: 5
   waveText: {fileID: 2073183644}
   GoldTexts:
   - {fileID: 832612759}
   - {fileID: 261064638}
   GoldSubTexts:
   - {fileID: 2012027882}
-  StatContainers:
-  - {fileID: 1827359265}
-  - {fileID: 1787679054}
-  defaultStatColor: {r: 0, g: 0, b: 0, a: 1}
-  plusStatColor: {r: 0.045689393, g: 0.26415092, b: 0.023673896, a: 1}
-  minusStatColor: {r: 0.5283019, g: 0.042363837, b: 0.042363837, a: 1}
-  statFont: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
   itemHoverImageContainer: {fileID: 1039515127}
   itemHoverImagePrefab: {fileID: 5215998619264568895, guid: cf497b26d0c0c5b46bb75e5f2b659b96, type: 3}
-  chestItemMenu: {fileID: 1261297451}
-  chestItemButtonContainer: {fileID: 952481878}
-  uiChestItemButtonPrefab: {fileID: 0}
   pityLuck: 0
   pityLuckScaling: 1
   _chestItemsWasdSelector: {fileID: 1261297453}
@@ -24308,6 +24154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5f676b38314865a972d89aeaf5bc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 439529839}
   level: {fileID: 1358396558}
   edgeBuffer: {x: 2, y: 2}
   tier1ChestItems: {fileID: 11400000, guid: 625754b36b3c578438c6e0f8d14c5719, type: 2}

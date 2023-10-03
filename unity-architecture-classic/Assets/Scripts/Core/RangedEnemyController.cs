@@ -67,7 +67,7 @@ public class RangedEnemyController : EnemyController
 
             if (distanceToRandom < tolerance + 0.5f) 
             {
-                randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+                randomPosition = new Vector3(Random.Range(level.bounds.x * -1, level.bounds.x), 0, Random.Range(level.bounds.y * -1, level.bounds.y));
             }
         
             var avoidanceDirection = GetAvoidanceFromOtherEnemies();

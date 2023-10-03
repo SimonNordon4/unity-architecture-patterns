@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Classic.Core;
 using Classic.Items;
 using Definitions;
 using UnityEngine;
@@ -21,7 +22,10 @@ public enum EnemySpawnPhase
 
 public class EnemyManager : MonoBehaviour
 {
-    [Header("Dependencies")] public ChestSpawner chestSpawner;
+    [Header("Dependencies")] 
+    public ChestSpawner chestSpawner;
+    public Level level;
+    public GameState gameState;
     
     [Header("References")] public GameManager gameManager;
     public Transform playerTarget;
@@ -68,6 +72,16 @@ public class EnemyManager : MonoBehaviour
     // Wave Data
     public readonly List<WaveRuntimeData> WaveDatas = new();
     private WaveRuntimeData _currentWaveData;
+
+    private void OnEnable()
+    {
+        gameState.onGameStart.AddListener(ResetEnemyManager);
+    }
+    
+    private void OnDisable()
+    {
+        gameState.onGameStart.RemoveListener(ResetEnemyManager);
+    }
 
 
     // Will destroy all alive enemies.
@@ -341,6 +355,7 @@ public class EnemyManager : MonoBehaviour
         var enemyController = newEnemy.GetComponent<EnemyController>();
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
+        enemyController.level = level;
 
         enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
         enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
@@ -420,6 +435,7 @@ public class EnemyManager : MonoBehaviour
         enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
         enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
         enemyController.isBoss = true;
+        enemyController.level = level;
 
         enemies.Add(newEnemy);
         bossEnemies.Add(newEnemy);
@@ -445,6 +461,7 @@ public class EnemyManager : MonoBehaviour
 
     public void EnemyDied(GameObject enemy)
     {
+        Debug.Log("Enemy died 1");
         if (enemy.GetComponent<EnemyController>().isBoss)
         {
             Debug.Log("Boss died");
@@ -458,11 +475,14 @@ public class EnemyManager : MonoBehaviour
             Destroy(enemy);
             return;
         }
+
+        if (_currentWaveData == null)
+        {
+            Debug.LogError("Current wave data is null!");
+        }
         _currentWaveData.currentGold += _currentBlock.goldMultiplier;
         _currentWaveAliveEnemies--;
         totalEnemiesKilled++;
-        
-        Debug.Log("Enemies alive: " + _currentWaveAliveEnemies);
         
         enemies.Remove(enemy);
         GameManager.instance.OnEnemyDied(enemy);
@@ -571,5 +591,13 @@ public class EnemyManager : MonoBehaviour
         public float finishTime;
         public float currentGold = 0;
         public float bonusGold = 0;
+    }
+
+    private void OnValidate()
+    {
+        if (gameState == null)
+        {
+            gameState = FindObjectsByType<GameState>(FindObjectsSortMode.None)[0];
+        }
     }
 }

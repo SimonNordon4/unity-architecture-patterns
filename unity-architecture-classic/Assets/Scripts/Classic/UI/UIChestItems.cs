@@ -25,6 +25,8 @@ namespace Classic.UI
                 _chestItemButtons.Add(button);
             }
         }
+        
+        
 
         private void OnDisable()
         {

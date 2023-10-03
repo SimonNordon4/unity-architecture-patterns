@@ -36,7 +36,6 @@ namespace Classic.Items
             inventory.AddChestItem(item);
             
             // Temporary
-            GameManager.instance.ApplyItem(item);
             GameManager.instance.isGameActive = true;
             
             Destroy(currentChest.gameObject);
@@ -54,7 +53,6 @@ namespace Classic.Items
             {
                 gameState = FindObjectsByType<GameState>(FindObjectsSortMode.None)[0];
             }
-                
 
             if (uiState == null)
             {
