@@ -52,9 +52,6 @@ public class AchievementUI : MonoBehaviour
 
     public void Collected()
     {
-        if(parent!=null)
-            parent.UpdateGoldText();
-        
         collectButtonText.text = "Claimed";
         collectButton.interactable = false;
     }

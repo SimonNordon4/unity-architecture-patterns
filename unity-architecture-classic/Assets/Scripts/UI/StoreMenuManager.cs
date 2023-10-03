@@ -34,8 +34,6 @@ public class StoreMenuManager : MonoBehaviour
             StoreItemUis.Add(storeItemUi);
             buttons.Add(storeItemUi.purchaseButton);
         }
-        
-        goldText.text =$"GOLD: {AccountManager.instance.totalGold.ToString()}";
     }
 
     void Clear()

@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using Classic.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
     public class StoreItemUI : MonoBehaviour
     {
+        [SerializeField] private Gold gold;
+        
         public Image itemImage;
         public TextMeshProUGUI itemNameText;
         public TextMeshProUGUI itemPriceText;
@@ -78,7 +81,7 @@ using UnityEngine.UI;
                         new Color(1, 0.75f, 0.75f);
                 }
 
-                if (AccountManager.instance.totalGold < item.pricePerTier[item.currentTier])
+                if (gold.amount < item.pricePerTier[item.currentTier])
                 {
                     purchaseButton.interactable = false;
                     itemPriceText.color = noMoneyColor;
@@ -132,5 +135,13 @@ using UnityEngine.UI;
             statTypeString = statTypeString.ToLower();
             
             return statValueString + " " + statTypeString;
+        }
+
+        private void OnValidate()
+        {
+            if (gold == null)
+            {
+                gold = FindObjectsByType<Gold>(FindObjectsSortMode.None)[0];
+            }
         }
     }

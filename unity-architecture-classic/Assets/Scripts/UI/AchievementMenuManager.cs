@@ -23,10 +23,6 @@ public class AchievementMenuManager : MonoBehaviour
         Init();
     }
 
-    public void UpdateGoldText()
-    {
-        goldText.text = $"GOLD: {AccountManager.instance.totalGold.ToString()}";
-    }
     
     void Init()
     {
@@ -44,7 +40,6 @@ public class AchievementMenuManager : MonoBehaviour
         
         var totalAchievements = AccountManager.instance.achievementSave.achievements.Length;
         totalAchievementText.text =$"Earned: {completedAchievements.ToString()}/{totalAchievements.ToString()}";
-        goldText.text =$"GOLD: {AccountManager.instance.totalGold.ToString()}";
     }
 
     void Clear()

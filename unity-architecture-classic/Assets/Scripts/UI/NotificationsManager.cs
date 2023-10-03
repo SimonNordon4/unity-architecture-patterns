@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class NotificationsManager : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
+    [SerializeField] private Gold gold;
     
     public GameObject achievementNotification;
     public TextMeshProUGUI achievementText;
@@ -93,7 +94,7 @@ public class NotificationsManager : MonoBehaviour
             {
                 if(storeItem.currentTier >= storeItem.pricePerTier.Length) continue;
             
-                if (storeItem.pricePerTier[storeItem.currentTier] <= AccountManager.instance.totalGold)
+                if (storeItem.pricePerTier[storeItem.currentTier] <= gold.amount)
                 {
                     numberOfStoreItems++;
                 }
@@ -137,5 +138,11 @@ public class NotificationsManager : MonoBehaviour
         {
             inventory = FindObjectsByType<Inventory>(FindObjectsSortMode.None).First();
         }
+
+            if (gold == null)
+            {
+                gold = FindObjectsByType<Gold>(FindObjectsSortMode.None)[0];
+            }
+        
     }
 }

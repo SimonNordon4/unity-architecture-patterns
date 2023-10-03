@@ -3679,6 +3679,7 @@ GameObject:
   - component: {fileID: 261064637}
   - component: {fileID: 261064639}
   - component: {fileID: 261064638}
+  - component: {fileID: 261064640}
   m_Layer: 5
   m_Name: Gold Text
   m_TagString: Untagged
@@ -3802,6 +3803,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261064636}
   m_CullTransparentMesh: 1
+--- !u!114 &261064640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261064636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: {fileID: 966297584}
+  text: {fileID: 261064638}
 --- !u!1 &264689416
 GameObject:
   m_ObjectHideFlags: 0
@@ -5014,8 +5029,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d70e3c54044bf4b0db8695bb5ebb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPackPrefab: {fileID: -4178568916669270526, guid: 8af589f94c99fde48926c8c21b3cd175, type: 3}
   stats: {fileID: 439529839}
+  healthPackPrefab: {fileID: -4178568916669270526, guid: 8af589f94c99fde48926c8c21b3cd175, type: 3}
 --- !u!1 &420327370
 GameObject:
   m_ObjectHideFlags: 0
@@ -7332,6 +7347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 439529837}
+  gold: {fileID: 0}
   achievementNotification: {fileID: 1804122074}
   achievementText: {fileID: 521406326}
   storeNotification: {fileID: 2018975192}
@@ -10413,6 +10429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 439529839}
   inventory: {fileID: 439529837}
+  gold: {fileID: 0}
   tempGameWon:
     m_PersistentCalls:
       m_Calls:
@@ -10443,7 +10460,6 @@ MonoBehaviour:
   pityLuck: 0
   pityLuckScaling: 1
   _chestItemsWasdSelector: {fileID: 1261297453}
-  HealthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175, type: 3}
 --- !u!4 &801546266
 Transform:
   m_ObjectHideFlags: 0
@@ -12649,6 +12665,54 @@ MonoBehaviour:
   characterTransform: {fileID: 460763660}
   level: {fileID: 1358396558}
   edgeDistance: 5
+--- !u!1 &966297583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966297585}
+  - component: {fileID: 966297584}
+  m_Layer: 0
+  m_Name: Gold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &966297584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966297583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b27aa918513c4a14bdc33a21e53c75c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <amount>k__BackingField: 0
+  onGoldChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &966297585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966297583}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980833706
 GameObject:
   m_ObjectHideFlags: 0
@@ -19526,6 +19590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 439529837}
+  gold: {fileID: 0}
   achievementNotification: {fileID: 1137562141}
   achievementText: {fileID: 1126367851}
   storeNotification: {fileID: 701688177}
@@ -20213,7 +20278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 439529837}
-  totalGold: 40
+  gold: {fileID: 0}
   statistics:
     totalKills: 0
     totalBossKills: 0
@@ -25808,6 +25873,7 @@ GameObject:
   - component: {fileID: 2012027881}
   - component: {fileID: 2012027883}
   - component: {fileID: 2012027882}
+  - component: {fileID: 2012027884}
   m_Layer: 5
   m_Name: Gold Text_02
   m_TagString: Untagged
@@ -25931,6 +25997,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012027880}
   m_CullTransparentMesh: 1
+--- !u!114 &2012027884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012027880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: {fileID: 966297584}
+  text: {fileID: 2012027882}
 --- !u!1 &2014116314
 GameObject:
   m_ObjectHideFlags: 0
@@ -29483,6 +29563,7 @@ GameObject:
   - component: {fileID: 6766079926865725351}
   - component: {fileID: 7195418243267883915}
   - component: {fileID: 2998133434920168807}
+  - component: {fileID: 7195418243267883916}
   m_Layer: 5
   m_Name: Gold Count
   m_TagString: Untagged
@@ -33315,6 +33396,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7195418243267883916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101584441431218651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: {fileID: 966297584}
+  text: {fileID: 7195418243267883915}
 --- !u!114 &7200546273471470202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33608,6 +33703,7 @@ GameObject:
   - component: {fileID: 2031547002455404149}
   - component: {fileID: 3509112124626251546}
   - component: {fileID: 7252819837702987422}
+  - component: {fileID: 7343328311806943610}
   m_Layer: 5
   m_Name: 'Gold:'
   m_TagString: Untagged
@@ -33682,6 +33778,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -55.1666, y: 0}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &7343328311806943610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7272897290372816025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gold: {fileID: 966297584}
+  text: {fileID: 3509112124626251546}
 --- !u!222 &7347073224590469896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -34925,6 +35035,7 @@ SceneRoots:
   - {fileID: 801546266}
   - {fileID: 57213815}
   - {fileID: 849256609}
+  - {fileID: 966297585}
   - {fileID: 1489974773}
   - {fileID: 1611055695}
   - {fileID: 1645930826}

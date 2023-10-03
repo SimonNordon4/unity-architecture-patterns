@@ -11,6 +11,7 @@ using UnityEngine;
     public class AccountManager : MonoBehaviour
     {
         public Inventory inventory;
+        public Gold gold;
         
         private static AccountManager _instance;
         public static AccountManager instance
@@ -24,9 +25,6 @@ using UnityEngine;
             private set => _instance = value;
         }
         
-        [Header("Gold")]
-        public int totalGold;
-
         [Header("Statistics")]
         public StatisticsSave statistics = new();
         
@@ -43,20 +41,12 @@ using UnityEngine;
         
         public bool debugSkipLoad = false;
         
-        public void AddGold(int amount)
-        {
-            
-            statistics.totalGoldEarned += amount;
-            totalGold += amount;
-            Debug.Log($"Added {amount} gold. Total gold: {totalGold}");
-            Save();
-        }
 
         public void PurchaseStoreItem(StoreItem item)
         {
             Debug.Log("Purchasing item: " + item.name);
             var itemPrice = item.pricePerTier[item.currentTier];
-            totalGold -= itemPrice;
+            gold.RemoveGold(itemPrice);
             
             for (var i = 0; i < inventory.storeItems.Count; i++)
             {
@@ -120,7 +110,6 @@ using UnityEngine;
         public void Save()
         {
             var accountSave = new AccountSave();
-            accountSave.totalGold = totalGold;
             accountSave.storeItems = inventory.storeItems.ToArray();
             
             var json = JsonUtility.ToJson(accountSave);
@@ -143,13 +132,11 @@ using UnityEngine;
             var json = PlayerPrefs.GetString("account");
             if (string.IsNullOrEmpty(json))
             {
-                totalGold = 0;
                 PopulateStoreItems();
             }
             else
             {
                 var accountSave = JsonUtility.FromJson<AccountSave>(json);
-                totalGold = accountSave.totalGold;
                 var storeItems = accountSave.storeItems;
                 foreach (var t in storeItems)
                 {
@@ -200,7 +187,7 @@ using UnityEngine;
             // delete all player prefs.
             PlayerPrefs.DeleteAll();
                         
-            totalGold = 40;
+            gold.SetGold(40);
             statistics = new StatisticsSave();
             CreateAchievements();
             PopulateStoreItems();
@@ -629,7 +616,7 @@ using UnityEngine;
         public void AchievementClaimed(Achievement achievement)
         {
             achievement.isClaimed = true;
-            AddGold(achievement.rewardGold);
+            gold.AddGold(achievement.rewardGold);
         }
         
         private IEnumerator ShowAchievementPopup(Achievement achievement)
@@ -638,6 +625,14 @@ using UnityEngine;
             achievementPopupText.text = $"Achievement Unlocked:\n{achievement.uiName}";
             yield return new WaitForSeconds(3f);
             achievementPopup.SetActive(false);
+        }
+
+        private void OnValidate()
+        {
+            if (gold == null)
+            {
+                gold = FindObjectsByType<Gold>(FindObjectsSortMode.None).First();
+            }
         }
     }
 

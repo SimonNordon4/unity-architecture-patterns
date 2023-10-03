@@ -13,9 +13,12 @@ public class GameManager : MonoBehaviour
 {
     public Stats stats;
     public Inventory inventory;
+    public Gold gold;
     
     public UnityEvent tempGameWon = new();
     private static GameManager _instance;
+    
+    
 
     public static GameManager instance
     {
@@ -227,13 +230,7 @@ public class GameManager : MonoBehaviour
 
         var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
 
-        AccountManager.instance.AddGold(totalGold);
-
-        foreach (var txt in GoldTexts) txt.text = $"+{totalGold}G";
-        foreach (var txt in GoldSubTexts)
-        {
-            txt.text = $"Total: {AccountManager.instance.totalGold}G";
-        }
+        gold.AddGold(totalGold);
 
         List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
             .Where(a => a.name == AchievementName.Earn100Gold ||
