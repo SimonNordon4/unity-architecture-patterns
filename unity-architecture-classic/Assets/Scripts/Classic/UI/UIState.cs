@@ -12,6 +12,28 @@ namespace Classic.UI
         public UIStateEnum currentState { get; private set; } = UIStateEnum.MainMenu;
         public UnityEvent<UIStateEnum> onStateChanged { get; } = new();
 
+        public GameState gameState;
+
+        private void OnEnable()
+        {
+            gameState.onGameStart.AddListener(GoToHud);
+            gameState.onGamePause.AddListener(GoToPauseMenu);
+            gameState.onGameResume.AddListener(GoToHud);
+            gameState.onGameWon.AddListener(GoToGameWonMenu);
+            gameState.onGameLost.AddListener(GoToGameOverMenu);
+            gameState.onGameQuit.AddListener(GoToMainMenu);
+        }
+
+        private void OnDisable()
+        {
+            gameState.onGameStart.RemoveListener(GoToHud);
+            gameState.onGamePause.RemoveListener(GoToPauseMenu);
+            gameState.onGameResume.RemoveListener(GoToHud);
+            gameState.onGameWon.RemoveListener(GoToGameWonMenu);
+            gameState.onGameLost.RemoveListener(GoToGameOverMenu);
+            gameState.onGameQuit.RemoveListener(GoToMainMenu);
+        }
+
         private void Start()
         {
             GoToMainMenu();
@@ -86,6 +108,14 @@ namespace Classic.UI
         public void GoToChestMenu()
         {
             GoToState(UIStateEnum.ChestMenu);
+        }
+
+        private void OnValidate()
+        {
+            if (gameState == null)
+            {
+                gameState = FindObjectsByType<GameState>(FindObjectsSortMode.None)[0];
+            }
         }
     }
     
