@@ -22,8 +22,6 @@ namespace Classic.Core
 
         private void ApplyStoreItems()
         {
-            Debug.Log("Applying store items");
-            Debug.Log("Store items: " + inventory.storeItems.Count);
             foreach (var storeItem in inventory.storeItems)
             {
                 if(storeItem.currentTier == 0) continue;

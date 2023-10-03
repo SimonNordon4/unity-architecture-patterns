@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour
 
     public WasdButtonSelector _chestItemsWasdSelector;
 
-    [Header("Health Packs")] public GameObject HealthPackPrefab;
 
     #endregion
 
@@ -307,14 +306,6 @@ public class GameManager : MonoBehaviour
 
     public void OnEnemyDied(GameObject enemy)
     {
-        var randomChance = Random.Range(0, 100);
-        if (randomChance < stats.healthPackSpawnRate.value)
-        {
-            var position = enemy.transform.position;
-            var pos = new Vector3(position.x, 0f, position.z);
-            var healthPack = Instantiate(HealthPackPrefab, pos, Quaternion.identity);
-        }
-
         AccountManager.instance.statistics.totalKills++;
 
         // get all boss enemy achievements

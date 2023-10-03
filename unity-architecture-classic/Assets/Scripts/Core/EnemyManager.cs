@@ -6,6 +6,7 @@ using Classic.Core;
 using Classic.Items;
 using Definitions;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public enum EnemySpawnPhase
@@ -26,6 +27,7 @@ public class EnemyManager : MonoBehaviour
     public ChestSpawner chestSpawner;
     public Level level;
     public GameState gameState;
+    public UnityEvent<Vector3> onEnemyDied = new ();
     
     [Header("References")] public GameManager gameManager;
     public Transform playerTarget;
@@ -486,6 +488,7 @@ public class EnemyManager : MonoBehaviour
         
         enemies.Remove(enemy);
         GameManager.instance.OnEnemyDied(enemy);
+        onEnemyDied.Invoke(enemy.transform.position);
         Destroy(enemy);
     }
 

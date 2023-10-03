@@ -8,12 +8,12 @@ namespace Classic.Core
         public GameStateEnum currentState { get; private set; } = GameStateEnum.Idle;
         
         public UnityEvent onStateChanged { get; } = new();
-        public UnityEvent onGameStart { get; } = new();
-        public UnityEvent onGamePause { get; }= new();
-        public UnityEvent onGameResume { get; }= new();
-        public UnityEvent onGameWon { get; } = new();
-        public UnityEvent onGameLost { get; } = new();
-        public UnityEvent onGameQuit { get; } = new();
+        public UnityEvent onGameStart = new();
+        public UnityEvent onGamePause = new();
+        public UnityEvent onGameResume = new();
+        public UnityEvent onGameWon  = new();
+        public UnityEvent onGameLost  = new();
+        public UnityEvent onGameQuit  = new();
 
         private void Start()
         {
