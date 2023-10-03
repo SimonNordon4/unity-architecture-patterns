@@ -41,8 +41,6 @@ using UnityEngine;
         [Header("Settings")]
         public SettingsSave settingsSave = new();
         
-        
-        
         public bool debugSkipLoad = false;
         
         public void AddGold(int amount)
@@ -528,31 +526,31 @@ using UnityEngine;
         {
             switch (type)
             {
-                case StatType.PistolDamage:
+                case StatType.RangeDamage:
                     if (value > statistics.highestPistolDamage)
                         statistics.highestPistolDamage = (int) value;
                     var pistolDamage = achievementSave.achievements.First(x=>x.name == AchievementName.Reach50PistolDamage);
                     ProcessStatAchievement(pistolDamage, value, 50);
                     break;
-                case StatType.PistolRange:
+                case StatType.Range:
                     if (value > statistics.highestPistolRange)
                         statistics.highestPistolRange = (int) value;
                     var pistolRange = achievementSave.achievements.First(x=>x.name == AchievementName.Reach25PistolRange);
                     ProcessStatAchievement(pistolRange, value, 25);
                     break;
-                case StatType.PistolFireRate:
+                case StatType.FireRate:
                     if (value > statistics.highestPistolFireRate)
                         statistics.highestPistolFireRate = (int) value;
                     ProcessStatAchievement(achievementSave.achievements.First(x=>x.name == AchievementName.Reach15PistolFireRate), value, 15);
                     break;
-                case StatType.PistolKnockBack:
+                case StatType.ProjectileKnockBack:
                     if (value > statistics.highestPistolKnockBack)
                         statistics.highestPistolKnockBack = (int) value;
                     var pistolKnockBack = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10PistolKnockBack);
                     ProcessStatAchievement(pistolKnockBack, value, 10);
    
                     break;
-                case StatType.PistolPierce:
+                case StatType.ProjectilePierce:
                     if (value > statistics.highestPistolPierce)
                         statistics.highestPistolPierce = (int) value;
                     var pistolPierce = achievementSave.achievements.First(x=>x.name == AchievementName.Reach3PistolPierce);
@@ -571,31 +569,31 @@ using UnityEngine;
                     var playerSpeed = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10PlayerSpeed);
                     ProcessStatAchievement(playerSpeed, value, 10);
                     break;
-                case StatType.SwordDamage:
+                case StatType.MeleeDamage:
                     if (value > statistics.highestSwordDamage)
                         statistics.highestSwordDamage = (int) value;
                     var swordDamage = achievementSave.achievements.First(x=>x.name == AchievementName.Reach50SwordDamage);
                     ProcessStatAchievement(swordDamage, value, 50);
                     break;
-                case StatType.SwordRange:
+                case StatType.MeleeRange:
                     if (value > statistics.highestSwordRange)
                         statistics.highestSwordRange = (int) value;
                     var swordRange = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10SwordRange);
                     ProcessStatAchievement(swordRange, value, 10);
                     break;
-                case StatType.SwordAttackSpeed:
+                case StatType.AttackSpeed:
                     if (value > statistics.highestSwordAttackSpeed)
                         statistics.highestSwordAttackSpeed = (int) value;
                     var swordAttackSpeed = achievementSave.achievements.First(x=>x.name == AchievementName.Reach8SwordAttackSpeed);
                     ProcessStatAchievement(swordAttackSpeed, value, 8);
                     break;
-                case StatType.SwordKnockBack:
+                case StatType.MeleeKnockBack:
                     if (value > statistics.highestSwordKnockBack)
                         statistics.highestSwordKnockBack = (int) value;
                     var swordKnockBack = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10SwordKnockBack);
                     ProcessStatAchievement(swordKnockBack, value, 10);
                     break;
-                case StatType.SwordArc:
+                case StatType.Arc:
                     if (value > statistics.highestSwordArc)
                         statistics.highestSwordArc = (int) value;
                     var swordArc = achievementSave.achievements.First(x=>x.name == AchievementName.Reach540SwordArc);

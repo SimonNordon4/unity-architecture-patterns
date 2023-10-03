@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Classic.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,11 @@ using UnityEngine.UI;
 [DefaultExecutionOrder(10)]
 public class PlayerController : MonoBehaviour
 {
+        [Header("Dependencies")]
+        public Stats stats;
+        public Level level;
+        
+        public int playerCurrentHealth = 10;
     
         public UnityEvent onPlayerDeath = new();
     
@@ -19,7 +25,6 @@ public class PlayerController : MonoBehaviour
         public Vector3 targetDirection;
 
         [Header("References")]
-        public GameManager gameManager;
         public EnemyManager enemyManager;
         
         
@@ -85,7 +90,7 @@ public class PlayerController : MonoBehaviour
         private IEnumerator Dash()
         {
             _isDashing = true;
-            gameManager.dashes.value--;
+            stats.dashes.value--;
             
             var elapsedTime = 0f;
             var startPosition = transform.position;
@@ -101,11 +106,11 @@ public class PlayerController : MonoBehaviour
                 var desiredPos = Vector3.Lerp(startPosition, dashDestination, inverseQuadraticTime);
                 
                 // clamp the position to the level bounds
-                transform.position = new Vector3(Mathf.Clamp(desiredPos.x, -gameManager.levelBounds.x, gameManager.levelBounds.x),
+                transform.position = new Vector3(Mathf.Clamp(desiredPos.x, -level.bounds.x, level.bounds.x),
                     transform.position.y,
-                    Mathf.Clamp(desiredPos.z, -gameManager.levelBounds.y, gameManager.levelBounds.y));
+                    Mathf.Clamp(desiredPos.z, -level.bounds.y, level.bounds.y));
                 
-                if (!gameManager.isGameActive)
+                if (!GameManager.instance.isGameActive)
                 {
                     _isDashing = false;
                     yield break;
@@ -122,8 +127,9 @@ public class PlayerController : MonoBehaviour
         {
             if(!GameManager.instance.isGameActive) return;
 
-            if (Input.GetKeyDown(KeyCode.Space) && (int)gameManager.dashes.value > 0 && !_isDashing)
+            if (Input.GetKeyDown(KeyCode.Space) && (int)stats.dashes.value > 0 && !_isDashing)
             {
+                Debug.Log("Dash");
                 AudioManager.instance.PlaySound(dashSound);
                 dashParticle.Play();
                 _dashCoroutine = StartCoroutine(Dash());
@@ -162,11 +168,11 @@ public class PlayerController : MonoBehaviour
 
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
-            if (_timeSinceLastFire > 1 / gameManager.pistolFireRate.value)
+            if (_timeSinceLastFire > 1 / stats.fireRate.value)
             {
                 if (!targetIsNull)
                 {
-                    if (closestDistance <= gameManager.pistolRange.value)
+                    if (closestDistance <= stats.range.value)
                     {
                         var isKnockBack = false;
                         if(_closestTarget.TryGetComponent<EnemyController>(out var enemyController))
@@ -191,11 +197,11 @@ public class PlayerController : MonoBehaviour
 
             // Swing sword if possible.
             _timeSinceLastSwing += Time.deltaTime;
-            if (_timeSinceLastSwing > 1 / gameManager.swordAttackSpeed.value && !_isSwordAttacking)
+            if (_timeSinceLastSwing > 1 / stats.attackSpeed.value && !_isSwordAttacking)
             {
                 if (!targetIsNull)
                 {
-                    if (closestDistance <= gameManager.swordRange.value)
+                    if (closestDistance <= stats.meleeRange.value)
                     {
                         if(_swordCoroutine != null) StopCoroutine(_swordCoroutine);
                         AudioManager.instance.PlaySound(swordSound);
@@ -217,19 +223,19 @@ public class PlayerController : MonoBehaviour
                 dir += Vector3.back;
 
             // Check if the player is at the level bounds, if they are, make sure they cant move in the direction of the bound
-            if (_transform.position.x <= -gameManager.levelBounds.x && dir.x < 0)
+            if (_transform.position.x <= -level.bounds.x && dir.x < 0)
                 dir.x = 0;
-            if (_transform.position.x >= gameManager.levelBounds.x && dir.x > 0)
+            if (_transform.position.x >= level.bounds.x && dir.x > 0)
                 dir.x = 0;
-            if (_transform.position.z <= -gameManager.levelBounds.y && dir.z < 0)
+            if (_transform.position.z <= -level.bounds.y && dir.z < 0)
                 dir.z = 0;
-            if (_transform.position.z >= gameManager.levelBounds.y && dir.z > 0)
+            if (_transform.position.z >= level.bounds.y && dir.z > 0)
                 dir.z = 0;
 
             // Apply movement
             if (dir.magnitude > 0)
             {
-                _transform.position += dir.normalized * (Time.deltaTime * gameManager.playerSpeed.value);
+                _transform.position += dir.normalized * (Time.deltaTime * stats.playerSpeed.value);
                 _transform.rotation = Quaternion.LookRotation(dir);
             }
         }
@@ -241,9 +247,9 @@ public class PlayerController : MonoBehaviour
             var projectileGo = Instantiate(projectilePrefab, _transform.position,
                 Quaternion.LookRotation(directionToTarget));
             var projectile = projectileGo.GetComponent<Projectile>();
-            projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
-            projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
-            projectile.pierceCount = (int)gameManager.pistolPierce.value;
+            projectile.damage = Mathf.RoundToInt(stats.projectileDamage.value);
+            projectile.knockBackIntensity = stats.projectileKnockBack.value;
+            projectile.pierceCount = (int)stats.projectilePierce.value;
             _timeSinceLastFire = 0.0f;
         }
 
@@ -278,14 +284,14 @@ public class PlayerController : MonoBehaviour
                 {
                     // draw a line from the player to the predicted position
                     Debug.DrawLine(_transform.position, predictedTargetPosition, Color.green,
-                        1 / gameManager.pistolFireRate.value);
+                        1 / stats.fireRate.value);
 
                 }
                 
                 projectileGo.transform.forward = shootDirection;
-                projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
-                projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
-                projectile.pierceCount = (int)gameManager.pistolPierce.value;
+                projectile.damage = Mathf.RoundToInt(stats.projectileDamage.value);
+                projectile.knockBackIntensity = stats.projectileKnockBack.value;
+                projectile.pierceCount = (int)stats.projectilePierce.value;
                 _timeSinceLastFire = 0.0f;
         }
         
@@ -300,10 +306,10 @@ public class PlayerController : MonoBehaviour
         private IEnumerator SwordAttack()
     {
         _isSwordAttacking = true;
-        var swordArc = gameManager.swordArc.value;
+        var swordArc = stats.arc.value;
         // Enable the sword gameobject.
         swordPivot.gameObject.SetActive(true);
-        swordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
+        swordPivot.localScale = new Vector3(1f, 1f, stats.meleeRange.value);
     
         // Base rotation values.
         var leftRotation = Quaternion.Euler(0, swordArc * -0.5f, 0);
@@ -327,7 +333,7 @@ public class PlayerController : MonoBehaviour
         }
         
         var total180Arcs = Mathf.FloorToInt(swordArc / 180f);
-        var swingTime = gameManager.swordRange.value * 0.08f;
+        var swingTime = stats.meleeRange.value * 0.08f;
 
         if (total180Arcs > 0)
         {
@@ -381,14 +387,14 @@ public class PlayerController : MonoBehaviour
             // Check if damage is dodged.
             var hitChance = Random.Range(0, 100);
 
-            if (hitChance < gameManager.dodge.value)
+            if (hitChance < stats.dodge.value)
             {
                 if(_dodgeTextCoroutine != null) StopCoroutine(_dodgeTextCoroutine);
                 _dodgeTextCoroutine = StartCoroutine(ShowDodgeText());
                 return;
             }
             
-            damageAmount -= (int)gameManager.block.value;
+            damageAmount -= (int)stats.block.value;
             // We should never be invincible imo.
             if (damageAmount <= 0)
             {
@@ -406,16 +412,16 @@ public class PlayerController : MonoBehaviour
             
             AccountManager.instance.statistics.totalDamageTaken += damageAmount;
             
-            gameManager.playerCurrentHealth -= damageAmount;
+            playerCurrentHealth -= damageAmount;
 
-            if (gameManager.playerCurrentHealth <= 0)
+            if (playerCurrentHealth <= 0)
             {
-                gameManager.playerCurrentHealth = 0;
+                playerCurrentHealth = 0;
 
-                if ((int)gameManager.revives.value > 0)
+                if ((int)stats.revives.value > 0)
                 {
                     reviveParticle.Play();
-                    gameManager.revives.value--;
+                    stats.revives.value--;
                     
                     var enemyCount = enemyManager.enemies.Count;
                     var enemies = enemyManager.enemies.ToArray();
@@ -429,7 +435,7 @@ public class PlayerController : MonoBehaviour
                             
                     }
                     
-                    gameManager.playerCurrentHealth = (int)gameManager.playerMaxHealth.value;
+                    playerCurrentHealth = (int)stats.playerHealth.value;
                     StartCoroutine(InvincibilityFrames());
 
                     return;
@@ -437,7 +443,7 @@ public class PlayerController : MonoBehaviour
                 
                 AccountManager.instance.statistics.totalDeaths++;
                 AudioManager.instance.PlaySound(deathSound);
-                gameManager.LoseGame();
+                GameManager.instance.LoseGame();
                 onPlayerDeath.Invoke();
                 
                 List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
@@ -542,13 +548,21 @@ public class PlayerController : MonoBehaviour
         
         private void SetUI()
         {
-            healthText.text = $"{gameManager.playerCurrentHealth}/{(int)gameManager.playerMaxHealth.value}";
-            healthBar.fillAmount =  (float)gameManager.playerCurrentHealth / (float)gameManager.playerMaxHealth.value;
+            healthText.text = $"{playerCurrentHealth}/{(int)stats.playerHealth.value}";
+            healthBar.fillAmount =  (float)playerCurrentHealth / (int)stats.playerHealth.value;
         }
 
         public void ResetPlayer()
         {
             transform.SetPositionAndRotation(Vector3.up, Quaternion.identity);
             SetUI();
+        }
+
+        private void OnValidate()
+        {
+            if(stats == null)
+                stats = FindObjectsByType<Stats>(FindObjectsSortMode.None)[0];
+            if(level == null)
+                level = FindObjectsByType<Level>(FindObjectsSortMode.None)[0];
         }
 }

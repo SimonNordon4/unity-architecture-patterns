@@ -11,10 +11,19 @@ public class Stat
         this.initialValue = initialValue;
         value = initialValue;
     }
+
+    public Stat(float initialValue, StatType type)
+    {
+        this.initialValue = initialValue;
+        value = initialValue;
+        statType = type;
+    }
     
     public float initialValue = 1f;
     public float minimumValue = 0f;
     public float maximumValue = float.PositiveInfinity;
+    
+    public StatType statType;
     
     [SerializeField]
     private List<Modifier> _modifiers = new();

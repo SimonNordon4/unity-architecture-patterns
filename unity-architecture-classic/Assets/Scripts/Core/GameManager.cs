@@ -61,7 +61,6 @@ public class GameManager : MonoBehaviour
     public Stat enemySpawnRate = new(1);
     public Stat healthPackSpawnRate = new(5);
 
-
     private readonly Dictionary<StatType, Stat> _stats = new();
 
     [Header("UI")] 
@@ -101,11 +100,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GoToMainMenu();
-        PopulateStats();
-        PopulateStatsUI();
-        LoadStoreItemsIntoStats();
-        playerCurrentHealth = (int)playerMaxHealth.value;
+        // GoToMainMenu();
+        // PopulateStats();
+        // PopulateStatsUI();
+        // LoadStoreItemsIntoStats();
+        // playerCurrentHealth = (int)playerMaxHealth.value;
     }
 
     private void Update()
@@ -124,10 +123,10 @@ public class GameManager : MonoBehaviour
         AccountManager.instance.statistics.gamesPlayed++;
         isGameActive = true;
         roundTime = 0f;
-        LoadStoreItemsIntoStats();
+        //LoadStoreItemsIntoStats();
         playerCurrentHealth = (int)playerMaxHealth.value;
         // clear all items
-        inventory.ClearAll();
+        //inventory.ClearAll();
         UpdateItemUI();
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
         TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
@@ -329,6 +328,7 @@ public class GameManager : MonoBehaviour
 
     private void PopulateStats()
     {
+        return;
         _stats.Add(StatType.PlayerHealth, playerMaxHealth);
         _stats.Add(StatType.PlayerSpeed, playerSpeed);
         _stats.Add(StatType.Block, block);
@@ -336,17 +336,17 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.Revives, revives);
         _stats.Add(StatType.Dashes, dashes);
 
-        _stats.Add(StatType.PistolDamage, pistolDamage);
-        _stats.Add(StatType.PistolRange, pistolRange);
-        _stats.Add(StatType.PistolFireRate, pistolFireRate);
-        _stats.Add(StatType.PistolKnockBack, pistolKnockBack);
-        _stats.Add(StatType.PistolPierce, pistolPierce);
+        _stats.Add(StatType.RangeDamage, pistolDamage);
+        _stats.Add(StatType.Range, pistolRange);
+        _stats.Add(StatType.FireRate, pistolFireRate);
+        _stats.Add(StatType.ProjectileKnockBack, pistolKnockBack);
+        _stats.Add(StatType.ProjectilePierce, pistolPierce);
 
-        _stats.Add(StatType.SwordDamage, swordDamage);
-        _stats.Add(StatType.SwordRange, swordRange);
-        _stats.Add(StatType.SwordAttackSpeed, swordAttackSpeed);
-        _stats.Add(StatType.SwordKnockBack, swordKnockBack);
-        _stats.Add(StatType.SwordArc, swordArc);
+        _stats.Add(StatType.MeleeDamage, swordDamage);
+        _stats.Add(StatType.MeleeRange, swordRange);
+        _stats.Add(StatType.AttackSpeed, swordAttackSpeed);
+        _stats.Add(StatType.MeleeKnockBack, swordKnockBack);
+        _stats.Add(StatType.Arc, swordArc);
 
         _stats.Add(StatType.Luck, luck);
         _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
@@ -357,6 +357,7 @@ public class GameManager : MonoBehaviour
 
     private void PopulateStatsUI()
     {
+        return;
         foreach (var statContainer in StatContainers)
         {
             // get all the children of the stat container and destroy them.
@@ -553,6 +554,7 @@ public class GameManager : MonoBehaviour
 
     public void ApplyItem(ChestItem item)
     {
+        return;
         HideAll();
         inventory.AddChestItem(item);
 
