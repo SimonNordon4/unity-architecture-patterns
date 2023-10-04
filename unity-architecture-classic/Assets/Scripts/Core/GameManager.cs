@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Classic.App;
 using Classic.Game;
+using Classic.Items;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
         foreach (var spawnIndicator in spawnIndicators) Destroy(spawnIndicator);
 
         // Remove all chests.
-        var chests = FindObjectsOfType<Chest>();
+        var chests = FindObjectsByType<Chest>(FindObjectsSortMode.None);
         foreach (var chest in chests) Destroy(chest.gameObject);
 
         // Remove all healthpacks

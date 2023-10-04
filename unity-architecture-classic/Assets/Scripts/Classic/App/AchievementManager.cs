@@ -1,16 +1,53 @@
 ﻿using System.Collections.Generic;
+using Classic.Game;
+using Classic.Items;
 using UnityEngine;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+using UnityEngine.Events;
 
 namespace Classic.App
 {
     public class AchievementManager : MonoBehaviour
     {
+        [Header("Dependencies")] 
+        [SerializeField] private EnemyManager enemyManager;
+        [SerializeField] private GameState state;
+        [SerializeField] private RoundTimer roundTimer;
+        [SerializeField] private Gold gold;
+        [SerializeField] private Stats stats;
+        
+        public UnityEvent<Achievement> onAchievementCompleted = new();
+
+        private void OnEnable()
+        {
+            state.onGameWon.AddListener(GameWon);
+            state.onGameWon.AddListener(GameWonInMinutes);
+            state.onGameLost.AddListener(PlayerDied);
+            enemyManager.onEnemyDied.AddListener(vec => EnemyDied());
+            enemyManager.onBossDied.AddListener(vec => BossDied());
+            Chest.OnChestPickedUp.AddListener(chest => ChestOpened());
+            gold.onGoldChanged.AddListener(i => EarnedGold());
+            stats.onStatChanged.AddListener(StatCheck);
+            
+            Load();
+        }
+
+
+        private void OnDisable()
+        {
+            state.onGameWon.RemoveListener(GameWon);
+            state.onGameWon.RemoveListener(GameWonInMinutes);
+            state.onGameLost.RemoveListener(PlayerDied);
+            enemyManager.onEnemyDied.RemoveListener(vec => EnemyDied());
+            enemyManager.onBossDied.RemoveListener(vec => BossDied());
+            Chest.OnChestPickedUp.RemoveListener(chest => ChestOpened());
+            gold.onGoldChanged.RemoveListener(i => EarnedGold());
+            stats.onStatChanged.RemoveListener(StatCheck);
+            
+            Save();
+        }
+
         [SerializeField] private List<AchievementDefinition> achievementDefinitions = new();
-        public Achievement[] achievements { get; private set; }
+        [field:SerializeField] public Achievement[] achievements { get; private set; }
         
         private void CreateAchievements()
         {
@@ -46,7 +83,6 @@ namespace Classic.App
             
             achievements = save.savedAchievements;
         }
-        
         public void ResetAll()
         {
             CreateAchievements();
@@ -62,110 +98,100 @@ namespace Classic.App
         
         public void EnemyDied()
         {
-            foreach (var achievement in achievements)
-            {
-                if(achievement.id != AchievementId.KillEnemies) continue;
-                if(achievement.isCompleted) continue;
-                if(achievement.isClaimed) continue;
-
-                achievement.progress++;
-                if (achievement.progress >= achievement.goal)
-                {
-                    achievement.isCompleted = true;
-                }
-            }
+            CheckIncrementalAchievement(AchievementId.KillEnemies);
         }
-
         public void BossDied()
         {
-            foreach (var achievement in achievements)
-            {
-                if(achievement.id != AchievementId.KillBosses) continue;
-                if(achievement.isCompleted) continue;
-                if(achievement.isClaimed) continue;
-
-                achievement.progress++;
-                if (achievement.progress >= achievement.goal)
-                {
-                    achievement.isCompleted = true;
-                }
-            }
+            CheckIncrementalAchievement(AchievementId.KillBosses);
         }
 
         public void PlayerDied()
         {
-            foreach (var achievement in achievements)
-            {
-                if(achievement.id != AchievementId.PlayerDied) continue;
-                if(achievement.isCompleted) continue;
-                if(achievement.isClaimed) continue;
-
-                achievement.progress++;
-                if (achievement.progress >= achievement.goal)
-                {
-                    achievement.isCompleted = true;
-                }
-            }
+            CheckIncrementalAchievement(AchievementId.PlayerDied);
         }
         
         public void ChestOpened()
         {
+            CheckIncrementalAchievement(AchievementId.OpenChests);
+        }
+
+        public void GameWon()
+        {
+            CheckIncrementalAchievement(AchievementId.WinGame);
+        }
+        
+        public void GameWonInMinutes()
+        {
+            foreach(var achievement in achievements)
+            {
+                if(achievement.id != AchievementId.WinInUnderMinutes) continue;
+                if(achievement.isCompleted) continue;
+                if(achievement.isClaimed) continue;
+                if (roundTimer.roundTime <= achievement.goal)
+                {
+                   CompleteAchievement(achievement);
+                }
+            }
+        }
+
+
+
+        public void StatCheck(StatType statType)
+        {
             foreach (var achievement in achievements)
             {
-                if(achievement.id != AchievementId.OpenChests) continue;
+                if (achievement.id != AchievementId.ReachStat) continue;
+                if (achievement.statType != statType) continue;
+                if (achievement.isCompleted) continue;
+                if (achievement.isClaimed) continue;
+                
+                var statValue = stats.statMap[statType].value;
+                achievement.progress = (int)(statValue > achievement.progress ? statValue : achievement.progress);
+                if (achievement.progress >= achievement.goal)
+                {
+                    CompleteAchievement(achievement);
+                }
+            }
+        }
+        
+        public void EarnedGold()
+        {
+            foreach (var achievement in achievements)
+            {
+                if(achievement.id != AchievementId.EarnGold) continue;
+                if(achievement.isCompleted) continue;
+                if(achievement.isClaimed) continue;
+                
+                achievement.progress = gold.totalEarned;
+                if (achievement.progress >= achievement.goal)
+                {
+                    CompleteAchievement(achievement);
+                }
+            }
+        }
+        #endregion
+        
+        private void CompleteAchievement(Achievement achievement)
+        {
+            achievement.isCompleted = true;
+            onAchievementCompleted.Invoke(achievement);
+            Debug.Log($"Achievement Completed: {achievement.uiName}");
+        }
+        
+        private void CheckIncrementalAchievement(AchievementId id)
+        {
+            foreach (var achievement in achievements)
+            {
+                if(achievement.id != id) continue;
                 if(achievement.isCompleted) continue;
                 if(achievement.isClaimed) continue;
 
                 achievement.progress++;
                 if (achievement.progress >= achievement.goal)
                 {
-                    achievement.isCompleted = true;
+                    CompleteAchievement(achievement);
                 }
             }
         }
-
-        public void GameWon()
-        {
-
-        }
-
-        public void StatCheck()
-        {
-            
-        }
-        #endregion
     }
-    
-    #if UNITY_EDITOR
-    [CustomEditor(typeof(AchievementManager))]
-    public class AchievementManagerEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            var achievementManager = (AchievementManager) target;
-            
-            base.OnInspectorGUI();
-
-            if (GUILayout.Button("Reset All"))
-            {
-                achievementManager.ResetAll();
-            }
-
-            if (GUILayout.Button("Get Achievement Definitions"))
-            {
-                // find all achievement definitions in the project and add them to the list.
-                var achievementDefinitions = new List<AchievementDefinition>();
-                var guids = AssetDatabase.FindAssets("t:AchievementDefinition");
-                foreach (var guid in guids)
-                {
-                    var path = AssetDatabase.GUIDToAssetPath(guid);
-                    var asset = AssetDatabase.LoadAssetAtPath<AchievementDefinition>(path);
-                    achievementDefinitions.Add(asset);
-                    achievementManager.SetDefinitions(achievementDefinitions);
-                }
-                
-            }
-        }
-    }
-    #endif
 }

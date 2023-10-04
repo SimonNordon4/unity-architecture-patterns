@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Classic.Game
 {
     public class Stats : MonoBehaviour
     {
+        public UnityEvent<StatType> onStatChanged = new();
+        
         [field:SerializeField]
         public Stat playerHealth {get; private set;} = new(10,StatType.PlayerHealth);
         [field:SerializeField]
@@ -81,13 +84,14 @@ namespace Classic.Game
         public void ApplyModifier(Modifier modifier)
         {
             statMap[modifier.statType].AddModifier(modifier);
+            onStatChanged.Invoke(modifier.statType);
         }
 
         public void ApplyModifier(Modifier[] modifiers)
         {
             foreach (var modifier in modifiers)
             {
-                statMap[modifier.statType].AddModifier(modifier);
+                ApplyModifier(modifier);
             }
         }
         

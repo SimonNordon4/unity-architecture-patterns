@@ -28,6 +28,7 @@ public class EnemyManager : MonoBehaviour
     public Level level;
     public GameState gameState;
     public UnityEvent<Vector3> onEnemyDied = new ();
+    public UnityEvent<Vector3> onBossDied = new ();
     
     [Header("References")] public GameManager gameManager;
     public Transform playerTarget;
@@ -475,6 +476,7 @@ public class EnemyManager : MonoBehaviour
             Debug.Log("Boss Enemies alive: " + _bossEnemiesCount);
             GameManager.instance.OnBossEnemyDied(enemy);
             Destroy(enemy);
+            onBossDied.Invoke(enemy.transform.position);
             return;
         }
 

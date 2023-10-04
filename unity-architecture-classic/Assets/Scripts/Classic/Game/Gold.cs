@@ -6,6 +6,7 @@ namespace Classic.Game
     public class Gold : MonoBehaviour
     {
         [field:SerializeField] public int amount { get; private set; } = 0;
+        [field:SerializeField] public int totalEarned { get; private set; } = 0;
         public UnityEvent<int> onGoldChanged = new();
 
         public void AddGold(int difference)
@@ -13,6 +14,7 @@ namespace Classic.Game
             this.amount += difference;
             Save();
             onGoldChanged.Invoke(this.amount);
+            totalEarned += difference;
         }
 
         public void RemoveGold(int difference)
@@ -31,18 +33,21 @@ namespace Classic.Game
         
         public void Save()
         {
-            PlayerPrefs.SetInt("gold", amount);
+            PlayerPrefs.SetInt("currentGold", amount);
+            PlayerPrefs.SetInt("totalGold",totalEarned);
         }
 
         public void Load()
         {
-            amount = PlayerPrefs.GetInt("gold", 0);
+            amount = PlayerPrefs.GetInt("currentGold", 0);
+            totalEarned = PlayerPrefs.GetInt("totalGold", 0);
             onGoldChanged.Invoke(amount);
         }
 
         public void Reset()
         {
             amount = 0;
+            totalEarned = 0;
             Save();
             onGoldChanged.Invoke(amount);
         }

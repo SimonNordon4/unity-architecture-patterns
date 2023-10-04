@@ -3,6 +3,13 @@ using UnityEngine.Events;
 
 namespace Classic.Items
 {
+    public enum ChestType
+    {
+        Mini,
+        Medium,
+        Large,
+    }
+    
     public class Chest : MonoBehaviour
     {
         public static readonly UnityEvent<Chest> OnChestPickedUp = new();

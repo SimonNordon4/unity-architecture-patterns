@@ -3697,6 +3697,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b6a32db9f7451492edcd3f0a8f72fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyManager: {fileID: 644039390}
+  state: {fileID: 1358396559}
+  roundTimer: {fileID: 1358396562}
+  gold: {fileID: 966297584}
+  stats: {fileID: 439529839}
+  onAchievementCompleted:
+    m_PersistentCalls:
+      m_Calls: []
   achievementDefinitions:
   - {fileID: 11400000, guid: 2e591d70b8aa31749a6a31c006593bdb, type: 2}
   - {fileID: 11400000, guid: a7e5e8410ba68ac4493c63a22c7f7db5, type: 2}
@@ -3749,6 +3757,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 924a77f4c1c6bd04ba72bb8148c3ea38, type: 2}
   - {fileID: 11400000, guid: e361d81734b98124ab8ea4614f29a390, type: 2}
   - {fileID: 11400000, guid: 0302a54dea13202489c834f9f00b10d3, type: 2}
+  <achievements>k__BackingField: []
 --- !u!4 &251708326
 Transform:
   m_ObjectHideFlags: 0
@@ -5535,6 +5544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2d5f8abc3304c1b93d350aad36308cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStatChanged:
+    m_PersistentCalls:
+      m_Calls: []
   <playerHealth>k__BackingField:
     initialValue: 10
     minimumValue: 0
@@ -8601,6 +8613,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onBossDied:
+    m_PersistentCalls:
+      m_Calls: []
   gameManager: {fileID: 801546265}
   playerTarget: {fileID: 460763660}
   spawnRadius: 17
@@ -10526,7 +10541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 439529839}
   inventory: {fileID: 439529837}
-  gold: {fileID: 0}
+  gold: {fileID: 966297584}
   tempGameWon:
     m_PersistentCalls:
       m_Calls:
@@ -12792,6 +12807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <amount>k__BackingField: 0
+  <totalEarned>k__BackingField: 0
   onGoldChanged:
     m_PersistentCalls:
       m_Calls: []
