@@ -210,6 +210,9 @@ public class EnemyController : MonoBehaviour
         // Take damage, die if at 0.
         currentHealth -= damage;
         UpdateHealthText();
+
+        enemyManager.DamageTaken(damage);
+        
         if (currentHealth <= 0)
         {
             AudioManager.instance.PlaySound(deathSound);

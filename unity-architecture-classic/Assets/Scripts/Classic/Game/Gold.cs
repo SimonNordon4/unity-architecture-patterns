@@ -11,9 +11,9 @@ namespace Classic.Game
 
         public void AddGold(int difference)
         {
-            this.amount += difference;
+            amount += difference;
             Save();
-            onGoldChanged.Invoke(this.amount);
+            onGoldChanged.Invoke(amount);
             totalEarned += difference;
         }
 

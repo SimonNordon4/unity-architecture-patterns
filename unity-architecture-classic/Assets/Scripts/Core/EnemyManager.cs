@@ -23,12 +23,15 @@ public enum EnemySpawnPhase
 
 public class EnemyManager : MonoBehaviour
 {
+    
+    
     [Header("Dependencies")] 
     public ChestSpawner chestSpawner;
     public Level level;
     public GameState gameState;
     public UnityEvent<Vector3> onEnemyDied = new ();
     public UnityEvent<Vector3> onBossDied = new ();
+    public UnityEvent<int> onDamageTaken = new ();
     
     [Header("References")] public GameManager gameManager;
     public Transform playerTarget;
@@ -604,5 +607,10 @@ public class EnemyManager : MonoBehaviour
         {
             gameState = FindObjectsByType<GameState>(FindObjectsSortMode.None)[0];
         }
+    }
+
+    public void DamageTaken(int damage)
+    {
+        onDamageTaken.Invoke(damage);
     }
 }

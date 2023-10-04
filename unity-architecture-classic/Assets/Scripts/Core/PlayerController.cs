@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
         public int playerCurrentHealth = 10;
     
         public UnityEvent onPlayerDeath = new();
+        public UnityEvent<int> onPlayerDamaged = new();
+        public UnityEvent<int> onPlayerHealed = new();
     
         private Transform _transform;
 
@@ -401,6 +403,8 @@ public class PlayerController : MonoBehaviour
             {
                 damageAmount = 0;
             }
+            
+
 
             if (_damageTextCoroutine != null)
             {
@@ -414,6 +418,7 @@ public class PlayerController : MonoBehaviour
             AccountManager.instance.statistics.totalDamageTaken += damageAmount;
             
             playerCurrentHealth -= damageAmount;
+            onPlayerDamaged.Invoke(damageAmount);
 
             if (playerCurrentHealth <= 0)
             {
@@ -542,6 +547,8 @@ public class PlayerController : MonoBehaviour
                 
                 AccountManager.instance.statistics.totalDamageHealed += healthGained;
                 playerCurrentHealth = healthGained;
+                
+                onPlayerHealed.Invoke(healthGained);
                 
                 Destroy(other.gameObject);
             }
