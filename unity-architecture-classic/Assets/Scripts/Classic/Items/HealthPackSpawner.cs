@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Classic.Core;
+using Classic.Game;
 using UnityEngine;
 
 namespace Classic.Items

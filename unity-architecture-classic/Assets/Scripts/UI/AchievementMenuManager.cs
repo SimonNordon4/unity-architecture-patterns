@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
+using Classic.App;
+using Classic.Utility;
 
 public class AchievementMenuManager : MonoBehaviour
 {
+    [SerializeField]private AchievementManager achievementManager;
+    
     public RectTransform achievementItemContainer;
     public AchievementUI achievementItemUIPrefab;
     public List<AchievementUI> achievementItemUis = new List<AchievementUI>();
@@ -27,7 +31,7 @@ public class AchievementMenuManager : MonoBehaviour
     void Init()
     {
         // Populate all the store item uis.
-        foreach (var achievement in AccountManager.instance.achievementSave.achievements)
+        foreach (var achievement in achievementManager.achievements)
         {
             var achievementUI = Instantiate(achievementItemUIPrefab, achievementItemContainer);
             achievementUI.Initialize(achievement,this);
@@ -35,10 +39,10 @@ public class AchievementMenuManager : MonoBehaviour
             achievementItemUis.Add(achievementUI);
         }
         
-        var completedAchievements = AccountManager.instance.achievementSave.achievements
+        var completedAchievements = achievementManager.achievements
             .Sum(x => x.isCompleted ? 1 : 0);
         
-        var totalAchievements = AccountManager.instance.achievementSave.achievements.Length;
+        var totalAchievements = achievementManager.achievements.Length;
         totalAchievementText.text =$"Earned: {completedAchievements.ToString()}/{totalAchievements.ToString()}";
     }
 
@@ -56,5 +60,10 @@ public class AchievementMenuManager : MonoBehaviour
     private void OnDisable()
     {
         Clear();
+    }
+
+    private void OnValidate()
+    {
+        achievementManager = SurvivorsUtil.Find<AchievementManager>();
     }
 }

@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Classic.Core;
+using Classic.App;
+using Classic.Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -446,20 +447,20 @@ public class PlayerController : MonoBehaviour
                 GameManager.instance.LoseGame();
                 onPlayerDeath.Invoke();
                 
-                List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
-                    .Where(a => a.name == AchievementName.Die ||
-                                a.name == AchievementName.Die50Times ||
-                                a.name == AchievementName.Die100Times).ToList();
-                foreach (var a in dieAchievements)
-                {
-                    if (a.isCompleted) return;
-                    a.progress++;
-                    if (a.progress >= a.goal)
-                    {
-                        a.isCompleted = true;
-                        AccountManager.instance.AchievementUnlocked(a);
-                    }
-                }
+                // List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
+                //     .Where(a => a.id == AchievementName.Die ||
+                //                 a.id == AchievementName.Die50Times ||
+                //                 a.id == AchievementName.Die100Times).ToList();
+                // foreach (var a in dieAchievements)
+                // {
+                //     if (a.isCompleted) return;
+                //     a.progress++;
+                //     if (a.progress >= a.goal)
+                //     {
+                //         a.isCompleted = true;
+                //         AccountManager.instance.AchievementUnlocked(a);
+                //     }
+                // }
             }
             SetUI();
         }

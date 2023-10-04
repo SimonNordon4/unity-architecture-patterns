@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
-using Classic.Core;
+using Classic.Game;
 using UnityEngine.UI;
 
 [DefaultExecutionOrder(150)]

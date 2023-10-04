@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Classic.Core;
+using Classic.App;
+using Classic.Game;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -160,51 +161,51 @@ public class GameManager : MonoBehaviour
             roundTime < AccountManager.instance.statistics.fastestWin)
             AccountManager.instance.statistics.fastestWin = roundTime;
 
-        List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
-            .Where(a => a.name == AchievementName.BeatTheGame ||
-                        a.name == AchievementName.BeatTheGame10Times).ToList();
-        foreach (var a in achievements)
-        {
-            if (a.isCompleted) return;
-            a.progress++;
-            if (a.progress >= a.goal)
-            {
-                a.isCompleted = true;
-                AccountManager.instance.AchievementUnlocked(a);
-            }
-        }
-
-        var under1hour = AccountManager.instance.achievementSave.achievements
-            .First(x => x.name == AchievementName.WinInUnder1Hour);
-
-        if (!under1hour.isCompleted)
-        {
-            if (under1hour.progress > roundTime)
-                under1hour.progress = (int)roundTime;
-            under1hour.isCompleted = roundTime < under1hour.goal;
-        }
-
-
-        var under45mins = AccountManager.instance.achievementSave.achievements
-            .First(x => x.name == AchievementName.WinInUnder45Minutes);
-
-        if (!under45mins.isCompleted)
-        {
-            if (under45mins.progress > roundTime)
-                under45mins.progress = (int)roundTime;
-            under45mins.isCompleted = roundTime < under45mins.goal;
-        }
-
-
-        var under30mins = AccountManager.instance.achievementSave.achievements
-            .First(x => x.name == AchievementName.WinInUnder30Minutes);
-
-        if (!under30mins.isCompleted)
-        {
-            if (under30mins.progress > roundTime)
-                under30mins.progress = (int)roundTime;
-            under30mins.isCompleted = roundTime < under30mins.goal;
-        }
+        // List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+        //     .Where(a => a.id == AchievementName.BeatTheGame ||
+        //                 a.id == AchievementName.BeatTheGame10Times).ToList();
+        // foreach (var a in achievements)
+        // {
+        //     if (a.isCompleted) return;
+        //     a.progress++;
+        //     if (a.progress >= a.goal)
+        //     {
+        //         a.isCompleted = true;
+        //         AccountManager.instance.AchievementUnlocked(a);
+        //     }
+        // }
+        //
+        // var under1hour = AccountManager.instance.achievementSave.achievements
+        //     .First(x => x.id == AchievementName.WinInUnder1Hour);
+        //
+        // if (!under1hour.isCompleted)
+        // {
+        //     if (under1hour.progress > roundTime)
+        //         under1hour.progress = (int)roundTime;
+        //     under1hour.isCompleted = roundTime < under1hour.goal;
+        // }
+        //
+        //
+        // var under45mins = AccountManager.instance.achievementSave.achievements
+        //     .First(x => x.id == AchievementName.WinInUnder45Minutes);
+        //
+        // if (!under45mins.isCompleted)
+        // {
+        //     if (under45mins.progress > roundTime)
+        //         under45mins.progress = (int)roundTime;
+        //     under45mins.isCompleted = roundTime < under45mins.goal;
+        // }
+        //
+        //
+        // var under30mins = AccountManager.instance.achievementSave.achievements
+        //     .First(x => x.id == AchievementName.WinInUnder30Minutes);
+        //
+        // if (!under30mins.isCompleted)
+        // {
+        //     if (under30mins.progress > roundTime)
+        //         under30mins.progress = (int)roundTime;
+        //     under30mins.isCompleted = roundTime < under30mins.goal;
+        // }
 
         roundTime = 0f;
 
@@ -232,23 +233,23 @@ public class GameManager : MonoBehaviour
 
         gold.AddGold(totalGold);
 
-        List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
-            .Where(a => a.name == AchievementName.Earn100Gold ||
-                        a.name == AchievementName.Earn1000Gold ||
-                        a.name == AchievementName.Earn10000Gold ||
-                        a.name == AchievementName.Earn100000Gold).ToList();
-        Debug.Log("Achievements Found:" + achievements.Count);
-
-        foreach (var a in achievements)
-        {
-            if (a.isCompleted) continue;
-            a.progress += totalGold;
-            if (a.progress >= a.goal)
-            {
-                a.isCompleted = true;
-                AccountManager.instance.AchievementUnlocked(a);
-            }
-        }
+        // List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+        //     .Where(a => a.id == AchievementName.Earn100Gold ||
+        //                 a.id == AchievementName.Earn1000Gold ||
+        //                 a.id == AchievementName.Earn10000Gold ||
+        //                 a.id == AchievementName.Earn100000Gold).ToList();
+        // Debug.Log("Achievements Found:" + achievements.Count);
+        //
+        // foreach (var a in achievements)
+        // {
+        //     if (a.isCompleted) continue;
+        //     a.progress += totalGold;
+        //     if (a.progress >= a.goal)
+        //     {
+        //         a.isCompleted = true;
+        //         AccountManager.instance.AchievementUnlocked(a);
+        //     }
+        // }
     }
 
 
@@ -305,46 +306,46 @@ public class GameManager : MonoBehaviour
     {
         AccountManager.instance.statistics.totalKills++;
 
-        // get all boss enemy achievements
-        List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
-            .Where(a => a.name == AchievementName.Kill1000Enemies ||
-                        a.name == AchievementName.Kill10000Enemies ||
-                        a.name == AchievementName.Kill100000Enemies ||
-                        a.name == AchievementName.Kill100Enemies).ToList();
-
-        foreach (var a in bossEnemyAchievements)
-        {
-            if (a.isCompleted) return;
-            a.progress++;
-            if (a.progress >= a.goal)
-            {
-                a.isCompleted = true;
-                AccountManager.instance.AchievementUnlocked(a);
-            }
-        }
+        // // get all boss enemy achievements
+        // List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+        //     .Where(a => a.id == AchievementName.Kill1000Enemies ||
+        //                 a.id == AchievementName.Kill10000Enemies ||
+        //                 a.id == AchievementName.Kill100000Enemies ||
+        //                 a.id == AchievementName.Kill100Enemies).ToList();
+        //
+        // foreach (var a in bossEnemyAchievements)
+        // {
+        //     if (a.isCompleted) return;
+        //     a.progress++;
+        //     if (a.progress >= a.goal)
+        //     {
+        //         a.isCompleted = true;
+        //         AccountManager.instance.AchievementUnlocked(a);
+        //     }
+        // }
     }
 
     public void OnBossEnemyDied(GameObject enemy)
     {
-        // get all boss enemy achievements
-        List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
-            .Where(a => a.name == AchievementName.Kill100Bosses ||
-                        a.name == AchievementName.Kill1000Bosses ||
-                        a.name == AchievementName.Kill1000Enemies ||
-                        a.name == AchievementName.Kill10000Enemies ||
-                        a.name == AchievementName.Kill100000Enemies ||
-                        a.name == AchievementName.Kill100Enemies).ToList();
-
-        foreach (var a in bossEnemyAchievements)
-        {
-            if (a.isCompleted) return;
-            a.progress++;
-            if (a.progress >= a.goal)
-            {
-                a.isCompleted = true;
-                AccountManager.instance.AchievementUnlocked(a);
-            }
-        }
+        // // get all boss enemy achievements
+        // List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+        //     .Where(a => a.id == AchievementName.Kill100Bosses ||
+        //                 a.id == AchievementName.Kill1000Bosses ||
+        //                 a.id == AchievementName.Kill1000Enemies ||
+        //                 a.id == AchievementName.Kill10000Enemies ||
+        //                 a.id == AchievementName.Kill100000Enemies ||
+        //                 a.id == AchievementName.Kill100Enemies).ToList();
+        //
+        // foreach (var a in bossEnemyAchievements)
+        // {
+        //     if (a.isCompleted) return;
+        //     a.progress++;
+        //     if (a.progress >= a.goal)
+        //     {
+        //         a.isCompleted = true;
+        //         AccountManager.instance.AchievementUnlocked(a);
+        //     }
+        // }
 
         AccountManager.instance.statistics.totalBossKills++;
         AccountManager.instance.statistics.totalKills++;

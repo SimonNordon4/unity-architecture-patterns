@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Classic.Core;
+using Classic.Game;
 using Classic.Items;
 using Definitions;
 using UnityEngine;
@@ -507,30 +507,30 @@ public class EnemyManager : MonoBehaviour
         // If we've reached the end of the block, go to the next block
         if (_waveIndex >= _currentSpawnWaves.Count)
         {
-            // check achievements.
-            switch (_blockIndex)
-            {
-                case (0):
-                    AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
-                        .First(x=>x.name == AchievementName.BeatRound1));
-                    break;
-                case (1):
-                    AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
-                        .First(x=>x.name == AchievementName.BeatRound2));
-                    break;
-                case (2):
-                    AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
-                        .First(x=>x.name == AchievementName.BeatRound3));
-                    break;
-                case (3):
-                    AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
-                        .First(x=>x.name == AchievementName.BeatRound4));
-                    break;
-                case (4):
-                    AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
-                        .First(x=>x.name == AchievementName.BeatRound5));
-                    break;
-            }
+            // // check achievements.
+            // switch (_blockIndex)
+            // {
+            //     case (0):
+            //         AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
+            //             .First(x=>x.id == AchievementName.BeatRound1));
+            //         break;
+            //     case (1):
+            //         AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
+            //             .First(x=>x.id == AchievementName.BeatRound2));
+            //         break;
+            //     case (2):
+            //         AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
+            //             .First(x=>x.id == AchievementName.BeatRound3));
+            //         break;
+            //     case (3):
+            //         AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
+            //             .First(x=>x.id == AchievementName.BeatRound4));
+            //         break;
+            //     case (4):
+            //         AccountManager.instance.AchievementUnlocked( AccountManager.instance.achievementSave.achievements
+            //             .First(x=>x.id == AchievementName.BeatRound5));
+            //         break;
+            // }
             
             
             _blockIndex++;

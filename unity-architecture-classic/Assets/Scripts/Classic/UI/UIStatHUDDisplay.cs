@@ -1,5 +1,5 @@
 ﻿
-using Classic.Core;
+using Classic.Game;
 using Classic.Utility;
 using TMPro;
 using UnityEngine;
