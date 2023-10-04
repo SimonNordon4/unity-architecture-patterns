@@ -6,37 +6,39 @@ using System.Linq;
 using Classic.App;
 using Classic.Utility;
 
-public class AchievementMenuManager : MonoBehaviour
+public class UIAchievementMenu : MonoBehaviour
 {
     [SerializeField]private AchievementManager achievementManager;
-    
-    public RectTransform achievementItemContainer;
-    public AchievementUI achievementItemUIPrefab;
-    public List<AchievementUI> achievementItemUis = new List<AchievementUI>();
-    public TextMeshProUGUI totalAchievementText;
-    public TextMeshProUGUI goldText;
+    [SerializeField]private RectTransform achievementItemContainer;
+    [SerializeField]private AchievementUI achievementItemUIPrefab;
+    private readonly List<AchievementUI> _achievementItemUis = new();
+    [SerializeField]private TextMeshProUGUI totalAchievementText;
     
     private void OnEnable()
     {
+        achievementManager.onAchievementCompleted.AddListener(a =>
+        {
+            Clear();
+            Init();
+        });
         Init();
     }
     
-    public void UpdateStoreMenu()
-    {
-        Clear();
-        Init();
-    }
-
     
     void Init()
     {
+        var sortedAchievements = achievementManager.achievements
+            .OrderBy(x => x.isCompleted && !x.isClaimed ? 0 : !x.isCompleted ? 1 : 2)
+            .ThenBy(x => x.isClaimed ? 1 : 0)
+            .ToArray();
+        
         // Populate all the store item uis.
-        foreach (var achievement in achievementManager.achievements)
+        foreach (var achievement in sortedAchievements)
         {
             var achievementUI = Instantiate(achievementItemUIPrefab, achievementItemContainer);
             achievementUI.Initialize(achievement,this);
             achievementUI.parent = this;
-            achievementItemUis.Add(achievementUI);
+            _achievementItemUis.Add(achievementUI);
         }
         
         var completedAchievements = achievementManager.achievements
@@ -49,12 +51,12 @@ public class AchievementMenuManager : MonoBehaviour
     void Clear()
     {
         // Destroy all the store item uis.
-        foreach (var storeItemUi in achievementItemUis)
+        foreach (var storeItemUi in _achievementItemUis)
         {
             if(storeItemUi != null)
                 Destroy(storeItemUi.gameObject);
         }
-        achievementItemUis.Clear();
+        _achievementItemUis.Clear();
     }
     
     private void OnDisable()

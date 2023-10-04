@@ -127,14 +127,13 @@ namespace Classic.App
                 if(achievement.id != AchievementId.WinInUnderMinutes) continue;
                 if(achievement.isCompleted) continue;
                 if(achievement.isClaimed) continue;
+                
                 if (roundTimer.roundTime <= achievement.goal)
                 {
                    CompleteAchievement(achievement);
                 }
             }
         }
-
-
 
         public void StatCheck(StatType statType)
         {
@@ -174,6 +173,7 @@ namespace Classic.App
         private void CompleteAchievement(Achievement achievement)
         {
             achievement.isCompleted = true;
+            achievement.progress = achievement.goal;
             onAchievementCompleted.Invoke(achievement);
             Debug.Log($"Achievement Completed: {achievement.uiName}");
         }
