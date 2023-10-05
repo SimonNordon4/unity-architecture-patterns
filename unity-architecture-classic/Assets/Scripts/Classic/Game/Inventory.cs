@@ -11,8 +11,8 @@ namespace Classic.Game
         [field:SerializeField]
         public List<ChestItem> chestItems { get; private set; } = new();
         
-        public UnityEvent<StoreItem> onStoreItemAdded = new();
-        public UnityEvent<ChestItem> onChestItemAdded = new();
+        public UnityEvent<StoreItem> onStoreItemAdded {get;} = new();
+        public UnityEvent<ChestItem> onChestItemAdded {get;} = new();
         
         public void AddStoreItem(StoreItem item)
         {

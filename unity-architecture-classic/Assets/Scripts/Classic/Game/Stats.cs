@@ -6,8 +6,8 @@ namespace Classic.Game
 {
     public class Stats : MonoBehaviour
     {
-        public UnityEvent<StatType> onStatChanged = new();
-        
+        public UnityEvent<StatType> onStatChanged { get; } = new();
+
         [field:SerializeField]
         public Stat playerHealth {get; private set;} = new(10,StatType.PlayerHealth);
         [field:SerializeField]

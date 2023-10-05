@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
     
         private Transform _transform;
 
-        private Vector3 _cameraOffset;
-
         public Vector3 targetDirection;
 
         [Header("References")]
@@ -217,14 +215,6 @@ public class PlayerController : MonoBehaviour
 
             var dir = Vector3.zero;
 
-            if (Input.GetKey(KeyCode.A))
-                dir += Vector3.left;
-            if (Input.GetKey(KeyCode.D))
-                dir += Vector3.right;
-            if (Input.GetKey(KeyCode.W))
-                dir += Vector3.forward;
-            if (Input.GetKey(KeyCode.S))
-                dir += Vector3.back;
 
             // Check if the player is at the level bounds, if they are, make sure they cant move in the direction of the bound
             if (_transform.position.x <= -level.bounds.x && dir.x < 0)

@@ -15,6 +15,8 @@ namespace Classic.Game
         public UnityEvent onGameLost {get;}  = new();
         public UnityEvent onGameQuit {get;}  = new();
 
+        public bool isGameActive => currentState == GameStateEnum.Active;
+
         private void Start()
         {
             currentState = GameStateEnum.Idle;
