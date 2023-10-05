@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
+using Classic.App;
 using Classic.Game;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class NotificationsManager : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
     [SerializeField] private Gold gold;
+    [SerializeField] private AchievementManager achievementManager;
     
     public GameObject achievementNotification;
     public TextMeshProUGUI achievementText;
@@ -63,11 +65,11 @@ public class NotificationsManager : MonoBehaviour
             Debug.Log("Number of achievements: " + numberOfCompletedAchievements);
             
 
-            var achievementCount = AccountManager.instance.achievementSave.achievements.Length;
+            var achievementCount = achievementManager.achievements.Length;
         
             for(var i = 0; i < achievementCount; i++)
             {
-                var achievement = AccountManager.instance.achievementSave.achievements[i];
+                var achievement = achievementManager.achievements[i];
                 if (achievement.isCompleted && !achievement.isClaimed)
                 {
                     numberOfCompletedAchievements++;

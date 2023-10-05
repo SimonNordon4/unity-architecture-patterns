@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     public GameState gameState;
 
     [Header("Dependencies")] public Level level;
+    public SettingsManager settings;
     
     [Header("References")]
     public EnemyManager enemyManager;
@@ -64,7 +65,7 @@ public class EnemyController : MonoBehaviour
     {
         // de-parent so we don't follow the enemy rotation.
         uiStartRotation = healthBarUI.transform.rotation;
-        healthBarUI.SetActive(SettingsManager.instance.showEnemyHealthBars);
+        healthBarUI.SetActive(settings.showEnemyHealthBars);
         UpdateHealthText();
         _radius = transform.localScale.x;
         randomPosition = new Vector3(Random.Range(level.bounds.x * -1, level.bounds.x), 0, Random.Range(level.bounds.y * -1, level.bounds.y));
@@ -208,7 +209,6 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        AccountManager.instance.statistics.totalDamageDealt += damage;
         // Take damage, die if at 0.
         currentHealth -= damage;
         UpdateHealthText();

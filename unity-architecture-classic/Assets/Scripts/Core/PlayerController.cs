@@ -418,8 +418,6 @@ public class PlayerController : MonoBehaviour
 
             AudioManager.instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
             
-            AccountManager.instance.statistics.totalDamageTaken += damageAmount;
-            
             playerCurrentHealth -= damageAmount;
             onPlayerDamaged.Invoke(damageAmount);
 
@@ -450,25 +448,10 @@ public class PlayerController : MonoBehaviour
                     return;
                 }
                 
-                AccountManager.instance.statistics.totalDeaths++;
+ 
                 AudioManager.instance.PlaySound(deathSound);
                 gameState.LoseGame();
                 onPlayerDeath.Invoke();
-                
-                // List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
-                //     .Where(a => a.id == AchievementName.Die ||
-                //                 a.id == AchievementName.Die50Times ||
-                //                 a.id == AchievementName.Die100Times).ToList();
-                // foreach (var a in dieAchievements)
-                // {
-                //     if (a.isCompleted) return;
-                //     a.progress++;
-                //     if (a.progress >= a.goal)
-                //     {
-                //         a.isCompleted = true;
-                //         AccountManager.instance.AchievementUnlocked(a);
-                //     }
-                // }
             }
             SetUI();
         }
@@ -548,7 +531,6 @@ public class PlayerController : MonoBehaviour
                     0f, 
                     stats.playerHealth.value);
                 
-                AccountManager.instance.statistics.totalDamageHealed += healthGained;
                 playerCurrentHealth = healthGained;
                 
                 onPlayerHealed.Invoke(healthGained);

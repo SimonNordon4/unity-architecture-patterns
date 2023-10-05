@@ -5,6 +5,7 @@ using UnityEngine;
     public class AudioManager : MonoBehaviour
     {
         [SerializeField] private GameState gameState;
+        [SerializeField] private SettingsManager settings;
         
         private static AudioManager _instance;
         public static AudioManager instance
@@ -59,7 +60,7 @@ using UnityEngine;
             // pick a random music clip and play it
             musicIndex = Random.Range(0, gameMusic.Length);
             _musicSource.clip = gameMusic[musicIndex];
-            _musicSource.volume = 0.1f * SettingsManager.instance.musicVolume;
+            _musicSource.volume = 0.1f * settings.musicVolume;
             _musicSource.Play();
         }
 
@@ -77,11 +78,11 @@ using UnityEngine;
             
             if (gameState.currentState == GameStateEnum.Active)
             {
-                _musicVolume = Mathf.Lerp(_musicVolume, SettingsManager.instance.musicVolume, Time.deltaTime);
+                _musicVolume = Mathf.Lerp(_musicVolume, settings.musicVolume, Time.deltaTime);
             }
             else
             {
-                _musicVolume = Mathf.Lerp(_musicVolume, 0.1f * SettingsManager.instance.musicVolume, 2f * Time.deltaTime);
+                _musicVolume = Mathf.Lerp(_musicVolume, 0.1f * settings.musicVolume, 2f * Time.deltaTime);
             }
             
             _musicSource.volume = _musicVolume;
@@ -92,7 +93,7 @@ using UnityEngine;
         {
             var source = GetAudioSource();
             source.clip = definition.clips[Random.Range(0, definition.clips.Length)];
-            source.volume = definition.volume * SettingsManager.instance.sfxVolume;
+            source.volume = definition.volume * settings.sfxVolume;
             source.pitch = Random.Range(definition.pitchVariation.x, definition.pitchVariation.y);
             source.Play();
         }
@@ -115,13 +116,13 @@ using UnityEngine;
         public void ButtonHover()
         {
             if(_buttonSource.isPlaying) return;
-            _buttonSource.volume = 0.5f * SettingsManager.instance.sfxVolume;
+            _buttonSource.volume = 0.5f * settings.sfxVolume;
             _buttonSource.PlayOneShot(buttonHover);
         }
         
         public void ButtonClick()
         {
-            _buttonSource.volume = 1f * SettingsManager.instance.sfxVolume;
+            _buttonSource.volume = 1f * settings.sfxVolume;
             _buttonSource.PlayOneShot(buttonClick);
         }
     }

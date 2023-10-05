@@ -1,34 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Classic.Game;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    private static SettingsManager _instance;
-    public static SettingsManager instance
-    {
-        get
-        {
-            if (_instance == null)
-                _instance = FindObjectOfType<SettingsManager>();
-            return _instance;
-        }
-        private set => _instance = value;
-    }
-
     public Toggle hyperModeToggle;
     public GameObject hyperText;
 
     private void Start()
     {
-        Debug.Log("SettingsManager Start");
-        musicVolume = AccountManager.instance.settingsSave.musicVolume;
-        sfxVolume = AccountManager.instance.settingsSave.sfxVolume;
-        showDamageNumbers = AccountManager.instance.settingsSave.showDamageNumbers;
-        showEnemyHealthBars = AccountManager.instance.settingsSave.showEnemyHealthBars;
-        isHyperMode = AccountManager.instance.settingsSave.isHyperMode;
-        
         hyperModeToggle.isOn = isHyperMode;
     }
 
@@ -39,19 +21,46 @@ public class SettingsManager : MonoBehaviour
     public float sfxVolume = 1f;
     
     public bool isHyperMode = false;
+
+    private void OnEnable()
+    {
+        Load();
+    }
+
+    private void OnDisable()
+    {
+        Save();
+    }
+
+    private void Save()
+    {
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        PlayerPrefs.SetInt("showDamageNumbers", showDamageNumbers ? 1 : 0);
+        PlayerPrefs.SetInt("showEnemyHealthBars", showEnemyHealthBars ? 1 : 0);
+        PlayerPrefs.SetInt("isHyperMode", isHyperMode ? 1 : 0);
+        
+    }
+
+    private void Load()
+    {
+        musicVolume = PlayerPrefs.GetFloat("musicVolume", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("sfxVolume", 1f);
+        showDamageNumbers = PlayerPrefs.GetInt("showDamageNumbers", 1) == 1;
+        showEnemyHealthBars = PlayerPrefs.GetInt("showEnemyHealthBars", 1) == 1;
+        isHyperMode = PlayerPrefs.GetInt("isHyperMode", 0) == 1;
+    }
     
     public void SetMusicVolume(float volume)
     {
         musicVolume = volume;
-        AccountManager.instance.settingsSave.musicVolume = volume;
-        AccountManager.instance.Save();
+        PlayerPrefs.SetFloat("musicVolume", volume);
     }
     
     public void SetSfxVolume(float volume)
     {
         sfxVolume = volume;
-        AccountManager.instance.settingsSave.sfxVolume = volume;
-        AccountManager.instance.Save();
+        PlayerPrefs.SetFloat("sfxVolume", volume);
     }
     
     public void SetShowEnemyHealthBars(bool show)
@@ -64,15 +73,14 @@ public class SettingsManager : MonoBehaviour
         {
             enemy.SetHealthBarVisibility(showEnemyHealthBars);
         }
-        AccountManager.instance.settingsSave.showEnemyHealthBars = show;
-        AccountManager.instance.Save();
+        
+        PlayerPrefs.SetInt("showEnemyHealthBars", showEnemyHealthBars ? 1 : 0);
     }
     
     public void ShowDamageNumbers(bool show)
     {
         showDamageNumbers = show;
-        AccountManager.instance.settingsSave.showDamageNumbers = show;
-        AccountManager.instance.Save();
+        PlayerPrefs.SetInt("showDamageNumbers", showDamageNumbers ? 1 : 0);
     }
 
     public void BindHyperScale()
@@ -80,17 +88,16 @@ public class SettingsManager : MonoBehaviour
         var value = hyperModeToggle.isOn;
         if (!value)
         {
-            Time.timeScale = 1f;
+            GameTime.hyperModeTimeScale = 1f;
             isHyperMode = false;
             hyperText.SetActive(false);
         }
         else
         {
-            Time.timeScale = 2f;
+            GameTime.hyperModeTimeScale = 2f;
             isHyperMode = true;
             hyperText.SetActive(true);
         }
-        AccountManager.instance.settingsSave.isHyperMode = isHyperMode;
-        AccountManager.instance.Save();
+        PlayerPrefs.SetInt("isHyperMode", isHyperMode ? 1 : 0);
     }
 }

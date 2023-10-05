@@ -28,6 +28,8 @@ public class EnemyManager : MonoBehaviour
     [Header("Dependencies")] 
     public ChestSpawner chestSpawner;
 
+    public SettingsManager settings;
+
     public RoundTimer timer;
     public Level level;
     public GameState gameState;
@@ -363,6 +365,7 @@ public class EnemyManager : MonoBehaviour
         enemyController.enemyManager = this;
         enemyController.level = level;
         enemyController.gameState = gameState;
+        enemyController.settings = settings;
 
         enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
         enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
@@ -444,6 +447,7 @@ public class EnemyManager : MonoBehaviour
         enemyController.isBoss = true;
         enemyController.level = level;
         enemyController.gameState = gameState;
+        enemyController.settings = settings;
 
         enemies.Add(newEnemy);
         bossEnemies.Add(newEnemy);

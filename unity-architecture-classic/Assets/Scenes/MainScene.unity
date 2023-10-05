@@ -4208,7 +4208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 405590239}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5975,6 +5975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 439529837}
   gold: {fileID: 966297584}
+  achievementManager: {fileID: 0}
   achievementNotification: {fileID: 1804122074}
   achievementText: {fileID: 521406326}
   storeNotification: {fileID: 2018975192}
@@ -7114,6 +7115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawner: {fileID: 1839149885}
+  settings: {fileID: 1611055696}
   timer: {fileID: 1358396562}
   level: {fileID: 1358396558}
   gameState: {fileID: 1358396559}
@@ -7160,7 +7162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644039389}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9096,7 +9098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac92f07c0086dec4bbe725420774983a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 0.1.6
+  version: 0.1.7
   versionText: {fileID: 183950278}
 --- !u!4 &849256609
 Transform:
@@ -10871,7 +10873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1000354785}
   m_Layer: 0
-  m_Name: '------------------- Robots ------------------- '
+  m_Name: '------------------- Player ------------------- '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16707,6 +16709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 439529837}
   gold: {fileID: 966297584}
+  achievementManager: {fileID: 251708325}
   achievementNotification: {fileID: 1137562141}
   achievementText: {fileID: 1126367851}
   storeNotification: {fileID: 701688177}
@@ -17349,91 +17352,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cbc103dc72e6274d825d00061c36609, type: 3}
   m_PrefabInstance: {fileID: 670496573}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1489974772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1489974773}
-  - component: {fileID: 1489974774}
-  m_Layer: 0
-  m_Name: Account Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1489974773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489974772}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1489974774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489974772}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3760da61d7d40f8a317f22c29a105fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 439529837}
-  gold: {fileID: 966297584}
-  statistics:
-    totalKills: 0
-    totalBossKills: 0
-    totalGoldEarned: 0
-    totalChestsOpened: 0
-    totalDeaths: 0
-    totalDamageDealt: 0
-    totalDamageTaken: 0
-    totalDamageHealed: 0
-    gamesWon: 0
-    gamesPlayed: 0
-    fastestWin: 0
-    highestPistolDamage: 0
-    highestPistolRange: 0
-    highestPistolFireRate: 0
-    highestPistolKnockBack: 0
-    highestPistolPierce: 0
-    highestPlayerSpeed: 0
-    highestPlayerHealth: 0
-    highestSwordDamage: 0
-    highestSwordRange: 0
-    highestSwordAttackSpeed: 0
-    highestSwordKnockBack: 0
-    highestSwordArc: 0
-    highestHealthPackSpawnRate: 0
-    highestLuck: 0
-    highestBlock: 0
-  storeItemConfig: {fileID: 11400000, guid: e667245f8b3d1c443bd0cf872ee638bc, type: 2}
-  achievementSave:
-    achievements: []
-  achievementPopup: {fileID: 1832033938}
-  achievementPopupText: {fileID: 1818448120}
-  settingsSave:
-    musicVolume: 1
-    sfxVolume: 1
-    showDamageNumbers: 1
-    showEnemyHealthBars: 1
-    isHyperMode: 0
-  debugSkipLoad: 1
 --- !u!1 &1492026863
 GameObject:
   m_ObjectHideFlags: 0
@@ -21915,6 +21833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 1358396559}
+  settings: {fileID: 1611055696}
   buttonHover: {fileID: 8300000, guid: f5c5f438581b89c4b96789e177c6254a, type: 3}
   buttonClick: {fileID: 8300000, guid: b7cd703bfb101f4489fce92b8bbf68e1, type: 3}
   maxEnemyVolume: 20
@@ -26274,7 +26193,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1489974774}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: AccountManager, Assembly-CSharp
         m_MethodName: ResetProgress
         m_Mode: 1
@@ -29374,6 +29293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6edcbbd25083c46861802e4a0b795e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  settings: {fileID: 0}
   healthBarToggle: {fileID: 85478867705028818}
   showDamageToggle: {fileID: 4277516186594550373}
   musicSlider: {fileID: 7200546273471470202}
@@ -31297,24 +31217,23 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 299859323}
-  - {fileID: 460763660}
-  - {fileID: 405590241}
-  - {fileID: 963194228}
-  - {fileID: 1839149886}
-  - {fileID: 644039391}
-  - {fileID: 439529838}
-  - {fileID: 1358396560}
   - {fileID: 57213815}
   - {fileID: 849256609}
-  - {fileID: 966297585}
-  - {fileID: 251708326}
-  - {fileID: 1489974773}
-  - {fileID: 1611055695}
-  - {fileID: 1645930826}
-  - {fileID: 1926671863}
   - {fileID: 2020342963}
+  - {fileID: 1926671863}
+  - {fileID: 1645930826}
+  - {fileID: 1611055695}
+  - {fileID: 251708326}
+  - {fileID: 966297585}
+  - {fileID: 299859323}
+  - {fileID: 1358396560}
+  - {fileID: 439529838}
+  - {fileID: 644039391}
+  - {fileID: 1839149886}
+  - {fileID: 963194228}
+  - {fileID: 405590241}
   - {fileID: 1000354785}
+  - {fileID: 460763660}
   - {fileID: 654366051}
   - {fileID: 1038824469}
   - {fileID: 532511003}

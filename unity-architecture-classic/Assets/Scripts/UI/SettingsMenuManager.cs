@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class SettingsMenuManager : MonoBehaviour
 {
+    [SerializeField] private SettingsManager settings;
+    
     public Toggle healthBarToggle;
     public Toggle showDamageToggle;
     
@@ -15,26 +17,26 @@ public class SettingsMenuManager : MonoBehaviour
 
     private void OnEnable()
     {
-        healthBarToggle.isOn = SettingsManager.instance.showEnemyHealthBars;
-        showDamageToggle.isOn = SettingsManager.instance.showDamageNumbers;
+        healthBarToggle.isOn = settings.showEnemyHealthBars;
+        showDamageToggle.isOn = settings.showDamageNumbers;
         
-        musicSlider.value = SettingsManager.instance.musicVolume;
-        actionSlider.value = SettingsManager.instance.sfxVolume;
-        musicText.text = $"{SettingsManager.instance.musicVolume * 100f:F0}%";
-        actionText.text = $"{SettingsManager.instance.sfxVolume * 100f:F0}%";
+        musicSlider.value = settings.musicVolume;
+        actionSlider.value = settings.sfxVolume;
+        musicText.text = $"{settings.musicVolume * 100f:F0}%";
+        actionText.text = $"{settings.sfxVolume * 100f:F0}%";
     }
 
     public void UpdateMusicVolume()
     {
         var value = musicSlider.value;
         musicText.text = $"{(value * 100):F0}%";
-        SettingsManager.instance.SetMusicVolume(value);
+        settings.SetMusicVolume(value);
     }
 
     public void UpdateSoundVolume()
     {
         var value = actionSlider.value;
         actionText.text = $"{value * 100:F0}%";
-        SettingsManager.instance.SetSfxVolume(value);
+        settings.SetSfxVolume(value);
     }
 }
