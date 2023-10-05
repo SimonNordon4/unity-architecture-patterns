@@ -7,6 +7,8 @@ namespace Classic.UI
 {
     public class UIState : MonoBehaviour
     {
+        [SerializeField]private GameState gameState;
+        
         private readonly Stack<UIStateEnum> _previousStates = new();
         [field: SerializeField]
         public UIStateEnum currentState { get; private set; } = UIStateEnum.MainMenu;
@@ -15,6 +17,27 @@ namespace Classic.UI
         private void Start()
         {
             GoToMainMenu();
+        }
+
+        private void OnEnable()
+        {
+            gameState.onGameStart.AddListener(GoToHud);
+            gameState.onGamePause.AddListener(GoToPauseMenu);
+            gameState.onGameResume.AddListener(GoToHud);
+            gameState.onGameWon.AddListener(GoToGameWonMenu);
+            gameState.onGameLost.AddListener(GoToGameOverMenu);
+            gameState.onGameQuit.AddListener(GoToMainMenu);
+
+        }
+
+        private void OnDisable()
+        {
+            gameState.onGameStart.RemoveListener(GoToHud);
+            gameState.onGamePause.RemoveListener(GoToPauseMenu);
+            gameState.onGameResume.RemoveListener(GoToHud);
+            gameState.onGameWon.RemoveListener(GoToGameWonMenu);
+            gameState.onGameLost.RemoveListener(GoToGameOverMenu);
+            gameState.onGameQuit.RemoveListener(GoToMainMenu);
         }
 
         private void OnDestroy()

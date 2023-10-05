@@ -13,6 +13,15 @@ namespace Classic.Items
 
         private readonly List<HealthPackController> _healthPacks = new();
 
+        private void OnEnable()
+        {
+            gameState.onGameQuit.AddListener(DestroyAllHealthPacks);
+        }
+
+        private void OnDisable()
+        {
+            gameState.onGameQuit.RemoveListener(DestroyAllHealthPacks);
+        }
 
         public void SpawnHealthPack(Vector3 position)
         {

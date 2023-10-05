@@ -15,12 +15,14 @@ namespace Classic.Game
         {
             state.onGameLost.AddListener(AddGameWhenGoldEnds);
             state.onGameWon.AddListener(AddGameWhenGoldEnds);
+            Load();
         }
 
         private void OnDisable()
         {
             state.onGameLost.RemoveListener(AddGameWhenGoldEnds);
             state.onGameWon.RemoveListener(AddGameWhenGoldEnds);
+            Save();
         }
 
         public void AddGold(int difference)
