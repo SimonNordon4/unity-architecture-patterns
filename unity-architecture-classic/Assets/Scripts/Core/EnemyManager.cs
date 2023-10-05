@@ -27,13 +27,15 @@ public class EnemyManager : MonoBehaviour
     
     [Header("Dependencies")] 
     public ChestSpawner chestSpawner;
+
+    public RoundTimer timer;
     public Level level;
     public GameState gameState;
     public UnityEvent<Vector3> onEnemyDied = new ();
     public UnityEvent<Vector3> onBossDied = new ();
     public UnityEvent<int> onDamageTaken = new ();
     
-    [Header("References")] public GameManager gameManager;
+    [Header("References")] 
     public Transform playerTarget;
 
     [Header("Stats")] 
@@ -125,11 +127,10 @@ public class EnemyManager : MonoBehaviour
         
         _totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
         _thisWave = 1;
-        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
         
         _currentWaveData = new WaveRuntimeData
         {
-            startTime = gameManager.roundTime
+            startTime = timer.roundTime
         };
         WaveDatas.Clear();
         WaveDatas.Add(_currentWaveData);
@@ -144,7 +145,6 @@ public class EnemyManager : MonoBehaviour
         InitializeNewWave();
         _totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
         _thisWave = 1;
-        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
     }
 
     private void InitializeNewWave()
@@ -165,7 +165,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.isGameActive == false) return;
+        if (gameState.currentState != GameStateEnum.Active) return;
 
         switch (currentPhase)
         {
@@ -184,7 +184,7 @@ public class EnemyManager : MonoBehaviour
             case(EnemySpawnPhase.BossDead):
                 if (_waveIndex >= _currentSpawnWaves.Count - 1 && _blockIndex >= enemySpawnRound.enemySpawnBlocks.Count)
                 {
-                    GameManager.instance.WinGame();
+                    gameState.WinGame();
                     return;
                 }
                 currentPhase = EnemySpawnPhase.SpawnChest;
@@ -337,7 +337,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Suspend the coroutine until the game is active
-        while (GameManager.instance.isGameActive == false)
+        while (gameState.currentState != GameStateEnum.Active)
         {
             yield return null;
         }
@@ -362,6 +362,7 @@ public class EnemyManager : MonoBehaviour
         enemyController.playerTarget = playerTarget;
         enemyController.enemyManager = this;
         enemyController.level = level;
+        enemyController.gameState = gameState;
 
         enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
         enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
@@ -413,7 +414,7 @@ public class EnemyManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Suspend the coroutine until the game is active
-        while (GameManager.instance.isGameActive == false)
+        while (gameState.currentState != GameStateEnum.Active)
         {
             yield return null;
         }
@@ -442,6 +443,7 @@ public class EnemyManager : MonoBehaviour
         enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
         enemyController.isBoss = true;
         enemyController.level = level;
+        enemyController.gameState = gameState;
 
         enemies.Add(newEnemy);
         bossEnemies.Add(newEnemy);
@@ -477,7 +479,7 @@ public class EnemyManager : MonoBehaviour
             enemies.Remove(enemy);
             totalEnemiesKilled++;
             Debug.Log("Boss Enemies alive: " + _bossEnemiesCount);
-            GameManager.instance.OnBossEnemyDied(enemy);
+
             Destroy(enemy);
             onBossDied.Invoke(enemy.transform.position);
             return;
@@ -492,7 +494,7 @@ public class EnemyManager : MonoBehaviour
         totalEnemiesKilled++;
         
         enemies.Remove(enemy);
-        GameManager.instance.OnEnemyDied(enemy);
+
         onEnemyDied.Invoke(enemy.transform.position);
         Destroy(enemy);
     }
@@ -501,7 +503,7 @@ public class EnemyManager : MonoBehaviour
     {
         _waveIndex++;
         // to get the bonus gold we need to get the time difference between the start and end of the block.
-        var timeDifference = gameManager.roundTime - _currentWaveData.startTime;
+        var timeDifference = timer.roundTime - _currentWaveData.startTime;
         // assuming max bonus is the duration of the wave, and at double time we have no bonus.
         var bonusPercentage = _currentWave.blockTime * 2 - timeDifference;
         // clamp the bonus percentage to 0 - 100
@@ -541,7 +543,7 @@ public class EnemyManager : MonoBehaviour
             _blockIndex++;
             if (_blockIndex >= enemySpawnRound.enemySpawnBlocks.Count)
             {
-                GameManager.instance.WinGame();
+                gameState.WinGame();
                 return;
             }
 
@@ -554,12 +556,11 @@ public class EnemyManager : MonoBehaviour
         }
         
         _thisWave++;
-        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
         
         _currentWave = _currentSpawnWaves[_waveIndex];
         _currentWaveData = new WaveRuntimeData
         {
-            startTime = gameManager.roundTime
+            startTime = timer.roundTime
         };
         WaveDatas.Add(_currentWaveData);
         InitializeNewWave();

@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
+using Classic.Game;
 using UnityEngine;
 
     public class AudioManager : MonoBehaviour
     {
+        [SerializeField] private GameState gameState;
+        
         private static AudioManager _instance;
         public static AudioManager instance
         {
@@ -72,7 +75,7 @@ using UnityEngine;
             }
  
             
-            if (GameManager.instance.isGameActive)
+            if (gameState.currentState == GameStateEnum.Active)
             {
                 _musicVolume = Mathf.Lerp(_musicVolume, SettingsManager.instance.musicVolume, Time.deltaTime);
             }

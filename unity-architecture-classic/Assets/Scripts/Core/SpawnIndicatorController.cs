@@ -11,7 +11,7 @@ public class SpawnIndicatorController : MonoBehaviour
     {
             var p = Instantiate(spawnIndicatorFinishedParticle, transform.position, Quaternion.identity);
             p.transform.localScale = Vector3.one * 0.4f;
-            GameManager.instance.StartCoroutine(DestroyAfter(p));
+            AudioManager.instance.StartCoroutine(DestroyAfter(p));
     }
 
     private IEnumerator DestroyAfter(GameObject obj)

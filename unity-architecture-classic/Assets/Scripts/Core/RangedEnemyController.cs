@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Classic.Game;
 using UnityEngine;
 
 public class RangedEnemyController : EnemyController
@@ -28,7 +29,7 @@ public class RangedEnemyController : EnemyController
 
     protected override void Update()
     {
-        if (GameManager.instance.isGameActive == false) return;
+        if (gameState.currentState != GameStateEnum.Active) return;
 
         if (isKnockedBack) return;
 
@@ -117,6 +118,7 @@ public class RangedEnemyController : EnemyController
             // Create and setup the projectile
             var projectileGo = Instantiate(projectilePrefab, transform.position, Quaternion.LookRotation(dir));
             var projectile = projectileGo.GetComponent<Projectile>();
+            projectile.gameState = gameState;
             projectile.damage = damageAmount;
             projectile.projectileSpeed = projectileSpeed;
         }

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Classic.Game;
 using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
+    [SerializeField] private GameState gameState;    
     public PlayerController playerController;
     private Transform _transformToFollow;
 
@@ -25,7 +27,7 @@ public class PlayerAnimationController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (!GameManager.instance.isGameActive) return;
+        if (gameState.currentState != GameStateEnum.Active) return;
         var gunRotation = Quaternion.LookRotation(playerController.targetDirection);
         gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, gunRotation, Time.deltaTime * gunRotationSpeed);
         _transform.position = _transformToFollow.position + offset;

@@ -1,13 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Game
 {
     public class Gold : MonoBehaviour
     {
+        [SerializeField] private GameState state;
         [field:SerializeField] public int amount { get; private set; } = 0;
         [field:SerializeField] public int totalEarned { get; private set; } = 0;
         public UnityEvent<int> onGoldChanged = new();
+
+        private void OnEnable()
+        {
+            state.onGameLost.AddListener(AddGameWhenGoldEnds);
+            state.onGameWon.AddListener(AddGameWhenGoldEnds);
+        }
+
+        private void OnDisable()
+        {
+            state.onGameLost.RemoveListener(AddGameWhenGoldEnds);
+            state.onGameWon.RemoveListener(AddGameWhenGoldEnds);
+        }
 
         public void AddGold(int difference)
         {
@@ -19,7 +33,7 @@ namespace Classic.Game
 
         public void RemoveGold(int difference)
         {
-            this.amount -= difference;
+            amount -= difference;
             Save();
             onGoldChanged.Invoke(this.amount);
         }
@@ -50,6 +64,16 @@ namespace Classic.Game
             totalEarned = 0;
             Save();
             onGoldChanged.Invoke(amount);
+        }
+
+        public void AddGameWhenGoldEnds()
+        {
+            // get the enemy manager
+            var enemyManager = FindObjectOfType<EnemyManager>();
+
+            var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
+
+            AddGold(totalGold);
         }
     }
 }

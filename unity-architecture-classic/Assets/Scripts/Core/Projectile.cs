@@ -1,4 +1,5 @@
 using System.Collections;
+using Classic.Game;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -15,10 +16,12 @@ public class Projectile : MonoBehaviour
     
     public ParticleSystem hitEffect;
 
+    public GameState gameState;
+
     // Update is called once per frame
     private void Update()
     {
-        if (GameManager.instance.isGameActive == false) return;
+        if (gameState.currentState != GameStateEnum.Active) return;
 
         if (_timeAlive > projectileLifetime)
             Destroy(gameObject);
@@ -60,7 +63,7 @@ public class Projectile : MonoBehaviour
         if (hitEffect != null)
         {
             var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-            GameManager.instance.StartCoroutine(DestroyAfter(effect));
+            gameState.StartCoroutine(DestroyAfter(effect));
         }
         Destroy(gameObject);
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Classic.Game;
 using UnityEngine;
 
 public class ChargeEnemyController : EnemyController
@@ -23,7 +24,7 @@ public class ChargeEnemyController : EnemyController
     
     protected override void Update()
     {
-        if(GameManager.instance.isGameActive == false) return;
+        if(gameState.currentState != GameStateEnum.Active) return;
         healthBarUI.transform.rotation = uiStartRotation;
         if(isKnockedBack) return;
         if(_isCharging) return;
@@ -97,7 +98,7 @@ public class ChargeEnemyController : EnemyController
             chargedDistance += distanceThisFrame;
             ClampTransformToLevelBounds();
             
-            if(GameManager.instance.isGameActive == false)
+            if(gameState.currentState != GameStateEnum.Active)
             {
                 _isCharging = false;
                 yield break;

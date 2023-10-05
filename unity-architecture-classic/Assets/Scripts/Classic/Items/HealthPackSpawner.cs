@@ -9,6 +9,7 @@ namespace Classic.Items
     {
         [SerializeField] private Stats stats;
         [SerializeField] private HealthPackController healthPackPrefab;
+        [SerializeField] private GameState gameState;
 
         private readonly List<HealthPackController> _healthPacks = new();
 
@@ -20,6 +21,7 @@ namespace Classic.Items
             
             var pos = new Vector3(position.x, 0f, position.z);
             var healthPack = Instantiate(healthPackPrefab, pos, Quaternion.identity);
+            healthPack.gameState = gameState;
             _healthPacks.Add(healthPack);
         }
 

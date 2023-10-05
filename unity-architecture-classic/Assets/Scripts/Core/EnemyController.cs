@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
         RandomLocation
     }
 
+    public GameState gameState;
+
     [Header("Dependencies")] public Level level;
     
     [Header("References")]
@@ -70,7 +72,7 @@ public class EnemyController : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(GameManager.instance.isGameActive == false) return;
+        if(gameState.currentState != GameStateEnum.Active) return;
         
         if(isKnockedBack) return;
 
@@ -219,7 +221,7 @@ public class EnemyController : MonoBehaviour
             var pos = transform.position;
             var projectedPosition = new Vector3(pos.x, 0,pos.z);
             var dead = Instantiate(this.deathEffect, projectedPosition, Quaternion.identity);
-            GameManager.instance.StartCoroutine(DestroyAfter(dead.gameObject));
+            enemyManager.StartCoroutine(DestroyAfter(dead.gameObject));
             enemyManager.EnemyDied(gameObject);
         }
         else

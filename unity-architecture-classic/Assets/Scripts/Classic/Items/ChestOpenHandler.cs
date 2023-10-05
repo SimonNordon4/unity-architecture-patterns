@@ -22,9 +22,6 @@ namespace Classic.Items
             currentChest = chest;
             gameState.PauseGame();
             uiState.GoToChestMenu();
-            
-            // Temporary
-            GameManager.instance.isGameActive = false;
         }
 
         public void SelectItem(ChestItem item)
@@ -34,9 +31,6 @@ namespace Classic.Items
             uiState.GoToHud();
             
             inventory.AddChestItem(item);
-            
-            // Temporary
-            GameManager.instance.isGameActive = true;
             
             Destroy(currentChest.gameObject);
             currentChest = null;

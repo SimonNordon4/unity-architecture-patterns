@@ -23,6 +23,8 @@ namespace Classic.Items
         private ChestItem[][] _allItems;
         private Dictionary<ChestType, Chest> _chestTypes;
 
+        private int _pityLuck;
+
         private void Start()
         {
             _allItems = new[]
@@ -171,13 +173,13 @@ namespace Classic.Items
             // 7 luck = 140 - 200.
 
 
-            var tier5Chance = 0.005f + GameManager.instance.pityLuck * 0.0005f;
+            var tier5Chance = 0.005f + _pityLuck * 0.0005f;
             var tier5Break = 200 - 200 * tier5Chance;
 
-            var tier4Chance = 0.02f + GameManager.instance.pityLuck * 0.002f;
+            var tier4Chance = 0.02f + _pityLuck * 0.002f;
             var tier4Break = tier5Break - 200 * tier4Chance;
 
-            var tier3Chance = 0.08f + GameManager.instance.pityLuck * 0.008f;
+            var tier3Chance = 0.08f + _pityLuck * 0.008f;
             var tier3Break = tier4Break - 200 * tier3Chance;
 
             // T2 remains at 16% and does not scale.
@@ -196,11 +198,11 @@ namespace Classic.Items
 
             if (tier < 3)
             {
-                GameManager.instance.pityLuck++;
+                _pityLuck++;
             }
             else
             {
-                GameManager.instance.pityLuck = 0;
+                _pityLuck = 0;
             }
             tier = Mathf.Clamp(tier, chest.tiers.x, chest.tiers.y);
             return tier;

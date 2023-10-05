@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
         [Header("Dependencies")]
         public Stats stats;
         public Level level;
+        public GameState gameState;
         
         public int playerCurrentHealth = 10;
     
@@ -113,7 +114,7 @@ public class PlayerController : MonoBehaviour
                     transform.position.y,
                     Mathf.Clamp(desiredPos.z, -level.bounds.y, level.bounds.y));
                 
-                if (!GameManager.instance.isGameActive)
+                if (gameState.currentState != GameStateEnum.Active)
                 {
                     _isDashing = false;
                     yield break;
@@ -128,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
         private void Update()
         {
-            if(!GameManager.instance.isGameActive) return;
+            if(gameState.currentState != GameStateEnum.Active) return;
 
             if (Input.GetKeyDown(KeyCode.Space) && (int)stats.dashes.value > 0 && !_isDashing)
             {
@@ -254,12 +255,14 @@ public class PlayerController : MonoBehaviour
             projectile.knockBackIntensity = stats.projectileKnockBack.value;
             projectile.pierceCount = (int)stats.projectilePierce.value;
             _timeSinceLastFire = 0.0f;
+            projectile.gameState = gameState;
         }
 
         private void ShootPredictive()
         {
                 var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.identity);
                 var projectile = projectileGo.GetComponent<Projectile>();
+                projectile.gameState = gameState;
     
                 // Calculate the time it would take for the projectile to reach the target's current position
                 var distanceToTarget = Vector3.Distance(_transform.position, _closestTarget.position);
@@ -449,7 +452,7 @@ public class PlayerController : MonoBehaviour
                 
                 AccountManager.instance.statistics.totalDeaths++;
                 AudioManager.instance.PlaySound(deathSound);
-                GameManager.instance.LoseGame();
+                gameState.LoseGame();
                 onPlayerDeath.Invoke();
                 
                 // List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
