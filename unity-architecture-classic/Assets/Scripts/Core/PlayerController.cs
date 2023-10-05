@@ -15,9 +15,6 @@ public class PlayerController : MonoBehaviour
         public Stats stats;
         public Level level;
         public GameState gameState;
-        
-        public int playerCurrentHealth = 10;
-    
         public UnityEvent onPlayerDeath = new();
         public UnityEvent<int> onPlayerDamaged = new();
         public UnityEvent<int> onPlayerHealed = new();
@@ -212,26 +209,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-
-            var dir = Vector3.zero;
-
-
-            // Check if the player is at the level bounds, if they are, make sure they cant move in the direction of the bound
-            if (_transform.position.x <= -level.bounds.x && dir.x < 0)
-                dir.x = 0;
-            if (_transform.position.x >= level.bounds.x && dir.x > 0)
-                dir.x = 0;
-            if (_transform.position.z <= -level.bounds.y && dir.z < 0)
-                dir.z = 0;
-            if (_transform.position.z >= level.bounds.y && dir.z > 0)
-                dir.z = 0;
-
-            // Apply movement
-            if (dir.magnitude > 0)
-            {
-                _transform.position += dir.normalized * (Time.deltaTime * stats.playerSpeed.value);
-                _transform.rotation = Quaternion.LookRotation(dir);
-            }
         }
 
         private void Shoot()
@@ -376,75 +353,75 @@ public class PlayerController : MonoBehaviour
         swordPivot.gameObject.SetActive(false);
     }
         
-        public void TakeDamage(int damageAmount)
-        {
-            if (!_canTakeDamage) return;
-            if (_isDashing) return;
-            // Check if damage is dodged.
-            var hitChance = Random.Range(0, 100);
-
-            if (hitChance < stats.dodge.value)
-            {
-                if(_dodgeTextCoroutine != null) StopCoroutine(_dodgeTextCoroutine);
-                _dodgeTextCoroutine = StartCoroutine(ShowDodgeText());
-                return;
-            }
-            
-            damageAmount -= (int)stats.block.value;
-            // We should never be invincible imo.
-            if (damageAmount <= 0)
-            {
-                damageAmount = 0;
-            }
-            
-
-
-            if (_damageTextCoroutine != null)
-            {
-                StopCoroutine(_damageTextCoroutine);
-            }
-
-            _damageTextCoroutine = StartCoroutine(ShowDamageText(damageAmount));
-
-            AudioManager.instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
-            
-            playerCurrentHealth -= damageAmount;
-            onPlayerDamaged.Invoke(damageAmount);
-
-            if (playerCurrentHealth <= 0)
-            {
-                playerCurrentHealth = 0;
-
-                if ((int)stats.revives.value > 0)
-                {
-                    reviveParticle.Play();
-                    stats.revives.value--;
-                    
-                    var enemyCount = enemyManager.enemies.Count;
-                    var enemies = enemyManager.enemies.ToArray();
-                    for (var i = 0; i < enemyCount - 1; i++)
-                    {
-                        var controller = enemies[i].GetComponent<EnemyController>();
-                        if (controller != null)
-                        {
-                            controller.TakeDamage(9999);
-                        }
-                            
-                    }
-                    
-                    playerCurrentHealth = (int)stats.playerHealth.value;
-                    StartCoroutine(InvincibilityFrames());
-
-                    return;
-                }
-                
- 
-                AudioManager.instance.PlaySound(deathSound);
-                gameState.LoseGame();
-                onPlayerDeath.Invoke();
-            }
-            SetUI();
-        }
+        // public void TakeDamage(int damageAmount)
+        // {
+        //     if (!_canTakeDamage) return;
+        //     if (_isDashing) return;
+        //     // Check if damage is dodged.
+        //     var hitChance = Random.Range(0, 100);
+        //
+        //     if (hitChance < stats.dodge.value)
+        //     {
+        //         if(_dodgeTextCoroutine != null) StopCoroutine(_dodgeTextCoroutine);
+        //         _dodgeTextCoroutine = StartCoroutine(ShowDodgeText());
+        //         return;
+        //     }
+        //     
+        //     damageAmount -= (int)stats.block.value;
+        //     // We should never be invincible imo.
+        //     if (damageAmount <= 0)
+        //     {
+        //         damageAmount = 0;
+        //     }
+        //     
+        //
+        //
+        //     if (_damageTextCoroutine != null)
+        //     {
+        //         StopCoroutine(_damageTextCoroutine);
+        //     }
+        //
+        //     _damageTextCoroutine = StartCoroutine(ShowDamageText(damageAmount));
+        //
+        //     AudioManager.instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
+        //     
+        //     playerCurrentHealth -= damageAmount;
+        //     onPlayerDamaged.Invoke(damageAmount);
+        //
+        //     if (playerCurrentHealth <= 0)
+        //     {
+        //         playerCurrentHealth = 0;
+        //
+        //         if ((int)stats.revives.value > 0)
+        //         {
+        //             reviveParticle.Play();
+        //             stats.revives.value--;
+        //             
+        //             var enemyCount = enemyManager.enemies.Count;
+        //             var enemies = enemyManager.enemies.ToArray();
+        //             for (var i = 0; i < enemyCount - 1; i++)
+        //             {
+        //                 var controller = enemies[i].GetComponent<EnemyController>();
+        //                 if (controller != null)
+        //                 {
+        //                     controller.TakeDamage(9999);
+        //                 }
+        //                     
+        //             }
+        //             
+        //             playerCurrentHealth = (int)stats.playerHealth.value;
+        //             StartCoroutine(InvincibilityFrames());
+        //
+        //             return;
+        //         }
+        //         
+        //
+        //         AudioManager.instance.PlaySound(deathSound);
+        //         gameState.LoseGame();
+        //         onPlayerDeath.Invoke();
+        //     }
+        //     SetUI();
+        // }
         
         private IEnumerator InvincibilityFrames()
         {
@@ -508,31 +485,16 @@ public class PlayerController : MonoBehaviour
 
         public void OnTriggerEnter(Collider other)
         {
-            
             if(other.CompareTag("Spawn Indicator"))
             {
                 Destroy(other.gameObject);   
-            }
-
-            if (other.CompareTag("Health Pack"))
-            {
-                AudioManager.instance.PlaySound(healthPackSound);
-                var healthGained = (int)Mathf.Clamp( (playerCurrentHealth + stats.playerHealth.value * 0.1f + 1), 
-                    0f, 
-                    stats.playerHealth.value);
-                
-                playerCurrentHealth = healthGained;
-                
-                onPlayerHealed.Invoke(healthGained);
-                
-                Destroy(other.gameObject);
             }
         }
         
         private void SetUI()
         {
-            healthText.text = $"{playerCurrentHealth}/{(int)stats.playerHealth.value}";
-            healthBar.fillAmount =  (float)playerCurrentHealth / (int)stats.playerHealth.value;
+            // healthText.text = $"{playerCurrentHealth}/{(int)stats.playerHealth.value}";
+            // healthBar.fillAmount =  (float)playerCurrentHealth / (int)stats.playerHealth.value;
         }
 
         public void ResetPlayer()

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Classic.Actor;
 using Classic.Game;
 using TMPro;
 using UnityEngine;
@@ -251,20 +252,10 @@ public class EnemyController : MonoBehaviour
     protected virtual void OnTriggerStay(Collider other)
     {
         // Continuously damage the player.
-        if (other.CompareTag("Player"))
-        {
-            var playerController = other.GetComponent<PlayerController>();
-            if (playerController != null)
-            {
-                if (_timeSinceLastDamage >= damageCooldown)
-                {
-                    
-                    playerController.TakeDamage(damageAmount);
-                    _timeSinceLastDamage = 0f;
-                }
-
-            }
-        }
+        if (!other.CompareTag("Player")) return;
+        if (!TryGetComponent<DamageReceiver>(out var damageReceiver)) return;
+        damageReceiver.TakeDamage(damageAmount);
+        _timeSinceLastDamage = 0f;
     }
     
     protected virtual void OnTriggerExit(Collider other)

@@ -1,4 +1,5 @@
 using System.Collections;
+using Classic.Actor;
 using Classic.Game;
 using UnityEngine;
 
@@ -47,15 +48,14 @@ public class Projectile : MonoBehaviour
                 Die();
         }
 
-        if (canAttackPlayer && other.CompareTag("Player"))
-        {
-            var playerController = other.GetComponent<PlayerController>();
-            playerController.TakeDamage(damage);
-            pierceCount--;
-            if (pierceCount <= 0)
-                Die();
-
-        }
+        if (!canAttackPlayer || !other.CompareTag("Player")) return;
+        
+        if (!TryGetComponent<DamageReceiver>(out var damageReceiver)) return;
+        
+        damageReceiver.TakeDamage(damage);
+        pierceCount--;
+        if (pierceCount <= 0)
+            Die();
     }
 
     private void Die()

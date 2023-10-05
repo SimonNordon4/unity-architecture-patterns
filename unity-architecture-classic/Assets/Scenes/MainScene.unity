@@ -4902,6 +4902,8 @@ GameObject:
   - component: {fileID: 460763661}
   - component: {fileID: 460763662}
   - component: {fileID: 460763663}
+  - component: {fileID: 460763665}
+  - component: {fileID: 460763664}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -4924,7 +4926,6 @@ MonoBehaviour:
   stats: {fileID: 439529839}
   level: {fileID: 1358396558}
   gameState: {fileID: 1358396559}
-  playerCurrentHealth: 10
   onPlayerDeath:
     m_PersistentCalls:
       m_Calls:
@@ -5119,6 +5120,52 @@ MonoBehaviour:
   leftKey: 97
   downKey: 115
   rightKey: 100
+--- !u!114 &460763664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460763655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d5dcf153954eada851c1fe2f12e7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  stats: {fileID: 439529839}
+  damageReceiver: {fileID: 460763665}
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  onRevive:
+    m_PersistentCalls:
+      m_Calls: []
+  onBlock:
+    m_PersistentCalls:
+      m_Calls: []
+  onDodge:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  <currentHealth>k__BackingField: 0
+--- !u!114 &460763665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460763655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &460906800
 GameObject:
   m_ObjectHideFlags: 0
@@ -9519,6 +9566,7 @@ GameObject:
   - component: {fileID: 900014454}
   - component: {fileID: 900014453}
   - component: {fileID: 900014455}
+  - component: {fileID: 900014456}
   m_Layer: 5
   m_Name: Health Bar
   m_TagString: Untagged
@@ -9598,6 +9646,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionX: 364.16675
   positionY: -46
+--- !u!114 &900014456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900014451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8294ec6cab524d7cb8ab7f7da2f01c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 439529839}
+  health: {fileID: 460763664}
+  healthBar: {fileID: 1341389984}
+  healthText: {fileID: 1823057254}
 --- !u!1 &903076556
 GameObject:
   m_ObjectHideFlags: 0

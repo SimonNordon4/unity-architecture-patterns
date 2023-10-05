@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Classic.Actor;
 using Classic.Game;
 using UnityEngine;
 
@@ -119,14 +120,10 @@ public class ChargeEnemyController : EnemyController
     {
         if (_isCharging)
         {
-            if (other.CompareTag("Player"))
+            if (!other.CompareTag("Player")) return;
+            if(TryGetComponent<DamageReceiver>(out var damageReceiver))
             {
-                var playerController = other.GetComponent<PlayerController>();
-                if (playerController != null)
-                {
-                        playerController.TakeDamage(damageAmount);
-
-                }
+                damageReceiver.TakeDamage(damageAmount);
             }
         }
         else
