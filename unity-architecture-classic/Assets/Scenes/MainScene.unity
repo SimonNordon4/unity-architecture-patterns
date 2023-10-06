@@ -4621,7 +4621,7 @@ MonoBehaviour:
     _modifiers: []
     value: 0
   <dashes>k__BackingField:
-    initialValue: 1
+    initialValue: 99
     minimumValue: 0
     maximumValue: Infinity
     statType: 18
@@ -4907,6 +4907,7 @@ GameObject:
   - component: {fileID: 460763666}
   - component: {fileID: 460763667}
   - component: {fileID: 460763668}
+  - component: {fileID: 460763669}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -5246,6 +5247,25 @@ MonoBehaviour:
   state: {fileID: 1358396559}
   projectilePrefab: {fileID: 3234301062938793157, guid: 7c63aa3a650f02b4594fc8b55be3e4f5, type: 3}
   poolSize: 10
+--- !u!114 &460763669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460763655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3779b313a354abf9c9f236c22257e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 439529839}
+  state: {fileID: 1358396559}
+  movement: {fileID: 460763662}
+  dashKey: 32
+  level: {fileID: 1358396558}
+  dashDistance: 5
+  dashTime: 0.3
 --- !u!1 &460906800
 GameObject:
   m_ObjectHideFlags: 0
