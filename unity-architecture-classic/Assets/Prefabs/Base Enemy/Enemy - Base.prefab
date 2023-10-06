@@ -31,7 +31,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2285342751627323855}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -166,7 +165,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2285342751627323855}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -285,7 +283,7 @@ GameObject:
   - component: {fileID: 3870971954837827274}
   - component: {fileID: 6122935295379838378}
   - component: {fileID: 7149289984790204046}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy - Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -299,6 +297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2838750125501055508}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -307,7 +306,6 @@ Transform:
   - {fileID: 6438303556230869343}
   - {fileID: 2285342751627323855}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6647865408651521396
 MeshFilter:
@@ -394,18 +392,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 883858374b3946c4986504b743f5b301, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: {fileID: 0}
+  level: {fileID: 0}
+  settings: {fileID: 0}
   enemyManager: {fileID: 0}
   isBoss: 0
   healthBarUI: {fileID: 6553713921573768747}
   healthText: {fileID: 5908649954107002816}
   damageText: {fileID: 4560450972172494899}
+  moveBehaviour: 0
   playerTarget: {fileID: 0}
   moveSpeed: 4
   repulsionForce: 2
   knockBackFactor: 1
+  isUnstoppable: 0
+  isKnockedBack: 0
   currentHealth: 5
   damageAmount: 1
   damageCooldown: 1
+  deathEffect: {fileID: 0}
+  spawnIndicator: {fileID: 0}
+  deathSound: {fileID: 0}
+  onHitSound: {fileID: 0}
+  attackSound: {fileID: 0}
 --- !u!54 &6122935295379838378
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -473,13 +482,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4412862681391278200}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.5}
   m_LocalScale: {x: 0.2, y: 0.20000002, z: 0.20000002}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7186381532623135110}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &4759737150053253292
 MeshFilter:
@@ -565,7 +574,6 @@ RectTransform:
   - {fileID: 4832461899541776181}
   - {fileID: 7326280218448668251}
   m_Father: {fileID: 7186381532623135110}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

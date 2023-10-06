@@ -28,7 +28,7 @@ public class PlayerAnimationController : MonoBehaviour
     void LateUpdate()
     {
         if (gameState.currentState != GameStateEnum.Active) return;
-        var gunRotation = Quaternion.LookRotation(playerController.targetDirection);
+        var gunRotation = Quaternion.LookRotation(playerController.targetDirection.magnitude > 0 ? playerController.targetDirection : Vector3.forward);
         gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, gunRotation, Time.deltaTime * gunRotationSpeed);
         _transform.position = _transformToFollow.position + offset;
         _transform.rotation = Quaternion.Lerp(_transform.rotation, _transformToFollow.rotation, Time.deltaTime * rotationSpeed);

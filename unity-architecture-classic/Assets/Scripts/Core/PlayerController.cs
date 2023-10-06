@@ -213,6 +213,7 @@ public class PlayerController : MonoBehaviour
 
         private void Shoot()
         {
+            return;
             var directionToTarget = Vector3
                 .ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
             var projectileGo = Instantiate(projectilePrefab, _transform.position,
@@ -227,6 +228,7 @@ public class PlayerController : MonoBehaviour
 
         private void ShootPredictive()
         {
+                return;
                 var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.identity);
                 var projectile = projectileGo.GetComponent<Projectile>();
                 projectile.gameState = gameState;

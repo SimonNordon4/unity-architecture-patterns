@@ -4898,12 +4898,15 @@ GameObject:
   - component: {fileID: 460763659}
   - component: {fileID: 460763658}
   - component: {fileID: 460763657}
-  - component: {fileID: 460763656}
   - component: {fileID: 460763661}
+  - component: {fileID: 460763656}
   - component: {fileID: 460763662}
   - component: {fileID: 460763663}
   - component: {fileID: 460763665}
   - component: {fileID: 460763664}
+  - component: {fileID: 460763666}
+  - component: {fileID: 460763667}
+  - component: {fileID: 460763668}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -4918,7 +4921,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460763655}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ca78bcd5f86e714eba6bbe368ef4b73, type: 3}
   m_Name: 
@@ -5166,6 +5169,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &460763666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460763655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aaca0bf689f4c608425493e7e400f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  stats: {fileID: 439529839}
+  updateInterval: 0.05
+  <targetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &460763667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460763655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada34511f3b6429b8259a7c037309caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  stats: {fileID: 439529839}
+  target: {fileID: 460763666}
+  pool: {fileID: 460763668}
+  projectileSpawnPoint: {fileID: 1308151051}
+  onShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1926671862}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 62b2c577a034cfe429f46d850500a392, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SoundDefinition, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1308151052}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &460763668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 460763655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b819001dfb6a04a881a353d13335de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  projectilePrefab: {fileID: 3234301062938793157, guid: 7c63aa3a650f02b4594fc8b55be3e4f5, type: 3}
+  poolSize: 10
 --- !u!1 &460906800
 GameObject:
   m_ObjectHideFlags: 0
