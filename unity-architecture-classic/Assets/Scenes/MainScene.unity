@@ -4920,12 +4920,10 @@ GameObject:
   - component: {fileID: 460763658}
   - component: {fileID: 460763657}
   - component: {fileID: 460763661}
-  - component: {fileID: 460763662}
-  - component: {fileID: 460763663}
   - component: {fileID: 460763665}
-  - component: {fileID: 460763669}
+  - component: {fileID: 460763666}
   m_Layer: 6
-  m_Name: Character Movement
+  m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5018,6 +5016,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1946619692}
+  - {fileID: 1961855404}
   - {fileID: 1817465890}
   - {fileID: 7481550565855445088}
   - {fileID: 103727847}
@@ -5051,39 +5050,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &460763662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460763655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33e96307f201416b8a13208e897ac116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
-  stats: {fileID: 439529839}
-  level: {fileID: 1358396558}
---- !u!114 &460763663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460763655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5910c32c4c7472a9d29e07b5951e1e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
-  movement: {fileID: 460763662}
-  upKey: 119
-  leftKey: 97
-  downKey: 115
-  rightKey: 100
 --- !u!114 &460763665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5096,7 +5062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &460763669
+--- !u!114 &460763666
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5105,43 +5071,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 460763655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3779b313a354abf9c9f236c22257e89, type: 3}
+  m_Script: {fileID: 11500000, guid: ea1de7e57a8f78644ad79f04a416b609, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 439529839}
   state: {fileID: 1358396559}
-  movement: {fileID: 460763662}
-  dashKey: 32
-  level: {fileID: 1358396558}
-  dashDistance: 5
-  dashTime: 0.3
-  onDash:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 547831697}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1926671862}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
-          m_ObjectArgumentAssemblyTypeName: SoundDefinition, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  characterObjects:
+  - {fileID: 1946619691}
+  - {fileID: 1961855403}
+  - {fileID: 1817465889}
 --- !u!1 &460906800
 GameObject:
   m_ObjectHideFlags: 0
@@ -21988,7 +21925,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aaca0bf689f4c608425493e7e400f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
   stats: {fileID: 439529839}
   updateInterval: 0.05
   <targetLayer>k__BackingField:
@@ -22058,7 +21994,121 @@ MonoBehaviour:
       m_Calls: []
   target: {fileID: 1946619693}
   swordPivot: {fileID: 2059146197}
+  transformToFollow: {fileID: 460763660}
   stats: {fileID: 439529839}
+--- !u!1 &1961855403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1961855404}
+  - component: {fileID: 1961855407}
+  - component: {fileID: 1961855406}
+  - component: {fileID: 1961855405}
+  m_Layer: 6
+  m_Name: Character Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961855404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961855403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 460763660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961855405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961855403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3779b313a354abf9c9f236c22257e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTransform: {fileID: 460763660}
+  stats: {fileID: 439529839}
+  movement: {fileID: 1961855406}
+  dashKey: 32
+  level: {fileID: 1358396558}
+  dashDistance: 5
+  dashTime: 0.3
+  onDash:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 547831697}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1926671862}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SoundDefinition, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1961855406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961855403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e96307f201416b8a13208e897ac116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterTransform: {fileID: 460763660}
+  state: {fileID: 1358396559}
+  stats: {fileID: 439529839}
+  level: {fileID: 1358396558}
+--- !u!114 &1961855407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961855403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5910c32c4c7472a9d29e07b5951e1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 1961855406}
+  upKey: 119
+  leftKey: 97
+  downKey: 115
+  rightKey: 100
 --- !u!1 &1968352342
 GameObject:
   m_ObjectHideFlags: 0

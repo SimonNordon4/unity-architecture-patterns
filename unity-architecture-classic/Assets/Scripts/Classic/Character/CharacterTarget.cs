@@ -1,12 +1,12 @@
 ﻿using Classic.Actor;
 using Classic.Game;
+using Classic.Interfaces;
 using UnityEngine;
 
 namespace Classic.Character
 {
-    public class CharacterTarget : MonoBehaviour
+    public class CharacterTarget : MonoBehaviour, IResettable
     {
-        [SerializeField] private GameState state;
         [SerializeField] private Stats stats;
         [SerializeField] private float updateInterval = 0.05f;
         private float _timeSinceLastUpdate;
@@ -49,8 +49,6 @@ namespace Classic.Character
 
         private void Update()
         {
-            if (!state.isGameActive) return;
-            
             if(_timeSinceLastUpdate < updateInterval)
             {
                 _timeSinceLastUpdate += Time.deltaTime;

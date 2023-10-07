@@ -20,56 +20,56 @@ namespace Classic.Game
         private void Start()
         {
             currentState = GameStateEnum.Idle;
-            onStateChanged.Invoke();
             GameTime.timeScale = 0f;
+            onStateChanged.Invoke();
         }
 
         public void StartNewGame()
         {
             currentState = GameStateEnum.Active;
+            GameTime.timeScale = 1f;
             onGameStart.Invoke();
             onStateChanged.Invoke();
-            GameTime.timeScale = 1f;
         }
         
         public void PauseGame()
         {
             currentState = GameStateEnum.Paused;
+            GameTime.timeScale = 0f;
             onGamePause.Invoke();
             onStateChanged.Invoke();
-            GameTime.timeScale = 0f;
         }
         
         public void ResumeGame()
         {
             currentState = GameStateEnum.Active;
+            GameTime.timeScale = 1f;
             onGameResume.Invoke();
             onStateChanged.Invoke();
-            GameTime.timeScale = 1f;
         }
 
         public void WinGame()
         {
             currentState = GameStateEnum.Idle;
+            GameTime.timeScale = 0f;
             onGameWon.Invoke();
             onStateChanged.Invoke();
-            GameTime.timeScale = 0f;
         }
         
         public void LoseGame()
         {
             currentState = GameStateEnum.Idle;
+            GameTime.timeScale = 0f;
             onGameLost.Invoke();
             onStateChanged.Invoke();
-            GameTime.timeScale = 0f;
         }
 
         public void QuitGame()
         {
             currentState = GameStateEnum.Idle;
+            GameTime.timeScale = 0f;
             onGameQuit.Invoke();
             onStateChanged.Invoke();
-            GameTime.timeScale = 0f;
         }
     }
     

@@ -1,11 +1,12 @@
 ﻿using Classic.Actor;
 using Classic.Game;
+using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Character
 {
-    public class CharacterShooting : MonoBehaviour
+    public class CharacterShooting : MonoBehaviour, IResettable
     {
         [SerializeField] private GameState state;
         [SerializeField] private Stats stats;
@@ -29,7 +30,6 @@ namespace Classic.Character
 
             target.GetClosestTarget();
             if (target.closestTransform is null) return;
-            Debug.Log("Target acquired!");
             Shoot();
             _timeSinceLastShot = 0f;
         }
@@ -81,6 +81,11 @@ namespace Classic.Character
             // projectile.pierceCount = (int)GameManager.instance.pistolPierce.value;
             
             onShoot.Invoke();
+        }
+
+        public void Reset()
+        {
+            _timeSinceLastShot = 0.0f;
         }
     }
 }

@@ -5,7 +5,6 @@ namespace Classic.Character
 {
     public class CharacterKeyboardInput : MonoBehaviour
     {
-        [SerializeField] private GameState state;
         [SerializeField] private CharacterMovement movement;
         [SerializeField] private KeyCode upKey = KeyCode.W;
         [SerializeField] private KeyCode leftKey = KeyCode.A;
@@ -14,8 +13,6 @@ namespace Classic.Character
         
         private void Update()
         {
-            if(!state.isGameActive) return;
-            
             var dir = Vector3.zero;
             if(Input.GetKey(upKey))
                 dir += Vector3.forward;

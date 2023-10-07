@@ -1,10 +1,12 @@
 ﻿using Classic.Game;
+using Classic.Interfaces;
 using UnityEngine;
 
 namespace Classic.Character
 {
-    public class CharacterMovement : MonoBehaviour
+    public class CharacterMovement : MonoBehaviour, IResettable
     {
+        [SerializeField] private Transform characterTransform;
         [SerializeField] private GameState state;
         [SerializeField] private Stats stats;
         [SerializeField] private Level level;
@@ -14,13 +16,12 @@ namespace Classic.Character
 
         private void Awake()
         {
-            _initialOffset = transform.position;
+            _initialOffset = characterTransform.position;
         }
 
         private void OnEnable()
         {
             state.onGameStart.AddListener(Reset);
-            _transform = transform;
         }
 
         private void OnDisable()
@@ -35,13 +36,13 @@ namespace Classic.Character
              var dir = direction;
              
              // Check if the player is at the level bounds, if they are, make sure they cant move in the direction of the bound
-             if (_transform.position.x <= -level.bounds.x && dir.x < 0)
+             if (characterTransform.position.x <= -level.bounds.x && dir.x < 0)
                  dir.x = 0;
-             if (_transform.position.x >= level.bounds.x && dir.x > 0)
+             if (characterTransform.position.x >= level.bounds.x && dir.x > 0)
                  dir.x = 0;
-             if (_transform.position.z <= -level.bounds.y && dir.z < 0)
+             if (characterTransform.position.z <= -level.bounds.y && dir.z < 0)
                  dir.z = 0;
-             if (_transform.position.z >= level.bounds.y && dir.z > 0)
+             if (characterTransform.position.z >= level.bounds.y && dir.z > 0)
                  dir.z = 0;
              
              if(dir.magnitude < 0.01f) return;
@@ -49,12 +50,12 @@ namespace Classic.Character
              var speed = stats.playerSpeed.value;
              var velocity = dir * (speed * GameTime.deltaTime);
 
-             _transform.position += velocity;
-             _transform.rotation = Quaternion.LookRotation(velocity);
+             characterTransform.position += velocity;
+             characterTransform.rotation = Quaternion.LookRotation(velocity);
         }
-        private void Reset()
+        public void Reset()
         {
-            transform.position = _initialOffset;
+            characterTransform.position = _initialOffset;
         }
     }
 }

@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using Classic.Actor;
 using Classic.Game;
+using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Character
 {
-    public class CharacterSwordAttack : MonoBehaviour
+    public class CharacterSwordAttack : MonoBehaviour, IResettable
     {
         public UnityEvent onSwing = new();
         
         [SerializeField] private CharacterTarget target;
         [SerializeField] private Transform swordPivot;
+        [SerializeField] private Transform transformToFollow;
         [SerializeField] private Stats stats;
+        
         
         private bool _isSwingingLeftToRight = true;
         private float _timeSinceLastAttack = 0f;
@@ -26,28 +29,20 @@ namespace Classic.Character
 
         private void Update()
         {
-            swordPivot.transform.position = transform.position;
+            swordPivot.transform.position = transformToFollow.position;
             _timeSinceLastAttack += Time.deltaTime;
             if (_timeSinceLastAttack < stats.attackSpeed.value) return;
             if (_isAttacking) return;
             if (target.closestTransform is null) return;
             if (target.distance > stats.meleeRange.value) return;
             
-            Debug.Log("Attacking!");
-            
             StartCoroutine(SwordAttack());
             onSwing.Invoke();
             _timeSinceLastAttack = 0f;
         }
 
-        private void EnableSword()
-        {
-
-        }
-
         private IEnumerator SwordAttack()
         {
-            Debug.Log("Starting sword attack!");
             _isAttacking = true;
             var swordArc = stats.arc.value;
             // Enable the sword gameobject.
@@ -119,6 +114,14 @@ namespace Classic.Character
             _isAttacking = false;
 
             // Disable the sword gameobject.
+            swordPivot.gameObject.SetActive(false);
+        }
+
+        public void Reset()
+        {
+            swordPivot.forward = transformToFollow.forward;
+            _timeSinceLastAttack = 0f;
+            _isAttacking = false;
             swordPivot.gameObject.SetActive(false);
         }
     }

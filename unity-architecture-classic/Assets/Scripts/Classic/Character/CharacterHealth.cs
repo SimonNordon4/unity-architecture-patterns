@@ -1,13 +1,14 @@
 ﻿using System;
 using Classic.Actor;
 using Classic.Game;
+using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = System.Random;
 
 namespace Classic.Character
 {
-    public class CharacterHealth : MonoBehaviour
+    public class CharacterHealth : MonoBehaviour, IResettable
     {
         [SerializeField] private GameState state;
         [SerializeField] private Stats stats;

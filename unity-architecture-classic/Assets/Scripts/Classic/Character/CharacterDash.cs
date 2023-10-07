@@ -1,13 +1,14 @@
 ﻿using Classic.Game;
+using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Character
 {
-    public class CharacterDash : MonoBehaviour
+    public class CharacterDash : MonoBehaviour, IResettable
     {
+        [SerializeField] private Transform characterTransform;
         [SerializeField] private Stats stats;
-        [SerializeField] private GameState state;
         [SerializeField] private CharacterMovement movement;
         [SerializeField] private KeyCode dashKey = KeyCode.Space;
         [SerializeField] private Level level;
@@ -23,15 +24,13 @@ namespace Classic.Character
 
         private void Update()
         {
-            if (!state.isGameActive) return;
-
             if (Input.GetKeyDown(dashKey) && !_isDashing)
             {
                 if (stats.dashes.value <= 0) return;
                 onDash.Invoke();
                 _isDashing = true;
                 movement.enabled = false;
-                _dashDestination = transform.position + movement.direction * dashDistance;
+                _dashDestination = characterTransform.position + movement.direction * dashDistance;
                 _timeSinceDashStarted = 0f;
                 stats.dashes.value--;
             }
@@ -51,16 +50,23 @@ namespace Classic.Character
                     clampedPosition.x = Mathf.Clamp(clampedPosition.x, -level.bounds.x, level.bounds.x);
                     clampedPosition.z = Mathf.Clamp(clampedPosition.z, -level.bounds.y, level.bounds.y);
                     position = clampedPosition;
-                    transform.position = position;
+                    characterTransform.position = position;
                 }
                 else
                 {
                     // Ensure we reach the exact destination and stop dashing
-                    transform.position = _dashDestination;
+                    characterTransform.position = _dashDestination;
                     _isDashing = false;
                     movement.enabled = true;
                 }
             }
+        }
+
+        public void Reset()
+        {
+            _isDashing = false;
+            _timeSinceDashStarted = 0f;
+            movement.enabled = true;
         }
     }
 }
