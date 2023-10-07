@@ -41,7 +41,7 @@ namespace Classic.Character
                 closestDistance = dist;
                 distance = closestDistance;
                 closestTransform = target;
-                targetDirection = (target.position - transform.position).normalized;
+                targetDirection = Vector3.ProjectOnPlane((target.position - transform.position).normalized, Vector3.up);
             }
             
             return closestTransform;

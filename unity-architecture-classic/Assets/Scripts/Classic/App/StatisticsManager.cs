@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Classic.Character;
 using Classic.Game;
 using Classic.Items;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace Classic.App
         [SerializeField] private Gold gold;
         [SerializeField] private Stats stats;
         [SerializeField] private EnemyManager enemyManager;
-        [SerializeField] private PlayerController playerController;
+        [SerializeField] private CharacterHealth characterHealth;
         
         [SerializeField] private List<StatisticDefinition> statisticDefinitions;
         [field:SerializeField] public Statistic[] statistics { get; private set; }
@@ -40,8 +41,8 @@ namespace Classic.App
             gold.onGoldChanged.AddListener(OnGoldChanged);
             stats.onStatChanged.AddListener(OnStatChanged);
             Chest.OnChestPickedUp.AddListener(OnChestPickedUp);
-            playerController.onPlayerDamaged.AddListener(DamageTaken);
-            playerController.onPlayerHealed.AddListener(Healed);
+            characterHealth.onDamaged.AddListener(DamageTaken);
+            characterHealth.onHeal.AddListener(Healed);
             
             Load();
         }

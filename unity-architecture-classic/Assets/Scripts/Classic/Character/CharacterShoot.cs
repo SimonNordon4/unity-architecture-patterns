@@ -36,11 +36,7 @@ namespace Classic.Character
 
         private void Shoot()
         {
-            Debug.Log("Shooting!");
-            var projectileStartPosition = projectileSpawnPoint.position;
-            var targetPosition = target.closestTransform.position;
-            var shootDirection = (targetPosition - projectileStartPosition).normalized;
-            var projectile = pool.Spawn(transform.position,shootDirection);
+            var projectile = pool.Spawn(projectileSpawnPoint.position,target.targetDirection);
 
             projectile.Set(target.targetLayer, 10f, (int)stats.projectileDamage.value, stats.projectileKnockBack.value,
                 (int)stats.projectilePierce.value);

@@ -1,5 +1,6 @@
 ﻿using Classic.Game;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Classic.Character
 {
@@ -14,6 +15,8 @@ namespace Classic.Character
         private Vector3 _dashDestination;
         [SerializeField] private float dashDistance = 1f;
         [SerializeField] private float dashTime = 0.5f;
+        
+        public UnityEvent onDash = new();
 
         private bool _isDashing;
         private float _timeSinceDashStarted = 0f;
@@ -25,6 +28,7 @@ namespace Classic.Character
             if (Input.GetKeyDown(dashKey) && !_isDashing)
             {
                 if (stats.dashes.value <= 0) return;
+                onDash.Invoke();
                 _isDashing = true;
                 movement.enabled = false;
                 _dashDestination = transform.position + movement.direction * dashDistance;

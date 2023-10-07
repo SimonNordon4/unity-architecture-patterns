@@ -488,6 +488,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8e65a63a5d239448367095b4a072ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &38367442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 38367443}
+  m_Layer: 0
+  m_Name: Projectile Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &38367443
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38367442}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.00000003774895, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.10899997, z: 0.75399995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 460763660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &46165161
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,11 +1707,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f134c315cba9a074aaf365efc7901d8f, type: 3}
---- !u!198 &103727846 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4654283702912762950, guid: f134c315cba9a074aaf365efc7901d8f, type: 3}
-  m_PrefabInstance: {fileID: 103727845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &103727847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4654283702912762951, guid: f134c315cba9a074aaf365efc7901d8f, type: 3}
@@ -3099,7 +3125,7 @@ MonoBehaviour:
   gold: {fileID: 966297584}
   stats: {fileID: 439529839}
   enemyManager: {fileID: 644039390}
-  playerController: {fileID: 460763656}
+  characterHealth: {fileID: 1817465891}
   statisticDefinitions:
   - {fileID: 11400000, guid: 1f5e98638cf498b4093526638b4fa61c, type: 2}
   - {fileID: 11400000, guid: 01c2e9ca1f5dc974cbd9f1e5818970fa, type: 2}
@@ -4899,80 +4925,17 @@ GameObject:
   - component: {fileID: 460763658}
   - component: {fileID: 460763657}
   - component: {fileID: 460763661}
-  - component: {fileID: 460763656}
   - component: {fileID: 460763662}
   - component: {fileID: 460763663}
   - component: {fileID: 460763665}
-  - component: {fileID: 460763664}
-  - component: {fileID: 460763666}
-  - component: {fileID: 460763667}
-  - component: {fileID: 460763668}
   - component: {fileID: 460763669}
   m_Layer: 6
-  m_Name: Character
+  m_Name: Character Movement
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &460763656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460763655}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca78bcd5f86e714eba6bbe368ef4b73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 439529839}
-  level: {fileID: 1358396558}
-  gameState: {fileID: 1358396559}
-  onPlayerDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1358396559}
-        m_TargetAssemblyTypeName: Classic.Core.GameState, Assembly-CSharp
-        m_MethodName: LoseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onPlayerDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlayerHealed:
-    m_PersistentCalls:
-      m_Calls: []
-  targetDirection: {x: 0, y: 0, z: 0}
-  enemyManager: {fileID: 644039390}
-  projectilePrefab: {fileID: 7416635416557640102, guid: 7c63aa3a650f02b4594fc8b55be3e4f5, type: 3}
-  swordPivot: {fileID: 2059146197}
-  healthText: {fileID: 1823057254}
-  healthBar: {fileID: 1341389984}
-  localCanvas: {fileID: 7481550565855445088}
-  dodgeTextGo: {fileID: 9084586833988933064}
-  damageTextGo: {fileID: 7288289568393495249}
-  dashDistance: 5
-  dashTime: 0.2
-  shootEffect: {fileID: 1308151052}
-  dashParticle: {fileID: 547831697}
-  reviveParticle: {fileID: 103727846}
-  isDebugMode: 1
-  swordSound: {fileID: 11400000, guid: 5d885c6fe4da4a840ae4ae2dc767f4a6, type: 2}
-  shootSound: {fileID: 11400000, guid: 62b2c577a034cfe429f46d850500a392, type: 2}
-  dashSound: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
-  deathSound: {fileID: 11400000, guid: b77996f8e576e9e4e9ff9e6e91e62d39, type: 2}
-  healthPackSound: {fileID: 11400000, guid: 205272d1cf842894f8e611ea23a2b1a4, type: 2}
-  takeDamageSound: {fileID: 11400000, guid: d658cbabcaab8b343b83677f86e40c42, type: 2}
-  blockSound: {fileID: 11400000, guid: ccca5190cda5236478606122b2d720d4, type: 2}
 --- !u!136 &460763657
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5059,9 +5022,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1946619692}
+  - {fileID: 1817465890}
   - {fileID: 2059146197}
   - {fileID: 7481550565855445088}
   - {fileID: 103727847}
+  - {fileID: 38367443}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &460763661
@@ -5124,40 +5090,6 @@ MonoBehaviour:
   leftKey: 97
   downKey: 115
   rightKey: 100
---- !u!114 &460763664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460763655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d5dcf153954eada851c1fe2f12e7ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
-  stats: {fileID: 439529839}
-  damageReceiver: {fileID: 460763665}
-  pickupLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  onRevive:
-    m_PersistentCalls:
-      m_Calls: []
-  onBlock:
-    m_PersistentCalls:
-      m_Calls: []
-  onDodge:
-    m_PersistentCalls:
-      m_Calls: []
-  onHeal:
-    m_PersistentCalls:
-      m_Calls: []
-  onDamaged:
-    m_PersistentCalls:
-      m_Calls: []
-  <currentHealth>k__BackingField: 0
 --- !u!114 &460763665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5170,83 +5102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &460763666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460763655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aaca0bf689f4c608425493e7e400f12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
-  stats: {fileID: 439529839}
-  updateInterval: 0.05
-  <targetLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 128
---- !u!114 &460763667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460763655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ada34511f3b6429b8259a7c037309caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
-  stats: {fileID: 439529839}
-  target: {fileID: 460763666}
-  pool: {fileID: 460763668}
-  projectileSpawnPoint: {fileID: 1308151051}
-  onShoot:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1926671862}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 62b2c577a034cfe429f46d850500a392, type: 2}
-          m_ObjectArgumentAssemblyTypeName: SoundDefinition, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1308151052}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &460763668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 460763655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31b819001dfb6a04a881a353d13335de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
-  projectilePrefab: {fileID: 3234301062938793157, guid: 7c63aa3a650f02b4594fc8b55be3e4f5, type: 3}
-  poolSize: 10
 --- !u!114 &460763669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5266,6 +5121,33 @@ MonoBehaviour:
   level: {fileID: 1358396558}
   dashDistance: 5
   dashTime: 0.3
+  onDash:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 547831697}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1926671862}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SoundDefinition, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &460906800
 GameObject:
   m_ObjectHideFlags: 0
@@ -7608,7 +7490,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6bf3476636926b44591ac6432c04124d, type: 2}
     - target: {fileID: 919132149155446097, guid: 41c5df23adecf68479f1e1f3cdef7de2, type: 3}
       propertyPath: m_Name
-      value: Character_01
+      value: Character_Model
       objectReference: {fileID: 0}
     - target: {fileID: 3541172008045542443, guid: 41c5df23adecf68479f1e1f3cdef7de2, type: 3}
       propertyPath: m_Enabled
@@ -9759,7 +9641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 439529839}
-  health: {fileID: 460763664}
+  health: {fileID: 1817465891}
   healthBar: {fileID: 1341389984}
   healthText: {fileID: 1823057254}
 --- !u!1 &903076556
@@ -14846,11 +14728,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4205697589028422, guid: 7658ae01d0a0655468898c47617f4de6, type: 3}
   m_PrefabInstance: {fileID: 1308151050}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1308151052 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198141734499153464, guid: 7658ae01d0a0655468898c47617f4de6, type: 3}
-  m_PrefabInstance: {fileID: 1308151050}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1337221113
 GameObject:
   m_ObjectHideFlags: 0
@@ -17617,7 +17494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75185b08df790c54aad5aa4087982398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 460763656}
+  parent: {fileID: 0}
 --- !u!65 &1492026867
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20767,6 +20644,72 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1817465889
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817465890}
+  - component: {fileID: 1817465891}
+  m_Layer: 6
+  m_Name: Character Health
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1817465890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817465889}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 460763660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1817465891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817465889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d5dcf153954eada851c1fe2f12e7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  stats: {fileID: 439529839}
+  damageReceiver: {fileID: 460763665}
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  onRevive:
+    m_PersistentCalls:
+      m_Calls: []
+  onBlock:
+    m_PersistentCalls:
+      m_Calls: []
+  onDodge:
+    m_PersistentCalls:
+      m_Calls: []
+  onHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
+  <currentHealth>k__BackingField: 0
 --- !u!1 &1818448118
 GameObject:
   m_ObjectHideFlags: 0
@@ -22128,6 +22071,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionX: 238.92
   positionY: -401
+--- !u!1 &1946619691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1946619692}
+  - component: {fileID: 1946619693}
+  - component: {fileID: 1946619695}
+  - component: {fileID: 1946619694}
+  m_Layer: 0
+  m_Name: Character Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1946619692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946619691}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 460763660}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1946619693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946619691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aaca0bf689f4c608425493e7e400f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  stats: {fileID: 439529839}
+  updateInterval: 0.05
+  <targetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &1946619694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946619691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b819001dfb6a04a881a353d13335de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  projectilePrefab: {fileID: 3234301062938793157, guid: 7c63aa3a650f02b4594fc8b55be3e4f5, type: 3}
+  poolSize: 10
+--- !u!114 &1946619695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946619691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ada34511f3b6429b8259a7c037309caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
+  stats: {fileID: 439529839}
+  target: {fileID: 1946619693}
+  pool: {fileID: 1946619694}
+  projectileSpawnPoint: {fileID: 38367443}
+  onShoot:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1926671862}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 62b2c577a034cfe429f46d850500a392, type: 2}
+          m_ObjectArgumentAssemblyTypeName: SoundDefinition, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1968352342
 GameObject:
   m_ObjectHideFlags: 0
@@ -23005,7 +23047,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 1358396559}
-  playerController: {fileID: 460763656}
+  characterTarget: {fileID: 1946619693}
+  transformToFollow: {fileID: 460763660}
   gunPivot: {fileID: 76706869}
   rotationSpeed: 10
   gunRotationSpeed: 20
