@@ -14,5 +14,15 @@ public class DebugManager : MonoBehaviour
             var isActive = graphy.activeSelf;
             graphy.SetActive(!isActive);
         }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Time.timeScale *= 2;
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Time.timeScale *= 0.5f;
+        }
     }
 }
