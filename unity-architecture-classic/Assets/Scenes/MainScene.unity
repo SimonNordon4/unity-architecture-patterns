@@ -13852,6 +13852,37 @@ MonoBehaviour:
   stats: {fileID: 439529839}
   positiveColor: {r: 0.66, g: 1, b: 0.66, a: 1}
   negativeColor: {r: 1, g: 0.5, b: 0.5, a: 1}
+--- !u!1 &1270900956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270900957}
+  m_Layer: 0
+  m_Name: ------------------- Old  -------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1270900957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270900956}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1272078997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31924,31 +31955,32 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 57213815}
+  - {fileID: 1270900957}
   - {fileID: 849256609}
+  - {fileID: 644039391}
   - {fileID: 2020342963}
   - {fileID: 1926671863}
   - {fileID: 1645930826}
   - {fileID: 1611055695}
+  - {fileID: 57213815}
   - {fileID: 251708326}
   - {fileID: 966297585}
   - {fileID: 299859323}
   - {fileID: 1358396560}
-  - {fileID: 439529838}
-  - {fileID: 644039391}
   - {fileID: 1839149886}
-  - {fileID: 963194228}
   - {fileID: 405590241}
   - {fileID: 1000354785}
+  - {fileID: 439529838}
+  - {fileID: 963194228}
   - {fileID: 460763660}
   - {fileID: 543450653079220872}
-  - {fileID: 1038824469}
-  - {fileID: 532511003}
-  - {fileID: 614722081}
-  - {fileID: 670496573}
   - {fileID: 340710625}
   - {fileID: 361919820}
   - {fileID: 1201130157}
   - {fileID: 686469285}
-  - {fileID: 1574519683}
   - {fileID: 2031202282}
+  - {fileID: 1038824469}
+  - {fileID: 532511003}
+  - {fileID: 614722081}
+  - {fileID: 670496573}
+  - {fileID: 1574519683}
