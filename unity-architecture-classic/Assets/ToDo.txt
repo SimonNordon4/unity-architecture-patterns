@@ -5,8 +5,21 @@ Exception for very small events, like sound and particles.
 
 TODO: 
 
-- 5 mins.
-- TIDY up projectile pool.
+- Enemy.
+
+[] Enemy Scope - Holds all references that we'd usually get from the scene.
+[] Enemy Poolable - Optional Pool Setting.
+[] Enemy Movement.
+[] Enemy Health.
+[] Enemy Attack.
+
+Things we need to know globally.
+
+When and where and enemy dies.
+When and where an enemy takes damage.
+We should have a centralized Enemy Manager to handle this.
+
+Enemy Spawner, uses Enemy Pool, which injects the Enemy Scope, which has access to enemy Events.
 
 
 New Features:

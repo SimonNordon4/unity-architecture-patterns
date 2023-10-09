@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Classic.Character
 {
-    public class CharacterStateManager : MonoBehaviour
+    public class CharacterState : MonoBehaviour
     {
         [SerializeField] private GameState state;
         /// <summary>
