@@ -7081,14 +7081,13 @@ GameObject:
   m_Component:
   - component: {fileID: 644039391}
   - component: {fileID: 644039390}
-  - component: {fileID: 644039392}
   m_Layer: 0
   m_Name: Enemy Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &644039390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7096,7 +7095,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644039389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3191bd27c2ea6f43a936b40c18bf4dc, type: 3}
   m_Name: 
@@ -7156,19 +7155,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &644039392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644039389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2534921a66a04ef9b6304e0d0d089ab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyDefinitions: []
 --- !u!1 &645581677
 GameObject:
   m_ObjectHideFlags: 0
@@ -8220,7 +8206,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696307931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 407e474d320940cd853cb10692f38fdd, type: 3}
   m_Name: 
@@ -19957,6 +19943,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1118228653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1752442031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1752442032}
+  - component: {fileID: 1752442033}
+  - component: {fileID: 1752442034}
+  - component: {fileID: 1752442035}
+  m_Layer: 0
+  m_Name: Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1752442032
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752442031}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1752442033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752442031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2534921a66a04ef9b6304e0d0d089ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDefinitions:
+  - {fileID: 11400000, guid: 471bfce178e44a446bc4d079ec34a693, type: 2}
+  state: {fileID: 1358396559}
+  level: {fileID: 1358396558}
+  enemyEvents: {fileID: 1752442034}
+--- !u!114 &1752442034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752442031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20adf4431f344f2a2a5f62e587b6a67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1752442035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752442031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf3529bb1bcc4bf0bb87d0dc6ae3a1ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pool: {fileID: 1752442033}
+  level: {fileID: 1358396558}
+  testDefinition: {fileID: 11400000, guid: 471bfce178e44a446bc4d079ec34a693, type: 2}
 --- !u!1 &1764124329
 GameObject:
   m_ObjectHideFlags: 0
@@ -31865,6 +31929,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 1270900957}
   - {fileID: 849256609}
+  - {fileID: 1752442032}
   - {fileID: 644039391}
   - {fileID: 2020342963}
   - {fileID: 1926671863}

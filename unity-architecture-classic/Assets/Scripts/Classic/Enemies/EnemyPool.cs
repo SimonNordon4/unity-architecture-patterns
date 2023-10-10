@@ -12,20 +12,20 @@ namespace Classic.Enemies
         [SerializeField] private GameState state;
         [SerializeField] private Level level;
         [SerializeField] private EnemyEvents enemyEvents;
-        private readonly Dictionary<EnemyDefinition, Queue<EnemyScope>> enemyMap = new();
+        private readonly Dictionary<EnemyDefinition, Queue<EnemyScope>> _enemyMap = new();
 
         private void Start()
         {
             // Create a queue for each enemy definition
             foreach (var enemyDefinition in enemyDefinitions)
             {
-                enemyMap.Add(enemyDefinition, new Queue<EnemyScope>());
+                _enemyMap.Add(enemyDefinition, new Queue<EnemyScope>());
             }
         }
 
         public EnemyScope Spawn(EnemyDefinition enemyDefinition, Vector3 location, bool isBoss = false)
         {
-            var queue = enemyMap[enemyDefinition];
+            var queue = _enemyMap[enemyDefinition];
             if (queue.Count <= 0)
             {
                 return EnemyFactory(enemyDefinition,location,isBoss);
@@ -40,17 +40,13 @@ namespace Classic.Enemies
         public void DeSpawn(EnemyScope enemyState)
         {
             enemyState.gameObject.SetActive(false);
-            enemyMap[enemyState.definition].Enqueue(enemyState);
+            _enemyMap[enemyState.definition].Enqueue(enemyState);
         }
 
         private EnemyScope EnemyFactory(EnemyDefinition definition, Vector3 location, bool isBoss)
         {
             var newEnemy = Instantiate(definition.enemyPrefab, location, Quaternion.identity, null);
-            newEnemy.Construct(state,level,enemyEvents,isBoss);
-            if (newEnemy.TryGetComponent<EnemyPoolable>(out var poolable))
-            {
-                poolable.pool = this;
-            }
+            newEnemy.Construct(state,level,this,enemyEvents,isBoss);
             return newEnemy;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Classic.Enemies;
 using UnityEngine;
 
 namespace Definitions
@@ -8,6 +9,7 @@ namespace Definitions
     public class EnemySpawnAction
     {
         public GameObject enemyPrefab;
+        [field: SerializeField] public EnemyDefinition definition { get; private set; }
         public int numberOfEnemiesToSpawn = 1;
         public int spawnWeight = 100;
         
