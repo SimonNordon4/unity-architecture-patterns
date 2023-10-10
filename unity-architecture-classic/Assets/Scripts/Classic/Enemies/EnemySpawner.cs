@@ -39,7 +39,7 @@ namespace Classic.Enemies
             var y = distance * Mathf.Sin(angle);
 
             // Return the spawn location as a Vector3
-            return new Vector3(x, 1f,y);
+            return new Vector3(x, 0,y);
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Classic.Enemies.Enemy
 {
     public class EnemySpawnController : MonoBehaviour
     {
+        [SerializeField] private EnemyState state;
         [SerializeField] private EnemyScope scope;
         [SerializeField] private GameObject enemyMesh;
         [SerializeField] private LayerMask playerLayer;
@@ -23,6 +24,7 @@ namespace Classic.Enemies.Enemy
             spawnInParticles.Play();
             enemyMesh.SetActive(false);
             _hasSpawned = false;
+            state.DisableEnemy();
         }
 
         private void Update()
@@ -31,10 +33,12 @@ namespace Classic.Enemies.Enemy
             
             _timeSinceEnabled += GameTime.deltaTime;
             if (!(_timeSinceEnabled > spawnInTime)) return;
-            _hasSpawned = true;
             enemyMesh.SetActive(true);
             spawnInParticles.Stop();
             onSpawnParticle.Play();
+            state.EnableEnemy();
+            StartCoroutine(ScaleInEnemy());
+            _hasSpawned = true;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -43,5 +47,20 @@ namespace Classic.Enemies.Enemy
             if (playerLayer != (playerLayer | 1 << other.gameObject.layer)) return;
             scope.Destroy();
         }
+
+        private IEnumerator ScaleInEnemy()
+        {
+            var scale = Vector3.zero;
+            var targetScale = enemyMesh.transform.localScale;
+            var time = 0.0f;
+            while (time < 0.2f)
+            {
+                time += GameTime.deltaTime;
+                var scaledTime = time / 0.2f;
+                enemyMesh.transform.localScale = Vector3.Lerp(scale, targetScale, scaledTime);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        
     }
 }

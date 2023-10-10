@@ -25,7 +25,6 @@ namespace Classic.Enemies.Enemy
 
         public void Destroy()
         {
-            enemyEvents.onEnemyDied?.Invoke(this, transform.position);
             if (enemyPool != null)
             {
                 enemyPool.DeSpawn(this);
