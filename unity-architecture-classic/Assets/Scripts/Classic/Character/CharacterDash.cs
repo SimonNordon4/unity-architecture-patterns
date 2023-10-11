@@ -1,4 +1,5 @@
-﻿using Classic.Game;
+﻿using System.Collections;
+using Classic.Game;
 using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,9 +8,9 @@ namespace Classic.Character
 {
     public class CharacterDash : MonoBehaviour, IResettable
     {
+        [SerializeField] private GameState gameState;
         [SerializeField] private Transform characterTransform;
         [SerializeField] private Stats stats;
-        [SerializeField] private CharacterMovement movement;
         [SerializeField] private KeyCode dashKey = KeyCode.Space;
         [SerializeField] private Level level;
 
@@ -18,9 +19,7 @@ namespace Classic.Character
         [SerializeField] private float dashTime = 0.5f;
         
         public UnityEvent onDash = new();
-
         private bool _isDashing;
-        private float _timeSinceDashStarted = 0f;
 
         private void Update()
         {
@@ -28,45 +27,50 @@ namespace Classic.Character
             {
                 if (stats.dashes.value <= 0) return;
                 onDash.Invoke();
-                _isDashing = true;
-                movement.enabled = false;
-                _dashDestination = characterTransform.position + movement.direction * dashDistance;
-                _timeSinceDashStarted = 0f;
-                stats.dashes.value--;
+                StartCoroutine(Dash());
             }
 
-            if (_isDashing)
+        }
+
+        private IEnumerator Dash()
+        {
+            _isDashing = true;
+            stats.dashes.value--;
+            
+            var elapsedTime = 0f;
+            var startPosition = transform.position;
+            var dashDestination = transform.forward * dashDistance + transform.position;
+            
+            while (elapsedTime < dashTime)
             {
-                var dashProgress = _timeSinceDashStarted / dashTime;
-                _timeSinceDashStarted += GameTime.deltaTime;
+                elapsedTime += Time.deltaTime;
+
+                var normalizedTime = elapsedTime / dashTime;
+                var inverseQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
                 
-                if (_timeSinceDashStarted < dashTime)
+                var desiredPos = Vector3.Lerp(startPosition, dashDestination, inverseQuadraticTime);
+                
+                // clamp the position to the level bounds
+                characterTransform.position = new Vector3(Mathf.Clamp(desiredPos.x, -level.bounds.x, level.bounds.x),
+                    characterTransform.position.y,
+                    Mathf.Clamp(desiredPos.z, -level.bounds.y, level.bounds.y));
+                
+                if (gameState.currentState != GameStateEnum.Active)
                 {
-                    var position = transform.position;
-                    position = Vector3.Lerp(position, _dashDestination, dashProgress);
-                    
-                    // clamp to level bounds
-                    var clampedPosition = position;
-                    clampedPosition.x = Mathf.Clamp(clampedPosition.x, -level.bounds.x, level.bounds.x);
-                    clampedPosition.z = Mathf.Clamp(clampedPosition.z, -level.bounds.y, level.bounds.y);
-                    position = clampedPosition;
-                    characterTransform.position = position;
-                }
-                else
-                {
-                    // Ensure we reach the exact destination and stop dashing
-                    characterTransform.position = _dashDestination;
                     _isDashing = false;
-                    movement.enabled = true;
+                    yield break;
                 }
+                
+                yield return new WaitForEndOfFrame();
             }
+            
+            _isDashing = false;
+
         }
 
         public void Reset()
         {
             _isDashing = false;
-            _timeSinceDashStarted = 0f;
-            movement.enabled = true;
         }
     }
 }
