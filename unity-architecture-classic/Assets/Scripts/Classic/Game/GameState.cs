@@ -7,7 +7,7 @@ namespace Classic.Game
     {
         public GameStateEnum currentState { get; private set; } = GameStateEnum.Idle;
         
-        public UnityEvent onStateChanged { get; } = new();
+        public UnityEvent<bool> onStateChanged { get; } = new();
         public UnityEvent onGameStart { get; } = new();
         public UnityEvent onGamePause { get; } = new();
         public UnityEvent onGameResume {get;} = new();
@@ -21,7 +21,7 @@ namespace Classic.Game
         {
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;
-            onStateChanged.Invoke();
+            onStateChanged.Invoke(isGameActive);
         }
 
         public void StartNewGame()
@@ -29,7 +29,7 @@ namespace Classic.Game
             currentState = GameStateEnum.Active;
             GameTime.timeScale = 1f;
             onGameStart.Invoke();
-            onStateChanged.Invoke();
+            onStateChanged.Invoke(isGameActive);
         }
         
         public void PauseGame()
@@ -37,7 +37,7 @@ namespace Classic.Game
             currentState = GameStateEnum.Paused;
             GameTime.timeScale = 0f;
             onGamePause.Invoke();
-            onStateChanged.Invoke();
+            onStateChanged.Invoke(isGameActive);
         }
         
         public void ResumeGame()
@@ -45,7 +45,7 @@ namespace Classic.Game
             currentState = GameStateEnum.Active;
             GameTime.timeScale = 1f;
             onGameResume.Invoke();
-            onStateChanged.Invoke();
+            onStateChanged.Invoke(isGameActive);
         }
 
         public void WinGame()
@@ -53,7 +53,7 @@ namespace Classic.Game
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;
             onGameWon.Invoke();
-            onStateChanged.Invoke();
+            onStateChanged.Invoke(isGameActive);
         }
         
         public void LoseGame()
@@ -61,7 +61,7 @@ namespace Classic.Game
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;
             onGameLost.Invoke();
-            onStateChanged.Invoke();
+            onStateChanged.Invoke(isGameActive);
         }
 
         public void QuitGame()
@@ -69,7 +69,7 @@ namespace Classic.Game
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;
             onGameQuit.Invoke();
-            onStateChanged.Invoke();
+            onStateChanged.Invoke(isGameActive);
         }
     }
     

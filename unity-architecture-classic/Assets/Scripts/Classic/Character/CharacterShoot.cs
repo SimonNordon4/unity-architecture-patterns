@@ -1,12 +1,11 @@
 ﻿using Classic.Actor;
 using Classic.Game;
-using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Character
 {
-    public class CharacterShooting : MonoBehaviour, IResettable
+    public class CharacterShooting : MonoBehaviour
     {
         [SerializeField] private GameState state;
         [SerializeField] private Stats stats;

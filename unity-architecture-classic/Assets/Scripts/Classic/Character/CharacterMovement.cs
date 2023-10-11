@@ -1,10 +1,9 @@
 ﻿using Classic.Game;
-using Classic.Interfaces;
 using UnityEngine;
 
 namespace Classic.Character
 {
-    public class CharacterMovement : MonoBehaviour, IResettable
+    public class CharacterMovement : MonoBehaviour
     {
         [SerializeField] private Transform characterTransform;
         [SerializeField] private GameState state;

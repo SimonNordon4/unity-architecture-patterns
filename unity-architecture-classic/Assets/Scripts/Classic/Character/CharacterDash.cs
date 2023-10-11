@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using Classic.Game;
-using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Character
 {
-    public class CharacterDash : MonoBehaviour, IResettable
+    public class CharacterDash : MonoBehaviour
     {
         [SerializeField] private GameState gameState;
         [SerializeField] private Transform characterTransform;

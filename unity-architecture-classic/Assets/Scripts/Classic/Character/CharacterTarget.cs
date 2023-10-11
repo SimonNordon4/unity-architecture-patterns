@@ -1,11 +1,9 @@
-﻿using Classic.Actor;
-using Classic.Game;
-using Classic.Interfaces;
+﻿using Classic.Game;
 using UnityEngine;
 
 namespace Classic.Character
 {
-    public class CharacterTarget : MonoBehaviour, IResettable
+    public class CharacterTarget : MonoBehaviour
     {
         [SerializeField] private Stats stats;
         [SerializeField] private float updateInterval = 0.05f;

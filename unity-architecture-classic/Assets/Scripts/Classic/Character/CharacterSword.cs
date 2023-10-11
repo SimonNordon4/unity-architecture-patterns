@@ -1,13 +1,11 @@
 ﻿using System.Collections;
-using Classic.Actor;
 using Classic.Game;
-using Classic.Interfaces;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Character
 {
-    public class CharacterSwordAttack : MonoBehaviour, IResettable
+    public class CharacterSwordAttack : MonoBehaviour
     {
         public UnityEvent onSwing = new();
         
