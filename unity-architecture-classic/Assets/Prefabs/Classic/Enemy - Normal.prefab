@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 1785312643563425327}
   - component: {fileID: 8250662415803675940}
   - component: {fileID: 5628982030433889262}
+  - component: {fileID: 644304032762213628}
   m_Layer: 7
   m_Name: Enemy - Normal
   m_TagString: Enemy
@@ -182,6 +183,7 @@ MonoBehaviour:
   damage: 1
   attackSpeed: 0.2
   attackRange: 0.5
+  knockBackFactor: 1
   velocity: {x: 0, y: 0, z: 0}
 --- !u!136 &3217353154504236789
 CapsuleCollider:
@@ -286,6 +288,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca185c37f1434882bd39f23d7ab81b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &644304032762213628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191775094967363179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847e88d8d3be4aefba4230123e560eaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackReceiver: {fileID: 1785312643563425327}
+  stats: {fileID: 7674547771310952523}
+  scope: {fileID: 4532079068998024323}
 --- !u!1 &4289633952769822413
 GameObject:
   m_ObjectHideFlags: 0

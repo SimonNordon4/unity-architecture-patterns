@@ -20,6 +20,7 @@ namespace Classic.Actor
             {
                 var newProjectile = CreateNewProjectile();
                 newProjectile.gameObject.SetActive(false);
+                _projectilePool.Enqueue(newProjectile);
             }
         }
 

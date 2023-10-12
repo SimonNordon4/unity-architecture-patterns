@@ -15,6 +15,8 @@ namespace Classic.Character
         public float distance { get; private set; } = Mathf.Infinity;
         public Vector3 targetDirection { get; private set; } = Vector3.zero;
 
+        public bool hasTarget;
+
         public Transform GetClosestTarget()
         {
             targetDirection = Vector3.zero;
@@ -40,6 +42,7 @@ namespace Classic.Character
                 distance = closestDistance;
                 closestTransform = target;
                 targetDirection = Vector3.ProjectOnPlane((target.position - transform.position).normalized, Vector3.up);
+                hasTarget = true;
             }
             
             return closestTransform;
@@ -47,6 +50,15 @@ namespace Classic.Character
 
         private void Update()
         {
+            if (hasTarget)
+            {
+                if(Vector3.Distance(transform.position, closestTransform.position) > stats.range.value)
+                {
+                    Reset();
+                }
+            }
+
+            
             if(_timeSinceLastUpdate < updateInterval)
             {
                 _timeSinceLastUpdate += Time.deltaTime;
@@ -60,6 +72,7 @@ namespace Classic.Character
         {
             closestTransform = null;
             distance = Mathf.Infinity;
+            hasTarget = false;
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Classic.Character
             }
 
             target.GetClosestTarget();
-            if (target.closestTransform is null) return;
+            if (!target.hasTarget) return;
             Shoot();
             _timeSinceLastShot = 0f;
         }
