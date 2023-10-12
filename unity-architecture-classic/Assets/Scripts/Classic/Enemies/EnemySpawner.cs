@@ -6,14 +6,13 @@ namespace Classic.Enemies
     public class EnemySpawner : MonoBehaviour
     {
         public EnemyDefinition testDefinition;
-        [SerializeField] private EnemyPool pool;
+        [SerializeField] private EnemyFactory factory;
         [SerializeField] private Level level;
-        
         
         public void SpawnEnemy(EnemyDefinition definition)
         {
             var position = GetRandomPosition();
-            pool.Spawn(definition, position);
+            factory.Create(definition, position);
         }
         
         private Vector3 GetRandomPosition()

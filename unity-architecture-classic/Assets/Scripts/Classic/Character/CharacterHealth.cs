@@ -37,7 +37,6 @@ namespace Classic.Character
 
         public void TakeDamage(int damageAmount)
         {
-            Debug.Log($"Taking {damageAmount} damage");
             // check if blocked
             damageAmount -= (int)stats.block.value;
             if (damageAmount <= 0)

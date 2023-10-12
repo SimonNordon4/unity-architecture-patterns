@@ -185,10 +185,13 @@ MonoBehaviour:
   baseHealth: 10
   moveSpeed: 5
   damage: 1
-  attackSpeed: 0.2
+  attackSpeed: 1
   attackRange: 0.5
   knockBackFactor: 1
   velocity: {x: 0, y: 0, z: 0}
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!136 &3217353154504236789
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -335,9 +338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e35203d86d445acb36f705b2c290441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackLayer:
-    serializedVersion: 2
-    m_Bits: 64
   stats: {fileID: 7674547771310952523}
 --- !u!1 &4289633952769822413
 GameObject:

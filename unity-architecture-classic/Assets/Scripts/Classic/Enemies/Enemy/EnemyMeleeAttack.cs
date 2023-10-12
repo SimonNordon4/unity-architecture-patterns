@@ -7,16 +7,9 @@ namespace Classic.Enemies.Enemy
 {
     public class EnemyMeleeAttack : MonoBehaviour
     {
-        [SerializeField] private LayerMask attackLayer;
         [SerializeField] private EnemyStats stats;
 
         private float _timeSinceLastAttack = 0f;
-
-        private void OnEnable()
-        {
-            // Preload the first attack.
-            _timeSinceLastAttack = stats.attackSpeed;
-        }
 
         private void Update()
         {
@@ -27,17 +20,13 @@ namespace Classic.Enemies.Enemy
         {
             // doing 1/attack speed inverts it. So an attack speed of 10 = 10 attacks per second.
             if(_timeSinceLastAttack < 1 / stats.attackSpeed) return;
+
+            if (stats.attackLayer != (stats.attackLayer | (1 << other.gameObject.layer))) return;
             
-            if (attackLayer == (attackLayer | (1 << other.gameObject.layer)))
-            {
-                Debug.Log("Attacking");
-                if (!other.TryGetComponent<DamageReceiver>(out var damageReceiver)) return;
-            
-                Debug.Log("Dealing damage: " + stats.damage);
-                Debug.Log("Damage object: " + damageReceiver.gameObject.name);
-                damageReceiver.TakeDamage(stats.damage);
-                _timeSinceLastAttack = 0f;
-            }
+            if (!other.TryGetComponent<DamageReceiver>(out var damageReceiver)) return;
+
+            damageReceiver.TakeDamage(stats.damage);
+            _timeSinceLastAttack = 0f;
         }
     }
 }

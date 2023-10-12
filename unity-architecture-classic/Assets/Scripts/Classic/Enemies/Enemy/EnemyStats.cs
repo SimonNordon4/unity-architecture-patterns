@@ -11,6 +11,7 @@ namespace Classic.Enemies.Enemy
         public float attackRange = 0.5f;
         public float knockBackFactor = 1f;
         public Vector3 velocity;
+        public LayerMask attackLayer;
 
         public void Initialize(EnemyDefinition definition)
         {

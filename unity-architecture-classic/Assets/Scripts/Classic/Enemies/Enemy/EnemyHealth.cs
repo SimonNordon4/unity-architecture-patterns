@@ -26,13 +26,11 @@ namespace Classic.Enemies.Enemy
         {
             currentHealth -= damage;
             scope.events.OnEnemyDamaged?.Invoke(transform.position, damage);
-            
-            if (currentHealth <= 0)
-            {
-                currentHealth = 0;
-                scope.events.OnEnemyDeath?.Invoke(transform.position);
-                scope.pool.Return(scope);
-            }
+
+            if (currentHealth > 0) return;
+            currentHealth = 0;
+            scope.events.OnEnemyDeath?.Invoke(transform.position);
+            Destroy(gameObject);
         }
     }
 }
