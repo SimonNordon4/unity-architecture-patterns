@@ -7814,7 +7814,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696307931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 407e474d320940cd853cb10692f38fdd, type: 3}
   m_Name: 
@@ -17635,6 +17635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1597872169}
   - component: {fileID: 1597872168}
+  - component: {fileID: 1597872170}
   m_Layer: 0
   m_Name: 'Enemies '
   m_TagString: Untagged
@@ -17672,6 +17673,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1597872170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597872167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7986dce9f57c450f8d85ba0719fb5909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testDefinition: {fileID: 11400000, guid: 81818dda6826b8d4296a17176f448806, type: 2}
+  pool: {fileID: 1597872168}
+  level: {fileID: 1358396558}
 --- !u!1 &1610111792
 GameObject:
   m_ObjectHideFlags: 0
@@ -45815,6 +45831,10 @@ PrefabInstance:
     - target: {fileID: 4191775094967363179, guid: 06395e610f4466140967042d1094d37f, type: 3}
       propertyPath: m_Name
       value: Enemy - Normal
+      objectReference: {fileID: 0}
+    - target: {fileID: 4191775094967363179, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

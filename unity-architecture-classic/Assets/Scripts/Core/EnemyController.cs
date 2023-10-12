@@ -156,15 +156,7 @@ public class EnemyController : MonoBehaviour
         var avoidanceDirection = Vector3.zero;
         for(var i = 0; i < totalEnemies; i++)
         {
-
             var enemy = _nearbyEnemies[i];
-            if (enemy == null)
-            {
-                _nearbyEnemies.RemoveAt(i);
-                i--;  // Adjust the index to account for the removed enemy
-                totalEnemies--;  // Adjust the total count of enemies
-                continue;
-            }
             var toEnemy = enemy.position - transform.position;
 
             // Calculate distance and project direction on plane
