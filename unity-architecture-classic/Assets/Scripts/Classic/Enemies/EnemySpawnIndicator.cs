@@ -28,5 +28,11 @@ namespace Classic.Enemies
             OnCancelled?.Invoke();
             Destroy(gameObject);
         }
+
+        private void OnDestroy()
+        {
+            OnCompleted = null;
+            OnCancelled = null;
+        }
     }
 }

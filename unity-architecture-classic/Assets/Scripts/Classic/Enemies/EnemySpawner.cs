@@ -27,32 +27,13 @@ namespace Classic.Enemies
             }
 
             // Subscribe to the OnCompleted and OnCancelled events of the indicator
-            indicator.OnCompleted += () => OnIndicatorCompleted(indicator,definition, position);
-            indicator.OnCancelled += () => FinishIndicator(indicator, definition);
+            indicator.OnCompleted += () => OnIndicatorCompleted(definition, position);
         }
 
-        private void FinishIndicator(EnemySpawnIndicator indicator, EnemyDefinition definition)
-        {
-            SpawnDeathParticle(definition, indicator.transform.position);
-            indicator.OnCompleted -= () => OnIndicatorCompleted(indicator, null, Vector3.zero);
-            indicator.OnCancelled -= () => FinishIndicator(indicator,definition);
-        }
-
-        private void OnIndicatorCompleted(EnemySpawnIndicator indicator, EnemyDefinition definition, Vector3 position)
+        private void OnIndicatorCompleted(EnemyDefinition definition, Vector3 position)
         {
             var enemy = factory.Create(definition, position);
-
-            System.Action<Vector3> onDestroyedHandler = null;
-            onDestroyedHandler = deathPosition =>
-            {
-                Debug.Log("Enemy destroyed");
-                SpawnDeathParticle(definition, deathPosition);
-                enemy.OnDestroyed -= onDestroyedHandler;
-            };
-
-            enemy.OnDestroyed += onDestroyedHandler;
-
-            FinishIndicator(indicator, definition);
+            SpawnDeathParticle(definition, position);
         }
 
         public void SpawnDeathParticle(EnemyDefinition definition, Vector3 position)
