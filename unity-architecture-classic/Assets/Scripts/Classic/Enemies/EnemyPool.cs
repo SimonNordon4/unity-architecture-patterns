@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using Classic.Enemies.Enemy;
 using Classic.Game;
@@ -8,37 +8,59 @@ namespace Classic.Enemies
 {
     public class EnemyPool : MonoBehaviour
     {
-        [SerializeField] private EnemyScope enemy;
         [SerializeField] private GameState state;
         [SerializeField] private Level level;
         [SerializeField] private Transform characterTransform;
-        
-        private readonly Queue<EnemyScope> _queue = new();
 
-        public EnemyScope Spawn(Vector3 position)
+        private readonly Dictionary<EnemyType, Queue<EnemyScope>> _enemyQueues = new();
+
+        public void Initialize()
         {
-            if (_queue.Count == 0)
+            foreach (EnemyType type in Enum.GetValues(typeof(EnemyType)))
             {
-                return Create(position);
+                _enemyQueues[type] = new Queue<EnemyScope>();
             }
-            
-            var enemyScope = _queue.Dequeue();
+        }
+
+        private void Start()
+        {
+            Initialize();
+        }
+
+        public EnemyScope Spawn(EnemyDefinition enemyDefinition, Vector3 position)
+        {
+            var queue = _enemyQueues[enemyDefinition.enemyType];
+            if (queue.Count == 0)
+            {
+                return Create(enemyDefinition, position);
+            }
+
+            var enemyScope = queue.Dequeue();
             enemyScope.transform.position = position;
             enemyScope.gameObject.SetActive(true);
             return enemyScope;
         }
 
-
         public void Return(EnemyScope returningEnemy)
         {
             returningEnemy.gameObject.SetActive(false);
-            _queue.Enqueue(returningEnemy);
+            _enemyQueues[returningEnemy.type].Enqueue(returningEnemy);
         }
 
-        public EnemyScope Create(Vector3 position = new())
+        private EnemyScope Create(EnemyDefinition enemyDefinition, Vector3 position = new())
         {
-            var enemyScope = Instantiate(enemy, position, Quaternion.identity, null);
-            enemyScope.Construct(state,level,characterTransform);
+            var enemyScope = Instantiate(enemyDefinition.enemyPrefab, position, Quaternion.identity, null);
+            enemyScope.Construct(state, level, characterTransform);
+            
+            if(enemyScope.TryGetComponent<EnemyStats>(out var enemyStats))
+            {
+                enemyStats.Initialize(enemyDefinition);
+            }
+            
+            if (enemyScope.type != enemyDefinition.enemyType)
+            {
+                Debug.LogError("EnemyScope type does not match EnemyDefinition type");
+            }
             return enemyScope;
         }
     }

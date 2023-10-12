@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6a5658a4be4bde83069cfa7b43ee0e, type: 3}
+  m_Name: Enemy - Normal
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 4532079068998024323, guid: 06395e610f4466140967042d1094d37f, type: 3}
+  spawnIndicatorPrefab: {fileID: 0}
+  deathEffect: {fileID: 0}
+  enemyType: 0
+  initialHealth: 10
+  damage: 1
+  moveSpeed: 5
+  attackSpeed: 0.2
+  attackRange: 0.5

@@ -9,6 +9,7 @@ namespace Classic.Enemies.Enemy
     /// </summary>
     public class EnemyScope : MonoBehaviour
     {
+        [field: SerializeField] public EnemyType type { get; private set; }
         [field: SerializeField] public GameState state { get; private set; }
         [field: SerializeField] public Level level { get; private set; }
         [field: SerializeField] public Transform characterTransform { get; private set; }
