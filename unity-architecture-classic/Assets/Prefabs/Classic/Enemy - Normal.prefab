@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 5628982030433889262}
   - component: {fileID: 644304032762213628}
   - component: {fileID: 2586163219147478095}
+  - component: {fileID: 1347434148475365515}
   m_Layer: 7
   m_Name: Enemy - Normal
   m_TagString: Enemy
@@ -322,6 +323,22 @@ MonoBehaviour:
   scope: {fileID: 4532079068998024323}
   stats: {fileID: 7674547771310952523}
   currentHealth: 0
+--- !u!114 &1347434148475365515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191775094967363179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e35203d86d445acb36f705b2c290441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  stats: {fileID: 7674547771310952523}
 --- !u!1 &4289633952769822413
 GameObject:
   m_ObjectHideFlags: 0
