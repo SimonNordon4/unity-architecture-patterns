@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Classic.Enemies.Enemy;
 using Classic.Game;
+using Classic.Items;
 using UnityEngine;
 
 namespace Classic.Enemies
@@ -12,7 +13,6 @@ namespace Classic.Enemies
         [SerializeField] private Level level;
         [SerializeField] private EnemyEvents events;
         [SerializeField] private Transform characterTransform;
-
 
         public EnemyScope Create(EnemyDefinition enemyDefinition, Vector3 position = new())
         {
@@ -28,6 +28,7 @@ namespace Classic.Enemies
             {
                 Debug.LogError("EnemyScope type does not match EnemyDefinition type");
             }
+            
             return enemyScope;
         }
     }

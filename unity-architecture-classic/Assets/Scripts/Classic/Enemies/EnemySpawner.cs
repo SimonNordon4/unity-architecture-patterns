@@ -1,4 +1,5 @@
 ﻿using Classic.Game;
+using Classic.Items;
 using UnityEngine;
 
 namespace Classic.Enemies
@@ -7,20 +8,69 @@ namespace Classic.Enemies
     {
         public EnemyDefinition testDefinition;
         [SerializeField] private EnemyFactory factory;
+        [SerializeField] private ParticlePool particlePool;
         [SerializeField] private Level level;
+        [SerializeField] private EnemyEvents events;
         
+        [Header("Prefabs")]
+        [SerializeField] private EnemySpawnIndicator indicatorPrefab;
+
         public void SpawnEnemy(EnemyDefinition definition)
         {
             var position = GetRandomPosition();
-            factory.Create(definition, position);
+            var indicator = Instantiate(indicatorPrefab, position, Quaternion.identity, null);
+            // indicator.SetSize(definition.spawnIndicatorSize);
+            var psColor = indicator.GetComponentInChildren<ParticleSystemColor>();
+            if (psColor != null)
+            {
+                psColor.SetColor(definition.enemyColor);
+            }
+
+            // Subscribe to the OnCompleted and OnCancelled events of the indicator
+            indicator.OnCompleted += () => OnIndicatorCompleted(indicator,definition, position);
+            indicator.OnCancelled += () => FinishIndicator(indicator, definition);
+        }
+
+        private void FinishIndicator(EnemySpawnIndicator indicator, EnemyDefinition definition)
+        {
+            SpawnDeathParticle(definition, indicator.transform.position);
+            indicator.OnCompleted -= () => OnIndicatorCompleted(indicator, null, Vector3.zero);
+            indicator.OnCancelled -= () => FinishIndicator(indicator,definition);
+        }
+
+        private void OnIndicatorCompleted(EnemySpawnIndicator indicator, EnemyDefinition definition, Vector3 position)
+        {
+            var enemy = factory.Create(definition, position);
+
+            System.Action<Vector3> onDestroyedHandler = null;
+            onDestroyedHandler = deathPosition =>
+            {
+                Debug.Log("Enemy destroyed");
+                SpawnDeathParticle(definition, deathPosition);
+                enemy.OnDestroyed -= onDestroyedHandler;
+            };
+
+            enemy.OnDestroyed += onDestroyedHandler;
+
+            FinishIndicator(indicator, definition);
+        }
+
+        public void SpawnDeathParticle(EnemyDefinition definition, Vector3 position)
+        {
+            // Play the particle effect
+            var particle = particlePool.Get(position);
+            if(particle.TryGetComponent<ParticleSystemColor>(out var psColor))
+            {
+                psColor.SetColor(definition.enemyColor);
+            }
         }
         
         private Vector3 GetRandomPosition()
         {
             Vector3 randomInnerPoint = new Vector3(
-                UnityEngine.Random.Range(-level.bounds.x, level.bounds.x),
+                Random.Range(-level.bounds.x, level.bounds.x),
                 0,
-                UnityEngine.Random.Range(-level.bounds.y, level.bounds.y)
+                Random.Range(-level.bounds.y, level.bounds.y)
             );
 
             Vector3 randomEdgePoint;

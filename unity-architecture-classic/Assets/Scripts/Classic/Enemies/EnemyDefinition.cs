@@ -8,8 +8,7 @@ namespace Classic.Enemies
     {
         [Header("Prefabs")]
         public EnemyScope enemyPrefab;
-        public SpawnIndicatorController spawnIndicatorPrefab;
-        public ParticleSystem deathEffect;
+        public Color enemyColor;
         
         [Header("Base Stats")]
         public EnemyType enemyType;

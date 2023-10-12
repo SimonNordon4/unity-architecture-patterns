@@ -1,4 +1,5 @@
-﻿using Classic.Game;
+﻿using System;
+using Classic.Game;
 using UnityEngine;
 
 namespace Classic.Enemies.Enemy
@@ -9,7 +10,7 @@ namespace Classic.Enemies.Enemy
     /// </summary>
     public class EnemyScope : MonoBehaviour
     {
-
+        public event Action<Vector3> OnDestroyed;
         [field: SerializeField] public EnemyType type { get; private set; }
         [field: SerializeField] public GameState state { get; private set; }
         [field: SerializeField] public Level level { get; private set; }
@@ -26,6 +27,12 @@ namespace Classic.Enemies.Enemy
             level = newLevel;
             events = newEvents;
             characterTransform = newCharacterTransform;
+        }
+
+        public void OnDestroy()
+        {
+            Debug.Log("EnemyScope destroyed");
+            OnDestroyed?.Invoke(transform.position);
         }
     }
 }
