@@ -19,6 +19,7 @@ namespace Classic.Character
 
         public Transform GetClosestTarget()
         {
+            hasTarget = false;
             targetDirection = Vector3.zero;
             
             // TODO: This needs to be maximum range of all weapons, eventually.

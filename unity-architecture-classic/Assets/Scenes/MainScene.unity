@@ -4487,126 +4487,126 @@ MonoBehaviour:
     initialValue: 10
     minimumValue: 0
     maximumValue: Infinity
-    statType: 11
+    type: 11
     _modifiers: []
     value: 10
   <playerSpeed>k__BackingField:
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
-    statType: 10
+    type: 10
     _modifiers: []
     value: 5
   <block>k__BackingField:
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
-    statType: 15
+    type: 15
     _modifiers: []
     value: 0
   <dodge>k__BackingField:
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
-    statType: 16
+    type: 16
     _modifiers: []
     value: 0
   <revives>k__BackingField:
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
-    statType: 17
+    type: 17
     _modifiers: []
     value: 0
   <dashes>k__BackingField:
     initialValue: 99
     minimumValue: 0
     maximumValue: Infinity
-    statType: 18
+    type: 18
     _modifiers: []
     value: 0
   <projectileDamage>k__BackingField:
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
-    statType: 1
+    type: 1
     _modifiers: []
     value: 1
   <range>k__BackingField:
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
-    statType: 2
+    type: 2
     _modifiers: []
     value: 5
   <fireRate>k__BackingField:
     initialValue: 0.5
     minimumValue: 0
     maximumValue: Infinity
-    statType: 0
+    type: 0
     _modifiers: []
     value: 0.5
   <projectileKnockBack>k__BackingField:
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
-    statType: 3
+    type: 3
     _modifiers: []
     value: 1
   <projectilePierce>k__BackingField:
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
-    statType: 4
+    type: 4
     _modifiers: []
     value: 0
   <meleeDamage>k__BackingField:
     initialValue: 3
     minimumValue: 0
     maximumValue: Infinity
-    statType: 5
+    type: 5
     _modifiers: []
     value: 3
   <meleeRange>k__BackingField:
     initialValue: 1.5
     minimumValue: 0
     maximumValue: Infinity
-    statType: 7
+    type: 7
     _modifiers: []
     value: 5
   <attackSpeed>k__BackingField:
     initialValue: 3
     minimumValue: 0
     maximumValue: Infinity
-    statType: 8
+    type: 8
     _modifiers: []
     value: 3
   <meleeKnockBack>k__BackingField:
     initialValue: 3
     minimumValue: 0
     maximumValue: Infinity
-    statType: 6
+    type: 6
     _modifiers: []
     value: 3
   <arc>k__BackingField:
     initialValue: 45
     minimumValue: 0
     maximumValue: Infinity
-    statType: 9
+    type: 9
     _modifiers: []
     value: 45
   <luck>k__BackingField:
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
-    statType: 14
+    type: 14
     _modifiers: []
     value: 0
   <healthPackSpawnRate>k__BackingField:
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
-    statType: 13
+    type: 13
     _modifiers: []
     value: 5
 --- !u!114 &439529840
@@ -13156,7 +13156,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261297451}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a90c85bed00124140bfbe5c02cad2514, type: 3}
   m_Name: 
@@ -17636,6 +17636,7 @@ GameObject:
   - component: {fileID: 1597872169}
   - component: {fileID: 1597872168}
   - component: {fileID: 1597872170}
+  - component: {fileID: 1597872171}
   m_Layer: 0
   m_Name: 'Enemies '
   m_TagString: Untagged
@@ -17657,6 +17658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
   level: {fileID: 1358396558}
+  events: {fileID: 1597872171}
   characterTransform: {fileID: 4258749572108575571}
 --- !u!4 &1597872169
 Transform:
@@ -17688,6 +17690,18 @@ MonoBehaviour:
   testDefinition: {fileID: 11400000, guid: 81818dda6826b8d4296a17176f448806, type: 2}
   pool: {fileID: 1597872168}
   level: {fileID: 1358396558}
+--- !u!114 &1597872171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597872167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de713d6536742398a25052078bcf8eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1610111792
 GameObject:
   m_ObjectHideFlags: 0
@@ -39212,6 +39226,7 @@ MonoBehaviour:
   <targetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
+  hasTarget: 0
 --- !u!224 &1660143244921342043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -45832,6 +45847,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy - Normal
       objectReference: {fileID: 0}
+    - target: {fileID: 4191775094967363179, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4532079068998024323, guid: 06395e610f4466140967042d1094d37f, type: 3}
       propertyPath: <level>k__BackingField
       value: 
@@ -45847,8 +45866,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4191775094967363179, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2975240420852958307}
   m_SourcePrefab: {fileID: 100100000, guid: 06395e610f4466140967042d1094d37f, type: 3}
+--- !u!1 &2975240420852958306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4191775094967363179, guid: 06395e610f4466140967042d1094d37f, type: 3}
+  m_PrefabInstance: {fileID: 2975240420852958305}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2975240420852958307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975240420852958306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59b7ddd6415462892f414dbdacd8c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageReceiver: {fileID: 2975240420852958308}
+  scope: {fileID: 0}
+  stats: {fileID: 0}
+  currentHealth: 0
+--- !u!114 &2975240420852958308 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5382979971857734598, guid: 06395e610f4466140967042d1094d37f, type: 3}
+  m_PrefabInstance: {fileID: 2975240420852958305}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2975240420852958306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2998133434920168807
 MonoBehaviour:
   m_ObjectHideFlags: 0

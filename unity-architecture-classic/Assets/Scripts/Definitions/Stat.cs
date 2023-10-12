@@ -16,14 +16,14 @@ public class Stat
     {
         this.initialValue = initialValue;
         value = initialValue;
-        statType = type;
+        this.type = type;
     }
     
     public float initialValue = 1f;
     public float minimumValue = 0f;
     public float maximumValue = float.PositiveInfinity;
     
-    public StatType statType;
+    public StatType type;
     
     [SerializeField]
     private List<Modifier> _modifiers = new();

@@ -27,14 +27,15 @@ namespace Classic.Character
                 return;
             }
 
-            target.GetClosestTarget();
-            if (!target.hasTarget) return;
             Shoot();
             _timeSinceLastShot = 0f;
         }
 
         private void Shoot()
         {
+            target.GetClosestTarget();
+            if (target.hasTarget == false) return;
+            
             var projectile = pool.Spawn(projectileSpawnPoint.position,target.targetDirection);
 
             projectile.Set(target.targetLayer, 10f, (int)stats.projectileDamage.value, stats.projectileKnockBack.value,

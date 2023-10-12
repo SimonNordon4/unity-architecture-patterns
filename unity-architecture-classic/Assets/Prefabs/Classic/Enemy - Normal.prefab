@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 8250662415803675940}
   - component: {fileID: 5628982030433889262}
   - component: {fileID: 644304032762213628}
+  - component: {fileID: 2586163219147478095}
   m_Layer: 7
   m_Name: Enemy - Normal
   m_TagString: Enemy
@@ -148,7 +149,7 @@ Transform:
   - {fileID: 2206884392588127123}
   - {fileID: 8672131833039624969}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4532079068998024323
 MonoBehaviour:
@@ -165,6 +166,8 @@ MonoBehaviour:
   <type>k__BackingField: 0
   <state>k__BackingField: {fileID: 0}
   <level>k__BackingField: {fileID: 0}
+  <events>k__BackingField: {fileID: 0}
+  <pool>k__BackingField: {fileID: 0}
   <characterTransform>k__BackingField: {fileID: 0}
 --- !u!114 &7674547771310952523
 MonoBehaviour:
@@ -303,6 +306,22 @@ MonoBehaviour:
   knockBackReceiver: {fileID: 1785312643563425327}
   stats: {fileID: 7674547771310952523}
   scope: {fileID: 4532079068998024323}
+--- !u!114 &2586163219147478095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4191775094967363179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59b7ddd6415462892f414dbdacd8c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageReceiver: {fileID: 5382979971857734598}
+  scope: {fileID: 4532079068998024323}
+  stats: {fileID: 7674547771310952523}
+  currentHealth: 0
 --- !u!1 &4289633952769822413
 GameObject:
   m_ObjectHideFlags: 0

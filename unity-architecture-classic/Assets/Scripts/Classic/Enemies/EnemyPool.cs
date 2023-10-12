@@ -10,6 +10,7 @@ namespace Classic.Enemies
     {
         [SerializeField] private GameState state;
         [SerializeField] private Level level;
+        [SerializeField] private EnemyEvents events;
         [SerializeField] private Transform characterTransform;
 
         private readonly Dictionary<EnemyType, Queue<EnemyScope>> _enemyQueues = new();
@@ -50,7 +51,7 @@ namespace Classic.Enemies
         private EnemyScope Create(EnemyDefinition enemyDefinition, Vector3 position = new())
         {
             var enemyScope = Instantiate(enemyDefinition.enemyPrefab, position, Quaternion.identity, null);
-            enemyScope.Construct(state, level, characterTransform);
+            enemyScope.Construct(state, level,events,this, characterTransform);
             
             if(enemyScope.TryGetComponent<EnemyStats>(out var enemyStats))
             {

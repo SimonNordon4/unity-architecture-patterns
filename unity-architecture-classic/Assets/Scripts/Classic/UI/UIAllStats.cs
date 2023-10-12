@@ -36,8 +36,8 @@ namespace Classic.UI
             // instantitate a stat text for each stat type
             foreach (var stat in stats.statMap.Values)
             {
-                if(_statTextMap.ContainsKey(stat.statType)) continue;
-                var statType = stat.statType;
+                if(_statTextMap.ContainsKey(stat.type)) continue;
+                var statType = stat.type;
                 var statDescription = Instantiate(statDescriptionPrefab, statContainer);
                 statDescription.SetStatDescription(stat);
                 _statTextMap.Add(statType, statDescription);
