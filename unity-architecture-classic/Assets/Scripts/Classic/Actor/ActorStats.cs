@@ -17,7 +17,7 @@ namespace Classic.Actor
             }
         }
 
-        private void Start()
+        private void Awake()
         {
             if (definition != null)
             {

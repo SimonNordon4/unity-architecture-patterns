@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Events;
+
 
 namespace Classic.Game
 {
@@ -9,6 +9,8 @@ namespace Classic.Game
     /// </summary>
     public class GameState : MonoBehaviour
     {
+        [SerializeField] private bool startActive = false;
+        
         public GameStateEnum currentState { get; private set; } = GameStateEnum.Idle;
 
         public event Action<bool> OnChanged;
@@ -23,9 +25,14 @@ namespace Classic.Game
 
         private void Start()
         {
-            currentState = GameStateEnum.Idle;
-            GameTime.timeScale = 0f;
-            OnChanged?.Invoke(isGameActive);
+            if (startActive)
+            {
+                StartNewGame();
+            }
+            else
+            {
+                QuitGame();
+            }
         }
 
         public void StartNewGame()
