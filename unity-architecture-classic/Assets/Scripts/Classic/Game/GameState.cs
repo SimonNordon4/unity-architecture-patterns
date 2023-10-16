@@ -67,7 +67,7 @@ namespace Classic.Game
             OnChanged?.Invoke(isGameActive);
         }
         
-        public void LoseGame()
+        public void GameOver()
         {
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;

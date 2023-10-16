@@ -25,13 +25,13 @@ namespace Classic.Character
 
         private void OnEnable()
         {
-            damageReceiver.OnDamageTaken += TakeDamage;
+            damageReceiver.OnDamageReceived += TakeDamage;
             state.OnGameStart+=(Reset);
         }
         
         private void OnDisable()
         {
-            damageReceiver.OnDamageTaken -= TakeDamage;
+            damageReceiver.OnDamageReceived -= TakeDamage;
             state.OnGameStart-=(Reset);
         }
 
@@ -69,7 +69,7 @@ namespace Classic.Character
                 currentHealth = (int)stats.playerHealth.value;
                 return;
             }
-            state.LoseGame();
+            state.GameOver();
         }
 
         public void Reset()

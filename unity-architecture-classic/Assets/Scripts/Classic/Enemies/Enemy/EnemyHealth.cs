@@ -14,12 +14,12 @@ namespace Classic.Enemies.Enemy
         private void OnEnable()
         {
             currentHealth = stats.baseHealth;
-            damageReceiver.OnDamageTaken += TakeDamage;
+            damageReceiver.OnDamageReceived += TakeDamage;
         }
 
         private void OnDisable()
         {
-            damageReceiver.OnDamageTaken -= TakeDamage;
+            damageReceiver.OnDamageReceived -= TakeDamage;
         }
 
         private void TakeDamage(int damage)

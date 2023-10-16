@@ -7,10 +7,17 @@ namespace Classic.Actor
     public class ActorHealth : ActorComponent
     {
         [SerializeField] private int currentHealth;
+        [SerializeField] private ActorStats stats;
+        private Stat _maxHealthStat;
         
         public event Action<int> OnHealthChanged;
         public event Action OnDeath;
-        
+
+        private void Start()
+        {
+            Reset();
+        }
+
         public void SetHealth(int health)
         {
             currentHealth = health;
@@ -18,14 +25,17 @@ namespace Classic.Actor
         public void TakeDamage(int damageAmount)
         {
             if (damageAmount <= 0) return;
-            
-            currentHealth -= damageAmount;
+
+            currentHealth = Mathf.Max(0, currentHealth - damageAmount);
             OnHealthChanged?.Invoke(currentHealth);
 
             if (currentHealth > 0) return;
-            
-            currentHealth = 0;
             OnDeath?.Invoke();
+        }
+
+        public override void Reset()
+        {
+            currentHealth = (int)stats.Map[StatType.MaxHealth].value;
         }
     }
 }

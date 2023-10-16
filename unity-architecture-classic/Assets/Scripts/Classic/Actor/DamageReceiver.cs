@@ -5,11 +5,11 @@ namespace Classic.Actor
 {
     public class DamageReceiver : ActorComponent
     {
-        public event Action<int> OnDamageTaken;
+        public event Action<int> OnDamageReceived;
 
         public void TakeDamage(int damage)
         {
-            OnDamageTaken?.Invoke(damage);
+            OnDamageReceived?.Invoke(damage);
         }
     }
 }
