@@ -5,6 +5,13 @@ namespace Classic.Actor
 {
     public class ActorMovement : ActorComponent
     {
+        [SerializeField] private Level level;
+
+        public void Construct(Level newLevel)
+        {
+            level = newLevel;
+        }
+        
         public Vector3 velocity { get; set; }
         public Vector3 lookDirection { get; set; }
 
@@ -17,12 +24,17 @@ namespace Classic.Actor
 
         public void LateUpdate()
         {
-            var newPosition = Vector3.zero;
-            var newRotation = Quaternion.identity;
+            var position = _transform.position;
+            
+            // clamp newPosition to level bounds
+            var x = Mathf.Clamp(position.x, -level.bounds.x, level.bounds.x);
+            var y = Mathf.Clamp(position.z, -level.bounds.y, level.bounds.y);
+            
+            var newPosition = new Vector3(x, position.y, y);
 
             if (velocity.magnitude > 0.01f)
             {
-                _transform.position += velocity * GameTime.deltaTime;    
+                _transform.position = newPosition + velocity * GameTime.deltaTime;    
             }
 
             if (lookDirection.magnitude > 0.01f)

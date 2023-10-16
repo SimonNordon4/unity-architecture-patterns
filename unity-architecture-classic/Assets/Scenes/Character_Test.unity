@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 226718098}
   - component: {fileID: 226718097}
   - component: {fileID: 226718096}
+  - component: {fileID: 226718109}
   - component: {fileID: 226718103}
   - component: {fileID: 226718102}
   - component: {fileID: 226718105}
@@ -364,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: {fileID: 1358396558}
 --- !u!114 &226718103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +460,21 @@ MonoBehaviour:
   onRevived:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &226718109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226718094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be54abb5ea834f189c9317b08c9d239f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 226718104}
+  stats: {fileID: 226718097}
+  gameState: {fileID: 1358396559}
 --- !u!1 &340710624
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +735,6 @@ GameObject:
   - component: {fileID: 1358396559}
   - component: {fileID: 1358396558}
   - component: {fileID: 1358396561}
-  - component: {fileID: 1358396562}
   m_Layer: 0
   m_Name: Game State
   m_TagString: Untagged
@@ -776,26 +792,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1358396557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d97e3a33c457264c812d58e659f541a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseKey: 102
-  gameState: {fileID: 1358396559}
-  uiState: {fileID: 0}
---- !u!114 &1358396562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358396557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb39c66eac024b7a957615a1432f7862, type: 3}
+  m_Script: {fileID: 11500000, guid: c44ece414dc24d74bc25e060cb28057e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
-  <roundTime>k__BackingField: 0
 --- !u!850595691 &1469503882
 LightingSettings:
   m_ObjectHideFlags: 0
