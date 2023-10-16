@@ -19,13 +19,13 @@ namespace Classic.App
 
         private void OnEnable()
         {
-            state.onGameWon.AddListener(GameWon);
-            state.onGameWon.AddListener(GameWonInMinutes);
-            state.onGameLost.AddListener(PlayerDied);
+            state.OnGameWon+=(GameWon);
+            state.OnGameWon+=(GameWonInMinutes);
+            state.OnGameLost+=(PlayerDied);
             enemyManager.onEnemyDied.AddListener(vec => EnemyDied());
             enemyManager.onBossDied.AddListener(vec => BossDied());
             Chest.OnChestPickedUp.AddListener(chest => ChestOpened());
-            gold.onGoldChanged.AddListener(i => EarnedGold());
+            gold.onGoldChanged+=(i => EarnedGold());
             stats.onStatChanged.AddListener(StatCheck);
             
             Load();
@@ -34,13 +34,13 @@ namespace Classic.App
 
         private void OnDisable()
         {
-            state.onGameWon.RemoveListener(GameWon);
-            state.onGameWon.RemoveListener(GameWonInMinutes);
-            state.onGameLost.RemoveListener(PlayerDied);
+            state.OnGameWon-=(GameWon);
+            state.OnGameWon-=(GameWonInMinutes);
+            state.OnGameLost-=(PlayerDied);
             enemyManager.onEnemyDied.RemoveListener(vec => EnemyDied());
             enemyManager.onBossDied.RemoveListener(vec => BossDied());
             Chest.OnChestPickedUp.RemoveListener(chest => ChestOpened());
-            gold.onGoldChanged.RemoveListener(i => EarnedGold());
+            gold.onGoldChanged-=(i => EarnedGold());
             stats.onStatChanged.RemoveListener(StatCheck);
             
             Save();

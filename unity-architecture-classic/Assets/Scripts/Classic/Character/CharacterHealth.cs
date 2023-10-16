@@ -26,13 +26,13 @@ namespace Classic.Character
         private void OnEnable()
         {
             damageReceiver.OnDamageTaken += TakeDamage;
-            state.onGameStart.AddListener(Reset);
+            state.OnGameStart+=(Reset);
         }
         
         private void OnDisable()
         {
             damageReceiver.OnDamageTaken -= TakeDamage;
-            state.onGameStart.RemoveListener(Reset);
+            state.OnGameStart-=(Reset);
         }
 
         public void TakeDamage(int damageAmount)

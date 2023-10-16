@@ -10,7 +10,7 @@ namespace Classic.Game
         
         private void OnEnable()
         {
-            gameState.onGameStart.AddListener(GameStarted);
+            gameState.OnGameStart+=(GameStarted);
             inventory.onChestItemAdded.AddListener(OnChestItemAdded);
         }
 
@@ -39,24 +39,6 @@ namespace Classic.Game
         private void OnChestItemAdded(ChestItem chestItem)
         {
             stats.ApplyModifier(chestItem.modifiers);
-        }
-
-        private void OnValidate()
-        {
-            if (inventory == null)
-            {
-                inventory = FindObjectsByType<Inventory>(FindObjectsSortMode.None)[0];
-            }
-
-            if (stats == null)
-            {
-                stats = FindObjectsByType<Stats>(FindObjectsSortMode.None)[0];
-            }
-            
-            if (gameState == null)
-            {
-                gameState = FindObjectsByType<GameState>(FindObjectsSortMode.None)[0];
-            }
         }
     }
 }

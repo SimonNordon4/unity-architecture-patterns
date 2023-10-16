@@ -20,12 +20,12 @@ namespace Classic.Character
 
         private void OnEnable()
         {
-            state.onGameStart.AddListener(Reset);
+            state.OnGameStart+=(Reset);
         }
 
         private void OnDisable()
         {
-            state.onGameStart.RemoveListener(Reset);
+            state.OnGameStart-=(Reset);
         }
 
         private void LateUpdate()

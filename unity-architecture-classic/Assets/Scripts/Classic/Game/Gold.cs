@@ -1,27 +1,31 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Game
 {
+    /// <summary>
+    /// Keeps track of how much Gold the player has, for purchasing upgrades.
+    /// </summary>
     public class Gold : MonoBehaviour
     {
         [SerializeField] private GameState state;
         [field:SerializeField] public int amount { get; private set; } = 0;
         [field:SerializeField] public int totalEarned { get; private set; } = 0;
-        public UnityEvent<int> onGoldChanged = new();
+        public Action<int> onGoldChanged;
 
         private void OnEnable()
         {
-            state.onGameLost.AddListener(AddGameWhenGoldEnds);
-            state.onGameWon.AddListener(AddGameWhenGoldEnds);
+            state.OnGameLost += AddGameWhenGoldEnds;
+            state.OnGameWon += AddGameWhenGoldEnds;
             Load();
         }
 
         private void OnDisable()
         {
-            state.onGameLost.RemoveListener(AddGameWhenGoldEnds);
-            state.onGameWon.RemoveListener(AddGameWhenGoldEnds);
+            state.OnGameLost -= AddGameWhenGoldEnds;
+            state.OnGameWon -= AddGameWhenGoldEnds;
             Save();
         }
 

@@ -23,8 +23,6 @@ public enum EnemySpawnPhase
 
 public class EnemyManager : MonoBehaviour
 {
-    
-    
     [Header("Dependencies")] 
     public ChestSpawner chestSpawner;
 
@@ -47,8 +45,7 @@ public class EnemyManager : MonoBehaviour
     private EnemySpawnBlock _currentBlock;
     private int _blockIndex;
     
-    private List<EnemySpawnWave> _currentSpawnWaves = new();
-    private EnemySpawnWave _currentWave;
+
     
     // for UI purposes.
     private int _totalWaves;
@@ -82,15 +79,18 @@ public class EnemyManager : MonoBehaviour
     // Wave Data
     public readonly List<WaveRuntimeData> WaveDatas = new();
     private WaveRuntimeData _currentWaveData;
+    
+    private List<EnemySpawnWave> _currentSpawnWaves = new();
+    private EnemySpawnWave _currentWave;
 
     private void OnEnable()
     {
-        gameState.onGameStart.AddListener(ResetEnemyManager);
+        gameState.OnGameStart+=(ResetEnemyManager);
     }
     
     private void OnDisable()
     {
-        gameState.onGameStart.RemoveListener(ResetEnemyManager);
+        gameState.OnGameStart-=(ResetEnemyManager);
     }
 
 

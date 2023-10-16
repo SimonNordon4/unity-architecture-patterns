@@ -15,12 +15,12 @@ namespace Classic.Items
 
         private void OnEnable()
         {
-            gameState.onGameQuit.AddListener(DestroyAllHealthPacks);
+            gameState.OnGameQuit+=(DestroyAllHealthPacks);
         }
 
         private void OnDisable()
         {
-            gameState.onGameQuit.RemoveListener(DestroyAllHealthPacks);
+            gameState.OnGameQuit-=(DestroyAllHealthPacks);
         }
 
         public void SpawnHealthPack(Vector3 position)

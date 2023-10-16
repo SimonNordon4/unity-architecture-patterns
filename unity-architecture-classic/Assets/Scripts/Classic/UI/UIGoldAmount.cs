@@ -14,7 +14,7 @@ namespace Classic.UI
         private void OnEnable()
         {
             text.text = label + gold.amount.ToString();
-            gold.onGoldChanged.AddListener(OnGoldChanged);
+            gold.onGoldChanged+=(OnGoldChanged);
         }
 
         private void OnGoldChanged(int newGold)
@@ -24,7 +24,7 @@ namespace Classic.UI
 
         private void OnDisable()
         {
-            gold.onGoldChanged.RemoveListener(OnGoldChanged);
+            gold.onGoldChanged+=(OnGoldChanged);
         }
 
         private void OnValidate()

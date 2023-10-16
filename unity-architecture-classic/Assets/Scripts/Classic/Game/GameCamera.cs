@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Classic.Game
 {
+    /// <summary>
+    /// Keeps the camera centered on the player, but stops the camera from moving if the player is within 5m of the level bounds.
+    /// </summary>
     public class GameCamera : MonoBehaviour
     {
         [Header("Dependencies")]
@@ -12,7 +15,6 @@ namespace Classic.Game
 
         [Header("Settings")]
         [SerializeField] private float edgeDistance = 5f;
-
         private Vector3 _cameraOffset;
 
         private void Start()
@@ -41,14 +43,6 @@ namespace Classic.Game
             }
 
             transform.position = cameraWishPosition;
-        }
-
-        private void OnValidate()
-        {
-            if (level == null)
-            {
-                level = FindObjectsByType<Level>(FindObjectsSortMode.None).First();
-            }
         }
     }
 }

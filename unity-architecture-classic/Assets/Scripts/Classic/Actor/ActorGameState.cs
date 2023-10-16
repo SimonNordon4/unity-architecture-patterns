@@ -14,8 +14,8 @@ namespace Classic.Actor
 
         private void OnEnable()
         {
-            state.onStateChanged.AddListener(GameStateChanged);
-            state.onGameStart.AddListener(GameStarted);            
+            state.OnChanged+=(GameStateChanged);
+            state.OnGameStart+=(GameStarted);            
         }
 
         private void GameStarted()

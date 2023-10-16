@@ -35,10 +35,10 @@ namespace Classic.App
             enemyManager.onEnemyDied.AddListener(EnemyDied);
             enemyManager.onBossDied.AddListener(BossDied);
             enemyManager.onDamageTaken.AddListener(DamageDealt);
-            state.onGameWon.AddListener(GameWon);
-            state.onGameLost.AddListener(GameLost);
-            state.onGameQuit.AddListener(GamePlayed);
-            gold.onGoldChanged.AddListener(OnGoldChanged);
+            state.OnGameWon+=(GameWon);
+            state.OnGameLost+=(GameLost);
+            state.OnGameQuit+=(GamePlayed);
+            gold.onGoldChanged+=(OnGoldChanged);
             stats.onStatChanged.AddListener(OnStatChanged);
             Chest.OnChestPickedUp.AddListener(OnChestPickedUp);
             characterHealth.onDamaged.AddListener(DamageTaken);
