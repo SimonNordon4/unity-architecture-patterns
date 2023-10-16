@@ -281,7 +281,7 @@ public class PlayerController : MonoBehaviour
         private IEnumerator SwordAttack()
     {
         _isSwordAttacking = true;
-        var swordArc = stats.arc.value;
+        var swordArc = 45f;
         // Enable the sword gameobject.
         swordPivot.gameObject.SetActive(true);
         swordPivot.localScale = new Vector3(1f, 1f, stats.meleeRange.value);

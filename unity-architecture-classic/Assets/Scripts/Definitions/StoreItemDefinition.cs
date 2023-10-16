@@ -12,7 +12,7 @@ using UnityEngine;
 public class StoreItemDefinition : ScriptableObject
 {
     public ModifierType modifierType = ModifierType.Flat;
-    public StatType type = StatType.EnemySpawnRate;
+    public StatType type = StatType.Revives;
     
     public string name = "New Item";
     public Sprite sprite;

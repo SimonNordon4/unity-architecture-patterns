@@ -514,44 +514,44 @@ using UnityEngine;
         {
             switch (type)
             {
-                case StatType.RangeDamage:
+                case StatType.RangedDamage:
                     if (value > statistics.highestPistolDamage)
                         statistics.highestPistolDamage = (int) value;
                     // var pistolDamage = achievementSave.achievements.First(x=>x.id == AchievementName.Reach50PistolDamage);
                     // ProcessStatAchievement(pistolDamage, value, 50);
                     break;
-                case StatType.Range:
+                case StatType.RangedRange:
                     if (value > statistics.highestPistolRange)
                         statistics.highestPistolRange = (int) value;
                     // var pistolRange = achievementSave.achievements.First(x=>x.id == AchievementName.Reach25PistolRange);
                     // ProcessStatAchievement(pistolRange, value, 25);
                     break;
-                case StatType.FireRate:
+                case StatType.RangedAttackSpeed:
                     if (value > statistics.highestPistolFireRate)
                         statistics.highestPistolFireRate = (int) value;
                     //(achievementSave.achievements.First(x=>x.id == AchievementName.Reach15PistolFireRate), value, 15);
                     break;
-                case StatType.ProjectileKnockBack:
+                case StatType.RangedKnockBack:
                     if (value > statistics.highestPistolKnockBack)
                         statistics.highestPistolKnockBack = (int) value;
                     // var pistolKnockBack = achievementSave.achievements.First(x=>x.id == AchievementName.Reach10PistolKnockBack);
                     // ProcessStatAchievement(pistolKnockBack, value, 10);
    
                     break;
-                case StatType.ProjectilePierce:
+                case StatType.RangedPierce:
                     if (value > statistics.highestPistolPierce)
                         statistics.highestPistolPierce = (int) value;
                     // var pistolPierce = achievementSave.achievements.First(x=>x.id == AchievementName.Reach3PistolPierce);
                     // ProcessStatAchievement(pistolPierce, value, 3);
                     break;
-                case StatType.PlayerHealth:
+                case StatType.MaxHealth:
                     if (value > statistics.highestPlayerHealth)
                         statistics.highestPlayerHealth = (int) value;
                     //
                     // var playerHealth = achievementSave.achievements.First(x=>x.id == AchievementName.Reach100PlayerHealth);
                     // ProcessStatAchievement(playerHealth, value, 100);
                     break;
-                case StatType.PlayerSpeed:
+                case StatType.MoveSpeed:
                     if (value > statistics.highestPlayerSpeed)
                         statistics.highestPlayerSpeed = (int) value;
                     // var playerSpeed = achievementSave.achievements.First(x=>x.id == AchievementName.Reach10PlayerSpeed);
@@ -569,7 +569,7 @@ using UnityEngine;
                     // var swordRange = achievementSave.achievements.First(x=>x.id == AchievementName.Reach10SwordRange);
                     // ProcessStatAchievement(swordRange, value, 10);
                     break;
-                case StatType.AttackSpeed:
+                case StatType.MeleeAttackSpeed:
                     if (value > statistics.highestSwordAttackSpeed)
                         statistics.highestSwordAttackSpeed = (int) value;
                     // var swordAttackSpeed = achievementSave.achievements.First(x=>x.id == AchievementName.Reach8SwordAttackSpeed);
@@ -581,13 +581,7 @@ using UnityEngine;
                     // var swordKnockBack = achievementSave.achievements.First(x=>x.id == AchievementName.Reach10SwordKnockBack);
                     // ProcessStatAchievement(swordKnockBack, value, 10);
                     break;
-                case StatType.Arc:
-                    if (value > statistics.highestSwordArc)
-                        statistics.highestSwordArc = (int) value;
-                    // var swordArc = achievementSave.achievements.First(x=>x.id == AchievementName.Reach540SwordArc);
-                    // ProcessStatAchievement(swordArc, value, 540);
-                    break;
-                case StatType.HealthPackSpawnRate:
+                case StatType.HealthPackDropRate:
                     if (value > statistics.highestHealthPackSpawnRate)
                         statistics.highestHealthPackSpawnRate = (int) value;
                     // var healthPackSpawnRate = achievementSave.achievements.First(x=>x.id == AchievementName.Reach10HealthPackSpawnRate);
