@@ -30,7 +30,7 @@ namespace Classic.Utility
         public static T Find<T>() where T : class
         {
             var type = typeof(T);
-            var objects = UnityEngine.Object.FindObjectsByType(typeof(T),FindObjectsSortMode.None);
+            var objects = Object.FindObjectsByType(typeof(T),FindObjectsSortMode.None);
             if (objects.Length == 0)
             {
                 Debug.LogWarning("No object of type " + type + " found in scene.");
