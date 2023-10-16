@@ -1,7 +1,7 @@
 ﻿using Classic.Game;
 using UnityEngine;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
     public class ActorMovement : ActorComponent
     {

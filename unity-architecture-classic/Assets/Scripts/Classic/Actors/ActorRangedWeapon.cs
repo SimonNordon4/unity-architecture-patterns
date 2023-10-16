@@ -1,17 +1,17 @@
-﻿using Classic.Actors;
+﻿using Classic.Character;
 using Classic.Game;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Classic.Character
+namespace Classic.Actors
 {
-    public class CharacterShooting : MonoBehaviour
+    public class ActorRangedWeapon : MonoBehaviour
     {
-        [SerializeField] private GameState state;
-        [SerializeField] private Stats stats;
-        [SerializeField] private CharacterTarget target;
+        [SerializeField] private ActorStats stats;
+        [SerializeField] private ActorTarget target;
         [SerializeField] private ProjectilePool pool;
         [SerializeField] private Transform projectileSpawnPoint;
+        [SerializeField] private float projectileSpeed = 10f;
 
         public UnityEvent onShoot = new();
 
@@ -19,9 +19,7 @@ namespace Classic.Character
 
         private void Update()
         {
-            if(state.isGameActive == false) return;
-            
-            if (_timeSinceLastShot < stats.fireRate.value)
+            if (_timeSinceLastShot < stats.Map[StatType.RangedAttackSpeed].value)
             {
                 _timeSinceLastShot += Time.deltaTime;
                 return;
@@ -33,13 +31,18 @@ namespace Classic.Character
 
         private void Shoot()
         {
-            target.GetClosestTarget();
+            var range = stats.Map[StatType.RangedRange].value;
+            target.GetClosestTarget(range);
             if (target.hasTarget == false) return;
             
-            var projectile = pool.Spawn(projectileSpawnPoint.position,target.targetDirection);
+            var projectile = pool.Spawn(projectileSpawnPoint.position, target.targetDirection);
+            
+            var layer = target.targetLayer;
+            var damage = (int)stats.Map[StatType.RangedDamage].value;
+            var knockBack = stats.Map[StatType.RangedKnockBack].value;
+            var pierce = (int)stats.Map[StatType.RangedPierce].value;
 
-            projectile.Set(target.targetLayer, 10f, (int)stats.projectileDamage.value, stats.projectileKnockBack.value,
-                (int)stats.projectilePierce.value);
+            projectile.Set(layer, projectileSpeed, damage, knockBack, pierce);
             
             onShoot.Invoke();
         }

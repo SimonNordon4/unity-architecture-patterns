@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
     public class ActorHealth : ActorComponent
     {

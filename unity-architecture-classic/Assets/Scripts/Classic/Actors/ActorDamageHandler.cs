@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
     public class ActorDamageHandler : ActorComponent
     {

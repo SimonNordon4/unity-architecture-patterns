@@ -2,14 +2,11 @@ using System.Collections.Generic;
 using Classic.Game;
 using UnityEngine;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
-    public class ProjectilePool : MonoBehaviour
+    public class ProjectilePool : ActorComponent
     {
-        [SerializeField]
-        private GameState state;
-    
-        [SerializeField] private Projectile projectilePrefab;
+        [SerializeField] private ProjectileDefinition projectileDefinition;
         [SerializeField] private int poolSize = 10;
 
         private Queue<Projectile> _projectilePool = new();
@@ -30,13 +27,14 @@ namespace Classic.Actor
             projectile.transform.position = spawnPoint;
             projectile.transform.rotation = Quaternion.LookRotation(direction);
             projectile.gameObject.SetActive(true);
+            projectile.Reset();
             return projectile;
         }
 
         private Projectile CreateNewProjectile()
         {
-            var newProjectile = Instantiate(projectilePrefab, null);
-            newProjectile.Construct(state,this);
+            var newProjectile = Instantiate(projectileDefinition.prefab, null);
+            newProjectile.SetPool(this);
             return newProjectile;
         }
         
@@ -44,6 +42,25 @@ namespace Classic.Actor
         {
             projectile.gameObject.SetActive(false);
             _projectilePool.Enqueue(projectile);
+        }
+
+        public override void Reset()
+        {
+            // clear the pool
+            foreach (var projectile in _projectilePool)
+            {
+                Destroy(projectile.gameObject);
+            }
+            
+            _projectilePool.Clear();
+            
+            // refill the pool
+            for (int i = 0; i < poolSize; i++)
+            {
+                var newProjectile = CreateNewProjectile();
+                newProjectile.gameObject.SetActive(false);
+                _projectilePool.Enqueue(newProjectile);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ using UnityEditor;
 using System.IO;
 #endif
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
     [CreateAssetMenu(menuName = "Classic/ActorStatsDefinition")]
     public class ActorStatsDefinition : ScriptableObject

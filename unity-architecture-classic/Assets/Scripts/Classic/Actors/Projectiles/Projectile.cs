@@ -1,10 +1,10 @@
-﻿using Classic.Actor;
+﻿using Classic.Actors;
 using Classic.Game;
 using UnityEngine;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
-    public class Projectile : MonoBehaviour
+    public class Projectile : ActorComponent
     {
         private GameState _state;
         private ProjectilePool _pool;
@@ -25,9 +25,8 @@ namespace Classic.Actor
             _projectileTransform = transform;
         }
 
-        public void Construct(GameState state, ProjectilePool pool)
+        public void SetPool(ProjectilePool pool)
         {
-            _state = state;
             _pool = pool;
         }
 
@@ -86,6 +85,11 @@ namespace Classic.Actor
                 return;
             }
             Destroy(gameObject);
+        }
+
+        public override void Reset()
+        {
+            _timeAlive = 0f;
         }
     }
 }

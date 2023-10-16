@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
     public class ActorRevive : ActorComponent
     {

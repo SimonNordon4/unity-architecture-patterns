@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
     public class ActorStats : ActorComponent
     {

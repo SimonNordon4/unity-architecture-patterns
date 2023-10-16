@@ -1,4 +1,4 @@
-﻿using Classic.Actor;
+﻿using Classic.Actors;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

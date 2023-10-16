@@ -3,7 +3,7 @@ using Classic.Game;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Classic.Actor
+namespace Classic.Actors
 {
     public class ActorGameState : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Classic.Actor;
+using Classic.Actors;
 using Classic.Game;
 using TMPro;
 using UnityEngine;

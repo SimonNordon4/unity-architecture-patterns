@@ -1,4 +1,4 @@
-﻿using Classic.Actor;
+﻿using Classic.Actors;
 using UnityEngine;
 
 namespace Classic.Dummy

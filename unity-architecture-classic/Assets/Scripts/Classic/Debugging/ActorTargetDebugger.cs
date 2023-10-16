@@ -1,4 +1,4 @@
-﻿using Classic.Actor;
+﻿using Classic.Actors;
 using UnityEngine;
 
 namespace Classic.Debugging
@@ -20,7 +20,7 @@ namespace Classic.Debugging
         [ContextMenu("Get Target")]
         public void GetTarget()
         {
-            target.GetClosestTarget(range, targetLayer);
+            target.GetClosestTarget(range);
         }
     }
 }
