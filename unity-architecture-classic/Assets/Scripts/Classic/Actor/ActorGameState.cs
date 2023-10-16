@@ -8,26 +8,52 @@ namespace Classic.Actor
     public class ActorGameState : MonoBehaviour
     {
         [SerializeField] private GameState state;
-        [SerializeField] private List<MonoBehaviour> behaviours = new();
+        private ActorComponent[] _actorComponents;
 
-        public UnityEvent onGameStart = new();
+        public void Construct(GameState newState)
+        {
+            state = newState;
+        }
 
         private void OnEnable()
         {
-            state.OnChanged+=(GameStateChanged);
-            state.OnGameStart+=(GameStarted);            
+            state.OnChanged += ToggleActorComponents;
+            state.OnGameStart += ResetActorComponents;
         }
 
-        private void GameStarted()
+        private void OnDisable()
         {
-            onGameStart.Invoke();
+            state.OnChanged -= ToggleActorComponents;
+            state.OnGameStart -= ResetActorComponents;
+        }
+        
+        private void Start()
+        {
+            GetActorComponents();
         }
 
-        private void GameStateChanged(bool isActive)
+        private void GetActorComponents()
         {
-            foreach (var behaviour in behaviours)
+            var children = GetComponentsInChildren<ActorComponent>();
+            var siblings = GetComponents<ActorComponent>();
+            _actorComponents = new ActorComponent[children.Length + siblings.Length];
+            children.CopyTo(_actorComponents, 0);
+            siblings.CopyTo(_actorComponents, children.Length);
+        }
+
+        private void ToggleActorComponents(bool isActive)
+        {
+            foreach (var component in _actorComponents)
             {
-                behaviour.enabled = isActive;
+                component.enabled = isActive;
+            }
+        }
+        
+        private void ResetActorComponents()
+        {
+            foreach (var component in _actorComponents)
+            {
+                component.Reset();
             }
         }
     }

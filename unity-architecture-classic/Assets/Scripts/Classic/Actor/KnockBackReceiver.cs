@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Classic.Actor
 {
-    public class KnockBackReceiver : MonoBehaviour
+    public class KnockBackReceiver : ActorComponent
     {
         public event Action<Vector3> OnKnockBack;
 

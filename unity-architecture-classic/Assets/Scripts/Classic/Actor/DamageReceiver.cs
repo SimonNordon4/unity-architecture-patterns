@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Classic.Actor
 {
-    public class DamageReceiver : MonoBehaviour
+    public class DamageReceiver : ActorComponent
     {
         public event Action<int> OnDamageTaken;
 

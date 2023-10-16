@@ -15,7 +15,6 @@ namespace Classic.Actor
         private float _knockBackForce;
         private float _pierceValue;
 
-        
         [SerializeField] private float lifeTime;
 
         private Transform _projectileTransform;
