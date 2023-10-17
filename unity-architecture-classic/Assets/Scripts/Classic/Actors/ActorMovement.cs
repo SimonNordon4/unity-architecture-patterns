@@ -16,10 +16,12 @@ namespace Classic.Actors
         public Vector3 lookDirection { get; private set; }
 
         private Transform _transform;
+        private Vector3 _initialPosition;
 
         private void Awake()
         {
             _transform = transform;
+            _initialPosition = _transform.position;
         }
         public void LateUpdate()
         {
@@ -43,7 +45,7 @@ namespace Classic.Actors
         }
         public override void Reset()
         {
-            _transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            _transform.SetPositionAndRotation(_initialPosition, Quaternion.identity);
         }
 
         public void SetVelocity(Vector3 newVelocity)
