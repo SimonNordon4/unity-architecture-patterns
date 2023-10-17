@@ -5,13 +5,13 @@ namespace Classic.Actors
 {
     public class ActorTarget : ActorComponent
     {
+        [SerializeField] private Transform initialTarget;
         [field: SerializeField] public LayerMask targetLayer { get; private set; }
         public bool hasTarget { get; private set; }
         public Transform target { get; private set; }
 
-        public Vector3 targetDirection => hasTarget ? target.position - _transform.position : Vector3.zero;
+        public Vector3 targetDirection => hasTarget ? (target.position - _transform.position).normalized : Vector3.zero;
         public float targetDistance => hasTarget ? Vector3.Distance(_transform.position, target.position) : 0f;
-        
         
 
 
@@ -23,10 +23,19 @@ namespace Classic.Actors
         private void Awake()
         {
             _transform = transform;
+            if (initialTarget != null)
+            {
+                SetTarget(initialTarget);
+            }
         }
 
         public void SetTarget(Transform newTarget)
         {
+            if (targetLayer != (targetLayer | (1 << newTarget.gameObject.layer)))
+            {
+                Debug.LogWarning("Target is not on the target layer.", this);
+            }
+            
             target = newTarget;
             hasTarget = true;
             _targetEvents = GetGameObjectEvents(target);

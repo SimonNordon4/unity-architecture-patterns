@@ -12,8 +12,8 @@ namespace Classic.Actors
             level = newLevel;
         }
         
-        public Vector3 velocity { get; set; }
-        public Vector3 lookDirection { get; set; }
+        public Vector3 velocity { get; private set; }
+        public Vector3 lookDirection { get; private set; }
 
         private Transform _transform;
 
@@ -21,7 +21,6 @@ namespace Classic.Actors
         {
             _transform = transform;
         }
-
         public void LateUpdate()
         {
             var position = _transform.position;
@@ -42,10 +41,31 @@ namespace Classic.Actors
                 _transform.rotation = Quaternion.LookRotation(lookDirection);
             }
         }
-
         public override void Reset()
         {
             _transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+        }
+
+        public void SetVelocity(Vector3 newVelocity)
+        {
+            velocity = newVelocity;
+        }
+
+        public void SetLookDirection(Vector3 newDirection)
+        {
+            lookDirection = newDirection;
+        }
+
+        public void SetVelocityAndLookDirection(Vector3 combinedVelocity)
+        {
+            velocity = combinedVelocity;
+            lookDirection = combinedVelocity.normalized;
+        }
+        
+        public void SetVelocityAndLookDirection(Vector3 newVelocity, Vector3 newLookDirection)
+        {
+            velocity = newVelocity;
+            lookDirection = newLookDirection;
         }
     }
 }

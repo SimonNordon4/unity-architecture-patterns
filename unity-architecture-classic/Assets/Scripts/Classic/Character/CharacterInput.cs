@@ -37,8 +37,8 @@ namespace Classic.Character
         {
             var movementInput = _movementAction.ReadValue<Vector2>();
             var direction = new Vector3(movementInput.x, 0, movementInput.y);
-            movement.velocity = direction * _speedStat.value;
-            movement.lookDirection = direction;
+            movement.SetVelocity(direction * _speedStat.value);
+            movement.SetLookDirection(direction);
         }
     }
 }
