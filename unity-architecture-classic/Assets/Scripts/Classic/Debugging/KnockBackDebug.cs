@@ -16,7 +16,7 @@ namespace Classic.Debugging
 
         private void OnKnockBack(Vector3 obj)
         {
-            Debug.Log($"KnockBack: {obj}");
+            Debug.Log($"KnockBack Force: {obj.magnitude:F2}");
             Debug.DrawRay(transform.position, obj, Color.red, 1f);
         }
 

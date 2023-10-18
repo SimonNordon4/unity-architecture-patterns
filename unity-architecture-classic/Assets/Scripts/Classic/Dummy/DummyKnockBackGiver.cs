@@ -5,7 +5,7 @@ namespace Classic.Dummy
 {
     public class DummyKnockBackGiver : MonoBehaviour
     {
-        [SerializeField] private int knockBackAmount;
+        [SerializeField] private float knockBackAmount = 5f;
         [SerializeField] private LayerMask knockBackMask;
 
         private void OnTriggerEnter(Collider other)
