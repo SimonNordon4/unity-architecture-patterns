@@ -12,14 +12,5 @@ namespace Classic.Enemies.Enemy
         public float knockBackFactor = 1f;
         public Vector3 velocity;
         public LayerMask attackLayer;
-
-        public void Initialize(EnemyDefinition definition)
-        {
-            baseHealth = definition.baseHealth;
-            moveSpeed = definition.moveSpeed;
-            damage = definition.damage;
-            attackSpeed = definition.attackSpeed;
-            attackRange = definition.attackRange;
-        }
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using Classic.Enemies.Enemy;
+﻿using Classic.Actors;
 using Classic.Game;
-using Classic.Items;
 using UnityEngine;
 
 namespace Classic.Enemies
@@ -11,25 +8,22 @@ namespace Classic.Enemies
     {
         [SerializeField] private GameState state;
         [SerializeField] private Level level;
-        [SerializeField] private EnemyEvents events;
-        [SerializeField] private Transform characterTransform;
+        [SerializeField] private Transform initialTarget;
 
-        public EnemyScope Create(EnemyDefinition enemyDefinition, Vector3 position = new())
+        public GameObject Create(EnemyDefinition enemyDefinition, Vector3 position = new())
         {
-            var enemyScope = Instantiate(enemyDefinition.enemyPrefab, position, Quaternion.identity, null);
-            enemyScope.Construct(state, level,events, characterTransform);
+            var enemy = Instantiate(enemyDefinition.enemyPrefab, position, Quaternion.identity, null);
             
-            if(enemyScope.TryGetComponent<EnemyStats>(out var enemyStats))
-            {
-                enemyStats.Initialize(enemyDefinition);
-            }
+            if(enemy.TryGetComponent<ActorGameState>(out var gameState))
+                gameState.Construct(state);
             
-            if (enemyScope.type != enemyDefinition.enemyType)
-            {
-                Debug.LogError("EnemyScope type does not match EnemyDefinition type");
-            }
+            if(enemy.TryGetComponent<ActorMovement>(out var movement))
+                movement.Construct(level);
             
-            return enemyScope;
+            if(enemy.TryGetComponent<ActorTarget>(out var target))
+                target.SetTarget(initialTarget);
+            
+            return enemy;
         }
     }
 }

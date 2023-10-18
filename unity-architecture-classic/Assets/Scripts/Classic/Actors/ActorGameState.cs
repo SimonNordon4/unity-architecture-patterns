@@ -56,5 +56,10 @@ namespace Classic.Actors
                 component.Reset();
             }
         }
+
+        public void ResetActor()
+        {
+            ResetActorComponents();
+        }
     }
 }
