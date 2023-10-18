@@ -14,6 +14,8 @@ namespace Classic.Actors
         
         public Vector3 velocity { get; private set; }
         public Vector3 lookDirection { get; private set; }
+        
+        public float acceleration { get; private set; }
 
         private Transform _transform;
         private Vector3 _initialPosition;
@@ -42,6 +44,8 @@ namespace Classic.Actors
             {
                 _transform.rotation = Quaternion.LookRotation(lookDirection);
             }
+
+            velocity = Vector3.zero;
         }
         public override void Reset()
         {
@@ -68,6 +72,16 @@ namespace Classic.Actors
         {
             velocity = newVelocity;
             lookDirection = newLookDirection;
+        }
+        
+        public void AddVelocity(Vector3 newVelocity)
+        {
+            velocity += newVelocity;
+        }
+        
+        public void SetAcceleration(float newAcceleration)
+        {
+            acceleration = newAcceleration;
         }
     }
 }

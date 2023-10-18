@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Classic.Actors.Npc
 {
     [RequireComponent(typeof(CapsuleCollider))]
-    public class NpcAvoidance : ActorComponent
+    public class ActorMovementAvoidance : ActorComponent
     {
         [SerializeField] private float repulsionForce = 1f;
         public Vector3 avoidanceDirection { get; private set; }

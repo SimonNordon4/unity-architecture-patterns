@@ -5,28 +5,27 @@ namespace Classic.Actors.Npc
     [RequireComponent(typeof(ActorMovement))]
     [RequireComponent(typeof(ActorStats))]
     [RequireComponent(typeof(ActorTarget))]
-    [RequireComponent(typeof(NpcAvoidance))]
-    public class MoveTowardsTarget : ActorComponent
+    [RequireComponent(typeof(ActorMovementAvoidance))]
+    public class ActorMovementTowardsTarget : ActorComponent
     {
         private ActorMovement _movement;
         private ActorStats _stats;
         private Stat _moveSpeed;
         private ActorTarget _target;
-        private NpcAvoidance _avoidance;
+        private ActorMovementAvoidance _avoidance;
 
         private void Start()
         {
             _movement = GetComponent<ActorMovement>();
             _stats = GetComponent<ActorStats>();
             _target = GetComponent<ActorTarget>();
-            _avoidance = GetComponent<NpcAvoidance>();
+            _avoidance = GetComponent<ActorMovementAvoidance>();
             _moveSpeed = _stats.Map[StatType.MoveSpeed];
         }
 
         public void Update()
         {
             if (!_target.hasTarget) return;
-            
             
             var velocity = _target.targetDirection * _moveSpeed.value;
             var lookDirection = _target.targetDirection;
@@ -38,7 +37,8 @@ namespace Classic.Actors.Npc
 
             velocity += _avoidance.avoidanceDirection;
             
-            _movement.SetVelocityAndLookDirection(velocity, lookDirection);
+            _movement.SetLookDirection(lookDirection);
+            _movement.AddVelocity(velocity);
         }
     }
 }
