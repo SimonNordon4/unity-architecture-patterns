@@ -7,14 +7,27 @@ namespace Classic.Enemies
 {
     public class EnemySpawnDelay : MonoBehaviour
     {
+        [SerializeField] private EnemyDefinition definition;
         [SerializeField] private LayerMask interruptLayer;
         [SerializeField] private ActorState actorState;
         [SerializeField] private GameObject enemyMesh;
         [SerializeField] private ParticleSystem spawnInParticle;
         [SerializeField] private ParticlePool deathParticlePool;
         [SerializeField] private float spawnTime = 1f;
+        
         private bool _isSpawned = false;
         
+        public void Construct(ParticlePool newDeathParticlePool)
+        {
+            deathParticlePool = newDeathParticlePool;
+        }
+
+        private void Start()
+        {
+            var main = spawnInParticle.main; 
+            main.startColor = definition.enemyColor;
+        }
+
         void OnEnable()
         {
             actorState.DisableActorComponents();
@@ -43,7 +56,7 @@ namespace Classic.Enemies
         {
             yield return new WaitForSeconds(spawnTime);
             spawnInParticle.Stop();
-            deathParticlePool.GetForParticleDuration(transform.position);
+            deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
             actorState.EnableActorComponents();
             _isSpawned = true;
             enemyMesh.SetActive(true);
@@ -52,7 +65,7 @@ namespace Classic.Enemies
         private void CancelSpawnIn()
         {
             StopAllCoroutines();
-            deathParticlePool.GetForParticleDuration(transform.position);
+            deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
         }
     }
 }

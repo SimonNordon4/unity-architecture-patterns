@@ -1,5 +1,6 @@
 ﻿using Classic.Actors;
 using Classic.Game;
+using Classic.Pools;
 using UnityEngine;
 
 namespace Classic.Enemies
@@ -9,6 +10,7 @@ namespace Classic.Enemies
         [SerializeField] private GameState state;
         [SerializeField] private Level level;
         [SerializeField] private Transform initialTarget;
+        [SerializeField] private ParticlePool deathParticlePool;
 
         public GameObject Create(EnemyDefinition enemyDefinition, Vector3 position = new())
         {
@@ -22,6 +24,12 @@ namespace Classic.Enemies
             
             if(enemy.TryGetComponent<ActorTarget>(out var target))
                 target.SetTarget(initialTarget);
+
+            if (enemy.TryGetComponent<EnemySpawnDelay>(out var spawnDelay))
+            {
+                spawnDelay.Construct(deathParticlePool);
+            }
+
             
             return enemy;
         }

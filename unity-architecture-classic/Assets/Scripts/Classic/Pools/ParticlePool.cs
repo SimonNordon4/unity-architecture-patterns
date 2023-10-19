@@ -4,9 +4,12 @@ namespace Classic.Pools
 {
     public class ParticlePool : PoolBase<ParticleSystem>
     {
-        public void GetForParticleDuration(Vector3 position)
+        public ParticleSystem GetForParticleDuration(Vector3 position, Color color)
         {
-            base.GetForSeconds(position, prefab.main.duration);
+            var ps = base.GetForSeconds(position, prefab.main.duration);
+            var main = ps.main;
+            main.startColor = color;
+            return ps;
         }
     }
 }
