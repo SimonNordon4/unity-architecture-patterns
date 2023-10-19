@@ -1,5 +1,4 @@
-﻿using Classic.Enemies.Enemy;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Classic.Enemies
 {

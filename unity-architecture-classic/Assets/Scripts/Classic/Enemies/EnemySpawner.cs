@@ -1,5 +1,6 @@
 ﻿using Classic.Game;
 using Classic.Items;
+using Classic.Pools;
 using UnityEngine;
 
 namespace Classic.Enemies
@@ -8,40 +9,35 @@ namespace Classic.Enemies
     {
         [SerializeField] private Level level;
         [SerializeField] private EnemyFactory factory;
-        [SerializeField] private SpawnIndicatorController spawnIndicator;
-        [SerializeField] private ParticlePool particlePool;
+        [SerializeField] private ParticlePool deathParticlePool;
+        [SerializeField] private PickupPool spawnIndicator;
 
         public void SpawnEnemy(EnemyDefinition definition)
         { 
-            // var position = GetRandomPosition();
-            // var indicator = Instantiate(indicatorPrefab, position, Quaternion.identity, null);
-            // // indicator.SetSize(definition.spawnIndicatorSize);
-            // var psColor = indicator.GetComponentInChildren<ParticleSystemColor>();
-            // if (psColor != null)
-            // {
-            //     psColor.SetColor(definition.enemyColor);
-            // }
-            //
-            // // Subscribe to the OnCompleted and OnCancelled events of the indicator
-            // indicator.OnCompleted += () => OnIndicatorCompleted(definition, position);
+            var position = GetRandomPosition();
+            var indicator = spawnIndicator.GetForSeconds(position,1f);
+            var psColor = indicator.GetComponentInChildren<ParticleSystemColor>();
+            if (psColor != null)
+            {
+                psColor.SetColor(definition.enemyColor);
+            }
+            
+            // Subscribe to the OnCompleted and OnCancelled events of the indicator
+            indicator.OnExpired += () => OnIndicatorCompleted(definition, position);
         }
-
         private void OnIndicatorCompleted(EnemyDefinition definition, Vector3 position)
         {
             var enemy = factory.Create(definition, position);
             SpawnDeathParticle(definition, position);
         }
-
-        public void SpawnDeathParticle(EnemyDefinition definition, Vector3 position)
+        private void SpawnDeathParticle(EnemyDefinition definition, Vector3 position)
         {
-            // Play the particle effect
-            var particle = particlePool.Get(position);
+            var particle = deathParticlePool.Get(position);
             if(particle.TryGetComponent<ParticleSystemColor>(out var psColor))
             {
                 psColor.SetColor(definition.enemyColor);
             }
         }
-        
         private Vector3 GetRandomPosition()
         {
             Vector3 randomInnerPoint = new Vector3(

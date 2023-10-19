@@ -14,7 +14,7 @@ namespace Classic.Enemies
         {
             var enemy = Instantiate(enemyDefinition.enemyPrefab, position, Quaternion.identity, null);
             
-            if(enemy.TryGetComponent<ActorGameState>(out var gameState))
+            if(enemy.TryGetComponent<ActorState>(out var gameState))
                 gameState.Construct(state);
             
             if(enemy.TryGetComponent<ActorMovement>(out var movement))

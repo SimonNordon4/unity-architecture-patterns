@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace Classic.Actors
 {
-    public class ActorGameState : MonoBehaviour
+    public class ActorState : MonoBehaviour
     {
         [SerializeField] private GameState state;
         private ActorComponent[] _actorComponents;
@@ -27,7 +27,7 @@ namespace Classic.Actors
             state.OnGameStart -= ResetActorComponents;
         }
         
-        private void Start()
+        private void Awake()
         {
             GetActorComponents();
         }
@@ -60,6 +60,16 @@ namespace Classic.Actors
         public void ResetActor()
         {
             ResetActorComponents();
+        }
+        
+        public void DisableActorComponents()
+        {
+            ToggleActorComponents(false);
+        }
+        
+        public void EnableActorComponents()
+        {
+            ToggleActorComponents(true);
         }
     }
 }
