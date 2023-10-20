@@ -26,13 +26,14 @@ GameObject:
   - component: {fileID: 2395819751267519636}
   - component: {fileID: 1764308962621311921}
   - component: {fileID: 6500748167159065044}
+  - component: {fileID: 3347457930279600117}
   m_Layer: 7
   m_Name: Enemy - Normal
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2219092628217517242
 Transform:
   m_ObjectHideFlags: 0
@@ -297,14 +298,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1788bb732ee140bfa2c07fd6b6459d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  definition: {fileID: 11400000, guid: 81818dda6826b8d4296a17176f448806, type: 2}
   interruptLayer:
     serializedVersion: 2
     m_Bits: 64
   actorState: {fileID: 5700232244058505958}
   enemyMesh: {fileID: 7173182559335568147}
-  spawnInParticle: {fileID: 0}
-  deathParticlePool: {fileID: 0}
+  spawnInParticle: {fileID: 3043751628317881663}
+  deathParticlePool: {fileID: 3347457930279600117}
   spawnTime: 1
+--- !u!114 &3347457930279600117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb4b765a8e347f28ab8d3bb3bb737ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <prefab>k__BackingField: {fileID: 0}
+  initialPoolSize: 10
 --- !u!1 &958493868398741761
 GameObject:
   m_ObjectHideFlags: 0

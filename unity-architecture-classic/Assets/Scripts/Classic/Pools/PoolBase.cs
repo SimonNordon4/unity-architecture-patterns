@@ -6,25 +6,32 @@ namespace Classic.Pools
 {
     public abstract class PoolBase<T> : MonoBehaviour where T : Component
     {
-        [SerializeField]
-        protected T prefab;
+        [field:SerializeField]
+        public T prefab { get;protected set; }
         [SerializeField] 
         protected int initialPoolSize = 10;
-        
-        protected readonly Queue<T> InactivePool = new();
-        protected readonly Queue<T> ActivePool = new();
+
+        public Queue<T> inactivePool { get; protected set; } = new();
+        public Queue<T> activePool { get; protected set; } = new();
+
+        public virtual void Construct(PoolBase<T> newPool)
+        {
+            inactivePool = newPool.activePool;
+            activePool = newPool.inactivePool;
+            prefab = newPool.prefab;
+        }
         
         public virtual T Get(Vector3 position)
         {
-            if (InactivePool.Count == 0)
+            if (inactivePool.Count == 0)
             {
                 GrowPool();
             }
 
-            var item = InactivePool.Dequeue();
+            var item = inactivePool.Dequeue();
             item.transform.position = position;
             item.gameObject.SetActive(true);
-            ActivePool.Enqueue(item);
+            activePool.Enqueue(item);
             return item;
         }
         
@@ -39,13 +46,13 @@ namespace Classic.Pools
         {
             var item = Instantiate(prefab, null);
             item.gameObject.SetActive(false);
-            InactivePool.Enqueue(item);
+            inactivePool.Enqueue(item);
         }
         
         public virtual void Return(T item)
         {
             item.gameObject.SetActive(false);
-            InactivePool.Enqueue(item);
+            inactivePool.Enqueue(item);
         }
         
         protected IEnumerator DeactivateAfterSeconds(T item, float seconds)
