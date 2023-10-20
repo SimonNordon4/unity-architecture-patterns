@@ -3,6 +3,6 @@
     public enum SpawnActionType
     {
         Group,
-        Circle
+        Encircle
     }
 }

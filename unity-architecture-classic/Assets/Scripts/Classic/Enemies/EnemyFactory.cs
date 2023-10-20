@@ -13,7 +13,7 @@ namespace Classic.Enemies
     {
         [SerializeField] private GameState state;
         [SerializeField] private Level level;
-        [SerializeField] private Transform initialTarget;
+        [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
 
         public GameObject Create(EnemyDefinition enemyDefinition, Vector3 position = new())
