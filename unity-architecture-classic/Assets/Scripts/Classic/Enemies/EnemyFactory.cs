@@ -58,6 +58,8 @@ namespace Classic.Enemies
                 factory.Create(enemyDefinition);
             }
         }
-#endif
+
     }
+#endif
 }
+

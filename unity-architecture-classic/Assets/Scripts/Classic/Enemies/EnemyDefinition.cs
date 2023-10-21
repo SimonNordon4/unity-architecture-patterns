@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Classic.Actors;
+using UnityEngine;
 
 namespace Classic.Enemies
 {
@@ -8,5 +9,6 @@ namespace Classic.Enemies
         [Header("Prefabs")]
         public GameObject enemyPrefab;
         public Color enemyColor;
+        public ActorStatsDefinition statsDefinition;
     }
 }
