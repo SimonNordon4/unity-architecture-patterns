@@ -1,70 +1,113 @@
-﻿using Classic.Actors;
+﻿using System;
+using Classic.Actors;
 using Classic.Game;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Classic.Enemies
 {
+    /// <summary>
+    /// Manages the spawning of enemies during a wave.
+    /// </summary>
     public class EnemyWaveSpawner : ActorComponent
     {
+        public event Action<Enemy> OnWaveCompleted;
+        
         [SerializeField] private EnemyActionSpawner actionSpawner;
 
         private WaveDefinition _currentWaveDefinition;
         private int _spawnIndex = 0;
         private float _waveTime;
         private float[] _actionTimings;
-        private WavePhase _currentPhase = WavePhase.NormalSpawning;
+
+        private bool _bossSpawned = false;
+        private int _totalEnemies = 0;
+        private int _enemiesKilled = 0;
+
+        private void OnEnemyDeath(Enemy enemy)
+        {
+            _enemiesKilled++;
+            if (_enemiesKilled >= _currentWaveDefinition.TotalEnemyCount())
+            {
+                OnWaveCompleted?.Invoke(enemy);
+            }
+        }
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
-            _waveTime = 0;
-            GenerateActionTimings(waveDefinition);
+            Reset();
+            _currentWaveDefinition = waveDefinition;
+            _totalEnemies = _currentWaveDefinition.TotalEnemyCount();
+            GenerateActionTimings();
         }
 
-        private void GenerateActionTimings(WaveDefinition waveDefinition)
+        private void GenerateActionTimings()
         {
-            _actionTimings = new float[waveDefinition.TotalEnemyCount()];
+            _actionTimings = new float[_totalEnemies];
             for (var i = 0; i < _actionTimings.Length; i++)
             {
-                // TODO: Make this spawn-rate adjustable (like accelerated)
-                _actionTimings[i] = (float)i / _actionTimings.Length * waveDefinition.waveDuration;
+                _actionTimings[i] = (float)i / _actionTimings.Length * _currentWaveDefinition.waveDuration;
             }
         }
 
         private void Update()
         {
-            switch (_currentPhase)
-            {
-                case WavePhase.NormalSpawning:
-                    UpdateNormalSpawning();
-                    break;  
-            }
-        }
-
-        private void UpdateNormalSpawning()
-        {
+            if (_bossSpawned) return;
             _waveTime += GameTime.deltaTime;
-
             if (_waveTime > _currentWaveDefinition.waveDuration)
             {
-                _currentPhase = WavePhase.BossSpawning;
+                SpawnBossAction();
                 return;
             }
-                
+            
             if(_waveTime > _actionTimings[_spawnIndex])
             {
-                var randomAction = Random.Range(0, _currentWaveDefinition.spawnActions.Count);
-                actionSpawner.SpawnAction(_currentWaveDefinition.spawnActions[randomAction]);
-                _spawnIndex++;
+                SpawnAction();
+                return;
             }
-            
         }
-    }
 
-    public enum WavePhase
-    {
-        NormalSpawning,
-        BossSpawning,
-        WaitingForWaveEnd,
-        WaitingForChestPickup
+        private void SpawnAction()
+        {
+            var randomActionIndex = Random.Range(0, _currentWaveDefinition.spawnActions.Count);
+            var actionDefinition = _currentWaveDefinition.spawnActions[randomActionIndex];
+            
+            // Subscribe to the enemies deaths.
+            var enemies = actionSpawner.SpawnAction(actionDefinition);
+            foreach (var enemy in enemies)
+            {
+                enemy.TryGetComponent<Enemy>(out var enemyComponent);
+                enemyComponent.OnDeath += () => OnEnemyDeath(enemyComponent);
+            }
+            _spawnIndex++;
+        }
+
+        private void SpawnBossAction()
+        {
+            foreach (var action in _currentWaveDefinition.bossActions)
+            {
+                var enemies = actionSpawner.SpawnAction(action);
+                foreach (var enemy in enemies)
+                {
+                    enemy.TryGetComponent<Enemy>(out var enemyComponent);
+                    enemyComponent.OnDeath += () => OnEnemyDeath(enemyComponent);
+                }
+            }
+        }
+
+        public override void Reset()
+        {
+            _totalEnemies = 0;
+            _enemiesKilled = 0;
+            _waveTime = 0;
+            _spawnIndex = 0;
+            _bossSpawned = false;
+            _currentWaveDefinition = null;
+        }
+
+        private void OnDisable()
+        {
+            OnWaveCompleted = null;
+        }
     }
 }

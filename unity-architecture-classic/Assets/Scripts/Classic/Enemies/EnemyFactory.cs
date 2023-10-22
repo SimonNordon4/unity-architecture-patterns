@@ -16,7 +16,7 @@ namespace Classic.Enemies
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
 
-        public GameObject Create(EnemyDefinition enemyDefinition, Vector3 position = new())
+        public GameObject Create(EnemyDefinition enemyDefinition, Vector3 position = new(), bool startActive = true)
         {
             enemyDefinition.enemyPrefab.SetActive(false);
             var enemy = Instantiate(enemyDefinition.enemyPrefab, position, Quaternion.identity, null);
@@ -33,7 +33,7 @@ namespace Classic.Enemies
             if (enemy.TryGetComponent<ParticlePool>(out var particlePool))
                 particlePool.Construct(deathParticlePool);
             
-            enemy.SetActive(true);
+            enemy.SetActive(startActive);
 
             return enemy;
         }

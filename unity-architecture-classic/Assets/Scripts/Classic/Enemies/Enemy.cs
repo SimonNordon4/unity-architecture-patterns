@@ -5,7 +5,16 @@ namespace Classic.Enemies
 {
     public class Enemy : MonoBehaviour
     {
-        public static event Action<Enemy> OnEnemyDeath; 
-        
+        public event Action OnDeath;
+
+        public void Die()
+        {
+            OnDeath?.Invoke();
+        }
+
+        public void OnDisable()
+        {
+            OnDeath = null;
+        }
     }
 }

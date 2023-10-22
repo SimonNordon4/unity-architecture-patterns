@@ -16,28 +16,25 @@ namespace Classic.Enemies
         [SerializeField] private EnemyFactory factory;
         [SerializeField] private Level level;
         
-        public void SpawnAction(SpawnActionDefinition actionDefinition)
+        public GameObject[] SpawnAction(SpawnActionDefinition actionDefinition)
         {
-            switch (actionDefinition.actionType)
+            return actionDefinition.actionType switch
             {
-                case(SpawnActionType.Group):
-                    SpawnGroup(actionDefinition);
-                    break;
-                case(SpawnActionType.Encircle):
-                    SpawnCircle(actionDefinition);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+                (SpawnActionType.Group) => SpawnGroup(actionDefinition),
+                (SpawnActionType.Encircle) => SpawnCircle(actionDefinition),
+                _ => null
+            };
         }
 
-        private void SpawnCircle(SpawnActionDefinition actionDefinition)
+        private GameObject[] SpawnCircle(SpawnActionDefinition actionDefinition)
         {
             // Spawn the number of enemies in a circle around the player
             // Except if those enemies would be spawned outside of the level bounds, they are instead flipped to spawn on the other side of the circle
             var playerPosition = factory.initialTarget.position;
             var radius = 5f;
             var angle = 360f / actionDefinition.numberOfEnemiesToSpawn;
+            
+            var enemies = new GameObject[actionDefinition.numberOfEnemiesToSpawn];
             for (int i = 0; i < actionDefinition.numberOfEnemiesToSpawn; i++)
             {
                 var position = playerPosition + new Vector3(
@@ -68,15 +65,18 @@ namespace Classic.Enemies
                     }
                 }
                 
-                factory.Create(actionDefinition.definition, position);
+                enemies[i] = factory.Create(actionDefinition.definition, position);
             }
+
+            return enemies;
         }
 
-        private void SpawnGroup(SpawnActionDefinition actionDefinition)
+        private GameObject[] SpawnGroup(SpawnActionDefinition actionDefinition)
         {
+            var enemies = new GameObject[actionDefinition.numberOfEnemiesToSpawn];
             // spawn the first enemy immediately
             var position = GetRandomPosition();
-            factory.Create(actionDefinition.definition, position);
+            enemies[0] = factory.Create(actionDefinition.definition, position);
             
             // spawn the rest of the enemies after a delay
             for (int i = 1; i < actionDefinition.numberOfEnemiesToSpawn; i++)
@@ -84,8 +84,11 @@ namespace Classic.Enemies
                 // make the position 1m away from the last position in a random direction
                 var random = Random.insideUnitCircle;
                 position = position + new Vector3(random.x, 0, random.y);
-                StartCoroutine(SpawnEnemyAfterSeconds(actionDefinition.definition, i * 0.2f, position));
+                enemies[i] = factory.Create(actionDefinition.definition, position, false);
+                StartCoroutine(EnableEnemyAfterSeconds(enemies[i], i * 0.1f));
             }
+
+            return enemies;
         }
 
         private Vector3 GetRandomPosition()
@@ -109,10 +112,10 @@ namespace Classic.Enemies
             return Vector3.Lerp(randomInnerPoint, randomEdgePoint, bias);
         }
         
-        private IEnumerator SpawnEnemyAfterSeconds(EnemyDefinition definition, float seconds, Vector3 position)
+        private IEnumerator EnableEnemyAfterSeconds(GameObject enemy, float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            factory.Create(definition, position);
+            enemy.SetActive(true);
         }
 
         public override void Reset()
