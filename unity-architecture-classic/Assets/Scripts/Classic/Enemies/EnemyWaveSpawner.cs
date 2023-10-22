@@ -11,7 +11,7 @@ namespace Classic.Enemies
     /// </summary>
     public class EnemyWaveSpawner : ActorComponent
     {
-        public event Action<Enemy> OnWaveCompleted;
+        public event Action OnWaveCompleted;
         
         [SerializeField] private EnemyActionSpawner actionSpawner;
 
@@ -24,12 +24,12 @@ namespace Classic.Enemies
         private int _totalEnemies = 0;
         private int _enemiesKilled = 0;
 
-        private void OnEnemyDeath(Enemy enemy)
+        private void OnEnemyDeath(  )
         {
             _enemiesKilled++;
             if (_enemiesKilled >= _currentWaveDefinition.TotalEnemyCount())
             {
-                OnWaveCompleted?.Invoke(enemy);
+                OnWaveCompleted?.Invoke();
             }
         }
 
@@ -52,19 +52,33 @@ namespace Classic.Enemies
 
         private void Update()
         {
+            HandleWaveTime();
+            HandleActionSpawn();
+            HandleBossSpawn();
+        }
+
+        private void HandleWaveTime()
+        {
             if (_bossSpawned) return;
             _waveTime += GameTime.deltaTime;
-            if (_waveTime > _currentWaveDefinition.waveDuration)
-            {
-                SpawnBossAction();
-                return;
-            }
-            
-            if(_waveTime > _actionTimings[_spawnIndex])
-            {
-                SpawnAction();
-                return;
-            }
+        }
+
+        private void HandleActionSpawn()
+        {
+            if (_bossSpawned || _waveTime <= _actionTimings[_spawnIndex] || _spawnIndex >= _actionTimings.Length) return;
+            SpawnAction();
+        }
+
+        private void HandleBossSpawn()
+        {
+            if (_waveTime <= _currentWaveDefinition.waveDuration) return;
+            SpawnBossAction();
+            _bossSpawned = true;
+        }
+
+        private void SubscribeEnemyDeath(ActorHealth enemyComponent)
+        {
+            enemyComponent.OnDeath += () => OnEnemyDeath( );
         }
 
         private void SpawnAction()
@@ -76,8 +90,7 @@ namespace Classic.Enemies
             var enemies = actionSpawner.SpawnAction(actionDefinition);
             foreach (var enemy in enemies)
             {
-                enemy.TryGetComponent<Enemy>(out var enemyComponent);
-                enemyComponent.OnDeath += () => OnEnemyDeath(enemyComponent);
+                SubscribeEnemyDeath(enemy.GetComponent<ActorHealth>());
             }
             _spawnIndex++;
         }
@@ -89,8 +102,7 @@ namespace Classic.Enemies
                 var enemies = actionSpawner.SpawnAction(action);
                 foreach (var enemy in enemies)
                 {
-                    enemy.TryGetComponent<Enemy>(out var enemyComponent);
-                    enemyComponent.OnDeath += () => OnEnemyDeath(enemyComponent);
+                    SubscribeEnemyDeath(enemy.GetComponent<ActorHealth>());
                 }
             }
         }
