@@ -4,6 +4,10 @@ using Classic.Game;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Classic.Enemies
 {
     /// <summary>
@@ -15,6 +19,8 @@ namespace Classic.Enemies
         
         [SerializeField] private EnemyActionSpawner actionSpawner;
 
+        private bool _waveStarted = false;
+        
         private WaveDefinition _currentWaveDefinition;
         private int _spawnIndex = 0;
         private float _waveTime;
@@ -39,6 +45,7 @@ namespace Classic.Enemies
             _currentWaveDefinition = waveDefinition;
             _totalEnemies = _currentWaveDefinition.TotalEnemyCount();
             GenerateActionTimings();
+            _waveStarted = true;
         }
 
         private void GenerateActionTimings()
@@ -52,6 +59,8 @@ namespace Classic.Enemies
 
         private void Update()
         {
+            if(!_waveStarted) return;
+            if(_bossSpawned) return;
             HandleWaveTime();
             HandleActionSpawn();
             HandleBossSpawn();
@@ -59,13 +68,14 @@ namespace Classic.Enemies
 
         private void HandleWaveTime()
         {
-            if (_bossSpawned) return;
+
             _waveTime += GameTime.deltaTime;
         }
 
         private void HandleActionSpawn()
         {
-            if (_bossSpawned || _waveTime <= _actionTimings[_spawnIndex] || _spawnIndex >= _actionTimings.Length) return;
+            if(_spawnIndex >= _actionTimings.Length) return;
+            if (_waveTime <= _actionTimings[_spawnIndex]) return;
             SpawnAction();
         }
 
@@ -115,6 +125,7 @@ namespace Classic.Enemies
             _spawnIndex = 0;
             _bossSpawned = false;
             _currentWaveDefinition = null;
+            _waveStarted = false;
         }
 
         private void OnDisable()
@@ -122,4 +133,23 @@ namespace Classic.Enemies
             OnWaveCompleted = null;
         }
     }
+    
+    #if UNITY_EDITOR
+    [CustomEditor(typeof(EnemyWaveSpawner))]
+    public class EnemyWaveSpawnerEditor : Editor
+    {
+        private WaveDefinition _waveDefinition;
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            var spawner = (EnemyWaveSpawner) target;
+            _waveDefinition = (WaveDefinition) EditorGUILayout.ObjectField("Wave Definition", _waveDefinition, typeof(WaveDefinition), false);
+            if (GUILayout.Button("Spawn Action"))
+            {
+                Debug.Log("Starting new wave.");
+                spawner.StartNewWave(_waveDefinition);
+            }
+        }
+    }
+    #endif  
 }
