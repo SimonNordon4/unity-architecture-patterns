@@ -1,20 +1,32 @@
 ﻿using System;
+using Classic.Actors;
+using Classic.Pools;
 using UnityEngine;
 
 namespace Classic.Enemies
 {
+    [RequireComponent(typeof(ActorHealth))]
+    [RequireComponent(typeof(ParticlePool))]
     public class Enemy : MonoBehaviour
     {
-        public event Action OnDeath;
+        private ActorHealth _health;
+        private ParticlePool _deathParticlePool;
 
-        public void Die()
+        private void Awake()
         {
-            OnDeath?.Invoke();
+            _health = GetComponent<ActorHealth>();
+            _deathParticlePool = GetComponent<ParticlePool>();
         }
 
-        public void OnDisable()
+        private void Start()
         {
-            OnDeath = null;
+            _health.OnDeath += OnDeath;
+        }
+        
+        private void OnDeath()
+        {
+            _deathParticlePool.GetForParticleDuration(transform.position);
+            Destroy(gameObject);
         }
     }
 }

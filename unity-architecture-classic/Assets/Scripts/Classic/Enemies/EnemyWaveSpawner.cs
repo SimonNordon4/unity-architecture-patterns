@@ -33,6 +33,7 @@ namespace Classic.Enemies
         private void OnEnemyDeath(  )
         {
             _enemiesKilled++;
+            Debug.Log($"Enemies killed: {_enemiesKilled}");
             if (_enemiesKilled >= _currentWaveDefinition.TotalEnemyCount())
             {
                 OnWaveCompleted?.Invoke();
@@ -88,7 +89,7 @@ namespace Classic.Enemies
 
         private void SubscribeEnemyDeath(ActorHealth enemyComponent)
         {
-            enemyComponent.OnDeath += () => OnEnemyDeath( );
+            enemyComponent.OnDeath += () => OnEnemyDeath();
         }
 
         private void SpawnAction()

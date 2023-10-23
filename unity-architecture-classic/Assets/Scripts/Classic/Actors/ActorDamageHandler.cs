@@ -1,15 +1,26 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Classic.Actors
 {
+    [RequireComponent(typeof(DamageReceiver))]
+    [RequireComponent(typeof(ActorHealth))]
     public class ActorDamageHandler : ActorComponent
     {
-        [SerializeField]private DamageReceiver damageReceiver;
-        [SerializeField]private ActorHealth health;
+        private DamageReceiver _damageReceiver;
+        private ActorHealth _health;
+        
+        
         [SerializeField]private ActorDodge dodge;
         private bool _hasDodgeReference = false;
         [SerializeField]private ActorBlock block;
         private bool _hasBlockReference = false;
+
+        private void Awake()
+        {
+            _damageReceiver = GetComponent<DamageReceiver>();
+            _health = GetComponent<ActorHealth>();
+        }
 
         private void Start()
         {
@@ -19,12 +30,12 @@ namespace Classic.Actors
 
         private void OnEnable()
         {
-            damageReceiver.OnDamageReceived += OnDamageReceived;
+            _damageReceiver.OnDamageReceived += OnDamageReceived;
         }
 
         private void OnDisable()
         {
-            damageReceiver.OnDamageReceived -= OnDamageReceived;
+            _damageReceiver.OnDamageReceived -= OnDamageReceived;
         }
         
         private void OnDamageReceived(int damageAmount)
@@ -39,7 +50,7 @@ namespace Classic.Actors
                 damageAmount = block.CalculateBlock(damageAmount);
             }
             
-            health.TakeDamage(damageAmount);
+            _health.TakeDamage(damageAmount);
         }
     }
 }
