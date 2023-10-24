@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 755595398}
   - component: {fileID: 755595399}
   - component: {fileID: 755595400}
+  - component: {fileID: 755595401}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -522,6 +523,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actionSpawner: {fileID: 755595399}
+--- !u!114 &755595401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755595394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98bcd83f541439685cd02609483ae4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factory: {fileID: 755595396}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
