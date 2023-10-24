@@ -9,18 +9,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2219092628217517242}
+  - component: {fileID: 2767088790703748586}
+  - component: {fileID: 6500748167159065044}
   - component: {fileID: 5700232244058505958}
   - component: {fileID: 7000996090403241693}
+  - component: {fileID: 5537295294949007843}
+  - component: {fileID: 572946571446469301}
   - component: {fileID: 3734978395451088329}
   - component: {fileID: 2008489893545680539}
   - component: {fileID: 3740821294826811844}
   - component: {fileID: 4759262429812004170}
-  - component: {fileID: 2767088790703748586}
   - component: {fileID: 8287538574578021131}
   - component: {fileID: 12600059160927327}
-  - component: {fileID: 5537295294949007843}
-  - component: {fileID: 572946571446469301}
-  - component: {fileID: 6500748167159065044}
   - component: {fileID: 3347457930279600117}
   m_Layer: 7
   m_Name: Enemy - Base
@@ -46,6 +46,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2767088790703748586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82909656621f4bbab8987d389edcb655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6500748167159065044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1788bb732ee140bfa2c07fd6b6459d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  definition: {fileID: 11400000, guid: 81818dda6826b8d4296a17176f448806, type: 2}
+  interruptLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  actorState: {fileID: 5700232244058505958}
+  enemyMesh: {fileID: 7173182559335568147}
+  spawnInParticle: {fileID: 3043751628317881663}
+  deathParticlePool: {fileID: 3347457930279600117}
+  spawnTime: 1
 --- !u!114 &5700232244058505958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,6 +105,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   definition: {fileID: 11400000, guid: 472771ccaf623d24abf5e77ef11d30cf, type: 2}
+--- !u!114 &5537295294949007843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 0}
+--- !u!114 &572946571446469301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialTarget: {fileID: 0}
+  <targetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!136 &3734978395451088329
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -146,19 +208,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241e67b80a014efdac8005922af4bfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2767088790703748586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468833207495391609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82909656621f4bbab8987d389edcb655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 12600059160927327}
 --- !u!114 &8287538574578021131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,8 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58fa31c0b47f4fb88469de3567c742b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageReceiver: {fileID: 3740821294826811844}
-  health: {fileID: 0}
   dodge: {fileID: 0}
   block: {fileID: 0}
 --- !u!114 &12600059160927327
@@ -189,56 +236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   stats: {fileID: 7000996090403241693}
---- !u!114 &5537295294949007843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468833207495391609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: {fileID: 0}
---- !u!114 &572946571446469301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468833207495391609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialTarget: {fileID: 0}
-  <targetLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!114 &6500748167159065044
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468833207495391609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1788bb732ee140bfa2c07fd6b6459d40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  definition: {fileID: 11400000, guid: 81818dda6826b8d4296a17176f448806, type: 2}
-  interruptLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  actorState: {fileID: 5700232244058505958}
-  enemyMesh: {fileID: 7173182559335568147}
-  spawnInParticle: {fileID: 3043751628317881663}
-  deathParticlePool: {fileID: 3347457930279600117}
-  spawnTime: 1
 --- !u!114 &3347457930279600117
 MonoBehaviour:
   m_ObjectHideFlags: 0
