@@ -17,6 +17,7 @@ namespace Classic.Actors
 
         private void OnEnable()
         {
+            GetActorComponents();
             state.OnChanged += ToggleActorComponents;
             state.OnGameStart += ResetActorComponents;
         }
@@ -34,6 +35,7 @@ namespace Classic.Actors
 
         private void GetActorComponents()
         {
+            Debug.Log("Getting actor components");
             var children = GetComponentsInChildren<ActorComponent>();
             var siblings = GetComponents<ActorComponent>();
             _actorComponents = new ActorComponent[children.Length + siblings.Length];
@@ -43,6 +45,10 @@ namespace Classic.Actors
 
         private void ToggleActorComponents(bool isActive)
         {
+            if (_actorComponents == null)
+            {
+                GetActorComponents();
+            }
             foreach (var component in _actorComponents)
             {
                 component.enabled = isActive;

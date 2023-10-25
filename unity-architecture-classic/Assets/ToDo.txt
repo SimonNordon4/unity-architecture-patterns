@@ -1,10 +1,15 @@
-﻿Rules of DG.
+﻿Objective 1: Finish all enemy spawning.
 
-Use Events to Flip control flow only. Otherwise keep it coupled.
-Exception for very small events, like sound and particles.
-
-[] Finish Wave Spawner.
-
+[] Finish Enemy Pool
+[] Test Enemy Pool
+[] Finish Enemy.cs
+[] Refactor Action Spawner to Use the Pool.
+[] Test Wave Spawner.
+[] Create Round Spawner.
+[] Test Round Spawner. Should drop a chest and move onto the next round.
+[] Create all enemy type definitions and prefabs.
+[] Re-author Waves
+[] Create new Round (remove blocks)
 
 New Features:
 [] Enemy type that guards chest.

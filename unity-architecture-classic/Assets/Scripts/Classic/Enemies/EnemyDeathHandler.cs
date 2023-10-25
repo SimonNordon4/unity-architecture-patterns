@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace Classic.Enemies
 {
-    [RequireComponent(typeof(Enemy))]
     [RequireComponent(typeof(ActorHealth))]
     [RequireComponent(typeof(ParticlePool))]
     public class EnemyDeathHandler : ActorComponent
@@ -34,12 +33,6 @@ namespace Classic.Enemies
         private void OnDeath()
         {
             _deathParticlePool.GetForParticleDuration(transform.position);
-            if (pool == null)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            pool.Return(_enemy);
         }
     }
 }

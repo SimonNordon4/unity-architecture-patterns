@@ -16,7 +16,7 @@ namespace Classic.Enemies
         [SerializeField] private EnemyFactory factory;
         [SerializeField] private Level level;
         
-        public GameObject[] SpawnAction(SpawnActionDefinition actionDefinition)
+        public Enemy[] SpawnAction(SpawnActionDefinition actionDefinition)
         {
             return actionDefinition.actionType switch
             {
@@ -26,7 +26,7 @@ namespace Classic.Enemies
             };
         }
 
-        private GameObject[] SpawnCircle(SpawnActionDefinition actionDefinition)
+        private Enemy[] SpawnCircle(SpawnActionDefinition actionDefinition)
         {
             // Spawn the number of enemies in a circle around the player
             // Except if those enemies would be spawned outside of the level bounds, they are instead flipped to spawn on the other side of the circle
@@ -34,7 +34,7 @@ namespace Classic.Enemies
             var radius = 5f;
             var angle = 360f / actionDefinition.numberOfEnemiesToSpawn;
             
-            var enemies = new GameObject[actionDefinition.numberOfEnemiesToSpawn];
+            var enemies = new Enemy[actionDefinition.numberOfEnemiesToSpawn];
             for (int i = 0; i < actionDefinition.numberOfEnemiesToSpawn; i++)
             {
                 var position = playerPosition + new Vector3(
@@ -71,9 +71,9 @@ namespace Classic.Enemies
             return enemies;
         }
 
-        private GameObject[] SpawnGroup(SpawnActionDefinition actionDefinition)
+        private Enemy[] SpawnGroup(SpawnActionDefinition actionDefinition)
         {
-            var enemies = new GameObject[actionDefinition.numberOfEnemiesToSpawn];
+            var enemies = new Enemy[actionDefinition.numberOfEnemiesToSpawn];
             // spawn the first enemy immediately
             var position = GetRandomPosition();
             enemies[0] = factory.Create(actionDefinition.definition, position);
@@ -112,10 +112,10 @@ namespace Classic.Enemies
             return Vector3.Lerp(randomInnerPoint, randomEdgePoint, bias);
         }
         
-        private IEnumerator EnableEnemyAfterSeconds(GameObject enemy, float seconds)
+        private IEnumerator EnableEnemyAfterSeconds(Enemy enemy, float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            enemy.SetActive(true);
+            enemy.gameObject.SetActive(true);
         }
 
         public override void Reset()

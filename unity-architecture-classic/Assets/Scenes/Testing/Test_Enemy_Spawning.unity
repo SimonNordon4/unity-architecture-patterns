@@ -441,9 +441,9 @@ GameObject:
   - component: {fileID: 755595395}
   - component: {fileID: 755595396}
   - component: {fileID: 755595398}
+  - component: {fileID: 755595401}
   - component: {fileID: 755595399}
   - component: {fileID: 755595400}
-  - component: {fileID: 755595401}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -480,6 +480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
   level: {fileID: 1358396558}
+  pool: {fileID: 755595401}
   <initialTarget>k__BackingField: {fileID: 591126254}
   deathParticlePool: {fileID: 755595398}
 --- !u!114 &755595398
