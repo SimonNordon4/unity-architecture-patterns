@@ -13,7 +13,7 @@ namespace Classic.Enemies
 {
     public class EnemyActionSpawner : ActorComponent
     {
-        [SerializeField] private EnemyFactory factory;
+        [SerializeField] private EnemyPool pool;
         [SerializeField] private Level level;
         
         public Enemy[] SpawnAction(SpawnActionDefinition actionDefinition)
@@ -30,7 +30,7 @@ namespace Classic.Enemies
         {
             // Spawn the number of enemies in a circle around the player
             // Except if those enemies would be spawned outside of the level bounds, they are instead flipped to spawn on the other side of the circle
-            var playerPosition = factory.initialTarget.position;
+            var playerPosition = pool.factory.initialTarget.position;
             var radius = 5f;
             var angle = 360f / actionDefinition.numberOfEnemiesToSpawn;
             
@@ -65,7 +65,7 @@ namespace Classic.Enemies
                     }
                 }
                 
-                enemies[i] = factory.Create(actionDefinition.definition, position);
+                enemies[i] = pool.Get(actionDefinition.definition, position);
             }
 
             return enemies;
@@ -76,7 +76,7 @@ namespace Classic.Enemies
             var enemies = new Enemy[actionDefinition.numberOfEnemiesToSpawn];
             // spawn the first enemy immediately
             var position = GetRandomPosition();
-            enemies[0] = factory.Create(actionDefinition.definition, position);
+            enemies[0] = pool.Get(actionDefinition.definition, position);
             
             // spawn the rest of the enemies after a delay
             for (int i = 1; i < actionDefinition.numberOfEnemiesToSpawn; i++)
@@ -84,7 +84,7 @@ namespace Classic.Enemies
                 // make the position 1m away from the last position in a random direction
                 var random = Random.insideUnitCircle;
                 position = position + new Vector3(random.x, 0, random.y);
-                enemies[i] = factory.Create(actionDefinition.definition, position, false);
+                enemies[i] = pool.Get(actionDefinition.definition, position, false);
                 StartCoroutine(EnableEnemyAfterSeconds(enemies[i], i * 0.1f));
             }
 

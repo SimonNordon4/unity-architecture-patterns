@@ -11,7 +11,7 @@ namespace Classic.Enemies
 {
     public class EnemyPool : MonoBehaviour
     {
-        [SerializeField] private EnemyFactory factory;
+        [field:SerializeField] public EnemyFactory factory { get; private set; }
         private readonly Dictionary<EnemyDefinition, Queue<Enemy>> _pools = new();
         private Action _onDeath;
 
@@ -36,7 +36,7 @@ namespace Classic.Enemies
 
         private void Return(Enemy enemy, EnemyDefinition definition)
         {
-            // Reset the enemy
+            //Reset the enemy
             if(enemy.TryGetComponent<ActorState>(out var state))
                 state.ResetActor();
             
@@ -50,11 +50,11 @@ namespace Classic.Enemies
         {
             var newEnemy = factory.Create(definition, position);
 
+            // Because the enemy is pooled we only need to subscribe to it once.
+            // We generally don't need to clean up the subscription because all enemies will destroyed before this.
             if (!newEnemy.TryGetComponent<ActorHealth>(out var actorHealth)) return newEnemy;
+            actorHealth.OnDeath += () => Return(newEnemy, definition);
             
-            newEnemy.onDeath = () => Return(newEnemy, definition);
-            actorHealth.OnDeath += newEnemy.onDeath;
-
             return newEnemy;
         }
     }

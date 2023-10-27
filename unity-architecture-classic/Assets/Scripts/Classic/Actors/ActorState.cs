@@ -35,7 +35,6 @@ namespace Classic.Actors
 
         private void GetActorComponents()
         {
-            Debug.Log("Getting actor components");
             var children = GetComponentsInChildren<ActorComponent>();
             var siblings = GetComponents<ActorComponent>();
             _actorComponents = new ActorComponent[children.Length + siblings.Length];

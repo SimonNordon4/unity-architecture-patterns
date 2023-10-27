@@ -37,5 +37,11 @@ namespace Classic.Actors
         {
             currentHealth = (int)stats.Map[StatType.MaxHealth].value;
         }
+
+        private void OnDestroy()
+        {
+            OnHealthChanged = null;
+            OnDeath = null; 
+        }
     }
 }

@@ -8,6 +8,6 @@ namespace Classic.Enemies
 
     public class Enemy : MonoBehaviour
     {
-        public Action onDeath;
+        
     }
 }
