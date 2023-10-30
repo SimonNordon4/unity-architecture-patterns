@@ -15,7 +15,7 @@ namespace Classic.Enemies
     /// </summary>
     public class EnemyWaveSpawner : ActorComponent
     {
-        public event Action OnWaveCompleted;
+        public event Action<Vector3> OnWaveCompleted;
         
         [SerializeField] private EnemyActionSpawner actionSpawner;
 
@@ -30,13 +30,13 @@ namespace Classic.Enemies
         private int _totalEnemies = 0;
         private int _enemiesKilled = 0;
 
-        private void OnEnemyDeath(  )
+        private void OnEnemyDeath(Vector3 position)
         {
             _enemiesKilled++;
             Debug.Log($"Enemies killed: {_enemiesKilled}");
             if (_enemiesKilled >= _currentWaveDefinition.TotalEnemyCount())
             {
-                OnWaveCompleted?.Invoke();
+                OnWaveCompleted?.Invoke(position);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Classic.Enemies
 
         private void SubscribeEnemyDeath(ActorHealth enemyComponent)
         {
-            enemyComponent.OnDeath += () => OnEnemyDeath();
+            enemyComponent.OnDeath += () => OnEnemyDeath(enemyComponent.transform.position);
         }
 
         private void SpawnAction()
@@ -145,7 +145,7 @@ namespace Classic.Enemies
             base.OnInspectorGUI();
             var spawner = (EnemyWaveSpawner) target;
             _waveDefinition = (WaveDefinition) EditorGUILayout.ObjectField("Wave Definition", _waveDefinition, typeof(WaveDefinition), false);
-            if (GUILayout.Button("Spawn Action"))
+            if (GUILayout.Button("Start Wave"))
             {
                 Debug.Log("Starting new wave.");
                 spawner.StartNewWave(_waveDefinition);
