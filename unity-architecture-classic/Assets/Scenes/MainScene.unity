@@ -124707,6 +124707,7 @@ GameObject:
   - component: {fileID: 9018308866812664861}
   - component: {fileID: 9018308866812664862}
   - component: {fileID: 9018308866812664863}
+  - component: {fileID: 9018308866812664865}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -125132,6 +125133,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <items>k__BackingField: []
+--- !u!114 &9018308866812664865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526962797330366185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f96c8b903ba4f2aa02ca746305bba85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 9018308866812664861}
+  actionMap: {fileID: -944628639613478452, guid: e2c5f6aa20630f04d9d963da34176193, type: 3}
+  stats: {fileID: 9018308866812664860}
 --- !u!33 &9052653825607074615
 MeshFilter:
   m_ObjectHideFlags: 0
