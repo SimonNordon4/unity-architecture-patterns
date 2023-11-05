@@ -25,7 +25,7 @@ namespace Classic.App
             enemyManager.onEnemyDied.AddListener(vec => EnemyDied());
             enemyManager.onBossDied.AddListener(vec => BossDied());
             Chest.OnChestPickedUp.AddListener(chest => ChestOpened());
-            gold.onGoldChanged+=(i => EarnedGold());
+            gold.OnGoldChanged+=(i => EarnedGold());
             stats.onStatChanged.AddListener(StatCheck);
             
             Load();
@@ -40,7 +40,7 @@ namespace Classic.App
             enemyManager.onEnemyDied.RemoveListener(vec => EnemyDied());
             enemyManager.onBossDied.RemoveListener(vec => BossDied());
             Chest.OnChestPickedUp.RemoveListener(chest => ChestOpened());
-            gold.onGoldChanged-=(i => EarnedGold());
+            gold.OnGoldChanged-=(i => EarnedGold());
             stats.onStatChanged.RemoveListener(StatCheck);
             
             Save();

@@ -6,10 +6,9 @@ namespace Classic.Actors
 {
     public class ActorHealth : ActorComponent
     {
-        [SerializeField] private int currentHealth;
+        [field:SerializeField] public int currentHealth { get; private set; }
         [SerializeField] private ActorStats stats;
-        private Stat _maxHealthStat;
-        
+        public int maxHealth => (int)stats.Map[StatType.MaxHealth].value;
         public event Action<int> OnHealthChanged;
         public event Action OnDeath;
 
@@ -17,7 +16,6 @@ namespace Classic.Actors
         {
             Reset();
         }
-
         public void SetHealth(int health)
         {
             currentHealth = health;

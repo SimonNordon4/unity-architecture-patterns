@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Classic.Actors;
 using Classic.Game;
 using UnityEngine;
 
@@ -7,7 +8,7 @@ namespace Classic.Items
 {
     public class HealthPackSpawner : MonoBehaviour
     {
-        [SerializeField] private Stats stats;
+        [SerializeField] private ActorStats stats;
         [SerializeField] private HealthPackController healthPackPrefab;
         [SerializeField] private GameState gameState;
 
@@ -26,7 +27,7 @@ namespace Classic.Items
         public void SpawnHealthPack(Vector3 position)
         {
             var randomChance = Random.Range(0, 100);
-            if (!(randomChance < stats.healthPackSpawnRate.value)) return;
+            if (!(randomChance < stats.Map[StatType.HealthPackDropRate].value)) return;
             
             var pos = new Vector3(position.x, 0f, position.z);
             var healthPack = Instantiate(healthPackPrefab, pos, Quaternion.identity);
@@ -41,14 +42,6 @@ namespace Classic.Items
                 Destroy(healthPack.gameObject);
             }
             _healthPacks.Clear();
-        }
-
-        private void OnValidate()
-        {
-            if (stats == null)
-            {
-                stats = FindObjectsByType<Stats>(FindObjectsSortMode.None)[0];
-            }
         }
     }
 }

@@ -35,24 +35,5 @@ namespace Classic.Items
             Destroy(currentChest.gameObject);
             currentChest = null;
         }
-
-        private void OnValidate()
-        {
-            if (inventory == null)
-            {
-                inventory = FindObjectsByType<Inventory>(FindObjectsSortMode.None)[0];
-            }
-
-            if (gameState == null)
-            {
-                gameState = FindObjectsByType<GameState>(FindObjectsSortMode.None)[0];
-            }
-
-            if (uiState == null)
-            {
-                uiState = FindObjectsByType<UIState>(FindObjectsSortMode.None)[0];
-            }
-                
-        }
     }
 }

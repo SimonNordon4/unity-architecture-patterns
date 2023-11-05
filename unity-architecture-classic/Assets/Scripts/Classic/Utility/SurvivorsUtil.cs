@@ -26,19 +26,5 @@ namespace Classic.Utility
 
             return result.ToString();
         }
-        
-        public static T Find<T>() where T : class
-        {
-            var type = typeof(T);
-            var objects = Object.FindObjectsByType(typeof(T),FindObjectsSortMode.None);
-            if (objects.Length == 0)
-            {
-                Debug.LogWarning("No object of type " + type + " found in scene.");
-                return null;
-            }
-            if(objects.Length > 1)
-                Debug.LogWarning("Multiple objects of type " + type + " found in scene.");
-            return objects[0] as T;
-        }
     }
 }

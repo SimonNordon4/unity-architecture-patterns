@@ -13,7 +13,7 @@ namespace Classic.Game
         [SerializeField] private GameState state;
         [field:SerializeField] public int amount { get; private set; } = 0;
         [field:SerializeField] public int totalEarned { get; private set; } = 0;
-        public Action<int> onGoldChanged;
+        public event Action<int> OnGoldChanged;
 
         private void OnEnable()
         {
@@ -33,7 +33,7 @@ namespace Classic.Game
         {
             amount += difference;
             Save();
-            onGoldChanged.Invoke(amount);
+            OnGoldChanged?.Invoke(amount);
             totalEarned += difference;
         }
 
@@ -41,14 +41,14 @@ namespace Classic.Game
         {
             amount -= difference;
             Save();
-            onGoldChanged.Invoke(this.amount);
+            OnGoldChanged?.Invoke(this.amount);
         }
 
         public void SetGold(int newAmount)
         {
             amount = newAmount;
             Save();
-            onGoldChanged.Invoke(this.amount);
+            OnGoldChanged?.Invoke(this.amount);
         }
         
         public void Save()
@@ -60,8 +60,9 @@ namespace Classic.Game
         public void Load()
         {
             amount = PlayerPrefs.GetInt("currentGold", 0);
+            Debug.Log("Loaded gold: " + amount);
             totalEarned = PlayerPrefs.GetInt("totalGold", 0);
-            onGoldChanged.Invoke(amount);
+            OnGoldChanged?.Invoke(amount);
         }
 
         public void Reset()
@@ -69,17 +70,16 @@ namespace Classic.Game
             amount = 0;
             totalEarned = 0;
             Save();
-            onGoldChanged.Invoke(amount);
+            OnGoldChanged?.Invoke(amount);
         }
 
         public void AddGameWhenGoldEnds()
         {
-            // get the enemy manager
-            var enemyManager = FindObjectOfType<EnemyManager>();
-
-            var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
-
-            AddGold(totalGold);
+            // // get the enemy manager
+            // var enemyManager = FindObjectOfType<EnemyManager>();
+            // var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
+            // TODO: Calculate total gold.
+            AddGold(1);
         }
     }
 }

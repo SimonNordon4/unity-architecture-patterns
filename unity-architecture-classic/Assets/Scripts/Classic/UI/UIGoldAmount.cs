@@ -14,7 +14,7 @@ namespace Classic.UI
         private void OnEnable()
         {
             text.text = label + gold.amount.ToString();
-            gold.onGoldChanged+=(OnGoldChanged);
+            gold.OnGoldChanged+=(OnGoldChanged);
         }
 
         private void OnGoldChanged(int newGold)
@@ -24,20 +24,7 @@ namespace Classic.UI
 
         private void OnDisable()
         {
-            gold.onGoldChanged+=(OnGoldChanged);
-        }
-
-        private void OnValidate()
-        {
-            if (gold == null)
-            {
-                gold = SurvivorsUtil.Find<Gold>();
-            }
-            
-            if(TryGetComponent<TextMeshProUGUI>(out var textMeshProUGUI))
-            {
-                text = textMeshProUGUI;
-            }
+            gold.OnGoldChanged+=(OnGoldChanged);
         }
     }
 }

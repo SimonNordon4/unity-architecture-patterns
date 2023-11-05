@@ -7,8 +7,8 @@ namespace Classic.Character
     public class Sword : MonoBehaviour
     {
         [SerializeField] private Transform parent;
-        [SerializeField] private Stats stats;
-        [SerializeField] private CharacterTarget target;
+        [SerializeField] private ActorStats stats;
+        [SerializeField] private ActorTarget target;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -16,14 +16,14 @@ namespace Classic.Character
             if (target.targetLayer != (target.targetLayer | (1 << other.gameObject.layer))) return;
             
             if(TryGetComponent<DamageReceiver>(out var damageReceiver))
-                damageReceiver.TakeDamage(Mathf.RoundToInt(stats.meleeDamage.value));
+                damageReceiver.TakeDamage(Mathf.RoundToInt(stats.Map[StatType.MeleeDamage].value));
 
             if (TryGetComponent<KnockBackReceiver>(out var knockBackReceiver))
             {
                 // direction is equal to the direction from the enemy to the player.
                 var direction = parent.transform.position - other.transform.position;
                 direction = Vector3.ProjectOnPlane(-direction, Vector3.up).normalized;
-                knockBackReceiver.ApplyKnockBack(direction * stats.meleeKnockBack.value);
+                knockBackReceiver.ApplyKnockBack(direction * stats.Map[StatType.MeleeKnockBack].value);
             }
         }
     }

@@ -38,7 +38,7 @@ namespace Classic.App
             state.OnGameWon+=(GameWon);
             state.OnGameLost+=(GameLost);
             state.OnGameQuit+=(GamePlayed);
-            gold.onGoldChanged+=(OnGoldChanged);
+            gold.OnGoldChanged+=(OnGoldChanged);
             stats.onStatChanged.AddListener(OnStatChanged);
             Chest.OnChestPickedUp.AddListener(OnChestPickedUp);
             characterHealth.onDamaged.AddListener(DamageTaken);
