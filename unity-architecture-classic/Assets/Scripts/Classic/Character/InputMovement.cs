@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Classic.Character
 {
-    public class ApplyCharacterInput : ActorComponent
+    public class InputMovement : ActorComponent
     {
         [SerializeField] private ActorMovement movement;
         [SerializeField] private InputActionAsset actionMap;
