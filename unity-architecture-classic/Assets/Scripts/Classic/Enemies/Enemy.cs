@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace Classic.Enemies
 {
-
     public class Enemy : MonoBehaviour
     {
         

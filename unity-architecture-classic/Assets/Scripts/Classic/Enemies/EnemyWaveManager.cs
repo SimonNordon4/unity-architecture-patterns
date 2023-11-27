@@ -7,9 +7,11 @@ using UnityEngine;
 namespace Classic.Enemies
 {
     [RequireComponent(typeof(EnemyWaveSpawner))]
+    [RequireComponent(typeof(EnemyPool))]
     public class EnemyWaveManager : ActorComponent
     {
         private EnemyWaveSpawner _enemyWaveSpawner;
+        private EnemyPool _enemyPool;
         private int _currentWaveIndex = 0;
         [SerializeField] private ChestSpawner chestSpawner;
         [SerializeField] private GameState gameState;
@@ -18,13 +20,14 @@ namespace Classic.Enemies
         private void Awake()
         {
             _enemyWaveSpawner = GetComponent<EnemyWaveSpawner>();            
+            _enemyPool = GetComponent<EnemyPool>();
         }
 
         private void OnEnable()
         {
             gameState.OnGameStart += StartRoundSpawner;
+            gameState.OnGameStart += _enemyPool.DestroyAllEnemies;
             _enemyWaveSpawner.OnWaveCompleted += OnWaveCompleted;
-            
         }
 
         private void StartRoundSpawner()
@@ -37,6 +40,7 @@ namespace Classic.Enemies
         private void OnDisable()
         {
             gameState.OnGameStart -= StartRoundSpawner;
+            gameState.OnGameStart -= _enemyPool.DestroyAllEnemies;
             _enemyWaveSpawner.OnWaveCompleted -= OnWaveCompleted;
         }
 

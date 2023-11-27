@@ -7,6 +7,7 @@ using UnityEditor;
 
 namespace Classic.Actors
 {
+    [DefaultExecutionOrder(-100)]
     public class ActorStats : ActorComponent
     {
         [SerializeField] private ActorStatsDefinition definition;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Classic.Actors;
+using Classic.Game;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -11,7 +12,9 @@ namespace Classic.Enemies
 {
     public class EnemyPool : MonoBehaviour
     {
+        [SerializeField]private GameState state;
         [field:SerializeField] public EnemyFactory factory { get; private set; }
+        private readonly List<Enemy> _activeEnemies = new();
         private readonly Dictionary<EnemyDefinition, Queue<Enemy>> _pools = new();
         private Action _onDeath;
 
@@ -31,6 +34,9 @@ namespace Classic.Enemies
             var enemy = queue.Dequeue();
             enemy.transform.position = position;
             enemy.gameObject.SetActive(startActive);
+            
+            _activeEnemies.Add(enemy);
+            
             return enemy;
         }
 
@@ -41,6 +47,9 @@ namespace Classic.Enemies
                 state.ResetActor();
             
             enemy.gameObject.SetActive(false);
+            
+            // Remove the enemy from the active list
+            _activeEnemies.Remove(enemy);
             
             // Add the enemy to the queue
             _pools[definition].Enqueue(enemy);
@@ -56,6 +65,25 @@ namespace Classic.Enemies
             actorHealth.OnDeath += () => Return(newEnemy, definition);
             
             return newEnemy;
+        }
+        
+        public void DestroyAllEnemies()
+        {
+            foreach (var pool in _pools.Values)
+            {
+                while (pool.Count > 0)
+                {
+                    var enemy = pool.Dequeue();
+                    Destroy(enemy.gameObject);
+                }
+            }
+            _pools.Clear();
+            
+            foreach (var enemy in _activeEnemies)
+            {
+                Destroy(enemy.gameObject);
+            }
+            _activeEnemies.Clear();
         }
     }
     

@@ -12,6 +12,11 @@ namespace Classic.Actors
         public event Action<int> OnHealthChanged;
         public event Action OnDeath;
 
+        private void OnEnable()
+        {
+            Reset();
+        }
+
         private void Start()
         {
             Reset();
@@ -19,6 +24,7 @@ namespace Classic.Actors
         public void SetHealth(int health)
         {
             currentHealth = health;
+            OnHealthChanged?.Invoke(currentHealth);
         }
         public void TakeDamage(int damageAmount)
         {
