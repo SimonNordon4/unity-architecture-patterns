@@ -10,9 +10,8 @@ using UnityEditor;
 
 namespace Classic.Enemies
 {
-    public class EnemyPool : MonoBehaviour
+    public class EnemyPool : ActorComponent
     {
-        [SerializeField]private GameState state;
         [field:SerializeField] public EnemyFactory factory { get; private set; }
         private readonly List<Enemy> _activeEnemies = new();
         private readonly Dictionary<EnemyDefinition, Queue<Enemy>> _pools = new();
@@ -40,7 +39,7 @@ namespace Classic.Enemies
             return enemy;
         }
 
-        private void Return(Enemy enemy, EnemyDefinition definition)
+        public  void Return(Enemy enemy, EnemyDefinition definition)
         {
             //Reset the enemy
             if(enemy.TryGetComponent<ActorState>(out var state))
@@ -67,7 +66,12 @@ namespace Classic.Enemies
             return newEnemy;
         }
         
-        public void DestroyAllEnemies()
+        public override void Reset()
+        {
+            DestroyPool();
+        }
+
+        private void DestroyPool()
         {
             foreach (var pool in _pools.Values)
             {

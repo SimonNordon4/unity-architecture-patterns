@@ -26,13 +26,11 @@ namespace Classic.Enemies
         private void OnEnable()
         {
             gameState.OnGameStart += StartRoundSpawner;
-            gameState.OnGameStart += _enemyPool.DestroyAllEnemies;
             _enemyWaveSpawner.OnWaveCompleted += OnWaveCompleted;
         }
 
         private void StartRoundSpawner()
         {
-            Reset();
             var currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
             _enemyWaveSpawner.StartNewWave(currentWaveDefinition);
         }
@@ -40,7 +38,6 @@ namespace Classic.Enemies
         private void OnDisable()
         {
             gameState.OnGameStart -= StartRoundSpawner;
-            gameState.OnGameStart -= _enemyPool.DestroyAllEnemies;
             _enemyWaveSpawner.OnWaveCompleted -= OnWaveCompleted;
         }
 

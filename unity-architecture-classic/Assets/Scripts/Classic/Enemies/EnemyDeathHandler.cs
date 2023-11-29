@@ -9,6 +9,7 @@ namespace Classic.Enemies
     public class EnemyDeathHandler : ActorComponent
     {
         private Enemy _enemy;
+        [SerializeField] private EnemyDefinition _definition;
         private ActorHealth _health;
         private ParticlePool _deathParticlePool;
         [SerializeField] private EnemyPool pool;
@@ -33,6 +34,7 @@ namespace Classic.Enemies
         private void OnDeath()
         {
             _deathParticlePool.GetForParticleDuration(transform.position);
+            pool.Return(_enemy,_definition);
         }
     }
 }

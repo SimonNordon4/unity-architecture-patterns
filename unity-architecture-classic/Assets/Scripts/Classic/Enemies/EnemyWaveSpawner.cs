@@ -42,6 +42,7 @@ namespace Classic.Enemies
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
+            Debug.Log("Starting new wave.");
             Reset();
             _currentWaveDefinition = waveDefinition;
             _totalEnemies = _currentWaveDefinition.TotalEnemyCount();

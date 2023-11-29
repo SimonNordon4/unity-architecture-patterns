@@ -14,8 +14,6 @@ namespace Classic.UI
         private void OnEnable()
         {
             health.OnHealthChanged += UpdateUI;
-            Debug.Log("Health bar enabled");
-            Debug.Log(health.gameObject.name);
             UpdateUI(health.currentHealth);
         }
 

@@ -60,7 +60,6 @@ namespace Classic.Game
         public void Load()
         {
             amount = PlayerPrefs.GetInt("currentGold", 0);
-            Debug.Log("Loaded gold: " + amount);
             totalEarned = PlayerPrefs.GetInt("totalGold", 0);
             OnGoldChanged?.Invoke(amount);
         }
