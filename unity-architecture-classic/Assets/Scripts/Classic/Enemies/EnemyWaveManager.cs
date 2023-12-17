@@ -31,6 +31,7 @@ namespace Classic.Enemies
 
         private void StartRoundSpawner()
         {
+            Debug.Log("EnemyWaveSpawner: Starting round spawner",this);
             var currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
             _enemyWaveSpawner.StartNewWave(currentWaveDefinition);
         }
@@ -43,11 +44,13 @@ namespace Classic.Enemies
 
         private void OnWaveCompleted(Vector3 deathPosition)
         {
+            Debug.Log("EnemyWaveSpawner: Wave completed, spawning chest",this);
             if(_currentWaveIndex + 1 >= roundDefinition.waves.Count)
             {
                 Debug.Log("Game won, not spawning chest.");
                 return;
             }
+            
             
             var bossChest = chestSpawner.SpawnChest(ChestType.Medium, deathPosition);
             bossChest.onPickedUp.AddListener(OnBossChestPickedUp);
@@ -55,11 +58,13 @@ namespace Classic.Enemies
 
         private void OnBossChestPickedUp()
         {
+            Debug.Log("EnemyWaveSpawner: Boss chest picked up, starting next wave",this);
             StartNextWave();
         }
         
         private void StartNextWave()
         {
+            
             _currentWaveIndex++;
             if (_currentWaveIndex >= roundDefinition.waves.Count)
             {

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 namespace Classic.Actors
 {
+    [DefaultExecutionOrder(10)]
     public class ActorState : MonoBehaviour
     {
         [SerializeField] private GameState state;
@@ -22,7 +23,7 @@ namespace Classic.Actors
             state.OnGameStart += ResetActorComponents;
         }
 
-        private void OnDisable()
+        private void OnDisable() 
         {
             state.OnChanged -= ToggleActorComponents;
             state.OnGameStart -= ResetActorComponents;
@@ -56,6 +57,7 @@ namespace Classic.Actors
         
         private void ResetActorComponents()
         {
+            Debug.Log($"Resetting actor components for GameObject: {gameObject.name}", this);
             foreach (var component in _actorComponents)
             {
                 component.Reset();

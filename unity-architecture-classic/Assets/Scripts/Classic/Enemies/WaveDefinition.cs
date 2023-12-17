@@ -8,7 +8,7 @@ namespace Classic.Enemies
     [CreateAssetMenu(fileName = "WaveDefinition", menuName = "Classic/WaveDefinition")]
     public class WaveDefinition : ScriptableObject
     {
-        [SerializeField] private int normalEnemies = 100;
+        [field:SerializeField] public int normalEnemies = 100;
         [field:SerializeField] public float waveDuration { get; private set; }= 60f;
         [field:SerializeField] public List<SpawnActionDefinition> spawnActions {get;private set;} = new();
         [field:SerializeField] public List<SpawnActionDefinition> bossActions {get;private set;} = new();

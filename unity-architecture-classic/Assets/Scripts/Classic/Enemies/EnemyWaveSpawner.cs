@@ -42,7 +42,6 @@ namespace Classic.Enemies
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
-            Debug.Log("Starting new wave.");
             Reset();
             _currentWaveDefinition = waveDefinition;
             _totalEnemies = _currentWaveDefinition.TotalEnemyCount();
@@ -121,6 +120,7 @@ namespace Classic.Enemies
 
         public override void Reset()
         {
+            Debug.Log("Resetting wave spawner.");
             _totalEnemies = 0;
             _enemiesKilled = 0;
             _waveTime = 0;

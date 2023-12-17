@@ -68,6 +68,7 @@ namespace Classic.Enemies
         
         public override void Reset()
         {
+            Debug.Log("Resetting enemy pool.");
             DestroyPool();
         }
 
