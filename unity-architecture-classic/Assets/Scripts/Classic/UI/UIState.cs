@@ -21,23 +21,23 @@ namespace Classic.UI
 
         private void OnEnable()
         {
-            gameState.onGameStart.AddListener(GoToHud);
-            gameState.onGamePause.AddListener(GoToPauseMenu);
-            gameState.onGameResume.AddListener(GoToHud);
-            gameState.onGameWon.AddListener(GoToGameWonMenu);
-            gameState.onGameLost.AddListener(GoToGameOverMenu);
-            gameState.onGameQuit.AddListener(GoToMainMenu);
+            gameState.OnGameStart+=(GoToHud);
+            gameState.OnGamePause+=(GoToPauseMenu);
+            gameState.OnGameResume+=(GoToHud);
+            gameState.OnGameWon+=(GoToGameWonMenu);
+            gameState.OnGameLost+=(GoToGameOverMenu);
+            gameState.OnGameQuit+=(GoToMainMenu);
 
         }
 
         private void OnDisable()
         {
-            gameState.onGameStart.RemoveListener(GoToHud);
-            gameState.onGamePause.RemoveListener(GoToPauseMenu);
-            gameState.onGameResume.RemoveListener(GoToHud);
-            gameState.onGameWon.RemoveListener(GoToGameWonMenu);
-            gameState.onGameLost.RemoveListener(GoToGameOverMenu);
-            gameState.onGameQuit.RemoveListener(GoToMainMenu);
+            gameState.OnGameStart-=(GoToHud);
+            gameState.OnGamePause-=(GoToPauseMenu);
+            gameState.OnGameResume-=(GoToHud);
+            gameState.OnGameWon-=(GoToGameWonMenu);
+            gameState.OnGameLost-=(GoToGameOverMenu);
+            gameState.OnGameQuit-=(GoToMainMenu);
         }
 
         private void OnDestroy()

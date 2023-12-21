@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Classic.Actors;
 using Classic.Character;
 using Classic.Game;
 using UnityEngine;
@@ -7,9 +8,8 @@ using UnityEngine;
 public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] private GameState gameState;    
-    public CharacterTarget characterTarget;
-    [SerializeField]
-    private Transform transformToFollow;
+    public ActorTarget characterTarget;
+    [SerializeField] private Transform transformToFollow;
 
     public Transform gunPivot;
     

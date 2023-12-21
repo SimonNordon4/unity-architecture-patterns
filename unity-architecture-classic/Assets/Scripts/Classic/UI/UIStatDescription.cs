@@ -15,7 +15,7 @@ namespace Classic.UI
         
         public void SetStatDescription(Stat stat)
         {
-            statName.text = SurvivorsUtil.CamelCaseToString(stat.statType.ToString());
+            statName.text = SurvivorsUtil.CamelCaseToString(stat.type.ToString());
             statValue.text = stat.value.ToString("F0");
             statValue.color = stat.value > stat.initialValue ? positiveColor : stat.value < stat.initialValue ? negativeColor : defaultColor;
         }

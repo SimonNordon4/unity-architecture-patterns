@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2b5a32913648eb8565cf921ea5823f, type: 3}
+  m_Name: TestWave
+  m_EditorClassIdentifier: 
+  normalEnemies: 10
+  <waveDuration>k__BackingField: 5
+  <spawnActions>k__BackingField:
+  - {fileID: 11400000, guid: f795fb20903336744b3130910dd38192, type: 2}
+  <bossActions>k__BackingField:
+  - {fileID: 11400000, guid: 860d8fd50550a2545ab9b9dd3257a378, type: 2}
+  <idealEnemiesAlive>k__BackingField: 5
+  <decay>k__BackingField: 5
+  <healthMultiplier>k__BackingField: {x: 1, y: 1}
+  <damageMultiplier>k__BackingField: {x: 1, y: 1}

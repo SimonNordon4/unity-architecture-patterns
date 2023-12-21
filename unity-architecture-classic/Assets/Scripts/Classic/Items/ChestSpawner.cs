@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Classic.Actors;
+using Classic.Definitions;
 using Classic.Game;
 using UnityEngine;
 
@@ -6,7 +8,7 @@ namespace Classic.Items
 {
     public class ChestSpawner : MonoBehaviour
     {
-        [SerializeField] private Stats stats;
+        [SerializeField] private ActorStats stats;
         [SerializeField] private Level level;
         [SerializeField] private Vector2 edgeBuffer = new Vector2(2f, 2f);
         
@@ -16,9 +18,9 @@ namespace Classic.Items
         [SerializeField] private ChestItemsConfig tier4ChestItems;
         [SerializeField] private ChestItemsConfig tier5ChestItems;
         
-        [SerializeField] private Chest miniChest;
-        [SerializeField] private Chest mediumChest;
-        [SerializeField] private Chest largeChest;
+        [SerializeField] private ChestDefinition miniChest;
+        [SerializeField] private ChestDefinition mediumChest;
+        [SerializeField] private ChestDefinition largeChest;
 
         private ChestItem[][] _allItems;
         private Dictionary<ChestType, Chest> _chestTypes;
@@ -38,15 +40,15 @@ namespace Classic.Items
             
             _chestTypes = new Dictionary<ChestType, Chest>
             {
-                {ChestType.Mini, miniChest},
-                {ChestType.Medium, mediumChest},
-                {ChestType.Large, largeChest}
+                {ChestType.Mini, miniChest.chestPrefab},
+                {ChestType.Medium, mediumChest.chestPrefab},
+                {ChestType.Large, largeChest.chestPrefab}
             };
         }
 
         public Chest SpawnMiniChest()
         {
-            var chest = Instantiate(miniChest, transform.position, Quaternion.identity);
+            var chest = Instantiate(miniChest.chestPrefab, transform.position, Quaternion.identity);
             chest.numberOfItems = CalculateNumberOfItems(chest);
             chest.chestItems = CalculateChestItems(chest);
             
@@ -91,7 +93,7 @@ namespace Classic.Items
             var itemsChance = Random.Range(0, 100);
             var numberOfItems = 0;
 
-            var luckFactor = stats.luck.value * 10f;
+            var luckFactor = stats.Map[StatType.Luck].value * 10f;
             itemsChance += (int)luckFactor;
 
             switch (itemsChance)
@@ -164,8 +166,9 @@ namespace Classic.Items
 
             var tier = 0;
 
-            var chance = Random.Range(0, (200 - (stats.luck.value * 20f))) +
-                         stats.luck.value * 20f;
+            var luck = stats.Map[StatType.Luck].value;
+            var chance = Random.Range(0, (200 - (luck * 20f))) +
+                         luck * 20f;
 
             // 0 luck = 0 - 200.
             // 1 luck = 20 - 200.
@@ -206,19 +209,6 @@ namespace Classic.Items
             }
             tier = Mathf.Clamp(tier, chest.tiers.x, chest.tiers.y);
             return tier;
-        }
-
-        private void OnValidate()
-        {
-            if (stats == null)
-            {
-                stats = FindObjectsByType<Stats>(FindObjectsSortMode.None)[0];
-            }
-
-            if (level == null)
-            {
-                level = FindObjectsByType<Level>(FindObjectsSortMode.None)[0];
-            }
         }
     }
 }

@@ -28,13 +28,5 @@ namespace Classic.UI
             var htmlColor = ColorUtility.ToHtmlStringRGB(color);
             _textMeshProUGUI.text = $"{statName}: <color=#{htmlColor}>{stat.value:F0}</color>";
         }
-
-        private void OnValidate()
-        {
-            if (stats == null)
-            {
-                stats = FindObjectsByType<Stats>(FindObjectsSortMode.None)[0];
-            }
-        }
     }
 }

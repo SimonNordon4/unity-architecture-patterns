@@ -6,16 +6,10 @@ namespace Classic.Items
     public class RoundMiniChestSpawner : MonoBehaviour
     {
         [SerializeField] private ChestSpawner chestSpawner;
-        [SerializeField] private GameState gameState;
 
         [SerializeField] private float miniChestSpawnRate = 8f;
         private float _timeSinceLastChest = 0.0f;
         private bool _isChestSpawnAllowed = true;
-
-        private void OnEnable()
-        {
-            gameState.onGameStart.AddListener(SpawnMiniChest);
-        }
 
         private void Update()
         {

@@ -1,75 +1,97 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using System;
+using UnityEngine;
+
 
 namespace Classic.Game
 {
+    /// <summary>
+    /// GameState keeps track of the current state of the game, and notifies listeners when the state changes.
+    /// </summary>
     public class GameState : MonoBehaviour
     {
-        public GameStateEnum currentState { get; private set; } = GameStateEnum.Idle;
+        [SerializeField] private bool startActive = false;
         
-        public UnityEvent onStateChanged { get; } = new();
-        public UnityEvent onGameStart { get; } = new();
-        public UnityEvent onGamePause { get; } = new();
-        public UnityEvent onGameResume {get;} = new();
-        public UnityEvent onGameWon {get;}  = new();
-        public UnityEvent onGameLost {get;}  = new();
-        public UnityEvent onGameQuit {get;}  = new();
+        public GameStateEnum currentState { get; private set; } = GameStateEnum.Idle;
+
+        public event Action<bool> OnChanged;
+        public event Action OnGameStart;
+        public event Action OnGamePause;
+        public event Action OnGameResume;
+        public event Action OnGameWon;
+        public event Action OnGameLost;
+        public event Action OnGameQuit;
 
         public bool isGameActive => currentState == GameStateEnum.Active;
 
         private void Start()
         {
-            currentState = GameStateEnum.Idle;
-            GameTime.timeScale = 0f;
-            onStateChanged.Invoke();
+            if (startActive)
+            {
+                StartNewGame();
+            }
+            else
+            {
+                QuitGame();
+            }
         }
 
         public void StartNewGame()
         {
             currentState = GameStateEnum.Active;
             GameTime.timeScale = 1f;
-            onGameStart.Invoke();
-            onStateChanged.Invoke();
+            OnGameStart?.Invoke();
+            OnChanged?.Invoke(isGameActive);
         }
         
         public void PauseGame()
         {
             currentState = GameStateEnum.Paused;
             GameTime.timeScale = 0f;
-            onGamePause.Invoke();
-            onStateChanged.Invoke();
+            OnGamePause?.Invoke();
+            OnChanged?.Invoke(isGameActive);
         }
         
         public void ResumeGame()
         {
             currentState = GameStateEnum.Active;
             GameTime.timeScale = 1f;
-            onGameResume.Invoke();
-            onStateChanged.Invoke();
+            OnGameResume?.Invoke();
+            OnChanged?.Invoke(isGameActive);
         }
 
         public void WinGame()
         {
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;
-            onGameWon.Invoke();
-            onStateChanged.Invoke();
+            OnGameWon?.Invoke();
+            OnChanged?.Invoke(isGameActive);
         }
         
-        public void LoseGame()
+        public void GameOver()
         {
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;
-            onGameLost.Invoke();
-            onStateChanged.Invoke();
+            OnGameLost?.Invoke();
+            OnChanged?.Invoke(isGameActive);
         }
 
         public void QuitGame()
         {
             currentState = GameStateEnum.Idle;
             GameTime.timeScale = 0f;
-            onGameQuit.Invoke();
-            onStateChanged.Invoke();
+            OnGameQuit?.Invoke();
+            OnChanged?.Invoke(isGameActive);
+        }
+
+        private void OnDestroy()
+        {
+            OnChanged = null;
+            OnGameStart = null;
+            OnGamePause = null;
+            OnGameResume = null;
+            OnGameWon = null;
+            OnGameLost = null;
+            OnGameQuit = null;
         }
     }
     

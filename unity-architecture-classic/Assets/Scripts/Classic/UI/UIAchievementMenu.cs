@@ -63,9 +63,4 @@ public class UIAchievementMenu : MonoBehaviour
     {
         Clear();
     }
-
-    private void OnValidate()
-    {
-        achievementManager = SurvivorsUtil.Find<AchievementManager>();
-    }
 }

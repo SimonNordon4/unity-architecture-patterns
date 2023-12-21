@@ -1,53 +1,93 @@
 ﻿using System;
 using System.Collections.Generic;
-using Classic.Enemies.Enemy;
+using Classic.Actors;
 using Classic.Game;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace Classic.Enemies
 {
-    public class EnemyPool : MonoBehaviour
+    public class EnemyPool : ActorComponent
     {
-        [SerializeField] private List<EnemyDefinition> enemyDefinitions = new();
-        [SerializeField] private GameState state;
-        [SerializeField] private Level level;
-        [SerializeField] private EnemyEvents enemyEvents;
-        private readonly Dictionary<EnemyDefinition, Queue<EnemyScope>> _enemyMap = new();
+        [field:SerializeField] public EnemyFactory factory { get; private set; }
+        private readonly Dictionary<EnemyDefinition, Queue<Enemy>> _pools = new();
+        private Action _onDeath;
 
-        private void Start()
+        public Enemy Get(EnemyDefinition definition, Vector3 position, bool startActive = true)
         {
-            // Create a queue for each enemy definition
-            foreach (var enemyDefinition in enemyDefinitions)
+            if (!_pools.TryGetValue(definition, out var queue))
             {
-                _enemyMap.Add(enemyDefinition, new Queue<EnemyScope>());
+                queue = new Queue<Enemy>();
+                _pools.Add(definition, queue);
             }
-        }
 
-        public EnemyScope Spawn(EnemyDefinition enemyDefinition, Vector3 location, bool isBoss = false)
-        {
-            var queue = _enemyMap[enemyDefinition];
-            if (queue.Count <= 0)
+            if (queue.Count == 0)
             {
-                return EnemyFactory(enemyDefinition,location,isBoss);
+                return CreateEnemy(definition, position);
             }
-            
+
             var enemy = queue.Dequeue();
-            enemy.gameObject.SetActive(true);
-            enemy.transform.position = location;
+            enemy.transform.position = position;
+            enemy.gameObject.SetActive(startActive);
+            
             return enemy;
         }
 
-        public void DeSpawn(EnemyScope enemyState)
+        public void Return(Enemy enemy, EnemyDefinition definition)
         {
-            enemyState.gameObject.SetActive(false);
-            _enemyMap[enemyState.definition].Enqueue(enemyState);
+            //Reset the enemy
+            if(enemy.TryGetComponent<ActorState>(out var state))
+                state.ResetActor();
+            
+            enemy.gameObject.SetActive(false);
+            
+            // Add the enemy to the queue
+            _pools[definition].Enqueue(enemy);
         }
 
-        private EnemyScope EnemyFactory(EnemyDefinition definition, Vector3 location, bool isBoss)
+        private Enemy CreateEnemy(EnemyDefinition definition, Vector3 position)
         {
-            var newEnemy = Instantiate(definition.enemyPrefab, location, Quaternion.identity, null);
-            newEnemy.Construct(state,level,this,enemyEvents,isBoss);
+            var newEnemy = factory.Create(definition, position);
+
+            // Because the enemy is pooled we only need to subscribe to it once.
+            // We generally don't need to clean up the subscription because all enemies will destroyed before this.
+            if (!newEnemy.TryGetComponent<ActorHealth>(out var actorHealth)) return newEnemy;
+            actorHealth.OnDeath += () =>
+            {
+                Return(newEnemy, definition);
+            };
+            
             return newEnemy;
         }
+
     }
+    
+    #if UNITY_EDITOR
+    [CustomEditor(typeof(EnemyPool))]
+    public class EnemyPoolEditor : Editor
+    {
+        private EnemyDefinition enemyDefinition;
+        public override void OnInspectorGUI()
+        {
+            DrawDefaultInspector();
+
+            var pool = (EnemyPool)target;
+
+            enemyDefinition =
+                (EnemyDefinition)EditorGUILayout.ObjectField(enemyDefinition, typeof(EnemyDefinition), false);
+
+            if (GUILayout.Button("Create Enemy"))
+            {
+                pool.Get(enemyDefinition, Vector3.zero);
+            }
+            
+            if(GUILayout.Button("Destroy Pool"))
+                pool.Reset();
+        }
+
+    }
+    #endif
 }

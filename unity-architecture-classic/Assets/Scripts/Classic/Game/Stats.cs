@@ -9,45 +9,44 @@ namespace Classic.Game
         public UnityEvent<StatType> onStatChanged { get; } = new();
 
         [field:SerializeField]
-        public Stat playerHealth {get; private set;} = new(10,StatType.PlayerHealth);
+        public Stat playerHealth {get; private set;} = new(StatType.MaxHealth);
         [field:SerializeField]
-        public Stat playerSpeed {get; private set;} = new(5,StatType.PlayerSpeed);
+        public Stat playerSpeed {get; private set;} = new(StatType.MoveSpeed);
         [field:SerializeField]
-        public Stat block {get; private set;} = new(0,StatType.Block);
+        public Stat block {get; private set;} = new(StatType.Block);
         [field:SerializeField]
-        public Stat dodge {get; private set;} = new(0,StatType.Dodge);
+        public Stat dodge {get; private set;} = new(StatType.Dodge);
         [field:SerializeField]
-        public Stat revives {get; private set;} = new(0, StatType.Revives);
+        public Stat revives {get; private set;} = new(StatType.Revives);
         [field:SerializeField]
-        public Stat dashes {get; private set;} = new(0, StatType.Dashes);
+        public Stat dashes {get; private set;} = new(StatType.Dashes);
 
         
         [field:SerializeField]
-        public Stat projectileDamage {get;private set;} = new(1, StatType.RangeDamage);
+        public Stat projectileDamage {get;private set;} = new(StatType.RangedDamage);
         [field:SerializeField]
-        public Stat range {get;private set;} = new(5, StatType.Range);
+        public Stat range {get;private set;} = new(StatType.RangedRange);
         [field:SerializeField]
-        public Stat fireRate {get;private set;} = new(0.5f, StatType.FireRate);
+        public Stat fireRate {get;private set;} = new(StatType.RangedAttackSpeed);
         [field:SerializeField]
-        public Stat projectileKnockBack {get;private set;} = new(1, StatType.ProjectileKnockBack);
+        public Stat projectileKnockBack {get;private set;} = new(StatType.RangedKnockBack);
         [field:SerializeField]
-        public Stat projectilePierce {get;private set;} = new(0, StatType.ProjectilePierce);
+        public Stat projectilePierce {get;private set;} = new(StatType.RangedPierce);
         
         [field:SerializeField]
-        public Stat meleeDamage {get;private set;} = new(3, StatType.MeleeDamage);
+        public Stat meleeDamage {get;private set;} = new(StatType.MeleeDamage);
         [field:SerializeField]
-        public Stat meleeRange {get;private set;} = new(1, StatType.MeleeRange);
+        public Stat meleeRange {get;private set;} = new(StatType.MeleeRange);
         [field:SerializeField]
-        public Stat attackSpeed {get;private set;} = new(3, StatType.AttackSpeed);
+        public Stat attackSpeed {get;private set;} = new( StatType.MeleeAttackSpeed);
         [field:SerializeField]
-        public Stat meleeKnockBack {get;private set;} = new(3, StatType.MeleeKnockBack);
-        [field:SerializeField]
-        public Stat arc {get;private set;} = new(45, StatType.Arc);
+        public Stat meleeKnockBack {get;private set;} = new(StatType.MeleeKnockBack);
+
         
         [field:SerializeField]
-        public Stat luck {get;private set;} = new(0, StatType.Luck);
+        public Stat luck {get;private set;} = new(StatType.Luck);
         [field:SerializeField]
-        public Stat healthPackSpawnRate {get;private set;} = new(5, StatType.HealthPackSpawnRate);
+        public Stat healthPackSpawnRate {get;private set;} = new(StatType.HealthPackDropRate);
 
         public Dictionary<StatType, Stat> statMap { get; } = new();
 
@@ -58,27 +57,26 @@ namespace Classic.Game
         
         private void PopulateStats()
         {
-            statMap.Add(StatType.PlayerHealth, playerHealth);
-            statMap.Add(StatType.PlayerSpeed, playerSpeed);
+            statMap.Add(StatType.MaxHealth, playerHealth);
+            statMap.Add(StatType.MoveSpeed, playerSpeed);
             statMap.Add(StatType.Block, block);
             statMap.Add(StatType.Dodge, dodge);
             statMap.Add(StatType.Revives, revives);
             statMap.Add(StatType.Dashes, dashes);
             
-            statMap.Add(StatType.RangeDamage, projectileDamage);
-            statMap.Add(StatType.Range, range);
-            statMap.Add(StatType.FireRate, fireRate);
-            statMap.Add(StatType.ProjectileKnockBack, projectileKnockBack);
-            statMap.Add(StatType.ProjectilePierce, projectilePierce);
+            statMap.Add(StatType.RangedDamage, projectileDamage);
+            statMap.Add(StatType.RangedRange, range);
+            statMap.Add(StatType.RangedAttackSpeed, fireRate);
+            statMap.Add(StatType.RangedKnockBack, projectileKnockBack);
+            statMap.Add(StatType.RangedPierce, projectilePierce);
             
             statMap.Add(StatType.MeleeDamage, meleeDamage);
             statMap.Add(StatType.MeleeRange, meleeRange);
-            statMap.Add(StatType.AttackSpeed, attackSpeed);
+            statMap.Add(StatType.MeleeAttackSpeed, attackSpeed);
             statMap.Add(StatType.MeleeKnockBack, meleeKnockBack);
-            statMap.Add(StatType.Arc, arc);
             
             statMap.Add(StatType.Luck, luck);
-            statMap.Add(StatType.HealthPackSpawnRate, healthPackSpawnRate);
+            statMap.Add(StatType.HealthPackDropRate, healthPackSpawnRate);
         }
 
         public void ApplyModifier(Modifier modifier)

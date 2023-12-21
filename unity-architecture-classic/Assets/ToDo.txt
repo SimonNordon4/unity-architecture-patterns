@@ -1,26 +1,12 @@
-﻿Rules of DG.
+﻿Objective 1: Finish all enemy spawning.
 
-Use Events to Flip control flow only. Otherwise keep it coupled.
-Exception for very small events, like sound and particles.
+[] Create]
 
-TODO: 
-
-- Enemy.
-
-[] Enemy Scope - Holds all references that we'd usually get from the scene.
-[] Enemy Poolable - Optional Pool Setting.
-[] Enemy Movement.
-[] Enemy Health.
-[] Enemy Attack.
-
-Things we need to know globally.
-
-When and where and enemy dies.
-When and where an enemy takes damage.
-We should have a centralized Enemy Manager to handle this.
-
-Enemy Spawner, uses Enemy Pool, which injects the Enemy Scope, which has access to enemy Events.
-
+[] Create Round Spawner.
+[] Test Round Spawner. Should drop a chest and move onto the next wave.
+[] Create all enemy type definitions and prefabs.
+[] Re-author Waves
+[] Create new Round Definition (remove blocks)
 
 New Features:
 [] Enemy type that guards chest.

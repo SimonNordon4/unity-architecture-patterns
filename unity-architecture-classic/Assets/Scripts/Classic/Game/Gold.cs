@@ -1,27 +1,31 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Classic.Game
 {
+    /// <summary>
+    /// Keeps track of how much Gold the player has, for purchasing upgrades.
+    /// </summary>
     public class Gold : MonoBehaviour
     {
         [SerializeField] private GameState state;
         [field:SerializeField] public int amount { get; private set; } = 0;
         [field:SerializeField] public int totalEarned { get; private set; } = 0;
-        public UnityEvent<int> onGoldChanged = new();
+        public event Action<int> OnGoldChanged;
 
         private void OnEnable()
         {
-            state.onGameLost.AddListener(AddGameWhenGoldEnds);
-            state.onGameWon.AddListener(AddGameWhenGoldEnds);
+            state.OnGameLost += AddGameWhenGoldEnds;
+            state.OnGameWon += AddGameWhenGoldEnds;
             Load();
         }
 
         private void OnDisable()
         {
-            state.onGameLost.RemoveListener(AddGameWhenGoldEnds);
-            state.onGameWon.RemoveListener(AddGameWhenGoldEnds);
+            state.OnGameLost -= AddGameWhenGoldEnds;
+            state.OnGameWon -= AddGameWhenGoldEnds;
             Save();
         }
 
@@ -29,7 +33,7 @@ namespace Classic.Game
         {
             amount += difference;
             Save();
-            onGoldChanged.Invoke(amount);
+            OnGoldChanged?.Invoke(amount);
             totalEarned += difference;
         }
 
@@ -37,14 +41,14 @@ namespace Classic.Game
         {
             amount -= difference;
             Save();
-            onGoldChanged.Invoke(this.amount);
+            OnGoldChanged?.Invoke(this.amount);
         }
 
         public void SetGold(int newAmount)
         {
             amount = newAmount;
             Save();
-            onGoldChanged.Invoke(this.amount);
+            OnGoldChanged?.Invoke(this.amount);
         }
         
         public void Save()
@@ -57,7 +61,7 @@ namespace Classic.Game
         {
             amount = PlayerPrefs.GetInt("currentGold", 0);
             totalEarned = PlayerPrefs.GetInt("totalGold", 0);
-            onGoldChanged.Invoke(amount);
+            OnGoldChanged?.Invoke(amount);
         }
 
         public void Reset()
@@ -65,17 +69,16 @@ namespace Classic.Game
             amount = 0;
             totalEarned = 0;
             Save();
-            onGoldChanged.Invoke(amount);
+            OnGoldChanged?.Invoke(amount);
         }
 
         public void AddGameWhenGoldEnds()
         {
-            // get the enemy manager
-            var enemyManager = FindObjectOfType<EnemyManager>();
-
-            var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
-
-            AddGold(totalGold);
+            // // get the enemy manager
+            // var enemyManager = FindObjectOfType<EnemyManager>();
+            // var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
+            // TODO: Calculate total gold.
+            AddGold(1);
         }
     }
 }

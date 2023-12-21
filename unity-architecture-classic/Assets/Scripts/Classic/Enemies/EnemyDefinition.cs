@@ -1,4 +1,4 @@
-﻿using Classic.Enemies.Enemy;
+﻿using Classic.Actors;
 using UnityEngine;
 
 namespace Classic.Enemies
@@ -6,6 +6,9 @@ namespace Classic.Enemies
     [CreateAssetMenu(fileName = "EnemyDefinition", menuName = "Classic/EnemyDefinition")]
     public class EnemyDefinition : ScriptableObject
     {
-        public EnemyScope enemyPrefab;
+        [Header("Prefabs")]
+        public Enemy enemyPrefab;
+        public Color enemyColor;
+        public ActorStatsDefinition statsDefinition;
     }
 }

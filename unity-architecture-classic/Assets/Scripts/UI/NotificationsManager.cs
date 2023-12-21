@@ -133,18 +133,4 @@ public class NotificationsManager : MonoBehaviour
             }
         }
     }
-
-    private void OnValidate()
-    {
-        if (inventory == null)
-        {
-            inventory = FindObjectsByType<Inventory>(FindObjectsSortMode.None).First();
-        }
-
-            if (gold == null)
-            {
-                gold = FindObjectsByType<Gold>(FindObjectsSortMode.None)[0];
-            }
-        
-    }
 }
