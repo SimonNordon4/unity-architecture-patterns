@@ -13,7 +13,6 @@ namespace Classic.Enemies
     public class EnemyPool : ActorComponent
     {
         [field:SerializeField] public EnemyFactory factory { get; private set; }
-        private readonly List<Enemy> _activeEnemies = new();
         private readonly Dictionary<EnemyDefinition, Queue<Enemy>> _pools = new();
         private Action _onDeath;
 
@@ -34,21 +33,16 @@ namespace Classic.Enemies
             enemy.transform.position = position;
             enemy.gameObject.SetActive(startActive);
             
-            _activeEnemies.Add(enemy);
-            
             return enemy;
         }
 
-        public  void Return(Enemy enemy, EnemyDefinition definition)
+        public void Return(Enemy enemy, EnemyDefinition definition)
         {
             //Reset the enemy
             if(enemy.TryGetComponent<ActorState>(out var state))
                 state.ResetActor();
             
             enemy.gameObject.SetActive(false);
-            
-            // Remove the enemy from the active list
-            _activeEnemies.Remove(enemy);
             
             // Add the enemy to the queue
             _pools[definition].Enqueue(enemy);
@@ -61,35 +55,14 @@ namespace Classic.Enemies
             // Because the enemy is pooled we only need to subscribe to it once.
             // We generally don't need to clean up the subscription because all enemies will destroyed before this.
             if (!newEnemy.TryGetComponent<ActorHealth>(out var actorHealth)) return newEnemy;
-            actorHealth.OnDeath += () => Return(newEnemy, definition);
+            actorHealth.OnDeath += () =>
+            {
+                Return(newEnemy, definition);
+            };
             
             return newEnemy;
         }
-        
-        public override void Reset()
-        {
-            Debug.Log("Resetting enemy pool.");
-            DestroyPool();
-        }
 
-        private void DestroyPool()
-        {
-            foreach (var pool in _pools.Values)
-            {
-                while (pool.Count > 0)
-                {
-                    var enemy = pool.Dequeue();
-                    Destroy(enemy.gameObject);
-                }
-            }
-            _pools.Clear();
-            
-            foreach (var enemy in _activeEnemies)
-            {
-                Destroy(enemy.gameObject);
-            }
-            _activeEnemies.Clear();
-        }
     }
     
     #if UNITY_EDITOR
@@ -110,6 +83,9 @@ namespace Classic.Enemies
             {
                 pool.Get(enemyDefinition, Vector3.zero);
             }
+            
+            if(GUILayout.Button("Destroy Pool"))
+                pool.Reset();
         }
 
     }

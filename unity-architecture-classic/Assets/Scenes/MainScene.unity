@@ -14983,6 +14983,7 @@ GameObject:
   - component: {fileID: 1358396558}
   - component: {fileID: 1358396561}
   - component: {fileID: 1358396562}
+  - component: {fileID: 1358396563}
   m_Layer: 0
   m_Name: Game State
   m_TagString: Untagged
@@ -15060,6 +15061,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
   <roundTime>k__BackingField: 0
+--- !u!114 &1358396563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358396557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44ece414dc24d74bc25e060cb28057e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
 --- !u!1 &1359933850
 GameObject:
   m_ObjectHideFlags: 0
@@ -16481,6 +16495,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8e65a63a5d239448367095b4a072ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1516400182
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_RootOrder
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4655527159349620636, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6400086643072238175, guid: 06395e610f4466140967042d1094d37f, type: 3}
+      propertyPath: m_Name
+      value: Enemy - Normal
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 06395e610f4466140967042d1094d37f, type: 3}
 --- !u!1 &1518900497
 GameObject:
   m_ObjectHideFlags: 0
@@ -17346,13 +17421,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1597872169}
-  - component: {fileID: 1597872176}
+  - component: {fileID: 1597872175}
   - component: {fileID: 1597872170}
   - component: {fileID: 1597872171}
   - component: {fileID: 1597872172}
   - component: {fileID: 1597872174}
   - component: {fileID: 1597872173}
-  - component: {fileID: 1597872175}
+  - component: {fileID: 1597872176}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -17432,7 +17507,7 @@ MonoBehaviour:
   state: {fileID: 1358396559}
   level: {fileID: 1358396558}
   <initialTarget>k__BackingField: {fileID: 4258749572108575571}
-  deathParticlePool: {fileID: 1597872175}
+  deathParticlePool: {fileID: 1597872176}
 --- !u!114 &1597872174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17455,11 +17530,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1597872167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4eb4b765a8e347f28ab8d3bb3bb737ec, type: 3}
+  m_Script: {fileID: 11500000, guid: d81b19ef53014106b16fdd7dc6a56ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <prefab>k__BackingField: {fileID: 1586131622021597945, guid: 936f9c4c7565fe645b239985a1a0a1e1, type: 3}
-  initialPoolSize: 10
+  gameState: {fileID: 1358396559}
 --- !u!114 &1597872176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17469,10 +17543,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1597872167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eb4b765a8e347f28ab8d3bb3bb737ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
+  <prefab>k__BackingField: {fileID: 1586131622021597945, guid: 936f9c4c7565fe645b239985a1a0a1e1, type: 3}
+  initialPoolSize: 10
 --- !u!1 &1610111792
 GameObject:
   m_ObjectHideFlags: 0

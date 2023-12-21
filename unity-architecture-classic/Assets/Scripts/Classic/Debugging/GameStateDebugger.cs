@@ -9,7 +9,13 @@ namespace Classic.Debugging
         
         private void OnEnable()
         {
-            state.OnChanged += OnStateChanged;
+            state.OnGameStart += () => Print("Game Started");
+            state.OnGamePause += () => Print("Game Paused");
+            state.OnGameResume += () => Print("Game Resumed");
+            state.OnGameWon += () => Print("Game Won");
+            state.OnGameLost += () => Print("Game Lost");
+            state.OnGameQuit += () => Print("Game Quit");
+            
         }
 
         private void OnStateChanged(bool obj)

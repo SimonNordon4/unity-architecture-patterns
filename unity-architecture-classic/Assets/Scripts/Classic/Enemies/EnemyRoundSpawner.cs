@@ -8,10 +8,9 @@ namespace Classic.Enemies
 {
     [RequireComponent(typeof(EnemyWaveSpawner))]
     [RequireComponent(typeof(EnemyPool))]
-    public class EnemyWaveManager : ActorComponent
+    public class EnemyRoundSpawner : ActorComponent
     {
         private EnemyWaveSpawner _enemyWaveSpawner;
-        private EnemyPool _enemyPool;
         private int _currentWaveIndex = 0;
         [SerializeField] private ChestSpawner chestSpawner;
         [SerializeField] private GameState gameState;
@@ -20,37 +19,29 @@ namespace Classic.Enemies
         private void Awake()
         {
             _enemyWaveSpawner = GetComponent<EnemyWaveSpawner>();            
-            _enemyPool = GetComponent<EnemyPool>();
         }
 
         private void OnEnable()
         {
-            gameState.OnGameStart += StartRoundSpawner;
             _enemyWaveSpawner.OnWaveCompleted += OnWaveCompleted;
         }
-
-        private void StartRoundSpawner()
+        private void OnDisable()
         {
-            Debug.Log("EnemyWaveSpawner: Starting round spawner",this);
+            _enemyWaveSpawner.OnWaveCompleted -= OnWaveCompleted;
+        }
+
+        public void StartRoundSpawner()
+        {
             var currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
             _enemyWaveSpawner.StartNewWave(currentWaveDefinition);
         }
 
-        private void OnDisable()
-        {
-            gameState.OnGameStart -= StartRoundSpawner;
-            _enemyWaveSpawner.OnWaveCompleted -= OnWaveCompleted;
-        }
-
         private void OnWaveCompleted(Vector3 deathPosition)
         {
-            Debug.Log("EnemyWaveSpawner: Wave completed, spawning chest",this);
             if(_currentWaveIndex + 1 >= roundDefinition.waves.Count)
             {
-                Debug.Log("Game won, not spawning chest.");
                 return;
             }
-            
             
             var bossChest = chestSpawner.SpawnChest(ChestType.Medium, deathPosition);
             bossChest.onPickedUp.AddListener(OnBossChestPickedUp);
@@ -58,13 +49,11 @@ namespace Classic.Enemies
 
         private void OnBossChestPickedUp()
         {
-            Debug.Log("EnemyWaveSpawner: Boss chest picked up, starting next wave",this);
             StartNextWave();
         }
         
         private void StartNextWave()
         {
-            
             _currentWaveIndex++;
             if (_currentWaveIndex >= roundDefinition.waves.Count)
             {
@@ -72,6 +61,11 @@ namespace Classic.Enemies
                 return;
             }
             StartRoundSpawner();
+        }
+
+        public override void Reset()
+        {
+            _currentWaveIndex = 0;
         }
     }
 }

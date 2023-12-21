@@ -37,7 +37,6 @@ namespace Classic.Enemies
             if(enemy.TryGetComponent<EnemySpawnDelay>(out var spawnDelay))
                 spawnDelay.Construct(deathParticlePool);
             
-            
             enemy.gameObject.SetActive(true);
 
             return enemy;
