@@ -13,20 +13,22 @@ namespace Classic.Enemies
     public class EnemyPool : ActorComponent
     {
         [field:SerializeField] public EnemyFactory factory { get; private set; }
-        private readonly Dictionary<EnemyDefinition, Queue<Enemy>> _pools = new();
+        private readonly Dictionary<EnemyDefinition, Queue<PoolableEnemy>> _pools = new();
         private Action _onDeath;
 
-        public Enemy Get(EnemyDefinition definition, Vector3 position, bool startActive = true)
+        public PoolableEnemy Get(EnemyDefinition definition, Vector3 position, bool startActive = true)
         {
             if (!_pools.TryGetValue(definition, out var queue))
             {
-                queue = new Queue<Enemy>();
+                queue = new Queue<PoolableEnemy>();
                 _pools.Add(definition, queue);
             }
 
             if (queue.Count == 0)
             {
-                return CreateEnemy(definition, position);
+                var newEnemy = CreateEnemy(definition, position);
+                newEnemy.Construct(this);
+                return newEnemy;
             }
 
             var enemy = queue.Dequeue();
@@ -36,24 +38,20 @@ namespace Classic.Enemies
             return enemy;
         }
 
-        public void Return(Enemy enemy, EnemyDefinition definition)
+        public void Return(PoolableEnemy poolableEnemy, EnemyDefinition definition)
         {
-            //Reset the enemy
-            if(enemy.TryGetComponent<ActorState>(out var state))
-                state.ResetActor();
-            
-            enemy.gameObject.SetActive(false);
+            poolableEnemy.gameObject.SetActive(false);
             
             // Add the enemy to the queue
-            _pools[definition].Enqueue(enemy);
+            _pools[definition].Enqueue(poolableEnemy);
         }
 
-        private Enemy CreateEnemy(EnemyDefinition definition, Vector3 position)
+        private PoolableEnemy CreateEnemy(EnemyDefinition definition, Vector3 position)
         {
             var newEnemy = factory.Create(definition, position);
 
             // Because the enemy is pooled we only need to subscribe to it once.
-            // We generally don't need to clean up the subscription because all enemies will destroyed before this.
+            // We generally don't need to clean up the subscription because all enemies will destroyed before t his.
             if (!newEnemy.TryGetComponent<ActorHealth>(out var actorHealth)) return newEnemy;
             actorHealth.OnDeath += () =>
             {

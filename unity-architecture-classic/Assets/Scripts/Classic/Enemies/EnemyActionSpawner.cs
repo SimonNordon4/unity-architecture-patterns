@@ -16,7 +16,7 @@ namespace Classic.Enemies
         [SerializeField] private EnemyPool pool;
         [SerializeField] private Level level;
         
-        public Enemy[] SpawnAction(SpawnActionDefinition actionDefinition)
+        public PoolableEnemy[] SpawnAction(SpawnActionDefinition actionDefinition)
         {
             return actionDefinition.actionType switch
             {
@@ -26,7 +26,7 @@ namespace Classic.Enemies
             };
         }
 
-        private Enemy[] SpawnCircle(SpawnActionDefinition actionDefinition)
+        private PoolableEnemy[] SpawnCircle(SpawnActionDefinition actionDefinition)
         {
             // Spawn the number of enemies in a circle around the player
             // Except if those enemies would be spawned outside of the level bounds, they are instead flipped to spawn on the other side of the circle
@@ -34,7 +34,7 @@ namespace Classic.Enemies
             var radius = 5f;
             var angle = 360f / actionDefinition.numberOfEnemiesToSpawn;
             
-            var enemies = new Enemy[actionDefinition.numberOfEnemiesToSpawn];
+            var enemies = new PoolableEnemy[actionDefinition.numberOfEnemiesToSpawn];
             for (int i = 0; i < actionDefinition.numberOfEnemiesToSpawn; i++)
             {
                 var position = playerPosition + new Vector3(
@@ -71,9 +71,9 @@ namespace Classic.Enemies
             return enemies;
         }
 
-        private Enemy[] SpawnGroup(SpawnActionDefinition actionDefinition)
+        private PoolableEnemy[] SpawnGroup(SpawnActionDefinition actionDefinition)
         {
-            var enemies = new Enemy[actionDefinition.numberOfEnemiesToSpawn];
+            var enemies = new PoolableEnemy[actionDefinition.numberOfEnemiesToSpawn];
             // spawn the first enemy immediately
             var position = GetRandomPosition();
             enemies[0] = pool.Get(actionDefinition.definition, position);
@@ -112,10 +112,10 @@ namespace Classic.Enemies
             return Vector3.Lerp(randomInnerPoint, randomEdgePoint, bias);
         }
         
-        private IEnumerator EnableEnemyAfterSeconds(Enemy enemy, float seconds)
+        private IEnumerator EnableEnemyAfterSeconds(PoolableEnemy poolableEnemy, float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            enemy.gameObject.SetActive(true);
+            poolableEnemy.gameObject.SetActive(true);
         }
 
         public override void Reset()

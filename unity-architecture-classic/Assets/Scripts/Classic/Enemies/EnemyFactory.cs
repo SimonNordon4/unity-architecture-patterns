@@ -16,12 +16,12 @@ namespace Classic.Enemies
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
 
-        public Enemy Create(EnemyDefinition enemyDefinition, Vector3 position = new(), bool startActive = true)
+        public PoolableEnemy Create(EnemyDefinition enemyDefinition, Vector3 position = new(), bool startActive = true)
         {
-            enemyDefinition.enemyPrefab.gameObject.SetActive(false);
+            enemyDefinition.poolableEnemyPrefab.gameObject.SetActive(false);
             
-            var enemy = Instantiate(enemyDefinition.enemyPrefab, position, Quaternion.identity, null);
-
+            var enemy = Instantiate(enemyDefinition.poolableEnemyPrefab, position, Quaternion.identity, null);
+            
             if (enemy.TryGetComponent<ActorState>(out var gameState))
                 gameState.Construct(state);
 

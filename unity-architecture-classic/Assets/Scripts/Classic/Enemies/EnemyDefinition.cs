@@ -7,7 +7,7 @@ namespace Classic.Enemies
     public class EnemyDefinition : ScriptableObject
     {
         [Header("Prefabs")]
-        public Enemy enemyPrefab;
+        public PoolableEnemy poolableEnemyPrefab;
         public Color enemyColor;
         public ActorStatsDefinition statsDefinition;
     }
