@@ -14,7 +14,8 @@ namespace Classic.Enemies
     {
         [field:SerializeField] public EnemyFactory factory { get; private set; }
         private readonly Dictionary<EnemyDefinition, Queue<PoolableEnemy>> _pools = new();
-        private Action _onDeath;
+        public event Action<PoolableEnemy> OnEnemySpawned;
+        public event Action<PoolableEnemy> OnEnemyDespawned;
 
         public PoolableEnemy Get(EnemyDefinition definition, Vector3 position, bool startActive = true)
         {
@@ -23,17 +24,24 @@ namespace Classic.Enemies
                 queue = new Queue<PoolableEnemy>();
                 _pools.Add(definition, queue);
             }
+            
+            PoolableEnemy enemy = null;
 
             if (queue.Count == 0)
             {
-                var newEnemy = CreateEnemy(definition, position);
-                newEnemy.Construct(this);
-                return newEnemy;
+                enemy = CreateEnemy(definition, position);
+                enemy.Construct(this);
+                enemy.transform.position = position;
+                enemy.gameObject.SetActive(startActive);
             }
-
-            var enemy = queue.Dequeue();
-            enemy.transform.position = position;
-            enemy.gameObject.SetActive(startActive);
+            else
+            {
+                enemy = queue.Dequeue();
+                enemy.transform.position = position;
+                enemy.gameObject.SetActive(startActive);
+            }
+            
+            OnEnemySpawned?.Invoke(enemy);
             
             return enemy;
         }
@@ -42,6 +50,8 @@ namespace Classic.Enemies
         {
             poolableEnemy.gameObject.SetActive(false);
             
+            OnEnemyDespawned?.Invoke(poolableEnemy);
+            
             // Add the enemy to the queue
             _pools[definition].Enqueue(poolableEnemy);
         }
@@ -49,15 +59,6 @@ namespace Classic.Enemies
         private PoolableEnemy CreateEnemy(EnemyDefinition definition, Vector3 position)
         {
             var newEnemy = factory.Create(definition, position);
-
-            // Because the enemy is pooled we only need to subscribe to it once.
-            // We generally don't need to clean up the subscription because all enemies will destroyed before t his.
-            if (!newEnemy.TryGetComponent<ActorHealth>(out var actorHealth)) return newEnemy;
-            actorHealth.OnDeath += () =>
-            {
-                Return(newEnemy, definition);
-            };
-            
             return newEnemy;
         }
 

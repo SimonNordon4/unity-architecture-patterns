@@ -10,6 +10,9 @@ namespace Classic.Actors
         private DamageReceiver _damageReceiver;
         private ActorHealth _health;
         
+        public event Action<GameObject,int> OnDamageTaken;
+        public event Action<GameObject> OnDodge;
+        public event Action<GameObject> OnBlock;
         
         [SerializeField]private ActorDodge dodge;
         private bool _hasDodgeReference = false;
@@ -42,15 +45,25 @@ namespace Classic.Actors
         {
             if (_hasDodgeReference)
             {
-                if (dodge.CalculateDodge()) return;
+                if (dodge.CalculateDodge())
+                {
+                    OnDodge?.Invoke(gameObject);
+                    return;
+                }
             }
 
             if (_hasBlockReference)
             {
                 damageAmount = block.CalculateBlock(damageAmount);
+                if (damageAmount <= 0)
+                {
+                    OnBlock?.Invoke(gameObject);
+                    return;
+                }
             }
             
             _health.TakeDamage(damageAmount);
+            OnDamageTaken?.Invoke(gameObject, damageAmount);
         }
     }
 }

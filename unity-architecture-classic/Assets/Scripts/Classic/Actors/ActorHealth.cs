@@ -17,10 +17,6 @@ namespace Classic.Actors
             Reset();
         }
 
-        private void Start()
-        {
-            Reset();
-        }
         public void SetHealth(int health)
         {
             currentHealth = health;
