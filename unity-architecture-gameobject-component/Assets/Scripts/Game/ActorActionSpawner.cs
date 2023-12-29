@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using GameObjectComponent.Definitions;
-using GameObjectComponent.GameplayComponents.Actor;
 using GameObjectComponent.Pools;
+using GameplayComponents.Actor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

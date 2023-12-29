@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameObjectComponent.Game;
+using GameObjectComponent.GameplayComponents;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Combat
+namespace GameplayComponents.Actor
 {
     public class Inventory : GameplayComponent
     {

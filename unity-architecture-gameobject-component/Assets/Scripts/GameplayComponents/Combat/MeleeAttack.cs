@@ -1,27 +1,26 @@
 ﻿using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Actor;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.GameplayComponents.Combat
 {
-    [RequireComponent(typeof(ActorStats))]
-    [RequireComponent(typeof(CombatTarget))]
+
     public class MeleeAttack : GameplayComponent
     {
         [SerializeField] private BaseWeapon weapon;
-        private ActorStats _stats;
-        private CombatTarget _target;
-        private Stat meleeDamage => _stats.Map[StatType.MeleeDamage];
-        private Stat meleeKnockBack => _stats.Map[StatType.MeleeKnockBack];
-        private Stat meleeRange => _stats.Map[StatType.MeleeRange];
-        private Stat meleeAttackSpeed => _stats.Map[StatType.MeleeAttackSpeed];
+        [SerializeField] private Stats stats;
+        [SerializeField] private CombatTarget target;
+        private Stat meleeDamage => stats.Map[StatType.MeleeDamage];
+        private Stat meleeKnockBack => stats.Map[StatType.MeleeKnockBack];
+        private Stat meleeRange => stats.Map[StatType.MeleeRange];
+        private Stat meleeAttackSpeed => stats.Map[StatType.MeleeAttackSpeed];
 
         private float _timeSinceLastAttack = 0f;
         
         private void Start()
         {
-            _stats = GetComponent<ActorStats>();
-            _target = GetComponent<CombatTarget>();
+            stats = GetComponent<Stats>();
+            target = GetComponent<CombatTarget>();
         }
 
         private void Update()
@@ -33,9 +32,9 @@ namespace GameObjectComponent.GameplayComponents.Combat
                 return;
             }
             
-            if(!_target.hasTarget) return;
+            if(!target.hasTarget) return;
             
-            var distance = _target.targetDistance;
+            var distance = target.targetDistance;
             if (distance > meleeRange.value) return;
             
             var info = new MeleeStatsInfo

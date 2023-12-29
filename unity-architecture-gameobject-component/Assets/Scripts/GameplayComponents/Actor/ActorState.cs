@@ -1,9 +1,10 @@
 ﻿using System;
-using UnityEngine;
 using System.Collections.Generic;
 using GameObjectComponent.Game;
+using GameObjectComponent.GameplayComponents;
+using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Actor
+namespace GameplayComponents.Actor
 {
     [DefaultExecutionOrder(-10)]
     public class ActorState : MonoBehaviour

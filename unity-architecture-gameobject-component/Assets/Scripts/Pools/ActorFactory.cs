@@ -2,8 +2,8 @@
 using UnityEngine;
 using GameObjectComponent.GameplayComponents.Combat;
 using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Actor;
 using GameObjectComponent.GameplayComponents.Locomotion;
+using GameplayComponents.Actor;
 
 namespace GameObjectComponent.Pools
 {

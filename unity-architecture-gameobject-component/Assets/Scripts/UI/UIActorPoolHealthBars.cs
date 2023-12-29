@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GameObjectComponent.GameplayComponents.Actor;
 using GameObjectComponent.GameplayComponents.Life;
 using GameObjectComponent.Pools;
+using GameplayComponents.Actor;
 using TMPro;
 using UnityEngine;
 

@@ -2,7 +2,6 @@
 using System.Linq;
 using GameObjectComponent.GameplayComponents.Combat;
 using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.Items

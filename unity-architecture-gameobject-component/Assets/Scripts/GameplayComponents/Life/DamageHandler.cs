@@ -3,17 +3,13 @@ using UnityEngine;
 
 namespace GameObjectComponent.GameplayComponents.Life
 {
-    [RequireComponent(typeof(DamageReceiver))]
-    [RequireComponent(typeof(Health))]
     public class DamageHandler : GameplayComponent
     {
-        private DamageReceiver _damageReceiver;
-        private Health _health;
-        
-        public event Action<GameObject,int> OnDamageTaken;
-        public event Action<GameObject> OnDodge;
-        public event Action<GameObject> OnBlock;
-        
+        [SerializeField]
+        private DamageReceiver damageReceiver;
+        [SerializeField]
+        private Health health;
+
         [SerializeField]private Dodge dodge;
         private bool _hasDodgeReference = false;
         [SerializeField]private Block block;
@@ -21,8 +17,8 @@ namespace GameObjectComponent.GameplayComponents.Life
 
         private void Awake()
         {
-            _damageReceiver = GetComponent<DamageReceiver>();
-            _health = GetComponent<Health>();
+            damageReceiver = GetComponent<DamageReceiver>();
+            health = GetComponent<Health>();
         }
 
         private void Start()
@@ -33,12 +29,12 @@ namespace GameObjectComponent.GameplayComponents.Life
 
         private void OnEnable()
         {
-            _damageReceiver.OnDamageReceived += OnDamageReceived;
+            damageReceiver.OnDamageReceived += OnDamageReceived;
         }
 
         private void OnDisable()
         {
-            _damageReceiver.OnDamageReceived -= OnDamageReceived;
+            damageReceiver.OnDamageReceived -= OnDamageReceived;
         }
         
         private void OnDamageReceived(int damageAmount)
@@ -47,7 +43,6 @@ namespace GameObjectComponent.GameplayComponents.Life
             {
                 if (dodge.CalculateDodge())
                 {
-                    OnDodge?.Invoke(gameObject);
                     return;
                 }
             }
@@ -57,13 +52,11 @@ namespace GameObjectComponent.GameplayComponents.Life
                 damageAmount = block.CalculateBlock(damageAmount);
                 if (damageAmount <= 0)
                 {
-                    OnBlock?.Invoke(gameObject);
                     return;
                 }
             }
             
-            _health.TakeDamage(damageAmount);
-            OnDamageTaken?.Invoke(gameObject, damageAmount);
+            health.TakeDamage(damageAmount);
         }
     }
 }

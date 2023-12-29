@@ -1,5 +1,5 @@
-﻿using GameObjectComponent.GameplayComponents.Actor;
-using GameObjectComponent.GameplayComponents.Combat;
+﻿using GameObjectComponent.GameplayComponents.Combat;
+using GameplayComponents.Actor;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -9,7 +9,7 @@ namespace GameObjectComponent.Debugging
 {
     public class ActorStatsDebugger : DebugComponent
     {
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         [SerializeField] private StatType statType;
         [SerializeField] private float value;
         

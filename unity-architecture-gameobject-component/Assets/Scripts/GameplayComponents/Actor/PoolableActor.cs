@@ -1,8 +1,9 @@
 ﻿using GameObjectComponent.Definitions;
+using GameObjectComponent.GameplayComponents;
 using GameObjectComponent.Pools;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Actor
+namespace GameplayComponents.Actor
 {
     public class PoolableActor : GameplayComponent
     {

@@ -1,6 +1,6 @@
 ﻿using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Actor;
 using GameObjectComponent.Utility;
+using GameplayComponents.Actor;
 using TMPro;
 using UnityEngine;
 namespace GameObjectComponent.UI
@@ -10,7 +10,7 @@ namespace GameObjectComponent.UI
     {
         private TextMeshProUGUI _textMeshProUGUI;
         [SerializeField] private StatType statType;
-        [SerializeField]private ActorStats stats;
+        [SerializeField]private Stats stats;
         [SerializeField]private Color positiveColor = new Color(0.66f,1f,0.66f);
         [SerializeField]private Color negativeColor = new Color(1f,0.5f,0.5f);
     

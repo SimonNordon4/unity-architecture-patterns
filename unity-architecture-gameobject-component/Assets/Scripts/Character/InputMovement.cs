@@ -1,7 +1,7 @@
 ﻿using GameObjectComponent.GameplayComponents;
-using GameObjectComponent.GameplayComponents.Actor;
 using GameObjectComponent.GameplayComponents.Combat;
 using GameObjectComponent.GameplayComponents.Locomotion;
+using GameplayComponents.Actor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +11,7 @@ namespace GameObjectComponent.Character
     {
         [SerializeField] private Movement movement;
         [SerializeField] private InputActionAsset actionMap;
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         
         private Stat _speedStat;
         private InputAction _movementAction;

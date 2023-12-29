@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using GameObjectComponent.Definitions;
 using GameObjectComponent.GameplayComponents;
-using GameObjectComponent.GameplayComponents.Actor;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.Pools

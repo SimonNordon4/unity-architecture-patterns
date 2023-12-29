@@ -1,5 +1,5 @@
-﻿using GameObjectComponent.GameplayComponents.Actor;
-using GameObjectComponent.GameplayComponents.Combat;
+﻿using GameObjectComponent.GameplayComponents.Combat;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.Debugging

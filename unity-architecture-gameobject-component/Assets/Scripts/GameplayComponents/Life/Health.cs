@@ -1,5 +1,5 @@
 ﻿using System;
-using GameObjectComponent.GameplayComponents.Actor;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.GameplayComponents.Life
@@ -7,7 +7,7 @@ namespace GameObjectComponent.GameplayComponents.Life
     public class Health : GameplayComponent
     {
         [field:SerializeField] public int currentHealth { get; private set; }
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         public int maxHealth => (int)stats.Map[StatType.MaxHealth].value;
         public event Action<int> OnHealthChanged;
         public event Action OnDeath;

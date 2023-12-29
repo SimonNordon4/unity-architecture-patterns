@@ -1,17 +1,17 @@
-﻿using GameObjectComponent.GameplayComponents.Actor;
-using GameObjectComponent.GameplayComponents.Combat;
+﻿using GameObjectComponent.GameplayComponents.Combat;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.GameplayComponents.Locomotion
 {
     [RequireComponent(typeof(Movement))]
-    [RequireComponent(typeof(ActorStats))]
+    [RequireComponent(typeof(Stats))]
     [RequireComponent(typeof(CombatTarget))]
     [RequireComponent(typeof(AvoidAllies))]
     public class MoveTowardsTarget : GameplayComponent
     {
         private Movement _movement;
-        private ActorStats _stats;
+        private Stats _stats;
         private Stat _moveSpeed;
         private CombatTarget _target;
         private AvoidAllies _avoidance;
@@ -19,7 +19,7 @@ namespace GameObjectComponent.GameplayComponents.Locomotion
         private void Start()
         {
             _movement = GetComponent<Movement>();
-            _stats = GetComponent<ActorStats>();
+            _stats = GetComponent<Stats>();
             _target = GetComponent<CombatTarget>();
             _avoidance = GetComponent<AvoidAllies>();
             _moveSpeed = _stats.Map[StatType.MoveSpeed];

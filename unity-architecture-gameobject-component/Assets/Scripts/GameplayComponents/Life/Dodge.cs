@@ -1,4 +1,4 @@
-﻿using GameObjectComponent.GameplayComponents.Actor;
+﻿using GameplayComponents.Actor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +6,7 @@ namespace GameObjectComponent.GameplayComponents
 {
     public class Dodge : GameplayComponent
     {
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         private Stat _dodgeStat;
         public UnityEvent onDodged = new();
         

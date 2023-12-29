@@ -1,4 +1,4 @@
-﻿using GameObjectComponent.GameplayComponents.Actor;
+﻿using GameplayComponents.Actor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +6,7 @@ namespace GameObjectComponent.GameplayComponents.Combat
 {
     public class RangedAttack : GameplayComponent
     {
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         [SerializeField] private CombatTarget target;
         [SerializeField] private ProjectilePool pool;
         [SerializeField] private Transform projectileSpawnPoint;

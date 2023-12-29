@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using GameObjectComponent.Definitions;
 using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Actor;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.Items
 {
     public class ChestSpawner : MonoBehaviour
     {
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         [SerializeField] private Level level;
         [SerializeField] private Vector2 edgeBuffer = new Vector2(2f, 2f);
         

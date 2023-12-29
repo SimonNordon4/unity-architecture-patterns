@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameObjectComponent.Definitions;
+using GameObjectComponent.GameplayComponents;
 using UnityEngine;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
-namespace GameObjectComponent.GameplayComponents.Actor
+namespace GameplayComponents.Actor
 {
     [DefaultExecutionOrder(-100)]
-    public class ActorStats : GameplayComponent
+    public class Stats : GameplayComponent
     {
         [SerializeField] private ActorStatsDefinition definition;
         public readonly Dictionary<StatType, Stat> Map = new();
@@ -30,38 +28,4 @@ namespace GameObjectComponent.GameplayComponents.Actor
             }
         }
     }
-    
-#if UNITY_EDITOR
-
-    [CustomEditor(typeof(ActorStats))]
-    public class ActorStatsEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-            // Draw the default inspector
-            base.OnInspectorGUI();
-
-            // Get the target object
-            ActorStats actorStats = (ActorStats)target;
-
-            if (actorStats.Map == null) return;
-
-            foreach (var keyValuePair in actorStats.Map)
-            {
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.LabelField(keyValuePair.Key.ToString());
-
-                // Assuming Stat has a property InitialValue of type int
-                int newInitialValue = EditorGUILayout.IntField((int)keyValuePair.Value.initialValue);
-                if (Math.Abs(newInitialValue - keyValuePair.Value.initialValue) > 0.01f)
-                {
-                    keyValuePair.Value.initialValue = newInitialValue;
-                    EditorUtility.SetDirty(target); // Mark the object as dirty to enable saving the changed value
-                }
-
-                EditorGUILayout.EndHorizontal();
-            }
-        }
-    }
-#endif
 }

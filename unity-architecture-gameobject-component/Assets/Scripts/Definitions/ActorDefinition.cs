@@ -1,4 +1,4 @@
-﻿using GameObjectComponent.GameplayComponents.Actor;
+﻿using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.Definitions

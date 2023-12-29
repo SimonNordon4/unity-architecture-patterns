@@ -3,7 +3,7 @@ using GameObjectComponent.Definitions;
 using GameObjectComponent.Pools;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Actor
+namespace GameplayComponents.Actor
 {
     public class ActorSpawnDelay : MonoBehaviour
     {

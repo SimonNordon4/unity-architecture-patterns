@@ -1,8 +1,8 @@
 ﻿using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Actor;
 using GameObjectComponent.GameplayComponents.Combat;
 using GameObjectComponent.GameplayComponents.Life;
 using GameObjectComponent.GameplayComponents.Locomotion;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.Character
@@ -10,7 +10,7 @@ namespace GameObjectComponent.Character
     public class Sword : MonoBehaviour
     {
         [SerializeField] private Transform parent;
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         [SerializeField] private CombatTarget target;
 
         private void OnTriggerEnter(Collider other)

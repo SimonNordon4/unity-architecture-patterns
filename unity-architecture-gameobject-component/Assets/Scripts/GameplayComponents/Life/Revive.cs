@@ -1,4 +1,4 @@
-﻿using GameObjectComponent.GameplayComponents.Actor;
+﻿using GameplayComponents.Actor;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +6,7 @@ namespace GameObjectComponent.GameplayComponents.Life
 {
     public class Revive : GameplayComponent
     {
-        [SerializeField] private ActorStats stats;
+        [SerializeField] private Stats stats;
         [SerializeField] private Health health;
         private Stat _reviveStat;
 
