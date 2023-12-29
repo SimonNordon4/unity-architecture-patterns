@@ -1,5 +1,5 @@
-﻿using GameObjectComponent.GameplayComponents;
-using GameplayComponents.Combat;
+﻿
+using GameplayComponents;
 using GameplayComponents.Actor;
 using GameplayComponents.Locomotion;
 using UnityEngine;

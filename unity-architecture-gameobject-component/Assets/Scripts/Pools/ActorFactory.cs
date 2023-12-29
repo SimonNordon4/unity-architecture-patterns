@@ -17,9 +17,9 @@ namespace Pools
 
         public PoolableActor Create(ActorDefinition actorDefinition, Vector3 position = new(), bool startActive = true)
         {
-            actorDefinition.poolableEnemyPrefab.gameObject.SetActive(false);
+            actorDefinition.actorPrefab.gameObject.SetActive(false);
             
-            var enemy = Instantiate(actorDefinition.poolableEnemyPrefab, position, Quaternion.identity, null);
+            var enemy = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
             
             if (enemy.TryGetComponent<ActorState>(out var gameState))
                 gameState.Construct(state);

@@ -1,6 +1,4 @@
-﻿using GameObjectComponent.GameplayComponents;
-using GameplayComponents.Combat;
-using GameplayComponents.Life;
+﻿using GameplayComponents.Life;
 using UnityEngine;
 
 namespace GameObjectComponent.Debugging

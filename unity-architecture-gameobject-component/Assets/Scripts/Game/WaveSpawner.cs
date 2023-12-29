@@ -1,6 +1,6 @@
 ﻿using System;
 using GameObjectComponent.Definitions;
-using GameObjectComponent.GameplayComponents;
+using GameplayComponents;
 using GameplayComponents.Life;
 using UnityEngine;
 using Random = UnityEngine.Random;

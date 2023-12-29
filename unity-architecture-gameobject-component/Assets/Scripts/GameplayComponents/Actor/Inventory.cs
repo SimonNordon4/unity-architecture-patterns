@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents;
 using UnityEngine;
 
 namespace GameplayComponents.Actor
