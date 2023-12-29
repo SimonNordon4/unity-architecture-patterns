@@ -1,4 +1,5 @@
 ﻿using GameObjectComponent.Items;
+using GameplayComponents.Items;
 
 namespace GameObjectComponent.Pools
 {

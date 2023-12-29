@@ -1,6 +1,5 @@
 ﻿using GameObjectComponent.Definitions;
-using GameObjectComponent.GameplayComponents;
-using GameObjectComponent.Pools;
+using Pools;
 using UnityEngine;
 
 namespace GameplayComponents.Actor

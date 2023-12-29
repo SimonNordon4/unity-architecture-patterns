@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Locomotion
+namespace GameplayComponents.Locomotion
 {
     public class KnockBackReceiver : GameplayComponent
     {

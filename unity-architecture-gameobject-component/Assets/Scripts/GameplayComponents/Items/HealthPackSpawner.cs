@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GameObjectComponent.GameplayComponents.Combat;
+using GameplayComponents.Combat;
 using GameObjectComponent.Game;
 using UnityEngine;
 

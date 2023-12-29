@@ -1,9 +1,8 @@
 ﻿using System;
 using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents;
 using UnityEngine;
 
-namespace GameObjectComponent.Items
+namespace GameplayComponents.Items
 {
     public class Pickup : GameplayComponent
     {

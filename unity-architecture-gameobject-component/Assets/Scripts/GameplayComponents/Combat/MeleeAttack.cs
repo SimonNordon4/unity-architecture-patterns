@@ -1,8 +1,9 @@
 ﻿using GameObjectComponent.Game;
+using GameObjectComponent.GameplayComponents;
 using GameplayComponents.Actor;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Combat
+namespace GameplayComponents.Combat
 {
 
     public class MeleeAttack : GameplayComponent

@@ -1,4 +1,4 @@
-﻿using GameObjectComponent.GameplayComponents.Combat;
+﻿using GameplayComponents.Combat;
 using GameplayComponents.Actor;
 using UnityEngine;
 

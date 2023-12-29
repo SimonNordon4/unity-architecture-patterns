@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using GameObjectComponent.Definitions;
-using GameObjectComponent.GameplayComponents;
+using GameplayComponents;
 using GameplayComponents.Actor;
 using UnityEngine;
 
-namespace GameObjectComponent.Pools
+namespace Pools
 {
     public class ActorPool : GameplayComponent
     {

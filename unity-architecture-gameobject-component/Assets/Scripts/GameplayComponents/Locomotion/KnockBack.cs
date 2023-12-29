@@ -2,7 +2,7 @@
 using GameObjectComponent.Game;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Locomotion
+namespace GameplayComponents.Locomotion
 {
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(KnockBackReceiver))]

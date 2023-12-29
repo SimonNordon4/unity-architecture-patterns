@@ -1,7 +1,7 @@
 ﻿using GameObjectComponent.Game;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Locomotion
+namespace GameplayComponents.Locomotion
 {
     public class Movement : GameplayComponent
     {

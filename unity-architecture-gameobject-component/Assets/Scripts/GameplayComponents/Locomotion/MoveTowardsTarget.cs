@@ -1,8 +1,8 @@
-﻿using GameObjectComponent.GameplayComponents.Combat;
-using GameplayComponents.Actor;
+﻿using GameplayComponents.Actor;
+using GameplayComponents.Combat;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Locomotion
+namespace GameplayComponents.Locomotion
 {
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(Stats))]

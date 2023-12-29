@@ -1,7 +1,8 @@
-﻿using GameObjectComponent.GameplayComponents.Life;
+﻿using GameplayComponents.Combat;
+using GameplayComponents.Life;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Combat.Weapons
+namespace GameplayComponents.Combat
 {
     [RequireComponent(typeof(CombatTarget))]
     public class BodySlamWeapon : BaseWeapon

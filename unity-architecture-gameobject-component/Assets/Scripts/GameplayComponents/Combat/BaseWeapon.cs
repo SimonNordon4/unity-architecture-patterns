@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using GameplayComponents.Combat;
+using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Combat
+namespace GameplayComponents.Combat
 {
     public abstract class BaseWeapon : MonoBehaviour
     {

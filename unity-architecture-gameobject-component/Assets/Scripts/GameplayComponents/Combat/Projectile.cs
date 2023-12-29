@@ -1,9 +1,9 @@
 ﻿using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Life;
-using GameObjectComponent.GameplayComponents.Locomotion;
+using GameplayComponents.Life;
+using GameplayComponents.Locomotion;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Combat
+namespace GameplayComponents.Combat
 {
     public class Projectile : GameplayComponent
     {

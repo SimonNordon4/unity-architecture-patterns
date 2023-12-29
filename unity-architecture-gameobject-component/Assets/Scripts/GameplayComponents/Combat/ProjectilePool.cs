@@ -1,8 +1,7 @@
 using System.Collections.Generic;
-using GameObjectComponent.Game;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Combat
+namespace GameplayComponents.Combat
 {
     public class ProjectilePool : GameplayComponent
     {

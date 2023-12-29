@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameObjectComponent.GameplayComponents.Combat
+namespace GameplayComponents.Combat
 {
     public class RangedAttack : GameplayComponent
     {

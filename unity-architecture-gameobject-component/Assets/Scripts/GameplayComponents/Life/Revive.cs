@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameObjectComponent.GameplayComponents.Life
+namespace GameplayComponents.Life
 {
     public class Revive : GameplayComponent
     {

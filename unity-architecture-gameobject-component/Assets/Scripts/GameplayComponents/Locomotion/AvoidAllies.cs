@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Locomotion
+namespace GameplayComponents.Locomotion
 {
     [RequireComponent(typeof(CapsuleCollider))]
     public class AvoidAllies : GameplayComponent

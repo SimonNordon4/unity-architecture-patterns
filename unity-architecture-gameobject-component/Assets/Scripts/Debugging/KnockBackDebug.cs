@@ -1,4 +1,4 @@
-﻿using GameObjectComponent.GameplayComponents.Locomotion;
+﻿using GameplayComponents.Locomotion;
 using UnityEngine;
 
 namespace GameObjectComponent.Debugging

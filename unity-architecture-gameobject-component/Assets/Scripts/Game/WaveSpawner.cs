@@ -1,7 +1,7 @@
 ﻿using System;
 using GameObjectComponent.Definitions;
 using GameObjectComponent.GameplayComponents;
-using GameObjectComponent.GameplayComponents.Life;
+using GameplayComponents.Life;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

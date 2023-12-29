@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Life
+namespace GameplayComponents.Life
 {
     public class DamageHandler : GameplayComponent
     {

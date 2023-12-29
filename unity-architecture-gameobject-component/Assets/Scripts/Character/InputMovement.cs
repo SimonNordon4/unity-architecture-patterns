@@ -1,7 +1,7 @@
 ﻿using GameObjectComponent.GameplayComponents;
-using GameObjectComponent.GameplayComponents.Combat;
-using GameObjectComponent.GameplayComponents.Locomotion;
+using GameplayComponents.Combat;
 using GameplayComponents.Actor;
+using GameplayComponents.Locomotion;
 using UnityEngine;
 using UnityEngine.InputSystem;
 

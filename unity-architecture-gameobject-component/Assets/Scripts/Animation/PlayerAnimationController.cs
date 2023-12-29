@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using GameObjectComponent.GameplayComponents.Combat;
+using GameplayComponents.Combat;
 using GameObjectComponent.Character;
 using GameObjectComponent.Game;
 using UnityEngine;

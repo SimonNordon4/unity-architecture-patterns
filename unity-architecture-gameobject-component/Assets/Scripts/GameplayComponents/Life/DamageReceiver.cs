@@ -1,7 +1,6 @@
 ﻿using System;
-using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Life
+namespace GameplayComponents.Life
 {
     public class DamageReceiver : GameplayComponent
     {

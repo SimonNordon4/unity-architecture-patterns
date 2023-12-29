@@ -1,7 +1,7 @@
-﻿using GameObjectComponent.General;
+﻿using General;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Combat
+namespace GameplayComponents.Combat
 {
     public class CombatTarget : GameplayComponent
     {

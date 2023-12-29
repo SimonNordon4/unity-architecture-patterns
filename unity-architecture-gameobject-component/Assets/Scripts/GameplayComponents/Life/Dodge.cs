@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameObjectComponent.GameplayComponents
+namespace GameplayComponents.Life
 {
     public class Dodge : GameplayComponent
     {

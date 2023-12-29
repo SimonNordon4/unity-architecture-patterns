@@ -2,7 +2,7 @@
 using GameplayComponents.Actor;
 using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents.Life
+namespace GameplayComponents.Life
 {
     public class Health : GameplayComponent
     {

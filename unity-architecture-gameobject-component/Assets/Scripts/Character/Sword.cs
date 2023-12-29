@@ -1,8 +1,8 @@
 ﻿using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Combat;
-using GameObjectComponent.GameplayComponents.Life;
-using GameObjectComponent.GameplayComponents.Locomotion;
+using GameplayComponents.Combat;
 using GameplayComponents.Actor;
+using GameplayComponents.Life;
+using GameplayComponents.Locomotion;
 using UnityEngine;
 
 namespace GameObjectComponent.Character

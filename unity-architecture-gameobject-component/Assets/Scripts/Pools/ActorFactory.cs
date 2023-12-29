@@ -1,11 +1,12 @@
 ﻿using GameObjectComponent.Definitions;
-using UnityEngine;
-using GameObjectComponent.GameplayComponents.Combat;
 using GameObjectComponent.Game;
-using GameObjectComponent.GameplayComponents.Locomotion;
+using GameObjectComponent.Pools;
 using GameplayComponents.Actor;
+using GameplayComponents.Combat;
+using GameplayComponents.Locomotion;
+using UnityEngine;
 
-namespace GameObjectComponent.Pools
+namespace Pools
 {
     public class ActorFactory : MonoBehaviour
     {

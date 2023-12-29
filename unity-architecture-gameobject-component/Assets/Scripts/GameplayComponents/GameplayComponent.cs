@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameObjectComponent.GameplayComponents
+namespace GameplayComponents
 {
     public abstract class GameplayComponent : MonoBehaviour
     {

@@ -1,5 +1,5 @@
-﻿using GameObjectComponent.GameplayComponents.Combat;
-using GameObjectComponent.GameplayComponents.Locomotion;
+﻿using GameplayComponents.Combat;
+using GameplayComponents.Locomotion;
 using UnityEngine;
 
 namespace GameObjectComponent.Dummy
