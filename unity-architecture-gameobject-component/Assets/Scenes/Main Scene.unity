@@ -3479,7 +3479,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &340710624
 GameObject:
@@ -3510,7 +3510,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361919818
 GameObject:
@@ -3543,7 +3543,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &361919822
 MonoBehaviour:
@@ -3827,7 +3827,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &405590242
 MonoBehaviour:
@@ -3843,7 +3843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 9018308866812664860}
   healthPackPrefab: {fileID: -4178568916669270526, guid: 8af589f94c99fde48926c8c21b3cd175, type: 3}
-  gameState: {fileID: 1358396559}
+  gameState: {fileID: 0}
 --- !u!1 &420327370
 GameObject:
   m_ObjectHideFlags: 0
@@ -4852,7 +4852,7 @@ Transform:
   - {fileID: 1840059383}
   - {fileID: 529435083}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563926501
 GameObject:
@@ -6572,9 +6572,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb0bf610cc1647d49da8d622bbbc9342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPool: {fileID: 1597872174}
+  enemyPool: {fileID: 0}
   textPool: {fileID: 684919077}
-  gameCamera: {fileID: 963194227}
+  gameCamera: {fileID: 0}
 --- !u!114 &684919077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6655,7 +6655,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &689736428
 GameObject:
@@ -7919,7 +7919,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8294ec6cab524d7cb8ab7f7da2f01c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 9018308866812664863}
+  health: {fileID: 0}
   healthBar: {fileID: 1341389984}
   healthText: {fileID: 1823057254}
 --- !u!1 &921501335
@@ -8786,7 +8786,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -8845,7 +8845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterTransform: {fileID: 4258749572108575571}
-  level: {fileID: 1358396558}
+  level: {fileID: 0}
   edgeDistance: 5
 --- !u!1 &966297583
 GameObject:
@@ -9058,7 +9058,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e9ac964af6f603646bc7a94611dc2d58, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9ac964af6f603646bc7a94611dc2d58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9153,7 +9153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003756005
 GameObject:
@@ -9702,7 +9702,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039515126
 GameObject:
@@ -10975,7 +10975,7 @@ RectTransform:
   m_Children:
   - {fileID: 1291293142}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11784,7 +11784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be44fb2558fd454ba273a5fde250083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestOpenHandler: {fileID: 1839149888}
+  chestOpenHandler: {fileID: 0}
   chestItemButtonContainer: {fileID: 952481878}
   chestItemButtonPrefab: {fileID: 8204247807775811352, guid: d77e9d7149fac464081a3009eb04bd3d, type: 3}
 --- !u!1 &1266201015
@@ -12767,7 +12767,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!220 &1346928981
 LightProbeGroup:
@@ -16174,7 +16174,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1597872170
 MonoBehaviour:
@@ -16189,7 +16189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawner: {fileID: 1839149885}
-  gameState: {fileID: 1358396559}
+  gameState: {fileID: 0}
   roundDefinition: {fileID: 11400000, guid: c3a4e44eb5ffece48bbf6cee77d43b17, type: 2}
 --- !u!114 &1597872171
 MonoBehaviour:
@@ -16217,7 +16217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool: {fileID: 1597872174}
-  level: {fileID: 1358396558}
+  level: {fileID: 0}
 --- !u!114 &1597872173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16230,8 +16230,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a44f2dd1c8746bb9d3b759001e792b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
-  level: {fileID: 1358396558}
+  state: {fileID: 0}
+  level: {fileID: 0}
   <initialTarget>k__BackingField: {fileID: 4258749572108575571}
   deathParticlePool: {fileID: 1597872176}
 --- !u!114 &1597872174
@@ -16259,7 +16259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81b19ef53014106b16fdd7dc6a56ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 1358396559}
+  gameState: {fileID: 0}
 --- !u!114 &1597872176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18257,7 +18257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 9018308866812664860}
-  level: {fileID: 1358396558}
+  level: {fileID: 0}
   edgeBuffer: {x: 2, y: 2}
   tier1ChestItems: {fileID: 11400000, guid: 625754b36b3c578438c6e0f8d14c5719, type: 2}
   tier2ChestItems: {fileID: 11400000, guid: d62170bf436df664f81766c01da95f3c, type: 2}
@@ -18280,7 +18280,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1839149887
 MonoBehaviour:
@@ -18308,8 +18308,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12fac2f7018a4924b590e811df24dc71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 1358396559}
-  uiState: {fileID: 361919822}
+  gameState: {fileID: 0}
+  uiState: {fileID: 0}
   inventory: {fileID: 0}
 --- !u!1 &1840059381
 GameObject:
@@ -19755,52 +19755,6 @@ MonoBehaviour:
   m_UseGraphicAlpha: 1
   iterations: 5
   shadowSpread: {x: 5, y: 5}
---- !u!1 &2020342961
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2020342963}
-  - component: {fileID: 2020342962}
-  m_Layer: 0
-  m_Name: Tutorial Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &2020342962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020342961}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 096b99f6e811dd9478603775597a6ad7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popup: {fileID: 251408402}
-  popupText: {fileID: 1251378988}
---- !u!4 &2020342963
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020342961}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2065814497
 GameObject:
   m_ObjectHideFlags: 0
@@ -44825,7 +44779,7 @@ Transform:
   - {fileID: 3623834106970646027}
   - {fileID: 8278052195083062480}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4233487273683436875
 MonoBehaviour:
@@ -44871,7 +44825,7 @@ Transform:
   m_Children:
   - {fileID: 55397993399104221}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4277516186594550373
 MonoBehaviour:
@@ -66323,7 +66277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165cfd0544bec4841bb9666f2dfd3c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 1358396559}
+  gameState: {fileID: 0}
   characterTarget: {fileID: 9018308866812664862}
   transformToFollow: {fileID: 4258749572108575571}
   gunPivot: {fileID: 7565440626496418587}
@@ -123534,7 +123488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 1358396559}
+  state: {fileID: 0}
 --- !u!114 &9018308866812664860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123560,7 +123514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 1358396558}
+  level: {fileID: 0}
 --- !u!114 &9018308866812664862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123713,7 +123667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 9018308866812664863}
   stats: {fileID: 9018308866812664860}
-  gameState: {fileID: 1358396559}
+  gameState: {fileID: 0}
 --- !u!33 &9052653825607074615
 MeshFilter:
   m_ObjectHideFlags: 0
