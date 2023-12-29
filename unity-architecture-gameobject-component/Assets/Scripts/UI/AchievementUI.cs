@@ -1,4 +1,4 @@
-using Classic.App;
+using GameObjectComponent.App;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System.Linq;
-using Classic.App;
-using Classic.Game;
+using GameObjectComponent.App;
+using GameObjectComponent.Game;
 using UnityEngine.UI;
 
 [DefaultExecutionOrder(150)]

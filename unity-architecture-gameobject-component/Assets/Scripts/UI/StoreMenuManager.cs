@@ -1,8 +1,9 @@
 using System.Collections.Generic;
-using Classic.Actors;
-using Classic.Game;
+using GameObjectComponent.GameplayComponents.Combat;
+using GameObjectComponent.Game;
 using TMPro;
 using UnityEngine;
+using Inventory = GameObjectComponent.GameplayComponents.Combat.Inventory;
 
 public class StoreMenuManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class StoreMenuManager : MonoBehaviour
     public List<StoreItemUI> StoreItemUis = new List<StoreItemUI>();
     public TextMeshProUGUI goldText;
 
-    [SerializeField] private ActorInventory characterInventory;
+    [SerializeField] private Inventory characterInventory;
 
     private void OnEnable()
     {

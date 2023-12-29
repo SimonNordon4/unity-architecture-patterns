@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Classic.App;
+using GameObjectComponent.App;
 using TMPro;
 using UnityEngine;
 

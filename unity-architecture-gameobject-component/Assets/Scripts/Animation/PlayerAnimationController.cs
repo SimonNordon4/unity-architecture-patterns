@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using Classic.Actors;
-using Classic.Character;
-using Classic.Game;
+using GameObjectComponent.GameplayComponents.Combat;
+using GameObjectComponent.Character;
+using GameObjectComponent.Game;
 using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] private GameState gameState;    
-    public ActorTarget characterTarget;
+    public CombatTarget characterTarget;
     [SerializeField] private Transform transformToFollow;
 
     public Transform gunPivot;
