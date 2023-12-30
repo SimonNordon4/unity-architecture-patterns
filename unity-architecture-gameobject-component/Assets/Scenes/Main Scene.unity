@@ -121232,6 +121232,8 @@ GameObject:
   - component: {fileID: 8703336813458755939}
   - component: {fileID: 9018308866812664861}
   - component: {fileID: 9018308866812664865}
+  - component: {fileID: 9018308866812664868}
+  - component: {fileID: 9018308866812664867}
   m_Layer: 6
   m_Name: Player Character
   m_TagString: Player
@@ -121761,6 +121763,36 @@ MonoBehaviour:
     type: 16
     _modifiers: []
     value: 0
+--- !u!114 &9018308866812664867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526962797330366185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6fa9da49804fdda6129abbf28a5b5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashDistance: 5
+  dashTime: 0.2
+  stats: {fileID: 9018308866812664866}
+  level: {fileID: 1358396558}
+--- !u!114 &9018308866812664868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526962797330366185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e9e9d06995424190fd0b33ff267568, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash: {fileID: 9018308866812664867}
+  actionMap: {fileID: -944628639613478452, guid: e2c5f6aa20630f04d9d963da34176193, type: 3}
 --- !u!33 &9052653825607074615
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -1,18 +1,16 @@
-﻿
-using GameplayComponents;
+﻿using GameplayComponents;
 using GameplayComponents.Actor;
 using GameplayComponents.Locomotion;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace GameObjectComponent.Character
+namespace GameObjectComponent.Player
 {
     public class InputMovement : GameplayComponent
     {
         [SerializeField] private Movement movement;
         [SerializeField] private InputActionAsset actionMap;
         [SerializeField] private Stats stats;
-        
         
         private Stat _speedStat;
         private InputAction _movementAction;

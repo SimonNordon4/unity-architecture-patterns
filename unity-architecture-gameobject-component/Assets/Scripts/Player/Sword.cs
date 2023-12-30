@@ -5,7 +5,7 @@ using GameplayComponents.Life;
 using GameplayComponents.Locomotion;
 using UnityEngine;
 
-namespace GameObjectComponent.Character
+namespace GameObjectComponent.Player
 {
     public class Sword : MonoBehaviour
     {

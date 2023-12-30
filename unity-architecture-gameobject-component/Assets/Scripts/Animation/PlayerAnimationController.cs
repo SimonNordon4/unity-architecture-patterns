@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using GameplayComponents.Combat;
-using GameObjectComponent.Character;
+using GameObjectComponent.Player;
 using GameObjectComponent.Game;
 using UnityEngine;
 
