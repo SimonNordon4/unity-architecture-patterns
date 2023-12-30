@@ -26,6 +26,7 @@ namespace GameplayComponents.Locomotion
         public void DashForward()
         {
             if(_isDashing || _dashes.value <= 0) return;
+            onDash.Invoke();
             StartCoroutine(DashForwardCoroutine());
         }
 

@@ -4219,6 +4219,7 @@ GameObject:
   - component: {fileID: 498857196}
   - component: {fileID: 498857195}
   - component: {fileID: 498857199}
+  - component: {fileID: 498857200}
   m_Layer: 6
   m_Name: Life
   m_TagString: Untagged
@@ -4320,6 +4321,19 @@ MonoBehaviour:
   onRevived:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &498857200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498857193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d26ded911d4399baad1dcf7adffdeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <health>k__BackingField: {fileID: 498857198}
 --- !u!1 &518839907
 GameObject:
   m_ObjectHideFlags: 0
@@ -35115,7 +35129,7 @@ GameObject:
   - component: {fileID: 1071674025822318585}
   - component: {fileID: 1071674025822318590}
   m_Layer: 0
-  m_Name: HCFX_Dust_Dash_01_Air
+  m_Name: Dash_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121757,7 +121771,7 @@ MonoBehaviour:
     _modifiers: []
     value: 0
   - name: Dashes
-    initialValue: 0
+    initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 16
@@ -121779,6 +121793,21 @@ MonoBehaviour:
   dashTime: 0.2
   stats: {fileID: 9018308866812664866}
   level: {fileID: 1358396558}
+  onDash:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1071674025822318585}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9018308866812664868
 MonoBehaviour:
   m_ObjectHideFlags: 0
