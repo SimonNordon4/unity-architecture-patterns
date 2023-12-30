@@ -22,7 +22,7 @@ namespace GameplayComponents.Locomotion
             _stats = GetComponent<Stats>();
             _target = GetComponent<CombatTarget>();
             _avoidance = GetComponent<AvoidAllies>();
-            _moveSpeed = _stats.Map[StatType.MoveSpeed];
+            _moveSpeed = _stats.GetStat(StatType.MoveSpeed);
         }
 
         public void Update()

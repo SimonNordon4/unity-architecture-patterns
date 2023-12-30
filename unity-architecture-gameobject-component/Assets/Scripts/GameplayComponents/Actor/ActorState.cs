@@ -9,7 +9,7 @@ namespace GameplayComponents.Actor
     public class ActorState : MonoBehaviour
     {
         [SerializeField] private GameState state;
-        private HashSet<GameplayComponent> _actorComponents = new HashSet<GameplayComponent>();
+        private HashSet<GameplayComponent> _gameplayComponents = new HashSet<GameplayComponent>();
         
         public event Action OnResetComponents;
         public event Action OnEnableComponents;
@@ -44,21 +44,21 @@ namespace GameplayComponents.Actor
         {
             var children = GetComponentsInChildren<GameplayComponent>();
             var siblings = GetComponents<GameplayComponent>();
-            _actorComponents = new HashSet<GameplayComponent>(children);
+            _gameplayComponents = new HashSet<GameplayComponent>(children);
             
             foreach (var sibling in siblings)
             {
-                _actorComponents.Add(sibling);
+                _gameplayComponents.Add(sibling);
             }
         }
 
         private void ToggleActorComponents(bool isActive)
         {
-            if (_actorComponents == null)
+            if (_gameplayComponents == null)
             {
                 GetActorComponents();
             }
-            foreach (var component in _actorComponents)
+            foreach (var component in _gameplayComponents)
             {
                 component.enabled = isActive;
             }
@@ -75,7 +75,7 @@ namespace GameplayComponents.Actor
         
         private void ResetActorComponents()
         {
-            foreach (var component in _actorComponents)
+            foreach (var component in _gameplayComponents)
             {
                 component.Reset();
             }

@@ -18,32 +18,32 @@ namespace GameplayComponents.Combat
 
         private void Update()
         {
-            if (_timeSinceLastShot < stats.Map[StatType.RangedAttackSpeed].value)
-            {
-                _timeSinceLastShot += Time.deltaTime;
-                return;
-            }
-
-            Shoot();
-            _timeSinceLastShot = 0f;
+            // if (_timeSinceLastShot < stats.Map[StatType.RangedAttackSpeed].value)
+            // {
+            //     _timeSinceLastShot += Time.deltaTime;
+            //     return;
+            // }
+            //
+            // Shoot();
+            // _timeSinceLastShot = 0f;
         }
 
         private void Shoot()
         {
-            var range = stats.Map[StatType.RangedRange].value;
-            target.GetClosestTarget(range);
-            if (target.hasTarget == false) return;
-            
-            var projectile = pool.Spawn(projectileSpawnPoint.position, target.targetDirection);
-            
-            var layer = target.targetLayer;
-            var damage = (int)stats.Map[StatType.RangedDamage].value;
-            var knockBack = stats.Map[StatType.RangedKnockBack].value;
-            var pierce = (int)stats.Map[StatType.RangedPierce].value;
+            // var range = stats.Map[StatType.RangedRange].value;
+            // target.GetClosestTarget(range);
+            // if (target.hasTarget == false) return;
+            //
+            // var projectile = pool.Spawn(projectileSpawnPoint.position, target.targetDirection);
+            //
+            // var layer = target.targetLayer;
+            // var damage = (int)stats.Map[StatType.RangedDamage].value;
+            // var knockBack = stats.Map[StatType.RangedKnockBack].value;
+            // var pierce = (int)stats.Map[StatType.RangedPierce].value;
 
-            projectile.Set(layer, projectileSpeed, damage, knockBack, pierce);
-            
-            onShoot.Invoke();
+            // projectile.Set(layer, projectileSpeed, damage, knockBack, pierce);
+            //
+            // onShoot.Invoke();
         }
 
         private void ShootPredictive()
@@ -83,11 +83,6 @@ namespace GameplayComponents.Combat
             // projectile.pierceCount = (int)GameManager.instance.pistolPierce.value;
             
             onShoot.Invoke();
-        }
-
-        public void Reset()
-        {
-            _timeSinceLastShot = 0.0f;
         }
     }
 }

@@ -8,13 +8,15 @@ namespace GameplayComponents.Life
     {
         [field:SerializeField] public int currentHealth { get; private set; }
         [SerializeField] private Stats stats;
-        public int maxHealth => (int)stats.Map[StatType.MaxHealth].value;
+        private Stat _maxHealthStat;
+        public int maxHealth => (int)_maxHealthStat.value;
         public event Action<int> OnHealthChanged;
         public event Action OnDeath;
 
-        private void OnEnable()
+        private void Start()
         {
-            Reset();
+            _maxHealthStat = stats.GetStat(StatType.MaxHealth);
+            SetHealth(maxHealth);
         }
 
         public void SetHealth(int health)
@@ -31,11 +33,6 @@ namespace GameplayComponents.Life
 
             if (currentHealth > 0) return;
             OnDeath?.Invoke();
-        }
-
-        public override void Reset()
-        {
-            currentHealth = (int)stats.Map[StatType.MaxHealth].value;
         }
 
         private void OnDestroy()

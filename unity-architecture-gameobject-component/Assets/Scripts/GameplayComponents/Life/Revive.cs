@@ -11,8 +11,8 @@ namespace GameplayComponents.Life
         private Stat _reviveStat;
 
         public UnityEvent onRevived = new();
-        
-        private void Start() => _reviveStat = stats.Map[StatType.Revives];
+
+        private void Start() => _reviveStat = stats.GetStat(StatType.Revives);
         private void OnEnable() => health.OnDeath += OnDeath;
         private void OnDisable() => health.OnDeath -= OnDeath;
         
@@ -20,7 +20,6 @@ namespace GameplayComponents.Life
         {
             if (_reviveStat.value <= 0) return;
             _reviveStat.value--;
-            health.Reset();
             onRevived.Invoke();
         }
         

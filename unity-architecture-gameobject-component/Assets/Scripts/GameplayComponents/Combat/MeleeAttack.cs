@@ -10,19 +10,13 @@ namespace GameplayComponents.Combat
         [SerializeField] private BaseWeapon weapon;
         [SerializeField] private Stats stats;
         [SerializeField] private CombatTarget target;
-        private Stat meleeDamage => stats.Map[StatType.MeleeDamage];
-        private Stat meleeKnockBack => stats.Map[StatType.MeleeKnockBack];
-        private Stat meleeRange => stats.Map[StatType.MeleeRange];
-        private Stat meleeAttackSpeed => stats.Map[StatType.MeleeAttackSpeed];
+        private Stat meleeDamage => stats.GetStat(StatType.MeleeDamage);
+        private Stat meleeKnockBack => stats.GetStat(StatType.MeleeKnockBack);
+        private Stat meleeRange => stats.GetStat(StatType.MeleeRange);
+        private Stat meleeAttackSpeed => stats.GetStat(StatType.MeleeAttackSpeed);
 
         private float _timeSinceLastAttack = 0f;
         
-        private void Start()
-        {
-            stats = GetComponent<Stats>();
-            target = GetComponent<CombatTarget>();
-        }
-
         private void Update()
         {
             var inverseAttackSpeed = 1f / meleeAttackSpeed.value;

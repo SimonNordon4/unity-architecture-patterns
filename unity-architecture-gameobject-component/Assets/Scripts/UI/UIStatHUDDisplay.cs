@@ -22,7 +22,7 @@ namespace GameObjectComponent.UI
         // Update is called once per frame
         void Update()
         {
-            var stat = stats.Map[statType];
+            var stat = stats.GetStat(statType);
             var statName = SurvivorsUtil.CamelCaseToString(statType.ToString());
             var color = stat.value > 0 ? positiveColor: negativeColor;
             var htmlColor = ColorUtility.ToHtmlStringRGB(color);

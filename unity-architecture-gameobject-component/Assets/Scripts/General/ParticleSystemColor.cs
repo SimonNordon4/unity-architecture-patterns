@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace General
+namespace GameObjectComponent.General
 {
     [RequireComponent(typeof(ParticleSystem))]
     public class ParticleSystemColor : MonoBehaviour

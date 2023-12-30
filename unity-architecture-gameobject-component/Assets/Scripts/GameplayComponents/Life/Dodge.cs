@@ -12,7 +12,7 @@ namespace GameplayComponents.Life
         
         private void Start()
         {
-            _dodgeStat = stats.Map[StatType.Dodge];
+            _dodgeStat = stats.GetStat(StatType.Dodge);
         }
 
         public bool CalculateDodge()

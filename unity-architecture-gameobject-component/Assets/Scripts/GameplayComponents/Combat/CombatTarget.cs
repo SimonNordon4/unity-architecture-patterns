@@ -1,4 +1,4 @@
-﻿using General;
+﻿using GameObjectComponent.General;
 using UnityEngine;
 
 namespace GameplayComponents.Combat

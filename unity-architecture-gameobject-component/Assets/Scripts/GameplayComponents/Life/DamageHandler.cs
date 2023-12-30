@@ -14,12 +14,6 @@ namespace GameplayComponents.Life
         [SerializeField]private Block block;
         private bool _hasBlockReference = false;
 
-        private void Awake()
-        {
-            damageReceiver = GetComponent<DamageReceiver>();
-            health = GetComponent<Health>();
-        }
-
         private void Start()
         {
             _hasBlockReference = block != null;

@@ -4253,7 +4253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb3376453f1479b8b125387bda52129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 9018308866812664860}
+  stats: {fileID: 0}
   onDodged:
     m_PersistentCalls:
       m_Calls: []
@@ -4269,7 +4269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ed4a6c445b4031818f15e04b9222cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 9018308866812664860}
+  stats: {fileID: 0}
   onFullBlock:
     m_PersistentCalls:
       m_Calls: []
@@ -4302,7 +4302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <currentHealth>k__BackingField: 0
-  stats: {fileID: 9018308866812664860}
+  stats: {fileID: 0}
 --- !u!114 &498857199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4315,7 +4315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e20b34633c46b98ed7385bae8e87c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 9018308866812664860}
+  stats: {fileID: 0}
   health: {fileID: 498857198}
   onRevived:
     m_PersistentCalls:
@@ -6225,7 +6225,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684919073}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb0bf610cc1647d49da8d622bbbc9342, type: 3}
   m_Name: 
@@ -7459,7 +7459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8294ec6cab524d7cb8ab7f7da2f01c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
+  health: {fileID: 498857198}
   healthBar: {fileID: 1341389984}
   healthText: {fileID: 1823057254}
 --- !u!1 &921501335
@@ -8385,7 +8385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterTransform: {fileID: 4258749572108575571}
-  level: {fileID: 0}
+  level: {fileID: 1358396558}
   edgeDistance: 5
 --- !u!1 &980833706
 GameObject:
@@ -9458,7 +9458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  stats: {fileID: 9018308866812664860}
+  stats: {fileID: 0}
   target: {fileID: 1103014753}
 --- !u!114 &1103014755
 MonoBehaviour:
@@ -64464,8 +64464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165cfd0544bec4841bb9666f2dfd3c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 0}
-  characterTarget: {fileID: 0}
+  gameState: {fileID: 1358396559}
+  characterTarget: {fileID: 1103014753}
   transformToFollow: {fileID: 4258749572108575571}
   gunPivot: {fileID: 7565440626496418587}
   rotationSpeed: 10
@@ -91390,7 +91390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 4258749572108575571}
-  stats: {fileID: 9018308866812664860}
+  stats: {fileID: 0}
   target: {fileID: 1103014753}
 --- !u!222 &7802792626870814562
 CanvasRenderer:
@@ -121225,9 +121225,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4258749572108575571}
   - component: {fileID: 9018308866812664859}
-  - component: {fileID: 9018308866812664860}
   - component: {fileID: 293942581975922163}
   - component: {fileID: 9018308866812664858}
+  - component: {fileID: 9018308866812664866}
   - component: {fileID: 8703336813458755939}
   - component: {fileID: 9018308866812664864}
   - component: {fileID: 9018308866812664861}
@@ -121587,19 +121587,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
---- !u!114 &9018308866812664860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8526962797330366185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee3cb163d6c346a1829fac5f67f83d03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  definition: {fileID: 11400000, guid: 6d0ea5e1c5d002e4ea37aae60de76783, type: 2}
 --- !u!114 &9018308866812664861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121612,7 +121599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 0}
+  level: {fileID: 1358396558}
 --- !u!114 &9018308866812664864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121640,7 +121627,140 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 9018308866812664861}
   actionMap: {fileID: -944628639613478452, guid: e2c5f6aa20630f04d9d963da34176193, type: 3}
-  stats: {fileID: 9018308866812664860}
+  stats: {fileID: 0}
+--- !u!114 &9018308866812664866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526962797330366185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3cb163d6c346a1829fac5f67f83d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  definition: {fileID: 11400000, guid: 6d0ea5e1c5d002e4ea37aae60de76783, type: 2}
+  stats:
+  - name: RangedAttackSpeed
+    initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 0
+    _modifiers: []
+    value: 1
+  - name: RangedDamage
+    initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 1
+    _modifiers: []
+    value: 1
+  - name: RangedRange
+    initialValue: 5
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 2
+    _modifiers: []
+    value: 5
+  - name: RangedKnockBack
+    initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 3
+    _modifiers: []
+    value: 1
+  - name: RangedPierce
+    initialValue: 0
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 4
+    _modifiers: []
+    value: 0
+  - name: MeleeDamage
+    initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 5
+    _modifiers: []
+    value: 1
+  - name: MeleeKnockBack
+    initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 6
+    _modifiers: []
+    value: 1
+  - name: MeleeRange
+    initialValue: 1.5
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 7
+    _modifiers: []
+    value: 1.5
+  - name: MeleeAttackSpeed
+    initialValue: 1
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 8
+    _modifiers: []
+    value: 1
+  - name: MoveSpeed
+    initialValue: 5
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 9
+    _modifiers: []
+    value: 5
+  - name: MaxHealth
+    initialValue: 5
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 10
+    _modifiers: []
+    value: 5
+  - name: HealthPackDropRate
+    initialValue: 0.1
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 11
+    _modifiers: []
+    value: 0.1
+  - name: Luck
+    initialValue: 0
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 12
+    _modifiers: []
+    value: 0
+  - name: Block
+    initialValue: 0
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 13
+    _modifiers: []
+    value: 0
+  - name: Dodge
+    initialValue: 0
+    minimumValue: 0
+    maximumValue: 60
+    type: 14
+    _modifiers: []
+    value: 0
+  - name: Revives
+    initialValue: 0
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 15
+    _modifiers: []
+    value: 0
+  - name: Dashes
+    initialValue: 0
+    minimumValue: 0
+    maximumValue: Infinity
+    type: 16
+    _modifiers: []
+    value: 0
 --- !u!33 &9052653825607074615
 MeshFilter:
   m_ObjectHideFlags: 0

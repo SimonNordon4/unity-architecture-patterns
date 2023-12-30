@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace General
+namespace GameObjectComponent.General
 {
     public class GameObjectEvents : MonoBehaviour
     {

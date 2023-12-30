@@ -9,6 +9,7 @@ namespace GameObjectComponent.Items
     public class ChestSpawner : MonoBehaviour
     {
         [SerializeField] private Stats stats;
+        private Stat _luckStat;
         [SerializeField] private Level level;
         [SerializeField] private Vector2 edgeBuffer = new Vector2(2f, 2f);
         
@@ -44,6 +45,8 @@ namespace GameObjectComponent.Items
                 {ChestType.Medium, mediumChest.chestPrefab},
                 {ChestType.Large, largeChest.chestPrefab}
             };
+            
+            _luckStat = stats.GetStat(StatType.Luck);
         }
 
         public Chest SpawnMiniChest()
@@ -93,7 +96,7 @@ namespace GameObjectComponent.Items
             var itemsChance = Random.Range(0, 100);
             var numberOfItems = 0;
 
-            var luckFactor = stats.Map[StatType.Luck].value * 10f;
+            var luckFactor = _luckStat.value * 10f;
             itemsChance += (int)luckFactor;
 
             switch (itemsChance)
@@ -166,7 +169,7 @@ namespace GameObjectComponent.Items
 
             var tier = 0;
 
-            var luck = stats.Map[StatType.Luck].value;
+            var luck = _luckStat.value;
             var chance = Random.Range(0, (200 - (luck * 20f))) +
                          luck * 20f;
 

@@ -12,7 +12,7 @@ namespace GameplayComponents.Life
         
         private void Start()
         {
-            _blockStat = stats.Map[StatType.Block];
+            _blockStat = stats.GetStat(StatType.Block);
         }
 
         public int CalculateBlock(int damageAmount)

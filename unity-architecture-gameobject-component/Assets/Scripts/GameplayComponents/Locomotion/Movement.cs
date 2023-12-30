@@ -47,11 +47,7 @@ namespace GameplayComponents.Locomotion
 
             velocity = Vector3.zero;
         }
-        public override void Reset()
-        {
-            _transform.SetPositionAndRotation(_initialPosition, Quaternion.identity);
-        }
-
+        
         public void SetVelocity(Vector3 newVelocity)
         {
             velocity = newVelocity;
