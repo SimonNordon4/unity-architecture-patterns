@@ -77,7 +77,7 @@ namespace GameplayComponents.Actor
         {
             foreach (var component in _gameplayComponents)
             {
-                component.Reset();
+                // TODO: Reset component
             }
             
             OnResetComponents?.Invoke();

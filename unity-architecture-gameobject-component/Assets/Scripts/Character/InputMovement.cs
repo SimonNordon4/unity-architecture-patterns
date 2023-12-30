@@ -13,6 +13,7 @@ namespace GameObjectComponent.Character
         [SerializeField] private InputActionAsset actionMap;
         [SerializeField] private Stats stats;
         
+        
         private Stat _speedStat;
         private InputAction _movementAction;
         private Vector3 _lastDirection;
@@ -34,7 +35,7 @@ namespace GameObjectComponent.Character
 
         private void Start()
         {
-            _speedStat = stats.Map[StatType.MoveSpeed];
+            _speedStat = stats.GetStat(StatType.MoveSpeed);
         }
 
         private void OnMovementPerformed(InputAction.CallbackContext context)

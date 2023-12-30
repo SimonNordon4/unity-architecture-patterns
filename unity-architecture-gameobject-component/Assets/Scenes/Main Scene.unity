@@ -4253,7 +4253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb3376453f1479b8b125387bda52129, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
   onDodged:
     m_PersistentCalls:
       m_Calls: []
@@ -4269,7 +4269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68ed4a6c445b4031818f15e04b9222cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
   onFullBlock:
     m_PersistentCalls:
       m_Calls: []
@@ -4302,7 +4302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <currentHealth>k__BackingField: 0
-  stats: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
 --- !u!114 &498857199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4315,7 +4315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e20b34633c46b98ed7385bae8e87c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
   health: {fileID: 498857198}
   onRevived:
     m_PersistentCalls:
@@ -9458,7 +9458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  stats: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
   target: {fileID: 1103014753}
 --- !u!114 &1103014755
 MonoBehaviour:
@@ -121225,11 +121225,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4258749572108575571}
   - component: {fileID: 9018308866812664859}
+  - component: {fileID: 9018308866812664866}
+  - component: {fileID: 9018308866812664864}
   - component: {fileID: 293942581975922163}
   - component: {fileID: 9018308866812664858}
-  - component: {fileID: 9018308866812664866}
   - component: {fileID: 8703336813458755939}
-  - component: {fileID: 9018308866812664864}
   - component: {fileID: 9018308866812664861}
   - component: {fileID: 9018308866812664865}
   m_Layer: 6
@@ -121627,7 +121627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 9018308866812664861}
   actionMap: {fileID: -944628639613478452, guid: e2c5f6aa20630f04d9d963da34176193, type: 3}
-  stats: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
 --- !u!114 &9018308866812664866
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -87,10 +87,5 @@ namespace GameplayComponents.Combat
             }
             Destroy(gameObject);
         }
-
-        public override void Reset()
-        {
-            _timeAlive = 0f;
-        }
     }
 }

@@ -39,7 +39,6 @@ namespace GameObjectComponent.Game
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
-            Reset();
             _currentWaveDefinition = waveDefinition;
             _totalEnemies = _currentWaveDefinition.TotalEnemyCount();
             GenerateActionTimings();
@@ -113,18 +112,6 @@ namespace GameObjectComponent.Game
                     SubscribeEnemyDeath(enemy.GetComponent<Health>());
                 }
             }
-        }
-
-        public override void Reset()
-        {
-            Debug.Log("Resetting wave spawner.");
-            _totalEnemies = 0;
-            _enemiesKilled = 0;
-            _waveTime = 0;
-            _spawnIndex = 0;
-            _bossSpawned = false;
-            _currentWaveDefinition = null;
-            _waveStarted = false;
         }
 
         private void OnDisable()

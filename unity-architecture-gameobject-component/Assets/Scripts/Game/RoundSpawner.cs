@@ -62,10 +62,5 @@ namespace GameObjectComponent.Game
             }
             StartRoundSpawner();
         }
-
-        public override void Reset()
-        {
-            _currentWaveIndex = 0;
-        }
     }
 }

@@ -13,10 +13,5 @@ namespace GameplayComponents.Actor
         {
             _pool = pool;
         }
-        
-        public override void Reset()
-        {
-            _pool.Return(this, definition);
-        }
     }
 }

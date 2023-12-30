@@ -16,7 +16,7 @@ namespace GameObjectComponent.Debugging
         public void SetStat()
         {
             Debug.Log($"Setting stat {statType} to {value}");
-            stats.Map[statType].value = value;
+            stats.GetStat(statType).value = value;
         }
     }
     

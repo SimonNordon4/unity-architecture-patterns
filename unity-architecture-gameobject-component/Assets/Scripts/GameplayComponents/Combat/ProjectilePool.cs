@@ -26,7 +26,6 @@ namespace GameplayComponents.Combat
             projectile.transform.position = spawnPoint;
             projectile.transform.rotation = Quaternion.LookRotation(direction);
             projectile.gameObject.SetActive(true);
-            projectile.Reset();
             return projectile;
         }
 
@@ -41,25 +40,6 @@ namespace GameplayComponents.Combat
         {
             projectile.gameObject.SetActive(false);
             _projectilePool.Enqueue(projectile);
-        }
-
-        public override void Reset()
-        {
-            // clear the pool
-            foreach (var projectile in _projectilePool)
-            {
-                Destroy(projectile.gameObject);
-            }
-            
-            _projectilePool.Clear();
-            
-            // refill the pool
-            for (int i = 0; i < poolSize; i++)
-            {
-                var newProjectile = CreateNewProjectile();
-                newProjectile.gameObject.SetActive(false);
-                _projectilePool.Enqueue(newProjectile);
-            }
         }
     }
 }

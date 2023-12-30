@@ -4,16 +4,16 @@ namespace GameplayComponents
 {
     public abstract class GameplayComponent : MonoBehaviour
     {
-        public virtual void Construct()
+        public virtual void Initialize()
         {
             
         }
-        public virtual void ReConstruct()
+        public virtual void Reinitialize()
         {
                 
         }
 
-        public virtual void DeConstruct()
+        public virtual void Deinitialize()
         {
             
         }

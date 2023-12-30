@@ -12,6 +12,8 @@ namespace GameObjectComponent.Character
         [SerializeField] private Transform parent;
         [SerializeField] private Stats stats;
         [SerializeField] private CombatTarget target;
+        private Stat meleeDamage => stats.GetStat(StatType.MeleeDamage);
+        private Stat meleeKnockBack => stats.GetStat(StatType.MeleeKnockBack);
 
         private void OnTriggerEnter(Collider other)
         {
@@ -19,14 +21,14 @@ namespace GameObjectComponent.Character
             if (target.targetLayer != (target.targetLayer | (1 << other.gameObject.layer))) return;
             
             if(TryGetComponent<DamageReceiver>(out var damageReceiver))
-                damageReceiver.TakeDamage(Mathf.RoundToInt(stats.Map[StatType.MeleeDamage].value));
+                damageReceiver.TakeDamage(Mathf.RoundToInt(meleeDamage.value));
 
             if (TryGetComponent<KnockBackReceiver>(out var knockBackReceiver))
             {
                 // direction is equal to the direction from the enemy to the player.
                 var direction = parent.transform.position - other.transform.position;
                 direction = Vector3.ProjectOnPlane(-direction, Vector3.up).normalized;
-                knockBackReceiver.ApplyKnockBack(direction * stats.Map[StatType.MeleeKnockBack].value);
+                knockBackReceiver.ApplyKnockBack(direction * meleeKnockBack.value);
             }
         }
     }
