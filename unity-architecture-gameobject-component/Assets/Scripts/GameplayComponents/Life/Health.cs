@@ -24,6 +24,7 @@ namespace GameplayComponents.Life
             currentHealth = health;
             OnHealthChanged?.Invoke(currentHealth);
         }
+        
         public void TakeDamage(int damageAmount)
         {
             if (damageAmount <= 0) return;
@@ -33,6 +34,17 @@ namespace GameplayComponents.Life
 
             if (currentHealth > 0) return;
             OnDeath?.Invoke();
+        }
+        
+        public override void Initialize()
+        {
+            _maxHealthStat = stats.GetStat(StatType.MaxHealth);
+            SetHealth(maxHealth);
+        }
+        
+        public override void Deinitialize()
+        {
+            SetHealth(0);
         }
 
         private void OnDestroy()

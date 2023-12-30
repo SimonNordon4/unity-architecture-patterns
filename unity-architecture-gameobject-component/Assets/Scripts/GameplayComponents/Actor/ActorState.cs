@@ -11,10 +11,6 @@ namespace GameplayComponents.Actor
         [SerializeField] private GameState state;
         private HashSet<GameplayComponent> _gameplayComponents = new HashSet<GameplayComponent>();
         
-        public event Action OnResetComponents;
-        public event Action OnEnableComponents;
-        public event Action OnDisableComponents; 
-        
 
         public void Construct(GameState newState)
         {
@@ -28,17 +24,23 @@ namespace GameplayComponents.Actor
         
         private void OnEnable()
         {
-            state.OnChanged += ToggleActorComponents;
-            state.OnGameStart += ResetActorComponents;
+            state.OnGameStart += InitializeComponents;
+            state.OnGamePause += DisableActorComponents;
+            state.OnGameResume += EnableActorComponents;
+            state.OnGameWon += DeInitializeComponents;
+            state.OnGameLost += DeInitializeComponents;
+            state.OnGameQuit += DeInitializeComponents;
         }
 
         private void OnDisable() 
         {
-            state.OnChanged -= ToggleActorComponents;
-            state.OnGameStart -= ResetActorComponents;
+            state.OnGameStart -= InitializeComponents;
+            state.OnGamePause -= DisableActorComponents;
+            state.OnGameResume -= EnableActorComponents;
+            state.OnGameWon -= DeInitializeComponents;
+            state.OnGameLost -= DeInitializeComponents;
+            state.OnGameQuit -= DeInitializeComponents;
         }
-        
-
 
         private void GetActorComponents()
         {
@@ -52,50 +54,38 @@ namespace GameplayComponents.Actor
             }
         }
 
-        private void ToggleActorComponents(bool isActive)
+        public void InitializeComponents()
         {
-            if (_gameplayComponents == null)
-            {
-                GetActorComponents();
-            }
+            EnableActorComponents();
             foreach (var component in _gameplayComponents)
             {
-                component.enabled = isActive;
-            }
-            
-            if (isActive)
-            {
-                OnEnableComponents?.Invoke();
-            }
-            else
-            {
-                OnDisableComponents?.Invoke();
+                component.Initialize();
             }
         }
         
-        private void ResetActorComponents()
+        public void DeInitializeComponents()
         {
             foreach (var component in _gameplayComponents)
             {
-                // TODO: Reset component
+                component.Deinitialize();
             }
-            
-            OnResetComponents?.Invoke();
+            DisableActorComponents();
         }
 
-        public void ResetActor()
+        public void EnableActorComponents()
         {
-            ResetActorComponents();
+            foreach (var component in _gameplayComponents)
+            {
+                component.enabled = true;
+            }
         }
         
         public void DisableActorComponents()
         {
-            ToggleActorComponents(false);
-        }
-        
-        public void EnableActorComponents()
-        {
-            ToggleActorComponents(true);
+            foreach (var component in _gameplayComponents)
+            {
+                component.enabled = false;
+            }
         }
     }
 }

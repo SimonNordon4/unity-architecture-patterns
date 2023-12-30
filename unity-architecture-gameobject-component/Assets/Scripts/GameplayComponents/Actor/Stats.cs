@@ -12,34 +12,20 @@ namespace GameplayComponents.Actor
         [SerializeField] private ActorStatsDefinition definition;
         [SerializeField] private List<Stat> stats = new();
         
-        public void Initialize(ActorStatsDefinition newDefinition)
-        {
-            definition = newDefinition;
-            stats.Clear();
-            foreach (var stat in definition.stats)
-            {
-                stats.Add(new Stat(stat));
-            }
-        }
-
-        private void Awake()
-        {
-            if (definition != null)
-            {
-                Initialize(definition);
-            }
-        }
-
         public Stat GetStat(StatType type)
         {
             return stats.FirstOrDefault(stat => stat.type == type);
         }
 
-        public void SetStat(StatType type, float value)
-        {
-            var stat = GetStat(type);
-            stat.value = value;
-        }
+          public override void Initialize()
+          {
+                // set stats to default values
+          }
+          
+          public override void Deinitialize()
+          {
+                // reset stats to default values
+          }
 
         private void OnValidate()
         {

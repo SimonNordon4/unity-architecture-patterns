@@ -16,9 +16,7 @@ namespace GameObjectComponent.Debugging
         
         private void OnEnable()
         {
-            _actorState.OnResetComponents += () => Print($"Actor Components Reset on {gameObject.name}");
-            _actorState.OnEnableComponents += () => Print($"Actor Components Enabled on {gameObject.name}");
-            _actorState.OnDisableComponents += () => Print($"Actor Components Disabled on {gameObject.name}");
+
         }
     }
 }

@@ -79,5 +79,17 @@ namespace GameplayComponents.Locomotion
         {
             acceleration = newAcceleration;
         }
+
+        public override void Initialize()
+        {
+            _transform.position = _initialPosition;
+            _transform.rotation = Quaternion.identity;
+        }
+        
+        public override void Deinitialize()
+        {
+            velocity = Vector3.zero;
+            acceleration = 0;
+        }
     }
 }
