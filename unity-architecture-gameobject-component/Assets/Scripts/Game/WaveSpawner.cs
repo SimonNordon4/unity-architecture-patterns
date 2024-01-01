@@ -85,7 +85,7 @@ namespace GameObjectComponent.Game
 
         private void SubscribeEnemyDeath(Health enemyComponent)
         {
-            enemyComponent.OnDeath += () => OnEnemyDeath(enemyComponent.transform.position);
+            enemyComponent.OnHealthDepleted += () => OnEnemyDeath(enemyComponent.transform.position);
         }
 
         private void SpawnAction()

@@ -10,8 +10,9 @@ namespace GameplayComponents.Life
         [SerializeField] private Stats stats;
         private Stat _maxHealthStat;
         public int maxHealth => (int)_maxHealthStat.value;
-        public event Action<int> OnHealthChanged;
-        public event Action OnDeath;
+        
+        public Action<int> OnHealthChanged;
+        public Action OnHealthDepleted;
 
         private void Start()
         {
@@ -31,26 +32,16 @@ namespace GameplayComponents.Life
 
             currentHealth = Mathf.Max(0, currentHealth - damageAmount);
             OnHealthChanged?.Invoke(currentHealth);
-
+            
             if (currentHealth > 0) return;
-            OnDeath?.Invoke();
+            
+            OnHealthDepleted?.Invoke();
         }
         
         public override void Initialize()
         {
             _maxHealthStat = stats.GetStat(StatType.MaxHealth);
             SetHealth(maxHealth);
-        }
-        
-        public override void Deinitialize()
-        {
-            SetHealth(0);
-        }
-
-        private void OnDestroy()
-        {
-            OnHealthChanged = null;
-            OnDeath = null; 
         }
     }
 }

@@ -10,10 +10,15 @@ namespace GameObjectComponent.Debugging
     public class LifeDebugger : DebugComponent
     {
         [field:SerializeField]public Health health { get; private set; }
+        [field:SerializeField]public DamageHandler damageHandler { get; private set; }
+        [field:SerializeField]public DeathHandler deathHandler { get; private set; }
         
         private void OnEnable()
         {
             health.OnHealthChanged += x => Print("Health changed to " + health.currentHealth);
+            health.OnHealthDepleted += () => Print("Health depleted");
+            deathHandler.onRevived.AddListener(() => Print("Revived"));
+            deathHandler.onDeath.AddListener(() => Print("Died"));
         }
     }
     

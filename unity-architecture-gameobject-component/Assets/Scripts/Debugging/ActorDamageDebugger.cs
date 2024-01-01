@@ -10,7 +10,7 @@ namespace GameObjectComponent.Debugging
         [SerializeField] private Health health;
         [SerializeField] private Block block;
         [SerializeField] private Dodge dodge;
-        [SerializeField] private Revive revive;
+        [SerializeField] private DeathHandler deathHandler;
 
         private void OnEnable()
         {
@@ -22,7 +22,7 @@ namespace GameObjectComponent.Debugging
             if (health != null)
             {
                 health.OnHealthChanged += (x => Print($"{health.gameObject.name} Health: {x}"));
-                health.OnDeath += () => Print($"{health.gameObject.name} Died");
+                health.OnHealthDepleted += () => Print($"{health.gameObject.name} Died");
             }
 
             if (block != null)
@@ -35,9 +35,9 @@ namespace GameObjectComponent.Debugging
                 dodge.onDodged.AddListener(() => Print($"{dodge.gameObject.name} Dodged"));    
             }
 
-            if (revive != null)
+            if (deathHandler != null)
             {
-                revive.onRevived.AddListener(() => Print($"{revive.gameObject.name} Revived"));
+                deathHandler.onRevived.AddListener(() => Print($"{deathHandler.gameObject.name} Revived"));
             }
             
         }
