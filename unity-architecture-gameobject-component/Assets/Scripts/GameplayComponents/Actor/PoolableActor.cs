@@ -6,12 +6,18 @@ namespace GameplayComponents.Actor
 {
     public class PoolableActor : GameplayComponent
     {
-        [SerializeField]private ActorDefinition definition;
         private ActorPool _pool;
-        
-        public void Construct(ActorPool pool)
+        private ActorDefinition _definition;
+
+        public void Construct(ActorPool pool, ActorDefinition definition)
         {
             _pool = pool;
+            _definition = definition;
+        }
+
+        public void Return()
+        {
+            _pool.Return(this, _definition);
         }
     }
 }

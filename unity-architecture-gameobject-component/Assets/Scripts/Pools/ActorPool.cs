@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using GameObjectComponent.Definitions;
 using GameplayComponents;
 using GameplayComponents.Actor;
@@ -11,10 +12,10 @@ namespace Pools
     {
         [field:SerializeField] public ActorFactory factory { get; private set; }
         private readonly Dictionary<ActorDefinition, Queue<PoolableActor>> _pools = new();
-        public event Action<PoolableActor> OnEnemySpawned;
-        public event Action<PoolableActor> OnEnemyDespawned;
+        public event Action<PoolableActor> OnActorGet;
+        public event Action<PoolableActor> OnActorReturn;
 
-        public PoolableActor Get(ActorDefinition definition, Vector3 position, bool startActive = true)
+        public PoolableActor Get([DisallowNull]ActorDefinition definition, Vector3 position, bool startActive = true)
         {
             if (!_pools.TryGetValue(definition, out var queue))
             {
@@ -27,7 +28,7 @@ namespace Pools
             if (queue.Count == 0)
             {
                 actor = CreateEnemy(definition, position);
-                actor.Construct(this);
+                actor.Construct(this, definition);
                 actor.transform.position = position;
                 actor.gameObject.SetActive(startActive);
             }
@@ -38,7 +39,7 @@ namespace Pools
                 actor.gameObject.SetActive(startActive);
             }
             
-            OnEnemySpawned?.Invoke(actor);
+            OnActorGet?.Invoke(actor);
             
             return actor;
         }
@@ -47,7 +48,7 @@ namespace Pools
         {
             poolableActor.gameObject.SetActive(false);
             
-            OnEnemyDespawned?.Invoke(poolableActor);
+            OnActorReturn?.Invoke(poolableActor);
             
             // Add the enemy to the queue
             _pools[definition].Enqueue(poolableActor);

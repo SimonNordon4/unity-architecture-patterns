@@ -17,11 +17,11 @@ namespace GameObjectComponent.UI
         
         private void OnEnable()
         {
-            _actorPool.OnEnemySpawned += OnActorSpawned;
-            _actorPool.OnEnemyDespawned += OnActorDespawned;    
+            _actorPool.OnActorGet += OnActorGet;
+            _actorPool.OnActorReturn += OnActorDespawned;    
         }
 
-        private void OnActorSpawned(PoolableActor actor)
+        private void OnActorGet(PoolableActor actor)
         {
             var health = actor.GetComponent<Health>();
             var healthBar = textPool.GetText();
@@ -39,8 +39,8 @@ namespace GameObjectComponent.UI
 
         private void OnDisable()
         {
-            _actorPool.OnEnemySpawned -= OnActorSpawned;
-            _actorPool.OnEnemyDespawned -= OnActorDespawned;    
+            _actorPool.OnActorGet -= OnActorGet;
+            _actorPool.OnActorReturn -= OnActorDespawned;    
         }
 
         private void Update()
