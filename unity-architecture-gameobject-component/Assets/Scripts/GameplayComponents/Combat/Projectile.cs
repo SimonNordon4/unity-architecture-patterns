@@ -82,7 +82,7 @@ namespace GameplayComponents.Combat
             
             if (_pool != null)
             {
-                _pool.Despawn(this);
+                _pool.Return(this);
                 return;
             }
             Destroy(gameObject);

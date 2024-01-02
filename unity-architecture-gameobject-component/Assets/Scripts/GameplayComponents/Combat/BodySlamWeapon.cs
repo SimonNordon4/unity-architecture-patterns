@@ -7,7 +7,6 @@ namespace GameplayComponents.Combat
     [RequireComponent(typeof(CombatTarget))]
     public class BodySlamWeapon : BaseWeapon
     {
-
         private CombatTarget _targetComponent;
 
         private void Start()
@@ -15,7 +14,7 @@ namespace GameplayComponents.Combat
             _targetComponent = GetComponent<CombatTarget>();
         }
 
-        public override void Attack(MeleeStatsInfo info)
+        public override void Attack(WeaponStatsInfo info)
         {
             if(!_targetComponent.target.TryGetComponent<DamageReceiver>(out var receiver)) return;
             receiver.TakeDamage(info.Damage);

@@ -82,7 +82,6 @@ namespace Pools
             {
                 foreach (var actor in pool.Value)
                 {
-                    Debug.Log("Destroying " + actor.name);
                     Destroy(actor.gameObject);
                 }
             }
@@ -92,7 +91,6 @@ namespace Pools
         
         public override void OnGameEnd()
         {
-            Debug.Log("Resetting all pools");
             ResetAllPools();
         }
 

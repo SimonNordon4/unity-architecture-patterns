@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace GameplayComponents.Combat
 {
-
     public class MeleeAttack : GameplayComponent
     {
         [SerializeField] private BaseWeapon weapon;
@@ -31,7 +30,7 @@ namespace GameplayComponents.Combat
             var distance = target.targetDistance;
             if (distance > meleeRange.value) return;
             
-            var info = new MeleeStatsInfo
+            var info = new WeaponStatsInfo
             {
                 Damage = (int)meleeDamage.value,
                 KnockBack = meleeKnockBack.value,
@@ -43,13 +42,5 @@ namespace GameplayComponents.Combat
             
             _timeSinceLastAttack = 0f;
         }
-    }
-    
-    public struct MeleeStatsInfo
-    {
-        public int Damage;
-        public float KnockBack;
-        public float Range;
-        public float AttackSpeed;
     }
 }
