@@ -30,6 +30,16 @@ namespace GameObjectComponent.Game
         private bool _waveFinaleActionSpawned = false;
         private int _totalActors = 0;
         private int _actorsReturned = 0;
+        
+        private void OnEnable()
+        {
+            actionSpawner.pool.OnActorReturn += OnActorReturned;
+        }
+        
+        private void OnDisable()
+        {
+            actionSpawner.pool.OnActorReturn -= OnActorReturned;
+        }
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
@@ -48,16 +58,6 @@ namespace GameObjectComponent.Game
             }
         }
 
-        private void OnEnable()
-        {
-            actionSpawner.pool.OnActorReturn += OnActorReturned;
-        }
-        
-        private void OnDisable()
-        {
-            actionSpawner.pool.OnActorReturn -= OnActorReturned;
-        }
-
         private void OnActorReturned(PoolableActor actor)
         {
             _actorsReturned++;
@@ -66,8 +66,6 @@ namespace GameObjectComponent.Game
                 OnWaveCompleted?.Invoke(actor.transform.position);
             }
         }
-
-
 
         private void Update()
         {
@@ -93,7 +91,7 @@ namespace GameObjectComponent.Game
         private void HandleFinaleActionSpawn()
         {
             if (_waveTime <= _currentWaveDefinition.waveDuration) return;
-            SpawnBossAction();
+            SpawnFinaleAction();
             _waveFinaleActionSpawned = true;
         }
 
@@ -112,7 +110,7 @@ namespace GameObjectComponent.Game
             _spawnIndex++;
         }
 
-        private void SpawnBossAction()
+        private void SpawnFinaleAction()
         {
             foreach (var action in _currentWaveDefinition.bossActions)
             {

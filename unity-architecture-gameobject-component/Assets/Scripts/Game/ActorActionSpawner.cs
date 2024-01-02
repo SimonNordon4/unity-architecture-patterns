@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using GameObjectComponent.Definitions;
 using GameObjectComponent.Pools;
 using GameplayComponents.Actor;
@@ -12,7 +13,7 @@ namespace GameObjectComponent.Game
     {
         [field:SerializeField] public ActorPool pool { get;private set; }
         [SerializeField] private Level level;
-        
+
         public PoolableActor[] SpawnAction(SpawnActionDefinition actionDefinition)
         {
             return actionDefinition.actionType switch

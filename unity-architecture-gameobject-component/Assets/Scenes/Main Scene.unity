@@ -2879,13 +2879,11 @@ GameObject:
   m_Component:
   - component: {fileID: 278339791}
   - component: {fileID: 278339796}
-  - component: {fileID: 278339788}
   - component: {fileID: 278339790}
   - component: {fileID: 278339794}
   - component: {fileID: 278339789}
   - component: {fileID: 278339792}
   - component: {fileID: 278339793}
-  - component: {fileID: 278339795}
   m_Layer: 0
   m_Name: Round Spawner
   m_TagString: Untagged
@@ -2893,21 +2891,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &278339788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278339787}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca5c55e4748a4f0d8f86ca2d99587623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chestSpawner: {fileID: 0}
-  gameState: {fileID: 1358396559}
-  roundDefinition: {fileID: 11400000, guid: c3a4e44eb5ffece48bbf6cee77d43b17, type: 2}
 --- !u!114 &278339789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,22 +2974,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f1f15aee4c4cc0960b706b9aabc318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pool: {fileID: 278339789}
+  <pool>k__BackingField: {fileID: 278339789}
   level: {fileID: 1358396558}
---- !u!114 &278339795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278339787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e087c471984a0a96b1312cba90a415, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <definition>k__BackingField: {fileID: 11400000, guid: 81818dda6826b8d4296a17176f448806, type: 2}
-  <actorPool>k__BackingField: {fileID: 278339789}
 --- !u!114 &278339796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13400,7 +13369,6 @@ GameObject:
   - component: {fileID: 1358396558}
   - component: {fileID: 1358396561}
   - component: {fileID: 1358396562}
-  - component: {fileID: 1358396563}
   m_Layer: 0
   m_Name: Game State
   m_TagString: Untagged
@@ -13478,19 +13446,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
   <roundTime>k__BackingField: 0
---- !u!114 &1358396563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358396557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c44ece414dc24d74bc25e060cb28057e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <state>k__BackingField: {fileID: 1358396559}
 --- !u!1 &1359933850
 GameObject:
   m_ObjectHideFlags: 0

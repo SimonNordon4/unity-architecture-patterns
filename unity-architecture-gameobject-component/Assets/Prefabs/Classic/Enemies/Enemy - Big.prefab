@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 135604216382465702, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 135604216382465702, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: m_LocalScale.x
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 994774202720791878, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f481f5953e42635419c564cc3c563fbb, type: 2}
     - target: {fileID: 1260665150298914961, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0
@@ -75,6 +79,10 @@ PrefabInstance:
     - target: {fileID: 1260665150298914961, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 1643490254818806931, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
+      propertyPath: m_Name
+      value: enemy_big
       objectReference: {fileID: 0}
     - target: {fileID: 1849764475641072485, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: m_Name
@@ -82,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1849764475641072485, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2067457415505798757, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -96,6 +104,10 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.9622642
       objectReference: {fileID: 0}
+    - target: {fileID: 3038472431761480076, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 931774382987345910, guid: 7637a2fb56a04ab4381f5b01c224fe67, type: 3}
     - target: {fileID: 3242381329170214869, guid: 254dfc569be11e444a02c5f6a4462a7d, type: 3}
       propertyPath: m_Height
       value: 2.313159
