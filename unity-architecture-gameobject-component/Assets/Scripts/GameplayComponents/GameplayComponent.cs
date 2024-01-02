@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+﻿using GameObjectComponent.Game;
+using UnityEngine;
 
 namespace GameplayComponents
 {
     public abstract class GameplayComponent : MonoBehaviour
     {
-        public virtual void Initialize()
+        public virtual void OnGameStart()
         {
             
         }
         
-        public virtual void Deinitialize()
+        public virtual void OnGameEnd()
         {
             
         }

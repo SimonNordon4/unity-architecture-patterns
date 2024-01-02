@@ -17,12 +17,12 @@ namespace GameplayComponents.Actor
             return stats.FirstOrDefault(stat => stat.type == type);
         }
 
-          public override void Initialize()
+          public override void OnGameStart()
           {
                 // set stats to default values
           }
           
-          public override void Deinitialize()
+          public override void OnGameEnd()
           {
                 // reset stats to default values
           }

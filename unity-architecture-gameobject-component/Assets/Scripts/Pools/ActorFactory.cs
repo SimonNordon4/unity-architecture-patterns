@@ -21,7 +21,7 @@ namespace Pools
             
             var enemy = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
             
-            if (enemy.TryGetComponent<ActorState>(out var gameState))
+            if (enemy.TryGetComponent<GameplayStateController>(out var gameState))
                 gameState.Construct(state);
 
             if (enemy.TryGetComponent<Movement>(out var movement))

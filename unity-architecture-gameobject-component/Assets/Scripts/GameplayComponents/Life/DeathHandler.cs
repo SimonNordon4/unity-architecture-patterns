@@ -42,7 +42,7 @@ namespace GameplayComponents.Life
             onDeath?.Invoke();
         }
 
-        public override void Initialize()
+        public override void OnGameStart()
         {
             _reviveStat = stats.GetStat(StatType.Revives);
         }

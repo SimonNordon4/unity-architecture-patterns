@@ -11,16 +11,17 @@ namespace Pools
     public class ActorPool : GameplayComponent
     {
         [field:SerializeField] public ActorFactory factory { get; private set; }
-        private readonly Dictionary<ActorDefinition, Queue<PoolableActor>> _pools = new();
+        private readonly Dictionary<ActorDefinition, Queue<PoolableActor>> _inactivePools = new();
+        private readonly List<PoolableActor> _activeActors = new();
         public event Action<PoolableActor> OnActorGet;
         public event Action<PoolableActor> OnActorReturn;
 
         public PoolableActor Get([DisallowNull]ActorDefinition definition, Vector3 position, bool startActive = true)
         {
-            if (!_pools.TryGetValue(definition, out var queue))
+            if (!_inactivePools.TryGetValue(definition, out var queue))
             {
                 queue = new Queue<PoolableActor>();
-                _pools.Add(definition, queue);
+                _inactivePools.Add(definition, queue);
             }
             
             PoolableActor actor = null;
@@ -41,23 +42,58 @@ namespace Pools
             
             OnActorGet?.Invoke(actor);
             
+            _activeActors.Add(actor);
+            
             return actor;
         }
 
         public void Return(PoolableActor poolableActor, ActorDefinition definition)
         {
+            _activeActors.Remove(poolableActor);
+            
             poolableActor.gameObject.SetActive(false);
             
             OnActorReturn?.Invoke(poolableActor);
             
             // Add the enemy to the queue
-            _pools[definition].Enqueue(poolableActor);
+            _inactivePools[definition].Enqueue(poolableActor);
         }
 
         private PoolableActor CreateEnemy(ActorDefinition definition, Vector3 position)
         {
             var newEnemy = factory.Create(definition, position);
             return newEnemy;
+        }
+
+        public void ReturnAllActiveActors()
+        {
+            for (var i = _activeActors.Count - 1; i >= 0; i--)
+            {
+                _activeActors[i].Return();
+            }
+        }
+
+        public void ResetAllPools()
+        {
+            Debug.Log("Returning all active actors");
+            ReturnAllActiveActors();
+            
+            foreach (var pool in _inactivePools)
+            {
+                foreach (var actor in pool.Value)
+                {
+                    Debug.Log("Destroying " + actor.name);
+                    Destroy(actor.gameObject);
+                }
+            }
+            
+            _inactivePools.Clear();
+        }
+        
+        public override void OnGameEnd()
+        {
+            Debug.Log("Resetting all pools");
+            ResetAllPools();
         }
 
     }

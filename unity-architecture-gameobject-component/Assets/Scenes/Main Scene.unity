@@ -2878,6 +2878,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 278339791}
+  - component: {fileID: 278339796}
   - component: {fileID: 278339788}
   - component: {fileID: 278339790}
   - component: {fileID: 278339794}
@@ -3006,6 +3007,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <definition>k__BackingField: {fileID: 11400000, guid: 81818dda6826b8d4296a17176f448806, type: 2}
   <actorPool>k__BackingField: {fileID: 278339789}
+--- !u!114 &278339796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278339787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
 --- !u!1 &292098358
 GameObject:
   m_ObjectHideFlags: 0

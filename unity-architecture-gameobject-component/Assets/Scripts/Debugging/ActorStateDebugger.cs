@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace GameObjectComponent.Debugging
 {
-    [RequireComponent(typeof(ActorState))]
+    [RequireComponent(typeof(GameplayStateController))]
     public class ActorStateDebugger : DebugComponent
     {
-        private ActorState _actorState;
+        private GameplayStateController _gameplayStateController;
         
         private void Awake()
         {
-            _actorState = GetComponent<ActorState>();
+            _gameplayStateController = GetComponent<GameplayStateController>();
         }
         
         private void OnEnable()

@@ -2,6 +2,7 @@
 using GameObjectComponent.Definitions;
 using GameObjectComponent.Pools;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GameplayComponents.Actor
 {
@@ -9,13 +10,16 @@ namespace GameplayComponents.Actor
     {
         [SerializeField] private ActorDefinition definition;
         [SerializeField] private LayerMask interruptLayer;
-        [SerializeField] private ActorState actorState;
+        [SerializeField] private GameplayStateController gameplayStateController;
         [SerializeField] private GameObject enemyMesh;
         [SerializeField] private ParticleSystem spawnInParticle;
         [SerializeField] private ParticlePool deathParticlePool;
         [SerializeField] private float spawnTime = 1f;
         
         private bool _isSpawned = false;
+
+        public UnityEvent onCancelled = new();
+        public UnityEvent onSpawned = new();
         
         public void Construct(ParticlePool newDeathParticlePool)
         {
@@ -30,7 +34,7 @@ namespace GameplayComponents.Actor
 
         void OnEnable()
         {
-            actorState.DisableActorComponents();
+            gameplayStateController.DisableActorComponents();
             spawnInParticle.Play();
             enemyMesh.SetActive(false);
             StopAllCoroutines();
@@ -57,13 +61,14 @@ namespace GameplayComponents.Actor
             yield return new WaitForSeconds(spawnTime);
             spawnInParticle.Stop();
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
-            actorState.EnableActorComponents();
+            gameplayStateController.EnableActorComponents();
             _isSpawned = true;
             enemyMesh.SetActive(true);
         }
 
         private void CancelSpawnIn()
         {
+            onCancelled.Invoke();
             StopAllCoroutines();
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
         }

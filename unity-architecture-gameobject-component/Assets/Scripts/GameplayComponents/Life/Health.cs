@@ -14,9 +14,13 @@ namespace GameplayComponents.Life
         public Action<int> OnHealthChanged;
         public Action OnHealthDepleted;
 
-        private void Start()
+        private void Awake()
         {
             _maxHealthStat = stats.GetStat(StatType.MaxHealth);
+        }
+
+        private void Start()
+        {
             SetHealth(maxHealth);
         }
 
@@ -38,7 +42,7 @@ namespace GameplayComponents.Life
             OnHealthDepleted?.Invoke();
         }
         
-        public override void Initialize()
+        public override void OnGameStart()
         {
             _maxHealthStat = stats.GetStat(StatType.MaxHealth);
             SetHealth(maxHealth);

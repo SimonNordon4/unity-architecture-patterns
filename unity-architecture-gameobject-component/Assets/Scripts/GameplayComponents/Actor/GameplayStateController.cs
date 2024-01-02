@@ -6,11 +6,10 @@ using UnityEngine;
 namespace GameplayComponents.Actor
 {
     [DefaultExecutionOrder(-10)]
-    public class ActorState : MonoBehaviour
+    public class GameplayStateController : MonoBehaviour
     {
         [SerializeField] private GameState state;
         private HashSet<GameplayComponent> _gameplayComponents = new HashSet<GameplayComponent>();
-        
 
         public void Construct(GameState newState)
         {
@@ -24,22 +23,22 @@ namespace GameplayComponents.Actor
         
         private void OnEnable()
         {
-            state.OnGameStart += InitializeComponents;
+            state.OnGameStart += OnGameStart;
             state.OnGamePause += DisableActorComponents;
             state.OnGameResume += EnableActorComponents;
-            state.OnGameWon += DeInitializeComponents;
-            state.OnGameLost += DeInitializeComponents;
-            state.OnGameQuit += DeInitializeComponents;
+            state.OnGameWon += OnGameEnd;
+            state.OnGameLost += OnGameEnd;
+            state.OnGameQuit += OnGameEnd;
         }
 
         private void OnDisable() 
         {
-            state.OnGameStart -= InitializeComponents;
+            state.OnGameStart -= OnGameStart;
             state.OnGamePause -= DisableActorComponents;
             state.OnGameResume -= EnableActorComponents;
-            state.OnGameWon -= DeInitializeComponents;
-            state.OnGameLost -= DeInitializeComponents;
-            state.OnGameQuit -= DeInitializeComponents;
+            state.OnGameWon -= OnGameEnd;
+            state.OnGameLost -= OnGameEnd;
+            state.OnGameQuit -= OnGameEnd;
         }
 
         private void GetActorComponents()
@@ -54,20 +53,20 @@ namespace GameplayComponents.Actor
             }
         }
 
-        public void InitializeComponents()
+        public void OnGameStart()
         {
             EnableActorComponents();
             foreach (var component in _gameplayComponents)
             {
-                component.Initialize();
+                component.OnGameStart();
             }
         }
         
-        public void DeInitializeComponents()
+        public void OnGameEnd()
         {
             foreach (var component in _gameplayComponents)
             {
-                component.Deinitialize();
+                component.OnGameEnd();
             }
             DisableActorComponents();
         }

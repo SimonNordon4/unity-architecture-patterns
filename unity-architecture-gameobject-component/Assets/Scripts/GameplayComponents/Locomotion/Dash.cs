@@ -59,7 +59,7 @@ namespace GameplayComponents.Locomotion
             _isDashing = false;
         }
         
-        public override void Deinitialize()
+        public override void OnGameEnd()
         {
             StopAllCoroutines();
             _isDashing = false;
