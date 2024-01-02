@@ -17,7 +17,7 @@ namespace GameObjectComponent.Definitions
         [field:SerializeField] public Vector2 healthMultiplier {get;private set;} = new Vector2(1, 1);
         [field:SerializeField] public Vector2 damageMultiplier {get;private set;} = new Vector2(1, 1);
         
-        public int TotalEnemyCount()
+        public int TotalActorsCount()
         {
             var bossEnemies = bossActions.Sum(action => action.numberOfEnemiesToSpawn);
             return normalEnemies + bossEnemies;

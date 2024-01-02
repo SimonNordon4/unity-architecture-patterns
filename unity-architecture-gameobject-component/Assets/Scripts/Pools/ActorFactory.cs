@@ -19,26 +19,26 @@ namespace Pools
         {
             actorDefinition.actorPrefab.gameObject.SetActive(false);
             
-            var enemy = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
+            var actor = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
             
-            if (enemy.TryGetComponent<GameplayStateController>(out var gameState))
+            if (actor.TryGetComponent<GameplayStateController>(out var gameState))
                 gameState.Construct(state);
 
-            if (enemy.TryGetComponent<Movement>(out var movement))
+            if (actor.TryGetComponent<Movement>(out var movement))
                 movement.Construct(level);
 
-            if (enemy.TryGetComponent<CombatTarget>(out var target))
+            if (actor.TryGetComponent<CombatTarget>(out var target))
                 target.SetTarget(initialTarget);
 
-            if (enemy.TryGetComponent<ParticlePool>(out var particlePool))
+            if (actor.TryGetComponent<ParticlePool>(out var particlePool))
                 particlePool.Construct(deathParticlePool);
             
-            if(enemy.TryGetComponent<ActorSpawnDelay>(out var spawnDelay))
+            if(actor.TryGetComponent<ActorSpawnDelay>(out var spawnDelay))
                 spawnDelay.Construct(deathParticlePool);
             
-            enemy.gameObject.SetActive(true);
+            actor.gameObject.SetActive(true);
 
-            return enemy;
+            return actor;
         }
     }
 }

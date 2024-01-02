@@ -10,7 +10,7 @@ namespace GameObjectComponent.Game
 {
     public class ActorActionSpawner : MonoBehaviour
     {
-        [SerializeField] private ActorPool pool;
+        [field:SerializeField] public ActorPool pool { get;private set; }
         [SerializeField] private Level level;
         
         public PoolableActor[] SpawnAction(SpawnActionDefinition actionDefinition)

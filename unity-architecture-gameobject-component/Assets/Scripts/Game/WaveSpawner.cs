@@ -1,6 +1,7 @@
 ﻿using System;
 using GameObjectComponent.Definitions;
 using GameplayComponents;
+using GameplayComponents.Actor;
 using GameplayComponents.Life;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,6 +10,9 @@ namespace GameObjectComponent.Game
 {
     /// <summary>
     /// Manages the spawning of enemies during a wave.
+    /// <remarks> This may be the most convoluted class as the managing of waves is tricky.
+    /// I've decided to track when Actors are returned to the pool as counting as being dead,
+    /// seeing as they can be cancelled before spawning in.</remarks>
     /// </summary>
     public class WaveSpawner : GameplayComponent
     {
@@ -23,49 +27,59 @@ namespace GameObjectComponent.Game
         private float _waveTime;
         private float[] _actionTimings;
 
-        private bool _bossSpawned = false;
-        private int _totalEnemies = 0;
-        private int _enemiesKilled = 0;
-
-        private void OnEnemyDeath(Vector3 position)
-        {
-            _enemiesKilled++;
-            Debug.Log($"Enemies killed: {_enemiesKilled}");
-            if (_enemiesKilled >= _currentWaveDefinition.TotalEnemyCount())
-            {
-                OnWaveCompleted?.Invoke(position);
-            }
-        }
+        private bool _waveFinaleActionSpawned = false;
+        private int _totalActors = 0;
+        private int _actorsReturned = 0;
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
             _currentWaveDefinition = waveDefinition;
-            _totalEnemies = _currentWaveDefinition.TotalEnemyCount();
+            _totalActors = _currentWaveDefinition.TotalActorsCount();
             GenerateActionTimings();
             _waveStarted = true;
         }
 
         private void GenerateActionTimings()
         {
-            _actionTimings = new float[_totalEnemies];
+            _actionTimings = new float[_totalActors];
             for (var i = 0; i < _actionTimings.Length; i++)
             {
                 _actionTimings[i] = (float)i / _actionTimings.Length * _currentWaveDefinition.waveDuration;
             }
         }
 
+        private void OnEnable()
+        {
+            actionSpawner.pool.OnActorReturn += OnActorReturned;
+        }
+        
+        private void OnDisable()
+        {
+            actionSpawner.pool.OnActorReturn -= OnActorReturned;
+        }
+
+        private void OnActorReturned(PoolableActor actor)
+        {
+            _actorsReturned++;
+            if (_actorsReturned >= _totalActors)
+            {
+                OnWaveCompleted?.Invoke(actor.transform.position);
+            }
+        }
+
+
+
         private void Update()
         {
             if(!_waveStarted) return;
-            if(_bossSpawned) return;
+            if(_waveFinaleActionSpawned) return;
             HandleWaveTime();
             HandleActionSpawn();
-            HandleBossSpawn();
+            HandleFinaleActionSpawn();
         }
 
         private void HandleWaveTime()
         {
-
             _waveTime += GameTime.deltaTime;
         }
 
@@ -76,17 +90,13 @@ namespace GameObjectComponent.Game
             SpawnAction();
         }
 
-        private void HandleBossSpawn()
+        private void HandleFinaleActionSpawn()
         {
             if (_waveTime <= _currentWaveDefinition.waveDuration) return;
             SpawnBossAction();
-            _bossSpawned = true;
+            _waveFinaleActionSpawned = true;
         }
 
-        private void SubscribeEnemyDeath(Health enemyComponent)
-        {
-            enemyComponent.OnHealthDepleted += () => OnEnemyDeath(enemyComponent.transform.position);
-        }
 
         private void SpawnAction()
         {
@@ -97,7 +107,7 @@ namespace GameObjectComponent.Game
             var enemies = actionSpawner.SpawnAction(actionDefinition);
             foreach (var enemy in enemies)
             {
-                SubscribeEnemyDeath(enemy.GetComponent<Health>());
+                //SubscribeEnemyDeath(enemy.GetComponent<Health>());
             }
             _spawnIndex++;
         }
@@ -107,16 +117,7 @@ namespace GameObjectComponent.Game
             foreach (var action in _currentWaveDefinition.bossActions)
             {
                 var enemies = actionSpawner.SpawnAction(action);
-                foreach (var enemy in enemies)
-                {
-                    SubscribeEnemyDeath(enemy.GetComponent<Health>());
-                }
             }
-        }
-
-        private void OnDisable()
-        {
-            OnWaveCompleted = null;
         }
     }
 }
