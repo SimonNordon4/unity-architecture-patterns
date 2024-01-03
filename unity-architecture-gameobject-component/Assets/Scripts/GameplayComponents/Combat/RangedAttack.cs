@@ -25,11 +25,16 @@ namespace GameplayComponents.Combat
                 _timeSinceLastAttack += GameTime.deltaTime;
                 return;
             }
+
+            if (!target.hasTarget)
+            {
+                return;
+            }
             
-            if(!target.hasTarget) return;
-            
-            var distance = target.targetDistance;
-            if (distance > rangedRange.value) return;
+            if (target.targetDistance > rangedRange.value)
+            {
+                return;
+            }
             
             var info = new WeaponStatsInfo
             {
@@ -40,7 +45,8 @@ namespace GameplayComponents.Combat
                 Pierce = (int)rangedPierce.value,
             };
             
-            weapon.Attack(info);
+            Debug.Log("Attacking");
+            weapon.Attack(info, target);
             
             _timeSinceLastAttack = 0f;
         }

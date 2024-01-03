@@ -4,19 +4,11 @@ using UnityEngine;
 
 namespace GameplayComponents.Combat
 {
-    [RequireComponent(typeof(CombatTarget))]
     public class BodySlamWeapon : BaseWeapon
     {
-        private CombatTarget _targetComponent;
-
-        private void Start()
+        public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
-            _targetComponent = GetComponent<CombatTarget>();
-        }
-
-        public override void Attack(WeaponStatsInfo info)
-        {
-            if(!_targetComponent.target.TryGetComponent<DamageReceiver>(out var receiver)) return;
+            if(!target.TryGetComponent<DamageReceiver>(out var receiver)) return;
             receiver.TakeDamage(info.Damage);
         }
     }

@@ -38,7 +38,7 @@ namespace GameplayComponents.Combat
                 AttackSpeed = meleeAttackSpeed.value
             };
             
-            weapon.Attack(info);
+            weapon.Attack(info, target);
             
             _timeSinceLastAttack = 0f;
         }

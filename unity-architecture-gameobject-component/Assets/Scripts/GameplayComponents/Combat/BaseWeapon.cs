@@ -6,12 +6,8 @@ namespace GameplayComponents.Combat
 {
     public abstract class BaseWeapon : MonoBehaviour
     {
-        public virtual void Attack(WeaponStatsInfo info)
-        {
-            
-        }
 
-        public virtual void Attack(WeaponStatsInfo info, CombatTarget target)
+        public virtual void Attack(WeaponStatsInfo info, CombatTarget target = null)
         {
             
         }

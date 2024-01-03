@@ -2884,6 +2884,7 @@ GameObject:
   - component: {fileID: 278339789}
   - component: {fileID: 278339792}
   - component: {fileID: 278339793}
+  - component: {fileID: 278339797}
   m_Layer: 0
   m_Name: Round Spawner
   m_TagString: Untagged
@@ -2989,6 +2990,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
+--- !u!114 &278339797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278339787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3204c70b15844a1aac71fc74734da64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 1358396559}
+  waveSpawner: {fileID: 278339790}
+  waveDefinition: {fileID: 11400000, guid: 6a150dd8dacfd3847adad02cb295ab75, type: 2}
+  spawnWaveOnGameStart: 1
 --- !u!1 &292098358
 GameObject:
   m_ObjectHideFlags: 0
@@ -4436,9 +4453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45d26ded911d4399baad1dcf7adffdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <health>k__BackingField: {fileID: 498857198}
-  <damageHandler>k__BackingField: {fileID: 498857197}
-  <deathHandler>k__BackingField: {fileID: 498857201}
 --- !u!114 &498857201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9556,7 +9570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1103014752}
   - component: {fileID: 1103014753}
-  - component: {fileID: 1103014754}
+  - component: {fileID: 1103014758}
   - component: {fileID: 1103014755}
   - component: {fileID: 1103014757}
   - component: {fileID: 1103014756}
@@ -9598,21 +9612,6 @@ MonoBehaviour:
   <targetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &1103014754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103014751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26d180ca92d4495a4cf5b8b6ac104d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  stats: {fileID: 9018308866812664866}
-  target: {fileID: 1103014753}
 --- !u!114 &1103014755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9660,6 +9659,21 @@ MonoBehaviour:
   weapon: {fileID: 1103014756}
   stats: {fileID: 9018308866812664866}
   target: {fileID: 1103014753}
+--- !u!114 &1103014758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103014751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6c3e5c6c0c4f6285db97c1e0832472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1103014753}
+  stats: {fileID: 9018308866812664866}
+  updateInterval: 0.2
 --- !u!1 &1126367850
 GameObject:
   m_ObjectHideFlags: 0

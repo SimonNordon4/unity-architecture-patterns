@@ -10,7 +10,10 @@ namespace GameplayComponents.Combat
         
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
-            var projectile = projectilePool.Get(projectileSpawnPoint.position, transform.forward);
+            Debug.Log("Getting projectile from pool");
+            var projectile = projectilePool.Get(projectileSpawnPoint.position, target.targetDirection);
+            
+            Debug.Log("Setting projectile");
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
             onAttack.Invoke();
         }

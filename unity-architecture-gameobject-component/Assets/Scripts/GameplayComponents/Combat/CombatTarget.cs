@@ -1,4 +1,5 @@
-﻿using GameObjectComponent.General;
+﻿using GameObjectComponent.Game;
+using GameObjectComponent.General;
 using UnityEngine;
 
 namespace GameplayComponents.Combat
@@ -26,7 +27,7 @@ namespace GameplayComponents.Combat
                 SetTarget(initialTarget);
             }
         }
-
+        
         public void SetTarget(Transform newTarget)
         {
             if (targetLayer != (targetLayer | (1 << newTarget.gameObject.layer)))
@@ -39,9 +40,21 @@ namespace GameplayComponents.Combat
             _targetEvents = GetGameObjectEvents(target);
             _targetEvents.OnDisabled += RemoveTarget;
         }
+        
+        public void ClearTarget()
+        {
+            if (_targetEvents != null)
+            {
+                _targetEvents.OnDisabled -= RemoveTarget;
+                _targetEvents = null;
+            }
+            hasTarget = false;
+            target = null;
+        }
 
         public void GetClosestTarget(float range)
         {
+            Debug.Log("GetClosestTarget");
             if (_targetEvents != null)
             {
                 _targetEvents.OnDisabled -= RemoveTarget;
@@ -51,6 +64,7 @@ namespace GameplayComponents.Combat
             
             if (count == 0)
             {
+                Debug.Log("No targets found");
                 hasTarget = false;
                 return;
             }
@@ -72,6 +86,8 @@ namespace GameplayComponents.Combat
             
             hasTarget = true;
             target = closestTarget;
+            
+            Debug.Log("Target found");
             
             _targetEvents = GetGameObjectEvents(target);
             _targetEvents.OnDisabled += RemoveTarget;
