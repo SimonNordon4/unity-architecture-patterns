@@ -4,31 +4,22 @@ using UnityEngine;
 
 namespace GameplayComponents.Locomotion
 {
-    [RequireComponent(typeof(Movement))]
-    [RequireComponent(typeof(KnockBackReceiver))]
     public class KnockBack : MonoBehaviour
     {
         [SerializeField] private float knockBackFactor = 1f;
         [SerializeField] private GameplayComponent defaultMovement;
-        private Movement _movement;
-        private KnockBackReceiver _knockBackReceiver;
-        private Transform _transform;
+        [SerializeField] private Movement movement;
+        [SerializeField] private KnockBackReceiver knockBackReceiver;
+        [SerializeField] private Transform _transform;
 
-        private void Awake()
-        {
-            _transform = transform;
-            _knockBackReceiver = GetComponent<KnockBackReceiver>();
-            _movement = GetComponent<Movement>();
-        }
-        
         private void OnEnable()
         {
-            _knockBackReceiver.OnKnockBack += OnKnockBack;
+            knockBackReceiver.OnKnockBack += OnKnockBack;
         }
         
         private void OnDisable()
         {
-            _knockBackReceiver.OnKnockBack -= OnKnockBack;
+            knockBackReceiver.OnKnockBack -= OnKnockBack;
         }
 
         private void OnKnockBack(Vector3 knockBackVector)
@@ -58,7 +49,7 @@ namespace GameplayComponents.Locomotion
                 // clamp the velocity to a maximum value of 200
                 velocity = Vector3.ClampMagnitude(velocity, 200);
                 
-                _movement.SetVelocity(velocity);
+                movement.SetVelocity(velocity);
         
                 elapsedTime += GameTime.deltaTime;
                 yield return new WaitForEndOfFrame();

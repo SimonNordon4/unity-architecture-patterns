@@ -48,8 +48,8 @@ namespace GameplayComponents.Combat
 
         private void ReturnAllProjectiles()
         {
-            foreach(var projectile in _activeProjectiles)
-                Return(projectile);
+            for(var i = _activeProjectiles.Count - 1; i >= 0; i--)
+                Return(_activeProjectiles[i]);
         }
 
         private void DeletePool()

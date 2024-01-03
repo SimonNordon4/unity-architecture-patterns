@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace GameplayComponents.Locomotion
 {
-    [RequireComponent(typeof(CapsuleCollider))]
     public class AvoidAllies : GameplayComponent
     {
         [SerializeField] private float repulsionForce = 1f;
+        [SerializeField] private CapsuleCollider body;
         public Vector3 avoidanceDirection { get; private set; }
         private readonly List<Transform> _nearbyEnemies = new(4);
         private float _radius;
 
         private void Start()
         {
-            _radius = GetComponent<CapsuleCollider>().radius;
+            _radius = body.radius;
         }
 
         private void Update()

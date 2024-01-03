@@ -48,6 +48,18 @@ namespace GameObjectComponent.Game
             GenerateActionTimings();
             _waveStarted = true;
         }
+        
+        public void Reset()
+        {
+            _totalActors = 0;
+            _currentWaveDefinition = null;
+            _waveStarted = false;
+            _waveFinaleActionSpawned = false;
+            _spawnIndex = 0;
+            _waveTime = 0;
+            _actorsReturned = 0;
+            _actionTimings = null;
+        }
 
         private void GenerateActionTimings()
         {
@@ -116,6 +128,11 @@ namespace GameObjectComponent.Game
             {
                 var enemies = actionSpawner.SpawnAction(action);
             }
+        }
+
+        public override void OnGameEnd()
+        {
+            Reset();
         }
     }
 }

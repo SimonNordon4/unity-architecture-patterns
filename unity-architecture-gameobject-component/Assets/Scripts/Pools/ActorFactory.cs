@@ -5,6 +5,7 @@ using GameplayComponents.Actor;
 using GameplayComponents.Combat;
 using GameplayComponents.Locomotion;
 using UnityEngine;
+using System.Linq;
 
 namespace Pools
 {
@@ -20,20 +21,20 @@ namespace Pools
             actorDefinition.actorPrefab.gameObject.SetActive(false);
             
             var actor = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
-            
-            if (actor.TryGetComponent<GameplayStateController>(out var gameState))
+
+            if (actor.TryGetComponentDeep<GameplayStateController>(out var gameState))
                 gameState.Construct(state);
 
-            if (actor.TryGetComponent<Movement>(out var movement))
+            if (actor.TryGetComponentDeep<Movement>(out var movement))
                 movement.Construct(level);
 
-            if (actor.TryGetComponent<CombatTarget>(out var target))
+            if (actor.TryGetComponentDeep<CombatTarget>(out var target))
                 target.SetTarget(initialTarget);
 
-            if (actor.TryGetComponent<ParticlePool>(out var particlePool))
+            if (actor.TryGetComponentDeep<ParticlePool>(out var particlePool))
                 particlePool.Construct(deathParticlePool);
             
-            if(actor.TryGetComponent<ActorSpawnDelay>(out var spawnDelay))
+            if(actor.TryGetComponentDeep<ActorSpawnDelay>(out var spawnDelay))
                 spawnDelay.Construct(deathParticlePool);
             
             actor.gameObject.SetActive(true);
