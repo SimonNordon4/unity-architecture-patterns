@@ -7,8 +7,8 @@ namespace GameObjectComponent.Items
     public class RoundMiniChestSpawner : GameplayComponent
     {
         [SerializeField] private ChestSpawner chestSpawner;
-
         [SerializeField] private float miniChestSpawnRate = 8f;
+        
         private float _timeSinceLastChest = 0.0f;
         private bool _isChestSpawnAllowed = true;
         private Chest _currentChest = null;

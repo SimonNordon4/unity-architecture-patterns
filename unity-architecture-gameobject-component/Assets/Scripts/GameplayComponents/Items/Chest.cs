@@ -1,4 +1,5 @@
-﻿using GameObjectComponent.Definitions;
+﻿using System;
+using GameObjectComponent.Definitions;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ namespace GameObjectComponent.Items
     
     public class Chest : MonoBehaviour
     {
-        public static readonly UnityEvent<Chest> OnChestPickedUp = new();
+        public static Action<Chest> OnChestPickedUp;
         public UnityEvent onPickedUp = new();
         
         [SerializeField]private LayerMask playerLayer;
@@ -28,7 +29,6 @@ namespace GameObjectComponent.Items
         private void OnTriggerEnter(Collider other)
         {
             if (playerLayer != (playerLayer | (1 << other.gameObject.layer))) return;
-            Debug.Log("Player entered chest trigger");
             OnChestPickedUp.Invoke(this);
             onPickedUp.Invoke();
         }
