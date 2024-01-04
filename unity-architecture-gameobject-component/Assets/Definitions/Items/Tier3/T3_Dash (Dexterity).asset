@@ -12,8 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T3_Dash (Dexterity)
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
+  sprite: {fileID: 21300000, guid: 3e90c478aee8c63489bc57266aedd7b1, type: 3}
+  itemName: Conserve Energy
+  tier: 3
   spawnChance: 100
-  modifiers: []
+  modifiers:
+  - statType: 16
+    modifierType: 0
+    modifierValue: 8
+  - statType: 1
+    modifierType: 0
+    modifierValue: 1
+  - statType: 10
+    modifierType: 0
+    modifierValue: -5

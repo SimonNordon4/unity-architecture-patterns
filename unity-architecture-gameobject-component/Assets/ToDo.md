@@ -1,0 +1,23 @@
+﻿ToDo 04/01/24:
+
+- [ ] Fix all normal Items.
+- [ ] Fix Slime Prefabs
+- [ ] Finish Round Spawner.
+
+New Features:
+
+- Enemy type that guards chest.
+- Zoom out the more powerful you are.
+- Fire trail enemies.
+- Enemy Type leaving trail that slows.
+- Make enemy that can knock player back.
+- Objectives (stand in circle 10s).
+- Stomping Enemy.
+- Throw Grenade Enemy.
+- Exploding Enemies.
+- Boss enemy that traps you in a smaller area.
+
+
+
+
+

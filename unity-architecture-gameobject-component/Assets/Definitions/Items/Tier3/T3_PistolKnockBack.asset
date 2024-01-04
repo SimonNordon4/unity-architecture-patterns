@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T3_PistolKnockBack
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
+  sprite: {fileID: 21300000, guid: 0f49f27d6d904104fb731b00b2b63f26, type: 3}
+  itemName: Concussion Shells
+  tier: 3
   spawnChance: 100
-  modifiers: []
+  modifiers:
+  - statType: 3
+    modifierType: 0
+    modifierValue: 2
+  - statType: 2
+    modifierType: 0
+    modifierValue: -1

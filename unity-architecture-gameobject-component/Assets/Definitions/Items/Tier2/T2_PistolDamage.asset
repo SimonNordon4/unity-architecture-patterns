@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T2_PistolDamage
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
+  sprite: {fileID: 21300000, guid: 801f420c3784a3b45a858d21756f8608, type: 3}
+  itemName: Bigger Bullet
+  tier: 2
   spawnChance: 100
-  modifiers: []
+  modifiers:
+  - statType: 1
+    modifierType: 0
+    modifierValue: 2

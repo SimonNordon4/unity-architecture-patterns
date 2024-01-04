@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T3_SwordRange
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
+  sprite: {fileID: 21300000, guid: 147f4fd3ab7c471479a672e1f8c23159, type: 3}
+  itemName: Poke
+  tier: 3
   spawnChance: 100
-  modifiers: []
+  modifiers:
+  - statType: 0
+    modifierType: 0
+    modifierValue: 0.4
