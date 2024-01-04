@@ -15,5 +15,10 @@ namespace GameObjectComponent.Pools
             main.startColor = color;
             return ps;
         }
+        
+        public void GetParticlesForDuration(Transform trans)
+        {
+            GetForParticleDuration(trans.position);
+        }
     }
 }

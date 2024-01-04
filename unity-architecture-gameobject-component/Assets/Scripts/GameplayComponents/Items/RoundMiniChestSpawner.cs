@@ -1,15 +1,17 @@
 ﻿using GameObjectComponent.Game;
+using GameplayComponents;
 using UnityEngine;
 
 namespace GameObjectComponent.Items
 {
-    public class RoundMiniChestSpawner : MonoBehaviour
+    public class RoundMiniChestSpawner : GameplayComponent
     {
         [SerializeField] private ChestSpawner chestSpawner;
 
         [SerializeField] private float miniChestSpawnRate = 8f;
         private float _timeSinceLastChest = 0.0f;
         private bool _isChestSpawnAllowed = true;
+        private Chest _currentChest = null;
 
         private void Update()
         {
@@ -27,14 +29,22 @@ namespace GameObjectComponent.Items
 
         private void SpawnMiniChest()
         {
-            var chest = chestSpawner.SpawnMiniChest();
-            chest.onPickedUp.AddListener(ResetChestTimer);
+            Debug.Log("Spawning Mini Chest");
+            _currentChest = chestSpawner.SpawnMiniChest();
+            _currentChest.onPickedUp.AddListener(ChestPickedUp);
         }
 
-        private void ResetChestTimer()
+        private void ChestPickedUp()
         {
+            _currentChest.onPickedUp.RemoveListener(ChestPickedUp);
             _isChestSpawnAllowed = true;
             _timeSinceLastChest = 0f;
+        }
+        
+        public override void OnGameEnd()
+        {
+            _isChestSpawnAllowed = false;
+            _timeSinceLastChest = miniChestSpawnRate;
         }
     }
 }

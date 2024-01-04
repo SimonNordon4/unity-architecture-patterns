@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: -4679693983644832551, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1005410984963157119}
+      objectReference: {fileID: 0}
     - target: {fileID: 1281497899613873068, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: <targetLayer>k__BackingField.m_Bits
       value: 64
@@ -24,6 +24,18 @@ PrefabInstance:
       propertyPath: gameplayStateController
       value: 
       objectReference: {fileID: 1246167459329063360}
+    - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: stats.Array.data[10].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: stats.Array.data[2].initialValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: stats.Array.data[10].initialValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4965931753579400588, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_Name
       value: Enemy - Normal
@@ -85,17 +97,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b544fab130f99a944b3855910af44473, type: 3}
---- !u!114 &1005410984963157119 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1281497899613873068, guid: b544fab130f99a944b3855910af44473, type: 3}
-  m_PrefabInstance: {fileID: 2034259763275354067}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1246167459329063360 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 968382538216142355, guid: b544fab130f99a944b3855910af44473, type: 3}

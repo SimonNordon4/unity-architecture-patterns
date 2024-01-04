@@ -57,11 +57,13 @@ namespace GameplayComponents.Combat
         private void OnTriggerEnter(Collider other)
         {
             // check if other is in target layer
+            Debug.Log("Project hit: " + other.gameObject.name);
             if (_targetLayer != (_targetLayer | (1 << other.gameObject.layer))) return;
             
             // check if other has a damage receiver
             if (other.TryGetComponent(out DamageReceiver damageReceiver))
             {
+                Debug.Log("Dealing damage");
                 damageReceiver.TakeDamage(_damage);
                 _pierceValue--;
                 if (_pierceValue <= 0)
@@ -72,6 +74,7 @@ namespace GameplayComponents.Combat
 
             if (other.TryGetComponent(out KnockBackReceiver knockBackReceiver))
             {
+                Debug.Log("Applying knockback");
                 knockBackReceiver.ApplyKnockBack(_projectileTransform.forward * _knockBackForce);
             }
         }

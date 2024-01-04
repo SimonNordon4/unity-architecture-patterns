@@ -13,17 +13,17 @@ namespace GameObjectComponent.Items
         [SerializeField] private Level level;
         [SerializeField] private Vector2 edgeBuffer = new Vector2(2f, 2f);
         
-        [SerializeField] private ChestItemsConfig tier1ChestItems;
-        [SerializeField] private ChestItemsConfig tier2ChestItems;
-        [SerializeField] private ChestItemsConfig tier3ChestItems;
-        [SerializeField] private ChestItemsConfig tier4ChestItems;
-        [SerializeField] private ChestItemsConfig tier5ChestItems;
+        [SerializeField] private ItemTableDefinition tier1ChestItems;
+        [SerializeField] private ItemTableDefinition tier2ChestItems;
+        [SerializeField] private ItemTableDefinition tier3ChestItems;
+        [SerializeField] private ItemTableDefinition tier4ChestItems;
+        [SerializeField] private ItemTableDefinition tier5ChestItems;
         
         [SerializeField] private ChestDefinition miniChest;
         [SerializeField] private ChestDefinition mediumChest;
         [SerializeField] private ChestDefinition largeChest;
 
-        private ChestItem[][] _allItems;
+        private ItemDefinition[][] _allItems;
         private Dictionary<ChestType, Chest> _chestTypes;
 
         private int _pityLuck;
@@ -32,11 +32,11 @@ namespace GameObjectComponent.Items
         {
             _allItems = new[]
             {
-                tier1ChestItems.chestItems.ToArray(),
-                tier2ChestItems.chestItems.ToArray(),
-                tier3ChestItems.chestItems.ToArray(),
-                tier4ChestItems.chestItems.ToArray(),
-                tier5ChestItems.chestItems.ToArray()
+                tier1ChestItems.items.ToArray(),
+                tier2ChestItems.items.ToArray(),
+                tier3ChestItems.items.ToArray(),
+                tier4ChestItems.items.ToArray(),
+                tier5ChestItems.items.ToArray()
             };
             
             _chestTypes = new Dictionary<ChestType, Chest>
@@ -120,12 +120,12 @@ namespace GameObjectComponent.Items
             return numberOfItems;
         }
 
-        private ChestItem[] CalculateChestItems(Chest chest)
+        private ItemDefinition[] CalculateChestItems(Chest chest)
         {
             // Store a hashset of all the items we have already added to the options, so we don't display duplicates.
-            var alreadyAddedItems = new HashSet<ChestItem>();
+            var alreadyAddedItems = new HashSet<ItemDefinition>();
             
-            var items = new ChestItem[chest.numberOfItems];
+            var items = new ItemDefinition[chest.numberOfItems];
 
             for (var i = 0; i < chest.numberOfItems; i++)
             {
@@ -133,7 +133,7 @@ namespace GameObjectComponent.Items
                 var tier = GetRandomChestItemTier(chest);
 
                 // Collect all items with a tier equal to or less than the chest tier
-                var possibleItems = new List<ChestItem>();
+                var possibleItems = new List<ItemDefinition>();
                 
                 foreach (var chestItem in _allItems[tier - 1])
                 {

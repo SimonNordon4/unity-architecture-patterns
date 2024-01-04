@@ -23,7 +23,7 @@ namespace GameObjectComponent.Items
         [field:SerializeField] public ChestType chestType { get; private set; } = ChestType.Mini;
 
         [field:SerializeField] public int numberOfItems { get; set; }
-        [field:SerializeField] public ChestItem[] chestItems { get; set; }
+        [field:SerializeField] public ItemDefinition[] chestItems { get; set; }
 
         private void OnTriggerEnter(Collider other)
         {
