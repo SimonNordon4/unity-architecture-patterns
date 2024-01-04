@@ -10,7 +10,7 @@ public class Stat
     public Stat(StatType newType)
     {
         type = newType;
-        initialValue = 0f;
+        initialValue = 1f;
         minimumValue = 0f;
         maximumValue = float.PositiveInfinity;
         SetDefault();
@@ -30,14 +30,13 @@ public class Stat
     }
 
     public string name;
-    public float initialValue = 1f;
-    public float minimumValue = 0f;
-    public float maximumValue = float.PositiveInfinity;
+    public float initialValue;
+    public float minimumValue;
+    public float maximumValue;
     
     public StatType type;
-    
-    [SerializeField]
-    private List<Modifier> _modifiers = new();
+
+    [field: SerializeField] public List<Modifier> modifiers { get; private set; } = new();
 
     public float value;
 
@@ -46,7 +45,7 @@ public class Stat
         float flatSum = 0;
         float percentageSum = 1; // Start with 1 so it represents 100% at start.
 
-        foreach (var modifier in _modifiers)
+        foreach (var modifier in modifiers)
         {
             if (modifier.modifierType == ModifierType.Flat)
             {
@@ -86,12 +85,12 @@ public class Stat
     }
     public void Reset()
     {
-        _modifiers.Clear();
+        modifiers.Clear();
         value = initialValue;
     }
     public void AddModifier(Modifier modifier)
     {
-        _modifiers.Add(modifier);
+        modifiers.Add(modifier);
         Evaluate();
     }
 

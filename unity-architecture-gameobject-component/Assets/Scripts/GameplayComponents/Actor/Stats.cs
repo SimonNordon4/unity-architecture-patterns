@@ -17,15 +17,49 @@ namespace GameplayComponents.Actor
             return stats.FirstOrDefault(stat => stat.type == type);
         }
 
-          public override void OnGameStart()
-          {
-                // set stats to default values
-          }
+        private void Awake()
+        {
+            LoadStatsFromDefinition();
+        }
+
+        public override void OnGameStart()
+        {
+            ResetStats();
+            LoadStatsFromDefinition();
+        }
           
-          public override void OnGameEnd()
-          {
-                // reset stats to default values
-          }
+        public override void OnGameEnd()
+        {
+             
+        }
+
+        private void ResetStats()
+        {
+            foreach(var stat in stats)
+            {
+                stat.Reset();
+            }
+        }
+        
+        private void LoadStatsFromDefinition()
+        {
+            if (definition == null) return;
+            
+            foreach(var stat in stats)
+            {
+                var definitionStat = definition.stats.FirstOrDefault(s => s.type == stat.type);
+                if (definitionStat == null) continue;
+                stat.initialValue = definitionStat.initialValue;
+                stat.minimumValue = definitionStat.minimumValue;
+                stat.maximumValue = definitionStat.maximumValue;
+                stat.value = definitionStat.initialValue;
+                
+                foreach(var mod in definitionStat.modifiers)
+                {
+                    stat.AddModifier(mod);
+                }
+            }
+        }
 
         private void OnValidate()
         {

@@ -121549,6 +121549,7 @@ GameObject:
   - component: {fileID: 9018308866812664859}
   - component: {fileID: 9018308866812664866}
   - component: {fileID: 9018308866812664864}
+  - component: {fileID: 9018308866812664869}
   - component: {fileID: 293942581975922163}
   - component: {fileID: 9018308866812664858}
   - component: {fileID: 8703336813458755939}
@@ -121971,119 +121972,119 @@ MonoBehaviour:
     minimumValue: 0
     maximumValue: Infinity
     type: 0
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 1
   - name: RangedDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 1
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 1
   - name: RangedRange
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 2
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 5
   - name: RangedKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 3
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 1
   - name: RangedPierce
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 4
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 0
   - name: MeleeDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 5
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 1
   - name: MeleeKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 6
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 1
   - name: MeleeRange
     initialValue: 1.5
     minimumValue: 0
     maximumValue: Infinity
     type: 7
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 1.5
   - name: MeleeAttackSpeed
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 8
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 1
   - name: MoveSpeed
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 9
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 5
   - name: MaxHealth
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 10
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 5
   - name: HealthPackDropRate
     initialValue: 0.1
     minimumValue: 0
     maximumValue: Infinity
     type: 11
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 0.1
   - name: Luck
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 12
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 0
   - name: Block
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 13
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 0
   - name: Dodge
     initialValue: 0
     minimumValue: 0
     maximumValue: 60
     type: 14
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 0
   - name: Revives
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 15
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 0
   - name: Dashes
-    initialValue: 1
+    initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 16
-    _modifiers: []
+    <modifiers>k__BackingField: []
     value: 0
 --- !u!114 &9018308866812664867
 MonoBehaviour:
@@ -122130,6 +122131,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dash: {fileID: 9018308866812664867}
   actionMap: {fileID: -944628639613478452, guid: e2c5f6aa20630f04d9d963da34176193, type: 3}
+--- !u!114 &9018308866812664869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526962797330366185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abb764273ee4441a4fee98121274c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 9018308866812664864}
+  stats: {fileID: 9018308866812664866}
 --- !u!33 &9052653825607074615
 MeshFilter:
   m_ObjectHideFlags: 0

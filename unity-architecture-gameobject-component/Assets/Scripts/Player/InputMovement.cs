@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace GameObjectComponent.Player
 {
-    public class InputMovement : GameplayComponent
+    public class InputMovement : MonoBehaviour
     {
         [SerializeField] private Movement movement;
         [SerializeField] private InputActionAsset actionMap;
