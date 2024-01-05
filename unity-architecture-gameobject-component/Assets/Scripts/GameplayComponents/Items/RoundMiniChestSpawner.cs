@@ -7,6 +7,8 @@ namespace GameObjectComponent.Items
     public class RoundMiniChestSpawner : GameplayComponent
     {
         [SerializeField] private ChestSpawner chestSpawner;
+        [SerializeField] private Level level;
+        [SerializeField] private Vector2 edgeBuffer = new Vector2(2f, 2f);
         [SerializeField] private float miniChestSpawnRate = 8f;
         
         private float _timeSinceLastChest = 0.0f;
@@ -29,8 +31,11 @@ namespace GameObjectComponent.Items
 
         private void SpawnMiniChest()
         {
-            Debug.Log("Spawning Mini Chest");
-            _currentChest = chestSpawner.SpawnMiniChest();
+            // get a random location in the level minus the buffer
+            var randomX = Random.Range(edgeBuffer.x - level.bounds.x, level.bounds.x - edgeBuffer.x);
+            var randomZ = Random.Range(edgeBuffer.y - level.bounds.y, level.bounds.y - edgeBuffer.y);
+            var chestPosition = new Vector3(randomX, 0f, randomZ);
+            _currentChest = chestSpawner.SpawnChest(ChestType.Mini, chestPosition);
             _currentChest.onPickedUp.AddListener(ChestPickedUp);
         }
 

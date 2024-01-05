@@ -6,34 +6,27 @@ using UnityEngine;
 
 namespace GameObjectComponent.Game
 {
-    [RequireComponent(typeof(WaveSpawner))]
-    [RequireComponent(typeof(ActorPool))]
     public class RoundSpawner : GameplayComponent
     {
-        private WaveSpawner _waveSpawner;
+        [SerializeField]private WaveSpawner waveSpawner;
         private int _currentWaveIndex = 0;
         [SerializeField] private ChestSpawner chestSpawner;
         [SerializeField] private GameState gameState;
         [SerializeField] private RoundDefinition roundDefinition;
 
-        private void Awake()
-        {
-            _waveSpawner = GetComponent<WaveSpawner>();            
-        }
-
         private void OnEnable()
         {
-            _waveSpawner.OnWaveCompleted += OnWaveCompleted;
+            waveSpawner.OnWaveCompleted += OnWaveCompleted;
         }
         private void OnDisable()
         {
-            _waveSpawner.OnWaveCompleted -= OnWaveCompleted;
+            waveSpawner.OnWaveCompleted -= OnWaveCompleted;
         }
 
         public void StartRoundSpawner()
         {
             var currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
-            _waveSpawner.StartNewWave(currentWaveDefinition);
+            waveSpawner.StartNewWave(currentWaveDefinition);
         }
 
         private void OnWaveCompleted(Vector3 deathPosition)
@@ -60,6 +53,13 @@ namespace GameObjectComponent.Game
                 gameState.WinGame();
                 return;
             }
+            StartRoundSpawner();
+        }
+
+        public override void OnGameStart()
+        {
+            _currentWaveIndex = 0;
+            Debug.Log("Starting Wave Spawner");
             StartRoundSpawner();
         }
     }

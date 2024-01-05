@@ -1,6 +1,6 @@
 ﻿ToDo 05/01/24:
 
-- [ ] Fix Chest Spawn Chances (double spawn)
+- [x] Fix Chest Spawn Chances (double spawn)
 - [x] Fix all normal Items.
 - [ ] Fix Slime Prefabs
 - [ ] Finish Round Spawner.

@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using GameObjectComponent.Definitions;
 using GameObjectComponent.Game;
+using GameplayComponents;
 using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameObjectComponent.Items
 {
-    public class ChestSpawner : MonoBehaviour
+    public class ChestSpawner : GameplayComponent
     {
+        [SerializeField] private GameState state;
         [SerializeField] private Stats stats;
         private Stat _luckStat;
-        [SerializeField] private Level level;
-        [SerializeField] private Vector2 edgeBuffer = new Vector2(2f, 2f);
+
         
         [SerializeField] private ItemTableDefinition tier1ChestItems;
         [SerializeField] private ItemTableDefinition tier2ChestItems;
@@ -49,44 +50,14 @@ namespace GameObjectComponent.Items
             _luckStat = stats.GetStat(StatType.Luck);
         }
 
-        public Chest SpawnMiniChest()
-        {
-            var chest = Instantiate(miniChest.chestPrefab, transform.position, Quaternion.identity);
-            chest.numberOfItems = CalculateNumberOfItems(chest);
-            chest.chestItems = CalculateChestItems(chest);
-            
-            var position = new Vector3(
-                Random.Range(-level.bounds.x + edgeBuffer.x, level.bounds.x - edgeBuffer.x),
-                0f,
-                Random.Range(-level.bounds.y + edgeBuffer.y, level.bounds.y - edgeBuffer.y)
-            );
-            
-            chest.transform.position = position;
-            return chest;
-        }
-
-        public Chest SpawnChest(ChestType chestType)
-        {
-            var chest = Instantiate(_chestTypes[chestType], transform.position, Quaternion.identity);
-            chest.numberOfItems = CalculateNumberOfItems(chest);
-            chest.chestItems = CalculateChestItems(chest);
-            
-            var position = new Vector3(
-                Random.Range(-level.bounds.x + edgeBuffer.x, level.bounds.x - edgeBuffer.x),
-                0f,
-                Random.Range(-level.bounds.y + edgeBuffer.y, level.bounds.y - edgeBuffer.y)
-            );
-            
-            chest.transform.position = position;
-            return chest;
-        }
-
         public Chest SpawnChest(ChestType chestType, Vector3 position)
         {
             var chest = Instantiate(_chestTypes[chestType], transform.position, Quaternion.identity);
+            chest.GetComponent<GameplayStateController>().Construct(state);
             chest.numberOfItems = CalculateNumberOfItems(chest);
             chest.chestItems = CalculateChestItems(chest);
             chest.transform.position = position;
+            chest.gameObject.SetActive(true);
             return chest;
         }
 

@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 4990230491750309805}
   - component: {fileID: 472263637998658278}
   - component: {fileID: 8640349275599438586}
+  - component: {fileID: -3904294959543200072}
   - component: {fileID: -3552448706168455709}
   m_Layer: 0
   m_Name: Chest - Mini
@@ -208,7 +209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6356033281834782768
 Transform:
   m_ObjectHideFlags: 0
@@ -297,6 +298,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-3904294959543200072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922492998747134388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 0}
 --- !u!114 &-3552448706168455709
 MonoBehaviour:
   m_ObjectHideFlags: 0

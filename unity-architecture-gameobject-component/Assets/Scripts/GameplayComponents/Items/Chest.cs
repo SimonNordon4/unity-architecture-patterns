@@ -1,5 +1,6 @@
 ﻿using System;
 using GameObjectComponent.Definitions;
+using GameplayComponents;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,7 +13,7 @@ namespace GameObjectComponent.Items
         Large,
     }
     
-    public class Chest : MonoBehaviour
+    public class Chest : GameplayComponent
     {
         public static Action<Chest> OnChestPickedUp;
         public UnityEvent onPickedUp = new();
@@ -31,6 +32,11 @@ namespace GameObjectComponent.Items
             if (playerLayer != (playerLayer | (1 << other.gameObject.layer))) return;
             OnChestPickedUp.Invoke(this);
             onPickedUp.Invoke();
+        }
+
+        public override void OnGameEnd()
+        {
+            Destroy(this.gameObject);
         }
     }
 }

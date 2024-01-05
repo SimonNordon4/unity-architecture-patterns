@@ -301,9 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5f676b38314865a972d89aeaf5bc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
   stats: {fileID: 9018308866812664866}
-  level: {fileID: 1358396558}
-  edgeBuffer: {x: 2, y: 2}
   tier1ChestItems: {fileID: 11400000, guid: 625754b36b3c578438c6e0f8d14c5719, type: 2}
   tier2ChestItems: {fileID: 11400000, guid: d62170bf436df664f81766c01da95f3c, type: 2}
   tier3ChestItems: {fileID: 11400000, guid: e201e996f62344f4b81b49e8451dbcf5, type: 2}
@@ -340,6 +339,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawner: {fileID: 18938659}
+  level: {fileID: 1358396558}
+  edgeBuffer: {x: 2, y: 2}
   miniChestSpawnRate: 1
 --- !u!114 &18938662
 MonoBehaviour:
@@ -3105,6 +3106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5c55e4748a4f0d8f86ca2d99587623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveSpawner: {fileID: 278339790}
   chestSpawner: {fileID: 18938659}
   gameState: {fileID: 1358396559}
   roundDefinition: {fileID: 11400000, guid: c3a4e44eb5ffece48bbf6cee77d43b17, type: 2}
