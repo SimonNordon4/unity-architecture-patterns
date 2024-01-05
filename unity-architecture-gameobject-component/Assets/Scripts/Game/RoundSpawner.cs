@@ -25,17 +25,21 @@ namespace GameObjectComponent.Game
 
         public void StartRoundSpawner()
         {
+            Debug.Log($"Starting Round Spawner on wave {roundDefinition.waves[_currentWaveIndex].name}");
             var currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
             waveSpawner.StartNewWave(currentWaveDefinition);
         }
 
         private void OnWaveCompleted(Vector3 deathPosition)
         {
+            Debug.Log("Wave Completed");
             if(_currentWaveIndex + 1 >= roundDefinition.waves.Count)
             {
+                FinalWaveCompleted();
                 return;
             }
             
+            Debug.Log("Spawning boss chest at death position");
             var bossChest = chestSpawner.SpawnChest(ChestType.Medium, deathPosition);
             bossChest.onPickedUp.AddListener(OnBossChestPickedUp);
         }
@@ -43,6 +47,12 @@ namespace GameObjectComponent.Game
         private void OnBossChestPickedUp()
         {
             StartNextWave();
+        }
+        
+        private void FinalWaveCompleted()
+        {
+            Debug.Log("Final Wave Completed");
+            gameState.WinGame();
         }
         
         private void StartNextWave()
@@ -59,7 +69,6 @@ namespace GameObjectComponent.Game
         public override void OnGameStart()
         {
             _currentWaveIndex = 0;
-            Debug.Log("Starting Wave Spawner");
             StartRoundSpawner();
         }
     }

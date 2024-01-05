@@ -54,7 +54,6 @@ namespace GameplayComponents.Combat
 
         public void GetClosestTarget(float range)
         {
-            Debug.Log("GetClosestTarget");
             if (_targetEvents != null)
             {
                 _targetEvents.OnDisabled -= RemoveTarget;
@@ -64,7 +63,6 @@ namespace GameplayComponents.Combat
             
             if (count == 0)
             {
-                Debug.Log("No targets found");
                 hasTarget = false;
                 return;
             }
@@ -86,8 +84,6 @@ namespace GameplayComponents.Combat
             
             hasTarget = true;
             target = closestTarget;
-            
-            Debug.Log("Target found");
             
             _targetEvents = GetGameObjectEvents(target);
             _targetEvents.OnDisabled += RemoveTarget;

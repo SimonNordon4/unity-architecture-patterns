@@ -36773,7 +36773,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!222 &2369228406762723428
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -121967,17 +121967,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3cb163d6c346a1829fac5f67f83d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  definition: {fileID: 11400000, guid: 6d0ea5e1c5d002e4ea37aae60de76783, type: 2}
+  definition: {fileID: 0}
   stats:
   - name: RangedAttackSpeed
-    initialValue: 1
+    initialValue: 11
     minimumValue: 0
     maximumValue: Infinity
     type: 0
     <modifiers>k__BackingField: []
-    value: 1
+    value: 11
   - name: RangedDamage
-    initialValue: 1
+    initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 1
