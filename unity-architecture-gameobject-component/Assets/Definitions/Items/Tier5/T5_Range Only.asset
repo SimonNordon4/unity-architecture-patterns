@@ -12,8 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T5_Range Only
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
-  spawnChance: 100
-  modifiers: []
+  sprite: {fileID: 21300000, guid: b7ffdd4321e98504c86e878a101fdc55, type: 3}
+  itemName: Marksman
+  tier: 5
+  modifiers:
+  - statType: 1
+    modifierType: 0
+    modifierValue: 6
+  - statType: 0
+    modifierType: 0
+    modifierValue: 1
+  - statType: 2
+    modifierType: 0
+    modifierValue: 2
+  - statType: 3
+    modifierType: 0
+    modifierValue: 1
+  - statType: 4
+    modifierType: 0
+    modifierValue: 1
+  - statType: 5
+    modifierType: 1
+    modifierValue: -1
+  - statType: 3
+    modifierType: 1
+    modifierValue: -1

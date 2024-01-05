@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T4_PistolKnockBack
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
-  spawnChance: 100
-  modifiers: []
+  sprite: {fileID: 21300000, guid: 4b2928a74de868842bc0f1fae7742832, type: 3}
+  itemName: Dynamite
+  tier: 4
+  modifiers:
+  - statType: 3
+    modifierType: 0
+    modifierValue: 4
+  - statType: 1
+    modifierType: 0
+    modifierValue: 4
+  - statType: 0
+    modifierType: 0
+    modifierValue: -0.4
+  - statType: 9
+    modifierType: 0
+    modifierValue: -0.2

@@ -144,14 +144,14 @@ namespace GameObjectComponent.Items
 
                 // Now randomly select one of these possible items based on its probabilty
                 var totalSpawnChance = 0;
-                foreach (var chestItem in possibleItems) totalSpawnChance += chestItem.spawnChance;
+                foreach (var chestItem in possibleItems) totalSpawnChance += 100;
 
-                var randomSpawnChance = Random.Range(0, totalSpawnChance);
+                var randomSpawnChance = Random.Range(0, 100);
                 var currentSpawnChance = 0;
                 for (var j = 0; j < possibleItems.Count; j++)
                 {
                     var x = j;
-                    currentSpawnChance += possibleItems[x].spawnChance;
+                    currentSpawnChance += 100;
 
                     if (randomSpawnChance >= currentSpawnChance) continue;
                     // We have found the item to spawn

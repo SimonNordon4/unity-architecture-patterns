@@ -8,7 +8,6 @@ namespace GameObjectComponent.Definitions
         public Sprite sprite;
         public string itemName = "New Item";
         public int tier = 1;
-        public int spawnChance = 100;
         public Modifier[] modifiers;
 
         #if UNITY_EDITOR

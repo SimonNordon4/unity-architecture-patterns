@@ -12,8 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T4_Block (Knight)
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
-  spawnChance: 100
-  modifiers: []
+  sprite: {fileID: 21300000, guid: 7813be7952f9918419b0f30082e0fd02, type: 3}
+  itemName: Knight
+  tier: 4
+  modifiers:
+  - statType: 13
+    modifierType: 0
+    modifierValue: 2
+  - statType: 5
+    modifierType: 0
+    modifierValue: 6
+  - statType: 1
+    modifierType: 0
+    modifierValue: -2
+  - statType: 0
+    modifierType: 0
+    modifierValue: -0.1

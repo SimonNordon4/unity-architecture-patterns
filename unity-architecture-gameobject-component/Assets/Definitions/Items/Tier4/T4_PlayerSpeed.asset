@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971db635a0484819b82112f1dd7f5fbb, type: 3}
   m_Name: T4_PlayerSpeed
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  itemName: New Item
-  tier: 1
-  spawnChance: 100
-  modifiers: []
+  sprite: {fileID: 21300000, guid: 884dd9e843c08094faa2d3e161339aff, type: 3}
+  itemName: Lightning
+  tier: 4
+  modifiers:
+  - statType: 9
+    modifierType: 0
+    modifierValue: 0.5
+  - statType: 16
+    modifierType: 0
+    modifierValue: 5
+  - statType: 13
+    modifierType: 0
+    modifierValue: -1
