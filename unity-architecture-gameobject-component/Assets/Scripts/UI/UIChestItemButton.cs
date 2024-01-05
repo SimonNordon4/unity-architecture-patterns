@@ -23,6 +23,10 @@ namespace GameObjectComponent.UI
 
         public void Initialize(ItemDefinition item)
         {
+            if (item == null)
+            {
+                Debug.LogError("Item is null",this);
+            }
             foreach (var description in _descriptions)
             {
                 Destroy(description.gameObject);

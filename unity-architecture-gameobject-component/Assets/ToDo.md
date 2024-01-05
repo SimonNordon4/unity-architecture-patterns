@@ -1,6 +1,7 @@
-﻿ToDo 04/01/24:
+﻿ToDo 05/01/24:
 
-- [ ] Fix all normal Items.
+- [ ] Fix Chest Spawn Chances (double spawn)
+- [x] Fix all normal Items.
 - [ ] Fix Slime Prefabs
 - [ ] Finish Round Spawner.
 

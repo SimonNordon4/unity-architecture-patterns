@@ -124,7 +124,6 @@ namespace GameObjectComponent.Items
         {
             // Store a hashset of all the items we have already added to the options, so we don't display duplicates.
             var alreadyAddedItems = new HashSet<ItemDefinition>();
-            
             var items = new ItemDefinition[chest.numberOfItems];
 
             for (var i = 0; i < chest.numberOfItems; i++)
@@ -132,32 +131,20 @@ namespace GameObjectComponent.Items
                 // Get the tier of the item to be spawned.
                 var tier = GetRandomChestItemTier(chest);
 
-                // Collect all items with a tier equal to or less than the chest tier
-                var possibleItems = new List<ItemDefinition>();
+                // Get a random item from the tier.
+                var item = _allItems[tier - 1][Random.Range(0, _allItems[tier - 1].Length)];
                 
-                foreach (var chestItem in _allItems[tier - 1])
+                // If we have already added this item, try again.
+                var x = 0;
+                while (alreadyAddedItems.Contains(item) || x < 20)
                 {
-                    // check if the chest item has already been added.
-                    if (alreadyAddedItems.Contains(chestItem)) continue;
-                    possibleItems.Add(chestItem);
+                    item = _allItems[tier - 1][Random.Range(0, _allItems[tier - 1].Length)];
+                    x++;
                 }
-
-                // Now randomly select one of these possible items based on its probabilty
-                var totalSpawnChance = 0;
-                foreach (var chestItem in possibleItems) totalSpawnChance += 100;
-
-                var randomSpawnChance = Random.Range(0, 100);
-                var currentSpawnChance = 0;
-                for (var j = 0; j < possibleItems.Count; j++)
-                {
-                    var x = j;
-                    currentSpawnChance += 100;
-
-                    if (randomSpawnChance >= currentSpawnChance) continue;
-                    // We have found the item to spawn
-                    items[i] = possibleItems[x];
-                    break;
-                }
+                
+                // Add the item to the list of items we have already added.
+                alreadyAddedItems.Add(item);
+                items[i] = item;
             }
             return items;
         }
