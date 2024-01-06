@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using GameObjectComponent.Definitions;
+using GameObjectComponent.Game;
 using GameObjectComponent.Pools;
 using UnityEngine;
 using UnityEngine.Events;
@@ -66,7 +67,12 @@ namespace GameplayComponents.Actor
 
         private IEnumerator SpawnIn()
         {
-            yield return new WaitForSeconds(spawnTime);
+            var countdown = spawnTime;
+            while (countdown > 0)
+            {
+                countdown -= GameTime.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
             spawnInParticle.Stop();
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
             gameplayStateController.EnableActorComponents();
@@ -81,6 +87,12 @@ namespace GameplayComponents.Actor
             gameObject.layer = _originalLayer;
             onCancelled.Invoke();
             StopAllCoroutines();
+            deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
+        }
+
+        public void PlayDeathParticle()
+        {
+            Debug.Log("Play death particle for: " + gameObject.name);
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
         }
     }

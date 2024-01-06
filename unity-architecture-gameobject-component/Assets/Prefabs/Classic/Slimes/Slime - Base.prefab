@@ -94,6 +94,9 @@ MonoBehaviour:
   interruptLayer:
     serializedVersion: 2
     m_Bits: 64
+  spawningLayer:
+    serializedVersion: 2
+    m_Bits: 0
   gameplayStateController: {fileID: 5700232244058505958}
   enemyMesh: {fileID: 712929944326962831}
   spawnInParticle: {fileID: 3043751628317881663}
@@ -5463,13 +5466,13 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3347457930279600117}
-        m_TargetAssemblyTypeName: GameObjectComponent.Pools.ParticlePool, Assembly-CSharp
-        m_MethodName: GetParticlesForDuration
-        m_Mode: 2
+      - m_Target: {fileID: 6500748167159065044}
+        m_TargetAssemblyTypeName: GameplayComponents.Actor.ActorSpawnDelay, Assembly-CSharp
+        m_MethodName: PlayDeathParticle
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 2219092628217517242}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

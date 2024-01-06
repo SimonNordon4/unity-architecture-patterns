@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using GameObjectComponent.Definitions;
+using UnityEngine;
 
 namespace GameObjectComponent.Pools
 {
@@ -14,11 +15,6 @@ namespace GameObjectComponent.Pools
             var main = ps.main;
             main.startColor = color;
             return ps;
-        }
-        
-        public void GetParticlesForDuration(Transform trans)
-        {
-            GetForParticleDuration(trans.position);
         }
     }
 }

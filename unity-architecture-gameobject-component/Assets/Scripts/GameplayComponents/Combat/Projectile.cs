@@ -51,8 +51,8 @@ namespace GameplayComponents.Combat
         {
             if (_timeAlive < lifeTime)
             {
-                _timeAlive += Time.deltaTime;
-                _projectileTransform.position += _projectileTransform.forward * (_speed * Time.deltaTime);
+                _timeAlive += GameTime.deltaTime;
+                _projectileTransform.position += _projectileTransform.forward * (_speed * GameTime.deltaTime);
             }
             else
             {

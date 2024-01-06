@@ -9634,6 +9634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b819001dfb6a04a881a353d13335de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
   projectileDefinition: {fileID: 11400000, guid: b0a65fd4cf3119f4eb5a3241a5b7ee2b, type: 2}
   poolSize: 10
 --- !u!114 &1103014756
@@ -11665,6 +11666,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1428806658}
+  - {fileID: 2028792656}
   - {fileID: 56815766}
   - {fileID: 1764124330}
   - {fileID: 65588993}
@@ -16210,7 +16212,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2028792656}
   - {fileID: 615096171}
   - {fileID: 2073183643}
   - {fileID: 612078405}
@@ -18482,6 +18483,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2028792656}
+  - component: {fileID: 2028792659}
   - component: {fileID: 2028792658}
   - component: {fileID: 2028792657}
   m_Layer: 5
@@ -18498,12 +18500,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028792655}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1764124330}
+  m_Father: {fileID: 1291293142}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18540,6 +18542,19 @@ MonoBehaviour:
   actorPool: {fileID: 278339789}
   textPool: {fileID: 2028792657}
   gameCamera: {fileID: 963194227}
+--- !u!114 &2028792659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028792655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
 --- !u!1 &2065814497
 GameObject:
   m_ObjectHideFlags: 0
@@ -122026,7 +122041,7 @@ MonoBehaviour:
     value: 5
   - name: MaxHealth
     initialValue: 5
-    minimumValue: 0
+    minimumValue: 1
     maximumValue: Infinity
     type: 10
     <modifiers>k__BackingField: []

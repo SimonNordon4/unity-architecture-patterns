@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using GameObjectComponent.Game;
+using GameplayComponents.Actor;
 using UnityEngine;
 
 namespace GameplayComponents.Combat
 {
     public class ProjectilePool : GameplayComponent
     {
+        [SerializeField] private GameState state;
         [SerializeField] private ProjectileDefinition projectileDefinition;
         [SerializeField] private int poolSize = 10;
 
@@ -34,6 +37,8 @@ namespace GameplayComponents.Combat
         private Projectile CreateNewProjectile()
         {
             var newProjectile = Instantiate(projectileDefinition.prefab, null);
+            if(newProjectile.TryGetComponent<GameplayStateController>(out var controller))
+                controller.Construct(state);
             newProjectile.SetPool(this);
             
             return newProjectile;

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using GameObjectComponent.Pools;
+using GameplayComponents;
 using GameplayComponents.Actor;
 using GameplayComponents.Life;
 using Pools;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace GameObjectComponent.UI
 {
-    public class UIActorPoolHealthBars : MonoBehaviour
+    public class UIActorPoolHealthBars : GameplayComponent
     {
         [SerializeField]private ActorPool actorPool;
         [SerializeField]private UITextPool textPool;
@@ -62,6 +63,11 @@ namespace GameObjectComponent.UI
                 Debug.Log($"Current Health for {healthBar.Key.gameObject.name} is {currentHealth}");
                 healthBar.Value.text = currentHealth > 0 ? currentHealth.ToString() : "";
             }
+        }
+
+        public override void OnGameEnd()
+        {
+            _healthBars.Clear();
         }
     }
 }

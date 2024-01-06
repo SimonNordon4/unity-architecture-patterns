@@ -1,7 +1,8 @@
 ﻿ToDo 06/01/24:
 
 - [ ] Add Sword Melee Weapon to Character.
-- [ ] Fix death particle color.
+- [x] Fix Max Health going below zero.
+- [x] Fix death particle color.
 - [x] Fix issue with new projectiles from the pool. 
 - [x] Remove stat definitions.
 
