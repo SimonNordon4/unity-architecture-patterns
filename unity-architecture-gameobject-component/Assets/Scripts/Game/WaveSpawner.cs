@@ -50,6 +50,7 @@ namespace GameObjectComponent.Game
             _waveStarted = true;
         }
         
+        
         public void Reset()
         {
             _totalActors = 0;

@@ -1,9 +1,16 @@
-﻿ToDo 05/01/24:
+﻿ToDo 06/01/24:
 
-- [x] Fix Chest Spawn Chances (double spawn)
+-[x] Remove stat definitions.
+-[ ] Add Sword Melee Weapon to Character.
+- [ ] Update Player Health UI
+- [ ] Actor Pool Health UI
+
+ToDo 05/01/24:
+
+- [x] Fix Chest Spawn Chances (double spawn).
 - [x] Fix all normal Items.
-- [ ] Fix Slime Prefabs
-- [ ] Finish Round Spawner.
+- [x] Fix Base, Melee, Normal and Big Slime Prefabs.
+- [x] Finish Round Spawner.
 
 New Features:
 

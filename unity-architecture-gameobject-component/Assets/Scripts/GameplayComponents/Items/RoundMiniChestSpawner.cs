@@ -46,6 +46,11 @@ namespace GameObjectComponent.Items
             _timeSinceLastChest = 0f;
         }
         
+        public override void OnGameStart()
+        {
+            _isChestSpawnAllowed = true;
+        }
+        
         public override void OnGameEnd()
         {
             _isChestSpawnAllowed = false;

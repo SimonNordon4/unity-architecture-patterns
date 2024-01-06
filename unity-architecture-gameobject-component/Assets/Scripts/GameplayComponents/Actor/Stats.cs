@@ -9,7 +9,6 @@ namespace GameplayComponents.Actor
     [DefaultExecutionOrder(-10)]
     public class Stats : GameplayComponent
     {
-        [SerializeField] private ActorStatsDefinition definition;
         [SerializeField] private List<Stat> stats = new();
         
         public Stat GetStat(StatType type)
@@ -17,47 +16,16 @@ namespace GameplayComponents.Actor
             return stats.FirstOrDefault(stat => stat.type == type);
         }
 
-        private void Awake()
-        {
-            LoadStatsFromDefinition();
-        }
-
         public override void OnGameStart()
         {
             ResetStats();
-            LoadStatsFromDefinition();
         }
           
-        public override void OnGameEnd()
-        {
-             
-        }
-
         private void ResetStats()
         {
             foreach(var stat in stats)
             {
                 stat.Reset();
-            }
-        }
-        
-        private void LoadStatsFromDefinition()
-        {
-            if (definition == null) return;
-            
-            foreach(var stat in stats)
-            {
-                var definitionStat = definition.stats.FirstOrDefault(s => s.type == stat.type);
-                if (definitionStat == null) continue;
-                stat.initialValue = definitionStat.initialValue;
-                stat.minimumValue = definitionStat.minimumValue;
-                stat.maximumValue = definitionStat.maximumValue;
-                stat.value = definitionStat.initialValue;
-                
-                foreach(var mod in definitionStat.modifiers)
-                {
-                    stat.AddModifier(mod);
-                }
             }
         }
 

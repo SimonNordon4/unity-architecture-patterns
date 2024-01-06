@@ -9,6 +9,5 @@ namespace GameObjectComponent.Definitions
         [Header("Prefabs")]
         public PoolableActor actorPrefab;
         public Color enemyColor;
-        public ActorStatsDefinition statsDefinition;
     }
 }

@@ -4,7 +4,8 @@ Things to cover:
 - serialized properties.
 - don't use regions
 - events.
-- decoupling.
+- Unity Events versus Actions
+- decoupling UI.
 - Single Responsibility Principle.
 - no singletons
 - no game manager

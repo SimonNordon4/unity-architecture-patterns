@@ -76,6 +76,7 @@ namespace Pools
         public void ResetAllPools()
         {
             Debug.Log("Returning all active actors");
+            OnActorReturn = null;
             ReturnAllActiveActors();
             
             foreach (var pool in _inactivePools)

@@ -7,6 +7,8 @@ using UnityEngine;
 [Serializable]
 public class Stat
 {
+    public event Action<Modifier> onModifierAdded;
+    
     public Stat(StatType newType)
     {
         type = newType;
@@ -92,6 +94,7 @@ public class Stat
     {
         modifiers.Add(modifier);
         Evaluate();
+        onModifierAdded?.Invoke(modifier);
     }
 
     private void SetDefault()
