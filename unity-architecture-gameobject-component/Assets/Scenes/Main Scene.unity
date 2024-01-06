@@ -4530,6 +4530,7 @@ MonoBehaviour:
   health: {fileID: 498857198}
   dodge: {fileID: 498857195}
   block: {fileID: 498857196}
+  <isInvincible>k__BackingField: 0
 --- !u!114 &498857198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9584,6 +9585,7 @@ GameObject:
   - component: {fileID: 1103014755}
   - component: {fileID: 1103014757}
   - component: {fileID: 1103014756}
+  - component: {fileID: 1103014759}
   m_Layer: 6
   m_Name: Combat
   m_TagString: Untagged
@@ -9685,6 +9687,21 @@ MonoBehaviour:
   target: {fileID: 1103014753}
   stats: {fileID: 9018308866812664866}
   updateInterval: 0.2
+--- !u!114 &1103014759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103014751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26d180ca92d4495a4cf5b8b6ac104d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
+  target: {fileID: 1103014753}
 --- !u!1 &1126367850
 GameObject:
   m_ObjectHideFlags: 0
@@ -122104,12 +122121,28 @@ MonoBehaviour:
   dashTime: 0.2
   stats: {fileID: 9018308866812664866}
   level: {fileID: 1358396558}
-  onDash:
+  damageHandler: {fileID: 0}
+  onDashStart:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1071674025822318585}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
+      - m_Target: {fileID: 498857197}
+        m_TargetAssemblyTypeName: GameplayComponents.Life.DamageHandler, Assembly-CSharp
+        m_MethodName: MakeInvincible
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDashEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 498857197}
+        m_TargetAssemblyTypeName: GameplayComponents.Life.DamageHandler, Assembly-CSharp
+        m_MethodName: MakeVulnerable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -8,11 +8,12 @@ namespace GameplayComponents.Life
         private DamageReceiver damageReceiver;
         [SerializeField]
         private Health health;
-
         [SerializeField]private Dodge dodge;
         private bool _hasDodgeReference = false;
         [SerializeField]private Block block;
         private bool _hasBlockReference = false;
+        
+        [field:SerializeField] public bool isInvincible { get; set; } = false;
 
         private void Start()
         {
@@ -32,6 +33,9 @@ namespace GameplayComponents.Life
         
         private void OnDamageReceived(int damageAmount)
         {
+            if(isInvincible)
+                return;
+            
             if (_hasDodgeReference)
             {
                 if (dodge.CalculateDodge())
@@ -50,6 +54,16 @@ namespace GameplayComponents.Life
             }
             
             health.TakeDamage(damageAmount);
+        }
+        
+        public void MakeInvincible()
+        {
+            isInvincible = true;
+        }
+        
+        public void MakeVulnerable()
+        {
+            isInvincible = false;
         }
     }
 }

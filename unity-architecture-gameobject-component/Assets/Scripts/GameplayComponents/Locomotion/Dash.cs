@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using GameObjectComponent.Game;
 using GameplayComponents.Actor;
+using GameplayComponents.Life;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,21 +13,26 @@ namespace GameplayComponents.Locomotion
         [SerializeField] private float dashTime = 0.2f;
         [SerializeField] private Stats stats;
         [SerializeField] private Level level;
+        [SerializeField] private DamageHandler damageHandler;
+        private bool hasDamageHandler = false;
         
         private bool _isDashing;
         private Stat _dashes;
         
-        public UnityEvent onDash = new();
+        public UnityEvent onDashStart = new();
+        public UnityEvent onDashEnd = new();
 
         private void Start()
         {
             _dashes = stats.GetStat(StatType.Dashes);
+            
+            hasDamageHandler = damageHandler != null;
         }
 
         public void DashForward()
         {
             if(_isDashing || _dashes.value <= 0) return;
-            onDash.Invoke();
+            onDashStart.Invoke();
             StartCoroutine(DashForwardCoroutine());
         }
 
@@ -56,6 +62,7 @@ namespace GameplayComponents.Locomotion
                 yield return new WaitForEndOfFrame();
             }
             
+            onDashEnd.Invoke();
             _isDashing = false;
         }
         
@@ -63,6 +70,7 @@ namespace GameplayComponents.Locomotion
         {
             StopAllCoroutines();
             _isDashing = false;
+            
         }
     }
 }
