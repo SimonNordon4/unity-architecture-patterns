@@ -11,6 +11,7 @@ Things to cover:
 - no game manager
 - testing parts of the game in isolation.
 - switch from tags to layers.
+- new input system.
 
 - no new features(yet).
 

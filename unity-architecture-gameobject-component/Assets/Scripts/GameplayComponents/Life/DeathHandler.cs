@@ -13,6 +13,7 @@ namespace GameplayComponents.Life
 
         public UnityEvent onRevived = new();
         public UnityEvent onDeath = new();
+        public Action<DeathHandler> OnDeath;
 
         private void Start()
         { 
@@ -40,6 +41,7 @@ namespace GameplayComponents.Life
             }
             
             onDeath?.Invoke();
+            OnDeath?.Invoke(this);
         }
 
         public override void OnGameStart()

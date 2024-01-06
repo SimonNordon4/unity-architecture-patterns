@@ -10,28 +10,31 @@ namespace GameObjectComponent.UI
 {
     public class UIActorPoolHealthBars : MonoBehaviour
     {
-        [SerializeField]private ActorPool _actorPool;
+        [SerializeField]private ActorPool actorPool;
         [SerializeField]private UITextPool textPool;
         [SerializeField]private Camera gameCamera;
         private readonly Dictionary<Health, TextMeshProUGUI> _healthBars = new();
         
         private void OnEnable()
         {
-            _actorPool.OnActorGet += OnActorGet;
-            _actorPool.OnActorReturn += OnActorDespawned;    
+            actorPool.OnActorGet += OnActorGet;
+            actorPool.OnActorReturn += OnActorReturn;    
         }
 
         private void OnActorGet(PoolableActor actor)
         {
-            var health = actor.GetComponent<Health>();
+            Debug.Log($"Actor {actor.name} was retrieved from the pool");
+            if(actor.TryGetComponentDeep<Health>(out var health) == false)
+                return;
             var healthBar = textPool.GetText();
             _healthBars.Add(health, healthBar);
             healthBar.transform.position = actor.transform.position;
         }
         
-        private void OnActorDespawned(PoolableActor actor)
+        private void OnActorReturn(PoolableActor actor)
         {
-            var health = actor.GetComponent<Health>();
+            if(actor.TryGetComponentDeep<Health>(out var health) == false)
+                return;
             var healthBar = _healthBars[health];
             textPool.ReturnDamageNumber(healthBar);
             _healthBars.Remove(health);
@@ -39,8 +42,8 @@ namespace GameObjectComponent.UI
 
         private void OnDisable()
         {
-            _actorPool.OnActorGet -= OnActorGet;
-            _actorPool.OnActorReturn -= OnActorDespawned;    
+            actorPool.OnActorGet -= OnActorGet;
+            actorPool.OnActorReturn -= OnActorReturn;    
         }
 
         private void Update()

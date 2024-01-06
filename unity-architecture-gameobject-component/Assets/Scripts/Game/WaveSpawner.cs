@@ -31,16 +31,6 @@ namespace GameObjectComponent.Game
         private int _totalActors = 0;
         private int _actorsReturned = 0;
         
-        private void OnEnable()
-        {
-            actionSpawner.pool.OnActorReturn += OnActorReturned;
-        }
-        
-        private void OnDisable()
-        {
-            actionSpawner.pool.OnActorReturn -= OnActorReturned;
-        }
-
         public void StartNewWave(WaveDefinition waveDefinition)
         {
             Reset();
@@ -72,7 +62,7 @@ namespace GameObjectComponent.Game
             }
         }
 
-        private void OnActorReturned(PoolableActor actor)
+        private void OnActorDied(DeathHandler actor)
         {
             _actorsReturned++;
             Debug.Log("Actor returned: Total actors returned = " + _actorsReturned + " Total actors = " + _totalActors);
@@ -80,6 +70,8 @@ namespace GameObjectComponent.Game
             {
                 OnWaveCompleted?.Invoke(actor.transform.position);
             }
+            
+            actor.OnDeath -= OnActorDied;
         }
 
         private void Update()
@@ -118,17 +110,31 @@ namespace GameObjectComponent.Game
             var actionDefinition = _currentWaveDefinition.spawnActions[randomActionIndex];
             
             // Subscribe to the enemies deaths.
-            var enemies = actionSpawner.SpawnAction(actionDefinition);
-            Debug.Log($"Spawning {enemies.Length} enemies");
+            var actors = actionSpawner.SpawnAction(actionDefinition);
+
+            foreach (var actor in actors)
+            {
+                if(actor.TryGetComponentDeep<DeathHandler>(out var deathHandler) == false)
+                    continue;
+                deathHandler.OnDeath += OnActorDied;
+            }
             _spawnIndex++;
         }
+
+
 
         private void SpawnFinaleAction()
         {
             foreach (var action in _currentWaveDefinition.bossActions)
             {
                 Debug.Log($"Spawning finale action {action.name}");
-                var enemies = actionSpawner.SpawnAction(action);
+                var actors = actionSpawner.SpawnAction(action);
+                foreach (var actor in actors)
+                {
+                    if(actor.TryGetComponentDeep<DeathHandler>(out var deathHandler) == false)
+                        continue;
+                    deathHandler.OnDeath += OnActorDied;
+                }
             }
         }
 

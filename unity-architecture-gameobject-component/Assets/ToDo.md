@@ -2,7 +2,7 @@
 
 -[x] Remove stat definitions.
 -[ ] Add Sword Melee Weapon to Character.
-- [ ] Update Player Health UI
+- [x] Update Player Health UI
 - [ ] Actor Pool Health UI
 
 ToDo 05/01/24:

@@ -26,7 +26,6 @@ namespace GameObjectComponent.Player
 
         private void OnDashPerformed(InputAction.CallbackContext obj)
         {
-            Debug.Log("Dash");
             dash.DashForward();
         }
     }
