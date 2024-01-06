@@ -20,10 +20,10 @@ namespace GameObjectComponent.Player
             // check if other is on character target layer
             if (target.targetLayer != (target.targetLayer | (1 << other.gameObject.layer))) return;
             
-            if(TryGetComponent<DamageReceiver>(out var damageReceiver))
+            if(other.TryGetComponent<DamageReceiver>(out var damageReceiver))
                 damageReceiver.TakeDamage(Mathf.RoundToInt(meleeDamage.value));
 
-            if (TryGetComponent<KnockBackReceiver>(out var knockBackReceiver))
+            if (other.TryGetComponent<KnockBackReceiver>(out var knockBackReceiver))
             {
                 // direction is equal to the direction from the enemy to the player.
                 var direction = parent.transform.position - other.transform.position;

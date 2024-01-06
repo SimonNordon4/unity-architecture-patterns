@@ -2,15 +2,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameplayComponents.Combat
+namespace GameplayComponents.Combat.Weapon
 {
     public abstract class BaseWeapon : MonoBehaviour
     {
 
-        public virtual void Attack(WeaponStatsInfo info, CombatTarget target = null)
-        {
-            
-        }
+        public abstract void Attack(WeaponStatsInfo info, CombatTarget target = null);
+
         public UnityEvent onAttack = new();
     }
 }

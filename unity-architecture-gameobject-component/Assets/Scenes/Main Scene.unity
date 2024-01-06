@@ -9586,6 +9586,7 @@ GameObject:
   - component: {fileID: 1103014757}
   - component: {fileID: 1103014756}
   - component: {fileID: 1103014759}
+  - component: {fileID: 1103014760}
   m_Layer: 6
   m_Name: Combat
   m_TagString: Untagged
@@ -9699,9 +9700,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26d180ca92d4495a4cf5b8b6ac104d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
+  weapon: {fileID: 1103014760}
   stats: {fileID: 9018308866812664866}
   target: {fileID: 1103014753}
+--- !u!114 &1103014760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103014751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1facfc83ff5a46e18d6b4245cc6b1e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  swordPivot: {fileID: 3623834106970646027}
+  stats: {fileID: 9018308866812664866}
 --- !u!1 &1126367850
 GameObject:
   m_ObjectHideFlags: 0
@@ -37007,7 +37025,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f20d008e8be170f41968bfc7c3cd365b, type: 2}
+  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -59115,7 +59133,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f20d008e8be170f41968bfc7c3cd365b, type: 2}
+  - {fileID: -5209150659612451695, guid: 41c5df23adecf68479f1e1f3cdef7de2, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -91732,7 +91750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 4258749572108575571}
-  stats: {fileID: 0}
+  stats: {fileID: 9018308866812664866}
   target: {fileID: 1103014753}
 --- !u!222 &7802792626870814562
 CanvasRenderer:

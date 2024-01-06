@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameplayComponents.Combat
+namespace GameplayComponents.Combat.Weapon
 {
     public class PistolWeapon : BaseWeapon
     {

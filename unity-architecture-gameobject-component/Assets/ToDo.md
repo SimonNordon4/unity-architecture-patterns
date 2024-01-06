@@ -1,6 +1,12 @@
-﻿ToDo 06/01/24:
+﻿ToDo 07/01/21:
 
-- [ ] Add Sword Melee Weapon to Character.
+- [x] Sword swing time.
+- [x] Sword Distance.
+- [ ] Remove stats from sword and use Weapon Info.
+
+ToDo 06/01/24:
+
+- [x] Add Sword Melee Weapon to Character.
 - [x] Fix Max Health going below zero.
 - [x] Fix death particle color.
 - [x] Fix issue with new projectiles from the pool. 
