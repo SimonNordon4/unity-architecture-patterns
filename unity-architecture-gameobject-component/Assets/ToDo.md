@@ -1,9 +1,12 @@
 ﻿ToDo 06/01/24:
 
--[x] Remove stat definitions.
--[ ] Add Sword Melee Weapon to Character.
+- [ ] Add Sword Melee Weapon to Character.
+- [ ] Fix death particle color.
+- [x] Fix issue with new projectiles from the pool. 
+- [x] Remove stat definitions.
+
 - [x] Update Player Health UI
-- [ ] Actor Pool Health UI
+- [x] Actor Pool Health UI
 
 ToDo 05/01/24:
 

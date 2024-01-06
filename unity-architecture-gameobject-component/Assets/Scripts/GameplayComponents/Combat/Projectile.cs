@@ -26,6 +26,12 @@ namespace GameplayComponents.Combat
             _projectileTransform = transform;
         }
 
+        // We need to set the time alive back to zero when it's reset, otherwise it instantly dies.
+        private void OnEnable()
+        {
+            _timeAlive = 0f;
+        }
+
         public void SetPool(ProjectilePool pool)
         {
             _pool = pool;
@@ -40,7 +46,7 @@ namespace GameplayComponents.Combat
             _knockBackForce = knockBackForce;
             _pierceValue = pierce;
         }
-
+        
         private void Update()
         {
             if (_timeAlive < lifeTime)
@@ -78,8 +84,6 @@ namespace GameplayComponents.Combat
 
         private void EndProjectile()
         {
-            // TODO: Play death animation, then return to pool
-            
             if (_pool != null)
             {
                 _pool.Return(this);

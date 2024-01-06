@@ -10,6 +10,8 @@ namespace GameplayComponents.Actor
     {
         [SerializeField] private ActorDefinition definition;
         [SerializeField] private LayerMask interruptLayer;
+        [SerializeField] private LayerMask spawningLayer;
+        private LayerMask _originalLayer;
         [SerializeField] private GameplayStateController gameplayStateController;
         [SerializeField] private GameObject enemyMesh;
         [SerializeField] private ParticleSystem spawnInParticle;
@@ -26,6 +28,11 @@ namespace GameplayComponents.Actor
             deathParticlePool = newDeathParticlePool;
         }
 
+        private void Awake()
+        {
+            _originalLayer = gameObject.layer;
+        }
+
         private void Start()
         {
             var main = spawnInParticle.main; 
@@ -38,6 +45,7 @@ namespace GameplayComponents.Actor
             spawnInParticle.Play();
             enemyMesh.SetActive(false);
             StopAllCoroutines();
+            gameObject.layer = spawningLayer;
             StartCoroutine(SpawnIn());
         }
 
@@ -63,11 +71,14 @@ namespace GameplayComponents.Actor
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
             gameplayStateController.EnableActorComponents();
             _isSpawned = true;
+            gameObject.layer = _originalLayer;
+            onSpawned.Invoke();
             enemyMesh.SetActive(true);
         }
 
         private void CancelSpawnIn()
         {
+            gameObject.layer = _originalLayer;
             onCancelled.Invoke();
             StopAllCoroutines();
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);

@@ -1,6 +1,7 @@
 ﻿using GameObjectComponent.Definitions;
 using Pools;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GameplayComponents.Actor
 {
@@ -8,6 +9,9 @@ namespace GameplayComponents.Actor
     {
         private ActorPool _pool;
         private ActorDefinition _definition;
+        
+        public UnityEvent onActorGet = new();
+        public UnityEvent onActorReturn = new();
 
         public void Construct(ActorPool pool, ActorDefinition definition)
         {

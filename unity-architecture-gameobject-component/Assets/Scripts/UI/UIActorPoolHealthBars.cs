@@ -27,7 +27,9 @@ namespace GameObjectComponent.UI
             if(actor.TryGetComponentDeep<Health>(out var health) == false)
                 return;
             var healthBar = textPool.GetText();
-            _healthBars.Add(health, healthBar);
+            // Update the existing health bar
+            // Add a new health bar
+            _healthBars[health] = healthBar;
             healthBar.transform.position = actor.transform.position;
         }
         
@@ -57,6 +59,7 @@ namespace GameObjectComponent.UI
                 
                 healthBar.Value.transform.position = screenPosition;
                 var currentHealth = healthBar.Key.currentHealth;
+                Debug.Log($"Current Health for {healthBar.Key.gameObject.name} is {currentHealth}");
                 healthBar.Value.text = currentHealth > 0 ? currentHealth.ToString() : "";
             }
         }

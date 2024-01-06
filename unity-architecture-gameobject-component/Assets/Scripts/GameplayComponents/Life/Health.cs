@@ -69,6 +69,12 @@ namespace GameplayComponents.Life
             
             OnHealthDepleted?.Invoke();
         }
+
+        public void SetToMaxHealth()
+        {
+            Debug.Log("Setting health to max health");
+            currentHealth = maxHealth;
+        }
         
         public override void OnGameStart()
         {

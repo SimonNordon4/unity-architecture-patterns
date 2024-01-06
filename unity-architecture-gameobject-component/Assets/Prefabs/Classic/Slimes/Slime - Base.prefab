@@ -72,6 +72,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82909656621f4bbab8987d389edcb655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onActorGet:
+    m_PersistentCalls:
+      m_Calls: []
+  onActorReturn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &6500748167159065044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +116,19 @@ MonoBehaviour:
         m_CallState: 2
   onSpawned:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3745461181196186973}
+        m_TargetAssemblyTypeName: GameplayComponents.Life.Health, Assembly-CSharp
+        m_MethodName: SetToMaxHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3347457930279600117
 MonoBehaviour:
   m_ObjectHideFlags: 0

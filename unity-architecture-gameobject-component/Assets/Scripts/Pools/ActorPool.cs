@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using GameObjectComponent.Definitions;
 using GameplayComponents;
 using GameplayComponents.Actor;
+using GameplayComponents.Life;
 using UnityEngine;
 
 namespace Pools
@@ -39,16 +40,16 @@ namespace Pools
                 actor.transform.position = position;
                 actor.gameObject.SetActive(startActive);
             }
-            
+
             OnActorGet?.Invoke(actor);
-            
             _activeActors.Add(actor);
-            
+            actor.onActorGet?.Invoke();
             return actor;
         }
 
         public void Return(PoolableActor poolableActor, ActorDefinition definition)
         {
+            poolableActor.onActorReturn?.Invoke();
             _activeActors.Remove(poolableActor);
             
             poolableActor.gameObject.SetActive(false);
