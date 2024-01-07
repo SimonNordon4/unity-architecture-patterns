@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameObjectComponent.Items;
 using UnityEngine;
 
 namespace GameObjectComponent.Definitions
@@ -16,6 +17,8 @@ namespace GameObjectComponent.Definitions
         [field:SerializeField] public int decay {get;private set;} = 5;
         [field:SerializeField] public Vector2 healthMultiplier {get;private set;} = new Vector2(1, 1);
         [field:SerializeField] public Vector2 damageMultiplier {get;private set;} = new Vector2(1, 1);
+        
+        [field:SerializeField] public ChestType rewardChest {get;private set;} = ChestType.Medium;
         
         public int TotalActorsCount()
         {

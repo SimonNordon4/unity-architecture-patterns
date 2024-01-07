@@ -36,6 +36,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4666907214947881152, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.938
+      objectReference: {fileID: 0}
     - target: {fileID: 4751354726605365388, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.07075471
@@ -90,7 +94,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f481f5953e42635419c564cc3c563fbb, type: 2}
     - target: {fileID: 6674586655066841167, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6674586655066841167, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_LocalPosition.x
@@ -164,6 +168,26 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 931774382987345910, guid: 7637a2fb56a04ab4381f5b01c224fe67, type: 3}
+    - target: {fileID: 8703832461759447402, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.1033
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703832461759447402, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.1033
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703832461759447402, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.1033
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703832461759447402, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.078
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703832461759447402, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.109
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

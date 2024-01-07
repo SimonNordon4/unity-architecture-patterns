@@ -1,5 +1,8 @@
 ﻿ToDo 07/01/21:
 
+- [ ] Recreate first 2 waves.
+- [ ] Create Elite Slimes.
+- [ ] Create Fast Slime.
 - [ ] Fix Sword Distance.
 - [x] Add sword swing time adjustments.
 - [x] Sword swing time.

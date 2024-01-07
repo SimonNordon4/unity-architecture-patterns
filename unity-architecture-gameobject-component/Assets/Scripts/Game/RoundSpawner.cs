@@ -10,6 +10,7 @@ namespace GameObjectComponent.Game
     {
         [SerializeField]private WaveSpawner waveSpawner;
         private int _currentWaveIndex = 0;
+        private WaveDefinition _currentWaveDefinition;
         [SerializeField] private ChestSpawner chestSpawner;
         [SerializeField] private GameState gameState;
         [SerializeField] private RoundDefinition roundDefinition;
@@ -26,8 +27,8 @@ namespace GameObjectComponent.Game
         public void StartRoundSpawner()
         {
             Debug.Log($"Starting Round Spawner on wave {roundDefinition.waves[_currentWaveIndex].name}");
-            var currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
-            waveSpawner.StartNewWave(currentWaveDefinition);
+            _currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
+            waveSpawner.StartNewWave(_currentWaveDefinition);
         }
 
         private void OnWaveCompleted(Vector3 deathPosition)
@@ -40,7 +41,7 @@ namespace GameObjectComponent.Game
             }
             
             Debug.Log("Spawning boss chest at death position");
-            var bossChest = chestSpawner.SpawnChest(ChestType.Medium, deathPosition);
+            var bossChest = chestSpawner.SpawnChest(_currentWaveDefinition.rewardChest, deathPosition);
             bossChest.onPickedUp.AddListener(OnBossChestPickedUp);
         }
 

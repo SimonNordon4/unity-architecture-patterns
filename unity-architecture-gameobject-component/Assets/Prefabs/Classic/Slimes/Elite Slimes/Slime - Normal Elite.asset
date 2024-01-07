@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4e3a89883f7435e9b6f0893385cd20f, type: 3}
-  m_Name: Fast 5
+  m_Script: {fileID: 11500000, guid: 1a6a5658a4be4bde83069cfa7b43ee0e, type: 3}
+  m_Name: Slime - Normal Elite
   m_EditorClassIdentifier: 
-  <definition>k__BackingField: {fileID: 11400000, guid: 979d3b6d23bd7b64fb4c4bd9a79877c8, type: 2}
-  <numberOfEnemiesToSpawn>k__BackingField: 5
-  <actionType>k__BackingField: 0
+  actorPrefab: {fileID: 4882685387434509663, guid: b1a29f06b57351b4ba652711168ed288, type: 3}
+  enemyColor: {r: 0.2028302, g: 0.8113208, b: 0.49785593, a: 1}

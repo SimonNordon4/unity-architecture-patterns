@@ -12,6 +12,7 @@ Things to cover:
 - testing parts of the game in isolation.
 - switch from tags to layers.
 - new input system.
+- proper prefab usage.
 
 - no new features(yet).
 
