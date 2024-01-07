@@ -1,8 +1,10 @@
 ﻿ToDo 07/01/21:
 
+- [ ] Fix Sword Distance.
+- [x] Add sword swing time adjustments.
 - [x] Sword swing time.
 - [x] Sword Distance.
-- [ ] Remove stats from sword and use Weapon Info.
+- [x] Remove stats from sword and use Weapon Info.
 
 ToDo 06/01/24:
 

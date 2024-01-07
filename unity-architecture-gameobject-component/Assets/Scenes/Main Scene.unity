@@ -9719,7 +9719,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   swordPivot: {fileID: 3623834106970646027}
+  sword: {fileID: 7771137771855483806}
   stats: {fileID: 9018308866812664866}
+  swordArc: 90
+  swingTime: 0.2
 --- !u!1 &1126367850
 GameObject:
   m_ObjectHideFlags: 0
@@ -91750,8 +91753,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 4258749572108575571}
-  stats: {fileID: 9018308866812664866}
-  target: {fileID: 1103014753}
 --- !u!222 &7802792626870814562
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -122005,7 +122006,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
   - name: RangedAttackSpeed
-    initialValue: 11
+    initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 0
@@ -122054,8 +122055,8 @@ MonoBehaviour:
     <modifiers>k__BackingField: []
     value: 1
   - name: MeleeRange
-    initialValue: 1.5
-    minimumValue: 0
+    initialValue: 3
+    minimumValue: 2
     maximumValue: Infinity
     type: 7
     <modifiers>k__BackingField: []

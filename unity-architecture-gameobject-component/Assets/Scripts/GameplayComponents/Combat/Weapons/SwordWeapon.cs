@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using GameObjectComponent.Game;
+using GameObjectComponent.Player;
 using GameplayComponents.Actor;
 using UnityEngine;
 
@@ -10,18 +11,22 @@ namespace GameplayComponents.Combat.Weapon
         private bool _isSwordAttacking = false;
         private bool _isSwingingLeftToRight = true;
         [SerializeField] private Transform swordPivot;
+        [SerializeField] private Sword sword;
         [SerializeField] private Stats stats;
+        [SerializeField] private float swordArc = 60f;
+        [SerializeField] private float swingTime = 0.2f;
         private Stat meleeRange => stats.GetStat(StatType.MeleeRange);
         
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
+            if (_isSwordAttacking) return;
+            sword.Set(info, target);
             StartCoroutine(SwordSwing(target));
         }
         
         private IEnumerator SwordSwing(CombatTarget target)
         {
             _isSwordAttacking = true;
-            var swordArc = 60f;
             // Enable the sword gameobject.
             swordPivot.gameObject.SetActive(true);
             swordPivot.localScale = new Vector3(1f, 1f, meleeRange.value);
@@ -48,7 +53,6 @@ namespace GameplayComponents.Combat.Weapon
             }
             
             var total180Arcs = Mathf.FloorToInt(swordArc / 180f);
-            var swingTime = meleeRange.value * 0.12f;
 
             if (total180Arcs > 0)
             {
@@ -92,6 +96,12 @@ namespace GameplayComponents.Combat.Weapon
             _isSwingingLeftToRight = !_isSwingingLeftToRight;
         
             // Disable the sword gameobject.
+            swordPivot.gameObject.SetActive(false);
+        }
+        
+        public override void OnGameEnd()
+        {
+            StopAllCoroutines();
             swordPivot.gameObject.SetActive(false);
         }
     }
