@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1755389881825893665, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: definition
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e0da35b4103da1419fb484fe5083c33, type: 2}
     - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: stats.Array.data[5].value
       value: 3
@@ -23,6 +27,10 @@ PrefabInstance:
     - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: stats.Array.data[9].initialValue
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: stats.Array.data[10].initialValue
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4666907214947881152, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_LocalScale.x

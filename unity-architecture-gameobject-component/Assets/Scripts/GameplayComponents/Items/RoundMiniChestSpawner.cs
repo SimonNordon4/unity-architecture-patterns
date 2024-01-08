@@ -31,6 +31,7 @@ namespace GameObjectComponent.Items
 
         private void SpawnMiniChest()
         {
+            Debug.Log("Spawning Mini Chest");
             // get a random location in the level minus the buffer
             var randomX = Random.Range(edgeBuffer.x - level.bounds.x, level.bounds.x - edgeBuffer.x);
             var randomZ = Random.Range(edgeBuffer.y - level.bounds.y, level.bounds.y - edgeBuffer.y);
@@ -49,12 +50,13 @@ namespace GameObjectComponent.Items
         public override void OnGameStart()
         {
             _isChestSpawnAllowed = true;
+            _timeSinceLastChest = 0f;
         }
         
         public override void OnGameEnd()
         {
             _isChestSpawnAllowed = false;
-            _timeSinceLastChest = miniChestSpawnRate;
+            _timeSinceLastChest = 0f;
         }
     }
 }

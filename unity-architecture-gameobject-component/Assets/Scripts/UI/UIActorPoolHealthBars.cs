@@ -60,7 +60,6 @@ namespace GameObjectComponent.UI
                 
                 healthBar.Value.transform.position = screenPosition;
                 var currentHealth = healthBar.Key.currentHealth;
-                Debug.Log($"Current Health for {healthBar.Key.gameObject.name} is {currentHealth}");
                 healthBar.Value.text = currentHealth > 0 ? currentHealth.ToString() : "";
             }
         }

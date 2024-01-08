@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GameplayComponents.Actor
 {
-    public class InventoryHandler : GameplayComponent
+    public class InventoryHandler : MonoBehaviour
     {
         [SerializeField]private Inventory inventory;
         [SerializeField]private Stats stats;

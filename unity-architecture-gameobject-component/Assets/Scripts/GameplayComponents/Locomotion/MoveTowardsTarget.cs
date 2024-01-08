@@ -29,6 +29,8 @@ namespace GameplayComponents.Locomotion
                 velocity = Vector3.zero;
             }
 
+            Debug.Log("avoidance magnitude: " + avoidance.avoidanceDirection.magnitude);
+            
             velocity += avoidance.avoidanceDirection;
             
             movement.SetLookDirection(lookDirection);

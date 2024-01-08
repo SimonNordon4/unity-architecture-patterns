@@ -1,9 +1,14 @@
-﻿ToDo 07/01/21:
+﻿ToDo 08/01/24:
 
-- [ ] Recreate first 2 waves.
-- [ ] Create Elite Slimes.
-- [ ] Create Fast Slime.
-- [ ] Fix Sword Distance.
+- [x] Fix Enemy Avoidance.
+
+ToDo 07/01/24:
+
+- [x] Fix Particle Pool Spawn.
+- [x] Recreate first 2 waves.
+- [x] Create Elite Slimes.
+- [x] Create Fast Slime.
+- [x] Fix Sword Distance.
 - [x] Add sword swing time adjustments.
 - [x] Sword swing time.
 - [x] Sword Distance.
