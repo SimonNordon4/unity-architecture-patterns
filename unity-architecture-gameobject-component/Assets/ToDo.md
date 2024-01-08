@@ -1,6 +1,9 @@
 ﻿ToDo 08/01/24:
 
-- [ ] Add Projectile Factory.
+- [x] Tweak Ranged Enemy. (move speed)
+- [ ] Create Wave 4
+- [x] Improve Enemy Maintain Distance.
+- [x] Add Projectile Factory.
 - [x] Fix Enemy Avoidance.
 
 ToDo 07/01/24:

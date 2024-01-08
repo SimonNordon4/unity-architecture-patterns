@@ -72,6 +72,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -7785705997922097250, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: 5965828207154200621, guid: f5289b38c1f883d47b5a926bb228bb51, type: 3}
+      propertyPath: projectileSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -145,3 +149,4 @@ MonoBehaviour:
   stats: {fileID: 1900607852146993327}
   target: {fileID: 4559137244262129388}
   avoidance: {fileID: 6239697885802250139}
+  acceleration: 2
