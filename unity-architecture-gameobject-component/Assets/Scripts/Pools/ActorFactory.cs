@@ -15,6 +15,7 @@ namespace Pools
         [SerializeField] private Level level;
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
+        [SerializeField] private ProjectilePool projectilePool;
 
         public PoolableActor Create(ActorDefinition actorDefinition, Vector3 position = new(), bool startActive = true)
         {
@@ -36,6 +37,9 @@ namespace Pools
             
             if(actor.TryGetComponentDeep<ActorSpawnDelay>(out var spawnDelay))
                 spawnDelay.Construct(deathParticlePool);
+            
+            if(actor.TryGetComponentDeep<ProjectilePool>(out var bulletPool))
+                bulletPool.Construct(projectilePool);
             
             actor.gameObject.SetActive(true);
 

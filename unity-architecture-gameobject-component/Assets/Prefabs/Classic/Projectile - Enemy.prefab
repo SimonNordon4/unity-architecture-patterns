@@ -13,14 +13,15 @@ GameObject:
   - component: {fileID: 3189901625567047071}
   - component: {fileID: 340157341603201498}
   - component: {fileID: 8924414620005148971}
-  - component: {fileID: -2067797747040192753}
+  - component: {fileID: 6661808799331926425}
+  - component: {fileID: 4661361579235757803}
   m_Layer: 0
   m_Name: Projectile - Enemy
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1569568344293885201
 Transform:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-2067797747040192753
+--- !u!114 &6661808799331926425
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,17 +145,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 652769875280677792}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37909ee19846194988a70f4264f9410, type: 3}
+  m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 3
-  damage: 1
-  projectileLifetime: 15
-  knockBackIntensity: 0
-  pierceCount: 1
-  canAttackPlayer: 1
-  canAttackEnemy: 0
-  hitEffect: {fileID: 0}
+  state: {fileID: 0}
+--- !u!114 &4661361579235757803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652769875280677792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 412dcb4e49254f22ad9aa9215cd37618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTime: 5
+  <projectileDefinition>k__BackingField: {fileID: 11400000, guid: 2b629371b1c806c43a05d98561fc20e7, type: 2}
 --- !u!1 &907859431583672324
 GameObject:
   m_ObjectHideFlags: 0

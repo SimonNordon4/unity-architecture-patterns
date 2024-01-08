@@ -1,5 +1,6 @@
 ﻿ToDo 08/01/24:
 
+- [ ] Add Projectile Factory.
 - [x] Fix Enemy Avoidance.
 
 ToDo 07/01/24:

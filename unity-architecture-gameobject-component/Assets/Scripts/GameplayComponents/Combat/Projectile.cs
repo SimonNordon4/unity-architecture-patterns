@@ -1,13 +1,13 @@
 ﻿using GameObjectComponent.Game;
 using GameplayComponents.Life;
 using GameplayComponents.Locomotion;
+using Pools;
 using UnityEngine;
 
 namespace GameplayComponents.Combat
 {
     public class Projectile : GameplayComponent
     {
-        private GameState _state;
         private ProjectilePool _pool;
         
         private LayerMask _targetLayer;
@@ -17,7 +17,8 @@ namespace GameplayComponents.Combat
         private float _pierceValue;
 
         [SerializeField] private float lifeTime;
-
+        [field:SerializeField] public ProjectileDefinition projectileDefinition { get; private set; }
+ 
         private Transform _projectileTransform;
         private float _timeAlive = 0f;
 
@@ -32,7 +33,7 @@ namespace GameplayComponents.Combat
             _timeAlive = 0f;
         }
 
-        public void SetPool(ProjectilePool pool)
+        public void Construct(ProjectilePool pool)
         {
             _pool = pool;
         }
@@ -86,7 +87,8 @@ namespace GameplayComponents.Combat
         {
             if (_pool != null)
             {
-                _pool.Return(this);
+                Debug.Log("Returning projectile with definition: " + projectileDefinition);
+                _pool.Return(this, projectileDefinition);
                 return;
             }
             Destroy(gameObject);

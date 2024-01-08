@@ -1,16 +1,19 @@
-﻿using UnityEngine;
+﻿using Pools;
+using UnityEngine;
 
 namespace GameplayComponents.Combat.Weapon
 {
     public class PistolWeapon : BaseWeapon
     {
         [SerializeField]private ProjectilePool projectilePool;
+        [SerializeField]private ProjectileDefinition projectileDefinition;
         [SerializeField]private Transform projectileSpawnPoint;
         [SerializeField]private float projectileSpeed = 10f;
         
+        
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
-            var projectile = projectilePool.Get(projectileSpawnPoint.position, target.targetDirection);
+            var projectile = projectilePool.Get(projectileDefinition, projectileSpawnPoint.position, target.targetDirection);
             
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
             onAttack.Invoke();

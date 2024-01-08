@@ -29,7 +29,7 @@ namespace Pools
 
             if (queue.Count == 0)
             {
-                actor = CreateEnemy(definition, position);
+                actor = CreateActor(definition, position);
                 actor.Construct(this, definition);
                 actor.transform.position = position;
                 actor.gameObject.SetActive(startActive);
@@ -60,7 +60,7 @@ namespace Pools
             _inactivePools[definition].Enqueue(poolableActor);
         }
 
-        private PoolableActor CreateEnemy(ActorDefinition definition, Vector3 position)
+        private PoolableActor CreateActor(ActorDefinition definition, Vector3 position)
         {
             var newEnemy = factory.Create(definition, position);
             return newEnemy;
