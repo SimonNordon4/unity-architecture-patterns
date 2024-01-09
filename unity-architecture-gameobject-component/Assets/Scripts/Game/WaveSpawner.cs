@@ -28,14 +28,15 @@ namespace GameObjectComponent.Game
         private float[] _actionTimings;
 
         private bool _waveFinaleActionSpawned = false;
-        private int _totalActors = 0;
-        private int _actorsReturned = 0;
+        private int _totalActorsInWave = 0;
+        private int _actorsDied = 0;
         
         public void StartNewWave(WaveDefinition waveDefinition)
         {
             Reset();
             _currentWaveDefinition = waveDefinition;
-            _totalActors = _currentWaveDefinition.TotalActorsCount();
+            _totalActorsInWave = _currentWaveDefinition.TotalActorsCount();
+            Debug.Log("Starting Wave with " + _totalActorsInWave + " actors.");
             GenerateActionTimings();
             _waveStarted = true;
         }
@@ -43,19 +44,19 @@ namespace GameObjectComponent.Game
         
         public void Reset()
         {
-            _totalActors = 0;
+            _totalActorsInWave = 0;
             _currentWaveDefinition = null;
             _waveStarted = false;
             _waveFinaleActionSpawned = false;
             _spawnIndex = 0;
             _waveTime = 0;
-            _actorsReturned = 0;
+            _actorsDied = 0;
             _actionTimings = null;
         }
 
         private void GenerateActionTimings()
         {
-            _actionTimings = new float[_totalActors];
+            _actionTimings = new float[_currentWaveDefinition.normalEnemies];
             for (var i = 0; i < _actionTimings.Length; i++)
             {
                 _actionTimings[i] = (float)i / _actionTimings.Length * _currentWaveDefinition.waveDuration;
@@ -64,10 +65,12 @@ namespace GameObjectComponent.Game
 
         private void OnActorDied(DeathHandler actor)
         {
-            _actorsReturned++;
-            Debug.Log("Actor returned: Total actors returned = " + _actorsReturned + " Total actors = " + _totalActors);
-            if (_actorsReturned >= _totalActors)
+            _actorsDied++;
+            Debug.Log("Actor returned: Total actors returned = " + _actorsDied + " Total actors = " + _totalActorsInWave);
+            if (_actorsDied >= _totalActorsInWave)
             {
+                Debug.Log("Wave Completed, total actors killed is equal to total actors.");
+                Debug.Log("Actors Returned: " + _actorsDied + " Total Actors: " + _totalActorsInWave);
                 OnWaveCompleted?.Invoke(actor.transform.position);
             }
             
@@ -108,7 +111,8 @@ namespace GameObjectComponent.Game
             var randomActionIndex = Random.Range(0, _currentWaveDefinition.spawnActions.Count);
             var actionDefinition = _currentWaveDefinition.spawnActions[randomActionIndex];
             SpawnActors(actionDefinition);
-            _spawnIndex++;
+            // This allows us to skip over each theoretical enemy spawn.
+            _spawnIndex += actionDefinition.numberOfEnemiesToSpawn;
         }
 
         private void SpawnFinaleAction()
