@@ -92,7 +92,6 @@ namespace GameObjectComponent.Game
         {
             if(_spawnIndex >= _currentWaveDefinition.normalEnemies) return;
             if (_waveTime <= _actionTimings[_spawnIndex]) return;
-            Debug.Log($"Spawning Enemy {_spawnIndex} of {_totalActors} at wave time {_waveTime}");
             SpawnAction();
         }
 
@@ -108,34 +107,73 @@ namespace GameObjectComponent.Game
         {
             var randomActionIndex = Random.Range(0, _currentWaveDefinition.spawnActions.Count);
             var actionDefinition = _currentWaveDefinition.spawnActions[randomActionIndex];
-            
-            // Subscribe to the enemies deaths.
-            var actors = actionSpawner.SpawnAction(actionDefinition);
-
-            foreach (var actor in actors)
-            {
-                if(actor.TryGetComponentDeep<DeathHandler>(out var deathHandler) == false)
-                    continue;
-                deathHandler.OnDeath += OnActorDied;
-            }
+            SpawnActors(actionDefinition);
             _spawnIndex++;
         }
-
-
 
         private void SpawnFinaleAction()
         {
             foreach (var action in _currentWaveDefinition.bossActions)
             {
-                Debug.Log($"Spawning finale action {action.name}");
-                var actors = actionSpawner.SpawnAction(action);
-                foreach (var actor in actors)
-                {
-                    if(actor.TryGetComponentDeep<DeathHandler>(out var deathHandler) == false)
-                        continue;
-                    deathHandler.OnDeath += OnActorDied;
-                }
+                SpawnActors(action);
             }
+        }
+
+        private void SpawnActors(SpawnActionDefinition actionDefinition)
+        {
+            // Subscribe to the enemies deaths.
+            var actors = actionSpawner.SpawnAction(actionDefinition);
+
+            foreach (var actor in actors)
+            {
+                if (actor.TryGetComponentDeep<DeathHandler>(out var deathHandler) == false)
+                {
+                    deathHandler.OnDeath += OnActorDied;    
+                }
+
+                if (!actor.TryGetComponent<Stats>(out var stats)) continue;
+                ApplyWaveHealthModifier(stats);
+                ApplyWaveDamageModifier(stats);
+            }
+        }
+        
+        private void ApplyWaveHealthModifier(Stats stats)
+        {
+            var health = stats.GetStat(StatType.MaxHealth);
+            health.Reset();
+            
+            // apply health modifiers.
+            var healthPercentage = Random.Range(_currentWaveDefinition.healthMultiplier.x,
+                _currentWaveDefinition.healthMultiplier.y);
+
+            var healthMod = new Modifier
+            {
+                modifierType = ModifierType.Percentage,
+                modifierValue = healthPercentage
+            };
+                    
+            health.AddModifier(healthMod);
+        }
+
+        private void ApplyWaveDamageModifier(Stats stats)
+        {
+            var rangedDamage = stats.GetStat(StatType.RangedDamage);
+            var meleeDamage = stats.GetStat(StatType.MeleeDamage);
+            
+            rangedDamage.Reset();
+            meleeDamage.Reset();
+            // apply health modifiers.
+            var damagePercentage = Random.Range(_currentWaveDefinition.healthMultiplier.x,
+                _currentWaveDefinition.healthMultiplier.y);
+
+            var damageMod = new Modifier
+            {
+                modifierType = ModifierType.Percentage,
+                modifierValue = damagePercentage
+            };
+                    
+            rangedDamage.AddModifier(damageMod);
+            meleeDamage.AddModifier(damageMod);
         }
 
         public override void OnGameEnd()
