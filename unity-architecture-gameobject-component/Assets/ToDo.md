@@ -1,7 +1,7 @@
 ﻿ToDo 09/01/24:
 
-- [ ] Create Elite Projectile.
-- [ ] Finish remaining Waves.
+- [ ] Create smart pistol.
+- [x] Create Elite Projectile.
 - [x] Create Charger Wanderer / Elite
 - [x] Create Ranged Wanderer / Elite
 - [x] Create Wanderer / Elite
