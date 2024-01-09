@@ -33,7 +33,7 @@ namespace GameplayComponents.Locomotion
             velocity += avoidance.avoidanceDirection;
             
             movement.SetLookDirection(lookDirection);
-            movement.AddVelocity(velocity);
+            movement.SetVelocity(velocity);
         }
     }
 }
