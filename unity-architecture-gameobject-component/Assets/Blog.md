@@ -13,6 +13,8 @@ Things to cover:
 - switch from tags to layers.
 - new input system.
 - proper prefab usage.
+- It's really easy to violate Single Authority.
+- Transferring Data between scenes is hard.
 
 - no new features(yet).
 

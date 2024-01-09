@@ -1,7 +1,15 @@
-﻿ToDo 08/01/24:
+﻿ToDo 09/01/24:
+
+- [ ] Fix Round Spawner bug for round 3.
+- [x] Create Charger (1 hour)
+- [x] Create Elite Charger
+- [x] Create Wave 5
+- [x] Create Wave 6
+
+ToDo 08/01/24:
 
 - [x] Tweak Ranged Enemy. (move speed)
-- [ ] Create Wave 4
+- [x] Create Wave 4
 - [x] Improve Enemy Maintain Distance.
 - [x] Add Projectile Factory.
 - [x] Fix Enemy Avoidance.
