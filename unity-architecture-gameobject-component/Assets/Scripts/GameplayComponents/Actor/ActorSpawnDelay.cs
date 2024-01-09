@@ -92,7 +92,6 @@ namespace GameplayComponents.Actor
 
         public void PlayDeathParticle()
         {
-            Debug.Log("Play death particle for: " + gameObject.name);
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
         }
     }

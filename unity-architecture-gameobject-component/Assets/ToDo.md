@@ -1,6 +1,11 @@
 ﻿ToDo 09/01/24:
 
-- [ ] Fix Round Spawner bug for round 3.
+- [ ] Create Elite Projectile.
+- [ ] Finish remaining Waves.
+- [x] Create Charger Wanderer / Elite
+- [x] Create Ranged Wanderer / Elite
+- [x] Create Wanderer / Elite
+- [x] Fix Round Spawner bug for round 3.
 - [x] Create Charger (1 hour)
 - [x] Create Elite Charger
 - [x] Create Wave 5

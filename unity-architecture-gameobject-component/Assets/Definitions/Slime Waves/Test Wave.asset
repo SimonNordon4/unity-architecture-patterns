@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c2b5a32913648eb8565cf921ea5823f, type: 3}
-  m_Name: Ranged Test Wave
+  m_Name: Test Wave
   m_EditorClassIdentifier: 
-  normalEnemies: 2
-  <waveDuration>k__BackingField: 15
+  normalEnemies: 5
+  <waveDuration>k__BackingField: 5
   <spawnActions>k__BackingField:
-  - {fileID: 11400000, guid: 66a1e6b6ee94e1e4fa871958d70feb58, type: 2}
+  - {fileID: 11400000, guid: b6f120dc51fe52b43a284914149cc4f0, type: 2}
   <bossActions>k__BackingField:
-  - {fileID: 11400000, guid: 66a1e6b6ee94e1e4fa871958d70feb58, type: 2}
+  - {fileID: 11400000, guid: f1e8cf7c7393b7049b22090c46bb89c6, type: 2}
   <idealEnemiesAlive>k__BackingField: 5
   <decay>k__BackingField: 3
   <healthMultiplier>k__BackingField: {x: 1, y: 1}
