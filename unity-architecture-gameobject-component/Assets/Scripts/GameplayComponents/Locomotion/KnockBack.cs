@@ -4,13 +4,21 @@ using UnityEngine;
 
 namespace GameplayComponents.Locomotion
 {
-    public class KnockBack : MonoBehaviour
+    public class KnockBack : GameplayComponent
     {
         [SerializeField] private float knockBackFactor = 1f;
         [SerializeField] private GameplayComponent defaultMovement;
         [SerializeField] private Movement movement;
         [SerializeField] private KnockBackReceiver knockBackReceiver;
         [SerializeField] private Transform _transform;
+
+        [field:SerializeField]public bool canBeKnockedBack { get; set; } = true;
+        private bool _initialCanKnockBack;
+
+        private void Start()
+        {
+            _initialCanKnockBack = canBeKnockedBack;
+        }
 
         private void OnEnable()
         {
@@ -24,6 +32,7 @@ namespace GameplayComponents.Locomotion
 
         private void OnKnockBack(Vector3 knockBackVector)
         {
+            if(canBeKnockedBack == false) return;
             if(knockBackFactor <= 0) return;
             StartCoroutine(KnockBackRoutine(knockBackVector));
         }
@@ -56,6 +65,11 @@ namespace GameplayComponents.Locomotion
             }
             
             defaultMovement.enabled = true;
+        }
+
+        public override void OnGameStart()
+        {
+            canBeKnockedBack = _initialCanKnockBack;
         }
     }
 }

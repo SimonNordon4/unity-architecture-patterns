@@ -126,14 +126,16 @@ namespace GameObjectComponent.Game
 
             foreach (var actor in actors)
             {
-                if (actor.TryGetComponentDeep<DeathHandler>(out var deathHandler) == false)
+                if (actor.TryGetComponentDeep<DeathHandler>(out var deathHandler))
                 {
                     deathHandler.OnDeath += OnActorDied;    
                 }
 
-                if (!actor.TryGetComponent<Stats>(out var stats)) continue;
-                ApplyWaveHealthModifier(stats);
-                ApplyWaveDamageModifier(stats);
+                if (actor.TryGetComponent<Stats>(out var stats))
+                {
+                    ApplyWaveHealthModifier(stats);
+                    ApplyWaveDamageModifier(stats);
+                }
             }
         }
         
@@ -163,8 +165,8 @@ namespace GameObjectComponent.Game
             rangedDamage.Reset();
             meleeDamage.Reset();
             // apply health modifiers.
-            var damagePercentage = Random.Range(_currentWaveDefinition.healthMultiplier.x,
-                _currentWaveDefinition.healthMultiplier.y);
+            var damagePercentage = Random.Range(_currentWaveDefinition.damageMultiplier.x,
+                _currentWaveDefinition.damageMultiplier.y);
 
             var damageMod = new Modifier
             {

@@ -87,7 +87,6 @@ namespace GameplayComponents.Combat
         {
             if (_pool != null)
             {
-                Debug.Log("Returning projectile with definition: " + projectileDefinition);
                 _pool.Return(this, projectileDefinition);
                 return;
             }

@@ -26,6 +26,7 @@ namespace GameObjectComponent.Game
 
         public void StartRoundSpawner()
         {
+            if (roundDefinition == null) return;
             Debug.Log($"Starting Round Spawner on wave {roundDefinition.waves[_currentWaveIndex].name}");
             _currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
             waveSpawner.StartNewWave(_currentWaveDefinition);

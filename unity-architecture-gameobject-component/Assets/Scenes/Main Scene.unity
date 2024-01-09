@@ -116494,8 +116494,8 @@ Transform:
   m_GameObject: {fileID: 1071674025822318588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.85858, y: 0.85858, z: 0.85858}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1071674024884858432}
   - {fileID: 5684304211897559816}
@@ -122022,7 +122022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 1358396558}
+  <level>k__BackingField: {fileID: 1358396558}
 --- !u!114 &9018308866812664864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122198,8 +122198,8 @@ MonoBehaviour:
   dashDistance: 5
   dashTime: 0.2
   stats: {fileID: 9018308866812664866}
-  level: {fileID: 1358396558}
-  damageHandler: {fileID: 0}
+  movement: {fileID: 9018308866812664861}
+  defaultMovement: {fileID: 9018308866812664865}
   onDashStart:
     m_PersistentCalls:
       m_Calls:

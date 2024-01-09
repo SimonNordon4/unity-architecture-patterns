@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c2b5a32913648eb8565cf921ea5823f, type: 3}
-  m_Name: 03_Wave (Ranged)
+  m_Name: 04_Wave (Charger)
   m_EditorClassIdentifier: 
-  normalEnemies: 35
-  <waveDuration>k__BackingField: 30
+  normalEnemies: 0
+  <waveDuration>k__BackingField: 1
   <spawnActions>k__BackingField:
-  - {fileID: 11400000, guid: f795fb20903336744b3130910dd38192, type: 2}
-  - {fileID: 11400000, guid: f795fb20903336744b3130910dd38192, type: 2}
-  - {fileID: 11400000, guid: 66a1e6b6ee94e1e4fa871958d70feb58, type: 2}
+  - {fileID: 11400000, guid: b43107d0fcdbad94d9737b00ab3a73bd, type: 2}
   <bossActions>k__BackingField:
-  - {fileID: 11400000, guid: b8f39700e971502488048ad7a5cb12a2, type: 2}
+  - {fileID: 11400000, guid: b43107d0fcdbad94d9737b00ab3a73bd, type: 2}
   <idealEnemiesAlive>k__BackingField: 5
   <decay>k__BackingField: 5
-  <healthMultiplier>k__BackingField: {x: 0, y: 0.5}
-  <damageMultiplier>k__BackingField: {x: 0, y: 0}
+  <healthMultiplier>k__BackingField: {x: 5, y: 5}
+  <damageMultiplier>k__BackingField: {x: -1, y: -1}
   <rewardChest>k__BackingField: 1

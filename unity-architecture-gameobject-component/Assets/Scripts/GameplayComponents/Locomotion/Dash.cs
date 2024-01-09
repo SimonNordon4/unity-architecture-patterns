@@ -9,12 +9,11 @@ namespace GameplayComponents.Locomotion
 {
     public class Dash : GameplayComponent
     {
-        [SerializeField] private float dashDistance = 5f;
-        [SerializeField] private float dashTime = 0.2f;
+        [field:SerializeField] public float dashDistance = 5f;
+        [field:SerializeField] public float dashTime = 0.2f;
         [SerializeField] private Stats stats;
-        [SerializeField] private Level level;
-        [SerializeField] private DamageHandler damageHandler;
-        private bool hasDamageHandler = false;
+        [SerializeField] private Movement movement;
+        [SerializeField] private GameplayComponent defaultMovement;
         
         private bool _isDashing;
         private Stat _dashes;
@@ -25,52 +24,56 @@ namespace GameplayComponents.Locomotion
         private void Start()
         {
             _dashes = stats.GetStat(StatType.Dashes);
-            
-            hasDamageHandler = damageHandler != null;
         }
 
         public void DashForward()
         {
-            if(_isDashing || _dashes.value <= 0) return;
+            Debug.Log("Trying to start coroutine");
+            if(_isDashing || _dashes.value <= 0)
+            {
+                Debug.Log("No dashes");
+                return;
+            }
+
+            
+            defaultMovement.enabled = false;
             onDashStart.Invoke();
+       
             StartCoroutine(DashForwardCoroutine());
         }
 
         private IEnumerator DashForwardCoroutine()
         {
+            Debug.Log("Starting Dash Coroutine");
+            
             _isDashing = true;
             _dashes.value--;
             
             var elapsedTime = 0f;
-            var startPosition = transform.position;
-            var dashDestination = transform.forward * dashDistance + transform.position;
+            var trans = transform;
+            var startPosition = trans.position;
+            var dashDestination = trans.forward * dashDistance + startPosition;
+            
+           
+            var desiredVelocity = (dashDestination - startPosition) / dashTime;
+
             
             while (elapsedTime < dashTime)
             {
-                elapsedTime += Time.deltaTime;
-
-                var normalizedTime = elapsedTime / dashTime;
-                var inverseQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
-                
-                var desiredPos = Vector3.Lerp(startPosition, dashDestination, inverseQuadraticTime);
-                
-                // clamp the position to the level bounds
-                transform.position = new Vector3(Mathf.Clamp(desiredPos.x, -level.bounds.x, level.bounds.x),
-                    transform.position.y,
-                    Mathf.Clamp(desiredPos.z, -level.bounds.y, level.bounds.y));
-                
+                elapsedTime += GameTime.deltaTime;
+                movement.SetVelocity(desiredVelocity);
                 yield return new WaitForEndOfFrame();
             }
             
             onDashEnd.Invoke();
             _isDashing = false;
+            defaultMovement.enabled = true;
         }
         
         public override void OnGameEnd()
         {
             StopAllCoroutines();
             _isDashing = false;
-            
         }
     }
 }

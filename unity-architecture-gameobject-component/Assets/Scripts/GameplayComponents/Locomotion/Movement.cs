@@ -5,7 +5,7 @@ namespace GameplayComponents.Locomotion
 {
     public class Movement : GameplayComponent
     {
-        [SerializeField] private Level level;
+        [field:SerializeField] public Level level { get; private set; }
 
         public void Construct(Level newLevel)
         {

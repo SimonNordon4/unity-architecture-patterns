@@ -72,7 +72,6 @@ namespace GameplayComponents.Life
 
         public void SetToMaxHealth()
         {
-            Debug.Log("Setting health to max health");
             currentHealth = maxHealth;
         }
         

@@ -24,7 +24,6 @@ namespace GameObjectComponent.UI
 
         private void OnActorGet(PoolableActor actor)
         {
-            Debug.Log($"Actor {actor.name} was retrieved from the pool");
             if(actor.TryGetComponentDeep<Health>(out var health) == false)
                 return;
             var healthBar = textPool.GetText();
