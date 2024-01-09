@@ -85,6 +85,7 @@ namespace GameplayComponents.Combat
 
         private void EndProjectile()
         {
+            _timeAlive = 0f;
             if (_pool != null)
             {
                 _pool.Return(this, projectileDefinition);

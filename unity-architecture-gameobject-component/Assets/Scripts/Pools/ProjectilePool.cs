@@ -45,6 +45,8 @@ namespace Pools
             }
             
             projectile.Construct(this);
+            projectile.gameObject.SetActive(startActive);
+            projectile.enabled = startActive;
 
             _activeProjectiles.Add(projectile);
             return projectile;

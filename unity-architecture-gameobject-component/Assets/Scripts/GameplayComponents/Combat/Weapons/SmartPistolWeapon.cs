@@ -1,0 +1,59 @@
+﻿using GameplayComponents.Locomotion;
+using Pools;
+using UnityEngine;
+
+namespace GameplayComponents.Combat.Weapon
+{
+    // Smart Pistol uses prediction on where to shoot.
+    public class SmartPistolWeapon : BaseWeapon
+    {
+        [SerializeField] private ProjectilePool projectilePool;
+        [SerializeField] private Transform projectileSpawnPoint;
+        [SerializeField] private ProjectileDefinition projectileDefinition;
+        [SerializeField] private float projectileSpeed = 10f;
+
+        [SerializeField] private GameObject dummyTarget;
+        
+        public override void Attack(WeaponStatsInfo info, CombatTarget target)
+        {
+            if (target == null)
+            {
+                Debug.LogError("Target is null.");
+            }
+            
+            var projectileStartPosition = projectileSpawnPoint.position;
+            var targetPosition = target.target.position;
+            
+            // Calculate the time it would take for the projectile to reach the target's current position
+            var shootDirection = target.targetDirection;
+            
+            if(target.target.TryGetComponent<Movement>(out var movement))
+            {
+                var distanceToTarget = target.targetDistance;
+                var timeToTarget = distanceToTarget / projectileSpeed;
+                var velocity = movement.velocity;
+                var predictedTargetPosition = targetPosition + velocity * timeToTarget;
+                
+                // now get the distance to that position
+                distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
+                timeToTarget = distanceToTarget / projectileSpeed;
+                predictedTargetPosition = targetPosition + velocity * timeToTarget;
+            
+                // iterate again
+                distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
+                timeToTarget = distanceToTarget /projectileSpeed;
+                predictedTargetPosition = targetPosition + velocity * timeToTarget;
+                
+                dummyTarget.transform.position = predictedTargetPosition;
+            
+                // Aim the projectile towards the predicted position
+                shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up).normalized;
+            }
+            
+            var projectile = projectilePool.Get(projectileDefinition, projectileStartPosition, shootDirection);
+            projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
+
+            onAttack.Invoke();
+        }
+    }
+}

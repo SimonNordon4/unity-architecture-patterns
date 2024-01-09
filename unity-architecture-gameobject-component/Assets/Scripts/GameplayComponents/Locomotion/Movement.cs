@@ -44,8 +44,6 @@ namespace GameplayComponents.Locomotion
             {
                 _transform.rotation = Quaternion.LookRotation(lookDirection);
             }
-
-            velocity = Vector3.zero;
         }
         
         public void SetVelocity(Vector3 newVelocity)
