@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8640349275599438586}
   - component: {fileID: -5710799178122451818}
   - component: {fileID: -1926560604005978956}
+  - component: {fileID: 9209919046286705970}
   m_Layer: 0
   m_Name: Chest - Large
   m_TagString: Untagged
@@ -136,7 +137,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPickedUp:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9209919046286705970}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundProxy, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: c13e0c3716d8d9e428c464fc0be88c9c, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -145,6 +159,18 @@ MonoBehaviour:
   <chestType>k__BackingField: 2
   <numberOfItems>k__BackingField: 0
   <chestItems>k__BackingField: []
+--- !u!114 &9209919046286705970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3922492998747134388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ece41d53ab412f998fe578d691e15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5872910601050207664
 GameObject:
   m_ObjectHideFlags: 0

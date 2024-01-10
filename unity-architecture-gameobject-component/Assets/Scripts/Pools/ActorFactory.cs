@@ -5,7 +5,7 @@ using GameplayComponents.Actor;
 using GameplayComponents.Combat;
 using GameplayComponents.Locomotion;
 using UnityEngine;
-using System.Linq;
+using GameObjectComponent.App;
 
 namespace Pools
 {
@@ -16,6 +16,7 @@ namespace Pools
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
         [SerializeField] private ProjectilePool projectilePool;
+        [SerializeField] private SoundManager soundManager;
 
         public PoolableActor Create(ActorDefinition actorDefinition, Vector3 position = new(), bool startActive = true)
         {
@@ -40,6 +41,9 @@ namespace Pools
             
             if(actor.TryGetComponentDeep<ProjectilePool>(out var bulletPool))
                 bulletPool.Construct(projectilePool);
+            
+            if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))
+                actorSoundProxy.Construct(soundManager);
             
             actor.gameObject.SetActive(true);
 

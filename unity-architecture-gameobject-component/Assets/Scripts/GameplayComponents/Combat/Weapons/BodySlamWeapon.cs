@@ -11,6 +11,7 @@ namespace GameplayComponents.Combat.Weapon
             if(!target.target.TryGetComponent<DamageReceiver>(out var receiver))
                 return;
             receiver.TakeDamage(info.Damage);
+            onAttack?.Invoke();
         }
     }
 }

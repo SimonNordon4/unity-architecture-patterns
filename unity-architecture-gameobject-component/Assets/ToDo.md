@@ -1,4 +1,9 @@
-﻿ToDo 09/01/24:
+﻿ToDo 10/01/24:
+
+- [ ] Add Sound Manager.
+- [ ] Add Sound Effects.
+
+ToDo 09/01/24:
 
 - [ ] Create smart pistol.
 - [x] Create Elite Projectile.

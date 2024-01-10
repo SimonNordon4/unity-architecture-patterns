@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
   stats: {fileID: 9018308866812664866}
+  soundManager: {fileID: 1059844243}
   tier1ChestItems: {fileID: 11400000, guid: 625754b36b3c578438c6e0f8d14c5719, type: 2}
   tier2ChestItems: {fileID: 11400000, guid: d62170bf436df664f81766c01da95f3c, type: 2}
   tier3ChestItems: {fileID: 11400000, guid: e201e996f62344f4b81b49e8451dbcf5, type: 2}
@@ -325,7 +326,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &18938661
 MonoBehaviour:
@@ -3079,7 +3080,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &278339792
 MonoBehaviour:
@@ -3098,6 +3099,7 @@ MonoBehaviour:
   <initialTarget>k__BackingField: {fileID: 4258749572108575571}
   deathParticlePool: {fileID: 278339793}
   projectilePool: {fileID: 303266477}
+  soundManager: {fileID: 1059844243}
 --- !u!114 &278339793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3535,7 +3537,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &303266479
 MonoBehaviour:
@@ -3579,7 +3581,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361919818
 GameObject:
@@ -3612,7 +3614,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &361919822
 MonoBehaviour:
@@ -4617,7 +4619,20 @@ MonoBehaviour:
   stats: {fileID: 9018308866812664866}
   onDodged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1059844243}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &498857196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4633,7 +4648,20 @@ MonoBehaviour:
   stats: {fileID: 9018308866812664866}
   onFullBlock:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1059844243}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: ccca5190cda5236478606122b2d720d4, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &498857197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4681,7 +4709,33 @@ MonoBehaviour:
   health: {fileID: 498857198}
   onRevived:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1059844243}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 205272d1cf842894f8e611ea23a2b1a4, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1059844243}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 205272d1cf842894f8e611ea23a2b1a4, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onDeath:
     m_PersistentCalls:
       m_Calls:
@@ -4948,7 +5002,7 @@ Transform:
   - {fileID: 980833708}
   - {fileID: 1840059383}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563926501
 GameObject:
@@ -6609,7 +6663,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &689736428
 GameObject:
@@ -8622,7 +8676,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -8811,7 +8865,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e9ac964af6f603646bc7a94611dc2d58, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9ac964af6f603646bc7a94611dc2d58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8906,7 +8960,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003756005
 GameObject:
@@ -9419,7 +9473,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039515126
 GameObject:
@@ -9497,6 +9551,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!1 &1059844241
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1059844242}
+  - component: {fileID: 1059844243}
+  m_Layer: 0
+  m_Name: Sound Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1059844242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059844241}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1059844243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059844241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3be0bc0e2734d4ea996911e9a1fba2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1073825104
 GameObject:
   m_ObjectHideFlags: 0
@@ -9803,7 +9901,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttack:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1059844243}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 5d885c6fe4da4a840ae4ae2dc767f4a6, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   swordPivot: {fileID: 3623834106970646027}
   sword: {fileID: 7771137771855483806}
   stats: {fileID: 9018308866812664866}
@@ -9823,7 +9934,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttack:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1059844243}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundManager, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 62b2c577a034cfe429f46d850500a392, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   projectilePool: {fileID: 303266477}
   projectileSpawnPoint: {fileID: 5509109955375812234}
   projectileDefinition: {fileID: 11400000, guid: b0a65fd4cf3119f4eb5a3241a5b7ee2b, type: 2}
@@ -10779,7 +10903,7 @@ RectTransform:
   m_Children:
   - {fileID: 1291293142}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12519,7 +12643,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!220 &1346928981
 LightProbeGroup:
@@ -13635,7 +13759,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1358396561
 MonoBehaviour:
@@ -14783,7 +14907,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506620541
 GameObject:
@@ -19548,7 +19672,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8263662190913649
 MonoBehaviour:
@@ -43639,7 +43763,7 @@ Transform:
   - {fileID: 3623834106970646027}
   - {fileID: 8278052195083062480}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4233487273683436875
 MonoBehaviour:
@@ -43687,7 +43811,7 @@ Transform:
   - {fileID: 1103014752}
   - {fileID: 55397993399104221}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4277516186594550373
 MonoBehaviour:
@@ -76727,8 +76851,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5509109955375812234}
   - {fileID: 7821292366747464788}
+  - {fileID: 5509109955375812234}
   m_Father: {fileID: 4229128705149644408}
   m_RootOrder: -2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

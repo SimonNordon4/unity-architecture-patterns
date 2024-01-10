@@ -94,6 +94,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3865999109613060441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7125734459816843711, guid: 172d35d44e2549d468c66b2a2aaea1ef, type: 3}
+  m_PrefabInstance: {fileID: 6288564438086850790}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ece41d53ab412f998fe578d691e15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4265270582689782560 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7814925090398127046, guid: 172d35d44e2549d468c66b2a2aaea1ef, type: 3}
@@ -139,4 +150,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttack:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3865999109613060441}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundProxy, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: d658cbabcaab8b343b83677f86e40c42, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

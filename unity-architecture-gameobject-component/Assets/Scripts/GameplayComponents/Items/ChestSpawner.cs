@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameObjectComponent.App;
 using GameObjectComponent.Definitions;
 using GameObjectComponent.Game;
 using GameplayComponents;
@@ -11,6 +12,7 @@ namespace GameObjectComponent.Items
     {
         [SerializeField] private GameState state;
         [SerializeField] private Stats stats;
+        [SerializeField] private SoundManager soundManager;
         private Stat _luckStat;
 
         
@@ -53,7 +55,10 @@ namespace GameObjectComponent.Items
         public Chest SpawnChest(ChestType chestType, Vector3 position)
         {
             var chest = Instantiate(_chestTypes[chestType], transform.position, Quaternion.identity);
-            chest.GetComponent<GameplayStateController>().Construct(state);
+            if(chest.TryGetComponent<GameplayStateController>(out var gameState))
+                gameState.Construct(state);
+            if(chest.TryGetComponent<SoundProxy>(out var soundProxy))
+                soundProxy.Construct(soundManager);
             chest.numberOfItems = CalculateNumberOfItems(chest);
             chest.chestItems = CalculateChestItems(chest);
             chest.transform.position = position;
