@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
-using GameObjectComponent.Game;
+using GameObjectComponent.App;
+using GameObjectComponent.Definitions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-    public class StoreItemUI : MonoBehaviour
+namespace GameObjectComponent.UI
+{
+    public class UIStoreItem : MonoBehaviour
     {
-        [SerializeField] private Gold gold;
-        
+        public Store store;
         public Image itemImage;
         public TextMeshProUGUI itemNameText;
         public TextMeshProUGUI itemPriceText;
@@ -21,13 +23,12 @@ using UnityEngine.UI;
         public List<GameObject> tierIndicatorInactive;
         public Color inActiveColor;
         public Color activeColor;
-
         public Color noMoneyColor;
 
-
-        public void Initialize(StoreItem item)
+        public void Initialize(StoreItem item, int availableGold)
         {
-            Debug.Log("Initializing store item ui for: " + item.name);
+            var definition = item.storeItemDefinition;
+            Debug.Log("Initializing store item ui for: " + item.storeItemDefinition.name);
             purchaseButton.onClick.RemoveAllListeners();
             // reset values
             itemNameText.text = "";
@@ -45,35 +46,36 @@ using UnityEngine.UI;
 
             itemImage.color = Color.white;
 
-            if (item.sprite == null)
+            if (definition.storeSprite == null)
             {
                 Debug.LogError("Missing sprite?");
             }
             
-            itemImage.sprite = item.sprite;
-            itemNameText.text = item.name;
+            itemImage.sprite = definition.storeSprite;
+            itemNameText.text = definition.name;
 
             // We've hit the Maximum tier, no more upgrades are available.
-            if (item.currentTier == item.pricePerTier.Length)
+            if (item.upgradesPurchased == definition.upgrades.Length)
             {
-                itemCurrentModifierText.text = FormatModifierValue(item.tierModifiers[item.currentTier-1]);
+                itemCurrentModifierText.text = FormatModifierValue(definition.upgrades[item.upgradesPurchased-1].modifier);
                 itemNextModifierText.text = "MAX";
                 purchaseButton.enabled = false;
                 itemPriceText.text = "MAX";
             }
             else
             {
-                var itemCost = item.pricePerTier[item.currentTier];
+                var currentUpgrade = definition.upgrades[item.upgradesPurchased];
+                var itemCost = currentUpgrade.cost;
                 itemPriceText.text = (int)itemCost + "G";
             
-                var mod = item.tierModifiers[item.currentTier];
+                var mod = currentUpgrade.modifier;
                     
                 itemNextModifierText.text += FormatModifierValue(mod)  + "\n";
                 itemNextModifierText.color = mod.modifierValue > 0 ?
                     new Color(0.75f, 1, 0.75f):
                     new Color(1, 0.75f, 0.75f);
 
-                if (item.currentTier > 0)
+                if (item.upgradesPurchased > 0)
                 {
                     itemCurrentModifierText.text += FormatModifierValue(item.tierModifiers[item.currentTier - 1]) + "\n";
                     itemCurrentModifierText.color = item.tierModifiers[item.currentTier - 1].modifierValue > 0 ?
@@ -81,7 +83,7 @@ using UnityEngine.UI;
                         new Color(1, 0.75f, 0.75f);
                 }
 
-                if (gold.amount < item.pricePerTier[item.currentTier])
+                if (availableGold < definition.upgrades[item.upgradesPurchased].cost)
                 {
                     purchaseButton.interactable = false;
                     itemPriceText.color = noMoneyColor;
@@ -92,7 +94,7 @@ using UnityEngine.UI;
                 purchaseButton.onClick.AddListener(() =>
                 {
                     Debug.Log("Adding item listener for: "  + item.name);
-                    AccountManager.instance.PurchaseStoreItem(item);
+                    store.PurchaseUpgrade(item);
                 });
             }
             
@@ -136,12 +138,5 @@ using UnityEngine.UI;
             
             return statValueString + " " + statTypeString;
         }
-
-        private void OnValidate()
-        {
-            if (gold == null)
-            {
-                gold = FindObjectsByType<Gold>(FindObjectsSortMode.None)[0];
-            }
-        }
     }
+}

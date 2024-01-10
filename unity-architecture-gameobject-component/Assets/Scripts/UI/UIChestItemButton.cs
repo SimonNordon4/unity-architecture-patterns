@@ -11,7 +11,7 @@ namespace GameObjectComponent.UI
 
     public class UIChestItemButton : MonoBehaviour
     {
-        public ItemDefinition chestItem;
+        public ChestItemDefinition chestChestItem;
         public TextMeshProUGUI title;
         public TextMeshProUGUI descriptionPrefab;
         public RectTransform descriptionContainer;
@@ -21,9 +21,9 @@ namespace GameObjectComponent.UI
 
         private List<TextMeshProUGUI> _descriptions = new List<TextMeshProUGUI>();
 
-        public void Initialize(ItemDefinition item)
+        public void Initialize(ChestItemDefinition chestItem)
         {
-            if (item == null)
+            if (chestItem == null)
             {
                 Debug.LogError("Item is null",this);
             }
@@ -34,14 +34,14 @@ namespace GameObjectComponent.UI
 
             _descriptions.Clear();
 
-            title.text = item.itemName;
-            chestItem = item;
+            title.text = chestItem.itemName;
+            chestChestItem = chestItem;
 
-            itemSprite.sprite = item.sprite;
+            itemSprite.sprite = chestItem.sprite;
 
-            borderImage.sprite = borderTiers[chestItem.tier - 1];
+            borderImage.sprite = borderTiers[chestChestItem.tier - 1];
 
-            foreach (var mod in chestItem.modifiers)
+            foreach (var mod in chestChestItem.modifiers)
             {
                 // create a new description text
                 var description = Instantiate(descriptionPrefab, descriptionContainer);

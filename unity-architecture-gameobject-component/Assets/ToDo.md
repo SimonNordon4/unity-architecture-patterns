@@ -2,7 +2,8 @@
 
 ToDo 10/01/24:
 
-- [ ] Add Gold.
+- [ ] Add Store.
+- [x] Add Gold.
 - [x] Add Health Pack.
 - [x] Add Music Manager.
 - [x] Add Sound Manager.

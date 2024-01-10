@@ -1,7 +1,6 @@
 ﻿using GameObjectComponent.Definitions;
 using GameObjectComponent.Items;
 using GameplayComponents;
-using Pools;
 using UnityEngine;
 
 namespace GameObjectComponent.Game

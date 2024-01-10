@@ -26,12 +26,12 @@ namespace GameObjectComponent.Items
             uiState.GoToChestMenu();
         }
         
-        public void SelectItem(ItemDefinition item)
+        public void SelectItem(ChestItemDefinition chestItem)
         {
-            Debug.Log($"Selected {item.name}");
+            Debug.Log($"Selected {chestItem.name}");
             gameState.ResumeGame();
             uiState.GoToHud();
-            inventory.AddItem(item);
+            inventory.AddItem(chestItem);
             Destroy(currentChest.gameObject);
             currentChest = null;
         }

@@ -26,7 +26,7 @@ namespace GameObjectComponent.Items
         [SerializeField] private ChestDefinition mediumChest;
         [SerializeField] private ChestDefinition largeChest;
 
-        private ItemDefinition[][] _allItems;
+        private ChestItemDefinition[][] _allItems;
         private Dictionary<ChestType, Chest> _chestTypes;
 
         private int _pityLuck;
@@ -96,11 +96,11 @@ namespace GameObjectComponent.Items
             return numberOfItems;
         }
 
-        private ItemDefinition[] CalculateChestItems(Chest chest)
+        private ChestItemDefinition[] CalculateChestItems(Chest chest)
         {
             // Store a hashset of all the items we have already added to the options, so we don't display duplicates.
-            var alreadyAddedItems = new HashSet<ItemDefinition>();
-            var items = new ItemDefinition[chest.numberOfItems];
+            var alreadyAddedItems = new HashSet<ChestItemDefinition>();
+            var items = new ChestItemDefinition[chest.numberOfItems];
 
             for (var i = 0; i < chest.numberOfItems; i++)
             {

@@ -18,9 +18,9 @@ namespace GameplayComponents.Actor
             inventory.OnItemAdded -= OnItemAdded;
         }
 
-        private void OnItemAdded(ItemDefinition item)
+        private void OnItemAdded(ChestItemDefinition chestItem)
         {
-            foreach (var mod in item.modifiers)
+            foreach (var mod in chestItem.modifiers)
             {
                 var stat = stats.GetStat(mod.statType);
                 if (stat == null) continue;

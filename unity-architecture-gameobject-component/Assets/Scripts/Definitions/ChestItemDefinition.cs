@@ -2,8 +2,8 @@
 
 namespace GameObjectComponent.Definitions
 {
-    [CreateAssetMenu(fileName = "ChestItem", menuName = "Prototype/ChestItem", order = 1)]
-    public class ItemDefinition : ScriptableObject
+    [CreateAssetMenu(fileName = "ChestItem", menuName = "GameObjectComponent/ChestItem", order = 1)]
+    public class ChestItemDefinition : ScriptableObject
     {
         public Sprite sprite;
         public string itemName = "New Item";

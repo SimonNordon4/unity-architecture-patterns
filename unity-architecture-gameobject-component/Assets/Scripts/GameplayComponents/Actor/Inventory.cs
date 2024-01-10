@@ -8,14 +8,14 @@ namespace GameplayComponents.Actor
 {
     public class Inventory : GameplayComponent
     {
-        [field:SerializeField] public List<ItemDefinition> items { get; private set; } = new();
-        public event Action<ItemDefinition> OnItemAdded;
+        [field:SerializeField] public List<ChestItemDefinition> items { get; private set; } = new();
+        public event Action<ChestItemDefinition> OnItemAdded;
 
-        public void AddItem(ItemDefinition item)
+        public void AddItem(ChestItemDefinition chestItem)
         {
-            Debug.Log($"Added {item.name} to {gameObject.name}'s inventory");
-            items.Add(item);
-            OnItemAdded?.Invoke(item);
+            Debug.Log($"Added {chestItem.name} to {gameObject.name}'s inventory");
+            items.Add(chestItem);
+            OnItemAdded?.Invoke(chestItem);
         }
         
         public void ClearAll()
