@@ -15,13 +15,26 @@ namespace GameObjectComponent.Game
         [SerializeField] private GameState gameState;
         [SerializeField] private RoundDefinition roundDefinition;
 
+        public int roundsCompleted => _currentWaveIndex;
+        public int actorKilledThisRound { get; private set; }
+        public int totalActorsInRound { get; private set; }
+
         private void OnEnable()
         {
             waveSpawner.OnWaveCompleted += OnWaveCompleted;
+            waveSpawner.onWaveActorDied.AddListener(OnWaveActorDied);
+            
         }
+
+        private void OnWaveActorDied(Vector3 arg0)
+        {
+            actorKilledThisRound++;
+        }
+
         private void OnDisable()
         {
             waveSpawner.OnWaveCompleted -= OnWaveCompleted;
+            waveSpawner.onWaveActorDied.RemoveListener(OnWaveActorDied);
         }
 
         public void StartRoundSpawner()
@@ -30,6 +43,8 @@ namespace GameObjectComponent.Game
             Debug.Log($"Starting Round Spawner on wave {roundDefinition.waves[_currentWaveIndex].name}");
             _currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
             waveSpawner.StartNewWave(_currentWaveDefinition);
+            totalActorsInRound = _currentWaveDefinition.TotalActorsCount();
+            actorKilledThisRound = 0;
         }
 
         private void OnWaveCompleted(Vector3 deathPosition)

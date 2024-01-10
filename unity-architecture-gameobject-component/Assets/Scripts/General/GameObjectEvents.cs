@@ -22,7 +22,6 @@ namespace GameObjectComponent.General
         private void OnDestroy()
         {
             OnDestroyed?.Invoke();
-            
             OnEnabled = null;
             OnDisabled = null;
             OnDestroyed = null;

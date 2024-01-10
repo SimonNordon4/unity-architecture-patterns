@@ -1,6 +1,9 @@
-﻿ToDo 10/01/24:
+﻿
 
-- [ ] Add Health Pack.
+ToDo 10/01/24:
+
+- [ ] Add Gold.
+- [x] Add Health Pack.
 - [x] Add Music Manager.
 - [x] Add Sound Manager.
 - [x] Add Sound Effects.
