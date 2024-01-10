@@ -1,7 +1,8 @@
 ﻿ToDo 10/01/24:
 
-- [ ] Add Sound Manager.
-- [ ] Add Sound Effects.
+- [ ] Add Music Manager.
+- [x] Add Sound Manager.
+- [x] Add Sound Effects.
 
 ToDo 09/01/24:
 
