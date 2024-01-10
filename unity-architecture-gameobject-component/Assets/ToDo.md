@@ -1,6 +1,7 @@
 ﻿ToDo 10/01/24:
 
-- [ ] Add Music Manager.
+- [ ] Add Health Pack.
+- [x] Add Music Manager.
 - [x] Add Sound Manager.
 - [x] Add Sound Effects.
 

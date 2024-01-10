@@ -58,6 +58,14 @@ namespace GameplayComponents.Life
             OnHealthChanged?.Invoke(currentHealth);
         }
         
+        public void AddHealth(int health)
+        {
+            if (health <= 0) return;
+            
+            currentHealth = Mathf.Min(maxHealth, currentHealth + health);
+            OnHealthChanged?.Invoke(currentHealth);
+        }
+        
         public void TakeDamage(int damageAmount)
         {
             if (damageAmount <= 0) return;

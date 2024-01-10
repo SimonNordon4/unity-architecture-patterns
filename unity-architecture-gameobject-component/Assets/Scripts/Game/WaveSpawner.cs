@@ -4,6 +4,7 @@ using GameplayComponents;
 using GameplayComponents.Actor;
 using GameplayComponents.Life;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace GameObjectComponent.Game
@@ -17,6 +18,7 @@ namespace GameObjectComponent.Game
     public class WaveSpawner : GameplayComponent
     {
         public event Action<Vector3> OnWaveCompleted;
+        public UnityEvent<Vector3> onWaveActorDied = new();
         
         [SerializeField] private ActorActionSpawner actionSpawner;
 
@@ -73,6 +75,9 @@ namespace GameObjectComponent.Game
                 Debug.Log("Actors Returned: " + _actorsDied + " Total Actors: " + _totalActorsInWave);
                 OnWaveCompleted?.Invoke(actor.transform.position);
             }
+            
+            Debug.Log("Actor Died Invokation");
+            onWaveActorDied?.Invoke(actor.transform.position);
             
             actor.OnDeath -= OnActorDied;
         }
