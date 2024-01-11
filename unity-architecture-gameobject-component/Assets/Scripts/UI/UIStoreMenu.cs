@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using GameObjectComponent.App;
 using GameplayComponents.Actor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace GameObjectComponent.UI
@@ -10,13 +12,23 @@ namespace GameObjectComponent.UI
     public class StoreMenuManager : MonoBehaviour
     {
         [SerializeField] private Store store;
+        [SerializeField] private Gold playerGold;
         [SerializeField] private RectTransform storeItemContainer;
-        [SerializeField] private StoreItemUI StoreItemUIPrefab;
-        [SerializeField] private List<StoreItemUI> StoreItemUis = new List<StoreItemUI>();
+        [SerializeField] private UIStoreItem storeItemUIPrefab;
+        private readonly List<UIStoreItem> _storeItemUis = new List<UIStoreItem>();
 
         private void OnEnable()
         {
+            playerGold.OnGoldChanged += UpdateStoreMenu;
             Init();
+        }
+
+        private void UpdateStoreMenu(int newGoldAmount)
+        {
+            foreach (var ui in _storeItemUis)
+            {
+                ui.UpdateAffordability(newGoldAmount);
+            }
         }
 
         public void UpdateStoreMenu()
@@ -25,30 +37,25 @@ namespace GameObjectComponent.UI
             Init();
         }
 
-        void Init()
+        private void Init()
         {
-            // Populate all the store item uis.
-            var buttons = new List<UnityEngine.UI.Button>();
-            // TODO: This needs to be from a list of store items.
-            // foreach (var storeItem in characterInventory.storeItems)
-            // {
-            //     var storeItemUi = Instantiate(StoreItemUIPrefab, StoreItemContainer);
-            //     storeItemUi.Initialize(storeItem);
-            //     StoreItemUis.Add(storeItemUi);
-            //     buttons.Add(storeItemUi.purchaseButton);
-            // }
+            foreach (var storeItem in store.purchasedStoreItems)
+            {
+                var storeItemUi = Instantiate(storeItemUIPrefab, storeItemContainer);
+                storeItemUi.Initialize(storeItem, playerGold.amount);
+                _storeItemUis.Add(storeItemUi);
+                storeItemUi.purchaseButton.onClick.AddListener(() => store.PurchaseUpgrade(storeItem));
+            }
         }
 
-        void Clear()
+        private void Clear()
         {
-            // Destroy all the store item uis.
-            foreach (var storeItemUi in StoreItemUis)
+            foreach (var storeItemUi in _storeItemUis.Where(storeItemUi => storeItemUi != null))
             {
-                if (storeItemUi != null)
-                    Destroy(storeItemUi.gameObject);
+                Destroy(storeItemUi.gameObject);
             }
 
-            StoreItemUis.Clear();
+            _storeItemUis.Clear();
         }
 
         private void OnDisable()

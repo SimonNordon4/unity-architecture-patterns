@@ -69,8 +69,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -205,8 +204,7 @@ MonoBehaviour:
   m_text: title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -359,9 +357,9 @@ GameObject:
   - component: {fileID: 4514881871382942955}
   - component: {fileID: 8221780000630239926}
   - component: {fileID: 5476241365046989264}
-  - component: {fileID: 4554925857579793994}
+  - component: {fileID: 4978629845700840880}
   m_Layer: 5
-  m_Name: UI_StoreItem
+  m_Name: UI Store Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +428,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.37
---- !u!114 &4554925857579793994
+--- !u!114 &4978629845700840880
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -439,22 +437,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4049118215629660484}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f96dd90279ae493e99cae44482e616bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 56dceb93f65a491c948133003f0a82da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <purchaseButton>k__BackingField: {fileID: 7523517205201105156}
   itemImage: {fileID: 2436503218679593431}
   itemNameText: {fileID: 4884024326946186125}
   itemPriceText: {fileID: 3846792331415681037}
   itemCurrentModifierText: {fileID: 4104757662527008967}
   itemNextModifierText: {fileID: 5365726092983895016}
-  purchaseButton: {fileID: 7523517205201105156}
-  tierIndicatorPrefab: {fileID: 4573988958614256628, guid: 8695578171eea7447b16476abf1fe51d,
-    type: 3}
+  tierIndicatorPrefab: {fileID: 4573988958614256628, guid: 8695578171eea7447b16476abf1fe51d, type: 3}
   tierIndicatorContainer: {fileID: 2688840151005959686}
   tierIndicatorInactive: []
-  inActiveColor: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
-  activeColor: {r: 1, g: 0.71534777, b: 0, a: 1}
-  noMoneyColor: {r: 1, g: 0.5613208, b: 0.5613208, a: 1}
+  inActiveColor: {r: 0.26415092, g: 0.2629049, b: 0.2629049, a: 0.5058824}
+  activeColor: {r: 1, g: 1, b: 1, a: 1}
+  noMoneyColor: {r: 0.9528302, g: 0.48989856, b: 0.48989856, a: 1}
 --- !u!1 &4473833969843582204
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,8 +521,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -737,8 +733,7 @@ MonoBehaviour:
   m_text: Button
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
