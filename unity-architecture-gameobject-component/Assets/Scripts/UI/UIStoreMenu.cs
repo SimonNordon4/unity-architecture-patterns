@@ -39,12 +39,15 @@ namespace GameObjectComponent.UI
 
         private void Init()
         {
-            foreach (var storeItem in store.purchasedStoreItems)
+            Debug.Log(store.purchasedStoreItems.Count);
+            
+            for(var i = 0; i < store.purchasedStoreItems.Count; i++)
             {
                 var storeItemUi = Instantiate(storeItemUIPrefab, storeItemContainer);
-                storeItemUi.Initialize(storeItem, playerGold.amount);
+                storeItemUi.Initialize(store.purchasedStoreItems[i], playerGold.amount);
                 _storeItemUis.Add(storeItemUi);
-                storeItemUi.purchaseButton.onClick.AddListener(() => store.PurchaseUpgrade(storeItem));
+                var x = i;
+                storeItemUi.purchaseButton.onClick.AddListener(() => store.PurchaseUpgrade(store.purchasedStoreItems[x]));
             }
         }
 

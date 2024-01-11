@@ -6,14 +6,17 @@ namespace GameObjectComponent.App
 {
     public class Store : PersistentComponent
     {
-        [SerializeField] private List<StoreItemDefinition> storeItemDefinitions;
+        [field:SerializeField] public List<StoreItemDefinition> storeItemDefinitions { get; private set; }
         [SerializeField] private Gold playerGold;
 
-        public List<StoreItem> purchasedStoreItems { get; private set; }
+        [field: SerializeField]
+        public List<StoreItem> purchasedStoreItems { get; private set; } = new();
 
 
         private void PopulateStoreItems()
         {
+            purchasedStoreItems = new List<StoreItem>();
+            
             foreach (var storeItemDefinition in storeItemDefinitions)
             {
                 purchasedStoreItems.Add(new StoreItem
@@ -32,9 +35,12 @@ namespace GameObjectComponent.App
 
         public override void Load()
         {
+            Debug.Log("Loading store items");
             if (PlayerPrefs.HasKey($"purchasedStoreItems_{id}"))
             {
                 purchasedStoreItems = JsonUtility.FromJson<List<StoreItem>>(PlayerPrefs.GetString($"purchasedStoreItems_{GetInstanceID()}"));
+                if (purchasedStoreItems == null)
+                    PopulateStoreItems();
             }
             else
             {
@@ -44,13 +50,18 @@ namespace GameObjectComponent.App
 
         public void PurchaseUpgrade(StoreItem storeItem)
         {
+            Debug.Log($"Purchasing upgrade for {storeItem.storeItemDefinition.name}");
             if (playerGold.amount >= storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost)
             {
                 playerGold.AddGold(-storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost);
                 storeItem.upgradesPurchased++;
             }
-
             Save();
+        }
+
+        private void OnEnable()
+        {
+            Load();
         }
     }
 }

@@ -10,6 +10,10 @@ namespace GameObjectComponent.UI
 {
     public class UIStoreItem : MonoBehaviour
     {
+        
+        private Store _store;
+        private Gold _gold;
+        
         [field:SerializeField] public Button purchaseButton { get; private set; }
         
         [SerializeField] private Image itemImage;
@@ -26,6 +30,12 @@ namespace GameObjectComponent.UI
         [SerializeField] private Color noMoneyColor;
 
         private StoreItem _currentItem;
+
+        public void Construct(Store store, Gold gold)
+        {
+            _store = store;
+            _gold = gold;
+        }
 
         public void UpdateAffordability(int availableGold)
         {
@@ -105,6 +115,11 @@ namespace GameObjectComponent.UI
                 tierIndicator.transform.GetChild(0).gameObject.SetActive(i < item.upgradesPurchased);
                 tierIndicatorInactive.Add(tierIndicator);
             }
+        }
+
+        public void OnPurchased()
+        {
+            
         }
         
         
