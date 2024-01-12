@@ -24,6 +24,7 @@ namespace GameObjectComponent.UI
         [SerializeField] private Color inActiveColor;
         [SerializeField] private Color activeColor;
         [SerializeField] private Color noMoneyColor;
+        [SerializeField] private Color increaseColor;
 
                 
         private Store _store;
@@ -91,24 +92,22 @@ namespace GameObjectComponent.UI
         {
             itemCurrentModifierText.text = "";
             
-            if (_item.upgradesPurchased == 0)
+            if (_item.upgradesPurchased <= 0)
             {
-                return;
-            }
-            
-            if(_item.upgradesPurchased >= _definition.upgrades.Length - 1)
-            {
-                var finalModifier = _definition.upgrades[_item.upgradesPurchased - 1].modifier;
-                itemCurrentModifierText.text = SurvivorsUtil.FormatModifierValue(finalModifier);
-                itemCurrentModifierText.color = activeColor;
                 return;
             }
             
             var currentModifier = _definition.upgrades[_item.upgradesPurchased - 1].modifier;
-            itemNextModifierText.text += SurvivorsUtil.FormatModifierValue(currentModifier);
-            itemCurrentModifierText.color = currentModifier.modifierValue > 0 ?
-                new Color(0.75f, 1, 0.75f):
-                new Color(1, 0.75f, 0.75f);
+            
+            if(_item.upgradesPurchased >= _definition.upgrades.Length)
+            {
+                itemCurrentModifierText.text = SurvivorsUtil.FormatModifierValue(currentModifier);
+                itemCurrentModifierText.color = activeColor;
+                return;
+            }
+
+            itemCurrentModifierText.text = SurvivorsUtil.FormatModifierValue(currentModifier);
+            itemCurrentModifierText.color = increaseColor;
         }
 
         private void UpdateNextModifierText()
@@ -122,10 +121,8 @@ namespace GameObjectComponent.UI
             }
             
             var nextModifier = _definition.upgrades[_item.upgradesPurchased].modifier;
-            itemNextModifierText.text += SurvivorsUtil.FormatModifierValue(nextModifier);
-            itemNextModifierText.color = nextModifier.modifierValue > 0 ?
-                new Color(0.75f, 1, 0.75f):
-                new Color(1, 0.75f, 0.75f);
+            itemNextModifierText.text = SurvivorsUtil.FormatModifierValue(nextModifier);
+            itemNextModifierText.color = increaseColor;
         }
         
 

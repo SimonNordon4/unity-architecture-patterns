@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GameObjectComponent.Definitions;
 using UnityEngine;
 
@@ -11,11 +12,12 @@ namespace GameObjectComponent.App
 
         [field: SerializeField]
         public List<StoreItem> purchasedStoreItems { get; private set; } = new();
+        private StoreItemsSave _storeItemsSave;
+    
 
-
-        private void PopulateStoreItems()
+        [ContextMenu("Populate Store Items")]
+        public void PopulateStoreItems()
         {
-            Debug.Log("No Store Item found, creating new.");
             purchasedStoreItems = new List<StoreItem>();
             
             foreach (var storeItemDefinition in storeItemDefinitions)
@@ -26,37 +28,40 @@ namespace GameObjectComponent.App
                     upgradesPurchased = 0
                 });
             }
+            
+            
         }
 
         public override void Save()
         {
             // save purchasedStoreItems
-            Debug.Log("Saving store items");
-            var json = JsonUtility.ToJson(purchasedStoreItems);
-            Debug.Log(purchasedStoreItems.Count);
-            Debug.Log(json);
+            _storeItemsSave = new StoreItemsSave(purchasedStoreItems);
+            var json = JsonUtility.ToJson(_storeItemsSave);
             PlayerPrefs.SetString($"purchasedStoreItems_{id}", json);
         }
 
         public override void Load()
         {
-            Debug.Log("Loading store items");
-            if (PlayerPrefs.HasKey($"purchasedStoreItems_{id}"))
-            {
-                Debug.Log("Found store item Key");
-                purchasedStoreItems = JsonUtility.FromJson<List<StoreItem>>(PlayerPrefs.GetString($"purchasedStoreItems_{GetInstanceID()}"));
-                if (purchasedStoreItems == null)
-                    PopulateStoreItems();
-            }
-            else
+            if (!PlayerPrefs.HasKey($"purchasedStoreItems_{id}"))
             {
                 PopulateStoreItems();
+                return;
             }
+            
+            var json = PlayerPrefs.GetString($"purchasedStoreItems_{id}");
+            _storeItemsSave = JsonUtility.FromJson<StoreItemsSave>(json);
+
+            if (_storeItemsSave == null)
+            {
+                PopulateStoreItems();
+                return;
+            }
+            
+            purchasedStoreItems = new List<StoreItem>(_storeItemsSave.storeItems);
         }
 
         public void PurchaseUpgrade(StoreItem storeItem)
         {
-            Debug.Log($"Purchasing upgrade for {storeItem.storeItemDefinition.name}");
             if (playerGold.amount >= storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost)
             {
                 playerGold.ChangeGold(-storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost);
@@ -73,6 +78,17 @@ namespace GameObjectComponent.App
         private void OnDisable()
         {
             Save();
+        }
+
+        [Serializable]
+        public class StoreItemsSave
+        {
+            public StoreItem[] storeItems;
+            
+            public StoreItemsSave(List<StoreItem> storeItems)
+            {
+                this.storeItems = storeItems.ToArray();
+            }
         }
     }
 }
