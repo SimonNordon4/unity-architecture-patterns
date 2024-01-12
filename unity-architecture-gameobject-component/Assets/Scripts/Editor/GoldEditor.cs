@@ -17,7 +17,7 @@ namespace GameObjectComponent.Editor
             goldToAdd = EditorGUILayout.IntField("Gold to add", goldToAdd);
             if (GUILayout.Button("Add Gold"))
             {
-                gold.AddGold(goldToAdd);
+                gold.ChangeGold(goldToAdd);
             }
         }        
     }

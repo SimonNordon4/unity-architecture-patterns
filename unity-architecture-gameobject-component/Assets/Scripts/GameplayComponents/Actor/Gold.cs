@@ -7,10 +7,11 @@ public class Gold : PersistentComponent
     [field:SerializeField] public int amount { get; private set; } = 0;
     public Action<int> OnGoldChanged;
 
-    public void AddGold(int addedGold)
+    public void ChangeGold(int goldDelta)
     {
-        Debug.Log($"Adding {addedGold} gold to {name}");
-        amount += addedGold;
+        Debug.Log($"Adding {goldDelta} gold to {name}");
+        amount += goldDelta;
+        amount = Mathf.Max(amount, 0);
         Save();
         OnGoldChanged?.Invoke(amount);
     }

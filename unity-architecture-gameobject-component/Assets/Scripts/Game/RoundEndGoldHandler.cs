@@ -28,7 +28,7 @@ namespace GameObjectComponent.Game
         private void OnGameWon()
         {
             lastRoundGoldAdded = 10000;
-            characterGold.AddGold(lastRoundGoldAdded);            
+            characterGold.ChangeGold(lastRoundGoldAdded);            
         }
 
         private void OnGameLost()
@@ -58,7 +58,7 @@ namespace GameObjectComponent.Game
             // Add gold for each enemy killed this round.
             lastRoundGoldAdded += (int)actorGold * roundSpawner.actorKilledThisRound;
             
-            characterGold.AddGold(lastRoundGoldAdded);
+            characterGold.ChangeGold(lastRoundGoldAdded);
         }
     }
 }

@@ -10,10 +10,6 @@ namespace GameObjectComponent.UI
 {
     public class UIStoreItem : MonoBehaviour
     {
-        
-        private Store _store;
-        private Gold _gold;
-        
         [field:SerializeField] public Button purchaseButton { get; private set; }
         
         [SerializeField] private Image itemImage;
@@ -24,35 +20,55 @@ namespace GameObjectComponent.UI
 
         [SerializeField] private GameObject tierIndicatorPrefab;
         [SerializeField] private RectTransform tierIndicatorContainer;
-        [SerializeField] private List<GameObject> tierIndicatorInactive;
+        [SerializeField] private List<GameObject> tierIndicatorInactive = new();
         [SerializeField] private Color inActiveColor;
         [SerializeField] private Color activeColor;
         [SerializeField] private Color noMoneyColor;
 
-        private StoreItem _currentItem;
+                
+        private Store _store;
+        private Gold _gold;
+        private StoreItem _item;
+        private StoreItemDefinition _definition;
 
-        public void Construct(Store store, Gold gold)
+        public void Construct(Store store, Gold gold, StoreItem item)
         {
             _store = store;
             _gold = gold;
+            _item = item;
+            _definition = item.storeItemDefinition;
+            gold.OnGoldChanged += UpdateAffordability;
         }
 
-        public void UpdateAffordability(int availableGold)
+
+        public void Init()
         {
-            // this will be gold.
-            if (availableGold >= _currentItem.storeItemDefinition.upgrades[_currentItem.upgradesPurchased].cost) return;
-            purchaseButton.interactable = false;
-            itemPriceText.color = noMoneyColor;
-            itemNextModifierText.color = inActiveColor;
+            Reset();
+            LoadDefinition();
+            UpdateCurrentModifierText();
+            UpdateNextModifierText();
+            UpdateTierIndicators();
+            UpdateAffordability(0);
+            purchaseButton.onClick.AddListener(PurchaseUpgrade);
+        }
+
+        private void Refresh()
+        {
+            UpdateCurrentModifierText();
+            UpdateNextModifierText();
+            UpdateTierIndicators();
+            UpdateAffordability(0);
         }
         
-        public void Initialize(StoreItem item, int availableGold)
+        public void PurchaseUpgrade()
         {
-            _currentItem = item;
-            var definition = item.storeItemDefinition;
-            Debug.Log("Initializing store item ui for: " + item.storeItemDefinition.name);
+            _store.PurchaseUpgrade(_item);
+            Refresh();
+        }
+
+        private void Reset()
+        {
             purchaseButton.onClick.RemoveAllListeners();
-            // reset values
             itemNameText.text = "";
             itemPriceText.text = "";
             purchaseButton.enabled = true;
@@ -63,65 +79,96 @@ namespace GameObjectComponent.UI
                 Destroy(tierIndicator);
             }
             tierIndicatorInactive.Clear();
+        }
+
+        private void LoadDefinition()
+        {
+            itemImage.sprite = _definition.storeSprite;
+            itemNameText.text = _definition.name;
+        }
+
+        private void UpdateCurrentModifierText()
+        {
+            itemCurrentModifierText.text = "";
             
-            // Create
-
-            itemImage.color = Color.white;
-
-            if (definition.storeSprite == null)
+            if (_item.upgradesPurchased == 0)
             {
-                Debug.LogError("Missing sprite?");
+                return;
             }
             
-            itemImage.sprite = definition.storeSprite;
-            itemNameText.text = definition.name;
-            
-            var currentUpgrade = definition.upgrades[item.upgradesPurchased];
-
-            // We've hit the Maximum tier, no more upgrades are available.
-            if (item.upgradesPurchased == definition.upgrades.Length)
+            if(_item.upgradesPurchased >= _definition.upgrades.Length - 1)
             {
-                itemCurrentModifierText.text = SurvivorsUtil.FormatModifierValue(currentUpgrade.modifier);
-                itemNextModifierText.text = "MAX";
-                purchaseButton.enabled = false;
-                itemPriceText.text = "MAX";
-            }
-            else
-            {
-                itemPriceText.text = currentUpgrade.cost + "G";
-            
-                var mod = currentUpgrade.modifier;
-                    
-                itemNextModifierText.text += SurvivorsUtil.FormatModifierValue(currentUpgrade.modifier)  + "\n";
-                itemNextModifierText.color = mod.modifierValue > 0 ?
-                    new Color(0.75f, 1, 0.75f):
-                    new Color(1, 0.75f, 0.75f);
-
-                if (item.upgradesPurchased > 0)
-                {
-                    itemCurrentModifierText.text += SurvivorsUtil.FormatModifierValue(definition.upgrades[item.upgradesPurchased - 1].modifier) + "\n";
-                    itemCurrentModifierText.color = currentUpgrade.modifier.modifierValue > 0 ?
-                        new Color(0.75f, 1, 0.75f):
-                        new Color(1, 0.75f, 0.75f);
-                }
+                var finalModifier = _definition.upgrades[_item.upgradesPurchased - 1].modifier;
+                itemCurrentModifierText.text = SurvivorsUtil.FormatModifierValue(finalModifier);
+                itemCurrentModifierText.color = activeColor;
+                return;
             }
             
-            UpdateAffordability(availableGold);
+            var currentModifier = _definition.upgrades[_item.upgradesPurchased - 1].modifier;
+            itemNextModifierText.text += SurvivorsUtil.FormatModifierValue(currentModifier);
+            itemCurrentModifierText.color = currentModifier.modifierValue > 0 ?
+                new Color(0.75f, 1, 0.75f):
+                new Color(1, 0.75f, 0.75f);
+        }
+
+        private void UpdateNextModifierText()
+        {
+            itemNextModifierText.text = "";
             
-            // create
-            for(var i = 0; i < definition.upgrades.Length; i++)
+            if(_item.upgradesPurchased >= _definition.upgrades.Length)
+            {
+                itemNextModifierText.color = inActiveColor;
+                return;
+            }
+            
+            var nextModifier = _definition.upgrades[_item.upgradesPurchased].modifier;
+            itemNextModifierText.text += SurvivorsUtil.FormatModifierValue(nextModifier);
+            itemNextModifierText.color = nextModifier.modifierValue > 0 ?
+                new Color(0.75f, 1, 0.75f):
+                new Color(1, 0.75f, 0.75f);
+        }
+        
+
+        private void UpdateTierIndicators()
+        {
+            foreach (var tierIndicator in tierIndicatorInactive)
+            {
+                Destroy(tierIndicator);
+            }
+            
+            tierIndicatorInactive.Clear();
+            
+            for(var i = 0; i < _definition.upgrades.Length; i++)
             {
                 var tierIndicator = Instantiate(tierIndicatorPrefab, tierIndicatorContainer);
-                tierIndicator.transform.GetChild(0).gameObject.SetActive(i < item.upgradesPurchased);
+                tierIndicator.transform.GetChild(0).gameObject.SetActive(i < _item.upgradesPurchased);
                 tierIndicatorInactive.Add(tierIndicator);
             }
         }
 
-        public void OnPurchased()
+        private void UpdateAffordability(int addedGold )
         {
+            if(_item.upgradesPurchased == _definition.upgrades.Length)
+            {
+                purchaseButton.interactable = false;
+                itemPriceText.text = "MAX";
+                itemPriceText.color = inActiveColor;
+                itemNextModifierText.color = inActiveColor;
+                return;
+            }
+            var cost = _definition.upgrades[_item.upgradesPurchased].cost;
             
+            itemPriceText.text = cost + "G";
+            
+            if (_gold.amount >= cost)
+            {
+                itemPriceText.color = activeColor;
+                purchaseButton.interactable = true;
+                return;
+            }
+
+            purchaseButton.interactable = false;
+            itemPriceText.color = noMoneyColor;
         }
-        
-        
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 namespace GameObjectComponent.UI
 {
-    public class StoreMenuManager : MonoBehaviour
+    public class UIStoreMenu : MonoBehaviour
     {
         [SerializeField] private Store store;
         [SerializeField] private Gold playerGold;
@@ -19,16 +19,7 @@ namespace GameObjectComponent.UI
 
         private void OnEnable()
         {
-            playerGold.OnGoldChanged += UpdateStoreMenu;
             Init();
-        }
-
-        private void UpdateStoreMenu(int newGoldAmount)
-        {
-            foreach (var ui in _storeItemUis)
-            {
-                ui.UpdateAffordability(newGoldAmount);
-            }
         }
 
         public void UpdateStoreMenu()
@@ -41,13 +32,12 @@ namespace GameObjectComponent.UI
         {
             Debug.Log(store.purchasedStoreItems.Count);
             
-            for(var i = 0; i < store.purchasedStoreItems.Count; i++)
+            foreach(var storeItem in store.purchasedStoreItems)
             {
                 var storeItemUi = Instantiate(storeItemUIPrefab, storeItemContainer);
-                storeItemUi.Initialize(store.purchasedStoreItems[i], playerGold.amount);
+                storeItemUi.Construct(store, playerGold, storeItem);
+                storeItemUi.Init();
                 _storeItemUis.Add(storeItemUi);
-                var x = i;
-                storeItemUi.purchaseButton.onClick.AddListener(() => store.PurchaseUpgrade(store.purchasedStoreItems[x]));
             }
         }
 

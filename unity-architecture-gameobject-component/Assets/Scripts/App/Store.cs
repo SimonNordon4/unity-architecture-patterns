@@ -15,6 +15,7 @@ namespace GameObjectComponent.App
 
         private void PopulateStoreItems()
         {
+            Debug.Log("No Store Item found, creating new.");
             purchasedStoreItems = new List<StoreItem>();
             
             foreach (var storeItemDefinition in storeItemDefinitions)
@@ -30,7 +31,11 @@ namespace GameObjectComponent.App
         public override void Save()
         {
             // save purchasedStoreItems
-            PlayerPrefs.SetString($"purchasedStoreItems_{id}", JsonUtility.ToJson(purchasedStoreItems));
+            Debug.Log("Saving store items");
+            var json = JsonUtility.ToJson(purchasedStoreItems);
+            Debug.Log(purchasedStoreItems.Count);
+            Debug.Log(json);
+            PlayerPrefs.SetString($"purchasedStoreItems_{id}", json);
         }
 
         public override void Load()
@@ -38,6 +43,7 @@ namespace GameObjectComponent.App
             Debug.Log("Loading store items");
             if (PlayerPrefs.HasKey($"purchasedStoreItems_{id}"))
             {
+                Debug.Log("Found store item Key");
                 purchasedStoreItems = JsonUtility.FromJson<List<StoreItem>>(PlayerPrefs.GetString($"purchasedStoreItems_{GetInstanceID()}"));
                 if (purchasedStoreItems == null)
                     PopulateStoreItems();
@@ -53,7 +59,7 @@ namespace GameObjectComponent.App
             Debug.Log($"Purchasing upgrade for {storeItem.storeItemDefinition.name}");
             if (playerGold.amount >= storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost)
             {
-                playerGold.AddGold(-storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost);
+                playerGold.ChangeGold(-storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost);
                 storeItem.upgradesPurchased++;
             }
             Save();
@@ -62,6 +68,11 @@ namespace GameObjectComponent.App
         private void OnEnable()
         {
             Load();
+        }
+        
+        private void OnDisable()
+        {
+            Save();
         }
     }
 }
