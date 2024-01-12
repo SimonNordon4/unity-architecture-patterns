@@ -17,8 +17,8 @@ namespace GameplayComponents.Actor
             items.Add(chestItem);
             OnItemAdded?.Invoke(chestItem);
         }
-        
-        public void ClearAll()
+
+        public override void OnGameEnd()
         {
             items.Clear();
         }

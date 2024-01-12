@@ -16,7 +16,7 @@ namespace GameplayComponents.Actor
             return stats.FirstOrDefault(stat => stat.type == type);
         }
 
-        public override void OnGameStart()
+        public override void OnGameEnd()
         {
             ResetStats();
         }

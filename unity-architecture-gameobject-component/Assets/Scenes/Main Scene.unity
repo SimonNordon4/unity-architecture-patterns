@@ -2868,7 +2868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: {fileID: 9018308866812664875}
+  gold: {fileID: 615099365}
   text: {fileID: 261064638}
   label: 'Gold: '
 --- !u!1 &264689416
@@ -5599,6 +5599,9 @@ GameObject:
   m_Component:
   - component: {fileID: 615099362}
   - component: {fileID: 615099363}
+  - component: {fileID: 615099365}
+  - component: {fileID: 615099364}
+  - component: {fileID: 615099366}
   m_Layer: 0
   m_Name: Store
   m_TagString: Untagged
@@ -5662,7 +5665,49 @@ MonoBehaviour:
   - {fileID: 11400000, guid: eb86af7087970d64bae6bb1bc393a82f, type: 2}
   - {fileID: 11400000, guid: b18066af74358af439f8d5255dc50bc1, type: 2}
   - {fileID: 11400000, guid: d1c8cbcf5ae91c74ba9db9d85cfc62ee, type: 2}
-  playerGold: {fileID: 9018308866812664875}
+  playerGold: {fileID: 615099365}
+  <purchasedStoreItems>k__BackingField: []
+--- !u!114 &615099364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615099361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2adfb8f20d8d4100b8c9899b4abf1005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  store: {fileID: 615099363}
+  stats: {fileID: 9018308866812664866}
+--- !u!114 &615099365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615099361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76e73ab991517574984207fddaeac259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  <amount>k__BackingField: 0
+--- !u!114 &615099366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615099361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
 --- !u!1 &627023981
 GameObject:
   m_ObjectHideFlags: 0
@@ -16158,7 +16203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277505d661c84a4f9e4e3b6435636f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterGold: {fileID: 9018308866812664875}
+  characterGold: {fileID: 0}
   roundSpawner: {fileID: 278339798}
   gameState: {fileID: 1358396559}
   baseGold: 100
@@ -18652,7 +18697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: {fileID: 9018308866812664875}
+  gold: {fileID: 615099365}
   text: {fileID: 2012027882}
   label: 'Gold: '
 --- !u!1 &2017141246
@@ -76162,7 +76207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   store: {fileID: 615099363}
-  playerGold: {fileID: 9018308866812664875}
+  playerGold: {fileID: 615099365}
   storeItemContainer: {fileID: 7831711923489603071}
   storeItemUIPrefab: {fileID: 4978629845700840880, guid: 525aef4d235c0164e9da2e379ea663e2, type: 3}
 --- !u!224 &6981587613884992311
@@ -76344,7 +76389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: {fileID: 9018308866812664875}
+  gold: {fileID: 0}
   text: {fileID: 7195418243267883915}
   label: 'Gold: '
 --- !u!114 &7200546273471470202
@@ -76706,7 +76751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: {fileID: 9018308866812664875}
+  gold: {fileID: 615099365}
   text: {fileID: 3509112124626251546}
   label: 'Gold: '
 --- !u!222 &7347073224590469896
@@ -122069,7 +122114,6 @@ GameObject:
   - component: {fileID: 9018308866812664872}
   - component: {fileID: 9018308866812664871}
   - component: {fileID: 9018308866812664870}
-  - component: {fileID: 9018308866812664875}
   m_Layer: 6
   m_Name: Player Character
   m_TagString: Player
@@ -122832,20 +122876,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <currentHealth>k__BackingField: 0
   stats: {fileID: 9018308866812664866}
---- !u!114 &9018308866812664875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8526962797330366185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e73ab991517574984207fddaeac259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 1
-  <amount>k__BackingField: 0
 --- !u!33 &9052653825607074615
 MeshFilter:
   m_ObjectHideFlags: 0
