@@ -36,7 +36,7 @@ namespace GameObjectComponent.App
     public enum AchievementId
     {
         KillEnemies,
-        KillBosses,
+        WaveCompleted,
         PlayerDied,
         OpenChests,
         EarnGold,

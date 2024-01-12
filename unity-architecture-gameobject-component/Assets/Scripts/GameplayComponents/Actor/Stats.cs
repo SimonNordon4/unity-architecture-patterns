@@ -11,6 +11,21 @@ namespace GameplayComponents.Actor
     {
         [SerializeField] private List<Stat> stats = new();
         
+        public Action<Stat> onStatChanged;
+
+        private void OnEnable()
+        {
+            foreach(var stat in stats)
+            {
+                stat.onModifierAdded += mod => OnModifierAdded(stat);
+            }
+        }
+
+        private void OnModifierAdded(Stat stat)
+        {
+            onStatChanged?.Invoke(stat);
+        }
+
         public Stat GetStat(StatType type)
         {
             return stats.FirstOrDefault(stat => stat.type == type);
@@ -18,6 +33,7 @@ namespace GameplayComponents.Actor
 
         public override void OnGameEnd()
         {
+            Debug.Log("Resetting stats");
             ResetStats();
         }
           

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d2a73b6e24944f8975250e2e44c938a, type: 3}
-  m_Name: Kill 10 Bosses
+  m_Name: Complete 50 Waves
   m_EditorClassIdentifier: 
   id: 1
-  uiName: Kill 10 Bosses
-  rewardGold: 100
-  goal: 10
+  uiName: Complete 50 Waves
+  goal: 50
+  rewardGold: 500
+  statType: 0

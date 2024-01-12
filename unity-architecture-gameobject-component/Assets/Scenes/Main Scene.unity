@@ -326,7 +326,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &18938661
 MonoBehaviour:
@@ -3094,7 +3094,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &278339792
 MonoBehaviour:
@@ -3535,7 +3535,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &303266479
 MonoBehaviour:
@@ -5602,8 +5602,9 @@ GameObject:
   - component: {fileID: 615099365}
   - component: {fileID: 615099364}
   - component: {fileID: 615099366}
+  - component: {fileID: 615099367}
   m_Layer: 0
-  m_Name: Store
+  m_Name: Economy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5622,7 +5623,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &615099363
 MonoBehaviour:
@@ -5695,6 +5696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   <amount>k__BackingField: 0
+  <totalEarned>k__BackingField: 0
 --- !u!114 &615099366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5708,6 +5710,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 1358396559}
+--- !u!114 &615099367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615099361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 277505d661c84a4f9e4e3b6435636f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterGold: {fileID: 615099365}
+  roundSpawner: {fileID: 278339798}
+  gameState: {fileID: 1358396559}
+  baseGold: 100
 --- !u!1 &627023981
 GameObject:
   m_ObjectHideFlags: 0
@@ -6849,7 +6867,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &727989313
 GameObject:
@@ -7370,7 +7388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dda81d178a04595802bbf323338efc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handler: {fileID: 1635859926}
+  handler: {fileID: 0}
   text: {fileID: 832612759}
   label: 'Gold: '
 --- !u!1 &843405547
@@ -9548,6 +9566,112 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!1 &1048511584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1048511586}
+  - component: {fileID: 1048511585}
+  m_Layer: 0
+  m_Name: Achievements
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1048511585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048511584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25b6a32db9f7451492edcd3f0a8f72fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveSpawner: {fileID: 278339790}
+  state: {fileID: 1358396559}
+  roundTimer: {fileID: 1358396562}
+  gold: {fileID: 615099365}
+  stats: {fileID: 9018308866812664866}
+  onAchievementCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  achievementDefinitions:
+  - {fileID: 11400000, guid: b366eb0f4c777484db81eb2ef05d6217, type: 2}
+  - {fileID: 11400000, guid: 0226caaecba383f43bd1ce6eba365866, type: 2}
+  - {fileID: 11400000, guid: a4c0228dad652ed4e9a0457a55b1eb12, type: 2}
+  - {fileID: 11400000, guid: adee7fcc2cd6e844ea886dd4c21cb00e, type: 2}
+  - {fileID: 11400000, guid: 2e591d70b8aa31749a6a31c006593bdb, type: 2}
+  - {fileID: 11400000, guid: a7e5e8410ba68ac4493c63a22c7f7db5, type: 2}
+  - {fileID: 11400000, guid: 041be9013c67ab442ba5a993788b0c75, type: 2}
+  - {fileID: 11400000, guid: a1cf06cbe4ca30e4eb4c5d05675f3163, type: 2}
+  - {fileID: 11400000, guid: 8b291d599a7c7fd4c911b4e344e65578, type: 2}
+  - {fileID: 11400000, guid: 0c97e05133acd8f459b19649bd189603, type: 2}
+  - {fileID: 11400000, guid: 1ec39e98896930040b03dce58512f027, type: 2}
+  - {fileID: 11400000, guid: e89a992f55080d64ba1d6bb46b46bc07, type: 2}
+  - {fileID: 11400000, guid: 69e4bac1a60de384aba71045dc3ed3dc, type: 2}
+  - {fileID: 11400000, guid: ee51a0738bf175940b0fe359dfb6f6ac, type: 2}
+  - {fileID: 11400000, guid: 6c01eb712a610ec46a65bcb265726a05, type: 2}
+  - {fileID: 11400000, guid: 6c5e9f5b1597f224db3b6c42627d11b6, type: 2}
+  - {fileID: 11400000, guid: 32e48bf3abacf7a4a876673f9ab8afaa, type: 2}
+  - {fileID: 11400000, guid: 88c35e5026ae14d4a9f2ecc6f8114d50, type: 2}
+  - {fileID: 11400000, guid: 624d122c0422aca44928b73510e2c16d, type: 2}
+  - {fileID: 11400000, guid: 16b46fc26819dae46b92afb28e401170, type: 2}
+  - {fileID: 11400000, guid: f234df9dae62e9a45b79bd5f401ae9d3, type: 2}
+  - {fileID: 11400000, guid: 83c3f7407ab1eb1428716cc6deaadde8, type: 2}
+  - {fileID: 11400000, guid: 5c05e188c554a9c4f8d3fde6c9c94368, type: 2}
+  - {fileID: 11400000, guid: d10b83f11e9e19b4e9a3afda86746790, type: 2}
+  - {fileID: 11400000, guid: 20c1b2da72fd5fe40a1937418a457773, type: 2}
+  - {fileID: 11400000, guid: 5b981749dfb8c6d4b918bc1546de4aca, type: 2}
+  - {fileID: 11400000, guid: 6be4843310bcc6045b6b77a77e6679bf, type: 2}
+  - {fileID: 11400000, guid: 9c8d13736f04dd84d8dd2bbd657ef0c6, type: 2}
+  - {fileID: 11400000, guid: c1706ee1fa34c464a8c852b5ac1bc805, type: 2}
+  - {fileID: 11400000, guid: 016ea45a81bbe044badcff5f5bb1b6d6, type: 2}
+  - {fileID: 11400000, guid: c3776c646ee07f54390d78aaacdc2d2a, type: 2}
+  - {fileID: 11400000, guid: d55b918f724f8a7478c4c391db6afba4, type: 2}
+  - {fileID: 11400000, guid: bba34290aa720f7439d8451dab45bf14, type: 2}
+  - {fileID: 11400000, guid: 31e6a212fbc451d4797df6975c2c94f8, type: 2}
+  - {fileID: 11400000, guid: 83fd9f67ce6946344b1354152328adae, type: 2}
+  - {fileID: 11400000, guid: 1c579b770ca88114ca2359e9674847b3, type: 2}
+  - {fileID: 11400000, guid: c85cedc0e7fdbe045b7aeba9fb384544, type: 2}
+  - {fileID: 11400000, guid: c8c37066b86931c4da89363671207233, type: 2}
+  - {fileID: 11400000, guid: 11ad6f8cd39400c4a819945597803102, type: 2}
+  - {fileID: 11400000, guid: 918defb95b257c44987e21560cef3e88, type: 2}
+  - {fileID: 11400000, guid: 61fa39419fa9ae240b16813c78f931a3, type: 2}
+  - {fileID: 11400000, guid: 1aa5e3c0c0cf3da4f857ab221345e19c, type: 2}
+  - {fileID: 11400000, guid: 1448233d2526d444d9f9363ec79e4cc8, type: 2}
+  - {fileID: 11400000, guid: fb51bc471432c2a4f81ba331f6bc9c85, type: 2}
+  - {fileID: 11400000, guid: a4a3dbfed3f1b6047af915ec0106fd9f, type: 2}
+  - {fileID: 11400000, guid: 65aaecda4c0dda64f9454bf7b0de81ec, type: 2}
+  - {fileID: 11400000, guid: 1463f8cd89ea56f4a865bdab42426b97, type: 2}
+  - {fileID: 11400000, guid: 1c9034b9cc0ae9f4f82ec090d96a1ef2, type: 2}
+  - {fileID: 11400000, guid: 9ab8d1647ab03774d9dd57f62f1033da, type: 2}
+  - {fileID: 11400000, guid: 924a77f4c1c6bd04ba72bb8148c3ea38, type: 2}
+  - {fileID: 11400000, guid: e361d81734b98124ab8ea4614f29a390, type: 2}
+  - {fileID: 11400000, guid: 0302a54dea13202489c834f9f00b10d3, type: 2}
+  <achievements>k__BackingField: []
+--- !u!4 &1048511586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048511584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059844241
 GameObject:
   m_ObjectHideFlags: 0
@@ -13873,7 +13997,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1358396561
 MonoBehaviour:
@@ -15021,7 +15145,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506620541
 GameObject:
@@ -16159,54 +16283,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1629947533}
   m_CullTransparentMesh: 1
---- !u!1 &1635859924
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1635859925}
-  - component: {fileID: 1635859926}
-  m_Layer: 0
-  m_Name: Player Gold Handler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1635859925
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635859924}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1635859926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635859924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 277505d661c84a4f9e4e3b6435636f14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterGold: {fileID: 0}
-  roundSpawner: {fileID: 278339798}
-  gameState: {fileID: 1358396559}
-  baseGold: 100
 --- !u!1 &1647791897
 GameObject:
   m_ObjectHideFlags: 0
@@ -76389,7 +76465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55047cf6be8441d0b8ffff1b41df6c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: {fileID: 0}
+  gold: {fileID: 615099365}
   text: {fileID: 7195418243267883915}
   label: 'Gold: '
 --- !u!114 &7200546273471470202
@@ -123085,6 +123161,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1618612093171453777}
   - component: {fileID: 9158200077432656316}
+  - component: {fileID: 9158200077432656317}
   m_Layer: 5
   m_Name: Achievements
   m_TagString: Untagged
@@ -123105,6 +123182,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <activationState>k__BackingField: 6
+--- !u!114 &9158200077432656317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9158200077432656315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 495c6e32af346524bbdd1bb6e3515a69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementManager: {fileID: 1048511585}
+  gold: {fileID: 615099365}
+  achievementItemContainer: {fileID: 543674986929852495}
+  achievementItemUIPrefab: {fileID: 7449681676465693275, guid: 6ec233f812b39e5458f427bbb751f4cc, type: 3}
+  totalAchievementText: {fileID: 1958278048697792177}
 --- !u!114 &9158590189650452870
 MonoBehaviour:
   m_ObjectHideFlags: 0

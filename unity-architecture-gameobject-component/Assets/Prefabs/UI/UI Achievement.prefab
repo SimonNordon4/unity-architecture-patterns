@@ -69,8 +69,7 @@ MonoBehaviour:
   m_text: Collect 200G
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -367,8 +366,7 @@ MonoBehaviour:
   m_text: Name of Achievment
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -445,10 +443,9 @@ GameObject:
   - component: {fileID: 6949053250555036875}
   - component: {fileID: 2305583451185132457}
   - component: {fileID: 1789688673012363284}
-  - component: {fileID: 1816485146992962176}
-  - component: {fileID: 6857535302097534745}
+  - component: {fileID: 7449681676465693275}
   m_Layer: 5
-  m_Name: UI_Achievement
+  m_Name: UI Achievement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +512,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2.62
---- !u!114 &1816485146992962176
+--- !u!114 &7449681676465693275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,7 +521,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3359732041697220768}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e8eee779ac33c45bb68868dcd0b5d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 928901be96ef4ed3ad7af65870b2a0c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 8169557853882345923}
@@ -532,24 +529,6 @@ MonoBehaviour:
   progressBar: {fileID: 1544267740613707057}
   collectButton: {fileID: 7906139864725957733}
   collectButtonText: {fileID: 3089948975415218077}
-  parent: {fileID: 0}
---- !u!114 &6857535302097534745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3359732041697220768}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bec10bd42a08c484bada183095a73c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shadowColor: {r: 0, g: 0, b: 0, a: 1}
-  shadowDistance: {x: 0, y: -12.04}
-  m_UseGraphicAlpha: 0
-  iterations: 4
-  shadowSpread: {x: 3, y: 3}
 --- !u!1 &3667026128748086257
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,8 +752,7 @@ MonoBehaviour:
   m_text: 50/100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
