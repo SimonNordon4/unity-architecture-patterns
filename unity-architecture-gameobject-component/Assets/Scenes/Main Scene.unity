@@ -17479,6 +17479,7 @@ GameObject:
   - component: {fileID: 1827359266}
   - component: {fileID: 1827359268}
   - component: {fileID: 1827359267}
+  - component: {fileID: 1827359269}
   m_Layer: 5
   m_Name: Stats Container
   m_TagString: Untagged
@@ -17570,6 +17571,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827359264}
   m_CullTransparentMesh: 1
+--- !u!114 &1827359269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827359264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cdbcfd9c3e2425d9410c4e8c2a715a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  statsContainer: {fileID: 1827359265}
+  statDisplayPrefab: {fileID: 1110832333760358254, guid: 8653ee3edfde7964fb195e1041d856c9, type: 3}
+  stats: {fileID: 9018308866812664866}
 --- !u!1 &1832033938
 GameObject:
   m_ObjectHideFlags: 0
@@ -122696,126 +122712,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3cb163d6c346a1829fac5f67f83d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats:
+  <stats>k__BackingField:
   - name: RangedAttackSpeed
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 0
     <modifiers>k__BackingField: []
-    value: 1
   - name: RangedDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 1
     <modifiers>k__BackingField: []
-    value: 1
   - name: RangedRange
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 2
     <modifiers>k__BackingField: []
-    value: 5
   - name: RangedKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 3
     <modifiers>k__BackingField: []
-    value: 1
   - name: RangedPierce
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 4
     <modifiers>k__BackingField: []
-    value: 0
   - name: MeleeDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 5
     <modifiers>k__BackingField: []
-    value: 1
   - name: MeleeKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 6
     <modifiers>k__BackingField: []
-    value: 1
   - name: MeleeRange
     initialValue: 1.5
-    minimumValue: 1.5
+    minimumValue: 0
     maximumValue: Infinity
     type: 7
     <modifiers>k__BackingField: []
-    value: 1.5
   - name: MeleeAttackSpeed
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 8
     <modifiers>k__BackingField: []
-    value: 1
   - name: MoveSpeed
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 9
     <modifiers>k__BackingField: []
-    value: 5
   - name: MaxHealth
     initialValue: 5
-    minimumValue: 1
+    minimumValue: 0
     maximumValue: Infinity
     type: 10
     <modifiers>k__BackingField: []
-    value: 5
   - name: HealthPackDropRate
-    initialValue: 1
+    initialValue: 0.1
     minimumValue: 0
-    maximumValue: 100
+    maximumValue: Infinity
     type: 11
     <modifiers>k__BackingField: []
-    value: 1
   - name: Luck
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 12
     <modifiers>k__BackingField: []
-    value: 0
   - name: Block
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 13
     <modifiers>k__BackingField: []
-    value: 0
   - name: Dodge
     initialValue: 0
     minimumValue: 0
     maximumValue: 60
     type: 14
     <modifiers>k__BackingField: []
-    value: 0
   - name: Revives
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 15
     <modifiers>k__BackingField: []
-    value: 0
   - name: Dashes
-    initialValue: 99
+    initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 16
     <modifiers>k__BackingField: []
-    value: 0
 --- !u!114 &9018308866812664867
 MonoBehaviour:
   m_ObjectHideFlags: 0

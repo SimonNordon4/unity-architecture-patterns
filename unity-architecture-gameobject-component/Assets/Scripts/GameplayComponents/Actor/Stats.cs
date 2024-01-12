@@ -9,7 +9,7 @@ namespace GameplayComponents.Actor
     [DefaultExecutionOrder(-10)]
     public class Stats : GameplayComponent
     {
-        [SerializeField] private List<Stat> stats = new();
+        [field:SerializeField] public List<Stat> stats { get; private set; }= new();
         
         public Action<Stat> onStatChanged;
 

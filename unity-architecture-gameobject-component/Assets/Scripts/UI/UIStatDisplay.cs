@@ -14,12 +14,30 @@ namespace GameObjectComponent.UI
         [SerializeField]private Color positiveColor = new Color(0.66f,1f,0.66f);
         [SerializeField]private Color negativeColor = new Color(1f,0.5f,0.5f);
         private Stat _stat;
-    
-        private void OnEnable()
+
+        public void Construct(Stats stats, StatType statType)
         {
+            this.stats = stats;
+            this.statType = statType;
+        }
+        
+        public void Init()
+        {
+            if(stats == null) return;
             _textMeshProUGUI = GetComponent<TextMeshProUGUI>();
             _stat = stats.GetStat(statType);
             _stat.onStatChanged += OnStatChanged;
+            OnStatChanged();
+        }
+        
+        private void OnEnable()
+        {
+            Init();
+        }
+        
+        private void OnDisable()
+        {
+            _stat.onStatChanged -= OnStatChanged;
         }
 
         private void OnStatChanged()
