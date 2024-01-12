@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace GameObjectComponent.Editor
 {
-    [CustomEditor(typeof(StatisticDefinition))]
+    [CustomEditor(typeof(StatisticDefinition)), CanEditMultipleObjects]
     public class StatisticDefinitionEditor : UnityEditor.Editor
     {
         public override void OnInspectorGUI()

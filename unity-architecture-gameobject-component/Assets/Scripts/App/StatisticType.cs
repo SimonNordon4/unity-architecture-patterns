@@ -3,11 +3,10 @@
     public enum StatisticType
     {
         TotalKills,
-        BossKills,
+        WavesCompleted,
         GoldEarned,
         ChestsOpened,
         Deaths,
-        DamageDealt,
         DamageTaken,
         DamageHealed,
         GamesWon,
