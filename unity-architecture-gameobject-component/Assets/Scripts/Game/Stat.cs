@@ -8,6 +8,7 @@ using UnityEngine;
 public class Stat
 {
     public event Action<Modifier> onModifierAdded;
+    public event Action onStatChanged;
     
     public Stat(StatType newType)
     {
@@ -40,46 +41,51 @@ public class Stat
 
     [field: SerializeField] public List<Modifier> modifiers { get; private set; } = new();
 
-    public float value;
+    private float _value;
+
+    public float value
+    {
+        get => _value;
+        set
+        {
+            var originalValue = _value;
+            _value = Mathf.Clamp(value, minimumValue, maximumValue);
+            if (Math.Abs(_value - originalValue) > 0.01f)
+            {
+                onStatChanged?.Invoke();
+            }
+        }
+    }
 
     private void Evaluate()
     {
+        float originalValue = initialValue;
         float flatSum = 0;
         float percentageSum = 1; // Start with 1 so it represents 100% at start.
 
         foreach (var modifier in modifiers)
         {
-            if (modifier.modifierType == ModifierType.Flat)
+            switch (modifier.modifierType)
             {
-                flatSum += modifier.modifierValue;
-                
-                // intialValue = 1.5, flatsum = -3, minimumValue = 1
-                // actualValue = 1.5 - 3 = -1.5
-                // difference = 1 - (-1.5) = 2.5
-                // reNormalizedFlatSum = 2.5 + (-3) = -0.5
-                
-                // minimumValue = initialValue + flatSum + x
-                // 1 = 2 + -3 + x
-
-                // x = minimumValue - initialValue - flatSum
-                // x = 1 - 2 -(-3)
-                // x = 2
-                
-                // new flatsum += 2;
-
-                if(flatSum + initialValue < minimumValue)
+                case ModifierType.Flat:
                 {
-                    var virtualFlatSum = initialValue + flatSum;
-                    var difference = minimumValue - virtualFlatSum;
-                    var reNormalizedFlatSum = difference + flatSum;
-                    flatSum = reNormalizedFlatSum;
+                    flatSum += modifier.modifierValue;
+                    if(flatSum + initialValue < minimumValue)
+                    {
+                        var virtualFlatSum = initialValue + flatSum;
+                        var difference = minimumValue - virtualFlatSum;
+                        var reNormalizedFlatSum = difference + flatSum;
+                        flatSum = reNormalizedFlatSum;
+                    }
+
+                    break;
                 }
-   
-            }
-            else if (modifier.modifierType == ModifierType.Percentage)
-            {
-                // Convert percentage to a multiplier. e.g., 10% becomes 1.10, -20% becomes 0.80
-                percentageSum += modifier.modifierValue;
+                case ModifierType.Percentage:
+                    // Convert percentage to a multiplier. e.g., 10% becomes 1.10, -20% becomes 0.80
+                    percentageSum += modifier.modifierValue;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
