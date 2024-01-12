@@ -326,7 +326,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &18938661
 MonoBehaviour:
@@ -1743,6 +1743,7 @@ GameObject:
   - component: {fileID: 119150201}
   - component: {fileID: 119150203}
   - component: {fileID: 119150202}
+  - component: {fileID: 119150204}
   m_Layer: 5
   m_Name: Hyper Mode
   m_TagString: Untagged
@@ -1810,6 +1811,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119150200}
   m_CullTransparentMesh: 1
+--- !u!114 &119150204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119150200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e323f1232dd84ce1bed053457391c4f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 849717959}
+  hyperModeToggle: {fileID: 119439669}
 --- !u!1 &119439664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,10 +1950,10 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: BindHyperScale
-        m_Mode: 1
+      - m_Target: {fileID: 849717959}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.Settings, Assembly-CSharp
+        m_MethodName: SetHyperMode
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3113,7 +3128,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &278339792
 MonoBehaviour:
@@ -3554,7 +3569,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &303266479
 MonoBehaviour:
@@ -3598,7 +3613,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &361919818
 GameObject:
@@ -3631,7 +3646,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &361919822
 MonoBehaviour:
@@ -4836,7 +4851,7 @@ Transform:
   - {fileID: 980833708}
   - {fileID: 1840059383}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &563926501
 GameObject:
@@ -6634,7 +6649,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &689736428
 GameObject:
@@ -6886,7 +6901,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &727989313
 GameObject:
@@ -7447,6 +7462,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &849717958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 849717960}
+  - component: {fileID: 849717959}
+  m_Layer: 0
+  m_Name: Settings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &849717959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849717958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a1b7c94a63475eb6c7199aee16704d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  <showEnemyHealthBars>k__BackingField: 1
+  <showDamageNumbers>k__BackingField: 1
+  <hyperMode>k__BackingField: 0
+  <musicVolume>k__BackingField: 1
+  <sfxVolume>k__BackingField: 1
+  onShowEnemyHealthBarsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onShowDamageNumbersChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onHyperModeChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 612078404}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onMusicVolumeChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onSfxVolumeChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &849717960
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849717958}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854871667
 GameObject:
   m_ObjectHideFlags: 0
@@ -8710,7 +8802,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -8899,7 +8991,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e9ac964af6f603646bc7a94611dc2d58, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e9ac964af6f603646bc7a94611dc2d58, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8994,7 +9086,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1003756005
 GameObject:
@@ -9507,7 +9599,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1039515126
 GameObject:
@@ -11160,7 +11252,7 @@ RectTransform:
   m_Children:
   - {fileID: 1291293142}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12900,7 +12992,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!220 &1346928981
 LightProbeGroup:
@@ -14016,7 +14108,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1358396561
 MonoBehaviour:
@@ -15164,7 +15256,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506620541
 GameObject:
@@ -20024,7 +20116,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8263662190913649
 MonoBehaviour:
@@ -20077,10 +20169,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsMenuManager, Assembly-CSharp
-        m_MethodName: UpdateSoundVolume
-        m_Mode: 1
+      - m_Target: {fileID: 849717959}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.Settings, Assembly-CSharp
+        m_MethodName: SetSfxVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -25199,8 +25291,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+      - m_Target: {fileID: 849717959}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.Settings, Assembly-CSharp
         m_MethodName: SetShowEnemyHealthBars
         m_Mode: 0
         m_Arguments:
@@ -37403,6 +37495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 989953830913471402}
   - component: {fileID: 6642995981200025905}
+  - component: {fileID: 6642995981200025906}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -44115,7 +44208,7 @@ Transform:
   - {fileID: 3623834106970646027}
   - {fileID: 8278052195083062480}
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4233487273683436875
 MonoBehaviour:
@@ -44162,7 +44255,7 @@ Transform:
   - {fileID: 1103014752}
   - {fileID: 55397993399104221}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4277516186594550373
 MonoBehaviour:
@@ -44211,9 +44304,9 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
-        m_MethodName: ShowDamageNumbers
+      - m_Target: {fileID: 849717959}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.Settings, Assembly-CSharp
+        m_MethodName: SetShowDamageNumbers
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -66173,6 +66266,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <activationState>k__BackingField: 8
+--- !u!114 &6642995981200025906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2153248598862537983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f349cacf863d4dcd9630bb56ebe902f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings: {fileID: 849717959}
+  healthBarToggle: {fileID: 85478867705028818}
+  showDamageToggle: {fileID: 4277516186594550373}
+  musicSlider: {fileID: 7200546273471470202}
+  actionSlider: {fileID: 8263662190913649}
+  musicText: {fileID: 5901941140056615638}
+  actionText: {fileID: 4890839310968393892}
 --- !u!222 &6645902352192396683
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -76633,10 +76745,10 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SettingsMenuManager, Assembly-CSharp
-        m_MethodName: UpdateMusicVolume
-        m_Mode: 1
+      - m_Target: {fileID: 849717959}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.Settings, Assembly-CSharp
+        m_MethodName: SetMusicVolume
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

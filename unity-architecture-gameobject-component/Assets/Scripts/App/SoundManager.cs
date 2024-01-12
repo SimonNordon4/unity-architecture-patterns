@@ -9,7 +9,7 @@ namespace GameObjectComponent.App
     {
         private Queue<AudioSource> _audioSources = new Queue<AudioSource>();
 
-
+        private float _sfxVolume = 1f;
 
         private AudioSource GetAudioSource()
         {
@@ -34,6 +34,8 @@ namespace GameObjectComponent.App
             var audioSource = GetAudioSource();
             // select a random clip
             audioSource.clip = soundDefinition.clips[Random.Range(0, soundDefinition.clips.Length)];
+            // set volume
+            audioSource.volume = soundDefinition.volume * _sfxVolume;
             audioSource.Play();
             StartCoroutine(ReturnAudioSourceWhenFinished(audioSource));
         }
@@ -42,6 +44,11 @@ namespace GameObjectComponent.App
         {
             yield return new WaitWhile(() => audioSource.isPlaying);
             ReturnAudioSource(audioSource);
+        }
+        
+        public void SetSfxVolume(float newVolume)
+        {
+            _sfxVolume = newVolume;
         }
     }
 }

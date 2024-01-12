@@ -9,7 +9,7 @@ namespace GameObjectComponent.App
         [SerializeField] private GameState gameState;
         [SerializeField] private AudioClip[] musicTracks;
         
-        [SerializeField]private float musicVolume = 0.5f;
+        [SerializeField] private float musicVolume = 0.5f;
         
         private AudioSource audioSource;
 
@@ -23,19 +23,28 @@ namespace GameObjectComponent.App
         {
             gameState.OnGameStart += PlayRandomTrack;
             gameState.OnGamePause += PauseTrack;
+            gameState.OnGameResume += ResumeTrack;
             gameState.OnGameQuit += StopTrack;
             gameState.OnGameLost += StopTrack;
             gameState.OnGameWon += StopTrack;
-            
         }
 
         private void OnDisable()
         {
             gameState.OnGameStart -= PlayRandomTrack;
             gameState.OnGamePause -= PauseTrack;
+            gameState.OnGameResume -= ResumeTrack;
             gameState.OnGameQuit -= StopTrack;
             gameState.OnGameLost -= StopTrack;
             gameState.OnGameWon -= StopTrack;
+        }
+        
+        private void ResumeTrack()
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
         }
 
         private void PlayRandomTrack()
