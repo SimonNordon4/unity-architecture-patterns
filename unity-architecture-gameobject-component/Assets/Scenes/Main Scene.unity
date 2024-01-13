@@ -7063,6 +7063,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8e65a63a5d239448367095b4a072ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &785014475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785014476}
+  - component: {fileID: 785014479}
+  - component: {fileID: 785014478}
+  - component: {fileID: 785014477}
+  m_Layer: 5
+  m_Name: Actor Pool DamageNumbers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &785014476
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785014475}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1291293142}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &785014477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785014475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cdc4d789b6540dfa32b02e7ad8076a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorPool: {fileID: 278339789}
+  textPool: {fileID: 785014478}
+  gameCamera: {fileID: 963194227}
+  playerDamageHandler: {fileID: 9018308866812664873}
+  dodgeColor: {r: 0.28119436, g: 0.6493577, b: 0.6698113, a: 1}
+  blockColor: {r: 0.5471698, g: 0.3643939, b: 0.26584196, a: 1}
+  damageColor: {r: 0.8018868, g: 0.25342646, b: 0.25342646, a: 1}
+  numberTime: 0.8
+  numberSize: 1.2
+--- !u!114 &785014478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785014475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a115b3272653494f9b086d584ca9f09c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageNumberPrefab: {fileID: 8685286496474895521, guid: e746a5116cf658e47b7ffe559a701478, type: 3}
+  poolSize: 10
+--- !u!114 &785014479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785014475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: {fileID: 1358396559}
 --- !u!1 &793214395
 GameObject:
   m_ObjectHideFlags: 0
@@ -7530,6 +7617,18 @@ MonoBehaviour:
       - m_Target: {fileID: 6642995981200025906}
         m_TargetAssemblyTypeName: GameObjectComponent.UI.UISettingsMenu, Assembly-CSharp
         m_MethodName: UpdateShowDamageNumbers
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 785014475}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12368,6 +12467,7 @@ RectTransform:
   m_Children:
   - {fileID: 1428806658}
   - {fileID: 56815766}
+  - {fileID: 785014476}
   - {fileID: 2028792656}
   - {fileID: 1764124330}
   - {fileID: 65588993}
@@ -122915,102 +123015,119 @@ MonoBehaviour:
     maximumValue: Infinity
     type: 0
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: RangedDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 1
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: RangedRange
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 2
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: RangedKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 3
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: RangedPierce
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 4
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: MeleeDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 5
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: MeleeKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 6
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: MeleeRange
     initialValue: 1.5
     minimumValue: 0
     maximumValue: Infinity
     type: 7
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: MeleeAttackSpeed
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 8
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: MoveSpeed
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 9
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: MaxHealth
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 10
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: HealthPackDropRate
     initialValue: 0.1
     minimumValue: 0
     maximumValue: Infinity
     type: 11
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: Luck
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 12
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: Block
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 13
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: Dodge
     initialValue: 0
     minimumValue: 0
     maximumValue: 60
     type: 14
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: Revives
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 15
     <modifiers>k__BackingField: []
+    realValue: 0
   - name: Dashes
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 16
     <modifiers>k__BackingField: []
+    realValue: 0
 --- !u!114 &9018308866812664867
 MonoBehaviour:
   m_ObjectHideFlags: 0

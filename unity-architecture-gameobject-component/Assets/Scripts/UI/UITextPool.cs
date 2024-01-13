@@ -42,6 +42,7 @@ namespace GameObjectComponent.UI
         public void ReturnDamageNumber(TextMeshProUGUI damageNumber)
         {
             damageNumber.gameObject.SetActive(false);
+            damageNumber.transform.localScale = Vector3.one;
             _damageNumberPool.Enqueue(damageNumber);
         }
     }

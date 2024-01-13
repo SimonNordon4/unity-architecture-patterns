@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace GameplayComponents.Life
 {
@@ -14,6 +15,10 @@ namespace GameplayComponents.Life
         private bool _hasBlockReference = false;
         
         [field:SerializeField] public bool isInvincible { get; set; } = false;
+        
+        public event Action<Vector3> OnBlock;
+        public event Action<Vector3> OnDodge;
+        public event Action<Vector3, int> OnDamage;
 
         private void Start()
         {
@@ -40,6 +45,7 @@ namespace GameplayComponents.Life
             {
                 if (dodge.CalculateDodge())
                 {
+                    OnDodge?.Invoke(transform.position);
                     return;
                 }
             }
@@ -49,10 +55,12 @@ namespace GameplayComponents.Life
                 damageAmount = block.CalculateBlock(damageAmount);
                 if (damageAmount <= 0)
                 {
+                    OnBlock?.Invoke(transform.position);
                     return;
                 }
             }
             
+            OnDamage?.Invoke(transform.position, damageAmount);
             health.TakeDamage(damageAmount);
         }
         
