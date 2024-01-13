@@ -51,6 +51,8 @@ namespace GameObjectComponent.App
         {
             var randomIndex = Random.Range(0, musicTracks.Length);
             _audioSource.clip = musicTracks[randomIndex];
+            _audioSource.loop = true;
+            _audioSource.volume = musicVolume;
             _audioSource.Play();
         }
 
@@ -72,7 +74,8 @@ namespace GameObjectComponent.App
             Debug.Log($"Setting volume to {volume}");
             volume = Mathf.Clamp01(volume);
             musicVolume = volume;
-            _audioSource.volume = volume;
+            if(_audioSource != null)
+                _audioSource.volume = volume;
         }
     }
 }
