@@ -69,6 +69,7 @@ namespace GameObjectComponent.App
         
         public void SetVolume(float volume)
         {
+            Debug.Log($"Setting volume to {volume}");
             volume = Mathf.Clamp01(volume);
             musicVolume = volume;
             audioSource.volume = volume;

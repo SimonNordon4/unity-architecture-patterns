@@ -33,12 +33,13 @@ namespace GameObjectComponent.App
         
         public void SetMusicVolume(float newVolume)
         {
-            onHyperModeChanged?.Invoke(hyperMode);
+            onMusicVolumeChanged?.Invoke(newVolume);
             musicVolume = newVolume;
         }
         
         public void SetSfxVolume(float newVolume)
         {
+            onSfxVolumeChanged?.Invoke(newVolume);
             sfxVolume = newVolume;
         }
         
@@ -52,6 +53,7 @@ namespace GameObjectComponent.App
         public override void Save()
         {
             // save
+            Debug.Log("Saving settings");
             var save = new SettingSave(this);
             var json = JsonUtility.ToJson(save);
             PlayerPrefs.SetString("settings", json);
@@ -59,7 +61,7 @@ namespace GameObjectComponent.App
 
         public override void Load()
         {
-            // load
+            Debug.Log("Loading settings");
             var json = PlayerPrefs.GetString($"settings_{id}", "");
             if (string.IsNullOrEmpty(json))
             {

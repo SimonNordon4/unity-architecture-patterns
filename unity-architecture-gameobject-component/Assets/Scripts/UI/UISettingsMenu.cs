@@ -29,24 +29,22 @@ namespace GameObjectComponent.UI
 
         public void UpdateMusicVolume(float value)
         {
-            musicText.text = $"{(value * 100):F0}%";
-            settings.SetMusicVolume(value);
+            musicText.text = $"Music Volume: {(value * 100):F0}%";
         }
 
         public void UpdateSoundVolume(float value)
         {
-            actionText.text = $"{value * 100:F0}%";
-            settings.SetSfxVolume(value);
+            actionText.text = $"SFX Volume: {value * 100:F0}%";
         }
         
         public void UpdateShowEnemyHealthBars(bool value)
         {
-            settings.SetShowEnemyHealthBars(value);
+            healthBarToggle.isOn = value;
         }
         
         public void UpdateShowDamageNumbers(bool value)
         {
-            settings.SetShowDamageNumbers(value);
+            showDamageToggle.isOn = value;
         }
     }
 
