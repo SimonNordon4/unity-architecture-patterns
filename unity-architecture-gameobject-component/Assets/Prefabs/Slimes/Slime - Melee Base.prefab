@@ -83,18 +83,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7965923660948306739}
-    - targetCorrespondingSourceObject: {fileID: 1696975102067192456, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5376582553519602563}
-    - targetCorrespondingSourceObject: {fileID: 1696975102067192456, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      addedObject: {fileID: 2603193297274075102}
+    - targetCorrespondingSourceObject: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1725419514068217098}
-    - targetCorrespondingSourceObject: {fileID: 3765094842521643010, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      addedObject: {fileID: 7396941055380603832}
+    - targetCorrespondingSourceObject: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2512367336819874639}
-    - targetCorrespondingSourceObject: {fileID: 3765094842521643010, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      addedObject: {fileID: 1995268280355798852}
+    - targetCorrespondingSourceObject: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4627759238331830252}
+      addedObject: {fileID: 7248848007217041702}
   m_SourcePrefab: {fileID: 100100000, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
 --- !u!114 &29099920234062271 stripped
 MonoBehaviour:
@@ -105,17 +105,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 241e67b80a014efdac8005922af4bfe0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &461265986793962603 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4903741833510078622, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
-  m_PrefabInstance: {fileID: 4785965002094130421}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8515009473439194359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &968382538216142355 stripped
@@ -138,6 +127,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1501910583119083867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6250136981006962094, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+  m_PrefabInstance: {fileID: 4785965002094130421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965931753579400588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2541051730681367080 stripped
@@ -181,18 +181,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repulsionForce: 1.8
   body: {fileID: 8196101347382880572}
---- !u!1 &6190184574046176893 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1696975102067192456, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
-  m_PrefabInstance: {fileID: 4785965002094130421}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5376582553519602563
+--- !u!114 &2603193297274075102
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6190184574046176893}
+  m_GameObject: {fileID: 4965931753579400588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d26d180ca92d4495a4cf5b8b6ac104d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 7396941055380603832}
+  stats: {fileID: 2541051730681367080}
+  target: {fileID: 1501910583119083867}
+--- !u!114 &7396941055380603832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965931753579400588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b949e72ec0349288515795074404e2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAttack:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3302300007041126481}
+        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundProxy, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: e4497588438a4934d9aaf5204c81b0e3, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1995268280355798852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965931753579400588}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6745e325c34cc5bd58619258f06185, type: 3}
@@ -200,22 +238,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 1059266703737034006}
   stats: {fileID: 2541051730681367080}
-  target: {fileID: 461265986793962603}
+  target: {fileID: 1501910583119083867}
   avoidance: {fileID: 7965923660948306739}
---- !u!114 &1725419514068217098
+--- !u!114 &7248848007217041702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6190184574046176893}
+  m_GameObject: {fileID: 4965931753579400588}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1046686aa344a1baf2ff352fb17f581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackFactor: 1
-  defaultMovement: {fileID: 5376582553519602563}
+  defaultMovement: {fileID: 1995268280355798852}
   movement: {fileID: 1059266703737034006}
   knockBackReceiver: {fileID: 29099920234062271}
   _transform: {fileID: 6674586655066841167}
@@ -230,51 +268,3 @@ CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 3734978395451088329, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
   m_PrefabInstance: {fileID: 4785965002094130421}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8515009473439194359 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3765094842521643010, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
-  m_PrefabInstance: {fileID: 4785965002094130421}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2512367336819874639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8515009473439194359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26d180ca92d4495a4cf5b8b6ac104d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 4627759238331830252}
-  stats: {fileID: 2541051730681367080}
-  target: {fileID: 461265986793962603}
---- !u!114 &4627759238331830252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8515009473439194359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b949e72ec0349288515795074404e2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3302300007041126481}
-        m_TargetAssemblyTypeName: GameObjectComponent.App.SoundProxy, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: d658cbabcaab8b343b83677f86e40c42, type: 2}
-          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
-            Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2

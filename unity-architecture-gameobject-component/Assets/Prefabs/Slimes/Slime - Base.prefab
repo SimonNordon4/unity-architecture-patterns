@@ -18,9 +18,13 @@ GameObject:
   - component: {fileID: 3734978395451088329}
   - component: {fileID: 2008489893545680539}
   - component: {fileID: 5537295294949007843}
-  - component: {fileID: 3740821294826811844}
   - component: {fileID: 4759262429812004170}
   - component: {fileID: 8052165189420803236}
+  - component: {fileID: 3740821294826811844}
+  - component: {fileID: 4995729256600470245}
+  - component: {fileID: 2313112394367906292}
+  - component: {fileID: 6928325991692677566}
+  - component: {fileID: 6250136981006962094}
   m_Layer: 7
   m_Name: Slime - Base
   m_TagString: Enemy
@@ -42,9 +46,6 @@ Transform:
   m_Children:
   - {fileID: 193380650372867125}
   - {fileID: 737438390420449053}
-  - {fileID: 2821453067625267987}
-  - {fileID: 7586667956115395637}
-  - {fileID: 4279815294252653072}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -121,7 +122,7 @@ MonoBehaviour:
   onSpawned:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3745461181196186973}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameplayComponents.Life.Health, Assembly-CSharp
         m_MethodName: SetToMaxHealth
         m_Mode: 1
@@ -159,126 +160,126 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3cb163d6c346a1829fac5f67f83d03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats:
+  <stats>k__BackingField:
   - name: RangedAttackSpeed
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 0
     <modifiers>k__BackingField: []
-    value: 1
+    realValue: 1
   - name: RangedDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 1
     <modifiers>k__BackingField: []
-    value: 1
+    realValue: 1
   - name: RangedRange
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 2
     <modifiers>k__BackingField: []
-    value: 5
+    realValue: 5
   - name: RangedKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 3
     <modifiers>k__BackingField: []
-    value: 1
+    realValue: 1
   - name: RangedPierce
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 4
     <modifiers>k__BackingField: []
-    value: 0
+    realValue: 0
   - name: MeleeDamage
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 5
     <modifiers>k__BackingField: []
-    value: 1
+    realValue: 1
   - name: MeleeKnockBack
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 6
     <modifiers>k__BackingField: []
-    value: 1
+    realValue: 1
   - name: MeleeRange
     initialValue: 1.5
     minimumValue: 0
     maximumValue: Infinity
     type: 7
     <modifiers>k__BackingField: []
-    value: 1.5
+    realValue: 1.5
   - name: MeleeAttackSpeed
     initialValue: 1
     minimumValue: 0
     maximumValue: Infinity
     type: 8
     <modifiers>k__BackingField: []
-    value: 1
+    realValue: 1
   - name: MoveSpeed
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 9
     <modifiers>k__BackingField: []
-    value: 5
+    realValue: 5
   - name: MaxHealth
     initialValue: 5
     minimumValue: 0
     maximumValue: Infinity
     type: 10
     <modifiers>k__BackingField: []
-    value: 5
+    realValue: 5
   - name: HealthPackDropRate
     initialValue: 0.1
     minimumValue: 0
     maximumValue: Infinity
     type: 11
     <modifiers>k__BackingField: []
-    value: 0.1
+    realValue: 0.1
   - name: Luck
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 12
     <modifiers>k__BackingField: []
-    value: 0
+    realValue: 0
   - name: Block
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 13
     <modifiers>k__BackingField: []
-    value: 0
+    realValue: 0
   - name: Dodge
     initialValue: 0
     minimumValue: 0
     maximumValue: 60
     type: 14
     <modifiers>k__BackingField: []
-    value: 0
+    realValue: 0
   - name: Revives
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 15
     <modifiers>k__BackingField: []
-    value: 0
+    realValue: 0
   - name: Dashes
     initialValue: 0
     minimumValue: 0
     maximumValue: Infinity
     type: 16
     <modifiers>k__BackingField: []
-    value: 0
+    realValue: 0
 --- !u!114 &1557060859090184416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,18 +356,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <level>k__BackingField: {fileID: 0}
---- !u!114 &3740821294826811844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 468833207495391609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4759262429812004170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,37 +380,122 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69ece41d53ab412f998fe578d691e15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1696975102067192456
-GameObject:
+--- !u!114 &3740821294826811844
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2821453067625267987}
-  m_Layer: 7
-  m_Name: Locomotion
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2821453067625267987
-Transform:
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4995729256600470245
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696975102067192456}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2219092628217517242}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf6c633300a94970a4242680e1b217ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <currentHealth>k__BackingField: 0
+  stats: {fileID: 7000996090403241693}
+--- !u!114 &2313112394367906292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fa31c0b47f4fb88469de3567c742b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageReceiver: {fileID: 3740821294826811844}
+  health: {fileID: 4995729256600470245}
+  dodge: {fileID: 0}
+  block: {fileID: 0}
+  <isInvincible>k__BackingField: 0
+--- !u!114 &6928325991692677566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e20b34633c46b98ed7385bae8e87c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 7000996090403241693}
+  health: {fileID: 4995729256600470245}
+  onRevived:
+    m_PersistentCalls:
+      m_Calls: []
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6500748167159065044}
+        m_TargetAssemblyTypeName: GameplayComponents.Actor.ActorSpawnDelay, Assembly-CSharp
+        m_MethodName: PlayDeathParticle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2767088790703748586}
+        m_TargetAssemblyTypeName: GameplayComponents.Actor.PoolableActor, Assembly-CSharp
+        m_MethodName: Return
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8052165189420803236}
+        m_TargetAssemblyTypeName: DefaultNamespace.SoundProxy, Assembly-CSharp
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: e37a38038d712774185b93770c3839fc, type: 2}
+          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6250136981006962094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 468833207495391609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialTarget: {fileID: 0}
+  <targetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1997110200865538038
 GameObject:
   m_ObjectHideFlags: 0
@@ -5347,176 +5421,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &3765094842521643010
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4279815294252653072}
-  - component: {fileID: 4903741833510078622}
-  m_Layer: 7
-  m_Name: Combat
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4279815294252653072
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3765094842521643010}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2219092628217517242}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4903741833510078622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3765094842521643010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialTarget: {fileID: 0}
-  <targetLayer>k__BackingField:
-    serializedVersion: 2
-    m_Bits: 64
---- !u!1 &5181123594545375461
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7586667956115395637}
-  - component: {fileID: 3745461181196186973}
-  - component: {fileID: 940392343801279167}
-  - component: {fileID: 1106366167480430315}
-  m_Layer: 7
-  m_Name: Life
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7586667956115395637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5181123594545375461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2219092628217517242}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3745461181196186973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5181123594545375461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf6c633300a94970a4242680e1b217ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <currentHealth>k__BackingField: 0
-  stats: {fileID: 7000996090403241693}
---- !u!114 &940392343801279167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5181123594545375461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58fa31c0b47f4fb88469de3567c742b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageReceiver: {fileID: 3740821294826811844}
-  health: {fileID: 3745461181196186973}
-  dodge: {fileID: 0}
-  block: {fileID: 0}
-  <isInvincible>k__BackingField: 0
---- !u!114 &1106366167480430315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5181123594545375461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e20b34633c46b98ed7385bae8e87c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 7000996090403241693}
-  health: {fileID: 3745461181196186973}
-  onRevived:
-    m_PersistentCalls:
-      m_Calls: []
-  onDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6500748167159065044}
-        m_TargetAssemblyTypeName: GameplayComponents.Actor.ActorSpawnDelay, Assembly-CSharp
-        m_MethodName: PlayDeathParticle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2767088790703748586}
-        m_TargetAssemblyTypeName: GameplayComponents.Actor.PoolableActor, Assembly-CSharp
-        m_MethodName: Return
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8052165189420803236}
-        m_TargetAssemblyTypeName: DefaultNamespace.SoundProxy, Assembly-CSharp
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: e37a38038d712774185b93770c3839fc, type: 2}
-          m_ObjectArgumentAssemblyTypeName: GameObjectComponent.Definitions.SoundDefinition,
-            Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5216751976124021734
 GameObject:
   m_ObjectHideFlags: 0
