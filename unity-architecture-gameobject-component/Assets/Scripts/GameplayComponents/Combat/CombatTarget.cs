@@ -35,6 +35,7 @@ namespace GameplayComponents.Combat
                 Debug.LogWarning("Target is not on the target layer.", this);
             }
             
+            Debug.Log("Setting target to " + newTarget.name,this);
             target = newTarget;
             hasTarget = true;
             _targetEvents = GetGameObjectEvents(target);

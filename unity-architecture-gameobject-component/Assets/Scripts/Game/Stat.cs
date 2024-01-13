@@ -41,16 +41,17 @@ public class Stat
 
     [field: SerializeField] public List<Modifier> modifiers { get; private set; } = new();
 
-    private float _value;
+    [SerializeField]
+    private float realValue;
 
     public float value
     {
-        get => _value;
+        get => realValue;
         set
         {
-            var originalValue = _value;
-            _value = Mathf.Clamp(value, minimumValue, maximumValue);
-            if (Math.Abs(_value - originalValue) > 0.01f)
+            var originalValue = realValue;
+            realValue = Mathf.Clamp(value, minimumValue, maximumValue);
+            if (Math.Abs(realValue - originalValue) > 0.01f)
             {
                 onStatChanged?.Invoke();
             }
