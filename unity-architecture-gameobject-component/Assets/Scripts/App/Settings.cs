@@ -21,30 +21,35 @@ namespace GameObjectComponent.App
         
         public void SetShowEnemyHealthBars(bool show)
         {
+            Debug.Log($"SetShowEnemyHealthBars {show}");
             showEnemyHealthBars = show;
             onShowEnemyHealthBarsChanged?.Invoke(show);
         }
         
         public void SetShowDamageNumbers(bool show)
         {
+            Debug.Log($"SetShowDamageNumbers {show}");
             showDamageNumbers = show;
             onShowDamageNumbersChanged?.Invoke(show);
         }
         
         public void SetMusicVolume(float newVolume)
         {
+            Debug.Log($"SetMusicVolume {newVolume}");
             onMusicVolumeChanged?.Invoke(newVolume);
             musicVolume = newVolume;
         }
         
         public void SetSfxVolume(float newVolume)
         {
+            Debug.Log($"SetSfxVolume {newVolume}");
             onSfxVolumeChanged?.Invoke(newVolume);
             sfxVolume = newVolume;
         }
         
         public void SetHyperMode(bool hyper)
         {
+            Debug.Log($"SetHyperMode {hyper}");
             hyperMode = hyper;
             GameTime.hyperModeTimeScale = hyper ? 2f : 1f;
             onHyperModeChanged?.Invoke(hyper);
@@ -53,16 +58,16 @@ namespace GameObjectComponent.App
         public override void Save()
         {
             // save
-            Debug.Log("Saving settings");
             var save = new SettingSave(this);
             var json = JsonUtility.ToJson(save);
-            PlayerPrefs.SetString("settings", json);
+            Debug.Log($"Saved settings {json}");
+            PlayerPrefs.SetString($"settings_{id}", json);
         }
 
         public override void Load()
         {
-            Debug.Log("Loading settings");
             var json = PlayerPrefs.GetString($"settings_{id}", "");
+            Debug.Log($"Loaded settings {json}");
             if (string.IsNullOrEmpty(json))
             {
                 return;

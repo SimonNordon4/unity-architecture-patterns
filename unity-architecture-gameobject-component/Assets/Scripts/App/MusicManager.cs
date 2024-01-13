@@ -11,12 +11,12 @@ namespace GameObjectComponent.App
         
         [SerializeField] private float musicVolume = 0.5f;
         
-        private AudioSource audioSource;
+        private AudioSource _audioSource;
 
         private void Awake()
         {
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.volume = musicVolume;
+            _audioSource = GetComponent<AudioSource>();
+            _audioSource.volume = musicVolume;
         }
 
         private void OnEnable()
@@ -41,30 +41,30 @@ namespace GameObjectComponent.App
         
         private void ResumeTrack()
         {
-            if (!audioSource.isPlaying)
+            if (!_audioSource.isPlaying)
             {
-                audioSource.Play();
+                _audioSource.Play();
             }
         }
 
         private void PlayRandomTrack()
         {
             var randomIndex = Random.Range(0, musicTracks.Length);
-            audioSource.clip = musicTracks[randomIndex];
-            audioSource.Play();
+            _audioSource.clip = musicTracks[randomIndex];
+            _audioSource.Play();
         }
 
         private void PauseTrack()
         {
-            if (audioSource.isPlaying)
+            if (_audioSource.isPlaying)
             {
-                audioSource.Pause();
+                _audioSource.Pause();
             }
         }
 
         private void StopTrack()
         {
-            audioSource.Stop();
+            _audioSource.Stop();
         }
         
         public void SetVolume(float volume)
@@ -72,7 +72,7 @@ namespace GameObjectComponent.App
             Debug.Log($"Setting volume to {volume}");
             volume = Mathf.Clamp01(volume);
             musicVolume = volume;
-            audioSource.volume = volume;
+            _audioSource.volume = volume;
         }
     }
 }
