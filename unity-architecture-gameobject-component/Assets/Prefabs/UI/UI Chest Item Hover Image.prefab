@@ -69,8 +69,7 @@ MonoBehaviour:
   m_text: New Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -148,7 +147,7 @@ GameObject:
   - component: {fileID: 9220488187362364546}
   - component: {fileID: 561842681281416646}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: item count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -205,8 +204,7 @@ MonoBehaviour:
   m_text: 1x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -463,8 +461,8 @@ GameObject:
   - component: {fileID: 3889201390128787287}
   - component: {fileID: 3741765195135855756}
   - component: {fileID: 7689008668544489479}
-  - component: {fileID: 5215998619264568895}
   - component: {fileID: 3553893220527643946}
+  - component: {fileID: 1991429392723374164}
   m_Layer: 5
   m_Name: UI Chest Item Hover Image
   m_TagString: Untagged
@@ -533,25 +531,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5215998619264568895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6713320755353207224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f06a487e79fdc440b1b7733bcb91718, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemCountText: {fileID: 561842681281416646}
-  icon: {fileID: 7689008668544489479}
-  hoverInfoBox: {fileID: 2326470566845380799}
-  hoverInfoTitle: {fileID: 892422196733775240}
-  descriptionPrefab: {fileID: 8685286496474895521, guid: 8f02c3dfafd00554ab2630c1efade103,
-    type: 3}
-  hoverInfoStats: []
 --- !u!114 &3553893220527643946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,3 +546,21 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.56078434}
   m_EffectDistance: {x: -6.61, y: -5.22}
   m_UseGraphicAlpha: 1
+--- !u!114 &1991429392723374164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6713320755353207224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87ca35932bd411e862014d49cb57a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemCountText: {fileID: 561842681281416646}
+  icon: {fileID: 7689008668544489479}
+  hoverInfoBox: {fileID: 2326470566845380799}
+  hoverInfoTitle: {fileID: 892422196733775240}
+  descriptionPrefab: {fileID: 8685286496474895521, guid: 8f02c3dfafd00554ab2630c1efade103, type: 3}
+  hoverInfoStats: []

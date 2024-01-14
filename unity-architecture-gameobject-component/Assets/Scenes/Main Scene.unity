@@ -3204,7 +3204,7 @@ MonoBehaviour:
   waveSpawner: {fileID: 278339790}
   chestSpawner: {fileID: 18938659}
   gameState: {fileID: 1358396559}
-  roundDefinition: {fileID: 11400000, guid: 1463b603d0fbb194cbec86c422d36bf9, type: 2}
+  roundDefinition: {fileID: 11400000, guid: c3a4e44eb5ffece48bbf6cee77d43b17, type: 2}
 --- !u!1 &292098358
 GameObject:
   m_ObjectHideFlags: 0
@@ -18219,6 +18219,7 @@ GameObject:
   - component: {fileID: 1886776309}
   - component: {fileID: 1886776308}
   - component: {fileID: 1886776307}
+  - component: {fileID: 1886776310}
   m_Layer: 5
   m_Name: Item ScrollView
   m_TagString: Untagged
@@ -18317,6 +18318,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886776305}
   m_CullTransparentMesh: 1
+--- !u!114 &1886776310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886776305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2f02a4d32e440dabc7e46fe0cc5e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 9018308866812664864}
+  inventoryItemContainer: {fileID: 1039515127}
+  chestItemHoverImagePrefab: {fileID: 1991429392723374164, guid: cf497b26d0c0c5b46bb75e5f2b659b96, type: 3}
 --- !u!1 &1907889857
 GameObject:
   m_ObjectHideFlags: 0
@@ -122962,6 +122978,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <canMove>k__BackingField: 1
   <level>k__BackingField: {fileID: 1358396558}
 --- !u!114 &9018308866812664864
 MonoBehaviour:
