@@ -35,5 +35,10 @@ namespace GameplayComponents.Locomotion
             movement.SetLookDirection(lookDirection);
             movement.SetVelocity(velocity);
         }
+
+        private void OnDisable()
+        {
+            Debug.Log("Disabled");
+        }
     }
 }

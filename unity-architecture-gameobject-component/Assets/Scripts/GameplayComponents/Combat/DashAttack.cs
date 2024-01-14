@@ -8,6 +8,7 @@ namespace GameplayComponents.Combat
     public class DashAttack : GameplayComponent
     {
         [SerializeField] private Dash dash;
+        [SerializeField] private Movement movement;
         [SerializeField] private GameplayComponent defaultMovement;
         [SerializeField] private CombatTarget target;
         [SerializeField] private KnockBack knockBack;
@@ -47,7 +48,9 @@ namespace GameplayComponents.Combat
             if(target.targetDistance > minAttackDistance) return;
 
             defaultMovement.enabled = false;
+            movement.SetVelocity(Vector3.zero);
             knockBack.canBeKnockedBack = false;
+            
             _isChargingUpDash = true;
             StartCoroutine(DashChargeUp());
         }

@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: stats.Array.data[16].initialValue
       value: 9999
       objectReference: {fileID: 0}
+    - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: <stats>k__BackingField.Array.data[16].realValue
+      value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: <stats>k__BackingField.Array.data[16].initialValue
+      value: 99999
+      objectReference: {fileID: 0}
     - target: {fileID: 4666907214947881152, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -99,6 +107,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3528176254858042567}
   m_SourcePrefab: {fileID: 100100000, guid: b544fab130f99a944b3855910af44473, type: 3}
+--- !u!114 &450835826189620841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1995268280355798852, guid: b544fab130f99a944b3855910af44473, type: 3}
+  m_PrefabInstance: {fileID: 2157555339367246125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6420907907278546081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6745e325c34cc5bd58619258f06185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &659485500856143990 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1501910583119083867, guid: b544fab130f99a944b3855910af44473, type: 3}
@@ -150,12 +169,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dash: {fileID: 3528176254858042567}
-  defaultMovement: {fileID: 8790085779169896498}
+  movement: {fileID: 1387786336791854139}
+  defaultMovement: {fileID: 450835826189620841}
   target: {fileID: 659485500856143990}
   knockBack: {fileID: 8748306035607025675}
   dashAttackSpeed: 4
   minAttackDistance: 3
-  dashChargeUpTime: 1
+  dashChargeUpTime: 0.5
   dashDuration: 0.6
   dashDistance: 8
 --- !u!114 &3528176254858042567
@@ -174,7 +194,7 @@ MonoBehaviour:
   dashTime: 0.2
   stats: {fileID: 4517827515621630725}
   movement: {fileID: 1387786336791854139}
-  defaultMovement: {fileID: 8790085779169896498}
+  defaultMovement: {fileID: 450835826189620841}
   onDashStart:
     m_PersistentCalls:
       m_Calls: []
@@ -190,16 +210,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1046686aa344a1baf2ff352fb17f581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8790085779169896498 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
-  m_PrefabInstance: {fileID: 2157555339367246125}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420907907278546081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82909656621f4bbab8987d389edcb655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
