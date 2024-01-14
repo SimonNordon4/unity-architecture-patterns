@@ -11,6 +11,7 @@
 - [ ] Fix Ranged Pierce and store upgrade.
 - [ ] Fix Spawn Delay continuing during pause.
 - [x] Fix Wanderer Knock Back.
+- [ ] Improve Actor Factory.
 
 ToDo 10/01/24:
 

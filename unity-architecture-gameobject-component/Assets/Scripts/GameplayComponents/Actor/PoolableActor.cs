@@ -23,11 +23,5 @@ namespace GameplayComponents.Actor
         {
             _pool.Return(this, _definition);
         }
-        
-        public bool TryGetComponentDeep<T>(out T component) where T : class
-        {
-            component = GetComponent<T>() ?? GetComponentInChildren<T>();
-            return component != null;
-        }
     }
 }

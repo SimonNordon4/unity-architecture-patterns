@@ -24,22 +24,22 @@ namespace Pools
             
             var actor = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
 
-            if (actor.TryGetComponentDeep<GameplayStateController>(out var gameState))
+            if (actor.TryGetComponent<GameplayStateController>(out var gameState))
                 gameState.Construct(state);
 
-            if (actor.TryGetComponentDeep<Movement>(out var movement))
+            if (actor.TryGetComponent<Movement>(out var movement))
                 movement.Construct(level);
 
-            if (actor.TryGetComponentDeep<CombatTarget>(out var target))
+            if (actor.TryGetComponent<CombatTarget>(out var target))
                 target.SetTarget(initialTarget);
 
-            if (actor.TryGetComponentDeep<ParticlePool>(out var particlePool))
+            if (actor.TryGetComponent<ParticlePool>(out var particlePool))
                 particlePool.Construct(deathParticlePool);
             
-            if(actor.TryGetComponentDeep<ActorSpawnDelay>(out var spawnDelay))
+            if(actor.TryGetComponent<ActorSpawnDelay>(out var spawnDelay))
                 spawnDelay.Construct(deathParticlePool);
             
-            if(actor.TryGetComponentDeep<ProjectilePool>(out var bulletPool))
+            if(actor.TryGetComponent<ProjectilePool>(out var bulletPool))
                 bulletPool.Construct(projectilePool);
             
             if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))

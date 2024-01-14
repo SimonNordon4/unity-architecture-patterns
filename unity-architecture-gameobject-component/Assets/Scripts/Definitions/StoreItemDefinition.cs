@@ -21,7 +21,9 @@ namespace GameObjectComponent.Definitions
     [Serializable]
     public class StoreItem
     {
-        public StoreItemDefinition storeItemDefinition;
-        public int upgradesPurchased;
+        public int currentUpgrade;
+        public StoreItemUpgrade[] upgrades;
+        public string storeName;
+        public Sprite storeSprite;
     }
 }

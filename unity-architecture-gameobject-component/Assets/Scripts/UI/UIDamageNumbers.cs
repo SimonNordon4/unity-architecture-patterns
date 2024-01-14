@@ -36,7 +36,7 @@ namespace GameObjectComponent.UI
         private void OnActorGet(PoolableActor actor)
         {
             Debug.Log("OnActorGet");
-            if (!actor.TryGetComponentDeep<DamageHandler>(out var damageHandler)) return;
+            if (!actor.TryGetComponent<DamageHandler>(out var damageHandler)) return;
             damageHandler.OnDamage += OnDamage;
             damageHandler.OnBlock += OnBlock;
             damageHandler.OnDodge += OnDodge;
@@ -111,7 +111,7 @@ namespace GameObjectComponent.UI
 
         private void OnActorReturn(PoolableActor actor)
         {
-            if (!actor.TryGetComponentDeep<DamageHandler>(out var damageHandler)) return;
+            if (!actor.TryGetComponent<DamageHandler>(out var damageHandler)) return;
             damageHandler.OnDamage -= OnDamage;
             damageHandler.OnBlock -= OnBlock;
             damageHandler.OnDodge -= OnDodge;

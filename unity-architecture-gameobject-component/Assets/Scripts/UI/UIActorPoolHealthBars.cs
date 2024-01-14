@@ -24,7 +24,7 @@ namespace GameObjectComponent.UI
 
         private void OnActorGet(PoolableActor actor)
         {
-            if(actor.TryGetComponentDeep<Health>(out var health) == false)
+            if(actor.TryGetComponent<Health>(out var health) == false)
                 return;
             var healthBar = textPool.GetText();
             // Update the existing health bar
@@ -35,7 +35,7 @@ namespace GameObjectComponent.UI
         
         private void OnActorReturn(PoolableActor actor)
         {
-            if(actor.TryGetComponentDeep<Health>(out var health) == false)
+            if(actor.TryGetComponent<Health>(out var health) == false)
                 return;
             var healthBar = _healthBars[health];
             textPool.ReturnDamageNumber(healthBar);

@@ -135,7 +135,7 @@ namespace GameObjectComponent.Game
 
             foreach (var actor in actors)
             {
-                if (actor.TryGetComponentDeep<DeathHandler>(out var deathHandler))
+                if (actor.TryGetComponent<DeathHandler>(out var deathHandler))
                 {
                     deathHandler.OnDeath += OnActorDied;    
                 }

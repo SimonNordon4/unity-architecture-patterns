@@ -24,8 +24,10 @@ namespace GameObjectComponent.App
             {
                 purchasedStoreItems.Add(new StoreItem
                 {
-                    storeItemDefinition = storeItemDefinition,
-                    upgradesPurchased = 0
+                    storeName = storeItemDefinition.storeName,
+                    storeSprite = storeItemDefinition.storeSprite,
+                    upgrades = storeItemDefinition.upgrades,
+                    currentUpgrade = 0
                 });
             }
             
@@ -62,10 +64,10 @@ namespace GameObjectComponent.App
 
         public void PurchaseUpgrade(StoreItem storeItem)
         {
-            if (playerGold.amount >= storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost)
+            if (playerGold.amount >= storeItem.upgrades[storeItem.currentUpgrade].cost)
             {
-                playerGold.ChangeGold(-storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased].cost);
-                storeItem.upgradesPurchased++;
+                playerGold.ChangeGold(-storeItem.upgrades[storeItem.currentUpgrade].cost);
+                storeItem.currentUpgrade++;
             }
             Save();
         }

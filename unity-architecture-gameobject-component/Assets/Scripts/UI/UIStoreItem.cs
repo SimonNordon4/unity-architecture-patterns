@@ -30,14 +30,12 @@ namespace GameObjectComponent.UI
         private Store _store;
         private Gold _gold;
         private StoreItem _item;
-        private StoreItemDefinition _definition;
 
         public void Construct(Store store, Gold gold, StoreItem item)
         {
             _store = store;
             _gold = gold;
             _item = item;
-            _definition = item.storeItemDefinition;
             gold.OnGoldChanged += UpdateAffordability;
         }
 
@@ -84,23 +82,23 @@ namespace GameObjectComponent.UI
 
         private void LoadDefinition()
         {
-            itemImage.sprite = _definition.storeSprite;
+            itemImage.sprite = _item.storeSprite;
             itemImage.color = Color.white;
-            itemNameText.text = _definition.name;
+            itemNameText.text = _item.storeName;
         }
 
         private void UpdateCurrentModifierText()
         {
             itemCurrentModifierText.text = "";
             
-            if (_item.upgradesPurchased <= 0)
+            if (_item.currentUpgrade <= 0)
             {
                 return;
             }
             
-            var currentModifier = _definition.upgrades[_item.upgradesPurchased - 1].modifier;
+            var currentModifier = _item.upgrades[_item.currentUpgrade - 1].modifier;
             
-            if(_item.upgradesPurchased >= _definition.upgrades.Length)
+            if(_item.currentUpgrade >= _item.upgrades.Length)
             {
                 itemCurrentModifierText.text = SurvivorsUtil.FormatModifierValue(currentModifier);
                 itemCurrentModifierText.color = activeColor;
@@ -115,13 +113,13 @@ namespace GameObjectComponent.UI
         {
             itemNextModifierText.text = "";
             
-            if(_item.upgradesPurchased >= _definition.upgrades.Length)
+            if(_item.currentUpgrade >= _item.upgrades.Length)
             {
                 itemNextModifierText.color = inActiveColor;
                 return;
             }
             
-            var nextModifier = _definition.upgrades[_item.upgradesPurchased].modifier;
+            var nextModifier = _item.upgrades[_item.currentUpgrade].modifier;
             itemNextModifierText.text = SurvivorsUtil.FormatModifierValue(nextModifier);
             itemNextModifierText.color = increaseColor;
         }
@@ -136,17 +134,17 @@ namespace GameObjectComponent.UI
             
             tierIndicatorInactive.Clear();
             
-            for(var i = 0; i < _definition.upgrades.Length; i++)
+            for(var i = 0; i < _item.upgrades.Length; i++)
             {
                 var tierIndicator = Instantiate(tierIndicatorPrefab, tierIndicatorContainer);
-                tierIndicator.transform.GetChild(0).gameObject.SetActive(i < _item.upgradesPurchased);
+                tierIndicator.transform.GetChild(0).gameObject.SetActive(i < _item.currentUpgrade);
                 tierIndicatorInactive.Add(tierIndicator);
             }
         }
 
         private void UpdateAffordability(int addedGold )
         {
-            if(_item.upgradesPurchased == _definition.upgrades.Length)
+            if(_item.currentUpgrade == _item.upgrades.Length)
             {
                 purchaseButton.interactable = false;
                 itemPriceText.text = "MAX";
@@ -154,7 +152,7 @@ namespace GameObjectComponent.UI
                 itemNextModifierText.color = inActiveColor;
                 return;
             }
-            var cost = _definition.upgrades[_item.upgradesPurchased].cost;
+            var cost = _item.upgrades[_item.currentUpgrade].cost;
             
             itemPriceText.text = cost + "G";
             

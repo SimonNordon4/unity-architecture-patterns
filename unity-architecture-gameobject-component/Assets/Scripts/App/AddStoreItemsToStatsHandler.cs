@@ -16,8 +16,8 @@ namespace GameObjectComponent.App
             // go through every store item
             foreach (var storeItem in store.purchasedStoreItems)
             {
-                if(storeItem.upgradesPurchased == 0) continue;
-                var modifier = storeItem.storeItemDefinition.upgrades[storeItem.upgradesPurchased - 1].modifier;
+                if(storeItem.currentUpgrade == 0) continue;
+                var modifier = storeItem.upgrades[storeItem.currentUpgrade - 1].modifier;
                 var stat = stats.GetStat(modifier.statType);
                 stat.AddModifier(modifier);
             }
