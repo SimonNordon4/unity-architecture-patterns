@@ -6,7 +6,7 @@
 - [x] Fix fast enemies.
 - [x] Fix enemy health not resetting.
 - [ ] Add ability to navigate menu with keys.
-- [ ] Add bought items to pause screen.
+- [x] Add bought items to pause screen.
 - [x] Fix Charger not charging.
 - [x] Fix Ranged Pierce and store upgrade.
 - [x] Fix Spawn Delay continuing during pause.
