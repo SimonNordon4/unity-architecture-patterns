@@ -35,7 +35,6 @@ namespace GameObjectComponent.UI
 
         private void OnActorGet(PoolableActor actor)
         {
-            Debug.Log("OnActorGet");
             if (!actor.TryGetComponent<DamageHandler>(out var damageHandler)) return;
             damageHandler.OnDamage += OnDamage;
             damageHandler.OnBlock += OnBlock;
@@ -62,7 +61,6 @@ namespace GameObjectComponent.UI
 
         private void OnDamage(Vector3 worldPosition, int damage)
         {
-            Debug.Log("OnDamage");
             var text = textPool.GetText();
             text.transform.position = GetScreenPosition(worldPosition);
             text.text = damage.ToString();

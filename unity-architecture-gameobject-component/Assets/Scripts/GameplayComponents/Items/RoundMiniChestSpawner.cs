@@ -31,7 +31,6 @@ namespace GameObjectComponent.Items
 
         private void SpawnMiniChest()
         {
-            Debug.Log("Spawning Mini Chest");
             // get a random location in the level minus the buffer
             var randomX = Random.Range(edgeBuffer.x - level.bounds.x, level.bounds.x - edgeBuffer.x);
             var randomZ = Random.Range(edgeBuffer.y - level.bounds.y, level.bounds.y - edgeBuffer.y);

@@ -7396,7 +7396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dda81d178a04595802bbf323338efc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handler: {fileID: 0}
+  handler: {fileID: 615099367}
   text: {fileID: 832612759}
   label: 'Gold: '
 --- !u!1 &843405547
@@ -9744,20 +9744,7 @@ MonoBehaviour:
   stats: {fileID: 9018308866812664866}
   onAchievementCompleted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2074502235}
-        m_TargetAssemblyTypeName: GameObjectComponent.App.AchievementNotification,
-          Assembly-CSharp
-        m_MethodName: OnAchievementCompleted
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   achievementDefinitions:
   - {fileID: 11400000, guid: b366eb0f4c777484db81eb2ef05d6217, type: 2}
   - {fileID: 11400000, guid: 0226caaecba383f43bd1ce6eba365866, type: 2}
@@ -10340,7 +10327,6 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 5509109955375812234}
   projectileDefinition: {fileID: 11400000, guid: b0a65fd4cf3119f4eb5a3241a5b7ee2b, type: 2}
   projectileSpeed: 20
-  dummyTarget: {fileID: 2139398575}
 --- !u!1 &1126367850
 GameObject:
   m_ObjectHideFlags: 0

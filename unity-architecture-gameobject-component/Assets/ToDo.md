@@ -1,8 +1,9 @@
 ﻿ToDo 14/01/24:
 
-- [ ] Add Notifications Manager.
+- [ ] Debug Achievements.
+- [x] Add Notifications Manager.
 - [ ] Add Tutorial Back.
-- [ ] Add Notifications back.
+- [ ] Add Notification Icons back.
 - [ ] Add sounds to buttons.
 - [x] Fix Store save to not use StoreDefinition as it's bugged.
 - [x] Fix Smart Pistol.

@@ -24,7 +24,6 @@ namespace GameObjectComponent.UI
 
         private void OnEnable()
         {
-            Debug.Log("Button Selector Enabled");
             GetButtonsDynamic();
            // select first button
            _currentButtonIndex = 0;
@@ -51,7 +50,6 @@ namespace GameObjectComponent.UI
                 buttons.Sort((a, b) => a.transform.position.y.CompareTo(b.transform.position.y));
             else
                 buttons.Sort((a, b) => a.transform.position.x.CompareTo(b.transform.position.x));
-            Debug.Log("Buttons: " + buttons.Count);
         }
 
         private void Update()

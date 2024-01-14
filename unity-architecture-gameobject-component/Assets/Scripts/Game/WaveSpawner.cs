@@ -68,15 +68,12 @@ namespace GameObjectComponent.Game
         private void OnActorDied(DeathHandler actor)
         {
             actorsDied++;
-            Debug.Log("Actor returned: Total actors returned = " + actorsDied + " Total actors = " + _totalActorsInWave);
             if (actorsDied >= _totalActorsInWave)
             {
                 Debug.Log("Wave Completed, total actors killed is equal to total actors.");
                 Debug.Log("Actors Returned: " + actorsDied + " Total Actors: " + _totalActorsInWave);
                 OnWaveCompleted?.Invoke(actor.transform.position);
             }
-            
-            Debug.Log("Actor Died Invokation");
             onWaveActorDied?.Invoke(actor.transform.position);
             
             actor.OnDeath -= OnActorDied;

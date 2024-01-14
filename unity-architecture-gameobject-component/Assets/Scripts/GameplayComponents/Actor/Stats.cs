@@ -33,7 +33,6 @@ namespace GameplayComponents.Actor
 
         public override void OnGameEnd()
         {
-            Debug.Log("Resetting stats");
             ResetStats();
         }
           

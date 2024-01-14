@@ -103,7 +103,6 @@ namespace GameObjectComponent.App
 
         private void EnemyDied(Vector3 arg0)
         {
-            Debug.Log("Enemy Died");
             var totalKills = GetStatistic(StatisticType.TotalKills);
             totalKills.highestValue++;
         }

@@ -168,8 +168,9 @@ namespace GameObjectComponent.App
         {
             achievement.isCompleted = true;
             achievement.progress = achievement.goal;
+            Debug.Log($"Achievement Unlocked: {achievement.uiName}");
             onAchievementCompleted.Invoke(achievement);
-            Debug.Log($"Achievement Completed: {achievement.uiName}");
+            
         }
         
         private void CheckIncrementalAchievement(AchievementId id)

@@ -11,8 +11,6 @@ namespace GameplayComponents.Combat.Weapon
         [SerializeField] private Transform projectileSpawnPoint;
         [SerializeField] private ProjectileDefinition projectileDefinition;
         [SerializeField] private float projectileSpeed = 10f;
-
-        [SerializeField] private GameObject dummyTarget;
         
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
@@ -46,14 +44,9 @@ namespace GameplayComponents.Combat.Weapon
             
                 // Aim the projectile towards the predicted position
                 shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up).normalized;
-                
-                dummyTarget.transform.position = predictedTargetPosition;
-                Debug.DrawLine(projectileStartPosition, predictedTargetPosition, Color.red, timeToTarget);
             }
             
             var projectile = projectilePool.Get(projectileDefinition, projectileStartPosition, shootDirection);
-            
-            Debug.Log("Setting projectil with pierce value of " + info.Pierce);
             
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
 
