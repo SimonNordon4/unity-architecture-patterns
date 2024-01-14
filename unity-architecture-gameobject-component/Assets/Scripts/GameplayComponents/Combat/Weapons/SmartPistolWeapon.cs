@@ -34,20 +34,21 @@ namespace GameplayComponents.Combat.Weapon
                 var velocity = movement.velocity;
                 var predictedTargetPosition = targetPosition + velocity * timeToTarget;
                 
-                // now get the distance to that position
-                distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
-                timeToTarget = distanceToTarget / projectileSpeed;
-                predictedTargetPosition = targetPosition + velocity * timeToTarget;
-            
-                // iterate again
-                distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
-                timeToTarget = distanceToTarget /projectileSpeed;
-                predictedTargetPosition = targetPosition + velocity * timeToTarget;
-                
-                dummyTarget.transform.position = predictedTargetPosition;
+                // // now get the distance to that position
+                // distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
+                // timeToTarget = distanceToTarget / projectileSpeed;
+                // predictedTargetPosition = targetPosition + velocity * timeToTarget;
+                //
+                // // iterate again
+                // distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
+                // timeToTarget = distanceToTarget /projectileSpeed;
+                // predictedTargetPosition = targetPosition + velocity * timeToTarget;
             
                 // Aim the projectile towards the predicted position
                 shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up).normalized;
+                
+                dummyTarget.transform.position = predictedTargetPosition;
+                Debug.DrawLine(projectileStartPosition, predictedTargetPosition, Color.red, timeToTarget);
             }
             
             var projectile = projectilePool.Get(projectileDefinition, projectileStartPosition, shootDirection);
