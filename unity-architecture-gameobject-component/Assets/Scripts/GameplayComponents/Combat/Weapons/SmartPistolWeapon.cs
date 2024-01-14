@@ -52,6 +52,9 @@ namespace GameplayComponents.Combat.Weapon
             }
             
             var projectile = projectilePool.Get(projectileDefinition, projectileStartPosition, shootDirection);
+            
+            Debug.Log("Setting projectil with pierce value of " + info.Pierce);
+            
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
 
             onAttack.Invoke();

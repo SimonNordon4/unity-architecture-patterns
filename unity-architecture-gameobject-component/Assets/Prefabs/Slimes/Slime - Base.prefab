@@ -111,7 +111,7 @@ MonoBehaviour:
   spawningLayer:
     serializedVersion: 2
     m_Bits: 0
-  gameplayStateController: {fileID: 5700232244058505958}
+  movement: {fileID: 5537295294949007843}
   enemyMesh: {fileID: 712929944326962831}
   spawnInParticle: {fileID: 3043751628317881663}
   deathParticlePool: {fileID: 3347457930279600117}
@@ -367,6 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <canMove>k__BackingField: 1
   <level>k__BackingField: {fileID: 0}
 --- !u!114 &4759262429812004170
 MonoBehaviour:

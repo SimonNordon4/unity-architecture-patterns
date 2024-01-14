@@ -2,6 +2,7 @@
 using GameObjectComponent.Definitions;
 using GameObjectComponent.Game;
 using GameObjectComponent.Pools;
+using GameplayComponents.Locomotion;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,7 +14,7 @@ namespace GameplayComponents.Actor
         [SerializeField] private LayerMask interruptLayer;
         [SerializeField] private LayerMask spawningLayer;
         private LayerMask _originalLayer;
-        [SerializeField] private GameplayStateController gameplayStateController;
+        [SerializeField] private Movement movement;
         [SerializeField] private GameObject enemyMesh;
         [SerializeField] private ParticleSystem spawnInParticle;
         [SerializeField] private ParticlePool deathParticlePool;
@@ -42,7 +43,7 @@ namespace GameplayComponents.Actor
 
         void OnEnable()
         {
-            gameplayStateController.DisableActorComponents();
+            movement.canMove = false;
             spawnInParticle.Play();
             enemyMesh.SetActive(false);
             StopAllCoroutines();
@@ -75,7 +76,7 @@ namespace GameplayComponents.Actor
             }
             spawnInParticle.Stop();
             deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
-            gameplayStateController.EnableActorComponents();
+            movement.canMove = true;
             _isSpawned = true;
             gameObject.layer = _originalLayer;
             onSpawned.Invoke();

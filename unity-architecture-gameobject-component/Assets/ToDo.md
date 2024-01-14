@@ -1,17 +1,17 @@
 ﻿ToDo 14/01/24:
 
-- [ ] Fix Store save to not use StoreDefinition as it's bugged.
-- [ ] Fix Smart Pistol.
-- [ ] Fix Input not resetting.
+- [x] Fix Store save to not use StoreDefinition as it's bugged.
+- [x] Fix Smart Pistol.
+- [x] Fix Input not resetting.
 - [x] Fix fast enemies.
 - [x] Fix enemy health not resetting.
 - [ ] Add ability to navigate menu with keys.
 - [ ] Add bought items to pause screen.
 - [x] Fix Charger not charging.
-- [ ] Fix Ranged Pierce and store upgrade.
-- [ ] Fix Spawn Delay continuing during pause.
+- [x] Fix Ranged Pierce and store upgrade.
+- [x] Fix Spawn Delay continuing during pause.
 - [x] Fix Wanderer Knock Back.
-- [ ] Improve Actor Factory.
+- [x] Improve Actor Factory.
 
 ToDo 10/01/24:
 

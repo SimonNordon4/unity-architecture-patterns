@@ -15,6 +15,8 @@ namespace GameplayComponents.Combat.Weapon
         {
             var projectile = projectilePool.Get(projectileDefinition, projectileSpawnPoint.position, target.targetDirection);
             
+            
+            
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
             onAttack.Invoke();
         }

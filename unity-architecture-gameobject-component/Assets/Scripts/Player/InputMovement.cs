@@ -18,6 +18,7 @@ namespace GameObjectComponent.Player
 
         private void OnEnable()
         {
+            _lastDirection = Vector3.zero;
             _movementAction = actionMap.FindAction("Direction");
             _movementAction.performed += OnMovementPerformed;
             _movementAction.canceled += OnMovementCanceled;
@@ -26,6 +27,7 @@ namespace GameObjectComponent.Player
 
         private void OnDisable()
         {
+            _lastDirection = Vector3.zero;
             _movementAction.performed -= OnMovementPerformed;
             _movementAction.canceled -= OnMovementCanceled;
             _movementAction.Disable();

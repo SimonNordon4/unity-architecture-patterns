@@ -5,6 +5,7 @@ namespace GameplayComponents.Locomotion
 {
     public class Movement : GameplayComponent
     {
+        [field: SerializeField] public bool canMove { get;  set; } = true;
         [field:SerializeField] public Level level { get; private set; }
 
         public void Construct(Level newLevel)
@@ -27,6 +28,7 @@ namespace GameplayComponents.Locomotion
         }
         public void LateUpdate()
         {
+            if(!canMove) return;
             var position = _transform.position;
             
             // clamp newPosition to level bounds

@@ -70,11 +70,12 @@ namespace GameplayComponents.Combat
             if (other.TryGetComponent(out DamageReceiver damageReceiver))
             {
                 damageReceiver.TakeDamage(_damage);
-                _pierceValue--;
                 if (_pierceValue <= 0)
                 {
                     EndProjectile();
                 }
+                
+                _pierceValue--;
             }
 
             if (other.TryGetComponent(out KnockBackReceiver knockBackReceiver))
