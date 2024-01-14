@@ -1,8 +1,10 @@
-﻿
+﻿ToDo 14/01/24:
+
+- [ ] Fix Store save to not use StoreDefinition as it's bugged.
 
 ToDo 10/01/24:
 
-- [ ] Add Store.
+- [x] Add Store.
 - [x] Add Gold.
 - [x] Add Health Pack.
 - [x] Add Music Manager.

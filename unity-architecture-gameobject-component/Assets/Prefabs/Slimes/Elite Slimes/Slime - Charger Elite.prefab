@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 374806638987781101, guid: 9ec5eb0a055866d4380e2f94b0f8dc59, type: 3}
+      propertyPath: dashDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 374806638987781101, guid: 9ec5eb0a055866d4380e2f94b0f8dc59, type: 3}
+      propertyPath: dashAttackSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 374806638987781101, guid: 9ec5eb0a055866d4380e2f94b0f8dc59, type: 3}
+      propertyPath: minAttackDistance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3528176254858042567, guid: 9ec5eb0a055866d4380e2f94b0f8dc59, type: 3}
+      propertyPath: dashDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4517827515621630725, guid: 9ec5eb0a055866d4380e2f94b0f8dc59, type: 3}
       propertyPath: stats.Array.data[5].value
       value: 3

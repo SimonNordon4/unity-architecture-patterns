@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 881977836140433872, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4138062925737876349, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
       propertyPath: stats.Array.data[2].value
       value: 12
@@ -68,50 +72,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime - Wanderer Exploder
       objectReference: {fileID: 0}
-    - target: {fileID: 8295924385422974710, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
-      propertyPath: weapon
-      value: 
-      objectReference: {fileID: 6835983951140432599}
     m_RemovedComponents:
     - {fileID: 868538048940851595, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
+    - {fileID: 8751740492677840378, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7783802731597893026, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 6828710233521036505, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6835983951140432599}
+      addedObject: {fileID: 9113708724635239481}
   m_SourcePrefab: {fileID: 100100000, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
---- !u!1 &5061374992589510122 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7783802731597893026, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
-  m_PrefabInstance: {fileID: 3042184732449986632}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6835983951140432599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5061374992589510122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d150409a7cc49388873c4a7c4c81397, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls: []
-  projectileDefinition: {fileID: 11400000, guid: 2b629371b1c806c43a05d98561fc20e7, type: 2}
-  projectileSpawnPoint: {fileID: 7193719283949890192}
-  numberOfProjectiles: 4
-  pool: {fileID: 6841233481391124656}
-  projectileSpeed: 5
 --- !u!114 &6841233481391124656 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8415243632761628920, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
   m_PrefabInstance: {fileID: 3042184732449986632}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8429737000383595665}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ded862d4759f448a9be6fd67c79f53c1, type: 3}
@@ -122,3 +98,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5326979314312917720, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
   m_PrefabInstance: {fileID: 3042184732449986632}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8429737000383595665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6828710233521036505, guid: f48e0ebd156a43e4483beb3f0c924119, type: 3}
+  m_PrefabInstance: {fileID: 3042184732449986632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9113708724635239481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8429737000383595665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d150409a7cc49388873c4a7c4c81397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  projectileDefinition: {fileID: 11400000, guid: 2b629371b1c806c43a05d98561fc20e7, type: 2}
+  projectileSpawnPoint: {fileID: 7193719283949890192}
+  numberOfProjectiles: 3
+  pool: {fileID: 6841233481391124656}
+  projectileSpeed: 5
