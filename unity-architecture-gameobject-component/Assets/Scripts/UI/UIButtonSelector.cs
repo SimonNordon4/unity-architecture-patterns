@@ -1,119 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 namespace GameObjectComponent.UI
 {
+    [DefaultExecutionOrder(10)]
     public class UIButtonSelector : MonoBehaviour
     {
-        private Button[] _buttons;
-        private int _rowIndex = 0;
-        private int _columnIndex = 0;
-        private int _numberOfRows = 0;
-        private int _numberOfColumns = 0;
-
-        [SerializeField] private float rowTolerance = 100;
-        [SerializeField] private float columnTolerance = 100;
-
-        private List<List<Button>> _grid = new List<List<Button>>();
+        [SerializeField] private SelectorDirection direction;
+        [SerializeField] private List<Button> buttons = new();
+        [SerializeField] private bool getButtonsDynamic = false;
+        private int _currentButtonIndex;
+        
+        [SerializeField]private Key upKey = Key.W;
+        [SerializeField]private Key altUpKey = Key.UpArrow;
+        [SerializeField]private Key downKey = Key.S;
+        [SerializeField]private Key altDownKey = Key.DownArrow;
+        [SerializeField]private Key leftKey = Key.A;
+        [SerializeField]private Key altLeftKey = Key.LeftArrow;
+        [SerializeField]private Key rightKey = Key.D;
+        [SerializeField]private Key altRightKey = Key.RightArrow;
 
         private void OnEnable()
         {
-            _buttons = GetComponentsInChildren<Button>();
-            CalculateRows();
-            CalculateColumns();
-            // select the first button
-            SelectButton();
+            Debug.Log("Button Selector Enabled");
+            GetButtonsDynamic();
+           // select first button
+           _currentButtonIndex = 0;
+           buttons[_currentButtonIndex].Select();
         }
 
-        private void CalculateRows()
+        private void OnDisable()
         {
-            // sort buttons by y position in descending order
-            var sortedYButtons = _buttons.OrderByDescending(b => b.transform.position.y).ToList();
-
-            List<Button> currentRow = new List<Button>();
-            if (sortedYButtons.Count > 0)
-            {
-                currentRow.Add(sortedYButtons[0]);
-                _grid.Add(currentRow);
-                _numberOfRows++;
-            }
-
-            // if one button is greater than the _rowTolerance to the next button, add a row
-            for (var i = 1; i < sortedYButtons.Count; i++)
-            {
-                var currentButton = sortedYButtons[i];
-                var previousButton = sortedYButtons[i - 1];
-                if (Mathf.Abs(currentButton.transform.position.y - previousButton.transform.position.y) > rowTolerance)
-                {
-                    currentRow = new List<Button>();
-                    _grid.Add(currentRow);
-                    _numberOfRows++;
-                }
-
-                currentRow.Add(currentButton);
-            }
-
-            Debug.Log($"Number of rows: {_numberOfRows}");
+            _currentButtonIndex = 0;
         }
 
-        private void CalculateColumns()
+        private enum SelectorDirection
         {
-            foreach (var row in _grid)
-            {
-                // sort buttons in each row by x position
-                row.Sort((b1, b2) => b1.transform.position.x.CompareTo(b2.transform.position.x));
-            }
-
-            _numberOfColumns = _grid.Max(row => row.Count);
-
-            Debug.Log($"Number of columns: {_numberOfColumns}");
+            Vertical,
+            Horizontal
         }
 
-        void Update()
+        public void GetButtonsDynamic()
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            if (!getButtonsDynamic) return;
+            buttons.Clear();
+            buttons.AddRange(GetComponentsInChildren<Button>());
+            if(direction == SelectorDirection.Vertical)
+                buttons.Sort((a, b) => a.transform.position.y.CompareTo(b.transform.position.y));
+            else
+                buttons.Sort((a, b) => a.transform.position.x.CompareTo(b.transform.position.x));
+            Debug.Log("Buttons: " + buttons.Count);
+        }
+
+        private void Update()
+        {
+            if(direction == SelectorDirection.Vertical)
+                SelectVertical();
+            else
+                SelectHorizontal();
+        }
+
+        private void SelectHorizontal()
+        {
+            if (Keyboard.current[leftKey].wasPressedThisFrame || Keyboard.current[altLeftKey].wasPressedThisFrame)
             {
-                // Move up in the grid
-                _rowIndex = Mathf.Max(_rowIndex - 1, 0);
-                SelectButton();
+                _currentButtonIndex--;
+                if (_currentButtonIndex < 0) _currentButtonIndex = buttons.Count - 1;
+                buttons[_currentButtonIndex].Select();
             }
-            else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Keyboard.current[rightKey].wasPressedThisFrame || Keyboard.current[altRightKey].wasPressedThisFrame)
             {
-                // Move down in the grid
-                _rowIndex = Mathf.Min(_rowIndex + 1, _numberOfRows - 1);
-                SelectButton();
-            }
-            else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                // Move left in the grid
-                _columnIndex = Mathf.Max(_columnIndex - 1, 0);
-                SelectButton();
-            }
-            else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                // Move right in the grid
-                _columnIndex = Mathf.Min(_columnIndex + 1, _numberOfColumns - 1);
-                SelectButton();
+                _currentButtonIndex++;
+                if (_currentButtonIndex > buttons.Count - 1) _currentButtonIndex = 0;
+                buttons[_currentButtonIndex].Select();
             }
         }
 
-        void SelectButton()
+        private void SelectVertical()
         {
-            // Deselect all buttons
-            foreach (var button in _buttons)
+            if (Keyboard.current[upKey].wasPressedThisFrame || Keyboard.current[altUpKey].wasPressedThisFrame)
             {
-                button.interactable = true;
+                _currentButtonIndex--;
+                if (_currentButtonIndex < 0) _currentButtonIndex = buttons.Count - 1;
+                buttons[_currentButtonIndex].Select();
             }
-
-
-            // Select the button at the current index
-            var buttonToSelect = _grid[_rowIndex][_columnIndex];
-            Debug.Log("Selecting button at row " + _rowIndex + " column " + _columnIndex);
-            Debug.Log("Button name: " + buttonToSelect.name);
-            buttonToSelect.Select();
+            else if (Keyboard.current[downKey].wasPressedThisFrame || Keyboard.current[altDownKey].wasPressedThisFrame)
+            {
+                _currentButtonIndex++;
+                if (_currentButtonIndex > buttons.Count - 1) _currentButtonIndex = 0;
+                buttons[_currentButtonIndex].Select();
+            }
         }
     }
 }

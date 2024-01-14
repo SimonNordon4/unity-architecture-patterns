@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 namespace GameObjectComponent.App
 {
-    public class AchievementManager : MonoBehaviour
+    public class AchievementManager : PersistentComponent
     {
         [Header("Dependencies")] 
         [SerializeField] private WaveSpawner waveSpawner;
@@ -56,14 +56,14 @@ namespace GameObjectComponent.App
             Load();
         }
 
-        private void Save()
+        public override void Save()
         {
             var save = new AchievementSave(achievements);
             var json = JsonUtility.ToJson(save);
             PlayerPrefs.SetString("Achievements", json);
         }
         
-        private void Load()
+        public override void Load()
         {
             var json = PlayerPrefs.GetString("Achievements", null);
             var save = JsonUtility.FromJson<AchievementSave>(json);
@@ -77,7 +77,7 @@ namespace GameObjectComponent.App
             
             achievements = save.savedAchievements;
         }
-        public void ResetAll()
+        public override void Reset()
         {
             CreateAchievements();
             Save();

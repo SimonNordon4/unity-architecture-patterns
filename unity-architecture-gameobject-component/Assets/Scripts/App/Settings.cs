@@ -81,6 +81,11 @@ namespace GameObjectComponent.App
             SetMusicVolume(save.musicVolume);
             SetSfxVolume(save.sfxVolume);
         }
+        
+        public override void Reset()
+        {
+            return;
+        }
     
         [Serializable]
         public class SettingSave

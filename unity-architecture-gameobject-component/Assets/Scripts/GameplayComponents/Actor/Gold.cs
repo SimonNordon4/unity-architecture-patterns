@@ -32,4 +32,12 @@ public class Gold : PersistentComponent
         totalEarned = PlayerPrefs.GetInt($"totalEarned_{id}", 0);
         OnGoldChanged?.Invoke(amount);
     }
+
+    public override void Reset()
+    {
+        amount = 0;
+        totalEarned = 0;
+        Save();
+        OnGoldChanged?.Invoke(amount);
+    }
 }

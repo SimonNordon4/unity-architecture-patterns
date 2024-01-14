@@ -9,6 +9,7 @@ namespace GameObjectComponent.App
         
         public abstract void Save();
         public abstract void Load();
+        public abstract void Reset();
         
         private void OnEnable()
         {

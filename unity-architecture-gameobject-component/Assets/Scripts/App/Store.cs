@@ -72,6 +72,11 @@ namespace GameObjectComponent.App
             Save();
         }
 
+        public override void Reset()
+        {
+            PopulateStoreItems();
+        }
+
         private void OnEnable()
         {
             Load();
