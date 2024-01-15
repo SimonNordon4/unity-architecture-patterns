@@ -39,6 +39,11 @@ namespace GameObjectComponent.UI
             gold.OnGoldChanged += UpdateAffordability;
         }
 
+        private void OnDisable()
+        {
+            _gold.OnGoldChanged -= UpdateAffordability;
+        }
+
 
         public void Init()
         {
@@ -162,9 +167,12 @@ namespace GameObjectComponent.UI
                 purchaseButton.interactable = true;
                 return;
             }
-
-            purchaseButton.interactable = false;
+            
+            if(purchaseButton != null)
+                purchaseButton.interactable = false;
             itemPriceText.color = noMoneyColor;
         }
+        
+        
     }
 }

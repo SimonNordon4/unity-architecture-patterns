@@ -30,13 +30,18 @@ namespace GameObjectComponent.UI
 
         private void Init()
         {
-            Debug.Log(store.purchasedStoreItems.Count);
+            // copy the store items into a new list
+            // so we can sort them without affecting the original list.
+            var sortedStoreItems = store.purchasedStoreItems
+                .OrderBy(item => item.upgrades[item.currentUpgrade].cost)
+                .ToArray();
             
-            foreach(var storeItem in store.purchasedStoreItems)
+            foreach(var storeItem in sortedStoreItems)
             {
                 var storeItemUi = Instantiate(storeItemUIPrefab, storeItemContainer);
                 storeItemUi.Construct(store, playerGold, storeItem);
                 storeItemUi.Init();
+                storeItemUi.purchaseButton.onClick.AddListener(UpdateStoreMenu);
                 _storeItemUis.Add(storeItemUi);
             }
         }
@@ -45,6 +50,7 @@ namespace GameObjectComponent.UI
         {
             foreach (var storeItemUi in _storeItemUis.Where(storeItemUi => storeItemUi != null))
             {
+                storeItemUi.purchaseButton.onClick.RemoveAllListeners();
                 Destroy(storeItemUi.gameObject);
             }
 

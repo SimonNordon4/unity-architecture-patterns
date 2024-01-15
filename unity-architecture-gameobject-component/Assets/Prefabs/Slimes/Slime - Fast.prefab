@@ -20279,6 +20279,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2767088790703748586, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767088790703748586, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767088790703748586, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 7754396184096232470}
+    - target: {fileID: 2767088790703748586, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767088790703748586, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767088790703748586, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.TrailRenderer, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767088790703748586, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3043751628317881663, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
       value: 0.045478832

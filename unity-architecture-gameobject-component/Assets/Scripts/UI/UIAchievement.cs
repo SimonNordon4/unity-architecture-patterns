@@ -10,7 +10,7 @@ namespace GameObjectComponent.UI
         [SerializeField]private TextMeshProUGUI titleText;
         [SerializeField]private TextMeshProUGUI progressText;
         [SerializeField]private Image progressBar;
-        [SerializeField]private Button collectButton;
+        [field:SerializeField]public Button collectButton { get; private set; }
         [SerializeField]private TextMeshProUGUI collectButtonText;
         
         private Achievement _achievement;
@@ -24,7 +24,6 @@ namespace GameObjectComponent.UI
 
         public void Init()
         {
-            Reset();
             UpdateTitle();
             UpdateProgress();
             UpdateStatus();

@@ -42,6 +42,12 @@ public class UIAchievementMenu : MonoBehaviour
             var achievementUI = Instantiate(achievementItemUIPrefab, achievementItemContainer);
             achievementUI.Construct(achievement, gold);
             achievementUI.Init();
+            achievementUI.collectButton.onClick.AddListener(() =>
+            {
+                Clear();
+                Init();
+            });
+            
             _achievementItemUis.Add(achievementUI);
         }
         
@@ -55,10 +61,14 @@ public class UIAchievementMenu : MonoBehaviour
     void Clear()
     {
         // Destroy all the store item uis.
-        foreach (var storeItemUi in _achievementItemUis)
+        foreach (var achievementUI in _achievementItemUis)
         {
-            if(storeItemUi != null)
-                Destroy(storeItemUi.gameObject);
+            if (achievementUI.collectButton != null)
+            { 
+                achievementUI.collectButton.onClick.RemoveAllListeners();
+            }
+            Destroy(achievementUI.gameObject);
+    
         }
         _achievementItemUis.Clear();
     }
