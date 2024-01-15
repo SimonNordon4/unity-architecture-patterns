@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace GameObjectComponent.App
 {
-    public class StatisticsManager : MonoBehaviour
+    public class StatisticsManager : PersistentComponent
     {
         [Header("Dependencies")]
         [SerializeField] private GameState state;
@@ -138,14 +138,14 @@ namespace GameObjectComponent.App
             Save();
         }
 
-        private void Save()
+        public override void Save()
         {
             var save = new StatisticsSave(statistics);
             var json = JsonUtility.ToJson(save);
             PlayerPrefs.SetString("Statistics", json);
         }
         
-        private void Load()
+        public override void Load()
         {
             var json = PlayerPrefs.GetString("Statistics", null);
             var save = JsonUtility.FromJson<StatisticsSave>(json);
@@ -158,14 +158,13 @@ namespace GameObjectComponent.App
             statistics = save.statistics;
         }
 
-        [ContextMenu("Reset All")]
-        public void ResetAll()
+        public override void Reset()
         {
             CreateStatistics();
             Save();
         }
 
-        private Statistic GetStatistic(StatisticType statisticType, StatType? statType = default)
+        public Statistic GetStatistic(StatisticType statisticType, StatType? statType = default)
         {
             foreach(var statistic in statistics)
             {

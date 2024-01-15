@@ -29,6 +29,12 @@ namespace GameplayComponents.Combat
             if(!target.hasTarget) return;
             
             var distance = target.targetDistance;
+            
+            if(target.TryGetComponent<CapsuleCollider>(out var capsuleCollider))
+            {
+                distance -= capsuleCollider.radius;
+            }
+            
             if (distance > meleeRange.value) return;
             
             var info = new WeaponStatsInfo

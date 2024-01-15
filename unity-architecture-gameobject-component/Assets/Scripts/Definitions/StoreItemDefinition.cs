@@ -24,6 +24,5 @@ namespace GameObjectComponent.Definitions
         public int currentUpgrade;
         public StoreItemUpgrade[] upgrades;
         public string storeName;
-        public Sprite storeSprite;
     }
 }

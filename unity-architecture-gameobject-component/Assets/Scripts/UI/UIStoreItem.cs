@@ -82,7 +82,7 @@ namespace GameObjectComponent.UI
 
         private void LoadDefinition()
         {
-            itemImage.sprite = _item.storeSprite;
+            itemImage.sprite = _store.GetStoreItemSprite(_item.storeName);
             itemImage.color = Color.white;
             itemNameText.text = _item.storeName;
         }

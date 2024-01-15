@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d2a73b6e24944f8975250e2e44c938a, type: 3}
-  m_Name: Reach 5 Revives
+  m_Script: {fileID: 11500000, guid: 5010c9b6c48f4efc81afbeaedeb0f6ee, type: 3}
+  m_Name: Button Click
   m_EditorClassIdentifier: 
-  id: 6
-  uiName: Reach 5 Revives
-  goal: 5
-  rewardGold: 2500
-  statType: 15
+  clips:
+  - {fileID: 8300000, guid: b7cd703bfb101f4489fce92b8bbf68e1, type: 3}
+  volume: 1
+  pitchVariation: {x: 0.9, y: 1.1}

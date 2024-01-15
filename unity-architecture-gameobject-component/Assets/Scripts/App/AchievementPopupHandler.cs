@@ -2,10 +2,10 @@
 
 namespace GameObjectComponent.App
 {
-    public class AchievementNotification : MonoBehaviour
+    public class AchievementPopupHandler : MonoBehaviour
     {
         [SerializeField]private AchievementManager achievementManager;
-        [SerializeField]private NotificationManager notificationManager;
+        [SerializeField]private PopUpScheduler popUpScheduler;
 
         private void OnEnable()
         {
@@ -20,7 +20,7 @@ namespace GameObjectComponent.App
         public void OnAchievementCompleted(Achievement achievement)
         {
             Debug.Log($"Achievement Unlocked: {achievement.uiName}");
-            notificationManager.ScheduleNotification($"Achievement Unlocked: {achievement.uiName}");
+            popUpScheduler.SchedulePopup($"Achievement Unlocked: {achievement.uiName}");
         }
     }
 }

@@ -7,6 +7,16 @@ namespace GameObjectComponent.App
         [SerializeField]
         private PersistentComponent[] persistentComponents;
 
+        [SerializeField] private bool resetOnStart = false;
+
+        public void Awake()
+        {
+            if (resetOnStart)
+            {
+                Reset();
+            }
+        }
+
         public void Reset()
         {
             foreach (var component in persistentComponents)

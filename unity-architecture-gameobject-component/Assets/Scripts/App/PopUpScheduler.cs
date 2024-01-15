@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace GameObjectComponent.App
 {
-    public class NotificationManager : MonoBehaviour
+    public class PopUpScheduler : MonoBehaviour
     {
-        [SerializeField] private RectTransform notificationContainer;
-        [SerializeField] private TextMeshProUGUI notificationTextUGUI;
+        [SerializeField] private RectTransform popupContainer;
+        [SerializeField] private TextMeshProUGUI popupTextUGUI;
         [SerializeField] private Vector2 startPosition;
         [SerializeField] private Vector2 endPosition;
         [SerializeField] private float animationDuration = 0.5f;
@@ -17,32 +17,32 @@ namespace GameObjectComponent.App
 
         private void Start()
         {
-            notificationContainer.gameObject.SetActive(false);
+            popupContainer.gameObject.SetActive(false);
         }
 
-        public void ScheduleNotification(string notificationText)
+        public void SchedulePopup(string notificationText)
         {
             Debug.Log("ScheduleNotification");
             _notificationQueue.Enqueue(notificationText);
-            if (!notificationContainer.gameObject.activeInHierarchy)
+            if (!popupContainer.gameObject.activeInHierarchy)
             {
                 // enable
-                notificationContainer.gameObject.SetActive(true);
-                StartCoroutine(ShowNotification());
+                popupContainer.gameObject.SetActive(true);
+                StartCoroutine(ShowPopup());
             }
         }
 
-        private IEnumerator ShowNotification()
+        private IEnumerator ShowPopup()
         {
             while (_notificationQueue.Count > 0)
             {
-                notificationTextUGUI.text = _notificationQueue.Dequeue();
+                popupTextUGUI.text = _notificationQueue.Dequeue();
                 yield return StartCoroutine(Move(startPosition, endPosition, animationDuration));
                 yield return new WaitForSeconds(2f);
                 yield return StartCoroutine(Move(endPosition, startPosition, animationDuration));
             }
 
-            notificationContainer.gameObject.SetActive(false);
+            popupContainer.gameObject.SetActive(false);
         }
 
         private IEnumerator Move(Vector2 start, Vector2 end, float duration)
@@ -50,11 +50,19 @@ namespace GameObjectComponent.App
             float elapsed = 0f;
             while (elapsed < duration)
             {
-                notificationContainer.anchoredPosition = Vector2.Lerp(start, end, elapsed / duration);
+                popupContainer.anchoredPosition = Vector2.Lerp(start, end, elapsed / duration);
                 elapsed += Time.deltaTime;
                 yield return null;
             }
-            notificationContainer.anchoredPosition = end;
+            popupContainer.anchoredPosition = end;
         }
+        
+        #if UNITY_EDITOR
+        [ContextMenu("Test Popup")]
+        public void TestPopup()
+        {
+            SchedulePopup("Test Notification");
+        }
+        #endif
     }
 }

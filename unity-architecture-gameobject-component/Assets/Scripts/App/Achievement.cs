@@ -31,6 +31,11 @@ namespace GameObjectComponent.App
         public int goal;
         public bool isClaimed;
         public StatType statType;
+        
+        public string ToString()
+        {
+            return $"Achievement: {uiName} - Progress: {progress} - Goal: {goal} - Completed: {isCompleted} - Claimed: {isClaimed} - StatType: {statType} - Type {id}";
+        }
     }
 
     public enum AchievementId

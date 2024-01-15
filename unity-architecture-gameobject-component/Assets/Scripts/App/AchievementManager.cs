@@ -11,7 +11,6 @@ namespace GameObjectComponent.App
 {
     public class AchievementManager : PersistentComponent
     {
-        [Header("Dependencies")] 
         [SerializeField] private WaveSpawner waveSpawner;
         [SerializeField] private GameState state;
         [SerializeField] private RoundTimer roundTimer;
@@ -131,6 +130,7 @@ namespace GameObjectComponent.App
 
         public void StatCheck(StatType statType)
         {
+            Debug.Log("Checking Stat for type: " + statType.ToString());
             foreach (var achievement in achievements)
             {
                 if (achievement.id != AchievementId.ReachStat) continue;
@@ -139,6 +139,7 @@ namespace GameObjectComponent.App
                 if (achievement.isClaimed) continue;
                 
                 var statValue = stats.GetStat(statType).value;
+                
                 achievement.progress = (int)(statValue > achievement.progress ? statValue : achievement.progress);
                 if (achievement.progress >= achievement.goal)
                 {

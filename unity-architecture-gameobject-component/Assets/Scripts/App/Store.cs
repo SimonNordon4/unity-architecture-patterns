@@ -13,7 +13,6 @@ namespace GameObjectComponent.App
         [field: SerializeField]
         public List<StoreItem> purchasedStoreItems { get; private set; } = new();
         private StoreItemsSave _storeItemsSave;
-    
 
         [ContextMenu("Populate Store Items")]
         public void PopulateStoreItems()
@@ -25,13 +24,23 @@ namespace GameObjectComponent.App
                 purchasedStoreItems.Add(new StoreItem
                 {
                     storeName = storeItemDefinition.storeName,
-                    storeSprite = storeItemDefinition.storeSprite,
                     upgrades = storeItemDefinition.upgrades,
                     currentUpgrade = 0
                 });
             }
-            
-            
+        }
+        
+        public Sprite GetStoreItemSprite(string storeName)
+        {   
+            foreach (var storeItemDefinition in storeItemDefinitions)
+            {
+                if (storeItemDefinition.storeName == storeName)
+                {
+                    return storeItemDefinition.storeSprite;
+                }
+            }
+
+            return null;
         }
 
         public override void Save()

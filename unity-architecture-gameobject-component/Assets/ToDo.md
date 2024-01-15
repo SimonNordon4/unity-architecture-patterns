@@ -1,10 +1,15 @@
-﻿ToDo 14/01/24:
+﻿ToDo 15/02/24:
 
-- [ ] Debug Achievements.
+- [x] Debug Achievements (stat check is doubling and publishing the wrong stat).
+- [x] Add Tutorial Back.
+- [x] Add Notification Icons back.
+- [x] Add sounds to buttons.
+- [x] Improve sword range.
+- [x] Fix store bug with sprites.
+
+ToDo 14/01/24:
+
 - [x] Add Notifications Manager.
-- [ ] Add Tutorial Back.
-- [ ] Add Notification Icons back.
-- [ ] Add sounds to buttons.
 - [x] Fix Store save to not use StoreDefinition as it's bugged.
 - [x] Fix Smart Pistol.
 - [x] Fix Input not resetting.
