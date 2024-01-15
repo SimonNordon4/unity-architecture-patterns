@@ -20,13 +20,13 @@ namespace GameObjectComponent.UI
         {
             actorPool.OnActorGet += OnActorGet;
             actorPool.OnActorReturn += OnActorReturn;    
+            ReturnText();
         }
         
         private void OnDisable()
         {
             actorPool.OnActorGet -= OnActorGet;
             actorPool.OnActorReturn -= OnActorReturn;    
-            Reset();
         }
 
         private void OnActorGet(PoolableActor actor)
@@ -66,19 +66,18 @@ namespace GameObjectComponent.UI
             }
         }
 
-        private void Reset()
+        private void ReturnText()
         {
             foreach (var healthBar in _healthBars)
             {
                 textPool.ReturnDamageNumber(healthBar.Value);
             }
-            _healthBars.Clear();
         }
 
         public override void OnGameEnd()
         {
             _healthBars.Clear();
-            Reset();
+            ReturnText();
         }
     }
 }
