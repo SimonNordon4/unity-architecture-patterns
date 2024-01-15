@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2287139538262832304, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f01b33fc1d4864e47813b7d636c71ea4, type: 2}
     - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: stats.Array.data[16].value
       value: 9999
@@ -40,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a5862a7d77cbd804087618c833d8a3da, type: 2}
+    - target: {fileID: 6391585940837955419, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f01b33fc1d4864e47813b7d636c71ea4, type: 2}
     - target: {fileID: 6674586655066841167, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -83,6 +91,34 @@ PrefabInstance:
     - target: {fileID: 6674586655066841167, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 374806638987781101}
+    - target: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Reset
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GameplayComponents.Combat.DashAttack, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209565190933250335, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: onActorReturn.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7455107379575155886, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_LocalPosition.y

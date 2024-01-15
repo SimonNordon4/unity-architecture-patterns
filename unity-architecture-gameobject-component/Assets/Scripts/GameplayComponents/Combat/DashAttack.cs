@@ -21,7 +21,6 @@ namespace GameplayComponents.Combat
         [SerializeField] private float dashDistance = 8f;
 
         private float _timeSinceLastDashAttack = 0f;
-        private float _dashChargeUpTime = 0f;
         private bool _isChargingUpDash = false;
 
         private void OnEnable()
@@ -71,12 +70,17 @@ namespace GameplayComponents.Combat
             knockBack.canBeKnockedBack = true;
         }
 
-        public override void OnGameEnd()
+        public void Reset()
         {
             defaultMovement.enabled = true;
-            _dashChargeUpTime = 0f;
             _timeSinceLastDashAttack = 0f;
+            _isChargingUpDash = false;
             StopAllCoroutines();
+        }
+
+        public override void OnGameEnd()
+        {
+            Reset();
         }
     }
 }

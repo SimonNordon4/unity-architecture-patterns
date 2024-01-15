@@ -66,13 +66,22 @@ namespace GameObjectComponent.UI
             {
                 _currentButtonIndex--;
                 if (_currentButtonIndex < 0) _currentButtonIndex = buttons.Count - 1;
-                buttons[_currentButtonIndex].Select();
+                var currentButton = buttons[_currentButtonIndex];
+                if (currentButton != null)
+                    currentButton.Select();
+                else
+                    buttons[0].Select();
+
             }
             else if (Keyboard.current[rightKey].wasPressedThisFrame || Keyboard.current[altRightKey].wasPressedThisFrame)
             {
                 _currentButtonIndex++;
                 if (_currentButtonIndex > buttons.Count - 1) _currentButtonIndex = 0;
-                buttons[_currentButtonIndex].Select();
+                var currentButton = buttons[_currentButtonIndex];
+                if (currentButton != null)
+                    currentButton.Select();
+                else
+                    buttons[0].Select();
             }
         }
 

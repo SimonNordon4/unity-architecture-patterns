@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: gameplayStateController
       value: 
       objectReference: {fileID: 1246167459329063360}
+    - target: {fileID: 2287139538262832304, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e8b0fb3a48680224c921d868d5ceda98, type: 2}
     - target: {fileID: 2541051730681367080, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: stats.Array.data[9].value
       value: 4.5
@@ -60,9 +64,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5804862559663352751, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 92cc7416afa5c9f4ca930ff97564c312, type: 2}
+    - target: {fileID: 6391585940837955419, guid: b544fab130f99a944b3855910af44473, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e8b0fb3a48680224c921d868d5ceda98, type: 2}
     - target: {fileID: 6674586655066841167, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6674586655066841167, guid: b544fab130f99a944b3855910af44473, type: 3}
       propertyPath: m_LocalPosition.x

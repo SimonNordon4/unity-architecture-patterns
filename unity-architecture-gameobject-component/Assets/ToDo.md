@@ -1,4 +1,15 @@
-﻿ToDo 15/02/24:
+﻿15 mins so far 
+
+ToDo 16/01/24:
+
+- [ ] Update achievement
+- [ ] Sort Store by price
+- [x] Fix Button Selector null ref.
+- [ ] Charger still broken.
+- [ ] Enemy Health not always at wave health.
+
+
+ToDo 15/01/24:
 
 - [x] Complete Progress Bar.
 - [x] Debug Achievements (stat check is doubling and publishing the wrong stat).

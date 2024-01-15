@@ -19,6 +19,7 @@ namespace GameplayComponents.Actor
         [SerializeField] private ParticleSystem spawnInParticle;
         [SerializeField] private ParticlePool deathParticlePool;
         [SerializeField] private float spawnTime = 1f;
+        [SerializeField] private TrailRenderer trailRenderer;
         
         private bool _isSpawned = false;
 
@@ -49,6 +50,7 @@ namespace GameplayComponents.Actor
             StopAllCoroutines();
             gameObject.layer = spawningLayer;
             StartCoroutine(SpawnIn());
+            trailRenderer.Clear();
         }
 
         private void OnDisable()
