@@ -28,10 +28,8 @@ namespace GameplayComponents.Locomotion
 
         public void DashForward()
         {
-            Debug.Log("Trying to start coroutine");
             if(_isDashing || _dashes.value <= 0)
             {
-                Debug.Log("No dashes");
                 return;
             }
 
@@ -44,8 +42,6 @@ namespace GameplayComponents.Locomotion
 
         private IEnumerator DashForwardCoroutine()
         {
-            Debug.Log("Starting Dash Coroutine");
-            
             _isDashing = true;
             _dashes.value--;
             

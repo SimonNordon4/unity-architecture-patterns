@@ -20,7 +20,6 @@ namespace GameObjectComponent.UI
         {
             actorPool.OnActorGet += OnActorGet;
             actorPool.OnActorReturn += OnActorReturn;    
-            ReturnText();
         }
         
         private void OnDisable()
@@ -76,8 +75,8 @@ namespace GameObjectComponent.UI
 
         public override void OnGameEnd()
         {
-            _healthBars.Clear();
             ReturnText();
+            _healthBars.Clear();
         }
     }
 }
