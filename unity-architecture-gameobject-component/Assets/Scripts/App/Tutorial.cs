@@ -25,9 +25,6 @@ namespace GameObjectComponent.App
         private void OnGameStarted()
         {
             var gamePlayed = statisticsManager.GetStatistic(StatisticType.GamesPlayed);
-            
-            Debug.Log("Games Played: " + gamePlayed.highestValue);
-            
             if (gamePlayed.highestValue > 1) return;
             StartCoroutine(GameTutorial());
         }

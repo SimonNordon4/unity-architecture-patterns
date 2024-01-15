@@ -13,7 +13,6 @@ namespace GameplayComponents.Actor
 
         public void AddItem(ChestItemDefinition chestItem)
         {
-            Debug.Log($"Added {chestItem.name} to {gameObject.name}'s inventory");
             items.Add(chestItem);
             OnItemAdded?.Invoke(chestItem);
         }

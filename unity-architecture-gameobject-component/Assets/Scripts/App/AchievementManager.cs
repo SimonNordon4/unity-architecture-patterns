@@ -130,7 +130,6 @@ namespace GameObjectComponent.App
 
         public void StatCheck(StatType statType)
         {
-            Debug.Log("Checking Stat for type: " + statType.ToString());
             foreach (var achievement in achievements)
             {
                 if (achievement.id != AchievementId.ReachStat) continue;

@@ -11,23 +11,23 @@ namespace GameObjectComponent.UI
 {
     public class UIDamageNumbers : GameplayComponent
     {
-        [SerializeField]private ActorPool actorPool;
-        [SerializeField]private UITextPool textPool;
-        [SerializeField]private Camera gameCamera;
-        [SerializeField]private DamageHandler playerDamageHandler;
-        
-        [SerializeField]private Color dodgeColor;
-        [SerializeField]private Color blockColor;
-        [SerializeField]private Color damageColor;
+        [SerializeField] private ActorPool actorPool;
+        [SerializeField] private UITextPool textPool;
+        [SerializeField] private Camera gameCamera;
+        [SerializeField] private DamageHandler playerDamageHandler;
+
+        [SerializeField] private Color dodgeColor;
+        [SerializeField] private Color blockColor;
+        [SerializeField] private Color damageColor;
 
         [SerializeField] private float numberTime = 0.8f;
         [SerializeField] private float numberSize = 1.2f;
-        
-        
+
+
         private void OnEnable()
         {
             actorPool.OnActorGet += OnActorGet;
-            actorPool.OnActorReturn += OnActorReturn;    
+            actorPool.OnActorReturn += OnActorReturn;
             playerDamageHandler.OnDamage += OnDamage;
             playerDamageHandler.OnBlock += OnBlock;
             playerDamageHandler.OnDodge += OnDodge;
@@ -47,7 +47,7 @@ namespace GameObjectComponent.UI
             text.text = "Dodge";
             text.color = dodgeColor;
             text.transform.position = GetScreenPosition(worldPosition);
-            StartCoroutine(AnimateText(text, numberTime));
+            StartCoroutine(AnimateText(text,worldPosition, numberTime));
         }
 
         private void OnBlock(Vector3 worldPosition)
@@ -56,7 +56,7 @@ namespace GameObjectComponent.UI
             text.transform.position = GetScreenPosition(worldPosition);
             text.text = "Block";
             text.color = blockColor;
-            StartCoroutine(AnimateText(text, numberTime));
+            StartCoroutine(AnimateText(text,worldPosition, numberTime));
         }
 
         private void OnDamage(Vector3 worldPosition, int damage)
@@ -65,7 +65,7 @@ namespace GameObjectComponent.UI
             text.transform.position = GetScreenPosition(worldPosition);
             text.text = damage.ToString();
             text.color = damageColor;
-            StartCoroutine(AnimateText(text, numberTime));
+            StartCoroutine(AnimateText(text, worldPosition, numberTime));
         }
 
         private Vector3 GetScreenPosition(Vector3 worldPosition)
@@ -75,10 +75,10 @@ namespace GameObjectComponent.UI
             return screenPosition;
         }
 
-        private IEnumerator AnimateText(TextMeshProUGUI text, float duration)
+        private IEnumerator AnimateText(TextMeshProUGUI text, Vector3 worldPosition, float duration)
         {
             float elapsedTime = 0;
-            var originalPosition = text.transform.position;
+            var originalPosition = GetScreenPosition(worldPosition);
             var targetPosition = originalPosition + new Vector3(0, 100, 0); // Move 100 units upwards
             var originalScale = text.transform.localScale;
             var targetScale = originalScale * numberSize; // Double the size
@@ -88,13 +88,16 @@ namespace GameObjectComponent.UI
                 // Calculate the current time ratio
                 float timeRatio = elapsedTime / duration;
 
+                // Recalculate the original position based on the world position
+                originalPosition = GetScreenPosition(worldPosition);
+                targetPosition = originalPosition + new Vector3(0, 100, 0); // Move 100 units upwards
+
                 // Interpolate position and scale based on the time ratio
                 text.transform.position = Vector3.Lerp(originalPosition, targetPosition, timeRatio);
                 text.transform.localScale = Vector3.Lerp(originalScale, targetScale, timeRatio);
 
                 // Wait for the next frame
                 yield return null;
-
                 // Increase elapsed time
                 elapsedTime += Time.deltaTime;
             }
@@ -113,13 +116,12 @@ namespace GameObjectComponent.UI
             damageHandler.OnDamage -= OnDamage;
             damageHandler.OnBlock -= OnBlock;
             damageHandler.OnDodge -= OnDodge;
-
         }
 
         private void OnDisable()
         {
             actorPool.OnActorGet -= OnActorGet;
-            actorPool.OnActorReturn -= OnActorReturn;    
+            actorPool.OnActorReturn -= OnActorReturn;
             playerDamageHandler.OnDamage -= OnDamage;
             playerDamageHandler.OnBlock -= OnBlock;
             playerDamageHandler.OnDodge -= OnDodge;

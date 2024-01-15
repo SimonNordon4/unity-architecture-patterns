@@ -1,6 +1,6 @@
 ﻿ToDo 15/02/24:
 
-- [ ] Complete Progress Bar.
+- [x] Complete Progress Bar.
 - [x] Debug Achievements (stat check is doubling and publishing the wrong stat).
 - [x] Add Tutorial Back.
 - [x] Add Notification Icons back.

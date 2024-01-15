@@ -28,7 +28,6 @@ namespace GameObjectComponent.Items
         
         public void SelectItem(ChestItemDefinition chestItem)
         {
-            Debug.Log($"Selected {chestItem.name}");
             gameState.ResumeGame();
             uiState.GoToHud();
             inventory.AddItem(chestItem);

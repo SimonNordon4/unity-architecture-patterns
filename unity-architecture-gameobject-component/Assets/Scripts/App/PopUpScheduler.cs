@@ -22,7 +22,6 @@ namespace GameObjectComponent.App
 
         public void SchedulePopup(string notificationText)
         {
-            Debug.Log("ScheduleNotification");
             _notificationQueue.Enqueue(notificationText);
             if (!popupContainer.gameObject.activeInHierarchy)
             {

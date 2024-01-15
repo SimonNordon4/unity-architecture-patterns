@@ -40,7 +40,6 @@ namespace GameObjectComponent.Game
             Reset();
             currentWaveDefinition = waveDefinition;
             totalActorsInWave = currentWaveDefinition.TotalActorsCount();
-            Debug.Log("Starting Wave with " + totalActorsInWave + " actors.");
             GenerateActionTimings();
             _waveStarted = true;
         }

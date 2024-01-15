@@ -42,12 +42,9 @@ namespace GameObjectComponent.UI
         
         private void CalculateStoreNotification()
         {
-            Debug.Log("Calculating store notification");
             // Check if there's any affordable store items
             foreach (var storeItem in store.purchasedStoreItems)
             {
-                Debug.Log($"Checking {storeItem.storeName} upgrade {storeItem.upgrades[storeItem.currentUpgrade].cost} is less than {gold.amount}");
-
                 if (storeItem.upgrades[storeItem.currentUpgrade].cost > gold.amount) continue;
                 storeNotification.SetActive(true);
                 return;
