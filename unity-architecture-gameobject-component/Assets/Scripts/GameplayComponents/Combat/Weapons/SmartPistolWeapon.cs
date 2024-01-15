@@ -7,7 +7,7 @@ namespace GameplayComponents.Combat.Weapon
     // Smart Pistol uses prediction on where to shoot.
     public class SmartPistolWeapon : BaseWeapon
     {
-        [SerializeField] private ProjectilePool projectilePool;
+        [SerializeField] private MunitionPool munitionPool;
         [SerializeField] private Transform projectileSpawnPoint;
         [SerializeField] private ProjectileDefinition projectileDefinition;
         [SerializeField] private float projectileSpeed = 10f;
@@ -46,7 +46,7 @@ namespace GameplayComponents.Combat.Weapon
                 shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up).normalized;
             }
             
-            var projectile = projectilePool.Get(projectileDefinition, projectileStartPosition, shootDirection);
+            var projectile = munitionPool.Get(projectileDefinition, projectileStartPosition, shootDirection);
             
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
 

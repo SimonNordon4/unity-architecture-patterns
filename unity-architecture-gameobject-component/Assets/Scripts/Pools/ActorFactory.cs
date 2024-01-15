@@ -15,7 +15,7 @@ namespace Pools
         [SerializeField] private Level level;
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
-        [SerializeField] private ProjectilePool projectilePool;
+        [SerializeField] private MunitionPool munitionPool;
         [SerializeField] private SoundManager soundManager;
 
         public PoolableActor Create(ActorDefinition actorDefinition, Vector3 position = new(), bool startActive = true)
@@ -39,8 +39,8 @@ namespace Pools
             if(actor.TryGetComponent<ActorSpawnDelay>(out var spawnDelay))
                 spawnDelay.Construct(deathParticlePool);
             
-            if(actor.TryGetComponent<ProjectilePool>(out var bulletPool))
-                bulletPool.Construct(projectilePool);
+            if(actor.TryGetComponent<MunitionPool>(out var bulletPool))
+                bulletPool.Construct(munitionPool);
             
             if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))
                 actorSoundProxy.Construct(soundManager);

@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 3189901625567047071}
   - component: {fileID: 340157341603201498}
   - component: {fileID: 8924414620005148971}
-  - component: {fileID: 6661808799331926425}
-  - component: {fileID: 4661361579235757803}
+  - component: {fileID: 5163333395468483944}
+  - component: {fileID: 9043146365751242855}
   m_Layer: 0
-  m_Name: Projectile - Enemy
+  m_Name: Projectile - Enemy Elite
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 652769875280677792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1501936895041739508}
@@ -136,7 +136,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6661808799331926425
+--- !u!114 &5163333395468483944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: {fileID: 0}
---- !u!114 &4661361579235757803
+--- !u!114 &9043146365751242855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 5
-  <projectileDefinition>k__BackingField: {fileID: 11400000, guid: 2b629371b1c806c43a05d98561fc20e7, type: 2}
+  <definition>k__BackingField: {fileID: 11400000, guid: 9d4831fb5745e594a88fef4a482e05f5, type: 2}
 --- !u!1 &907859431583672324
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +386,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.5849056, g: 0.14070843, b: 0.013794942, a: 1}
+      maxColor: {r: 0.19006927, g: 0.015686274, b: 0.58431375, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5284,7 +5284,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.47450984, g: 0.71941483, b: 1, a: 0.1254902}
-      maxColor: {r: 1, g: 0.2527845, b: 0.11372548, a: 1}
+      maxColor: {r: 0.64657044, g: 0.36356357, b: 0.8113208, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -9986,7 +9986,7 @@ Transform:
   m_GameObject: {fileID: 9081500274502788334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3160393026085202967}
@@ -10184,7 +10184,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.58431375, b: 0.121568635, a: 0.5372549}
+      maxColor: {r: 1, g: 0.12156862, b: 0.42855835, a: 0.5372549}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

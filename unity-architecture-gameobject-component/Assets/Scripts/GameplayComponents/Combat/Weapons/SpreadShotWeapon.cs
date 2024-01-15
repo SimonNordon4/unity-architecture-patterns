@@ -5,7 +5,7 @@ namespace GameplayComponents.Combat.Weapon
 {
     public class SpreadShotWeapon : BaseWeapon
     {
-        [SerializeField]private ProjectilePool projectilePool;
+        [SerializeField]private MunitionPool munitionPool;
         [SerializeField]private ProjectileDefinition projectileDefinition;
         [SerializeField]private Transform projectileSpawnPoint;
         [SerializeField]private float projectileSpeed = 10f;
@@ -29,7 +29,7 @@ namespace GameplayComponents.Combat.Weapon
                 var projectileDirection = Quaternion.Euler(0, offsetAngle, 0) * direction;
 
                 // Instantiate a projectile from the projectile pool
-                var projectile = projectilePool.Get(projectileDefinition,projectileSpawnPoint.position, projectileDirection);
+                var projectile = munitionPool.Get(projectileDefinition,projectileSpawnPoint.position, projectileDirection);
                 projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
             }
             

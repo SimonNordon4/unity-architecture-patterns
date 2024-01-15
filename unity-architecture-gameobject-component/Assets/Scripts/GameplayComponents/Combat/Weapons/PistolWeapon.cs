@@ -5,7 +5,7 @@ namespace GameplayComponents.Combat.Weapon
 {
     public class PistolWeapon : BaseWeapon
     {
-        [SerializeField]private ProjectilePool projectilePool;
+        [SerializeField]private MunitionPool munitionPool;
         [SerializeField]private ProjectileDefinition projectileDefinition;
         [SerializeField]private Transform projectileSpawnPoint;
         [SerializeField]private float projectileSpeed = 10f;
@@ -13,7 +13,7 @@ namespace GameplayComponents.Combat.Weapon
         
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
-            var projectile = projectilePool.Get(projectileDefinition, projectileSpawnPoint.position, target.targetDirection);
+            var projectile = munitionPool.Get(projectileDefinition, projectileSpawnPoint.position, target.targetDirection);
             
             
             

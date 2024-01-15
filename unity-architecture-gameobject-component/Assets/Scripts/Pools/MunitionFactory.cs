@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Pools
 {
-    public class ProjectileFactory : MonoBehaviour
+    public class MunitionFactory : MonoBehaviour
     {
         [SerializeField]private GameState state;
         

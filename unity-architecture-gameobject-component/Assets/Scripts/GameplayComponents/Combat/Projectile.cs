@@ -6,19 +6,8 @@ using UnityEngine;
 
 namespace GameplayComponents.Combat
 {
-    public class Projectile : GameplayComponent
+    public class Projectile : Munition
     {
-        private ProjectilePool _pool;
-        
-        private LayerMask _targetLayer;
-        private float _speed;
-        private int _damage;
-        private float _knockBackForce;
-        private float _pierceValue;
-
-        [SerializeField] private float lifeTime;
-        [field:SerializeField] public ProjectileDefinition projectileDefinition { get; private set; }
- 
         private Transform _projectileTransform;
         private float _timeAlive = 0f;
 
@@ -31,21 +20,6 @@ namespace GameplayComponents.Combat
         private void OnEnable()
         {
             _timeAlive = 0f;
-        }
-
-        public void Construct(ProjectilePool pool)
-        {
-            _pool = pool;
-        }
-
-        public void Set(LayerMask targetLayer = default, float speed = 10f, int damage = 1,
-            float knockBackForce = 1f, int pierce = 0)
-        {
-            _targetLayer = targetLayer;
-            _speed = speed;
-            _damage = damage;
-            _knockBackForce = knockBackForce;
-            _pierceValue = pierce;
         }
         
         private void Update()
@@ -84,12 +58,12 @@ namespace GameplayComponents.Combat
             }
         }
 
-        private void EndProjectile()
+        public override void EndProjectile()
         {
             _timeAlive = 0f;
             if (_pool != null)
             {
-                _pool.Return(this, projectileDefinition);
+                _pool.Return(this, definition);
                 return;
             }
             Destroy(gameObject);

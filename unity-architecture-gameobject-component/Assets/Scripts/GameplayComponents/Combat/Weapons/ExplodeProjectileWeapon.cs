@@ -8,7 +8,7 @@ namespace GameplayComponents.Combat.Weapon
         [SerializeField]private ProjectileDefinition projectileDefinition;
         [SerializeField]private Transform projectileSpawnPoint;
         [SerializeField]private int numberOfProjectiles = 3;
-        [SerializeField] private ProjectilePool pool;
+        [SerializeField] private MunitionPool pool;
         [SerializeField] private float projectileSpeed = 5f;
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {

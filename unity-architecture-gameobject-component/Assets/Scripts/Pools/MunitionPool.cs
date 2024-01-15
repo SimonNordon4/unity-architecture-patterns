@@ -6,30 +6,30 @@ using UnityEngine;
 
 namespace Pools
 {
-    public class ProjectilePool : GameplayComponent
+    public class MunitionPool : GameplayComponent
     {
-        [SerializeField]private ProjectileFactory factory;
+        [SerializeField]private MunitionFactory factory;
         
         
-        private Dictionary<ProjectileDefinition, Queue<Projectile>> _inactivePools = new();
-        private List<Projectile> _activeProjectiles = new();
+        private Dictionary<ProjectileDefinition, Queue<Munition>> _inactivePools = new();
+        private List<Munition> _activeProjectiles = new();
 
-        public void Construct(ProjectilePool parentPool)
+        public void Construct(MunitionPool parentPool)
         {
             factory = parentPool.factory;
             _inactivePools = parentPool._inactivePools;
             _activeProjectiles = parentPool._activeProjectiles;
         }
 
-        public Projectile Get([DisallowNull]ProjectileDefinition definition, Vector3 position, Vector3 direction, bool startActive = true)
+        public Munition Get([DisallowNull]ProjectileDefinition definition, Vector3 position, Vector3 direction, bool startActive = true)
         {
             if (!_inactivePools.TryGetValue(definition, out var queue))
             {
-                queue = new Queue<Projectile>();
+                queue = new Queue<Munition>();
                 _inactivePools.Add(definition, queue);
             }
             
-            Projectile projectile = null;
+            Munition projectile = null;
 
             if (queue.Count == 0)
             {
@@ -52,7 +52,7 @@ namespace Pools
             return projectile;
         }
         
-        public void Return(Projectile projectile, ProjectileDefinition definition)
+        public void Return(Munition projectile, ProjectileDefinition definition)
         {
             // check if definition is null
             if (definition == null)
@@ -70,7 +70,7 @@ namespace Pools
             // Check if there exists a pool
             if (!_inactivePools.TryGetValue(definition, out var queue))
             {
-                queue = new Queue<Projectile>();
+                queue = new Queue<Munition>();
                 _inactivePools.Add(definition, queue);
             }
             
@@ -82,7 +82,7 @@ namespace Pools
             foreach (var projectile in _activeProjectiles)
             {
                 projectile.gameObject.SetActive(false);
-                _inactivePools[projectile.projectileDefinition].Enqueue(projectile);
+                _inactivePools[projectile.definition].Enqueue(projectile);
             }
         }
 

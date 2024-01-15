@@ -3077,7 +3077,7 @@ MonoBehaviour:
   level: {fileID: 1358396558}
   <initialTarget>k__BackingField: {fileID: 4258749572108575571}
   deathParticlePool: {fileID: 278339793}
-  projectilePool: {fileID: 303266477}
+  munitionPool: {fileID: 303266477}
   soundManager: {fileID: 1059844243}
 --- !u!114 &278339793
 MonoBehaviour:
@@ -3445,7 +3445,7 @@ GameObject:
   - component: {fileID: 303266477}
   - component: {fileID: 303266479}
   m_Layer: 0
-  m_Name: Projectile Pool
+  m_Name: Munition Pool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4553,7 +4553,7 @@ MonoBehaviour:
   - {fileID: 849717959}
   - {fileID: 1048511585}
   - {fileID: 2093400615}
-  resetOnStart: 0
+  resetOnStart: 1
 --- !u!1 &518839907
 GameObject:
   m_ObjectHideFlags: 0
@@ -10359,7 +10359,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  projectilePool: {fileID: 303266477}
+  munitionPool: {fileID: 303266477}
   projectileSpawnPoint: {fileID: 5509109955375812234}
   projectileDefinition: {fileID: 11400000, guid: b0a65fd4cf3119f4eb5a3241a5b7ee2b, type: 2}
   projectileSpeed: 20
