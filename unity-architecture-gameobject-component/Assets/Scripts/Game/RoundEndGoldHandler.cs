@@ -43,7 +43,7 @@ namespace GameObjectComponent.Game
             
             Debug.Log("Actor Gold: " + actorGold);
             
-            var roundsCompleted = roundSpawner.roundsCompleted;
+            var roundsCompleted = roundSpawner.wavesCompleted;
             
             Debug.Log("Rounds Completed: " + roundsCompleted);
 

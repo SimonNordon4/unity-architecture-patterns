@@ -14,7 +14,8 @@ namespace GameObjectComponent.Game
         [SerializeField] private GameState gameState;
         [SerializeField] private RoundDefinition roundDefinition;
 
-        public int roundsCompleted => _currentWaveIndex;
+        public int wavesCompleted => _currentWaveIndex;
+        public int totalWaves => roundDefinition.waves.Count;
         public int actorKilledThisRound { get; private set; }
         public int totalActorsInRound { get; private set; }
 

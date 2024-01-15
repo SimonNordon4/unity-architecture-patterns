@@ -1,5 +1,6 @@
 ﻿ToDo 15/02/24:
 
+- [ ] Complete Progress Bar.
 - [x] Debug Achievements (stat check is doubling and publishing the wrong stat).
 - [x] Add Tutorial Back.
 - [x] Add Notification Icons back.
@@ -34,7 +35,7 @@ ToDo 10/01/24:
 
 ToDo 09/01/24:
 
-- [ ] Create smart pistol.
+- [x] Create smart pistol.
 - [x] Create Elite Projectile.
 - [x] Create Charger Wanderer / Elite
 - [x] Create Ranged Wanderer / Elite

@@ -30,15 +30,17 @@ namespace GameObjectComponent.Game
         private float[] _actionTimings;
 
         private bool _waveFinaleActionSpawned = false;
-        private int _totalActorsInWave = 0;
-        public int actorsDied { get; private set; }
-        
+
+        public int actorsKilledThisWave { get; private set; } = 0;
+
+        public int totalActorsInWave { get; private set; } = 0;
+
         public void StartNewWave(WaveDefinition waveDefinition)
         {
             Reset();
             currentWaveDefinition = waveDefinition;
-            _totalActorsInWave = currentWaveDefinition.TotalActorsCount();
-            Debug.Log("Starting Wave with " + _totalActorsInWave + " actors.");
+            totalActorsInWave = currentWaveDefinition.TotalActorsCount();
+            Debug.Log("Starting Wave with " + totalActorsInWave + " actors.");
             GenerateActionTimings();
             _waveStarted = true;
         }
@@ -46,13 +48,13 @@ namespace GameObjectComponent.Game
         
         public void Reset()
         {
-            _totalActorsInWave = 0;
+            totalActorsInWave = 0;
             currentWaveDefinition = null;
             _waveStarted = false;
             _waveFinaleActionSpawned = false;
             _spawnIndex = 0;
             _waveTime = 0;
-            actorsDied = 0;
+            actorsKilledThisWave = 0;
             _actionTimings = null;
         }
 
@@ -67,11 +69,11 @@ namespace GameObjectComponent.Game
 
         private void OnActorDied(DeathHandler actor)
         {
-            actorsDied++;
-            if (actorsDied >= _totalActorsInWave)
+            actorsKilledThisWave++;
+            if (actorsKilledThisWave >= totalActorsInWave)
             {
                 Debug.Log("Wave Completed, total actors killed is equal to total actors.");
-                Debug.Log("Actors Returned: " + actorsDied + " Total Actors: " + _totalActorsInWave);
+                Debug.Log("Actors Returned: " + actorsKilledThisWave + " Total Actors: " + totalActorsInWave);
                 OnWaveCompleted?.Invoke(actor.transform.position);
             }
             onWaveActorDied?.Invoke(actor.transform.position);
