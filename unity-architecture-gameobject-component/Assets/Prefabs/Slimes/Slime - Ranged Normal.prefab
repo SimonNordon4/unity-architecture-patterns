@@ -68,6 +68,14 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7ce249bf73a65f84892cf51450eff4e6, type: 2}
+    - target: {fileID: 2373649899425994982, guid: f5289b38c1f883d47b5a926bb228bb51, type: 3}
+      propertyPath: munitionPool
+      value: 
+      objectReference: {fileID: 9169497940323081655}
+    - target: {fileID: 2373649899425994982, guid: f5289b38c1f883d47b5a926bb228bb51, type: 3}
+      propertyPath: munitionDefinition
+      value: 
+      objectReference: {fileID: 11400000, guid: 2b629371b1c806c43a05d98561fc20e7, type: 2}
     - target: {fileID: 3575764666182413307, guid: f5289b38c1f883d47b5a926bb228bb51, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -85,3 +93,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5289b38c1f883d47b5a926bb228bb51, type: 3}
+--- !u!114 &9169497940323081655 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 42564207540931502, guid: f5289b38c1f883d47b5a926bb228bb51, type: 3}
+  m_PrefabInstance: {fileID: 9212023018413200921}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded862d4759f448a9be6fd67c79f53c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

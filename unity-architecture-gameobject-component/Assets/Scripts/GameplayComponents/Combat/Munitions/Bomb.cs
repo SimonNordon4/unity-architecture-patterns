@@ -9,6 +9,7 @@ namespace GameplayComponents.Combat
     {
         [SerializeField]private ParticleSystem explosionEffect;
         [SerializeField]private float explosionRadius = 3f;
+        [SerializeField]private MeshRenderer meshRenderer;
         private bool _exploded = false;
         
         private readonly Collider[] _results = new Collider[10];
@@ -28,6 +29,7 @@ namespace GameplayComponents.Combat
 
         private void Explode()
         {
+            meshRenderer.enabled = false;
             StartCoroutine(PlayEffect());
             var size = Physics.OverlapSphereNonAlloc(transform.position, explosionRadius, _results, _targetLayer);
             if(size == 0) return;
@@ -53,11 +55,13 @@ namespace GameplayComponents.Combat
         public override void EndProjectile()
         {
             _exploded = false;
+            meshRenderer.enabled = true;
             base.EndProjectile();
         }
 
         public override void OnGameEnd()
         {
+            meshRenderer.enabled = true;
             StopAllCoroutines();
             EndProjectile();
         }
