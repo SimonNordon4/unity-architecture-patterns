@@ -31,7 +31,11 @@ namespace Pools
                 movement.Construct(level);
 
             if (actor.TryGetComponent<CombatTarget>(out var target))
+            {
+                Debug.Log("Setting target in factory");
                 target.SetTarget(initialTarget);
+            }
+                
 
             if (actor.TryGetComponent<ParticlePool>(out var particlePool))
                 particlePool.Construct(deathParticlePool);

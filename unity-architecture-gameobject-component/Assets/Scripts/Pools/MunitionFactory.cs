@@ -9,17 +9,17 @@ namespace Pools
     {
         [SerializeField]private GameState state;
         
-        public Projectile Create(ProjectileDefinition projectileDefinition, Vector3 position = new(),Vector3 direction = new(), bool startActive = true)
+        public Munition Create(MunitionDefinition munitionDefinition, Vector3 position = new(),Vector3 direction = new(), bool startActive = true)
         {
-            projectileDefinition.prefab.gameObject.SetActive(false);
+            munitionDefinition.prefab.gameObject.SetActive(false);
             var rotation = Quaternion.LookRotation(direction);
-            var projectile = Instantiate(projectileDefinition.prefab, position, rotation, null);
-            if (projectile.TryGetComponent<GameplayStateController>(out var gameState))
+            var munition = Instantiate(munitionDefinition.prefab, position, rotation, null);
+            if (munition.TryGetComponent<GameplayStateController>(out var gameState))
                 gameState.Construct(state);
 
-            projectile.gameObject.SetActive(true);
+            munition.gameObject.SetActive(true);
 
-            return projectile;
+            return munition;
         }
     }
 }

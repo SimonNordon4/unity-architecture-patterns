@@ -9,7 +9,7 @@ namespace GameplayComponents.Combat.Weapon
     {
         [SerializeField] private MunitionPool munitionPool;
         [SerializeField] private Transform projectileSpawnPoint;
-        [SerializeField] private ProjectileDefinition projectileDefinition;
+        [SerializeField] private MunitionDefinition munitionDefinition;
         [SerializeField] private float projectileSpeed = 10f;
         
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
@@ -46,7 +46,7 @@ namespace GameplayComponents.Combat.Weapon
                 shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up).normalized;
             }
             
-            var projectile = munitionPool.Get(projectileDefinition, projectileStartPosition, shootDirection);
+            var projectile = munitionPool.Get(munitionDefinition, projectileStartPosition, shootDirection);
             
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
 

@@ -11,7 +11,7 @@ namespace Pools
         [SerializeField]private MunitionFactory factory;
         
         
-        private Dictionary<ProjectileDefinition, Queue<Munition>> _inactivePools = new();
+        private Dictionary<MunitionDefinition, Queue<Munition>> _inactivePools = new();
         private List<Munition> _activeProjectiles = new();
 
         public void Construct(MunitionPool parentPool)
@@ -21,7 +21,7 @@ namespace Pools
             _activeProjectiles = parentPool._activeProjectiles;
         }
 
-        public Munition Get([DisallowNull]ProjectileDefinition definition, Vector3 position, Vector3 direction, bool startActive = true)
+        public Munition Get([DisallowNull]MunitionDefinition definition, Vector3 position, Vector3 direction, bool startActive = true)
         {
             if (!_inactivePools.TryGetValue(definition, out var queue))
             {
@@ -52,7 +52,7 @@ namespace Pools
             return projectile;
         }
         
-        public void Return(Munition projectile, ProjectileDefinition definition)
+        public void Return(Munition projectile, MunitionDefinition definition)
         {
             // check if definition is null
             if (definition == null)
@@ -65,7 +65,7 @@ namespace Pools
             _inactivePools[definition].Enqueue(projectile);
         }
         
-        private Projectile CreateProjectile(ProjectileDefinition definition, Vector3 position, Vector3 direction)
+        private Munition CreateProjectile(MunitionDefinition definition, Vector3 position, Vector3 direction)
         {
             // Check if there exists a pool
             if (!_inactivePools.TryGetValue(definition, out var queue))

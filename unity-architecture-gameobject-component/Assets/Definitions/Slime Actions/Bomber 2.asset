@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4283b9fbe8bf491096d96b34d93d725e, type: 3}
-  m_Name: Round - Testing
+  m_Script: {fileID: 11500000, guid: c4e3a89883f7435e9b6f0893385cd20f, type: 3}
+  m_Name: Bomber 2
   m_EditorClassIdentifier: 
-  <waves>k__BackingField:
-  - {fileID: 11400000, guid: 7726159bb46bdf849802bc23cfc3c9da, type: 2}
+  <definition>k__BackingField: {fileID: 11400000, guid: ae8e2eeca3648d74baf66016bf0625aa, type: 2}
+  <numberOfEnemiesToSpawn>k__BackingField: 2
+  <actionType>k__BackingField: 0

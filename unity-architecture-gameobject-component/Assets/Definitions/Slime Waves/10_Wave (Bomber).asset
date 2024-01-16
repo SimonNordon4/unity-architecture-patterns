@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c2b5a32913648eb8565cf921ea5823f, type: 3}
-  m_Name: test_wanderer
+  m_Name: 10_Wave (Bomber)
   m_EditorClassIdentifier: 
-  normalEnemies: 1
-  <waveDuration>k__BackingField: 1
+  normalEnemies: 75
+  <waveDuration>k__BackingField: 60
   <spawnActions>k__BackingField:
-  - {fileID: 11400000, guid: 7b541a0bbbce74948ac2ea577b030b4c, type: 2}
+  - {fileID: 11400000, guid: 552984182eb22d04f89d7abcbc0d399f, type: 2}
+  - {fileID: 11400000, guid: cef5f4a5aa35d554e84387e6d0e1d168, type: 2}
   <bossActions>k__BackingField:
-  - {fileID: 11400000, guid: da71f7eb551479b4b9e6c700b7c140ea, type: 2}
+  - {fileID: 11400000, guid: cef5f4a5aa35d554e84387e6d0e1d168, type: 2}
   <idealEnemiesAlive>k__BackingField: 8
   <decay>k__BackingField: 5
-  <healthMultiplier>k__BackingField: {x: 10, y: 10}
-  <damageMultiplier>k__BackingField: {x: 0, y: 0}
+  <healthMultiplier>k__BackingField: {x: 8, y: 10}
+  <damageMultiplier>k__BackingField: {x: 3, y: 4}
   <rewardChest>k__BackingField: 1

@@ -3135,7 +3135,7 @@ MonoBehaviour:
   waveSpawner: {fileID: 278339790}
   chestSpawner: {fileID: 18938659}
   gameState: {fileID: 1358396559}
-  roundDefinition: {fileID: 11400000, guid: c3a4e44eb5ffece48bbf6cee77d43b17, type: 2}
+  roundDefinition: {fileID: 11400000, guid: 1463b603d0fbb194cbec86c422d36bf9, type: 2}
 --- !u!1 &292098358
 GameObject:
   m_ObjectHideFlags: 0
@@ -10361,7 +10361,7 @@ MonoBehaviour:
         m_CallState: 2
   munitionPool: {fileID: 303266477}
   projectileSpawnPoint: {fileID: 5509109955375812234}
-  projectileDefinition: {fileID: 11400000, guid: b0a65fd4cf3119f4eb5a3241a5b7ee2b, type: 2}
+  munitionDefinition: {fileID: 11400000, guid: b0a65fd4cf3119f4eb5a3241a5b7ee2b, type: 2}
   projectileSpeed: 20
 --- !u!1 &1126367850
 GameObject:
@@ -43967,6 +43967,67 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   m_IsOn: 1
+--- !u!1001 &4326915175481725510
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3316056715043726201, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_Name
+      value: Slime - Bomber
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_RootOrder
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3913467198924279482, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a0be9a1c7a678c42ae77d4cdcd7cb94, type: 3}
 --- !u!1 &4351564088947418412
 GameObject:
   m_ObjectHideFlags: 0
