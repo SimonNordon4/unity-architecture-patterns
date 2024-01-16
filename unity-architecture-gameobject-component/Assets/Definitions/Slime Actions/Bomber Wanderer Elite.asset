@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a6a5658a4be4bde83069cfa7b43ee0e, type: 3}
-  m_Name: Slime - Bomber
+  m_Script: {fileID: 11500000, guid: c4e3a89883f7435e9b6f0893385cd20f, type: 3}
+  m_Name: Bomber Wanderer Elite
   m_EditorClassIdentifier: 
-  actorPrefab: {fileID: 2323700769224900868, guid: 1d55a393f1b766549964ccf382d83520, type: 3}
-  enemyColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
+  <definition>k__BackingField: {fileID: 11400000, guid: 7cf0d38fd6c9f6141be98ca1e4b920ee, type: 2}
+  <numberOfEnemiesToSpawn>k__BackingField: 1
+  <actionType>k__BackingField: 0

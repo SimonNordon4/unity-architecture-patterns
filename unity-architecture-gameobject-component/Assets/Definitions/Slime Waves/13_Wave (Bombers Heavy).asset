@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2b5a32913648eb8565cf921ea5823f, type: 3}
+  m_Name: 13_Wave (Bombers Heavy)
+  m_EditorClassIdentifier: 
+  normalEnemies: 90
+  <waveDuration>k__BackingField: 60
+  <spawnActions>k__BackingField:
+  - {fileID: 11400000, guid: cef5f4a5aa35d554e84387e6d0e1d168, type: 2}
+  - {fileID: 11400000, guid: dbf8aa67718867c408a31912118c464c, type: 2}
+  - {fileID: 11400000, guid: e4c3e680a18833d4c940ce0ec0d62187, type: 2}
+  - {fileID: 11400000, guid: dbf8aa67718867c408a31912118c464c, type: 2}
+  <bossActions>k__BackingField:
+  - {fileID: 11400000, guid: d4a4e770f4fe5c547a440c703d48fed1, type: 2}
+  - {fileID: 11400000, guid: d4a4e770f4fe5c547a440c703d48fed1, type: 2}
+  - {fileID: 11400000, guid: 6554b52eab8657b4d995faaa4163afe9, type: 2}
+  - {fileID: 11400000, guid: 6554b52eab8657b4d995faaa4163afe9, type: 2}
+  <idealEnemiesAlive>k__BackingField: 8
+  <decay>k__BackingField: 5
+  <healthMultiplier>k__BackingField: {x: 9, y: 10}
+  <damageMultiplier>k__BackingField: {x: 3, y: 4}
+  <rewardChest>k__BackingField: 1
