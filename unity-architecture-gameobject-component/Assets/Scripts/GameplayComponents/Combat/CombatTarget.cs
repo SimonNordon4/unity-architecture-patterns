@@ -30,7 +30,6 @@ namespace GameplayComponents.Combat
         
         public void SetTarget(Transform newTarget)
         {
-            Debug.Log("Setting target");
             if (targetLayer != (targetLayer | (1 << newTarget.gameObject.layer)))
             {
                 Debug.LogWarning("Target is not on the target layer.", this);

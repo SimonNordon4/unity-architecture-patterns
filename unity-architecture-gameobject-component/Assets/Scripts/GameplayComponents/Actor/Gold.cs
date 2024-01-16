@@ -10,7 +10,6 @@ public class Gold : PersistentComponent
 
     public void ChangeGold(int goldDelta)
     {
-        Debug.Log($"Adding {goldDelta} gold to {name}");
         amount += goldDelta;
         amount = Mathf.Max(amount, 0);
         Save();

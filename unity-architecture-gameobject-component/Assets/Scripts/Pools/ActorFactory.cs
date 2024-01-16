@@ -32,7 +32,6 @@ namespace Pools
 
             if (actor.TryGetComponent<CombatTarget>(out var target))
             {
-                Debug.Log("Setting target in factory");
                 target.SetTarget(initialTarget);
             }
                 

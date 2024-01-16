@@ -18,6 +18,7 @@ namespace GameObjectComponent.Game
     public class WaveSpawner : GameplayComponent
     {
         public event Action<Vector3> OnWaveCompleted;
+        public UnityEvent onWaveStarted = new();
         public UnityEvent<Vector3> onWaveActorDied = new();
         
         [SerializeField] private ActorActionSpawner actionSpawner;
@@ -28,6 +29,8 @@ namespace GameObjectComponent.Game
         private int _spawnIndex = 0;
         private float _waveTime;
         private float[] _actionTimings;
+        // This is a hack fix to stop multiple wave finish issue.
+        private bool _waveCompletedSafety = false;
 
         private bool _waveFinaleActionSpawned = false;
 
@@ -37,11 +40,13 @@ namespace GameObjectComponent.Game
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
+            onWaveStarted.Invoke();
             Reset();
             currentWaveDefinition = waveDefinition;
             totalActorsInWave = currentWaveDefinition.TotalActorsCount();
             GenerateActionTimings();
             _waveStarted = true;
+            _waveCompletedSafety = false;
         }
         
         
@@ -68,12 +73,12 @@ namespace GameObjectComponent.Game
 
         private void OnActorDied(DeathHandler actor)
         {
+            if(_waveCompletedSafety) return;
             actorsKilledThisWave++;
             if (actorsKilledThisWave >= totalActorsInWave)
             {
-                Debug.Log("Wave Completed, total actors killed is equal to total actors.");
-                Debug.Log("Actors Returned: " + actorsKilledThisWave + " Total Actors: " + totalActorsInWave);
                 OnWaveCompleted?.Invoke(actor.transform.position);
+                _waveCompletedSafety = true;
             }
             onWaveActorDied?.Invoke(actor.transform.position);
             

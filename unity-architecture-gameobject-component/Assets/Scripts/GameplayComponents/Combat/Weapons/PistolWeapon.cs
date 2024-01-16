@@ -13,8 +13,7 @@ namespace GameplayComponents.Combat.Weapon
         
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
-            Debug.Log("Is target null? " + (target == null));
-            Debug.Log("Is target.target null? " + (target.target == null));
+
             var projectile = munitionPool.Get(munitionDefinition, projectileSpawnPoint.position, target.targetDirection);
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
             onAttack.Invoke();

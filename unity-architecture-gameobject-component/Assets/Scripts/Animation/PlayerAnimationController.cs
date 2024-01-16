@@ -13,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour
 
     public Transform gunPivot;
     
-    private Vector3 offset;
+    private Vector3 _offset;
     private Transform _transform;
 
     public float rotationSpeed = 1f;
@@ -22,7 +22,7 @@ public class PlayerAnimationController : MonoBehaviour
     void Start()
     {
         _transform = transform;
-        offset = transform.position - transformToFollow.position;
+        _offset = transform.position - transformToFollow.position;
     }
 
     // Update is called once per frame
@@ -30,8 +30,8 @@ public class PlayerAnimationController : MonoBehaviour
     {
         if (gameState.currentState != GameStateEnum.Active) return;
         var gunRotation = Quaternion.LookRotation(characterTarget.targetDirection.magnitude > 0 ? characterTarget.targetDirection : Vector3.forward);
-        gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, gunRotation, Time.deltaTime * gunRotationSpeed);
-        _transform.position = transformToFollow.position + offset;
-        _transform.rotation = Quaternion.Lerp(_transform.rotation, transformToFollow.rotation, Time.deltaTime * rotationSpeed);
+        gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, gunRotation, GameTime.deltaTime * gunRotationSpeed);
+        _transform.position = transformToFollow.position + _offset;
+        _transform.rotation = Quaternion.Lerp(_transform.rotation, transformToFollow.rotation, GameTime.deltaTime * rotationSpeed);
     }
 }

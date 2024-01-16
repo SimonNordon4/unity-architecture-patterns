@@ -74,6 +74,20 @@ namespace Pools
             }
         }
 
+        // destroy all actors in the pool
+        public void FlushPool()
+        {
+            ReturnAllActiveActors();
+            foreach (var pool in _inactivePools)
+            {
+                foreach (var actor in pool.Value)
+                {
+                    Destroy(actor.gameObject);
+                }
+            }
+            _inactivePools.Clear();
+        }
+
         public void ResetAllPools()
         {
             ReturnAllActiveActors();
