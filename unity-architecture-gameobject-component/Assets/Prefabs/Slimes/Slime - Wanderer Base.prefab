@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &962846932707179803
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_Name
+      value: Slime - Wanderer Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219092628217517242, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7685809408726731611}
+  m_SourcePrefab: {fileID: 100100000, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+--- !u!1 &854867534883488866 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 468833207495391609, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+  m_PrefabInstance: {fileID: 962846932707179803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7685809408726731611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854867534883488866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4a333ff2b745afaabcdb4d4597d264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 4721132043842706680}
+  stat: {fileID: 7814925090398127046}
+--- !u!114 &4721132043842706680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5537295294949007843, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+  m_PrefabInstance: {fileID: 962846932707179803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854867534883488866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8734f7f89cc0416396e31526c3276994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7814925090398127046 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7000996090403241693, guid: 7311f8492ee87bb4d9a4e58c82819116, type: 3}
+  m_PrefabInstance: {fileID: 962846932707179803}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854867534883488866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3cb163d6c346a1829fac5f67f83d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

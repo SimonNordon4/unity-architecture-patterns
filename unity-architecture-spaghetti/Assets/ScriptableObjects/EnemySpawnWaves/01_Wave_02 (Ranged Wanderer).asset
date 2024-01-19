@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
+  m_Name: 01_Wave_02 (Ranged Wanderer)
+  m_EditorClassIdentifier: 
+  enemyManager: {fileID: 0}
+  enemySpawnActions:
+  - enemyPrefab: {fileID: 6537234263106401617, guid: 0d9762daa9bdaf84ea931897b1fa7b4e,
+      type: 3}
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 181
+  - enemyPrefab: {fileID: 785199637160735070, guid: 8484d40e5461e59478c18489957a7ceb,
+      type: 3}
+    numberOfEnemiesToSpawn: 2
+    spawnWeight: 50
+  - enemyPrefab: {fileID: 5267285107322196816, guid: 6da49f7eb69c8fc49964a213d0376127,
+      type: 3}
+    numberOfEnemiesToSpawn: 2
+    spawnWeight: 50
+  totalEnemies: 75
+  blockTime: 60
+  spawnRateCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  eliteAction:
+  - enemyPrefab: {fileID: 998790232253079905, guid: 538efd969b256494a8c3ce19b80de8c8,
+      type: 3}
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 100
+  healthMultiplier: {x: 6, y: 8}
+  damageMultiplier: {x: 2, y: 3}
+  bossChestTier: {x: 3, y: 4}
+  bossChestChoices: {x: 3, y: 5}
+  idealEnemiesAlive: 10
+  decay: 5

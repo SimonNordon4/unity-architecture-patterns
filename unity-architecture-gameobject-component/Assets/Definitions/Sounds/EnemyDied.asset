@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5010c9b6c48f4efc81afbeaedeb0f6ee, type: 3}
+  m_Name: EnemyDied
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 7b502b71de2912a46abd0c1453f456f0, type: 3}
+  - {fileID: 8300000, guid: 8df4cf3017cdd05429fe819ebc0d4e8c, type: 3}
+  - {fileID: 8300000, guid: 7e1a65be295458741a40f044dac69a4d, type: 3}
+  volume: 1
+  pitchVariation: {x: 0.9, y: 1.1}

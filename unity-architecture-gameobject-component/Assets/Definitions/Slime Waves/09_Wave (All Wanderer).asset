@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2b5a32913648eb8565cf921ea5823f, type: 3}
+  m_Name: 09_Wave (All Wanderer)
+  m_EditorClassIdentifier: 
+  normalEnemies: 75
+  <waveDuration>k__BackingField: 60
+  <spawnActions>k__BackingField:
+  - {fileID: 11400000, guid: b6f120dc51fe52b43a284914149cc4f0, type: 2}
+  - {fileID: 11400000, guid: 552984182eb22d04f89d7abcbc0d399f, type: 2}
+  - {fileID: 11400000, guid: 106a841d80e98b046900fa04cb43c654, type: 2}
+  - {fileID: 11400000, guid: 7b541a0bbbce74948ac2ea577b030b4c, type: 2}
+  - {fileID: 11400000, guid: 819c5ec0529714346a4a2589e28c533a, type: 2}
+  - {fileID: 11400000, guid: 860d8fd50550a2545ab9b9dd3257a378, type: 2}
+  <bossActions>k__BackingField:
+  - {fileID: 11400000, guid: da71f7eb551479b4b9e6c700b7c140ea, type: 2}
+  - {fileID: 11400000, guid: f1e8cf7c7393b7049b22090c46bb89c6, type: 2}
+  - {fileID: 11400000, guid: 07d621b1e4d26b34e88a3eea94a3409b, type: 2}
+  <idealEnemiesAlive>k__BackingField: 8
+  <decay>k__BackingField: 5
+  <healthMultiplier>k__BackingField: {x: 6, y: 8}
+  <damageMultiplier>k__BackingField: {x: 2, y: 3}
+  <rewardChest>k__BackingField: 2

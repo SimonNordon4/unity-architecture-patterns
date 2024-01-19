@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2b5a32913648eb8565cf921ea5823f, type: 3}
+  m_Name: 02_Wave (Normal, Fast, Big)
+  m_EditorClassIdentifier: 
+  normalEnemies: 35
+  <waveDuration>k__BackingField: 30
+  <spawnActions>k__BackingField:
+  - {fileID: 11400000, guid: a3f075ab3a0672046ad3d08b8c70ef2e, type: 2}
+  - {fileID: 11400000, guid: 860d8fd50550a2545ab9b9dd3257a378, type: 2}
+  - {fileID: 11400000, guid: f795fb20903336744b3130910dd38192, type: 2}
+  - {fileID: 11400000, guid: f795fb20903336744b3130910dd38192, type: 2}
+  - {fileID: 11400000, guid: 552984182eb22d04f89d7abcbc0d399f, type: 2}
+  <bossActions>k__BackingField:
+  - {fileID: 11400000, guid: 747b1b87dde73cb49b8e66f798452eec, type: 2}
+  <idealEnemiesAlive>k__BackingField: 5
+  <decay>k__BackingField: 5
+  <healthMultiplier>k__BackingField: {x: 0, y: 0}
+  <damageMultiplier>k__BackingField: {x: 0, y: 0}
+  <rewardChest>k__BackingField: 1
