@@ -6,6 +6,11 @@ Explore the implementation of various software architecture patterns within the 
 
 Each architecture pattern is applied to create the same game, allowing for a direct comparison of coding styles, maintainability, scalability, and overall design efficiency. This approach offers a hands-on understanding of how different patterns affect game development in Unity.
 
+![A Unity Game](https://cdn-images-1.medium.com/max/880/0*ZoXzNVAQepP0wwTn.gif)
+
+The Game in Question, a Survivors Clone.
+
+
 ## Architectural Patterns
 
 ### Spaghetti
