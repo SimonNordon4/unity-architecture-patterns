@@ -15,13 +15,14 @@ namespace GameObjectComponent.Game
     /// I've decided to track when Actors are returned to the pool as counting as being dead,
     /// seeing as they can be cancelled before spawning in.</remarks>
     /// </summary>
+    [RequireComponent(typeof(ActorActionSpawner))]
     public class WaveSpawner : GameplayComponent
     {
         public event Action<Vector3> OnWaveCompleted;
         public UnityEvent onWaveStarted = new();
         public UnityEvent<Vector3> onWaveActorDied = new();
         
-        [SerializeField] private ActorActionSpawner actionSpawner;
+        private ActorActionSpawner _actionSpawner;
 
         private bool _waveStarted = false;
         
@@ -37,6 +38,11 @@ namespace GameObjectComponent.Game
         public int actorsKilledThisWave { get; private set; } = 0;
 
         public int totalActorsInWave { get; private set; } = 0;
+
+        private void Awake()
+        {
+            _actionSpawner = GetComponent<ActorActionSpawner>();
+        }
 
         public void StartNewWave(WaveDefinition waveDefinition)
         {
@@ -134,7 +140,7 @@ namespace GameObjectComponent.Game
         private void SpawnActors(SpawnActionDefinition actionDefinition)
         {
             // Subscribe to the enemies deaths.
-            var actors = actionSpawner.SpawnAction(actionDefinition);
+            var actors = _actionSpawner.SpawnAction(actionDefinition);
 
             foreach (var actor in actors)
             {

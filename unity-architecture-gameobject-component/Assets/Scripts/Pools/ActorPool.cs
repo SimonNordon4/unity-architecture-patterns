@@ -9,13 +9,19 @@ using UnityEngine;
 
 namespace Pools
 {
+    [RequireComponent(typeof(ActorFactory))]
     public class ActorPool : GameplayComponent
     {
-        [field:SerializeField] public ActorFactory factory { get; private set; }
+        public ActorFactory factory { get; private set; }
         private readonly Dictionary<ActorDefinition, Queue<PoolableActor>> _inactivePools = new();
         private readonly List<PoolableActor> _activeActors = new();
         public event Action<PoolableActor> OnActorGet;
         public event Action<PoolableActor> OnActorReturn;
+
+        private void Awake()
+        {
+            factory = GetComponent<ActorFactory>();
+        }
 
         public PoolableActor Get([DisallowNull]ActorDefinition definition, Vector3 position, bool startActive = true)
         {

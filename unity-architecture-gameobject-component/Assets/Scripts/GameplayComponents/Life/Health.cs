@@ -6,6 +6,7 @@ namespace GameplayComponents.Life
 {
     public class Health : GameplayComponent
     {
+        
         [field:SerializeField] public int currentHealth { get; private set; }
         [SerializeField] private Stats stats;
         private Stat _maxHealthStat;

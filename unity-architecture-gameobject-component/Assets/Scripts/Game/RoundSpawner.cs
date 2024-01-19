@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace GameObjectComponent.Game
 {
+    [RequireComponent(typeof(WaveSpawner))]
     public class RoundSpawner : GameplayComponent
     {
-        [SerializeField]private WaveSpawner waveSpawner;
+        private WaveSpawner _waveSpawner;
         private int _currentWaveIndex = 0;
         private WaveDefinition _currentWaveDefinition;
         [SerializeField] private ChestSpawner chestSpawner;
@@ -19,10 +20,15 @@ namespace GameObjectComponent.Game
         public int actorKilledThisRound { get; private set; }
         public int totalActorsInRound { get; private set; }
 
+        private void Awake()
+        {
+            _waveSpawner = GetComponent<WaveSpawner>();
+        }
+
         private void OnEnable()
         {
-            waveSpawner.OnWaveCompleted += OnWaveCompleted;
-            waveSpawner.onWaveActorDied.AddListener(OnWaveActorDied);
+            _waveSpawner.OnWaveCompleted += OnWaveCompleted;
+            _waveSpawner.onWaveActorDied.AddListener(OnWaveActorDied);
             
         }
 
@@ -33,15 +39,15 @@ namespace GameObjectComponent.Game
 
         private void OnDisable()
         {
-            waveSpawner.OnWaveCompleted -= OnWaveCompleted;
-            waveSpawner.onWaveActorDied.RemoveListener(OnWaveActorDied);
+            _waveSpawner.OnWaveCompleted -= OnWaveCompleted;
+            _waveSpawner.onWaveActorDied.RemoveListener(OnWaveActorDied);
         }
 
         public void StartRoundSpawner()
         {
             if (roundDefinition == null) return;
             _currentWaveDefinition = roundDefinition.waves[_currentWaveIndex];
-            waveSpawner.StartNewWave(_currentWaveDefinition);
+            _waveSpawner.StartNewWave(_currentWaveDefinition);
             totalActorsInRound = _currentWaveDefinition.TotalActorsCount();
             actorKilledThisRound = 0;
         }

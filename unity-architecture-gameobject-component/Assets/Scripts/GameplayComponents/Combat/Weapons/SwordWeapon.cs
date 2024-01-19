@@ -4,7 +4,7 @@ using GameObjectComponent.Player;
 using GameplayComponents.Actor;
 using UnityEngine;
 
-namespace GameplayComponents.Combat.Weapon
+namespace GameplayComponents.Combat.Weapons
 {
     public class SwordWeapon : BaseWeapon
     {

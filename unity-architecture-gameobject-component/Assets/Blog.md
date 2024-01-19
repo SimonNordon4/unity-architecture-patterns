@@ -26,5 +26,5 @@ GameObject Component has a large upfront cost, but it's more consistent.
 
 developmentSpeed = 1 - Random.Range(0.3f, 0.7f);
 
-- no new features(yet).
+There was more bugs, had to add safety because of events.
 

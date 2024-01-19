@@ -1,7 +1,7 @@
 ﻿using Pools;
 using UnityEngine;
 
-namespace GameplayComponents.Combat.Weapon
+namespace GameplayComponents.Combat.Weapons
 {
     public class ExplodeProjectileWeapon : BaseWeapon
     {

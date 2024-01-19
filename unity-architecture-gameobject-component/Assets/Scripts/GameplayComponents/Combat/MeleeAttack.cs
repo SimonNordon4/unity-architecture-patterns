@@ -1,6 +1,6 @@
 ﻿using GameObjectComponent.Game;
 using GameplayComponents.Actor;
-using GameplayComponents.Combat.Weapon;
+using GameplayComponents.Combat.Weapons;
 using UnityEngine;
 
 namespace GameplayComponents.Combat

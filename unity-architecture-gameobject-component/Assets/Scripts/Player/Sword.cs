@@ -3,7 +3,7 @@ using GameplayComponents.Life;
 using GameplayComponents.Locomotion;
 using UnityEngine;
 
-namespace GameplayComponents.Combat.Weapon
+namespace GameplayComponents.Combat.Weapons
 {
     public class Sword : MonoBehaviour
     {

@@ -2,7 +2,7 @@
 using GameplayComponents.Life;
 using UnityEngine;
 
-namespace GameplayComponents.Combat.Weapon
+namespace GameplayComponents.Combat.Weapons
 {
     public class BodySlamWeapon : BaseWeapon
     {

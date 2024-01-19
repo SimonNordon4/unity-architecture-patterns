@@ -2,7 +2,7 @@
 using Pools;
 using UnityEngine;
 
-namespace GameplayComponents.Combat.Weapon
+namespace GameplayComponents.Combat.Weapons
 {
     // Smart Pistol uses prediction on where to shoot.
     public class SmartPistolWeapon : BaseWeapon

@@ -7,10 +7,16 @@ using Random = UnityEngine.Random;
 
 namespace GameObjectComponent.Game
 {
+    [RequireComponent(typeof(ActorPool))]
     public class ActorActionSpawner : MonoBehaviour
     {
-        [field:SerializeField] public ActorPool pool { get;private set; }
+        public ActorPool pool { get;private set; }
         [SerializeField] private Level level;
+
+        private void Awake()
+        {
+            pool = GetComponent<ActorPool>();
+        }
 
         public PoolableActor[] SpawnAction(SpawnActionDefinition actionDefinition)
         {

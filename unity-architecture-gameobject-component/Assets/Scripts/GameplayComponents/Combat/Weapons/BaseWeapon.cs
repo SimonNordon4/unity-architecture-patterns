@@ -1,8 +1,6 @@
-﻿using GameplayComponents.Combat;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine.Events;
 
-namespace GameplayComponents.Combat.Weapon
+namespace GameplayComponents.Combat.Weapons
 {
     public abstract class BaseWeapon : GameplayComponent
     {
