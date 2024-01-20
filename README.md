@@ -22,6 +22,15 @@ This pattern is central to Unity's design philosophy, emphasizing modularity and
 ### Scriptable Object
 Coming Soon
 
+### DOTS ECS
+Planned
+
+### Reactive Programming (UniRx)
+Planned
+
+### IoC Container + MVC (VContainer)
+Planned
+
 ## Contributions
 
 Contributions are welcome! Whether it's refining the existing patterns, adding new ones, or improving the documentation, your input can greatly benefit this project.
