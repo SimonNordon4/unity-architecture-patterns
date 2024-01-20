@@ -32,4 +32,11 @@ If you find this repository helpful, consider giving it a star! Your support mot
 
 ## License
 
-This project is licensed under [license name] - see the LICENSE.md file for details.
+## Code
+
+The C# code in this repository is released under the [MIT License](https://opensource.org/licenses/MIT). 
+
+## Media Assets
+
+All media assets (including but not limited to images, sound files, animations, shaders and 3D models) in this repository are proprietary. Unauthorized copying, modification, distribution, or use of these assets is strictly prohibited.
+
