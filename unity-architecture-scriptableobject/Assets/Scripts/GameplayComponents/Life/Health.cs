@@ -10,7 +10,7 @@ namespace GameplayComponents.Life
         [field:SerializeField] public int currentHealth { get; private set; }
         [SerializeField] private Stats stats;
         private Stat _maxHealthStat;
-        public int maxHealth => (int)_maxHealthStat.value;
+        public int maxHealth => (int)(_maxHealthStat?.value ?? 0);
         
         public Action<int> OnHealthChanged;
         public Action OnHealthDepleted;

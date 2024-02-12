@@ -12,7 +12,7 @@ namespace GameObjectComponent.UI
         [SerializeField]private Image healthBar;
         [SerializeField]private TextMeshProUGUI healthText;
 
-        private void OnEnable()
+        private void Start()
         {
             health.OnHealthChanged += UpdateUI;
             UpdateUI(health.currentHealth);

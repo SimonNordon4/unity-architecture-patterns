@@ -3095,7 +3095,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <initialTarget>k__BackingField: {fileID: 4258749572108575571}
   deathParticlePool: {fileID: 278339793}
-  munitionPool: {fileID: 0}
   soundManager: {fileID: 1059844243}
 --- !u!114 &278339793
 MonoBehaviour:
@@ -5961,7 +5960,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &632880928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7928,7 +7927,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900014451}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8294ec6cab524d7cb8ab7f7da2f01c52, type: 3}
   m_Name: 
@@ -67701,7 +67700,6 @@ MonoBehaviour:
         m_CallState: 2
   munitionPool: {fileID: 11400000, guid: 7a01642738808e04ab687a779a19f08c, type: 2}
   projectileSpawnPoint: {fileID: 5509109955375812234}
-  munitionDefinition: {fileID: 11400000, guid: b0a65fd4cf3119f4eb5a3241a5b7ee2b, type: 2}
   projectileSpeed: 20
 --- !u!114 &9018308866812664878
 MonoBehaviour:

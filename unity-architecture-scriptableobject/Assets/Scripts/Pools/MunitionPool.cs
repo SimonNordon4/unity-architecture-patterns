@@ -9,8 +9,8 @@ namespace Pools
     {
         [SerializeField]private MunitionDefinition definition;
         [SerializeField]private GameState gameState;
-        private Queue<Munition> _inactivePool = new();
-        private List<Munition> _activeProjectiles = new();
+        private readonly Queue<Munition> _inactivePool = new();
+        private readonly List<Munition> _activeProjectiles = new();
 
         protected override void Init()
         {
