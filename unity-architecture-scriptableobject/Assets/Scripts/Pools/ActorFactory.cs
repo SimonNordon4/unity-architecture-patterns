@@ -11,7 +11,6 @@ namespace Pools
 {
     public class ActorFactory : MonoBehaviour
     {
-        [SerializeField] private Level level;
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
         [SerializeField] private MunitionPool munitionPool;
@@ -22,9 +21,6 @@ namespace Pools
             actorDefinition.actorPrefab.gameObject.SetActive(false);
             
             var actor = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
-
-            if (actor.TryGetComponent<Movement>(out var movement))
-                movement.Construct(level);
 
             if (actor.TryGetComponent<CombatTarget>(out var target))
             {

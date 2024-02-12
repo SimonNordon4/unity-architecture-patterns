@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawner: {fileID: 18938659}
-  level: {fileID: 1358396558}
+  level: {fileID: 0}
   edgeBuffer: {x: 1, y: 1}
   miniChestSpawnRate: 8
 --- !u!114 &18938662
@@ -3047,7 +3047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a44f2dd1c8746bb9d3b759001e792b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 1358396558}
   <initialTarget>k__BackingField: {fileID: 4258749572108575571}
   deathParticlePool: {fileID: 278339793}
   munitionPool: {fileID: 303266477}
@@ -3079,7 +3078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f1f15aee4c4cc0960b706b9aabc318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 1358396558}
+  level: {fileID: 11400000, guid: 190633be361f7f044bde110518ba7549, type: 2}
 --- !u!114 &278339796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5277,7 +5276,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &602978371
@@ -8435,7 +8434,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &932701723
@@ -8928,7 +8927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterTransform: {fileID: 4258749572108575571}
-  level: {fileID: 1358396558}
+  level: {fileID: 11400000, guid: 190633be361f7f044bde110518ba7549, type: 2}
   edgeDistance: 5
 --- !u!1 &980833706
 GameObject:
@@ -13979,7 +13978,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358396560}
-  - component: {fileID: 1358396558}
   - component: {fileID: 1358396561}
   - component: {fileID: 1358396562}
   m_Layer: 0
@@ -13989,19 +13987,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1358396558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1358396557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4e9d2227674c654db184168f3549cfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <bounds>k__BackingField: {x: 17.5, y: 17.5}
 --- !u!4 &1358396560
 Transform:
   m_ObjectHideFlags: 0
@@ -67274,7 +67259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <canMove>k__BackingField: 1
-  <level>k__BackingField: {fileID: 1358396558}
+  <level>k__BackingField: {fileID: 11400000, guid: 190633be361f7f044bde110518ba7549,
+    type: 2}
 --- !u!114 &9018308866812664864
 MonoBehaviour:
   m_ObjectHideFlags: 0
