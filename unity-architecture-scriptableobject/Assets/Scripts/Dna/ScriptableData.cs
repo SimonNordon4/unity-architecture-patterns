@@ -27,13 +27,13 @@ public abstract class ScriptableData : ScriptableObject
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
     
-    protected virtual void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    protected void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ResetData();
     }
     
     #if UNITY_EDITOR
-    public void OnPlayModeStateChanged(PlayModeStateChange playModeStateChange)
+    private void OnPlayModeStateChanged(PlayModeStateChange playModeStateChange)
     {
         if (playModeStateChange == PlayModeStateChange.ExitingEditMode)
         {
