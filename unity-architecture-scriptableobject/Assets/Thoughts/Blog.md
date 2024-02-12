@@ -1,3 +1,5 @@
+Jan 1st
+
 In this installment we'll be taking a look at the Scriptable Object Component.
 
 Although the name of this pattern can be a little deceiving.

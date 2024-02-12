@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+
+namespace Obvious.Soap
+{
+    [CreateAssetMenu(fileName = "scriptable_variable_#TYPE#.asset", menuName = "Soap/ScriptableVariables/#TYPENAME#")]
+    public class #TYPENAME#Variable : ScriptableVariable<#TYPE#>
+    {
+        
+    }
+}

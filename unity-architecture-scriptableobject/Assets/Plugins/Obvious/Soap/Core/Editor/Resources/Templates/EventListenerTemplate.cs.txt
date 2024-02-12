@@ -1,0 +1,28 @@
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+namespace Obvious.Soap
+{
+    [AddComponentMenu("Soap/EventListeners/EventListener#TYPENAME#")]
+    public class EventListener#TYPENAME# : EventListenerGeneric<#TYPE#>
+    {
+        [SerializeField] private EventResponse[] _eventResponses = null;
+        protected override EventResponse<#TYPE#>[] EventResponses => _eventResponses;
+
+        [System.Serializable]
+        public class EventResponse : EventResponse<#TYPE#>
+        {
+            [SerializeField] private ScriptableEvent#TYPENAME# _scriptableEvent = null;
+            public override ScriptableEvent<#TYPE#> ScriptableEvent => _scriptableEvent;
+
+            [SerializeField] private #TYPENAME#UnityEvent _response = null;
+            public override UnityEvent<#TYPE#> Response => _response;
+        }
+
+        [System.Serializable]
+        public class #TYPENAME#UnityEvent : UnityEvent<#TYPE#>
+        {
+            
+        }
+    }
+}

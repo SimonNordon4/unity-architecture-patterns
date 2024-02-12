@@ -1,0 +1,10 @@
+﻿using UnityEngine;
+
+namespace Obvious.Soap
+{
+    [CreateAssetMenu(fileName = "scriptable_event_#TYPE#.asset", menuName = "Soap/ScriptableEvents/#TYPENAME#")]
+    public class ScriptableEvent#TYPENAME# : ScriptableEvent<#TYPE#>
+    {
+        
+    }
+}
