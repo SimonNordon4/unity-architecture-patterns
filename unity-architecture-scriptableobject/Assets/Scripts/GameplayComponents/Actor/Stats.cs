@@ -21,6 +21,14 @@ namespace GameplayComponents.Actor
             }
         }
 
+        private void Start()
+        {
+            foreach(var stat in stats)
+            {
+                stat.Reset();
+            }
+        }
+
         private void OnModifierAdded(Stat stat)
         {
             onStatChanged?.Invoke(stat);

@@ -20,6 +20,10 @@ namespace GameObjectComponent.UI
 
         private void UpdateUI(int currentHealth)
         {            
+            if (health.maxHealth <= 0)
+            {
+                Debug.LogWarning("Max health is 0 or less", this);
+            }
             healthText.text = $"{currentHealth} / {health.maxHealth}";
             healthBar.fillAmount = (float)currentHealth / health.maxHealth;       
         }

@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5f676b38314865a972d89aeaf5bc43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   stats: {fileID: 9018308866812664866}
   soundManager: {fileID: 1059844243}
   tier1ChestItems: {fileID: 11400000, guid: 625754b36b3c578438c6e0f8d14c5719, type: 2}
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!1 &37748052
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,7 +3047,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a44f2dd1c8746bb9d3b759001e792b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
   level: {fileID: 1358396558}
   <initialTarget>k__BackingField: {fileID: 4258749572108575571}
   deathParticlePool: {fileID: 278339793}
@@ -3093,7 +3092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!114 &278339798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3107,7 +3106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestSpawner: {fileID: 18938659}
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   roundDefinition: {fileID: 11400000, guid: c3a4e44eb5ffece48bbf6cee77d43b17, type: 2}
 --- !u!1 &292098358
 GameObject:
@@ -3331,8 +3330,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Classic.Core.GameState, Assembly-CSharp
+      - m_Target: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
+        m_TargetAssemblyTypeName: GameObjectComponent.Game.GameState, Assembly-CSharp
         m_MethodName: StartNewGame
         m_Mode: 1
         m_Arguments:
@@ -3465,7 +3464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268832ebe93a4f728c6ce1e321624c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!1 &340710624
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,7 +3526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statisticsManager: {fileID: 2093400615}
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   popUpScheduler: {fileID: 2074502237}
 --- !u!4 &352036320
 Transform:
@@ -3589,7 +3588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4e11d41e63244498d0a32b0ec078c5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   <currentState>k__BackingField: 0
 --- !u!114 &361919823
 MonoBehaviour:
@@ -5214,7 +5213,8 @@ MonoBehaviour:
     x 12 Enemy Damage'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5305,7 +5305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &612078405
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5694,7 +5694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!114 &615099367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5709,7 +5709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterGold: {fileID: 615099365}
   roundSpawner: {fileID: 278339798}
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   baseGold: 100
 --- !u!1 &627023981
 GameObject:
@@ -5975,7 +5975,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &632880928
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7129,7 +7129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!1 &811562189
 GameObject:
   m_ObjectHideFlags: 0
@@ -7942,7 +7942,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900014451}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8294ec6cab524d7cb8ab7f7da2f01c52, type: 3}
   m_Name: 
@@ -8371,7 +8371,8 @@ MonoBehaviour:
   m_text: Milestone Beaten!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9779,7 +9780,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   waveSpawner: {fileID: 278339790}
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   roundTimer: {fileID: 1358396562}
   gold: {fileID: 615099365}
   stats: {fileID: 9018308866812664866}
@@ -9907,7 +9908,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ce43ea1b7145f6b3cf58e53415f738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   musicTracks:
   - {fileID: 8300000, guid: 50f0f3c17b68def4186e98c8a3fba505, type: 3}
   - {fileID: 8300000, guid: ec55162519650a84b9787d3008990b5a, type: 3}
@@ -14029,7 +14030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseKey: 102
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   uiState: {fileID: 361919822}
 --- !u!114 &1358396562
 MonoBehaviour:
@@ -14043,7 +14044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb39c66eac024b7a957615a1432f7862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   <roundTime>k__BackingField: 0
 --- !u!1 &1359933850
 GameObject:
@@ -18696,7 +18697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!1 &2065814497
 GameObject:
   m_ObjectHideFlags: 0
@@ -19259,7 +19260,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   roundTimer: {fileID: 1358396562}
   gold: {fileID: 615099365}
   stats: {fileID: 9018308866812664866}
@@ -40311,7 +40312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165cfd0544bec4841bb9666f2dfd3c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: {fileID: 0}
+  gameState: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
   characterTarget: {fileID: 9018308866812664880}
   transformToFollow: {fileID: 4258749572108575571}
   gunPivot: {fileID: 7565440626496418587}
@@ -67259,7 +67260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!114 &9018308866812664861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67385,7 +67386,7 @@ MonoBehaviour:
     maximumValue: Infinity
     type: 9
     <modifiers>k__BackingField: []
-    realValue: 0
+    realValue: 6
   - name: MaxHealth
     initialValue: 5
     minimumValue: 0

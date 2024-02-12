@@ -1,9 +1,11 @@
 ﻿using System;
+using Unity.Collections;
+using UnityEditor;
 using UnityEngine;
 
 namespace GameObjectComponent.Game
 {
-    public class GameState : MonoBehaviour
+    public class GameState : ScriptableObject
     {
         public GameStateEnum currentState { get; private set; } = GameStateEnum.Idle;
 
@@ -14,8 +16,9 @@ namespace GameObjectComponent.Game
         public event Action OnGameLost;
         public event Action OnGameQuit;
 
-        private void Start()
+        private void OnEnable()
         {
+            Debug.Log("GameState enabled");
             QuitGame();
         }
         public void StartNewGame()
@@ -71,4 +74,48 @@ namespace GameObjectComponent.Game
         Active,
         Paused,
     }
+    
+        
+#if UNITY_EDITOR
+    [UnityEditor.CustomEditor(typeof(GameState))]
+    public class GameStateEditor : UnityEditor.Editor
+    {
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            var gameState = (GameState)target;
+            
+            // Show grayed out current state
+            EditorGUI.BeginDisabledGroup(true);
+            EditorGUILayout.EnumPopup("Current State", gameState.currentState);
+            EditorGUI.EndDisabledGroup();
+            
+            if (GUILayout.Button("Start New Game"))
+            {
+                gameState.StartNewGame();
+            }
+            if (GUILayout.Button("Pause Game"))
+            {
+                gameState.PauseGame();
+            }
+            if (GUILayout.Button("Resume Game"))
+            {
+                gameState.ResumeGame();
+            }
+            if (GUILayout.Button("Win Game"))
+            {
+                gameState.WinGame();
+            }
+            if (GUILayout.Button("Game Over"))
+            {
+                gameState.GameOver();
+            }
+            if (GUILayout.Button("Quit Game"))
+            {
+                gameState.QuitGame();
+            }
+        }
+    }
+#endif
+
 }

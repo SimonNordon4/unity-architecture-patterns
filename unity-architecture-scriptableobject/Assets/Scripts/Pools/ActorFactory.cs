@@ -11,7 +11,6 @@ namespace Pools
 {
     public class ActorFactory : MonoBehaviour
     {
-        [SerializeField] private GameState state;
         [SerializeField] private Level level;
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
@@ -24,9 +23,6 @@ namespace Pools
             
             var actor = Instantiate(actorDefinition.actorPrefab, position, Quaternion.identity, null);
 
-            if (actor.TryGetComponent<GameplayStateController>(out var gameState))
-                gameState.Construct(state);
-
             if (actor.TryGetComponent<Movement>(out var movement))
                 movement.Construct(level);
 
@@ -34,7 +30,6 @@ namespace Pools
             {
                 target.SetTarget(initialTarget);
             }
-                
 
             if (actor.TryGetComponent<ParticlePool>(out var particlePool))
                 particlePool.Construct(deathParticlePool);
