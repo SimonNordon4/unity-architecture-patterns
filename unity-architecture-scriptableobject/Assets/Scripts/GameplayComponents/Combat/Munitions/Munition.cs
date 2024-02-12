@@ -6,7 +6,6 @@ namespace GameplayComponents.Combat
     public abstract class Munition : GameplayComponent
     {
         [SerializeField] protected float lifeTime = 3f;
-        [field:SerializeField] public MunitionDefinition definition { get; private set; }
         protected MunitionPool _pool;
         
         protected LayerMask _targetLayer;
@@ -32,7 +31,7 @@ namespace GameplayComponents.Combat
         
         public virtual void EndProjectile()
         {
-            _pool.Return(this, definition);
+            _pool.Return(this);
         }
     }
 }

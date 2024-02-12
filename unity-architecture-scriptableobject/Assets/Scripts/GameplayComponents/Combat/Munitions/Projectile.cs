@@ -63,7 +63,7 @@ namespace GameplayComponents.Combat
             _timeAlive = 0f;
             if (_pool != null)
             {
-                _pool.Return(this, definition);
+                _pool.Return(this);
                 return;
             }
             Destroy(gameObject);

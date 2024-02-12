@@ -1,9 +1,7 @@
 ﻿using GameObjectComponent.Definitions;
-using GameObjectComponent.Game;
 using GameObjectComponent.Pools;
 using GameplayComponents.Actor;
 using GameplayComponents.Combat;
-using GameplayComponents.Locomotion;
 using UnityEngine;
 using GameObjectComponent.App;
 
@@ -13,7 +11,6 @@ namespace Pools
     {
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ParticlePool deathParticlePool;
-        [SerializeField] private MunitionPool munitionPool;
         [SerializeField] private SoundManager soundManager;
 
         public PoolableActor Create(ActorDefinition actorDefinition, Vector3 position = new(), bool startActive = true)
@@ -33,8 +30,8 @@ namespace Pools
             if(actor.TryGetComponent<ActorSpawnDelay>(out var spawnDelay))
                 spawnDelay.Construct(deathParticlePool);
             
-            if(actor.TryGetComponent<MunitionPool>(out var bulletPool))
-                bulletPool.Construct(munitionPool);
+            // if(actor.TryGetComponent<MunitionPool>(out var bulletPool))
+            //     bulletPool.Construct(munitionPool);
             
             if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))
                 actorSoundProxy.Construct(soundManager);

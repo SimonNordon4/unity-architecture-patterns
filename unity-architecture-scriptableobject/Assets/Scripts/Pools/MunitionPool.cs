@@ -1,43 +1,56 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using GameplayComponents;
+using GameObjectComponent.Game;
 using GameplayComponents.Combat;
 using UnityEngine;
 
 namespace Pools
 {
-    public class MunitionPool : GameplayComponent
+    public class MunitionPool : ScriptableData
     {
-        [SerializeField]private MunitionFactory factory;
-        
-        
-        private Dictionary<MunitionDefinition, Queue<Munition>> _inactivePools = new();
+        [SerializeField]private MunitionDefinition definition;
+        [SerializeField]private GameState gameState;
+        private Queue<Munition> _inactivePool = new();
         private List<Munition> _activeProjectiles = new();
 
-        public void Construct(MunitionPool parentPool)
+        protected override void Init()
         {
-            factory = parentPool.factory;
-            _inactivePools = parentPool._inactivePools;
-            _activeProjectiles = parentPool._activeProjectiles;
+            ReturnAllProjectiles();
+            _inactivePool.Clear();
+            _activeProjectiles.Clear();
         }
 
-        public Munition Get([DisallowNull]MunitionDefinition definition, Vector3 position, Vector3 direction, bool startActive = true)
+        protected override void ResetData()
         {
-            if (!_inactivePools.TryGetValue(definition, out var queue))
-            {
-                queue = new Queue<Munition>();
-                _inactivePools.Add(definition, queue);
-            }
-            
+            ReturnAllProjectiles();
+            _inactivePool.Clear();
+            _activeProjectiles.Clear();
+        }
+
+        private void OnEnable()
+        {
+            gameState.OnGameLost += ReturnAllProjectiles;
+            gameState.OnGameWon += ReturnAllProjectiles;
+            gameState.OnGameQuit += ReturnAllProjectiles;
+        }
+        
+        private void OnDisable()
+        {
+            gameState.OnGameLost -= ReturnAllProjectiles;
+            gameState.OnGameWon -= ReturnAllProjectiles;
+            gameState.OnGameQuit -= ReturnAllProjectiles;
+        }
+
+        public Munition Get(Vector3 position, Vector3 direction, bool startActive = true)
+        {
             Munition projectile = null;
 
-            if (queue.Count == 0)
+            if (_inactivePool.Count == 0)
             {
-                projectile = CreateProjectile(definition, position, direction);
+                projectile = CreateProjectile(position, direction);
             }
             else
             {
-                projectile = queue.Dequeue();
+                projectile = _inactivePool.Dequeue();
                 var projectileTransform = projectile.transform;
                 projectileTransform.position = position;
                 projectileTransform.forward = direction;
@@ -52,43 +65,28 @@ namespace Pools
             return projectile;
         }
         
-        public void Return(Munition projectile, MunitionDefinition definition)
+        public void Return(Munition projectile)
         {
-            // check if definition is null
-            if (definition == null)
-            {
-                Debug.LogError("Projectile definition is null");
-                return;
-            }
             _activeProjectiles.Remove(projectile);
             projectile.gameObject.SetActive(false);
-            _inactivePools[definition].Enqueue(projectile);
+            _inactivePool.Enqueue(projectile);
         }
         
-        private Munition CreateProjectile(MunitionDefinition definition, Vector3 position, Vector3 direction)
+        private Munition CreateProjectile(Vector3 position, Vector3 direction)
         {
-            // Check if there exists a pool
-            if (!_inactivePools.TryGetValue(definition, out var queue))
-            {
-                queue = new Queue<Munition>();
-                _inactivePools.Add(definition, queue);
-            }
-            
-            return factory.Create(definition, position, direction);
+            var projectile = Instantiate(definition.prefab, position, Quaternion.identity, null);
+            projectile.transform.forward = direction;
+            _activeProjectiles.Add(projectile);
+            return projectile;
         }
-        
-        public void ReturnAllProjectiles()
+
+        private void ReturnAllProjectiles()
         {
             foreach (var projectile in _activeProjectiles)
             {
                 projectile.gameObject.SetActive(false);
-                _inactivePools[projectile.definition].Enqueue(projectile);
+                _inactivePool.Enqueue(projectile);
             }
-        }
-
-        public override void OnGameEnd()
-        {
-            ReturnAllProjectiles();
         }
     }
 }

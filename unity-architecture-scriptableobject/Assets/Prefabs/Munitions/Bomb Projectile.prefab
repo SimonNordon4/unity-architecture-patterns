@@ -45225,7 +45225,7 @@ Transform:
   - {fileID: 8557707468840646852}
   - {fileID: 3203276448362615851}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4513028725654659856
 MeshFilter:
@@ -45310,7 +45310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0740f77a4c1444c5b3e9349f38b92f27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 0}
+  state: {fileID: 11400000, guid: 16044d5afda9f0b448623675aa4d7471, type: 2}
 --- !u!114 &6483939218053626050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45324,7 +45324,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 3
-  <definition>k__BackingField: {fileID: 11400000, guid: d97db2912631d7f4cb0ba80377df819e, type: 2}
+  <definition>k__BackingField: {fileID: 11400000, guid: d97db2912631d7f4cb0ba80377df819e,
+    type: 2}
   explosionEffect: {fileID: 1239520229761234624}
   explosionRadius: 3
   meshRenderer: {fileID: 4859524944193890145}
