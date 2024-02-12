@@ -32,7 +32,7 @@ namespace GameObjectComponent.App
         public bool isClaimed;
         public StatType statType;
         
-        public string ToString()
+        public override string ToString()
         {
             return $"Achievement: {uiName} - Progress: {progress} - Goal: {goal} - Completed: {isCompleted} - Claimed: {isClaimed} - StatType: {statType} - Type {id}";
         }

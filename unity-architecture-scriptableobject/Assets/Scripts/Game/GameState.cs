@@ -18,7 +18,6 @@ namespace GameObjectComponent.Game
 
         private void OnEnable()
         {
-            Debug.Log("GameState enabled");
             QuitGame();
         }
         public void StartNewGame()

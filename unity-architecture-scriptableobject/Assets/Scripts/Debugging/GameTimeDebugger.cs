@@ -6,11 +6,6 @@ using UnityEngine.InputSystem;
 
 public class GameTimeDebugger : MonoBehaviour
 {
-    [SerializeField]
-    private Key speedUp = Key.RightArrow;
-    [SerializeField]
-    private Key slowDown = Key.LeftArrow;
-
     // Update is called once per frame
     void Update()
     {

@@ -132,7 +132,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262400432}
-  - component: {fileID: 1262400431}
   m_Layer: 0
   m_Name: SO Tester
   m_TagString: Untagged
@@ -140,19 +139,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1262400431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262400430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd91951fd6bf4ebfaf64d205bfb4a138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scriptableDataTest: {fileID: 11400000, guid: 5c0b6db13b6398e449ff9c46d021fee4, type: 2}
 --- !u!4 &1262400432
 Transform:
   m_ObjectHideFlags: 0
