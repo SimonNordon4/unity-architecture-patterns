@@ -1,3 +1,31 @@
+# Update
+
+I have not updated this repo in a while, and it only contains 2 patterns at the moment. Big Update coming soon!
+
+I've decided to refactor the original project and there are 2 primary reasons for this.
+
+## Reason One: Not Complex Enough
+
+Managing scenes are a huge hurdle in Unity. Unfortunately, this project takes place in a single scene! This fails to highlight the strengths of many architecture patterns that deal with intra-scene dependencies and asycnhronous changes. So the updated version will include both Single and Additive scene loading to address this.
+
+## Reason Two: Too Complex
+The game is very simply in some ways, and needlessly complex in others. The huge variety of content makes refactoring a much more labarious task than it needs to be. For that reason, the following features will be cut:
+
+Reduced Features:
+- The 'store' will be removed and it's upgrades moved to chests.
+- Number of achievements will be reduced.
+- Sword attack will be removed from the game.
+- Enemy spawning will be greatly simplified. Instead it will just be a 30 minutes session of increasing enemy difficulty.
+- You will no longer be able to interrupt enemy spawnings (This added way more complexity than it should have).
+- Number of upgrades will be reduced.
+- Wave Progress bar will be removed.
+
+New Features:
+  - New Main Menu Scene. To highlight single scene loading.
+  - New Level. To highlight additive scene loading.
+  - New difficult levels. Many people said the game was too hard.
+  - Leaderboards. To highlight asynchronous service support.
+
 # Unity Architecture Patterns
 
 Explore the implementation of various software architecture patterns within the Unity Engine. This project demonstrates how the same game can be developed using different architectural approaches, providing practical insights into their strengths and trade-offs.
