@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     }
     
     [Header("References")]
-    public EnemyManager enemyManager;
+    public EnemyManagerOld enemyManager;
     public bool isBoss = false;
     
     [Header("UI")]

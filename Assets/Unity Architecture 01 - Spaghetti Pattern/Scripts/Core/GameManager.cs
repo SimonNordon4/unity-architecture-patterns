@@ -219,7 +219,7 @@ public class GameManager : MonoBehaviour
         var playerController = FindObjectOfType<PlayerController>();
         playerController.ResetPlayer();
 
-        var enemyManager = FindObjectOfType<EnemyManager>();
+        var enemyManager = FindObjectOfType<EnemyManagerOld>();
         enemyManager.ResetEnemyManager();
 
         var projectiles = FindObjectsOfType<Projectile>();
@@ -322,7 +322,7 @@ public class GameManager : MonoBehaviour
     private void AddGoldWhenGameEnds()
     {
         // get the enemy manager
-        var enemyManager = FindObjectOfType<EnemyManager>();
+        var enemyManager = FindObjectOfType<EnemyManagerOld>();
 
         var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
 

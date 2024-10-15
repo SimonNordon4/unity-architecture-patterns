@@ -18,7 +18,7 @@ public enum EnemySpawnPhase
     ChestCollected
 }
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManagerOld : MonoBehaviour
 {
     [Header("References")] public GameManager gameManager;
     public Transform playerTarget;

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
         [Header("References")]
         public GameManager gameManager;
-        public EnemyManager enemyManager;
+        public EnemyManagerOld enemyManager;
         
         
         [Header("Pistol")]

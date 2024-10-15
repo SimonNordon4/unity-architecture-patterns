@@ -9,7 +9,7 @@ using UnityEditor;
 [CreateAssetMenu(fileName = "EnemySpawnWave", menuName = "Prototype/EnemySpawnWave", order = 1)]
 public class EnemySpawnWave : ScriptableObject
 {
-    public EnemyManager enemyManager;
+    public EnemyManagerOld enemyManager;
     public List<EnemySpawnAction> enemySpawnActions = new();
 
     [Header("Base Stats")]

@@ -25,7 +25,7 @@ using UnityEngine;
         public AudioClip buttonClick;
         
         private float _musicVolume = 0f;
-        private EnemyManager _enemyManager;
+        private EnemyManagerOld _enemyManager;
         public int maxEnemyVolume = 20;
         private int musicIndex = 0;
 
@@ -36,7 +36,7 @@ using UnityEngine;
             _audioSources.Clear();
             _musicSource = gameObject.AddComponent<AudioSource>();
             _musicSource.clip = gameMusic[Random.Range(0, gameMusic.Length)];
-            _enemyManager = FindObjectOfType<EnemyManager>();
+            _enemyManager = FindObjectOfType<EnemyManagerOld>();
             _buttonSource = gameObject.AddComponent<AudioSource>();
 
             _audioSources = new List<AudioSource>();
