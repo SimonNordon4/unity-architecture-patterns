@@ -18,7 +18,7 @@ public class DebugManager : MonoBehaviour
         #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.K))
         {
-            FindObjectOfType<PlayerController>().TakeDamage(1000);
+            FindFirstObjectByType<PlayerController>().TakeDamage(1000);
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -65,7 +65,7 @@ public class DebugManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             // increase all stats by 10%
-            var gameManager = FindObjectOfType<GameManager>();
+            var gameManager = FindFirstObjectByType<GameManager>();
             gameManager.playerMaxHealth.value *= 1.1f;
             gameManager.playerSpeed.value *= 1.1f;
             gameManager.pistolDamage.value *= 1.1f;
@@ -75,7 +75,7 @@ public class DebugManager : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             // increase all stats by 10%
-            var gameManager = FindObjectOfType<GameManager>();
+            var gameManager = FindFirstObjectByType<GameManager>();
             gameManager.playerMaxHealth.value /= 1.1f;
             gameManager.playerSpeed.value/= 1.1f;
             gameManager.pistolDamage.value /= 1.1f;

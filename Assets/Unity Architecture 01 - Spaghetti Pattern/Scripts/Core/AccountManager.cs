@@ -15,7 +15,7 @@ using UnityEngine;
             get
             {
                 if (_instance == null)
-                    _instance = FindObjectOfType<AccountManager>();
+                    _instance = FindFirstObjectByType<AccountManager>();
                 return _instance;
             }
             private set => _instance = value;

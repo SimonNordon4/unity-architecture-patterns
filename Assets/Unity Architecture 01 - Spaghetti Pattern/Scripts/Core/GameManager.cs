@@ -216,13 +216,13 @@ public class GameManager : MonoBehaviour
         isPaused = false;
         playerCurrentHealth = (int)playerMaxHealth.value;
         Debug.Log("Reset Game");
-        var playerController = FindObjectOfType<PlayerController>();
+        var playerController = FindFirstObjectByType<PlayerController>();
         playerController.ResetPlayer();
 
-        var enemyManager = FindObjectOfType<EnemyManagerOld>();
+        var enemyManager = FindFirstObjectByType<EnemyManagerOld>();
         enemyManager.ResetEnemyManager();
 
-        var projectiles = FindObjectsOfType<Projectile>();
+        var projectiles = FindObjectsByType<Projectile>(FindObjectsSortMode.None);
         foreach (var projectile in projectiles) Destroy(projectile.gameObject);
 
         // find all objects with tag "Spawn Indicator" and destroy them.
@@ -233,11 +233,11 @@ public class GameManager : MonoBehaviour
         UpdateStatsUI();
 
         // Remove all chests.
-        var chests = FindObjectsOfType<Chest>();
+        var chests =FindObjectsByType<Chest>(FindObjectsSortMode.None);
         foreach (var chest in chests) Destroy(chest.gameObject);
 
         // Remove all healthpacks
-        var healthPacks = FindObjectsOfType<HealthPackController>();
+        var healthPacks = FindObjectsByType<HealthPackController>(FindObjectsSortMode.None);
         foreach (var healthPack in healthPacks) Destroy(healthPack.gameObject);
     }
 
@@ -322,7 +322,7 @@ public class GameManager : MonoBehaviour
     private void AddGoldWhenGameEnds()
     {
         // get the enemy manager
-        var enemyManager = FindObjectOfType<EnemyManagerOld>();
+        var enemyManager = FindFirstObjectByType<EnemyManagerOld>();
 
         var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
 
@@ -431,7 +431,7 @@ public class GameManager : MonoBehaviour
         }
         
         // clean up bonky stats created in the hierarchy.
-        var bonkyStats = FindObjectsOfType<TextMeshProUGUI>();
+        var bonkyStats = FindObjectsByType<TextMeshProUGUI>(FindObjectsSortMode.None);
         foreach (var bonkyText in bonkyStats)
         {
             if (bonkyText.transform.parent == null)

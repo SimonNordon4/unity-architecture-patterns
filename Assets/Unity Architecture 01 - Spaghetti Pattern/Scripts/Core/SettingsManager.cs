@@ -11,7 +11,7 @@ public class SettingsManager : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = FindObjectOfType<SettingsManager>();
+                _instance = FindFirstObjectByType<SettingsManager>();
             return _instance;
         }
         private set => _instance = value;
@@ -59,7 +59,7 @@ public class SettingsManager : MonoBehaviour
         showEnemyHealthBars = show;
         
         // get every enemy in the scene
-        var enemies = FindObjectsOfType<EnemyController>();
+        var enemies = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
         foreach (var enemy in enemies)
         {
             enemy.SetHealthBarVisibility(showEnemyHealthBars);

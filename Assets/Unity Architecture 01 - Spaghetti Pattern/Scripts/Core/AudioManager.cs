@@ -10,7 +10,7 @@ using UnityEngine;
             {
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType<AudioManager>();
+                    _instance = FindFirstObjectByType<AudioManager>();
                 }
 
                 return _instance;
@@ -36,7 +36,7 @@ using UnityEngine;
             _audioSources.Clear();
             _musicSource = gameObject.AddComponent<AudioSource>();
             _musicSource.clip = gameMusic[Random.Range(0, gameMusic.Length)];
-            _enemyManager = FindObjectOfType<EnemyManagerOld>();
+            _enemyManager = FindFirstObjectByType<EnemyManagerOld>();
             _buttonSource = gameObject.AddComponent<AudioSource>();
 
             _audioSources = new List<AudioSource>();
