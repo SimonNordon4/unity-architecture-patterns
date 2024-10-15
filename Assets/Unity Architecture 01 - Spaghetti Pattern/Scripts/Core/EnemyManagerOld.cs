@@ -28,7 +28,7 @@ public class EnemyManagerOld : MonoBehaviour
     public GameObject largeChestPrefab;
 
     [Header("Stats")] 
-    public float spawnRadius = 15f;
+    public float spawnRadius = 20f;
     public EnemySpawnRound enemySpawnRound;
 
     private EnemySpawnBlock _currentBlock;
@@ -295,7 +295,7 @@ public class EnemyManagerOld : MonoBehaviour
             // The first spawn is always on target.
             if (i == 0)
             {
-                StartCoroutine(IndicateSpawn(action, startPoint));
+               SpawnEnemy(action, startPoint);
                 continue;
             }
 
@@ -303,35 +303,9 @@ public class EnemyManagerOld : MonoBehaviour
 
             lastSpawnPoint = Random.insideUnitSphere.normalized + lastSpawnPoint;
             yield return new WaitForSeconds(delay);
-            StartCoroutine(IndicateSpawn(action, lastSpawnPoint));
+            SpawnEnemy(action, startPoint);
         }
         yield return null;
-    }
-
-    private IEnumerator IndicateSpawn(EnemySpawnAction enemyAction, Vector3 spawnPoint)
-    {
-        spawnPoint = new Vector3(spawnPoint.x, 0f, spawnPoint.z);
-        var spawnIndicatorPrefab = enemyAction.enemyPrefab.GetComponent<EnemyController>().spawnIndicator;
-        var spawnIndicator = Instantiate(spawnIndicatorPrefab, spawnPoint, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
-
-        // Suspend the coroutine until the game is active
-        while (GameManager.instance.isGameActive == false)
-        {
-            yield return null;
-        }
-
-        // Check if spawnIndicator still exists, if it was destroyed abort the spawn
-        if (spawnIndicator == null)
-        {
-            // Cancelling a spawn is assumed as killing an enemy.
-            _currentWaveAliveEnemies--;
-            totalEnemiesKilled++;
-            yield break;
-        }
-
-        SpawnEnemy(enemyAction, spawnPoint);
-        Destroy(spawnIndicator);
     }
 
     private void SpawnEnemy(EnemySpawnAction enemyAction, Vector3 position)
@@ -368,8 +342,7 @@ public class EnemyManagerOld : MonoBehaviour
             // The first spawn is always on target.
             if (i == 0)
             {
-                StartCoroutine(IndicateBossSpawn(action, startPoint));
-                
+                SpawnBossEnemy(action, startPoint);
                 continue;
             }
 
@@ -377,37 +350,10 @@ public class EnemyManagerOld : MonoBehaviour
 
             lastSpawnPoint = Random.insideUnitSphere.normalized + lastSpawnPoint;
             yield return new WaitForSeconds(delay);
-            StartCoroutine(IndicateBossSpawn(action, lastSpawnPoint));
+            SpawnBossEnemy(action, startPoint);
         }
 
         yield return null;
-    }
-
-    private IEnumerator IndicateBossSpawn(EnemySpawnAction enemyAction, Vector3 spawnPoint)
-    {
-        spawnPoint = new Vector3(spawnPoint.x, 0f, spawnPoint.z);
-        var spawnIndicatorPrefab = enemyAction.enemyPrefab.GetComponent<EnemyController>().spawnIndicator;
-        var spawnIndicator = Instantiate(spawnIndicatorPrefab, spawnPoint, Quaternion.identity);
-        yield return new WaitForSeconds(1f);
-
-        // Suspend the coroutine until the game is active
-        while (GameManager.instance.isGameActive == false)
-        {
-            yield return null;
-        }
-
-        // Check if spawnIndicator still exists, if it was destroyed abort the spawn
-        if (spawnIndicator == null)
-        {
-            // Cancelling a spawn is assumed as killing an enemy.
-            _currentWaveAliveEnemies--;
-            totalEnemiesKilled++;
-            _bossEnemiesCount--; 
-            yield break;
-        }
-
-        SpawnBossEnemy(enemyAction, spawnPoint);
-        Destroy(spawnIndicator);
     }
 
     private void SpawnBossEnemy(EnemySpawnAction enemyAction, Vector3 position)

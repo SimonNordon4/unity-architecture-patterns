@@ -44,8 +44,6 @@ public class EnemyController : MonoBehaviour
     [Header("Effects")]
     public ParticleSystem deathEffect;
 
-    public GameObject spawnIndicator;
-    
     [Header("Sounds")]
     public SoundDefinition deathSound;
 
