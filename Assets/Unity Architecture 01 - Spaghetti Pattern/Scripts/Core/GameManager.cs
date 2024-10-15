@@ -113,7 +113,6 @@ public class GameManager : MonoBehaviour
         GoToMainMenu();
         PopulateStats();
         PopulateStatsUI();
-        LoadStoreItemsIntoStats();
         playerCurrentHealth = (int)playerMaxHealth.value;
 
         _allItems = new[]
@@ -168,7 +167,6 @@ public class GameManager : MonoBehaviour
         gameMenu.SetActive(true);
         isGameActive = true;
         roundTime = 0f;
-        LoadStoreItemsIntoStats();
         playerCurrentHealth = (int)playerMaxHealth.value;
         SpawnMiniChest();
         // clear all items
@@ -470,22 +468,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadStoreItemsIntoStats()
-    {
-        foreach (var stat in _stats.Values) stat.Reset();
-        var storeItems = AccountManager.instance.storeItems;
-        foreach (var store in storeItems)
-        {
-            // If the item tier is 0, it hasn't been purchased yet.
-            if (store.currentTier == 0) continue;
-            var currentModifier = store.tierModifiers[store.currentTier - 1];
-            var stat = _stats[currentModifier.statType];
-            stat.AddModifier(currentModifier);
-            AccountManager.instance.CheckIfHighestStat(currentModifier.statType, stat.value);
-        }
-
-        UpdateStatsUI();
-    }
 
     #endregion
 

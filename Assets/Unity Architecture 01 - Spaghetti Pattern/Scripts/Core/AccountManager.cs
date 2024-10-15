@@ -27,10 +27,6 @@ using UnityEngine;
         [Header("Statistics")]
         public StatisticsSave statistics = new();
         
-        [Header("Store")]
-        public StoreItemConfig storeItemConfig;
-        public StoreItem[] storeItems;
-        
         [Header("Achievements")]
         public AchievementSave achievementSave = new();
         public GameObject achievementPopup;
@@ -52,52 +48,12 @@ using UnityEngine;
             Save();
         }
 
-        public void PurchaseStoreItem(StoreItem item)
-        {
-            Debug.Log("Purchasing item: " + item.name);
-            var itemPrice = item.pricePerTier[item.currentTier];
-            totalGold -= itemPrice;
-            
-            for (var i = 0; i < storeItems.Length; i++)
-            {
-                var buffer = storeItems[i];
-                if (buffer.name == item.name)
-                {
-                    storeItems[i].currentTier = Mathf.Clamp(storeItems[i].currentTier + 1,0, storeItems[i].pricePerTier.Length);
-                }
-            }
-            
-            // refresh the ui
-            FindObjectOfType<StoreMenuManager>().UpdateStoreMenu();
-            
-            var buyAllStoreItemsAchieve = achievementSave.achievements.First(x=>x.name == AchievementName.BuyAllStoreItems);
-            
-            if(buyAllStoreItemsAchieve.isCompleted)
-            {
-                // total store items by summing up the tiers
-                var totalStoreItems = storeItems.Sum(x => x.currentTier);
-                // currently bought store items
-                var boughtStoreItems = storeItems.Count(x => x.currentTier > 0);
-                buyAllStoreItemsAchieve.progress = boughtStoreItems;
-                if (totalStoreItems == boughtStoreItems)
-                {
-                    buyAllStoreItemsAchieve.isCompleted = true;
-                    AchievementUnlocked(buyAllStoreItemsAchieve);
-                }
-            }
-
-        }
-
         private void OnEnable()
         {
             CreateAchievements();
 
             achievementPopup.SetActive(false);
-            if(debugSkipLoad)
-            {
-                PopulateStoreItems();
-                return;
-            }
+
             Load();
 
         }
@@ -106,21 +62,12 @@ using UnityEngine;
             Save();
         }
 
-        private void PopulateStoreItems()
-        {
-            Debug.Log("Populating store items");
-            storeItems = new StoreItem[storeItemConfig.storeItemDefinitions.Count];
-            for(var i = 0; i < storeItemConfig.storeItemDefinitions.Count; i++)
-            {
-                storeItems[i] = new StoreItem(storeItemConfig.storeItemDefinitions[i]);
-            }
-        }
+
 
         public void Save()
         {
             var accountSave = new AccountSave();
             accountSave.totalGold = totalGold;
-            accountSave.storeItems = storeItems;
             
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
@@ -143,13 +90,11 @@ using UnityEngine;
             if (string.IsNullOrEmpty(json))
             {
                 totalGold = 0;
-                PopulateStoreItems();
             }
             else
             {
                 var accountSave = JsonUtility.FromJson<AccountSave>(json);
                 totalGold = accountSave.totalGold;
-                storeItems = accountSave.storeItems;
             }
 
            
@@ -198,7 +143,6 @@ using UnityEngine;
             totalGold = 40;
             statistics = new StatisticsSave();
             CreateAchievements();
-            PopulateStoreItems();
         }
 
         private void CreateAchievements()
@@ -345,13 +289,6 @@ using UnityEngine;
                     uiName = "Win In Under 30 Minutes",
                     goal = 1800,
                     rewardGold = 10000
-                },
-                new Achievement()
-                {
-                    name = AchievementName.BuyAllStoreItems,
-                    uiName = "Buy All Store Items",
-                    goal = 1,
-                    rewardGold = 1
                 },
                 new Achievement
                 {
@@ -564,36 +501,6 @@ using UnityEngine;
                     var playerSpeed = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10PlayerSpeed);
                     ProcessStatAchievement(playerSpeed, value, 10);
                     break;
-                case StatType.SwordDamage:
-                    if (value > statistics.highestSwordDamage)
-                        statistics.highestSwordDamage = (int) value;
-                    var swordDamage = achievementSave.achievements.First(x=>x.name == AchievementName.Reach50SwordDamage);
-                    ProcessStatAchievement(swordDamage, value, 50);
-                    break;
-                case StatType.SwordRange:
-                    if (value > statistics.highestSwordRange)
-                        statistics.highestSwordRange = (int) value;
-                    var swordRange = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10SwordRange);
-                    ProcessStatAchievement(swordRange, value, 10);
-                    break;
-                case StatType.SwordAttackSpeed:
-                    if (value > statistics.highestSwordAttackSpeed)
-                        statistics.highestSwordAttackSpeed = (int) value;
-                    var swordAttackSpeed = achievementSave.achievements.First(x=>x.name == AchievementName.Reach8SwordAttackSpeed);
-                    ProcessStatAchievement(swordAttackSpeed, value, 8);
-                    break;
-                case StatType.SwordKnockBack:
-                    if (value > statistics.highestSwordKnockBack)
-                        statistics.highestSwordKnockBack = (int) value;
-                    var swordKnockBack = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10SwordKnockBack);
-                    ProcessStatAchievement(swordKnockBack, value, 10);
-                    break;
-                case StatType.SwordArc:
-                    if (value > statistics.highestSwordArc)
-                        statistics.highestSwordArc = (int) value;
-                    var swordArc = achievementSave.achievements.First(x=>x.name == AchievementName.Reach540SwordArc);
-                    ProcessStatAchievement(swordArc, value, 540);
-                    break;
                 case StatType.HealthPackSpawnRate:
                     if (value > statistics.highestHealthPackSpawnRate)
                         statistics.highestHealthPackSpawnRate = (int) value;
@@ -641,7 +548,6 @@ using UnityEngine;
     public struct AccountSave
     {
         public int totalGold;
-        public StoreItem[] storeItems;
     }
 
 [Serializable]
@@ -732,7 +638,6 @@ public enum AchievementName
     WinInUnder1Hour,
     WinInUnder45Minutes,
     WinInUnder30Minutes,
-    BuyAllStoreItems,
     Reach50PistolDamage,
     Reach25PistolRange,
     Reach15PistolFireRate,
