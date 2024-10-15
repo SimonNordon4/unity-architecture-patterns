@@ -11,11 +11,8 @@ public class NotificationsManager : MonoBehaviour
     public GameObject achievementNotification;
     public TextMeshProUGUI achievementText;
 
-    public bool highLightShop = false;
     public Color _defaultColor;
 
-    public Button shopButton;
-    
 
     private void OnEnable()
     {
@@ -29,15 +26,6 @@ public class NotificationsManager : MonoBehaviour
             achievementNotification.SetActive(false);
         }
 
-        shopButton.colors = new ColorBlock
-        {
-            normalColor =_defaultColor,
-            highlightedColor = shopButton.colors.highlightedColor,
-            pressedColor = shopButton.colors.pressedColor,
-            selectedColor = shopButton.colors.selectedColor,
-            disabledColor = shopButton.colors.disabledColor,
-            colorMultiplier = 1
-        };
     }
 
     private IEnumerator CalculateNotifications()

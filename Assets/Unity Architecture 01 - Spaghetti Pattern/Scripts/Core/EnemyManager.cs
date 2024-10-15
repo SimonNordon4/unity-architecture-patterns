@@ -106,7 +106,6 @@ public class EnemyManager : MonoBehaviour
         
         _totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
         _thisWave = 1;
-        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
         
         _currentWaveData = new WaveRuntimeData
         {
@@ -125,7 +124,6 @@ public class EnemyManager : MonoBehaviour
         InitializeNewWave();
         _totalWaves = enemySpawnRound.enemySpawnBlocks.Sum(block => block.spawnWaves.Count);
         _thisWave = 1;
-        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
     }
 
     private void InitializeNewWave()
@@ -533,7 +531,6 @@ public class EnemyManager : MonoBehaviour
         }
         
         _thisWave++;
-        gameManager.waveText.text = "Wave " + _thisWave + "/" + _totalWaves;
         
         _currentWave = _currentSpawnWaves[_waveIndex];
         _currentWaveData = new WaveRuntimeData
