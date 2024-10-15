@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1e950f577977042ada7f310ba0cc6e, type: 3}
+  m_Name: 02_Wave_00 (Shielded, Normal Elite)
+  m_EditorClassIdentifier: 
+  enemyManager: {fileID: 0}
+  enemySpawnActions:
+  - enemyPrefab: {fileID: 5267285107322196816, guid: 46eaf2c2ca56695459fbb255f7a91453,
+      type: 3}
+    numberOfEnemiesToSpawn: 1
+    spawnWeight: 120
+  - enemyPrefab: {fileID: 5267285107322196816, guid: 46eaf2c2ca56695459fbb255f7a91453,
+      type: 3}
+    numberOfEnemiesToSpawn: 2
+    spawnWeight: 50
+  - enemyPrefab: {fileID: 6047327910845517275, guid: 5f38f78f5cd92d944b54586683108b94,
+      type: 3}
+    numberOfEnemiesToSpawn: 2
+    spawnWeight: 50
+  totalEnemies: 75
+  blockTime: 60
+  spawnRateCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  eliteAction:
+  - enemyPrefab: {fileID: 2991740694319516258, guid: 85f16814ab695244ebb62b31c360ca24,
+      type: 3}
+    numberOfEnemiesToSpawn: 5
+    spawnWeight: 100
+  healthMultiplier: {x: 9, y: 11}
+  damageMultiplier: {x: 3, y: 4}
+  bossChestTier: {x: 3, y: 5}
+  bossChestChoices: {x: 3, y: 5}
+  idealEnemiesAlive: 10
+  decay: 5
