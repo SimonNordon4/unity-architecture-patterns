@@ -70,9 +70,6 @@ public class DebugManager : MonoBehaviour
             gameManager.playerSpeed.value *= 1.1f;
             gameManager.pistolDamage.value *= 1.1f;
             gameManager.pistolFireRate.value *= 1.1f;
-            gameManager.swordDamage.value *= 1.1f;
-            gameManager.swordAttackSpeed.value *= 1.1f;
-            gameManager.swordRange.value *= 1.1f;
         }
         
         if (Input.GetKeyUp(KeyCode.DownArrow))
@@ -83,9 +80,6 @@ public class DebugManager : MonoBehaviour
             gameManager.playerSpeed.value/= 1.1f;
             gameManager.pistolDamage.value /= 1.1f;
             gameManager.pistolFireRate.value /= 1.1f;
-            gameManager.swordDamage.value /= 1.1f;
-            gameManager.swordAttackSpeed.value /= 1.1f;
-            gameManager.swordRange.value /= 1.1f;
         }
         #endif
     }

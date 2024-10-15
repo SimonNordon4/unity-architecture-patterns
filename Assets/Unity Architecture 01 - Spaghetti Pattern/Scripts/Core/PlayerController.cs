@@ -25,12 +25,6 @@ public class PlayerController : MonoBehaviour
         private float _timeSinceLastFire = 0.0f;
         private Transform _closestTarget = null;
 
-        [Header("Sword")]
-        public Transform swordPivot;
-        private float _timeSinceLastSwing = 0.0f;
-        private bool _isSwingingLeftToRight = true;
-        private bool _isSwordAttacking = false;
-
         [Header("UI")]
         public TextMeshProUGUI healthText;
         public Image healthBar;
@@ -39,7 +33,6 @@ public class PlayerController : MonoBehaviour
         public GameObject damageTextGo;
         private Quaternion _startRotation;
 
-        private Coroutine _swordCoroutine;
         private Coroutine _dodgeTextCoroutine;
         private Coroutine _damageTextCoroutine;
         private Coroutine _dashCoroutine;
@@ -58,7 +51,6 @@ public class PlayerController : MonoBehaviour
         [Header("Debug")] public bool isDebugMode = false;
         
         [Header("Sound")]
-        public SoundDefinition swordSound;
         public SoundDefinition shootSound;
         public SoundDefinition dashSound;
         public SoundDefinition deathSound;
@@ -74,8 +66,6 @@ public class PlayerController : MonoBehaviour
 
         private void Start()
         {
-            swordPivot.transform.parent = null;
-            swordPivot.gameObject.SetActive(false);
             _startRotation = localCanvas.rotation;
             SetUI();
         }
@@ -127,8 +117,6 @@ public class PlayerController : MonoBehaviour
                 _dashCoroutine = StartCoroutine(Dash());
             }
             
-            swordPivot.transform.position = _transform.position;
-
             if (_isDashing) return;
             
             // Get Closest enemy target.
@@ -187,21 +175,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            // Swing sword if possible.
-            _timeSinceLastSwing += Time.deltaTime;
-            if (_timeSinceLastSwing > 1 / gameManager.swordAttackSpeed.value && !_isSwordAttacking)
-            {
-                if (!targetIsNull)
-                {
-                    if (closestDistance <= gameManager.swordRange.value)
-                    {
-                        if(_swordCoroutine != null) StopCoroutine(_swordCoroutine);
-                        AudioManager.instance.PlaySound(swordSound);
-                        _swordCoroutine = StartCoroutine(SwordAttack());
-                        _timeSinceLastSwing = 0.0f;
-                    }
-                }
-            }
 
             var dir = Vector3.zero;
 
@@ -314,83 +287,6 @@ public class PlayerController : MonoBehaviour
             SetUI();
         }
 
-        private IEnumerator SwordAttack()
-    {
-        _isSwordAttacking = true;
-        var swordArc = gameManager.swordArc.value;
-        // Enable the sword gameobject.
-        swordPivot.gameObject.SetActive(true);
-        swordPivot.localScale = new Vector3(1f, 1f, gameManager.swordRange.value);
-    
-        // Base rotation values.
-        var leftRotation = Quaternion.Euler(0, swordArc * -0.5f, 0);
-        var rightRotation = Quaternion.Euler(0, swordArc * 0.5f, 0);
-    
-        // The start rotation needs to be directed to the closest target.
-        var directionToTarget = Vector3.ProjectOnPlane( _closestTarget.transform.position - transform.position, Vector3.up).normalized;
-        swordPivot.forward = directionToTarget;
-    
-        // Determine the start and end rotation based on the current swing direction.
-        Quaternion startRotation, endRotation;
-        if (_isSwingingLeftToRight)
-        {
-            startRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
-            endRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
-        }
-        else
-        {
-            startRotation = Quaternion.LookRotation(directionToTarget) * rightRotation;
-            endRotation = Quaternion.LookRotation(directionToTarget) * leftRotation;
-        }
-        
-        var total180Arcs = Mathf.FloorToInt(swordArc / 180f);
-        var swingTime = gameManager.swordRange.value * 0.08f;
-
-        if (total180Arcs > 0)
-        {
-            var lastStart = startRotation;
-            var directionSign = _isSwingingLeftToRight ? 1 : -1;
-            var lastEnd = startRotation * Quaternion.Euler(0, 179.9f * directionSign, 0);
-            
-            for (var i = 0; i < total180Arcs; i++)
-            {
-                var t = 0.0f;
-                var swing = true;
-                while (swing)
-                {
-                    t += Time.deltaTime;
-                    swordPivot.rotation = Quaternion.Lerp(lastStart, lastEnd, t / swingTime);
-                    yield return null;
-                    if (!(t >= swingTime)) continue;
-                    lastStart = swordPivot.rotation;
-                    lastEnd = lastStart * Quaternion.Euler(0, 179.9f * directionSign, 0);
-                    swing = false;
-
-                }
-            }
-        }
-        else
-        {
-            // Lerp the sword rotation from start to end over 0.5 seconds.
-            var t = 0.0f;
-
-            while (t < swingTime)
-            {
-                t += Time.deltaTime;
-                swordPivot.rotation = Quaternion.Lerp(startRotation, endRotation, t / swingTime);
-                yield return null;
-            }
-        }
-
-        _isSwordAttacking = false;
-    
-        // Toggle the swing direction for the next attack.
-        _isSwingingLeftToRight = !_isSwingingLeftToRight;
-    
-        // Disable the sword gameobject.
-        swordPivot.gameObject.SetActive(false);
-    }
-        
         public void TakeDamage(int damageAmount)
         {
             if (!_canTakeDamage) return;

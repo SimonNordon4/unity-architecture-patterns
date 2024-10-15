@@ -47,16 +47,9 @@ public class GameManager : MonoBehaviour
     public Stat pistolKnockBack = new(1);
     public Stat pistolPierce = new(0);
 
-    public Stat swordDamage = new(3);
-    public Stat swordRange = new(1);
-    public Stat swordAttackSpeed = new(3);
-    public Stat swordKnockBack = new(3);
-    public Stat swordArc = new(45);
-
     public Stat luck = new(0);
     public Stat enemySpawnRate = new(1);
     public Stat healthPackSpawnRate = new(5);
-
 
     private readonly Dictionary<StatType, Stat> _stats = new();
     public readonly List<ChestItem> currentlyHeldItems = new();
@@ -402,12 +395,6 @@ public class GameManager : MonoBehaviour
         _stats.Add(StatType.PistolFireRate, pistolFireRate);
         _stats.Add(StatType.PistolKnockBack, pistolKnockBack);
         _stats.Add(StatType.PistolPierce, pistolPierce);
-
-        _stats.Add(StatType.SwordDamage, swordDamage);
-        _stats.Add(StatType.SwordRange, swordRange);
-        _stats.Add(StatType.SwordAttackSpeed, swordAttackSpeed);
-        _stats.Add(StatType.SwordKnockBack, swordKnockBack);
-        _stats.Add(StatType.SwordArc, swordArc);
 
         _stats.Add(StatType.Luck, luck);
         _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
