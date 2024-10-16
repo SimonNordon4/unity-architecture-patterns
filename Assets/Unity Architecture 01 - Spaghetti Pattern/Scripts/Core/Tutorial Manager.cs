@@ -23,7 +23,7 @@ public class TutorialManager : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = FindObjectOfType<TutorialManager>();
+                _instance = FindFirstObjectByType<TutorialManager>();
             return _instance;
         }
         private set => _instance = value;
@@ -56,11 +56,5 @@ public class TutorialManager : MonoBehaviour
         popupText.text = message;
         yield return new WaitForSeconds(3f);
         popup.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
