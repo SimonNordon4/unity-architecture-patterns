@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
-public class ChestItemHoverImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class UIChestItemHoverImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     // The item that this hover image is displaying.
 

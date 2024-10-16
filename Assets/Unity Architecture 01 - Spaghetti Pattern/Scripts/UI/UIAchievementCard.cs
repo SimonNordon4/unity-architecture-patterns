@@ -2,16 +2,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AchievementUI : MonoBehaviour
+public class UIAchievementCard : MonoBehaviour
 {
     public TextMeshProUGUI titleText;
     public TextMeshProUGUI progressText;
     public Image progressBar;
     public Button collectButton;
     public TextMeshProUGUI collectButtonText;
-    public AchievementMenuManager parent;
+    public UIAchievementMenu parent;
     
-    public void Initialize(Achievement achievement, AchievementMenuManager parent)
+    public void Initialize(Achievement achievement, UIAchievementMenu parent)
     {
         this.parent = parent;
         titleText.text = achievement.uiName;

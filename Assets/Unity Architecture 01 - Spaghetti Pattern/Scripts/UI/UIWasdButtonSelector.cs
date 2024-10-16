@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WasdButtonSelector : MonoBehaviour
+public class UIWasdButtonSelector : MonoBehaviour
 {
     public enum Direction
     {

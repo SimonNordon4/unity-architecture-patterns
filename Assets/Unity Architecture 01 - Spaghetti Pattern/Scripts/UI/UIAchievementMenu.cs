@@ -4,11 +4,11 @@ using TMPro;
 using UnityEngine;
 using System.Linq;
 
-public class AchievementMenuManager : MonoBehaviour
+public class UIAchievementMenu : MonoBehaviour
 {
     public RectTransform achievementItemContainer;
-    public AchievementUI achievementItemUIPrefab;
-    public List<AchievementUI> achievementItemUis = new List<AchievementUI>();
+    public UIAchievementCard achievementItemUIPrefab;
+    public List<UIAchievementCard> achievementItemUis = new List<UIAchievementCard>();
     public TextMeshProUGUI totalAchievementText;
     public TextMeshProUGUI goldText;
     

@@ -74,14 +74,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Item UI")] public RectTransform itemHoverImageContainer;
     private readonly List<GameObject> _itemHoverImages = new();
-    public ChestItemHoverImage itemHoverImagePrefab;
+    public UIChestItemHoverImage itemHoverImagePrefab;
 
 
     // Chest Item
     public GameObject chestItemMenu;
     public RectTransform chestItemButtonContainer;
-    public ChestItemButton chestItemButtonPrefab;
-    private readonly List<ChestItemButton> _chestItemButtons = new();
+    public UIChestItemButton chestItemButtonPrefab;
+    private readonly List<UIChestItemButton> _chestItemButtons = new();
 
     [Header("Chests")] public Vector2 chestBounds = new(20f, 20f);
     public ChestItemsConfig tier1ChestItems;
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
     private int _pityLuck;
     public float pityLuckScaling = 1f;
 
-    public WasdButtonSelector _chestItemsWasdSelector;
+    public UIWasdButtonSelector _chestItemsWasdSelector;
 
     [Header("Health Packs")] public GameObject HealthPackPrefab;
 

@@ -29,12 +29,9 @@ using UnityEngine;
         
         [Header("Achievements")]
         public AchievementSave achievementSave = new();
-        public GameObject achievementPopup;
-        public TextMeshProUGUI achievementPopupText;
         
         [Header("Settings")]
         public SettingsSave settingsSave = new();
-        
         
         
         public bool debugSkipLoad = false;
@@ -50,10 +47,8 @@ using UnityEngine;
 
         private void OnEnable()
         {
+            DontDestroyOnLoad(gameObject);
             CreateAchievements();
-
-            achievementPopup.SetActive(false);
-
             Load();
 
         }
@@ -525,21 +520,12 @@ using UnityEngine;
         public void AchievementUnlocked(Achievement achievement)
         {
             achievement.isCompleted = true;
-            StartCoroutine(ShowAchievementPopup(achievement));
         }
 
         public void AchievementClaimed(Achievement achievement)
         {
             achievement.isClaimed = true;
             AddGold(achievement.rewardGold);
-        }
-        
-        private IEnumerator ShowAchievementPopup(Achievement achievement)
-        {
-            achievementPopup.SetActive(true);
-            achievementPopupText.text = $"Achievement Unlocked:\n{achievement.uiName}";
-            yield return new WaitForSeconds(3f);
-            achievementPopup.SetActive(false);
         }
     }
 

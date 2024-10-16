@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class LockPosition : MonoBehaviour
+public class UILockPosition : MonoBehaviour
 {
     private RectTransform _rectTransform;
 
