@@ -1,32 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleBob : MonoBehaviour
+namespace UnityArchitecture.SpaghettiPattern
 {
-    public float bobHeight = 0.5f;     // The maximum height difference for the bobbing motion.
-    public float bobSpeed = 1.0f;      // Speed of the bobbing motion.
-    
-    private float initialY;             // Y position at the start.
-    private float time;
-
-    // Start is called before the first frame update
-    void Start()
+    public class SimpleBob : MonoBehaviour
     {
-        // Capture the starting position.
-        initialY = transform.position.y;
-        time = 0;
-    }
+        public float bobHeight = 0.5f;     // The maximum height difference for the bobbing motion.
+        public float bobSpeed = 1.0f;      // Speed of the bobbing motion.
 
-    // Update is called once per frame
-    void Update()
-    {
-        time += Time.deltaTime * bobSpeed;
+        private float initialY;             // Y position at the start.
+        private float time;
 
-        // Calculate the new Y position based on the sine wave.
-        float newY = initialY + Mathf.Sin(time) * bobHeight;
+        // Start is called before the first frame update
+        void Start()
+        {
+            // Capture the starting position.
+            initialY = transform.position.y;
+            time = 0;
+        }
 
-        // Update the position.
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        // Update is called once per frame
+        void Update()
+        {
+            time += Time.deltaTime * bobSpeed;
+
+            // Calculate the new Y position based on the sine wave.
+            float newY = initialY + Mathf.Sin(time) * bobHeight;
+
+            // Update the position.
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        }
     }
 }

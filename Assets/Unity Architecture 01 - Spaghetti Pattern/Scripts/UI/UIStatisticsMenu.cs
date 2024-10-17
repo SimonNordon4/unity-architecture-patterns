@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+
 namespace UnityArchitecture.SpaghettiPattern
 {
     public class UIStatisticsMenu : MonoBehaviour

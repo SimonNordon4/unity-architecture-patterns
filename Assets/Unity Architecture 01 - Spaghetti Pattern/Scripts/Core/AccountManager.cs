@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Definitions;
-using TMPro;
 using UnityEngine;
 
-[DefaultExecutionOrder(-10)]
+namespace UnityArchitecture.SpaghettiPattern
+{
+    [DefaultExecutionOrder(-10)]
     public class AccountManager : MonoBehaviour
     {
         private static AccountManager _instance;
@@ -20,25 +19,25 @@ using UnityEngine;
             }
             private set => _instance = value;
         }
-        
+
         [Header("Gold")]
         public int totalGold;
 
         [Header("Statistics")]
         public StatisticsSave statistics = new();
-        
+
         [Header("Achievements")]
         public AchievementSave achievementSave = new();
-        
+
         [Header("Settings")]
         public SettingsSave settingsSave = new();
-        
-        
+
+
         public bool debugSkipLoad = false;
-        
+
         public void AddGold(int amount)
         {
-            
+
             statistics.totalGoldEarned += amount;
             totalGold += amount;
             Debug.Log($"Added {amount} gold. Total gold: {totalGold}");
@@ -63,19 +62,19 @@ using UnityEngine;
         {
             var accountSave = new AccountSave();
             accountSave.totalGold = totalGold;
-            
+
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
-            
+
             json = JsonUtility.ToJson(statistics);
             PlayerPrefs.SetString("statistics", json);
-            
+
             json = JsonUtility.ToJson(achievementSave);
             PlayerPrefs.SetString("achievements", json);
-            
+
             json = JsonUtility.ToJson(settingsSave);
             PlayerPrefs.SetString("settings", json);
-            
+
             PlayerPrefs.Save();
         }
 
@@ -92,8 +91,8 @@ using UnityEngine;
                 totalGold = accountSave.totalGold;
             }
 
-           
-            
+
+
             json = PlayerPrefs.GetString("statistics");
             if (string.IsNullOrEmpty(json))
             {
@@ -106,8 +105,8 @@ using UnityEngine;
             {
                 statistics = JsonUtility.FromJson<StatisticsSave>(json);
             }
-            
-            
+
+
             json = PlayerPrefs.GetString("achievements");
             if (string.IsNullOrEmpty(json))
             {
@@ -117,7 +116,7 @@ using UnityEngine;
             {
                 achievementSave = JsonUtility.FromJson<AchievementSave>(json);
             }
-            
+
             json = PlayerPrefs.GetString("settings");
             if (string.IsNullOrEmpty(json))
             {
@@ -134,7 +133,7 @@ using UnityEngine;
         {
             // delete all player prefs.
             PlayerPrefs.DeleteAll();
-                        
+
             totalGold = 40;
             statistics = new StatisticsSave();
             CreateAchievements();
@@ -444,10 +443,10 @@ using UnityEngine;
         {
             if (value > achievement.progress)
                 achievement.progress = Mathf.Clamp((int)value, 0, achievement.goal);
-            if(value >= target)
+            if (value >= target)
                 AchievementUnlocked(achievement);
         }
-        
+
         // We can also add our own custom achievements here.
         public void CheckIfHighestStat(StatType type, float value)
         {
@@ -455,64 +454,52 @@ using UnityEngine;
             {
                 case StatType.PistolDamage:
                     if (value > statistics.highestPistolDamage)
-                        statistics.highestPistolDamage = (int) value;
-                    var pistolDamage = achievementSave.achievements.First(x=>x.name == AchievementName.Reach50PistolDamage);
+                        statistics.highestPistolDamage = (int)value;
+                    var pistolDamage = achievementSave.achievements.First(x => x.name == AchievementName.Reach50PistolDamage);
                     ProcessStatAchievement(pistolDamage, value, 50);
                     break;
                 case StatType.PistolRange:
                     if (value > statistics.highestPistolRange)
-                        statistics.highestPistolRange = (int) value;
-                    var pistolRange = achievementSave.achievements.First(x=>x.name == AchievementName.Reach25PistolRange);
+                        statistics.highestPistolRange = (int)value;
+                    var pistolRange = achievementSave.achievements.First(x => x.name == AchievementName.Reach25PistolRange);
                     ProcessStatAchievement(pistolRange, value, 25);
                     break;
                 case StatType.PistolFireRate:
                     if (value > statistics.highestPistolFireRate)
-                        statistics.highestPistolFireRate = (int) value;
-                    ProcessStatAchievement(achievementSave.achievements.First(x=>x.name == AchievementName.Reach15PistolFireRate), value, 15);
+                        statistics.highestPistolFireRate = (int)value;
+                    ProcessStatAchievement(achievementSave.achievements.First(x => x.name == AchievementName.Reach15PistolFireRate), value, 15);
                     break;
                 case StatType.PistolKnockBack:
                     if (value > statistics.highestPistolKnockBack)
-                        statistics.highestPistolKnockBack = (int) value;
-                    var pistolKnockBack = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10PistolKnockBack);
+                        statistics.highestPistolKnockBack = (int)value;
+                    var pistolKnockBack = achievementSave.achievements.First(x => x.name == AchievementName.Reach10PistolKnockBack);
                     ProcessStatAchievement(pistolKnockBack, value, 10);
-   
+
                     break;
                 case StatType.PistolPierce:
                     if (value > statistics.highestPistolPierce)
-                        statistics.highestPistolPierce = (int) value;
-                    var pistolPierce = achievementSave.achievements.First(x=>x.name == AchievementName.Reach3PistolPierce);
+                        statistics.highestPistolPierce = (int)value;
+                    var pistolPierce = achievementSave.achievements.First(x => x.name == AchievementName.Reach3PistolPierce);
                     ProcessStatAchievement(pistolPierce, value, 3);
                     break;
                 case StatType.PlayerHealth:
                     if (value > statistics.highestPlayerHealth)
-                        statistics.highestPlayerHealth = (int) value;
-                    
-                    var playerHealth = achievementSave.achievements.First(x=>x.name == AchievementName.Reach100PlayerHealth);
+                        statistics.highestPlayerHealth = (int)value;
+
+                    var playerHealth = achievementSave.achievements.First(x => x.name == AchievementName.Reach100PlayerHealth);
                     ProcessStatAchievement(playerHealth, value, 100);
                     break;
                 case StatType.PlayerSpeed:
                     if (value > statistics.highestPlayerSpeed)
-                        statistics.highestPlayerSpeed = (int) value;
-                    var playerSpeed = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10PlayerSpeed);
+                        statistics.highestPlayerSpeed = (int)value;
+                    var playerSpeed = achievementSave.achievements.First(x => x.name == AchievementName.Reach10PlayerSpeed);
                     ProcessStatAchievement(playerSpeed, value, 10);
                     break;
                 case StatType.HealthPackSpawnRate:
                     if (value > statistics.highestHealthPackSpawnRate)
-                        statistics.highestHealthPackSpawnRate = (int) value;
-                    var healthPackSpawnRate = achievementSave.achievements.First(x=>x.name == AchievementName.Reach10HealthPackSpawnRate);
+                        statistics.highestHealthPackSpawnRate = (int)value;
+                    var healthPackSpawnRate = achievementSave.achievements.First(x => x.name == AchievementName.Reach10HealthPackSpawnRate);
                     ProcessStatAchievement(healthPackSpawnRate, value, 10);
-                    break;
-                case StatType.Luck:
-                    if (value > statistics.highestLuck)
-                        statistics.highestLuck = (int) value;
-                    var luck = achievementSave.achievements.First(x=>x.name == AchievementName.Reach7Luck);
-                    ProcessStatAchievement(luck, value, 7);
-                    break;
-                case StatType.Block:
-                    if (value > statistics.highestBlock)
-                        statistics.highestBlock = (int) value;
-                    var block = achievementSave.achievements.First(x=>x.name == AchievementName.Reach5Block);
-                    ProcessStatAchievement(block, value, 5);
                     break;
             }
         }
@@ -536,113 +523,114 @@ using UnityEngine;
         public int totalGold;
     }
 
-[Serializable]
-public struct StatisticsSave
-{
-    public int totalKills;
-    public int totalBossKills;
-    public int totalGoldEarned;
-    public int totalChestsOpened;
-    public int totalDeaths;
-    public int totalDamageDealt;
-    public int totalDamageTaken;
-    public int totalDamageHealed;
+    [Serializable]
+    public struct StatisticsSave
+    {
+        public int totalKills;
+        public int totalBossKills;
+        public int totalGoldEarned;
+        public int totalChestsOpened;
+        public int totalDeaths;
+        public int totalDamageDealt;
+        public int totalDamageTaken;
+        public int totalDamageHealed;
 
-    public int gamesWon;
-    public int gamesPlayed;
-    public float fastestWin;
-    
-    // statistics?
-    public int highestPistolDamage;
-    public int highestPistolRange;
-    public int highestPistolFireRate;
-    public int highestPistolKnockBack;
-    public int highestPistolPierce;
+        public int gamesWon;
+        public int gamesPlayed;
+        public float fastestWin;
 
-    public int highestPlayerSpeed;
-    public int highestPlayerHealth;
+        // statistics?
+        public int highestPistolDamage;
+        public int highestPistolRange;
+        public int highestPistolFireRate;
+        public int highestPistolKnockBack;
+        public int highestPistolPierce;
 
-    public int highestSwordDamage;
-    public int highestSwordRange;
-    public int highestSwordAttackSpeed;
-    public int highestSwordKnockBack;
-    public int highestSwordArc;
+        public int highestPlayerSpeed;
+        public int highestPlayerHealth;
 
-    public int highestHealthPackSpawnRate;
-    public int highestLuck;
-    
-    public int highestBlock;
-}
+        public int highestSwordDamage;
+        public int highestSwordRange;
+        public int highestSwordAttackSpeed;
+        public int highestSwordKnockBack;
+        public int highestSwordArc;
 
-[Serializable]
-public class AchievementSave
-{
-    public Achievement[] achievements;
-}
+        public int highestHealthPackSpawnRate;
+        public int highestLuck;
 
-[Serializable]
-public class SettingsSave
-{
-    public float musicVolume = 0.25f;
-    public float sfxVolume = 0.5f;
-    public bool showDamageNumbers = true;
-    public bool showEnemyHealthBars = true;
-    public bool isHyperMode = false;
-}
+        public int highestBlock;
+    }
 
-[Serializable]
-public class Achievement
-{
-    public AchievementName name;
-    public string uiName;
-    public int rewardGold;
-    public bool isCompleted;
-    public int progress;
-    public int goal;
-    public bool isClaimed;
-}
+    [Serializable]
+    public class AchievementSave
+    {
+        public Achievement[] achievements;
+    }
 
-public enum AchievementName
-{
-    Kill100Enemies,
-    Kill1000Enemies,
-    Kill10000Enemies,
-    Kill100000Enemies,
-    Kill100Bosses,
-    Kill1000Bosses,
-    Die,
-    Die50Times,
-    Die100Times,
-    Open100Chests,
-    Open1000Chests,
-    Earn100Gold,
-    Earn1000Gold,
-    Earn10000Gold,
-    Earn100000Gold,
-    BeatTheGame,
-    BeatTheGame10Times,
-    WinInUnder1Hour,
-    WinInUnder45Minutes,
-    WinInUnder30Minutes,
-    Reach50PistolDamage,
-    Reach25PistolRange,
-    Reach15PistolFireRate,
-    Reach10PistolKnockBack,
-    Reach3PistolPierce,
-    Reach100PlayerHealth,
-    Reach10PlayerSpeed,
-    Reach50SwordDamage,
-    Reach10SwordRange,
-    Reach8SwordAttackSpeed,
-    Reach10SwordKnockBack,
-    Reach540SwordArc,
-    Reach10HealthPackSpawnRate,
-    Reach7Luck,
-    Reach5Block,
-    Reach60Dodge,
-    BeatRound1,
-    BeatRound2,
-    BeatRound3,
-    BeatRound4,
-    BeatRound5
+    [Serializable]
+    public class SettingsSave
+    {
+        public float musicVolume = 0.25f;
+        public float sfxVolume = 0.5f;
+        public bool showDamageNumbers = true;
+        public bool showEnemyHealthBars = true;
+        public bool isHyperMode = false;
+    }
+
+    [Serializable]
+    public class Achievement
+    {
+        public AchievementName name;
+        public string uiName;
+        public int rewardGold;
+        public bool isCompleted;
+        public int progress;
+        public int goal;
+        public bool isClaimed;
+    }
+
+    public enum AchievementName
+    {
+        Kill100Enemies,
+        Kill1000Enemies,
+        Kill10000Enemies,
+        Kill100000Enemies,
+        Kill100Bosses,
+        Kill1000Bosses,
+        Die,
+        Die50Times,
+        Die100Times,
+        Open100Chests,
+        Open1000Chests,
+        Earn100Gold,
+        Earn1000Gold,
+        Earn10000Gold,
+        Earn100000Gold,
+        BeatTheGame,
+        BeatTheGame10Times,
+        WinInUnder1Hour,
+        WinInUnder45Minutes,
+        WinInUnder30Minutes,
+        Reach50PistolDamage,
+        Reach25PistolRange,
+        Reach15PistolFireRate,
+        Reach10PistolKnockBack,
+        Reach3PistolPierce,
+        Reach100PlayerHealth,
+        Reach10PlayerSpeed,
+        Reach50SwordDamage,
+        Reach10SwordRange,
+        Reach8SwordAttackSpeed,
+        Reach10SwordKnockBack,
+        Reach540SwordArc,
+        Reach10HealthPackSpawnRate,
+        Reach7Luck,
+        Reach5Block,
+        Reach60Dodge,
+        BeatRound1,
+        BeatRound2,
+        BeatRound3,
+        BeatRound4,
+        BeatRound5
+    }
 }

@@ -3,36 +3,38 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TutorialManager : MonoBehaviour
+namespace UnityArchitecture.SpaghettiPattern
 {
-    public enum TutorialMessage
+    public class TutorialManager : MonoBehaviour
     {
-        Wasd,
-        Dash,
-        OnDamage,
-        Chest,
-        Enemy,
-        Buy,
-        Pause
-    }
-    
-    private static TutorialManager _instance;
-
-    public static TutorialManager instance
-    {
-        get
+        public enum TutorialMessage
         {
-            if (_instance == null)
-                _instance = FindFirstObjectByType<TutorialManager>();
-            return _instance;
+            Wasd,
+            Dash,
+            OnDamage,
+            Chest,
+            Enemy,
+            Buy,
+            Pause
         }
-        private set => _instance = value;
-    }
 
-    public GameObject popup;
-    public TextMeshProUGUI popupText;
-    
-    private Dictionary<TutorialMessage, string> Tips = new()
+        private static TutorialManager _instance;
+
+        public static TutorialManager instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindFirstObjectByType<TutorialManager>();
+                return _instance;
+            }
+            private set => _instance = value;
+        }
+
+        public GameObject popup;
+        public TextMeshProUGUI popupText;
+
+        private Dictionary<TutorialMessage, string> Tips = new()
     {
         { TutorialMessage.Wasd, "Use WASD to Move."},
         { TutorialMessage.Dash , "Press Space to Dash."},
@@ -41,20 +43,21 @@ public class TutorialManager : MonoBehaviour
         {TutorialMessage.Buy,"Buy items in the store to get permanently stronger."},
         {TutorialMessage.Pause,"Press F to pause the game."}
     };
-    
-    public void ShowTip(TutorialMessage message, float delay = 0f)
-    {
-        // Show tips for the first game only.
-        if(AccountManager.instance.statistics.gamesPlayed > 1) return;
-        StartCoroutine(ShowPopup(Tips[message], delay));
-    }
 
-    private IEnumerator ShowPopup(string message, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        popup.SetActive(true);
-        popupText.text = message;
-        yield return new WaitForSeconds(3f);
-        popup.SetActive(false);
+        public void ShowTip(TutorialMessage message, float delay = 0f)
+        {
+            // Show tips for the first game only.
+            if (AccountManager.instance.statistics.gamesPlayed > 1) return;
+            StartCoroutine(ShowPopup(Tips[message], delay));
+        }
+
+        private IEnumerator ShowPopup(string message, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            popup.SetActive(true);
+            popupText.text = message;
+            yield return new WaitForSeconds(3f);
+            popup.SetActive(false);
+        }
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using UnityEngine;
 
+namespace UnityArchitecture.SpaghettiPattern
+{
     [Serializable]
-    [CreateAssetMenu(fileName = "ChestItem", menuName = "Prototype/ChestItem", order = 1)]
+    [CreateAssetMenu(fileName = "ChestItem", menuName = "UnityArchitecture/SpaghettiPattern/ChestItem", order = 1)]
     public class ChestItem : ScriptableObject
     {
         public Sprite sprite;
@@ -14,10 +15,10 @@ using UnityEngine;
 
         private void OnValidate()
         {
-            
+
         }
-        
-        #if UNITY_EDITOR
+
+#if UNITY_EDITOR
         [ContextMenu("Rename Image")]
         public void RenameImage()
         {
@@ -26,5 +27,6 @@ using UnityEngine;
             // rename image to the name of this scriptable object
             UnityEditor.AssetDatabase.RenameAsset(path, this.name);
         }
-        #endif
+#endif
     }
+}

@@ -3,7 +3,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+namespace UnityArchitecture.SpaghettiPattern
+{
     public class UIChestItemButton : MonoBehaviour
     {
         public ChestItem chestItem;
@@ -74,3 +75,4 @@ using UnityEngine.UI;
             GameManager.instance.ApplyItem(chestItem);
         }
     }
+}

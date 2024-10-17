@@ -2,84 +2,87 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIWasdButtonSelector : MonoBehaviour
+namespace UnityArchitecture.SpaghettiPattern
 {
-    public enum Direction
+    public class UIWasdButtonSelector : MonoBehaviour
     {
-        Vertical,
-        Horizontal
-    }
-
-    public List<Button> buttons = new();
-    private Button _selectedButton;
-    private int _selectedIndex = 0;
-
-    public bool startSelected = true;
-
-    public Direction direction = Direction.Vertical;
-
-    private KeyCode _upKeyCode = KeyCode.W;
-    private KeyCode _downKeyCode = KeyCode.S;
-
-    private void OnEnable()
-    {
-        if (direction == Direction.Horizontal)
+        public enum Direction
         {
-            _upKeyCode = KeyCode.A;
-            _downKeyCode = KeyCode.D;
+            Vertical,
+            Horizontal
         }
 
-        else if (direction == Direction.Vertical)
-        {
-            _upKeyCode = KeyCode.W;
-            _downKeyCode = KeyCode.S;
-        }
+        public List<Button> buttons = new();
+        private Button _selectedButton;
+        private int _selectedIndex = 0;
 
-        if (buttons.Count > 1 && startSelected) _selectedButton = buttons[0];
-    }
+        public bool startSelected = true;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(_upKeyCode))
+        public Direction direction = Direction.Vertical;
+
+        private KeyCode _upKeyCode = KeyCode.W;
+        private KeyCode _downKeyCode = KeyCode.S;
+
+        private void OnEnable()
         {
-            if (_selectedButton == null)
+            if (direction == Direction.Horizontal)
             {
-                _selectedButton = buttons[0];
-                _selectedButton.Select();
-                return;
+                _upKeyCode = KeyCode.A;
+                _downKeyCode = KeyCode.D;
             }
 
-            _selectedIndex--;
-            if (_selectedIndex < 0)
-                _selectedIndex = buttons.Count - 1;
-            _selectedButton = buttons[_selectedIndex];
-            _selectedButton.Select();
-        }
-
-        if (Input.GetKeyDown(_downKeyCode)) // This should check for downKeyCode, not upKeyCode
-        {
-            if (_selectedButton == null)
+            else if (direction == Direction.Vertical)
             {
-                _selectedButton = buttons[^1];
-                _selectedButton.Select();
-                return;
+                _upKeyCode = KeyCode.W;
+                _downKeyCode = KeyCode.S;
             }
 
-            _selectedIndex++;
-            if (_selectedIndex >= buttons.Count)
-                _selectedIndex = 0;
-            _selectedButton = buttons[_selectedIndex];
-            _selectedButton.Select();
-            Debug.Log("Selecting Button: " + _selectedButton.name + " at index: " + _selectedIndex +
-                      " in list of size: " + buttons.Count);
+            if (buttons.Count > 1 && startSelected) _selectedButton = buttons[0];
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        private void Update()
         {
-            if (_selectedButton == null) return;
+            if (Input.GetKeyDown(_upKeyCode))
+            {
+                if (_selectedButton == null)
+                {
+                    _selectedButton = buttons[0];
+                    _selectedButton.Select();
+                    return;
+                }
 
-            Debug.Log("Invoking button: " + _selectedButton.name);
-            _selectedButton.onClick.Invoke();
+                _selectedIndex--;
+                if (_selectedIndex < 0)
+                    _selectedIndex = buttons.Count - 1;
+                _selectedButton = buttons[_selectedIndex];
+                _selectedButton.Select();
+            }
+
+            if (Input.GetKeyDown(_downKeyCode)) // This should check for downKeyCode, not upKeyCode
+            {
+                if (_selectedButton == null)
+                {
+                    _selectedButton = buttons[^1];
+                    _selectedButton.Select();
+                    return;
+                }
+
+                _selectedIndex++;
+                if (_selectedIndex >= buttons.Count)
+                    _selectedIndex = 0;
+                _selectedButton = buttons[_selectedIndex];
+                _selectedButton.Select();
+                Debug.Log("Selecting Button: " + _selectedButton.name + " at index: " + _selectedIndex +
+                          " in list of size: " + buttons.Count);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (_selectedButton == null) return;
+
+                Debug.Log("Invoking button: " + _selectedButton.name);
+                _selectedButton.onClick.Invoke();
+            }
         }
     }
 }

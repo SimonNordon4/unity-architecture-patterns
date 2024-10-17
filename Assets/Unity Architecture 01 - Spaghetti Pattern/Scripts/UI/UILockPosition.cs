@@ -1,29 +1,32 @@
 using UnityEngine;
 
-[RequireComponent(typeof(RectTransform))]
-public class UILockPosition : MonoBehaviour
+namespace UnityArchitecture.SpaghettiPattern
 {
-    private RectTransform _rectTransform;
-
-    public float positionX;
-    public float positionY;
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(RectTransform))]
+    public class UILockPosition : MonoBehaviour
     {
-        _rectTransform = GetComponent<RectTransform>();
-        _rectTransform.anchoredPosition = new Vector2(positionX, positionY);
-    }
+        private RectTransform _rectTransform;
 
-    [ContextMenu("Save Position")]
-    public void SavePosition()
-    {
-        positionX = _rectTransform.anchoredPosition.x;
-        positionY = _rectTransform.anchoredPosition.y;
-    }
+        public float positionX;
+        public float positionY;
+        // Start is called before the first frame update
+        void Start()
+        {
+            _rectTransform = GetComponent<RectTransform>();
+            _rectTransform.anchoredPosition = new Vector2(positionX, positionY);
+        }
 
-    private void OnValidate()
-    {
-        _rectTransform = GetComponent<RectTransform>();
-        SavePosition();
+        [ContextMenu("Save Position")]
+        public void SavePosition()
+        {
+            positionX = _rectTransform.anchoredPosition.x;
+            positionY = _rectTransform.anchoredPosition.y;
+        }
+
+        private void OnValidate()
+        {
+            _rectTransform = GetComponent<RectTransform>();
+            SavePosition();
+        }
     }
 }

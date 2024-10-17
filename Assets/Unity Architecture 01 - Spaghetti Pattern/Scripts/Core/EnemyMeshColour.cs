@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+namespace UnityArchitecture.SpaghettiPattern
+{
     [RequireComponent(typeof(MeshRenderer))]
     public class EnemyMeshColour : MonoBehaviour
     {
@@ -14,3 +15,4 @@
             nose.material.color = enemyColor;
         }
     }
+}

@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class HealthPackController : MonoBehaviour
+namespace UnityArchitecture.SpaghettiPattern
 {
-    public float lifeTime = 5f;
-
-    private float _aliveTime = 0f;
-    // Start is called before the first frame update
-
-    // Update is called once per frame
-    void Update()
+    public class HealthPackController : MonoBehaviour
     {
-        if (!GameManager.instance.isGameActive) return;
-        
-        _aliveTime += Time.deltaTime;
-        if(_aliveTime > lifeTime)
+        public float lifeTime = 5f;
+
+        private float _aliveTime = 0f;
+        // Start is called before the first frame update
+
+        // Update is called once per frame
+        void Update()
         {
-            Destroy(gameObject);
+            if (!GameManager.instance.isGameActive) return;
+
+            _aliveTime += Time.deltaTime;
+            if (_aliveTime > lifeTime)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

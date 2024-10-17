@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class EscButtonSelector : MonoBehaviour
+namespace UnityArchitecture.SpaghettiPattern
 {
-    public Button backButton;
-
-    private void Update()
+    public class UIEscButtonSelector : MonoBehaviour
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) backButton.onClick.Invoke();
+        public Button backButton;
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape)) backButton.onClick.Invoke();
+        }
     }
 }

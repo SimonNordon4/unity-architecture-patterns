@@ -7,60 +7,61 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-
-[CreateAssetMenu(fileName = "EnemySpawnBlock", menuName = "Prototype/EnemySpawnBlock", order = 1)]
-public class EnemySpawnBlock : ScriptableObject
+namespace UnityArchitecture.SpaghettiPattern
 {
-    public float goldMultiplier = 1;
-    public int tier;
-
-    [Inline]
-    public List<EnemySpawnWave> spawnWaves = new();
-
-    public int TotalEnemyCount()
+    [CreateAssetMenu(fileName = "EnemySpawnBlock", menuName = "UnityArchitecture/SpaghettiPattern/EnemySpawnBlock", order = 1)]
+    public class EnemySpawnBlock : ScriptableObject
     {
-        var normalEnemies = spawnWaves.Sum(wave => wave.totalEnemies);
-        var bossEnemies = spawnWaves.Sum(wave => wave.eliteAction.Sum(action => action.numberOfEnemiesToSpawn));
-        return normalEnemies + bossEnemies;
+        public float goldMultiplier = 1;
+        public int tier;
+
+        [Inline]
+        public List<EnemySpawnWave> spawnWaves = new();
+
+        public int TotalEnemyCount()
+        {
+            var normalEnemies = spawnWaves.Sum(wave => wave.totalEnemies);
+            var bossEnemies = spawnWaves.Sum(wave => wave.eliteAction.Sum(action => action.numberOfEnemiesToSpawn));
+            return normalEnemies + bossEnemies;
+        }
     }
-}
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(EnemySpawnBlock))]
-public class EnemySpawnBlockEditor : Editor
-{
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(EnemySpawnBlock))]
+    public class EnemySpawnBlockEditor : Editor
     {
-        var block = (EnemySpawnBlock)target;
-
-        EditorGUILayout.BeginVertical("box");
-        if (block == null || block.spawnWaves == null) return;
-        var totalSeconds = block.spawnWaves.Sum(wave =>
+        public override void OnInspectorGUI()
         {
-            if (wave == null)
-                return 0;
-            return wave.blockTime;
-        });
-        var minutes = (int)(totalSeconds / 60);
-        var seconds = (int)(totalSeconds % 60);
-        var formattedTime = $"{minutes}m {seconds}s";
+            var block = (EnemySpawnBlock)target;
 
-        var totalEnemies = block.spawnWaves.Sum(wave =>
-        {
-            if (wave == null)
-                return 0;
-            return wave.totalEnemies;
-        });
+            EditorGUILayout.BeginVertical("box");
+            if (block == null || block.spawnWaves == null) return;
+            var totalSeconds = block.spawnWaves.Sum(wave =>
+            {
+                if (wave == null)
+                    return 0;
+                return wave.blockTime;
+            });
+            var minutes = (int)(totalSeconds / 60);
+            var seconds = (int)(totalSeconds % 60);
+            var formattedTime = $"{minutes}m {seconds}s";
 
-        EditorGUILayout.LabelField($"Block Time: {formattedTime}");
-        EditorGUILayout.LabelField($@"Total Enemies: {totalEnemies}");
+            var totalEnemies = block.spawnWaves.Sum(wave =>
+            {
+                if (wave == null)
+                    return 0;
+                return wave.totalEnemies;
+            });
 
-        EditorGUILayout.LabelField($"Base Gold: {block.goldMultiplier * totalEnemies}");
+            EditorGUILayout.LabelField($"Block Time: {formattedTime}");
+            EditorGUILayout.LabelField($@"Total Enemies: {totalEnemies}");
 
-        EditorGUILayout.EndVertical();
+            EditorGUILayout.LabelField($"Base Gold: {block.goldMultiplier * totalEnemies}");
 
-        base.OnInspectorGUI();
+            EditorGUILayout.EndVertical();
+
+            base.OnInspectorGUI();
+        }
     }
 }
-
 #endif

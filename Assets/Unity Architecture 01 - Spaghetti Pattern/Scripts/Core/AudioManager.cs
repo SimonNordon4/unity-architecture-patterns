@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+namespace UnityArchitecture.SpaghettiPattern
+{
     public class AudioManager : MonoBehaviour
     {
         private static AudioManager _instance;
@@ -122,3 +123,4 @@ using UnityEngine;
             _buttonSource.PlayOneShot(buttonClick);
         }
     }
+}

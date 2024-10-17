@@ -1,52 +1,53 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargeEnemyController : EnemyController
+namespace UnityArchitecture.SpaghettiPattern
 {
-    [Header("Charge Values")]
-    public float chargeSpeed = 10f;
-    public float chargeDistance = 3f;
-    public float chargeCooldown = 2f;
-    public float chargeUpTime = 0.5f;
-    protected float _timeSinceLastCharge;
-    public bool _isCharging = false;
-    
-    private Vector3 _randomDestination;
-    private Vector3 _lastDir;
-    
-    protected override void Start()
+    public class ChargeEnemyController : EnemyController
     {
-        base.Start();
-        _timeSinceLastCharge = chargeCooldown;
-    }
-    
-    protected override void Update()
-    {
-        if(GameManager.instance.isGameActive == false) return;
-        healthBarUI.transform.rotation = uiStartRotation;
-        if(isKnockedBack) return;
-        if(_isCharging) return;
-    
-        if (playerTarget == null) return;
-        var dir = Vector3.ProjectOnPlane(playerTarget.position - transform.position, Vector3.up);
-        if (dir.magnitude < 0.5f)
+        [Header("Charge Values")]
+        public float chargeSpeed = 10f;
+        public float chargeDistance = 3f;
+        public float chargeCooldown = 2f;
+        public float chargeUpTime = 0.5f;
+        protected float _timeSinceLastCharge;
+        public bool _isCharging = false;
+
+        private Vector3 _randomDestination;
+        private Vector3 _lastDir;
+
+        protected override void Start()
         {
-            dir = Vector3.zero;
+            base.Start();
+            _timeSinceLastCharge = chargeCooldown;
         }
 
-        dir = dir.normalized;
-        _lastDir = dir;
+        protected override void Update()
+        {
+            if (GameManager.instance.isGameActive == false) return;
+            healthBarUI.transform.rotation = uiStartRotation;
+            if (isKnockedBack) return;
+            if (_isCharging) return;
 
-        float distanceToPlayer = Vector3.Distance(playerTarget.position, transform.position);
+            if (playerTarget == null) return;
+            var dir = Vector3.ProjectOnPlane(playerTarget.position - transform.position, Vector3.up);
+            if (dir.magnitude < 0.5f)
+            {
+                dir = Vector3.zero;
+            }
 
-            if(distanceToPlayer <= chargeDistance && _timeSinceLastCharge >= chargeCooldown)
+            dir = dir.normalized;
+            _lastDir = dir;
+
+            float distanceToPlayer = Vector3.Distance(playerTarget.position, transform.position);
+
+            if (distanceToPlayer <= chargeDistance && _timeSinceLastCharge >= chargeCooldown)
             {
                 StartCoroutine(ChargeAtPlayer(dir));
                 _timeSinceLastCharge = 0f;
             }
-            
-            
+
+
             var avoidanceDirection = GetAvoidanceFromOtherEnemies();
             var updatedDir = (dir + avoidanceDirection * repulsionForce).normalized;
             // Apply direction to transform.
@@ -56,86 +57,87 @@ public class ChargeEnemyController : EnemyController
             }
 
 
-        _timeSinceLastCharge += Time.deltaTime;
-        ClampTransformToLevelBounds();
-        if (dir.magnitude > 0 && !_isCharging)
-        {
-            transform.rotation = Quaternion.LookRotation(dir);
-        }
-        
-    }
-
-    private void LateUpdate()
-    {
-        if(_lastDir.magnitude > 0 && !_isCharging)
-        {
-            transform.rotation = Quaternion.LookRotation(_lastDir);
-        }
-    }
-
-    private IEnumerator ChargeAtPlayer(Vector3 dir)
-    {
-        _isCharging = true;
-
-        var elapsedChargeUpTime = 0f;
-        while (elapsedChargeUpTime < chargeUpTime)
-        {
-            elapsedChargeUpTime += Time.deltaTime;
-            transform.forward = dir;
-            yield return new WaitForEndOfFrame();
-        }
-
-        float chargedDistance = 0; // Track how much distance the enemy has covered during the charge
-        transform.rotation = Quaternion.LookRotation(dir);
-        // While the enemy hasn't charged the desired distance
-        while (chargedDistance < (2 * chargeDistance))
-        {
-            // Calculate the distance to move in this frame
-            float distanceThisFrame = chargeSpeed * Time.deltaTime;
-            transform.position += dir * distanceThisFrame;
-            
-            chargedDistance += distanceThisFrame;
+            _timeSinceLastCharge += Time.deltaTime;
             ClampTransformToLevelBounds();
-            
-            if(GameManager.instance.isGameActive == false)
+            if (dir.magnitude > 0 && !_isCharging)
             {
-                _isCharging = false;
-                yield break;
+                transform.rotation = Quaternion.LookRotation(dir);
             }
-            yield return new WaitForEndOfFrame(); // Wait for next frame
+
         }
 
-        _isCharging = false;
-    }
-
-    public override void ApplyKnockBack(Vector3 direction, float intensity)
-    {
-        if (_isCharging) return;
-        base.ApplyKnockBack(direction, intensity);
-    }
-
-    protected override void OnTriggerEnter(Collider other)
-    {
-        if (_isCharging)
+        private void LateUpdate()
         {
-            if (other.CompareTag("Player"))
+            if (_lastDir.magnitude > 0 && !_isCharging)
             {
-                var playerController = other.GetComponent<PlayerController>();
-                if (playerController != null)
+                transform.rotation = Quaternion.LookRotation(_lastDir);
+            }
+        }
+
+        private IEnumerator ChargeAtPlayer(Vector3 dir)
+        {
+            _isCharging = true;
+
+            var elapsedChargeUpTime = 0f;
+            while (elapsedChargeUpTime < chargeUpTime)
+            {
+                elapsedChargeUpTime += Time.deltaTime;
+                transform.forward = dir;
+                yield return new WaitForEndOfFrame();
+            }
+
+            float chargedDistance = 0; // Track how much distance the enemy has covered during the charge
+            transform.rotation = Quaternion.LookRotation(dir);
+            // While the enemy hasn't charged the desired distance
+            while (chargedDistance < (2 * chargeDistance))
+            {
+                // Calculate the distance to move in this frame
+                float distanceThisFrame = chargeSpeed * Time.deltaTime;
+                transform.position += dir * distanceThisFrame;
+
+                chargedDistance += distanceThisFrame;
+                ClampTransformToLevelBounds();
+
+                if (GameManager.instance.isGameActive == false)
                 {
+                    _isCharging = false;
+                    yield break;
+                }
+                yield return new WaitForEndOfFrame(); // Wait for next frame
+            }
+
+            _isCharging = false;
+        }
+
+        public override void ApplyKnockBack(Vector3 direction, float intensity)
+        {
+            if (_isCharging) return;
+            base.ApplyKnockBack(direction, intensity);
+        }
+
+        protected override void OnTriggerEnter(Collider other)
+        {
+            if (_isCharging)
+            {
+                if (other.CompareTag("Player"))
+                {
+                    var playerController = other.GetComponent<PlayerController>();
+                    if (playerController != null)
+                    {
                         playerController.TakeDamage(damageAmount);
 
+                    }
                 }
             }
+            else
+            {
+                base.OnTriggerEnter(other);
+            }
         }
-        else
+        protected override void OnTriggerExit(Collider other)
         {
-            base.OnTriggerEnter(other);
+            if (_isCharging) return;
+            base.OnTriggerExit(other);
         }
-    }
-    protected override void OnTriggerExit(Collider other)
-    {
-        if (_isCharging) return;
-        base.OnTriggerExit(other);
     }
 }

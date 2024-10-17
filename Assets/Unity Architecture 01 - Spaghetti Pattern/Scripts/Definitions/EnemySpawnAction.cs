@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Definitions
+namespace UnityArchitecture.SpaghettiPattern
 {
     [Serializable]
     public class EnemySpawnAction
@@ -10,7 +10,7 @@ namespace Definitions
         public GameObject enemyPrefab;
         public int numberOfEnemiesToSpawn = 1;
         public int spawnWeight = 100;
-        
+
         public int GetHealth()
         {
             return enemyPrefab.GetComponent<EnemyController>().currentHealth;
