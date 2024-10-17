@@ -15,9 +15,18 @@ namespace UnityArchitecture.Meta
         private int numberOfCSharpScripts = 0;
         private int numberOfLinesOfCode = 0;
         private int numberOfScriptableObjects = 0;
+        private float averageLinesOfCode = 0f;
+        private float medianLinesOfCode = 0f;
+        private List<int> linesOfCodePerScript = new List<int>(); // Stores lines of code for each script
 
         // Scroll position for the report display
         private Vector2 scrollPos;
+
+        // Graph parameters
+        private const int graphHeight = 200;
+        private const int graphWidth = 400;
+        private const int barWidth = 5;
+        private Texture2D graphTexture;
 
         // Add menu item to open the window
         [MenuItem("Tools/Architecture Report")]
@@ -74,8 +83,24 @@ namespace UnityArchitecture.Meta
                 GUILayout.Label($"Number of C# Scripts: {numberOfCSharpScripts}");
                 GUILayout.Label($"Number of Lines of Code: {numberOfLinesOfCode}");
                 GUILayout.Label($"Number of ScriptableObjects: {numberOfScriptableObjects}");
+                GUILayout.Label($"Average Lines of Code per Script: {averageLinesOfCode:F2}");
+                GUILayout.Label($"Median Lines of Code per Script: {medianLinesOfCode:F2}");
 
                 EditorGUILayout.EndScrollView();
+
+                GUILayout.Space(20);
+
+                // Display Graph
+                GUILayout.Label("Lines of Code per Script:", EditorStyles.boldLabel);
+                if (graphTexture != null)
+                {
+                    // Ensure the graph fits within the window
+                    GUILayout.Label(graphTexture, GUILayout.Width(graphWidth), GUILayout.Height(graphHeight));
+                }
+                else
+                {
+                    GUILayout.Label("No data to display graph.");
+                }
             }
         }
 
@@ -88,6 +113,10 @@ namespace UnityArchitecture.Meta
             numberOfCSharpScripts = 0;
             numberOfLinesOfCode = 0;
             numberOfScriptableObjects = 0;
+            averageLinesOfCode = 0f;
+            medianLinesOfCode = 0f;
+            linesOfCodePerScript.Clear();
+            graphTexture = null;
 
             // Validate the selected folder
             if (string.IsNullOrEmpty(selectedFolderPath) || !AssetDatabase.IsValidFolder(selectedFolderPath))
@@ -110,17 +139,41 @@ namespace UnityArchitecture.Meta
             string[] csFiles = Directory.GetFiles(absolutePath, "*.cs", SearchOption.AllDirectories);
             numberOfCSharpScripts = csFiles.Length;
 
-            // Count total lines of code
+            // Count total lines of code and collect lines per script
             foreach (string file in csFiles)
             {
                 try
                 {
                     int lineCount = File.ReadAllLines(file).Length;
                     numberOfLinesOfCode += lineCount;
+                    linesOfCodePerScript.Add(lineCount);
                 }
                 catch
                 {
                     Debug.LogWarning($"Failed to read file: {file}");
+                }
+            }
+
+            // Calculate average lines of code
+            if (numberOfCSharpScripts > 0)
+            {
+                averageLinesOfCode = (float)numberOfLinesOfCode / numberOfCSharpScripts;
+            }
+
+            // Calculate median lines of code
+            if (linesOfCodePerScript.Count > 0)
+            {
+                var sortedLines = linesOfCodePerScript.OrderBy(n => n).ToList();
+                int middle = sortedLines.Count / 2;
+                if (sortedLines.Count % 2 == 0)
+                {
+                    // Even number of elements
+                    medianLinesOfCode = (sortedLines[middle - 1] + sortedLines[middle]) / 2f;
+                }
+                else
+                {
+                    // Odd number of elements
+                    medianLinesOfCode = sortedLines[middle];
                 }
             }
 
@@ -131,10 +184,59 @@ namespace UnityArchitecture.Meta
 
             numberOfScriptableObjects = allAssetPaths.Length;
 
-            // Optionally, you can further filter or process the ScriptableObjects here
+            // Generate Graph
+            GenerateGraph();
 
             // Refresh the window to display updated report
             Repaint();
+        }
+
+        /// <summary>
+        /// Generates a simple bar graph texture showing lines of code per script.
+        /// </summary>
+        private void GenerateGraph()
+        {
+            if (linesOfCodePerScript.Count == 0)
+                return;
+
+            // Define graph dimensions
+            int width = graphWidth;
+            int height = graphHeight;
+
+            // Create a new texture
+            graphTexture = new Texture2D(width, height, TextureFormat.RGBA32, false);
+            Color backgroundColor = new Color(0.18f,0.18f, 0.18f);
+            Color barColor = new Color(0.0f, 0.9f, 0.0f);
+            // Initialize texture with white background
+            Color[] bgPixels = Enumerable.Repeat(backgroundColor, width * height).ToArray();
+            graphTexture.SetPixels(bgPixels);
+
+            // Determine the maximum lines of code to scale the graph
+            int maxLines = linesOfCodePerScript.Max();
+
+            // Calculate scaling factor
+            float scale = (float)(height - 20) / maxLines; // Leave some padding
+
+            // Draw bars
+            for (int i = 0; i < linesOfCodePerScript.Count; i++)
+            {
+                int x = i * barWidth;
+                if (x + barWidth >= width)
+                    break; // Prevent drawing outside the texture
+
+                int barHeightPixels = Mathf.RoundToInt(linesOfCodePerScript[i] * scale);
+                for (int bx = x; bx < x + barWidth; bx++)
+                {
+                    for (int by = 0; by < barHeightPixels; by++)
+                    {
+                        if (bx >= width || by >= height)
+                            continue;
+                        graphTexture.SetPixel(bx, by + 10, barColor); // +10 for bottom padding
+                    }
+                }
+            }
+
+            graphTexture.Apply();
         }
     }
 }
