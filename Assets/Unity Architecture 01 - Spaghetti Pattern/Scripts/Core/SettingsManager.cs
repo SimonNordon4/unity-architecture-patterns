@@ -19,7 +19,6 @@ namespace UnityArchitecture.SpaghettiPattern
             private set => _instance = value;
         }
 
-        public Toggle hyperModeToggle;
         public GameObject hyperText;
 
         private void Start()
@@ -30,8 +29,6 @@ namespace UnityArchitecture.SpaghettiPattern
             showDamageNumbers = AccountManager.instance.settingsSave.showDamageNumbers;
             showEnemyHealthBars = AccountManager.instance.settingsSave.showEnemyHealthBars;
             isHyperMode = AccountManager.instance.settingsSave.isHyperMode;
-
-            hyperModeToggle.isOn = isHyperMode;
         }
 
         public bool showDamageNumbers = true;
@@ -74,25 +71,6 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             showDamageNumbers = show;
             AccountManager.instance.settingsSave.showDamageNumbers = show;
-            AccountManager.instance.Save();
-        }
-
-        public void BindHyperScale()
-        {
-            var value = hyperModeToggle.isOn;
-            if (!value)
-            {
-                Time.timeScale = 1f;
-                isHyperMode = false;
-                hyperText.SetActive(false);
-            }
-            else
-            {
-                Time.timeScale = 2f;
-                isHyperMode = true;
-                hyperText.SetActive(true);
-            }
-            AccountManager.instance.settingsSave.isHyperMode = isHyperMode;
             AccountManager.instance.Save();
         }
     }

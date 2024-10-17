@@ -15,6 +15,9 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 if (_instance == null)
                     _instance = FindFirstObjectByType<AccountManager>();
+                if (_instance == null)
+                    _instance = new GameObject("AccountManager").AddComponent<AccountManager>();
+
                 return _instance;
             }
             private set => _instance = value;

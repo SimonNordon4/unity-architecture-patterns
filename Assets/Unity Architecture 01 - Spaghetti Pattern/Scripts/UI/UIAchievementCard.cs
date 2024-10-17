@@ -28,7 +28,6 @@ namespace UnityArchitecture.SpaghettiPattern
                 Collected();
             }
 
-            Debug.Log("Completed? " + achievement.isCompleted + " Claimed? " + achievement.isClaimed);
             if (achievement.isCompleted && !achievement.isClaimed)
             {
                 collectButton.interactable = true;

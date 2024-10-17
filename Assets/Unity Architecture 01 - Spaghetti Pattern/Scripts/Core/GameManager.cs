@@ -53,9 +53,7 @@ namespace UnityArchitecture.SpaghettiPattern
         private readonly Dictionary<StatType, Stat> _stats = new();
         public readonly List<ChestItem> currentlyHeldItems = new();
 
-        [Header("UI")] public TextMeshProUGUI roundTimeText;
-        public TextMeshProUGUI waveText;
-        public GameObject mainMenu;
+        [Header("UI")]
         public GameObject pauseMenu;
         public GameObject gameMenu;
         public GameObject gameOverMenu;
@@ -107,9 +105,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
         #region Unity Functions
 
-        private void Start()
+        private IEnumerator Start()
         {
-            GoToMainMenu();
+
             PopulateStats();
             PopulateStatsUI();
             playerCurrentHealth = (int)playerMaxHealth.value;
@@ -121,11 +119,14 @@ namespace UnityArchitecture.SpaghettiPattern
             tier3ChestItems.chestItems.ToArray(),
             tier4ChestItems.chestItems.ToArray(),
             tier5ChestItems.chestItems.ToArray()
-        };
+            };
 
             // Chest has to spawn inside the level.
             if (chestBounds.magnitude > levelBounds.magnitude)
                 chestBounds = levelBounds;
+
+            yield return new WaitForSeconds(1.5f);
+            isGameActive = true;
         }
 
         private void Update()
@@ -137,7 +138,6 @@ namespace UnityArchitecture.SpaghettiPattern
                 //format round time in MM:SS
                 var minutes = Mathf.FloorToInt(roundTime / 60f);
                 var seconds = Mathf.FloorToInt(roundTime % 60f);
-                roundTimeText.text = $"Round Time: {minutes:00}:{seconds:00}";
 
                 if (_nextMiniChest)
                 {
@@ -176,16 +176,6 @@ namespace UnityArchitecture.SpaghettiPattern
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Dash, 22f);
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Pause, 28f);
             AudioManager.instance.OnStartGame();
-        }
-
-        public void GoToMainMenu()
-        {
-            AccountManager.instance.Save();
-            HideAll();
-            mainMenu.SetActive(true);
-            isGameActive = false;
-            isPaused = false;
-            ResetGame();
         }
 
         public void TogglePauseGame()
@@ -354,7 +344,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void HideAll()
         {
-            mainMenu.SetActive(false);
             gameMenu.SetActive(false);
             pauseMenu.SetActive(false);
             gameOverMenu.SetActive(false);
