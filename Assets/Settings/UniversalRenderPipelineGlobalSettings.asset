@@ -90,7 +90,7 @@ MonoBehaviour:
       type: {class: RenderGraphSettings, ns: UnityEngine.Rendering.Universal, asm: Unity.RenderPipelines.Universal.Runtime}
       data:
         m_Version: 0
-        m_EnableRenderCompatibilityMode: 0
+        m_EnableRenderCompatibilityMode: 1
     - rid: 6061690417623335091
       type: {class: UniversalRenderPipelineRuntimeXRResources, ns: UnityEngine.Rendering.Universal,
         asm: Unity.RenderPipelines.Universal.Runtime}
@@ -154,7 +154,7 @@ MonoBehaviour:
         asm: Unity.RenderPipelines.Universal.Runtime}
       data:
         m_Version: 0
-        m_VolumeProfile: {fileID: 11400000, guid: 7d645aba606ba2a41a7cd13f05963c5b,
+        m_VolumeProfile: {fileID: 11400000, guid: 1ff88354c6d8d8449a72bc8802467c2e,
           type: 2}
     - rid: 6061690417623335096
       type: {class: URPShaderStrippingSetting, ns: UnityEngine.Rendering.Universal,
