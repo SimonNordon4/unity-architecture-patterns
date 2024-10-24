@@ -5,7 +5,7 @@ using UnityEditor;
 using System.IO;
 using System.Linq;
 
-namespace UnityArchitecture.Meta
+namespace UnityArchitecture.SharedAssets
 {
     public static class CopyScriptsToClipboard
     {

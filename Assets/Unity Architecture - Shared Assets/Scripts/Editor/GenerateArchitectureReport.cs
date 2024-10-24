@@ -1,12 +1,10 @@
-// File: Assets/Editor/GenerateArchitectureReport.cs
-
 using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace UnityArchitecture.Meta
+namespace UnityArchitecture.SharedAssets
 {
     public class GenerateArchitectureReport : EditorWindow
     {
