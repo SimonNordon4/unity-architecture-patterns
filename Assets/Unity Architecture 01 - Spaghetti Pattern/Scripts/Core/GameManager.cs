@@ -290,8 +290,6 @@ namespace UnityArchitecture.SpaghettiPattern
             }
 
             roundTime = 0f;
-
-            AddGoldWhenGameEnds();
             AudioManager.instance.StopMusic();
         }
 
@@ -303,43 +301,7 @@ namespace UnityArchitecture.SpaghettiPattern
             gameOverMenu.SetActive(true);
             isGameActive = false;
 
-            AddGoldWhenGameEnds();
-
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Buy, 2f);
-        }
-
-        private void AddGoldWhenGameEnds()
-        {
-            // get the enemy manager
-            var enemyManager = FindFirstObjectByType<EnemyManagerOld>();
-
-            var totalGold = Mathf.RoundToInt(enemyManager.WaveDatas.Sum(data => data.currentGold + data.bonusGold));
-
-            AccountManager.instance.AddGold(totalGold);
-
-            foreach (var txt in GoldTexts) txt.text = $"+{totalGold}G";
-            foreach (var txt in GoldSubTexts)
-            {
-                txt.text = $"Total: {AccountManager.instance.totalGold}G";
-            }
-
-            List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
-                .Where(a => a.name == AchievementName.Earn100Gold ||
-                            a.name == AchievementName.Earn1000Gold ||
-                            a.name == AchievementName.Earn10000Gold ||
-                            a.name == AchievementName.Earn100000Gold).ToList();
-            Debug.Log("Achievements Found:" + achievements.Count);
-
-            foreach (var a in achievements)
-            {
-                if (a.isCompleted) continue;
-                a.progress += totalGold;
-                if (a.progress >= a.goal)
-                {
-                    a.isCompleted = true;
-                    AccountManager.instance.AchievementUnlocked(a);
-                }
-            }
         }
 
         private void HideAll()

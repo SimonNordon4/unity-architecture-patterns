@@ -17,7 +17,6 @@ namespace UnityArchitecture.SpaghettiPattern
                     _instance = FindFirstObjectByType<AccountManager>();
                 if (_instance == null)
                     _instance = new GameObject("AccountManager").AddComponent<AccountManager>();
-
                 return _instance;
             }
             private set => _instance = value;
@@ -38,13 +37,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public bool debugSkipLoad = false;
 
-        public void AddGold(int amount)
+        private void Awake()
         {
-
-            statistics.totalGoldEarned += amount;
-            totalGold += amount;
-            Debug.Log($"Added {amount} gold. Total gold: {totalGold}");
-            Save();
+            if(_instance != null)
+            {
+                Destroy(this);
+            }
         }
 
         private void OnEnable()
@@ -58,8 +56,6 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             Save();
         }
-
-
 
         public void Save()
         {
@@ -510,12 +506,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public void AchievementUnlocked(Achievement achievement)
         {
             achievement.isCompleted = true;
-        }
-
-        public void AchievementClaimed(Achievement achievement)
-        {
-            achievement.isClaimed = true;
-            AddGold(achievement.rewardGold);
         }
     }
 
