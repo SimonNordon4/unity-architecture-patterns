@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
-    public class UIAchievementCard : MonoBehaviour
+    public class UIAchievementEntry : MonoBehaviour
     {
         public TextMeshProUGUI titleText;
         public TextMeshProUGUI progressText;

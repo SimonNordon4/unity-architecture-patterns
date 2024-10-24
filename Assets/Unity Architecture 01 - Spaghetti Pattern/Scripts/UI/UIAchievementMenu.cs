@@ -7,56 +7,58 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class UIAchievementMenu : MonoBehaviour
     {
-        public RectTransform achievementItemContainer;
-        public UIAchievementCard achievementItemUIPrefab;
-        public List<UIAchievementCard> achievementItemUis = new List<UIAchievementCard>();
+        public RectTransform achievementEntryContainer;
+        public UIAchievementEntry achievementEntryUIGameObject;
+        public List<UIAchievementEntry> achievementEntryUis = new List<UIAchievementEntry>();
         public TextMeshProUGUI totalAchievementText;
-        public TextMeshProUGUI goldText;
 
         private void OnEnable()
         {
             Init();
         }
 
-        public void UpdateStoreMenu()
+        public void UpdateAchievements()
         {
             Clear();
             Init();
         }
 
-        public void UpdateGoldText()
-        {
-            goldText.text = $"GOLD: {AccountManager.instance.totalGold.ToString()}";
-        }
-
         void Init()
         {
-            // Populate all the store item uis.
-            foreach (var achievement in AccountManager.instance.achievementSave.achievements)
+            var achievements = AccountManager.instance.achievementSave.achievements.ToList();
+
+            // sort achievements by completed (incomplete first)
+            achievements = achievements.OrderBy(x => x.isCompleted).ToList();
+
+            for(int i = 0; i < achievements.Count; i++)
             {
-                var achievementUI = Instantiate(achievementItemUIPrefab, achievementItemContainer);
-                achievementUI.Initialize(achievement, this);
+                // Skip the first one because it already exists!
+                if (i == 0)
+                    continue;   
+                var achievementUI = Instantiate(achievementEntryUIGameObject, achievementEntryContainer);
+                achievementUI.Initialize(achievements[i], this);
                 achievementUI.parent = this;
-                achievementItemUis.Add(achievementUI);
+                achievementEntryUis.Add(achievementUI);
             }
+
+            achievementEntryUIGameObject.Initialize(achievements[0], this);
 
             var completedAchievements = AccountManager.instance.achievementSave.achievements
                 .Sum(x => x.isCompleted ? 1 : 0);
 
             var totalAchievements = AccountManager.instance.achievementSave.achievements.Length;
-            totalAchievementText.text = $"Earned: {completedAchievements.ToString()}/{totalAchievements.ToString()}";
-            goldText.text = $"GOLD: {AccountManager.instance.totalGold.ToString()}";
+            totalAchievementText.text = $"Earned: {completedAchievements}/{totalAchievements}";
         }
 
         void Clear()
         {
             // Destroy all the store item uis.
-            foreach (var storeItemUi in achievementItemUis)
+            foreach (var storeItemUi in achievementEntryUis)
             {
                 if (storeItemUi != null)
                     Destroy(storeItemUi.gameObject);
             }
-            achievementItemUis.Clear();
+            achievementEntryUis.Clear();
         }
 
         private void OnDisable()

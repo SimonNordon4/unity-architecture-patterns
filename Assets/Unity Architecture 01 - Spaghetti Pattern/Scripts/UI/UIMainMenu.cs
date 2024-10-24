@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
+    /// <summary>
+    /// Controls the main menu UI. Responsible for switching between the other UI Scenes.
+    /// </summary>
     public class UIMainMenu : MonoBehaviour
     {
         public Button Play;
@@ -26,6 +29,16 @@ namespace UnityArchitecture.SpaghettiPattern
             Statistics.onClick.AddListener(OnStatisticsPressed);
             Settings.onClick.AddListener(OnSettingsPressed);
             Quit.onClick.AddListener(OnQuitPressed);
+        }
+        
+        private void Start()
+        {
+            // All other screens should be off at scene load
+            UICharacterSelect.SetActive(false);
+            UILeaderboardMenu.SetActive(false);
+            UIAchievementMenu.SetActive(false);
+            UIStatisticsMenu.SetActive(false);
+            UISettingsMenu.SetActive(false);
         }
 
         public void OnDisable()
@@ -85,7 +98,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void OnQuitPressed()
         {
-            
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+
         }
     }
 }
