@@ -9,8 +9,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public TextMeshProUGUI titleText;
         public TextMeshProUGUI progressText;
         public Image progressBar;
-        public Button collectButton;
-        public TextMeshProUGUI collectButtonText;
+        public TextMeshProUGUI badgeText;
         public UIAchievementMenu parent;
 
         public void Initialize(Achievement achievement, UIAchievementMenu parent)
@@ -20,8 +19,10 @@ namespace UnityArchitecture.SpaghettiPattern
 
             var progress = Mathf.Clamp(achievement.progress, 0, achievement.goal);
             progressText.text = $"{progress}/{achievement.goal}";
-            var progressScale = Mathf.Clamp((achievement.progress / (float)achievement.goal), 0, 1);
+            var progressScale = Mathf.Clamp(achievement.progress / (float)achievement.goal, 0, 1);
             progressBar.GetComponent<Image>().fillAmount = progressScale;
+
+            badgeText.color = achievement.isCompleted ? Color.white : Color.gray;
         }
     }
 }

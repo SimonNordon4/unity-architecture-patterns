@@ -148,287 +148,246 @@ namespace UnityArchitecture.SpaghettiPattern
                     name = AchievementName.Die,
                     uiName = "Die",
                     goal = 1,
-                    rewardGold = 50
                 },
                 new Achievement()
                 {
                     name = AchievementName.Kill100Enemies,
                     uiName = "Kill 100 Enemies",
                     goal = 100,
-                    rewardGold = 50
                 },
                 new Achievement()
                 {
                     name = AchievementName.Kill1000Enemies,
                     uiName = "Kill 1000 Enemies",
                     goal = 1000,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Kill10000Enemies,
                     uiName = "Kill 10000 Enemies",
                     goal = 10000,
-                    rewardGold = 2500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Kill100000Enemies,
                     uiName = "Kill 100000 Enemies",
                     goal = 100000,
-                    rewardGold = 10000
                 },
                 new Achievement()
                 {
                     name = AchievementName.Kill100Bosses,
                     uiName = "Kill 100 Bosses",
                     goal = 100,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Kill1000Bosses,
                     uiName = "Kill 1000 Bosses",
                     goal = 1000,
-                    rewardGold = 5000
                 },
                 new Achievement()
                 {
                     name = AchievementName.Die50Times,
                     uiName = "Die 50 Times",
                     goal = 50,
-                    rewardGold = 250
                 },
                 new Achievement()
                 {
                     name = AchievementName.Die100Times,
                     uiName = "Die 100 Times",
                     goal = 100,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Open100Chests,
                     uiName = "Open 100 Chests",
                     goal = 100,
-                    rewardGold = 250
                 },
                 new Achievement()
                 {
                     name = AchievementName.Open1000Chests,
                     uiName = "Open 1000 Chests",
                     goal = 1000,
-                    rewardGold = 2500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Earn100Gold,
                     uiName = "Earn 100 Gold",
                     goal = 100,
-                    rewardGold = 50
                 },
                 new Achievement()
                 {
                     name = AchievementName.Earn1000Gold,
                     uiName = "Earn 1000 Gold",
                     goal = 1000,
-                    rewardGold = 250
                 },
                 new Achievement()
                 {
                     name = AchievementName.Earn10000Gold,
                     uiName = "Earn 10000 Gold",
                     goal = 10000,
-                    rewardGold = 2000
                 },
                 new Achievement()
                 {
                     name = AchievementName.Earn100000Gold,
                     uiName = "Earn 100000 Gold",
                     goal = 100000,
-                    rewardGold = 10000
                 },
                 new Achievement()
                 {
                     name = AchievementName.BeatTheGame,
                     uiName = "Beat The Game",
                     goal = 1,
-                    rewardGold = 10000
                 },
                 new Achievement()
                 {
                     name = AchievementName.BeatTheGame10Times,
                     uiName = "Beat The Game 10 Times",
                     goal = 10,
-                    rewardGold = 25000
                 },
                 new Achievement()
                 {
                     name = AchievementName.WinInUnder1Hour,
                     uiName = "Win In Under 1 Hour",
                     goal = 3600,
-                    rewardGold = 2500
                 },
                 new Achievement()
                 {
                     name = AchievementName.WinInUnder45Minutes,
                     uiName = "Win In Under 45 Minutes",
                     goal = 2700,
-                    rewardGold = 5000
                 },
                 new Achievement()
                 {
                     name = AchievementName.WinInUnder30Minutes,
                     uiName = "Win In Under 30 Minutes",
                     goal = 1800,
-                    rewardGold = 10000
                 },
                 new Achievement
                 {
                     name = AchievementName.Reach50PistolDamage,
                     uiName = "Reach 50 Pistol Damage",
                     goal = 50,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach25PistolRange,
                     uiName = "Reach 25 Pistol Range",
                     goal = 25,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach15PistolFireRate,
                     uiName = "Reach 15 Pistol Fire Rate",
                     goal = 15,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach10PistolKnockBack,
                     uiName = "Reach 10 Pistol Knock Back",
                     goal = 10,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach3PistolPierce,
                     uiName = "Reach 3 Pistol Pierce",
                     goal = 3,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach100PlayerHealth,
                     uiName = "Reach 100 Player Health",
                     goal = 100,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach10PlayerSpeed,
                     uiName = "Reach 10 Player Speed",
                     goal = 10,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach50SwordDamage,
                     uiName = "Reach 50 Sword Damage",
                     goal = 50,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach10SwordRange,
                     uiName = "Reach 10 Sword Range",
                     goal = 10,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach8SwordAttackSpeed,
                     uiName = "Reach 8Sword Attack Speed",
                     goal = 8,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach10SwordKnockBack,
                     uiName = "Reach 10 Sword Knock Back",
                     goal = 10,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach540SwordArc,
                     uiName = "Reach 540 Sword Arc",
                     goal = 540,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach10HealthPackSpawnRate,
                     uiName = "Reach 10 Health Pack Spawn Rate",
                     goal = 10,
-                    rewardGold = 2500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach7Luck,
                     uiName = "Reach 7 Luck",
                     goal = 10,
-                    rewardGold = 2500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach5Block,
                     uiName = "Reach 5 Block",
                     goal = 5,
-                    rewardGold = 2500
                 },
                 new Achievement()
                 {
                     name = AchievementName.Reach60Dodge,
                     uiName = "Reach 60 Dodge",
                     goal = 60,
-                    rewardGold = 500
                 },
                 new Achievement()
                 {
                     name = AchievementName.BeatRound1,
                     uiName = "Beat Round 1",
                     goal = 1,
-                    rewardGold = 1500
                 },
                 new Achievement()
                 {
                     name = AchievementName.BeatRound2,
                     uiName = "Beat Round 2",
                     goal = 1,
-                    rewardGold = 2500
                 },
                 new Achievement()
                 {
                     name = AchievementName.BeatRound3,
                     uiName = "Beat Round 3",
                     goal = 1,
-                    rewardGold = 5000
                 },
                 new Achievement()
                 {
                     name = AchievementName.BeatRound4,
                     uiName = "Beat Round 4",
                     goal = 1,
-                    rewardGold = 7500
                 },
                 new Achievement()
                 {
                     name = AchievementName.BeatRound5,
                     uiName = "Beat Round 5",
                     goal = 1,
-                    rewardGold = 10000
                 },
             };
 
@@ -575,11 +534,9 @@ namespace UnityArchitecture.SpaghettiPattern
     {
         public AchievementName name;
         public string uiName;
-        public int rewardGold;
         public bool isCompleted;
         public int progress;
         public int goal;
-        public bool isClaimed;
     }
 
     public enum AchievementName
