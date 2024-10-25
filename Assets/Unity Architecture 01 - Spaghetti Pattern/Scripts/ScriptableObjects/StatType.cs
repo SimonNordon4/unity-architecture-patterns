@@ -16,9 +16,7 @@
         FireRate,
         KnockBack,
         Pierce,
-        BulletSize,
-        ReloadSpeed,
-        ClipSize
+        BulletSize
     }
 
     public enum ModifierType

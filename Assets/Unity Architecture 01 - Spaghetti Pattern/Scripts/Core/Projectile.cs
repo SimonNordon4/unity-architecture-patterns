@@ -11,15 +11,22 @@ namespace UnityArchitecture.SpaghettiPattern
         private float _timeAlive = 0f;
         public float knockBackIntensity = 1;
         public int pierceCount = 1;
+        public float critChance = 0;
+        public float critDamage = 1.5f;
 
         public bool canAttackPlayer = false;
         public bool canAttackEnemy = true;
+
+        public float projectileSize = 1;
 
         public ParticleSystem hitEffect;
 
         // Update is called once per frame
         private void Update()
         {
+            // set the scale of the projectile equal to the bullet size
+            transform.localScale = Vector3.one * projectileSize;
+            
             if (GameManager.instance.isGameActive == false) return;
 
             if (_timeAlive > projectileLifetime)
@@ -35,7 +42,12 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 // get enemy controller component
                 var enemyController = other.GetComponent<EnemyController>();
-                enemyController.TakeDamage(damage);
+
+                // Check if critical hit
+                var isCritical = Random.Range(0f, 1f) < critChance;
+                damage = (int)(damage * (isCritical ? critDamage : 1));
+
+                enemyController.TakeDamage(damage, isCritical);
 
                 // We have to ensure we didn't just kill the enemy.
                 if (enemyController != null)

@@ -39,8 +39,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public Stat knockback = new(1);
         public Stat pierce = new(0);
         public Stat bulletSize = new(1);
-        public Stat reloadSpeed = new(1);
-        public Stat clipSize = new(20);
 
         public readonly Dictionary<StatType, Stat> Stats = new();
 
@@ -50,8 +48,6 @@ namespace UnityArchitecture.SpaghettiPattern
         private Transform _closestTarget = null;
 
         [Header("UI")]
-        // public TextMeshProUGUI healthText;
-        // public Image healthBar;
         public Transform localCanvas;
         public GameObject dodgeTextGo;
         public GameObject damageTextGo;
@@ -70,7 +66,6 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Effects")]
         public ParticleSystem shootEffect;
         public ParticleSystem dashParticle;
-        public ParticleSystem reviveParticle;
 
         [Header("Debug")] public bool isDebugMode = false;
 
@@ -91,7 +86,6 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             _startRotation = localCanvas.rotation;
-            // SetUI();
         }
 
         public void ResetStats()
@@ -117,8 +111,6 @@ namespace UnityArchitecture.SpaghettiPattern
             Stats.Add(StatType.KnockBack, knockback);
             Stats.Add(StatType.Pierce, pierce);
             Stats.Add(StatType.BulletSize, bulletSize);
-            Stats.Add(StatType.ReloadSpeed, reloadSpeed);
-            Stats.Add(StatType.ClipSize, clipSize);
         }
 
         private IEnumerator Dash()
@@ -308,7 +300,6 @@ namespace UnityArchitecture.SpaghettiPattern
                 // draw a line from the player to the predicted position
                 Debug.DrawLine(_transform.position, predictedTargetPosition, Color.green,
                     1 / firerate.value);
-
             }
 
             projectileGo.transform.forward = shootDirection;
@@ -317,8 +308,6 @@ namespace UnityArchitecture.SpaghettiPattern
             projectile.pierceCount = (int)pierce.value;
             _timeSinceLastFire = 0.0f;
         }
-
-
 
         private void LateUpdate()
         {
@@ -404,14 +393,6 @@ namespace UnityArchitecture.SpaghettiPattern
                     }
                 }
             }
-            // SetUI();
-        }
-
-        private IEnumerator InvincibilityFrames()
-        {
-            _canTakeDamage = false;
-            yield return new WaitForSeconds(0.5f);
-            _canTakeDamage = true;
         }
 
         private IEnumerator ShowDodgeText()
@@ -490,17 +471,10 @@ namespace UnityArchitecture.SpaghettiPattern
             }
         }
 
-        // private void SetUI()
-        // {
-        //     healthText.text = $"{gameManager.playerCurrentHealth}/{(int)gameManager.playerMaxHealth.value}";
-        //     healthBar.fillAmount = (float)gameManager.playerCurrentHealth / (float)gameManager.playerMaxHealth.value;
-        // }
-
         public void ResetPlayer()
         {
             transform.SetPositionAndRotation(Vector3.up, Quaternion.identity);
             gameCamera.transform.position = _transform.position + _cameraOffset;
-            // SetUI();
         }
     }
 }

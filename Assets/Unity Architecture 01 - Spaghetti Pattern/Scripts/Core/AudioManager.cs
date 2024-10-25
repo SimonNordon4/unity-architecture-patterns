@@ -56,7 +56,7 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             // pick a random music clip and play it
             musicIndex = Random.Range(0, gameMusic.Length);
-            _musicSource.clip = gameMusic[musicIndex];
+            // _musicSource.clip = gameMusic[musicIndex];
             _musicSource.volume = 0.1f * SettingsManager.instance.musicVolume;
             _musicSource.Play();
         }
