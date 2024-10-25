@@ -921,7 +921,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 132.0047, y: -153}
+  m_AnchoredPosition: {x: 193, y: -136}
   m_SizeDelta: {x: 210.1464, y: 113.9468}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7189911024555437664
@@ -1005,31 +1005,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6422820177123307828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 34738642702461295}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: GoToMainMenu
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1669750780347158466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1582,7 +1558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: bd49be87c5480f241a1df9a9310f7678, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8a48a9bfadb0f2f4e840a58af8fbfbce, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
