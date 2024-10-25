@@ -47,7 +47,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public void ShowTip(TutorialMessage message, float delay = 0f)
         {
             // Show tips for the first game only.
-            if (AccountManager.instance.statistics.gamesPlayed > 1) return;
+            if (AccountManager.Instance.statistics.gamesPlayed > 1) return;
             StartCoroutine(ShowPopup(Tips[message], delay));
         }
 

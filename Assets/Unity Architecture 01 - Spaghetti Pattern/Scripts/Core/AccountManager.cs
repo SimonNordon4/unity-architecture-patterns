@@ -9,7 +9,7 @@ namespace UnityArchitecture.SpaghettiPattern
     public class AccountManager : MonoBehaviour
     {
         private static AccountManager _instance;
-        public static AccountManager instance
+        public static AccountManager Instance
         {
             get
             {
@@ -21,9 +21,6 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             private set => _instance = value;
         }
-
-        [Header("Gold")]
-        public int totalGold;
 
         [Header("Statistics")]
         public StatisticsSave statistics = new();
@@ -60,7 +57,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public void Save()
         {
             var accountSave = new AccountSave();
-            accountSave.totalGold = totalGold;
 
             var json = JsonUtility.ToJson(accountSave);
             PlayerPrefs.SetString("account", json);
@@ -79,20 +75,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Load()
         {
-            var json = PlayerPrefs.GetString("account");
-            if (string.IsNullOrEmpty(json))
-            {
-                totalGold = 0;
-            }
-            else
-            {
-                var accountSave = JsonUtility.FromJson<AccountSave>(json);
-                totalGold = accountSave.totalGold;
-            }
-
-
-
-            json = PlayerPrefs.GetString("statistics");
+            
+            var json = PlayerPrefs.GetString("statistics");
             if (string.IsNullOrEmpty(json))
             {
                 statistics = new StatisticsSave
@@ -133,7 +117,6 @@ namespace UnityArchitecture.SpaghettiPattern
             // delete all player prefs.
             PlayerPrefs.DeleteAll();
 
-            totalGold = 40;
             statistics = new StatisticsSave();
             CreateAchievements();
         }

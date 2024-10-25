@@ -377,7 +377,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             AudioManager.instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
 
-            AccountManager.instance.statistics.totalDamageTaken += damageAmount;
+            AccountManager.Instance.statistics.totalDamageTaken += damageAmount;
 
             playerCurrentHealth -= damageAmount;
 
@@ -385,11 +385,11 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 playerCurrentHealth = 0;
 
-                AccountManager.instance.statistics.totalDeaths++;
+                AccountManager.Instance.statistics.totalDeaths++;
                 AudioManager.instance.PlaySound(deathSound);
                 gameManager.LoseGame();
 
-                List<Achievement> dieAchievements = AccountManager.instance.achievementSave.achievements
+                List<Achievement> dieAchievements = AccountManager.Instance.achievementSave.achievements
                     .Where(a => a.name == AchievementName.Die ||
                                 a.name == AchievementName.Die50Times ||
                                 a.name == AchievementName.Die100Times).ToList();
@@ -400,7 +400,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     if (a.progress >= a.goal)
                     {
                         a.isCompleted = true;
-                        AccountManager.instance.AchievementUnlocked(a);
+                        AccountManager.Instance.AchievementUnlocked(a);
                     }
                 }
             }
@@ -483,7 +483,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     0f,
                     playerMaxHealth.value);
 
-                AccountManager.instance.statistics.totalDamageHealed += healthGained;
+                AccountManager.Instance.statistics.totalDamageHealed += healthGained;
                 playerCurrentHealth = healthGained;
 
                 Destroy(other.gameObject);

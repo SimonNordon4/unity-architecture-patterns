@@ -439,23 +439,23 @@ namespace UnityArchitecture.SpaghettiPattern
                 switch (_blockIndex)
                 {
                     case (0):
-                        AccountManager.instance.AchievementUnlocked(AccountManager.instance.achievementSave.achievements
+                        AccountManager.Instance.AchievementUnlocked(AccountManager.Instance.achievementSave.achievements
                             .First(x => x.name == AchievementName.BeatRound1));
                         break;
                     case (1):
-                        AccountManager.instance.AchievementUnlocked(AccountManager.instance.achievementSave.achievements
+                        AccountManager.Instance.AchievementUnlocked(AccountManager.Instance.achievementSave.achievements
                             .First(x => x.name == AchievementName.BeatRound2));
                         break;
                     case (2):
-                        AccountManager.instance.AchievementUnlocked(AccountManager.instance.achievementSave.achievements
+                        AccountManager.Instance.AchievementUnlocked(AccountManager.Instance.achievementSave.achievements
                             .First(x => x.name == AchievementName.BeatRound3));
                         break;
                     case (3):
-                        AccountManager.instance.AchievementUnlocked(AccountManager.instance.achievementSave.achievements
+                        AccountManager.Instance.AchievementUnlocked(AccountManager.Instance.achievementSave.achievements
                             .First(x => x.name == AchievementName.BeatRound4));
                         break;
                     case (4):
-                        AccountManager.instance.AchievementUnlocked(AccountManager.instance.achievementSave.achievements
+                        AccountManager.Instance.AchievementUnlocked(AccountManager.Instance.achievementSave.achievements
                             .First(x => x.name == AchievementName.BeatRound5));
                         break;
                 }

@@ -24,11 +24,11 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             Debug.Log("SettingsManager Start");
-            musicVolume = AccountManager.instance.settingsSave.musicVolume;
-            sfxVolume = AccountManager.instance.settingsSave.sfxVolume;
-            showDamageNumbers = AccountManager.instance.settingsSave.showDamageNumbers;
-            showEnemyHealthBars = AccountManager.instance.settingsSave.showEnemyHealthBars;
-            isHyperMode = AccountManager.instance.settingsSave.isHyperMode;
+            musicVolume = AccountManager.Instance.settingsSave.musicVolume;
+            sfxVolume = AccountManager.Instance.settingsSave.sfxVolume;
+            showDamageNumbers = AccountManager.Instance.settingsSave.showDamageNumbers;
+            showEnemyHealthBars = AccountManager.Instance.settingsSave.showEnemyHealthBars;
+            isHyperMode = AccountManager.Instance.settingsSave.isHyperMode;
         }
 
         public bool showDamageNumbers = true;
@@ -42,15 +42,15 @@ namespace UnityArchitecture.SpaghettiPattern
         public void SetMusicVolume(float volume)
         {
             musicVolume = volume;
-            AccountManager.instance.settingsSave.musicVolume = volume;
-            AccountManager.instance.Save();
+            AccountManager.Instance.settingsSave.musicVolume = volume;
+            AccountManager.Instance.Save();
         }
 
         public void SetSfxVolume(float volume)
         {
             sfxVolume = volume;
-            AccountManager.instance.settingsSave.sfxVolume = volume;
-            AccountManager.instance.Save();
+            AccountManager.Instance.settingsSave.sfxVolume = volume;
+            AccountManager.Instance.Save();
         }
 
         public void SetShowEnemyHealthBars(bool show)
@@ -63,15 +63,15 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 enemy.SetHealthBarVisibility(showEnemyHealthBars);
             }
-            AccountManager.instance.settingsSave.showEnemyHealthBars = show;
-            AccountManager.instance.Save();
+            AccountManager.Instance.settingsSave.showEnemyHealthBars = show;
+            AccountManager.Instance.Save();
         }
 
         public void ShowDamageNumbers(bool show)
         {
             showDamageNumbers = show;
-            AccountManager.instance.settingsSave.showDamageNumbers = show;
-            AccountManager.instance.Save();
+            AccountManager.Instance.settingsSave.showDamageNumbers = show;
+            AccountManager.Instance.Save();
         }
     }
 }

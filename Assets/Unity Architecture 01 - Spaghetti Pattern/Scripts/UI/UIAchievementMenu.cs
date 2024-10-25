@@ -25,7 +25,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         void Init()
         {
-            var achievements = AccountManager.instance.achievementSave.achievements.ToList();
+            var achievements = AccountManager.Instance.achievementSave.achievements.ToList();
 
             // sort achievements by completed (incomplete first)
             achievements = achievements.OrderBy(x => x.isCompleted).ToList();
@@ -43,10 +43,10 @@ namespace UnityArchitecture.SpaghettiPattern
 
             achievementEntryUIGameObject.Initialize(achievements[0], this);
 
-            var completedAchievements = AccountManager.instance.achievementSave.achievements
+            var completedAchievements = AccountManager.Instance.achievementSave.achievements
                 .Sum(x => x.isCompleted ? 1 : 0);
 
-            var totalAchievements = AccountManager.instance.achievementSave.achievements.Length;
+            var totalAchievements = AccountManager.Instance.achievementSave.achievements.Length;
             totalAchievementText.text = $"Earned: {completedAchievements}/{totalAchievements}";
         }
 

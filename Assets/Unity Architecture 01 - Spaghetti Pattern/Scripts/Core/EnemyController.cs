@@ -203,7 +203,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void TakeDamage(int damage)
         {
-            AccountManager.instance.statistics.totalDamageDealt += damage;
+            AccountManager.Instance.statistics.totalDamageDealt += damage;
             // Take damage, die if at 0.
             currentHealth -= damage;
             UpdateHealthText();

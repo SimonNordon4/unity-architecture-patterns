@@ -138,7 +138,7 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             Debug.Log("Start New Game");
             HideAll();
-            AccountManager.instance.statistics.gamesPlayed++;
+            AccountManager.Instance.statistics.gamesPlayed++;
             hudMenu.SetActive(true);
             isGameActive = true;
             roundTime = 0f;
@@ -207,18 +207,18 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void WinGame()
         {
-            AccountManager.instance.Save();
+            AccountManager.Instance.Save();
             HideAll();
             winMenu.SetActive(true);
             isGameActive = false;
-            AccountManager.instance.statistics.gamesWon++;
+            AccountManager.Instance.statistics.gamesWon++;
 
             // check if faster time
-            if (AccountManager.instance.statistics.fastestWin == 0 ||
-                roundTime < AccountManager.instance.statistics.fastestWin)
-                AccountManager.instance.statistics.fastestWin = roundTime;
+            if (AccountManager.Instance.statistics.fastestWin == 0 ||
+                roundTime < AccountManager.Instance.statistics.fastestWin)
+                AccountManager.Instance.statistics.fastestWin = roundTime;
 
-            List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+            List<Achievement> achievements = AccountManager.Instance.achievementSave.achievements
                 .Where(a => a.name == AchievementName.BeatTheGame ||
                             a.name == AchievementName.BeatTheGame10Times).ToList();
             foreach (var a in achievements)
@@ -228,11 +228,11 @@ namespace UnityArchitecture.SpaghettiPattern
                 if (a.progress >= a.goal)
                 {
                     a.isCompleted = true;
-                    AccountManager.instance.AchievementUnlocked(a);
+                    AccountManager.Instance.AchievementUnlocked(a);
                 }
             }
 
-            var under1hour = AccountManager.instance.achievementSave.achievements
+            var under1hour = AccountManager.Instance.achievementSave.achievements
                 .First(x => x.name == AchievementName.WinInUnder1Hour);
 
             if (!under1hour.isCompleted)
@@ -243,7 +243,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
 
 
-            var under45mins = AccountManager.instance.achievementSave.achievements
+            var under45mins = AccountManager.Instance.achievementSave.achievements
                 .First(x => x.name == AchievementName.WinInUnder45Minutes);
 
             if (!under45mins.isCompleted)
@@ -254,7 +254,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
 
 
-            var under30mins = AccountManager.instance.achievementSave.achievements
+            var under30mins = AccountManager.Instance.achievementSave.achievements
                 .First(x => x.name == AchievementName.WinInUnder30Minutes);
 
             if (!under30mins.isCompleted)
@@ -290,7 +290,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void QuitApplication()
         {
-            AccountManager.instance.Save();
+            AccountManager.Instance.Save();
 
             Debug.Log("Quit Application");
 #if UNITY_EDITOR
@@ -386,7 +386,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public void PickupChest(Chest chest)
         {
             // monitor stats.
-            AccountManager.instance.statistics.totalChestsOpened++;
+            AccountManager.Instance.statistics.totalChestsOpened++;
 
 
             // If we pickup a mini chest, we can start spawning the next mini chest.
@@ -464,7 +464,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     break;
                 }
 
-                List<Achievement> achievements = AccountManager.instance.achievementSave.achievements
+                List<Achievement> achievements = AccountManager.Instance.achievementSave.achievements
                     .Where(a => a.name == AchievementName.Open100Chests ||
                                 a.name == AchievementName.Open1000Chests).ToList();
                 foreach (var a in achievements)
@@ -474,7 +474,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     if (a.progress >= a.goal)
                     {
                         a.isCompleted = true;
-                        AccountManager.instance.AchievementUnlocked(a);
+                        AccountManager.Instance.AchievementUnlocked(a);
                     }
                 }
 
@@ -557,12 +557,12 @@ namespace UnityArchitecture.SpaghettiPattern
                 stat.AddModifier(mod);
 
                 // TODO: This might be broken.
-                AccountManager.instance.CheckIfHighestStat(mod.statType, stat.value);
+                AccountManager.Instance.CheckIfHighestStat(mod.statType, stat.value);
 
                 // If it's a max health mod, we need to also increase the current health.
                 if (mod.statType == StatType.MaxHealth)
                 {
-                    AccountManager.instance.statistics.totalDamageHealed += (int)mod.modifierValue;
+                    AccountManager.Instance.statistics.totalDamageHealed += (int)mod.modifierValue;
 
                     var newHealth = Mathf.Clamp(playerManager.playerCurrentHealth + (int)mod.modifierValue, 1,
                         (int)playerManager.playerMaxHealth.value);
@@ -620,10 +620,10 @@ namespace UnityArchitecture.SpaghettiPattern
                 var healthPack = Instantiate(HealthPackPrefab, pos, Quaternion.identity);
             }
 
-            AccountManager.instance.statistics.totalKills++;
+            AccountManager.Instance.statistics.totalKills++;
 
             // get all boss enemy achievements
-            List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+            List<Achievement> bossEnemyAchievements = AccountManager.Instance.achievementSave.achievements
                 .Where(a => a.name == AchievementName.Kill1000Enemies ||
                             a.name == AchievementName.Kill10000Enemies ||
                             a.name == AchievementName.Kill100000Enemies ||
@@ -636,7 +636,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 if (a.progress >= a.goal)
                 {
                     a.isCompleted = true;
-                    AccountManager.instance.AchievementUnlocked(a);
+                    AccountManager.Instance.AchievementUnlocked(a);
                 }
             }
         }
@@ -644,7 +644,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public void OnBossEnemyDied(GameObject enemy)
         {
             // get all boss enemy achievements
-            List<Achievement> bossEnemyAchievements = AccountManager.instance.achievementSave.achievements
+            List<Achievement> bossEnemyAchievements = AccountManager.Instance.achievementSave.achievements
                 .Where(a => a.name == AchievementName.Kill100Bosses ||
                             a.name == AchievementName.Kill1000Bosses ||
                             a.name == AchievementName.Kill1000Enemies ||
@@ -659,12 +659,12 @@ namespace UnityArchitecture.SpaghettiPattern
                 if (a.progress >= a.goal)
                 {
                     a.isCompleted = true;
-                    AccountManager.instance.AchievementUnlocked(a);
+                    AccountManager.Instance.AchievementUnlocked(a);
                 }
             }
 
-            AccountManager.instance.statistics.totalBossKills++;
-            AccountManager.instance.statistics.totalKills++;
+            AccountManager.Instance.statistics.totalBossKills++;
+            AccountManager.Instance.statistics.totalKills++;
         }
 
         #endregion
