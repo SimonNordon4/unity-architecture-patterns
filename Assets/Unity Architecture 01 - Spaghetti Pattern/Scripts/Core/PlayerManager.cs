@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace UnityArchitecture.SpaghettiPattern
 {
     [DefaultExecutionOrder(10)]
-    public class PlayerController : MonoBehaviour
+    public class PlayerManager : MonoBehaviour
     {
         private Transform _transform;
 
@@ -21,6 +21,28 @@ namespace UnityArchitecture.SpaghettiPattern
         public GameManager gameManager;
         public EnemyManagerOld enemyManager;
 
+        [Header("Stats")] 
+        public int playerCurrentHealth = 10;
+        public Stat playerMaxHealth = new(10);
+        public Stat healthRegen = new(1);
+        public Stat playerSpeed = new(5);
+        public Stat armor = new(0);
+        public Stat dodge = new(0);
+        public Stat dashCooldown = new(8);
+        public Stat dashDistance = new(0);
+
+        public Stat damage = new(1);
+        public Stat critChance = new(0);
+        public Stat critDamage = new(1.5f);
+        public Stat range = new(5);
+        public Stat firerate = new(0.5f);
+        public Stat knockback = new(1);
+        public Stat pierce = new(0);
+        public Stat bulletSize = new(1);
+        public Stat reloadSpeed = new(1);
+        public Stat clipSize = new(20);
+
+        public readonly Dictionary<StatType, Stat> Stats = new();
 
         [Header("Pistol")]
         public GameObject projectilePrefab;
@@ -28,8 +50,8 @@ namespace UnityArchitecture.SpaghettiPattern
         private Transform _closestTarget = null;
 
         [Header("UI")]
-        public TextMeshProUGUI healthText;
-        public Image healthBar;
+        // public TextMeshProUGUI healthText;
+        // public Image healthBar;
         public Transform localCanvas;
         public GameObject dodgeTextGo;
         public GameObject damageTextGo;
@@ -37,13 +59,13 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private Coroutine _dodgeTextCoroutine;
         private Coroutine _damageTextCoroutine;
-        private Coroutine _dashCoroutine;
         private bool _isDashing;
         private bool _canTakeDamage = true;
 
         [Header("Dash")]
-        public float dashDistance = 5f;
         public float dashTime = 0.2f;
+        private bool _dashOnCooldown = false;
+        private float _timeSinceLastDash = 0f;
 
         [Header("Effects")]
         public ParticleSystem shootEffect;
@@ -69,17 +91,43 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             _startRotation = localCanvas.rotation;
-            SetUI();
+            // SetUI();
+        }
+
+        public void ResetStats()
+        {
+            Stats.Clear();
+            InitializeStats();
+        }
+
+        public void InitializeStats()
+        {
+            Stats.Add(StatType.MaxHealth, playerMaxHealth);
+            Stats.Add(StatType.HealthRegen, healthRegen);
+            Stats.Add(StatType.Speed, playerSpeed);
+            Stats.Add(StatType.Armor, armor);
+            Stats.Add(StatType.Dodge, dodge);
+            Stats.Add(StatType.DashCooldown, dashCooldown);
+            Stats.Add(StatType.DashDistance, dashDistance);
+            Stats.Add(StatType.Damage, damage);
+            Stats.Add(StatType.CritChance, critChance);
+            Stats.Add(StatType.CritDamage, critDamage);
+            Stats.Add(StatType.Range, range);
+            Stats.Add(StatType.FireRate, firerate);
+            Stats.Add(StatType.KnockBack, knockback);
+            Stats.Add(StatType.Pierce, pierce);
+            Stats.Add(StatType.BulletSize, bulletSize);
+            Stats.Add(StatType.ReloadSpeed, reloadSpeed);
+            Stats.Add(StatType.ClipSize, clipSize);
         }
 
         private IEnumerator Dash()
         {
             _isDashing = true;
-            gameManager.dashes.value--;
 
             var elapsedTime = 0f;
             var startPosition = transform.position;
-            var dashDestination = transform.forward * dashDistance + transform.position;
+            var dashDestination = transform.forward * dashDistance.value + transform.position;
 
             while (elapsedTime < dashTime)
             {
@@ -105,18 +153,26 @@ namespace UnityArchitecture.SpaghettiPattern
             }
 
             _isDashing = false;
-
+            _dashOnCooldown = true;
         }
 
         private void Update()
         {
+            if(_dashOnCooldown)
+            {
+                _timeSinceLastDash -= Time.deltaTime;
+                if(_timeSinceLastDash > dashCooldown.value)
+                {
+                    _dashOnCooldown = false;
+                }
+            }
+
             if (!GameManager.instance.isGameActive) return;
 
-            if (Input.GetKeyDown(KeyCode.Space) && (int)gameManager.dashes.value > 0 && !_isDashing)
+            if (Input.GetKeyDown(KeyCode.Space) && !_dashOnCooldown && !_isDashing)
             {
                 AudioManager.instance.PlaySound(dashSound);
                 dashParticle.Play();
-                _dashCoroutine = StartCoroutine(Dash());
             }
 
             if (_isDashing) return;
@@ -150,11 +206,11 @@ namespace UnityArchitecture.SpaghettiPattern
 
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
-            if (_timeSinceLastFire > 1 / gameManager.pistolFireRate.value)
+            if (_timeSinceLastFire > 1 / firerate.value)
             {
                 if (!targetIsNull)
                 {
-                    if (closestDistance <= gameManager.pistolRange.value)
+                    if (closestDistance <= range.value)
                     {
                         var isKnockBack = false;
                         if (_closestTarget.TryGetComponent<EnemyController>(out var enemyController))
@@ -202,7 +258,7 @@ namespace UnityArchitecture.SpaghettiPattern
             // Apply movement
             if (dir.magnitude > 0)
             {
-                _transform.position += dir.normalized * (Time.deltaTime * gameManager.playerSpeed.value);
+                _transform.position += dir.normalized * (Time.deltaTime * playerSpeed.value);
                 _transform.rotation = Quaternion.LookRotation(dir);
             }
         }
@@ -214,9 +270,9 @@ namespace UnityArchitecture.SpaghettiPattern
             var projectileGo = Instantiate(projectilePrefab, _transform.position,
                 Quaternion.LookRotation(directionToTarget));
             var projectile = projectileGo.GetComponent<Projectile>();
-            projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
-            projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
-            projectile.pierceCount = (int)gameManager.pistolPierce.value;
+            projectile.damage = Mathf.RoundToInt(damage.value);
+            projectile.knockBackIntensity = knockback.value;
+            projectile.pierceCount = (int)pierce.value;
             _timeSinceLastFire = 0.0f;
         }
 
@@ -251,14 +307,14 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 // draw a line from the player to the predicted position
                 Debug.DrawLine(_transform.position, predictedTargetPosition, Color.green,
-                    1 / gameManager.pistolFireRate.value);
+                    1 / firerate.value);
 
             }
 
             projectileGo.transform.forward = shootDirection;
-            projectile.damage = Mathf.RoundToInt(gameManager.pistolDamage.value);
-            projectile.knockBackIntensity = gameManager.pistolKnockBack.value;
-            projectile.pierceCount = (int)gameManager.pistolPierce.value;
+            projectile.damage = Mathf.RoundToInt(damage.value);
+            projectile.knockBackIntensity = knockback.value;
+            projectile.pierceCount = (int)pierce.value;
             _timeSinceLastFire = 0.0f;
         }
 
@@ -286,7 +342,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
 
             gameCamera.transform.position = cameraWishPosition;
-            SetUI();
+            // SetUI();
         }
 
         public void TakeDamage(int damageAmount)
@@ -296,18 +352,20 @@ namespace UnityArchitecture.SpaghettiPattern
             // Check if damage is dodged.
             var hitChance = Random.Range(0, 100);
 
-            if (hitChance < gameManager.dodge.value)
+            if (hitChance < dodge.value)
             {
                 if (_dodgeTextCoroutine != null) StopCoroutine(_dodgeTextCoroutine);
                 _dodgeTextCoroutine = StartCoroutine(ShowDodgeText());
                 return;
             }
 
-            damageAmount -= (int)gameManager.block.value;
-            // We should never be invincible imo.
+            var armorMitigation = armor.value / (armor.value + 100);
+
+            damageAmount = Mathf.RoundToInt(1-armorMitigation);
+            // We should never be invincible imo. hard cap to 1.
             if (damageAmount <= 0)
             {
-                damageAmount = 0;
+                damageAmount = 1;
             }
 
             if (_damageTextCoroutine != null)
@@ -321,34 +379,11 @@ namespace UnityArchitecture.SpaghettiPattern
 
             AccountManager.instance.statistics.totalDamageTaken += damageAmount;
 
-            gameManager.playerCurrentHealth -= damageAmount;
+            playerCurrentHealth -= damageAmount;
 
-            if (gameManager.playerCurrentHealth <= 0)
+            if (playerCurrentHealth <= 0)
             {
-                gameManager.playerCurrentHealth = 0;
-
-                if ((int)gameManager.revives.value > 0)
-                {
-                    reviveParticle.Play();
-                    gameManager.revives.value--;
-
-                    var enemyCount = enemyManager.enemies.Count;
-                    var enemies = enemyManager.enemies.ToArray();
-                    for (var i = 0; i < enemyCount - 1; i++)
-                    {
-                        var controller = enemies[i].GetComponent<EnemyController>();
-                        if (controller != null)
-                        {
-                            controller.TakeDamage(9999);
-                        }
-
-                    }
-
-                    gameManager.playerCurrentHealth = (int)gameManager.playerMaxHealth.value;
-                    StartCoroutine(InvincibilityFrames());
-
-                    return;
-                }
+                playerCurrentHealth = 0;
 
                 AccountManager.instance.statistics.totalDeaths++;
                 AudioManager.instance.PlaySound(deathSound);
@@ -369,7 +404,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     }
                 }
             }
-            SetUI();
+            // SetUI();
         }
 
         private IEnumerator InvincibilityFrames()
@@ -443,28 +478,29 @@ namespace UnityArchitecture.SpaghettiPattern
             if (other.CompareTag("Health Pack"))
             {
                 AudioManager.instance.PlaySound(healthPackSound);
-                var healthGained = (int)Mathf.Clamp((GameManager.instance.playerCurrentHealth + GameManager.instance.playerMaxHealth.value * 0.1f + 1),
+                var healthGained =
+                 (int)Mathf.Clamp(playerCurrentHealth + playerMaxHealth.value * 0.1f + 1,
                     0f,
-                    GameManager.instance.playerMaxHealth.value);
+                    playerMaxHealth.value);
 
                 AccountManager.instance.statistics.totalDamageHealed += healthGained;
-                GameManager.instance.playerCurrentHealth = healthGained;
+                playerCurrentHealth = healthGained;
 
                 Destroy(other.gameObject);
             }
         }
 
-        private void SetUI()
-        {
-            healthText.text = $"{gameManager.playerCurrentHealth}/{(int)gameManager.playerMaxHealth.value}";
-            healthBar.fillAmount = (float)gameManager.playerCurrentHealth / (float)gameManager.playerMaxHealth.value;
-        }
+        // private void SetUI()
+        // {
+        //     healthText.text = $"{gameManager.playerCurrentHealth}/{(int)gameManager.playerMaxHealth.value}";
+        //     healthBar.fillAmount = (float)gameManager.playerCurrentHealth / (float)gameManager.playerMaxHealth.value;
+        // }
 
         public void ResetPlayer()
         {
             transform.SetPositionAndRotation(Vector3.up, Quaternion.identity);
             gameCamera.transform.position = _transform.position + _cameraOffset;
-            SetUI();
+            // SetUI();
         }
     }
 }

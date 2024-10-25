@@ -2,16 +2,23 @@
 {
     public enum StatType
     {
-        PistolFireRate,
-        PistolDamage,
-        PistolRange,
-        PistolKnockBack,
-        PistolPierce,
-        PlayerSpeed,
-        PlayerHealth,
-        EnemySpawnRate,
-        HealthPackSpawnRate,
-        Dodge
+        MaxHealth,
+        HealthRegen,
+        Speed,
+        Armor,
+        Dodge,
+        DashCooldown,
+        DashDistance,
+        Damage,
+        CritChance,
+        CritDamage,
+        Range,
+        FireRate,
+        KnockBack,
+        Pierce,
+        BulletSize,
+        ReloadSpeed,
+        ClipSize
     }
 
     public enum ModifierType

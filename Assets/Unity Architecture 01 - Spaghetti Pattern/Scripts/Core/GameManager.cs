@@ -23,6 +23,8 @@ namespace UnityArchitecture.SpaghettiPattern
             private set => _instance = value;
         }
 
+        private PlayerManager playerManager;
+
         #region Variables
 
         [Header("Round")] public float roundDuration = 20f;
@@ -31,54 +33,34 @@ namespace UnityArchitecture.SpaghettiPattern
         public bool isGameActive = false;
         public Vector2 levelBounds = new(25f, 25f);
 
-
-        [Header("Stats")] public int playerCurrentHealth = 10;
-        public Stat playerMaxHealth = new(10);
-        public Stat playerSpeed = new(5);
-        public Stat block = new(0);
-        public Stat dodge = new(0);
-        public Stat revives = new(0);
-        public Stat dashes = new(0);
-
-        public Stat pistolDamage = new(1);
-        public Stat pistolRange = new(5);
-        public Stat pistolFireRate = new(0.5f);
-        public Stat pistolKnockBack = new(1);
-        public Stat pistolPierce = new(0);
-
-        public Stat luck = new(0);
-        public Stat enemySpawnRate = new(1);
-        public Stat healthPackSpawnRate = new(5);
-
-        private readonly Dictionary<StatType, Stat> _stats = new();
         public readonly List<ChestItem> currentlyHeldItems = new();
 
         [Header("UI")]
         public GameObject pauseMenu;
-        public GameObject gameMenu;
+        public GameObject hudMenu;
         public GameObject gameOverMenu;
         public GameObject winMenu;
 
-        public List<TextMeshProUGUI> GoldTexts = new();
-        public List<TextMeshProUGUI> GoldSubTexts = new();
+        // public List<TextMeshProUGUI> GoldTexts = new();
+        // public List<TextMeshProUGUI> GoldSubTexts = new();
 
-        [Header("Stat UI")] public List<RectTransform> StatContainers = new();
-        private Dictionary<StatType, List<TextMeshProUGUI>> statTexts = new();
-        public Color defaultStatColor;
-        public Color plusStatColor;
-        public Color minusStatColor;
-        public TMP_FontAsset statFont;
+        // [Header("Stat UI")] public List<RectTransform> StatContainers = new();
+        // private Dictionary<StatType, List<TextMeshProUGUI>> statTexts = new();
+        // public Color defaultStatColor;
+        // public Color plusStatColor;
+        // public Color minusStatColor;
+        // public TMP_FontAsset statFont;
 
-        [Header("Item UI")] public RectTransform itemHoverImageContainer;
-        private readonly List<GameObject> _itemHoverImages = new();
-        public UIChestItemHoverImage itemHoverImagePrefab;
+        // [Header("Item UI")] public RectTransform itemHoverImageContainer;
+        // private readonly List<GameObject> _itemHoverImages = new();
+        // public UIChestItemHoverImage itemHoverImagePrefab;
 
 
         // Chest Item
-        public GameObject chestItemMenu;
-        public RectTransform chestItemButtonContainer;
-        public UIChestItemButton chestItemButtonPrefab;
-        private readonly List<UIChestItemButton> _chestItemButtons = new();
+        // public GameObject chestItemMenu;
+        // public RectTransform chestItemButtonContainer;
+        // public UIChestItemButton chestItemButtonPrefab;
+        // private readonly List<UIChestItemButton> _chestItemButtons = new();
 
         [Header("Chests")] public Vector2 chestBounds = new(20f, 20f);
         public ChestItemsConfig tier1ChestItems;
@@ -97,20 +79,19 @@ namespace UnityArchitecture.SpaghettiPattern
         private int _pityLuck;
         public float pityLuckScaling = 1f;
 
-        public UIWasdButtonSelector _chestItemsWasdSelector;
+        // public UIWasdButtonSelector _chestItemsWasdSelector;
 
-        [Header("Health Packs")] public GameObject HealthPackPrefab;
+        [Header("Health Packs")] 
+        public GameObject HealthPackPrefab;
 
         #endregion
 
         #region Unity Functions
 
-        private IEnumerator Start()
+        private void Start()
         {
-
-            PopulateStats();
-            PopulateStatsUI();
-            playerCurrentHealth = (int)playerMaxHealth.value;
+            playerManager = FindObjectsByType<PlayerManager>(FindObjectsSortMode.None)[0];
+            playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
 
             _allItems = new[]
             {
@@ -124,9 +105,8 @@ namespace UnityArchitecture.SpaghettiPattern
             // Chest has to spawn inside the level.
             if (chestBounds.magnitude > levelBounds.magnitude)
                 chestBounds = levelBounds;
-
-            yield return new WaitForSeconds(1.5f);
             isGameActive = true;
+            StartNewGame();
         }
 
         private void Update()
@@ -134,10 +114,6 @@ namespace UnityArchitecture.SpaghettiPattern
             if (isGameActive)
             {
                 roundTime += Time.deltaTime;
-
-                //format round time in MM:SS
-                var minutes = Mathf.FloorToInt(roundTime / 60f);
-                var seconds = Mathf.FloorToInt(roundTime % 60f);
 
                 if (_nextMiniChest)
                 {
@@ -163,14 +139,14 @@ namespace UnityArchitecture.SpaghettiPattern
             Debug.Log("Start New Game");
             HideAll();
             AccountManager.instance.statistics.gamesPlayed++;
-            gameMenu.SetActive(true);
+            hudMenu.SetActive(true);
             isGameActive = true;
             roundTime = 0f;
-            playerCurrentHealth = (int)playerMaxHealth.value;
+            playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
             SpawnMiniChest();
             // clear all items
             currentlyHeldItems.Clear();
-            UpdateItemUI();
+            //UpdateItemUI();
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Dash, 22f);
@@ -194,7 +170,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 HideAll();
                 isGameActive = true;
                 isPaused = false;
-                gameMenu.SetActive(true);
+                hudMenu.SetActive(true);
             }
             // Do nothing otherwise.
         }
@@ -203,9 +179,9 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             _pityLuck = 0;
             isPaused = false;
-            playerCurrentHealth = (int)playerMaxHealth.value;
+            playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
             Debug.Log("Reset Game");
-            var playerController = FindFirstObjectByType<PlayerController>();
+            var playerController = FindFirstObjectByType<PlayerManager>();
             playerController.ResetPlayer();
 
             var enemyManager = FindFirstObjectByType<EnemyManagerOld>();
@@ -218,8 +194,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var spawnIndicators = GameObject.FindGameObjectsWithTag("Spawn Indicator");
             foreach (var spawnIndicator in spawnIndicators) Destroy(spawnIndicator);
 
-            foreach (var val in _stats.Values) val.Reset();
-            UpdateStatsUI();
+            playerManager.ResetStats();
 
             // Remove all chests.
             var chests = FindObjectsByType<Chest>(FindObjectsSortMode.None);
@@ -306,11 +281,11 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void HideAll()
         {
-            gameMenu.SetActive(false);
+            hudMenu.SetActive(false);
             pauseMenu.SetActive(false);
             gameOverMenu.SetActive(false);
             winMenu.SetActive(false);
-            chestItemMenu.SetActive(false);
+            // chestItemMenu.SetActive(false);
         }
 
         public void QuitApplication()
@@ -327,95 +302,72 @@ namespace UnityArchitecture.SpaghettiPattern
 
         #endregion
 
-        #region Stats UI
+        // private void PopulateStatsUI()
+        // {
+        //     foreach (var statContainer in StatContainers)
+        //     {
+        //         // get all the children of the stat container and destroy them.
+        //         foreach (Transform child in statContainer) Destroy(child.gameObject);
 
-        private void PopulateStats()
-        {
-            _stats.Add(StatType.PlayerHealth, playerMaxHealth);
-            _stats.Add(StatType.PlayerSpeed, playerSpeed);
-            _stats.Add(StatType.Dodge, dodge);
+        //         foreach (var key in _stats.Keys)
+        //         {
+        //             Debug.Log("Creating stat for: " + key);
+        //             var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
+        //                 statContainer);
+        //             newStatText.fontSize = 24;
+        //             newStatText.font = statFont;
+        //             newStatText.color = defaultStatColor;
+        //             // set the width of the text transform to 400
+        //             newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
 
-            _stats.Add(StatType.PistolDamage, pistolDamage);
-            _stats.Add(StatType.PistolRange, pistolRange);
-            _stats.Add(StatType.PistolFireRate, pistolFireRate);
-            _stats.Add(StatType.PistolKnockBack, pistolKnockBack);
-            _stats.Add(StatType.PistolPierce, pistolPierce);
+        //             if (statTexts.ContainsKey(key))
+        //             {
+        //                 statTexts[key].Add(newStatText);
+        //             }
+        //             else
+        //             {
+        //                 statTexts.Add(key, new List<TextMeshProUGUI>() { newStatText });
+        //             }
+        //         }
+        //     }
 
-            _stats.Add(StatType.EnemySpawnRate, enemySpawnRate);
-            _stats.Add(StatType.HealthPackSpawnRate, healthPackSpawnRate);
-
-            playerCurrentHealth = (int)playerMaxHealth.value;
-        }
-
-        private void PopulateStatsUI()
-        {
-            foreach (var statContainer in StatContainers)
-            {
-                // get all the children of the stat container and destroy them.
-                foreach (Transform child in statContainer) Destroy(child.gameObject);
-
-                foreach (var key in _stats.Keys)
-                {
-                    Debug.Log("Creating stat for: " + key);
-                    var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
-                        statContainer);
-                    newStatText.fontSize = 24;
-                    newStatText.font = statFont;
-                    newStatText.color = defaultStatColor;
-                    // set the width of the text transform to 400
-                    newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
-
-                    if (statTexts.ContainsKey(key))
-                    {
-                        statTexts[key].Add(newStatText);
-                    }
-                    else
-                    {
-                        statTexts.Add(key, new List<TextMeshProUGUI>() { newStatText });
-                    }
-                }
-            }
-
-            // clean up bonky stats created in the hierarchy.
-            var bonkyStats = FindObjectsByType<TextMeshProUGUI>(FindObjectsSortMode.None);
-            foreach (var bonkyText in bonkyStats)
-            {
-                if (bonkyText.transform.parent == null)
-                    Destroy(bonkyText.gameObject);
-            }
+        //     // clean up bonky stats created in the hierarchy.
+        //     var bonkyStats = FindObjectsByType<TextMeshProUGUI>(FindObjectsSortMode.None);
+        //     foreach (var bonkyText in bonkyStats)
+        //     {
+        //         if (bonkyText.transform.parent == null)
+        //             Destroy(bonkyText.gameObject);
+        //     }
 
 
-            UpdateStatsUI();
-        }
+        //     UpdateStatsUI();
+        // }
 
-        private void UpdateStatsUI()
-        {
-            foreach (var key in statTexts.Keys)
-            {
-                var statTypeText = key.ToString();
-                for (var i = 1; i < statTypeText.Length; i++)
-                    if (char.IsUpper(statTypeText[i]))
-                    {
-                        statTypeText = statTypeText.Insert(i, " ");
-                        i++;
-                    }
+        // private void UpdateStatsUI()
+        // {
+        //     foreach (var key in statTexts.Keys)
+        //     {
+        //         var statTypeText = key.ToString();
+        //         for (var i = 1; i < statTypeText.Length; i++)
+        //             if (char.IsUpper(statTypeText[i]))
+        //             {
+        //                 statTypeText = statTypeText.Insert(i, " ");
+        //                 i++;
+        //             }
 
-                foreach (var newStatText in statTexts[key])
-                {
-                    newStatText.text = $"{statTypeText}: {_stats[key].value:F1}";
-                    // check if the stat value is above, below or equal to the initial value.
-                    if (_stats[key].value > _stats[key].initialValue)
-                        newStatText.color = plusStatColor;
-                    else if (_stats[key].value < _stats[key].initialValue)
-                        newStatText.color = minusStatColor;
-                    else
-                        newStatText.color = defaultStatColor;
-                }
-            }
-        }
-
-
-        #endregion
+        //         foreach (var newStatText in statTexts[key])
+        //         {
+        //             newStatText.text = $"{statTypeText}: {_stats[key].value:F1}";
+        //             // check if the stat value is above, below or equal to the initial value.
+        //             if (_stats[key].value > _stats[key].initialValue)
+        //                 newStatText.color = plusStatColor;
+        //             else if (_stats[key].value < _stats[key].initialValue)
+        //                 newStatText.color = minusStatColor;
+        //             else
+        //                 newStatText.color = defaultStatColor;
+        //         }
+        //     }
+        // }
 
         #region Chest Creation
 
@@ -441,16 +393,16 @@ namespace UnityArchitecture.SpaghettiPattern
             if (chest.chestType == ChestType.Mini) _nextMiniChest = true;
             isGameActive = false;
             HideAll();
-            chestItemMenu.SetActive(true);
+            // chestItemMenu.SetActive(true);
 
-            foreach (var cib in _chestItemButtons) Destroy(cib.gameObject);
-            _chestItemButtons.Clear();
+            // foreach (var cib in _chestItemButtons) Destroy(cib.gameObject);
+            // _chestItemButtons.Clear();
 
             // we wanted a weight average between 2 - 5 items spawning, with odds being increased by luck, which will be added later.
             var itemsChance = Random.Range(0, 100);
             var numberOfItems = 0;
 
-            var luckFactor = luck.value * 10f;
+            var luckFactor = 1 * 10f;
             itemsChance += (int)luckFactor;
 
             switch (itemsChance)
@@ -478,8 +430,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
             for (var i = 0; i < numberOfItems; i++)
             {
-                var newChestItemButton = Instantiate(chestItemButtonPrefab, chestItemButtonContainer);
-                _chestItemButtons.Add(newChestItemButton);
+                // var newChestItemButton = Instantiate(chestItemButtonPrefab, chestItemButtonContainer);
+                // _chestItemButtons.Add(newChestItemButton);
 
                 // Get the tier of the item to be spawned.
                 var tier = GetRandomChestItemTier(chest);
@@ -508,7 +460,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     // We have found the item to spawn
                     var item = possibleItems[x];
                     alreadyAddedItems.Add(item);
-                    newChestItemButton.Initialize(item);
+                    // newChestItemButton.Initialize(item);
                     break;
                 }
 
@@ -526,10 +478,10 @@ namespace UnityArchitecture.SpaghettiPattern
                     }
                 }
 
-                // For keyboard input.
-                _chestItemsWasdSelector.buttons.Clear();
-                foreach (var chestItemUI in _chestItemButtons)
-                    _chestItemsWasdSelector.buttons.Add(chestItemUI.GetComponent<Button>());
+                // // For keyboard input.
+                // _chestItemsWasdSelector.buttons.Clear();
+                // foreach (var chestItemUI in _chestItemButtons)
+                //     _chestItemsWasdSelector.buttons.Add(chestItemUI.GetComponent<Button>());
             }
         }
 
@@ -541,7 +493,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             var tier = 0;
 
-            var chance = Random.Range(0, (200 - (luck.value * 20f))) + luck.value * 20f;
+            var chance = Random.Range(0, (200 - (1* 20f))) + 1* 20f;
 
             // 0 luck = 0 - 200.
             // 1 luck = 20 - 200.
@@ -595,32 +547,32 @@ namespace UnityArchitecture.SpaghettiPattern
         public void ApplyItem(ChestItem item)
         {
             HideAll();
-            gameMenu.SetActive(true);
+            hudMenu.SetActive(true);
             currentlyHeldItems.Add(item);
 
             // Add modifiers to the stats.
             foreach (var mod in item.modifiers)
             {
-                var stat = _stats[mod.statType];
+                var stat = playerManager.Stats[mod.statType];
                 stat.AddModifier(mod);
 
                 // TODO: This might be broken.
                 AccountManager.instance.CheckIfHighestStat(mod.statType, stat.value);
 
                 // If it's a max health mod, we need to also increase the current health.
-                if (mod.statType == StatType.PlayerHealth)
+                if (mod.statType == StatType.MaxHealth)
                 {
                     AccountManager.instance.statistics.totalDamageHealed += (int)mod.modifierValue;
 
-                    var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue, 1,
-                        (int)playerMaxHealth.value);
+                    var newHealth = Mathf.Clamp(playerManager.playerCurrentHealth + (int)mod.modifierValue, 1,
+                        (int)playerManager.playerMaxHealth.value);
 
-                    playerCurrentHealth = newHealth;
+                    playerManager.playerCurrentHealth = newHealth;
                 }
             }
 
-            UpdateStatsUI();
-            UpdateItemUI();
+            // UpdateStatsUI();
+            // UpdateItemUI();
 
             // Attempt to not dash when pressing space to select an item in teh chest menu.
             StartCoroutine(WaitOneFrameToUnpause());
@@ -632,27 +584,27 @@ namespace UnityArchitecture.SpaghettiPattern
             isGameActive = true;
         }
 
-        private void UpdateItemUI()
-        {
-            foreach (var item in _itemHoverImages) Destroy(item);
-            _itemHoverImages.Clear();
+        // private void UpdateItemUI()
+        // {
+        //     foreach (var item in _itemHoverImages) Destroy(item);
+        //     _itemHoverImages.Clear();
 
-            // Create a dictionary of every item and how many of them there are.
-            var itemDictionary = new Dictionary<ChestItem, int>();
-            foreach (var item in currentlyHeldItems)
-                if (itemDictionary.ContainsKey(item))
-                    itemDictionary[item]++;
-                else
-                    itemDictionary.Add(item, 1);
+        //     // Create a dictionary of every item and how many of them there are.
+        //     var itemDictionary = new Dictionary<ChestItem, int>();
+        //     foreach (var item in currentlyHeldItems)
+        //         if (itemDictionary.ContainsKey(item))
+        //             itemDictionary[item]++;
+        //         else
+        //             itemDictionary.Add(item, 1);
 
-            // Create a new item hover image for each item in the dictionary.
-            foreach (var item in itemDictionary.Keys)
-            {
-                var newHoverImage = Instantiate(itemHoverImagePrefab, itemHoverImageContainer);
-                newHoverImage.Initialize(item, itemDictionary[item]);
-                _itemHoverImages.Add(newHoverImage.gameObject);
-            }
-        }
+        //     // Create a new item hover image for each item in the dictionary.
+        //     foreach (var item in itemDictionary.Keys)
+        //     {
+        //         var newHoverImage = Instantiate(itemHoverImagePrefab, itemHoverImageContainer);
+        //         newHoverImage.Initialize(item, itemDictionary[item]);
+        //         _itemHoverImages.Add(newHoverImage.gameObject);
+        //     }
+        // }
 
         #endregion
 
@@ -661,7 +613,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public void OnEnemyDied(GameObject enemy)
         {
             var randomChance = Random.Range(0, 100);
-            if (randomChance < healthPackSpawnRate.value)
+            if (randomChance < 10)
             {
                 var position = enemy.transform.position;
                 var pos = new Vector3(position.x, 0f, position.z);

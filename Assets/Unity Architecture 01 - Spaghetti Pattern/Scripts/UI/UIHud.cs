@@ -6,6 +6,7 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class UIHud : MonoBehaviour
     {
+        public PlayerManager playerManager;
         public TextMeshProUGUI roundTimer;
         public Image healthBar;
         public TextMeshProUGUI healthBarText;
@@ -13,8 +14,8 @@ namespace UnityArchitecture.SpaghettiPattern
         public void Update()
         {
             roundTimer.text = $"Round: {GameManager.instance.roundTime:00}";
-            healthBar.fillAmount = GameManager.instance.playerCurrentHealth / (float)GameManager.instance.playerMaxHealth.value;
-            healthBarText.text = $"{GameManager.instance.playerCurrentHealth}/{GameManager.instance.playerMaxHealth.value}";
+            healthBar.fillAmount = playerManager.playerCurrentHealth / (float)playerManager.playerMaxHealth.value;
+            healthBarText.text = $"{playerManager.playerCurrentHealth}/{playerManager.playerMaxHealth.value}";
         }
     }
 }

@@ -410,54 +410,48 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             switch (type)
             {
-                case StatType.PistolDamage:
+                case StatType.Damage:
                     if (value > statistics.highestPistolDamage)
                         statistics.highestPistolDamage = (int)value;
                     var pistolDamage = achievementSave.achievements.First(x => x.name == AchievementName.Reach50PistolDamage);
                     ProcessStatAchievement(pistolDamage, value, 50);
                     break;
-                case StatType.PistolRange:
+                case StatType.Range:
                     if (value > statistics.highestPistolRange)
                         statistics.highestPistolRange = (int)value;
                     var pistolRange = achievementSave.achievements.First(x => x.name == AchievementName.Reach25PistolRange);
                     ProcessStatAchievement(pistolRange, value, 25);
                     break;
-                case StatType.PistolFireRate:
+                case StatType.FireRate:
                     if (value > statistics.highestPistolFireRate)
                         statistics.highestPistolFireRate = (int)value;
                     ProcessStatAchievement(achievementSave.achievements.First(x => x.name == AchievementName.Reach15PistolFireRate), value, 15);
                     break;
-                case StatType.PistolKnockBack:
+                case StatType.KnockBack:
                     if (value > statistics.highestPistolKnockBack)
                         statistics.highestPistolKnockBack = (int)value;
                     var pistolKnockBack = achievementSave.achievements.First(x => x.name == AchievementName.Reach10PistolKnockBack);
                     ProcessStatAchievement(pistolKnockBack, value, 10);
 
                     break;
-                case StatType.PistolPierce:
+                case StatType.Pierce:
                     if (value > statistics.highestPistolPierce)
                         statistics.highestPistolPierce = (int)value;
                     var pistolPierce = achievementSave.achievements.First(x => x.name == AchievementName.Reach3PistolPierce);
                     ProcessStatAchievement(pistolPierce, value, 3);
                     break;
-                case StatType.PlayerHealth:
+                case StatType.MaxHealth:
                     if (value > statistics.highestPlayerHealth)
                         statistics.highestPlayerHealth = (int)value;
 
                     var playerHealth = achievementSave.achievements.First(x => x.name == AchievementName.Reach100PlayerHealth);
                     ProcessStatAchievement(playerHealth, value, 100);
                     break;
-                case StatType.PlayerSpeed:
+                case StatType.Speed:
                     if (value > statistics.highestPlayerSpeed)
                         statistics.highestPlayerSpeed = (int)value;
                     var playerSpeed = achievementSave.achievements.First(x => x.name == AchievementName.Reach10PlayerSpeed);
                     ProcessStatAchievement(playerSpeed, value, 10);
-                    break;
-                case StatType.HealthPackSpawnRate:
-                    if (value > statistics.highestHealthPackSpawnRate)
-                        statistics.highestHealthPackSpawnRate = (int)value;
-                    var healthPackSpawnRate = achievementSave.achievements.First(x => x.name == AchievementName.Reach10HealthPackSpawnRate);
-                    ProcessStatAchievement(healthPackSpawnRate, value, 10);
                     break;
             }
         }

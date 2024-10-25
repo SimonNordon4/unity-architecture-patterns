@@ -4,7 +4,7 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class PlayerAnimationController : MonoBehaviour
     {
-        public PlayerController playerController;
+        public PlayerManager playerController;
         private Transform _transformToFollow;
 
         public Transform gunPivot;
