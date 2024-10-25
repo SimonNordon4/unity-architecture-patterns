@@ -312,10 +312,10 @@ namespace UnityArchitecture.SpaghettiPattern
             var newEnemy = Instantiate(enemyAction.enemyPrefab, position, Quaternion.identity);
             var enemyController = newEnemy.GetComponent<EnemyController>();
             enemyController.playerTarget = playerTarget;
-            enemyController.enemyManager = this;
+            //enemyController.enemyManager = this;
 
             enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
-            enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
+            enemyController.currentDamage = Mathf.RoundToInt(enemyController.currentDamage * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
 
             enemies.Add(newEnemy);
         }
@@ -360,9 +360,9 @@ namespace UnityArchitecture.SpaghettiPattern
             var newEnemy = Instantiate(enemyAction.enemyPrefab, position, Quaternion.identity);
             var enemyController = newEnemy.GetComponent<EnemyController>();
             enemyController.playerTarget = playerTarget;
-            enemyController.enemyManager = this;
+            //enemyController.enemyManager = this;
             enemyController.currentHealth = Mathf.RoundToInt(enemyController.currentHealth * Random.Range(_currentWave.healthMultiplier.x, _currentWave.healthMultiplier.y));
-            enemyController.damageAmount = Mathf.RoundToInt(enemyController.damageAmount * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
+            enemyController.currentDamage = Mathf.RoundToInt(enemyController.currentDamage * Random.Range(_currentWave.damageMultiplier.x, _currentWave.damageMultiplier.y));
             enemyController.isBoss = true;
 
             enemies.Add(newEnemy);

@@ -683,7 +683,7 @@ MonoBehaviour:
   gameCamera: {fileID: 963194227}
   targetDirection: {x: 0, y: 0, z: 0}
   gameManager: {fileID: 801546265}
-  enemyManager: {fileID: 644039390}
+  enemyManager: {fileID: 644039393}
   playerCurrentHealth: 10
   playerMaxHealth:
     initialValue: 10
@@ -1470,6 +1470,8 @@ GameObject:
   m_Component:
   - component: {fileID: 644039391}
   - component: {fileID: 644039390}
+  - component: {fileID: 644039393}
+  - component: {fileID: 644039392}
   m_Layer: 0
   m_Name: Enemy Manager
   m_TagString: Untagged
@@ -1484,7 +1486,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644039389}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3191bd27c2ea6f43a936b40c18bf4dc, type: 3}
   m_Name: 
@@ -1521,6 +1523,144 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644039392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644039389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcc600df7abc8041ac8d2b69cca803f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockName: Block 1 (Easy)
+  enemiesToKill: 200
+  maxEnemiesAlive: 15
+  enemyPrefabs:
+  - {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127, type: 3}
+  - {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb, type: 3}
+  enemySpawnWeightCurves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bossEnemies:
+  - {fileID: 4276726426749855420, guid: 85f16814ab695244ebb62b31c360ca24, type: 3}
+  healthMultiplierRange: {x: 1, y: 4}
+  damageMultiplierRange: {x: 1, y: 4}
+  healthMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  damageMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemiesKilled: 0
+--- !u!114 &644039393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644039389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8526cb9492e4b458b2173e7e4079fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 801546265}
+  playerTarget: {fileID: 460763660}
+  baseSpawnRate: 1
+  enemyBlocks:
+  - {fileID: 644039392}
+  currentBlockIndex: 0
+  activeEnemies: []
+  activeBosses: []
 --- !u!1001 &654366051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1784,6 +1924,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4708564829128791114, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708564829128791114, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708564829128791114, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4708564829128791114, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5913655418974491867, guid: 98285d771dc046049bc9e9ac525f7f94,
         type: 3}
       propertyPath: m_Name
@@ -1793,6 +1953,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295521022977484066, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295521022977484066, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295521022977484066, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6295521022977484066, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429909468724016083, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429909468724016083, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429909468724016083, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8429909468724016083, guid: 98285d771dc046049bc9e9ac525f7f94,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

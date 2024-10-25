@@ -14,7 +14,7 @@ namespace UnityArchitecture.SpaghettiPattern
         }
 
         [Header("References")]
-        public EnemyManagerOld enemyManager;
+        public EnemyManager enemyManager;
         public bool isBoss = false;
 
         [Header("UI")]
@@ -35,10 +35,12 @@ namespace UnityArchitecture.SpaghettiPattern
         private float _radius = 0.5f;
 
         [Header("Health")]
+        public int baseHealth = 5;
         public int currentHealth = 5;
 
         [Header("Attack")]
-        public int damageAmount = 1;
+        public int baseDamage;
+        public int currentDamage = 1;
         public float damageCooldown = 0.2f;
         protected float _timeSinceLastDamage;
         protected readonly List<Transform> _nearbyEnemies = new(4);
@@ -212,9 +214,17 @@ namespace UnityArchitecture.SpaghettiPattern
                 AudioManager.instance.PlaySound(deathSound);
                 var pos = transform.position;
                 var projectedPosition = new Vector3(pos.x, 0, pos.z);
-                var dead = Instantiate(this.deathEffect, projectedPosition, Quaternion.identity);
+                var dead = Instantiate(deathEffect, projectedPosition, Quaternion.identity);
                 GameManager.instance.StartCoroutine(DestroyAfter(dead.gameObject));
-                enemyManager.EnemyDied(gameObject);
+                if(isBoss)
+                {
+                    enemyManager.BossDied(this);
+                }
+                else
+                {
+                    enemyManager.EnemyDied(this);
+                }
+                
             }
             else
             {
@@ -251,12 +261,23 @@ namespace UnityArchitecture.SpaghettiPattern
                     if (_timeSinceLastDamage >= damageCooldown)
                     {
 
-                        playerController.TakeDamage(damageAmount);
+                        playerController.TakeDamage(currentDamage);
                         _timeSinceLastDamage = 0f;
                     }
 
                 }
             }
+        }
+
+        public void ApplyMultipliers(float healthMultiplier, float damageMultiplier)
+        {
+            // Apply multipliers and round to nearest integer
+            currentHealth = Mathf.RoundToInt(baseHealth * healthMultiplier);
+            currentDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
+
+            // Ensure that health and damage are at least 1
+            currentHealth = Mathf.Max(currentHealth, 1);
+            currentDamage = Mathf.Max(currentDamage, 1);
         }
 
         protected virtual void OnTriggerExit(Collider other)

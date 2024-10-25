@@ -19,7 +19,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         [Header("References")]
         public GameManager gameManager;
-        public EnemyManagerOld enemyManager;
+        public EnemyManager enemyManager;
 
         [Header("Stats")] 
         public int playerCurrentHealth = 10;
@@ -173,7 +173,20 @@ namespace UnityArchitecture.SpaghettiPattern
             var closestDistance = Mathf.Infinity;
             var targetIsNull = true;
             _closestTarget = null;
-            foreach (var enemy in enemyManager.enemies)
+            foreach (var enemy in enemyManager.activeEnemies)
+            {
+                var distance = Vector3.Distance(_transform.position, enemy.transform.position);
+                // now we minus the radius of the enemy from the distance, so that we get the distance to its edge.
+                distance -= enemy.transform.localScale.x * 0.5f;
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    _closestTarget = enemy.transform;
+                    targetIsNull = false;
+                }
+            }
+
+            foreach (var enemy in enemyManager.activeBosses)
             {
                 var distance = Vector3.Distance(_transform.position, enemy.transform.position);
                 // now we minus the radius of the enemy from the distance, so that we get the distance to its edge.

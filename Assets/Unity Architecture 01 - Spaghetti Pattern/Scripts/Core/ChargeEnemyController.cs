@@ -124,7 +124,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     var playerController = other.GetComponent<PlayerManager>();
                     if (playerController != null)
                     {
-                        playerController.TakeDamage(damageAmount);
+                        playerController.TakeDamage(currentDamage);
 
                     }
                 }

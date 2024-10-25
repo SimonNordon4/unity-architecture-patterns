@@ -132,7 +132,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     health += Mathf.RoundToInt(enemyController.currentHealth * action.numberOfEnemiesToSpawn * healthMult);
 
                     var damageMult = (this.damageMultiplier.x + this.damageMultiplier.y) / 2;
-                    damage += Mathf.RoundToInt(enemyController.damageAmount * action.numberOfEnemiesToSpawn * damageMult);
+                    damage += Mathf.RoundToInt(enemyController.currentDamage * action.numberOfEnemiesToSpawn * damageMult);
                 }
 
                 enemyStat.probability = (float)probability / totalProbability;

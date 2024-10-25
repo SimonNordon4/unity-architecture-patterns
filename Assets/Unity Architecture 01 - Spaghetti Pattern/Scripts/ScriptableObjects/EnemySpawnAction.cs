@@ -18,7 +18,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public int GetDamage()
         {
-            return enemyPrefab.GetComponent<EnemyController>().damageAmount;
+            return enemyPrefab.GetComponent<EnemyController>().currentDamage;
         }
     }
 }

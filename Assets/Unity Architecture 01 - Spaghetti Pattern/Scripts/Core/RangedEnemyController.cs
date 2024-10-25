@@ -119,7 +119,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 // Create and setup the projectile
                 var projectileGo = Instantiate(projectilePrefab, transform.position, Quaternion.LookRotation(dir));
                 var projectile = projectileGo.GetComponent<Projectile>();
-                projectile.damage = damageAmount;
+                projectile.damage = currentDamage;
                 projectile.projectileSpeed = projectileSpeed;
             }
 
