@@ -25,7 +25,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         [Header("Prefabs")]
         public GameObject mediumChestPrefab;
-        public GameObject largeChestPrefab;
 
         [Header("Stats")]
         public float spawnRadius = 20f;
@@ -383,7 +382,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             else
             {
-                _bossChest = Instantiate(largeChestPrefab, projectedPosition, Quaternion.identity);
+                _bossChest = Instantiate(mediumChestPrefab, projectedPosition, Quaternion.identity);
                 chestController = _bossChest.GetComponent<Chest>();
             }
 

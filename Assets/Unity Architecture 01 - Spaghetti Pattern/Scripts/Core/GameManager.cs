@@ -73,8 +73,6 @@ namespace UnityArchitecture.SpaghettiPattern
         private float _timeSinceLastMiniChest = 0.0f;
         private bool _nextMiniChest = false;
         public Chest miniChestPrefab;
-        public Chest mediumChestPrefab;
-        public Chest largeChestPrefab;
 
         private int _pityLuck;
         public float pityLuckScaling = 1f;
