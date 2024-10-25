@@ -1537,7 +1537,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockName: Block 1 (Easy)
   enemiesToKill: 200
-  maxEnemiesAlive: 15
+  maxEnemiesAliveRange: {x: 5, y: 10}
+  maxEnemiesAliveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: -0.02125537
+      outSlope: -0.02125537
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.20178384
+      value: -0.00428899
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.79990774
+      value: 0.9991844
+      inSlope: 2.0298085
+      outSlope: -0.028916152
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.06537733
+      outWeight: 0.26667005
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0.0040759714
+      outSlope: 0.0040759714
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   enemyPrefabs:
   - {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127, type: 3}
   - {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb, type: 3}
@@ -1569,21 +1611,39 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0
+      inSlope: 0.011970318
+      outSlope: 0.011970318
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.19817302
+      value: 0.002372194
+      inSlope: 0.011970318
+      outSlope: 93.81428
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.20342709
+      value: 0.49527946
+      inSlope: 93.81428
+      outSlope: 0.633615
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 0.633615
+      outSlope: 0.633615
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
