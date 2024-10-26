@@ -17,7 +17,9 @@ namespace UnityArchitecture.SpaghettiPattern
         
         private List<TextMeshProUGUI> _descriptions = new List<TextMeshProUGUI>();
 
-        public void Initialize(ChestItem item)
+        private ChestManager _chestManager;
+
+        public void Initialize(ChestItem item, ChestManager chestManager)
         {
             foreach (var description in _descriptions)
             {
@@ -72,7 +74,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void ApplyItem()
         {
-            GameManager.instance.ApplyItem(chestItem);
+           _chestManager.ApplyItem(chestItem);
         }
     }
 }

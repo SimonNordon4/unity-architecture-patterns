@@ -10,13 +10,14 @@ namespace UnityArchitecture.SpaghettiPattern
         public ChestType chestType = ChestType.Mini;
 
         public SoundDefinition openSound;
+        public ChestManager chestManager;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 AudioManager.instance.PlaySound(openSound);
-                GameManager.instance.PickupChest(this);
+                chestManager.PickupChest(this);
 
                 Destroy(gameObject);
             }
