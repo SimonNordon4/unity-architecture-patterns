@@ -18,7 +18,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public int currentBlockIndex = 0;
 
         // Tracking active enemies and bosses
-        private int enemiesAlive = 0;
+        public int enemiesAlive = 0;
         private int bossesAlive = 0;
 
         // Lists to keep track of active enemies and bosses

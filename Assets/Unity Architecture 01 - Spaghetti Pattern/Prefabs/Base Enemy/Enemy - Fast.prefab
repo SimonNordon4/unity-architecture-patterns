@@ -85,8 +85,10 @@ MonoBehaviour:
   knockBackFactor: 2
   isUnstoppable: 0
   isKnockedBack: 0
-  currentHealth: 6
-  damageAmount: 1
+  baseHealth: 1
+  currentHealth: 1
+  baseDamage: 0
+  currentDamage: 1
   damageCooldown: 1
   deathEffect: {fileID: 2222448280298337007, guid: 511271b22a6b58e44a6648522aee243a,
     type: 3}

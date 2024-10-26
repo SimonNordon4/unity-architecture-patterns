@@ -224,6 +224,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 {
                     enemyManager.EnemyDied(this);
                 }
+                Destroy(gameObject);
                 
             }
             else
