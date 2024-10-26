@@ -11,6 +11,9 @@ namespace UnityArchitecture.SpaghettiPattern
         public PlayerManager playerManager;
 
         [Header("Chests")] 
+        public float chestSpawnTime = 15f;
+        private float _timeSinceLastChestSpawn = 0f;
+        
         public Vector2 chestBounds = new(20f, 20f);
         public ChestItemsConfig tier1ChestItems;
         public ChestItemsConfig tier2ChestItems;
@@ -27,11 +30,9 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Chest UI")]
         public GameObject hudMenu;
         public GameObject chestMenu;
-        public GameObject chestItemMenu;
         public RectTransform chestItemButtonContainer;
         public UIChestItemButton chestItemButtonPrefab;
         private readonly List<UIChestItemButton> _chestItemButtons = new();
-        public UIWasdButtonSelector _chestItemsWasdSelector;
 
         public void Start()
         {
@@ -47,13 +48,35 @@ namespace UnityArchitecture.SpaghettiPattern
             // Chest has to spawn inside the level.
             if (chestBounds.magnitude > GameManager.instance.levelBounds.magnitude)
                 chestBounds = GameManager.instance.levelBounds;
+
+            SpawnChest();
         }
 
-        private void SpawnChest(Vector3 position)
+        private void Update()
         {
-            var chest = Instantiate(chestPrefab, position, Quaternion.identity);
+            if(_timeSinceLastChestSpawn > chestSpawnTime)
+            {
+                _timeSinceLastChestSpawn = 0f;
+                SpawnChest();
+            }
+        }
+
+        public void ReduceChestSpawnTime()
+        {
+            _timeSinceLastChestSpawn += 1f;
+        }
+
+        private Vector3 GetRandomChestSpawn()
+        {
+            return new Vector3(Random.Range(-chestBounds.x, chestBounds.x), 0f, Random.Range(-chestBounds.y, chestBounds.y));
+        }
+
+        private void SpawnChest()
+        {
+            var chest = Instantiate(chestPrefab, GetRandomChestSpawn(), Quaternion.identity);
             chest.minTier = 1;
             chest.maxTier = 5;
+            chest.chestManager = this;
         }
 
         private void SpawnBossChest(Vector3 position)
@@ -61,6 +84,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var chest = Instantiate(chestPrefab, position, Quaternion.identity);
             chest.minTier = 3;
             chest.maxTier = 5;
+            chest.chestManager =  this;
         }
 
         public void PickupChest(Chest chest)
@@ -69,7 +93,7 @@ namespace UnityArchitecture.SpaghettiPattern
             AccountManager.Instance.statistics.totalChestsOpened++;
             GameManager.instance.isGameActive = false;
             
-            chestItemMenu.SetActive(true);
+            chestMenu.SetActive(true);
 
             foreach (var cib in _chestItemButtons) Destroy(cib.gameObject);
             _chestItemButtons.Clear();
