@@ -7,19 +7,18 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class UIChestItemButton : MonoBehaviour
     {
+        public Button selectItemButton;
         public ChestItem chestItem;
         public TextMeshProUGUI Title;
-        public TextMeshProUGUI DescriptionPrefab;
+        public TextMeshProUGUI DescriptionText;
         public RectTransform DescriptionContainer;
         public Image borderImage;
         public Sprite[] borderTiers;
         public Image itemSprite;
         
-        private List<TextMeshProUGUI> _descriptions = new List<TextMeshProUGUI>();
+        private readonly List<TextMeshProUGUI> _descriptions = new();
 
-        private ChestManager _chestManager;
-
-        public void Initialize(ChestItem item, ChestManager chestManager)
+        public void Initialize(ChestItem item, UIChestItemMenu chestMenu)
         {
             foreach (var description in _descriptions)
             {
@@ -30,14 +29,16 @@ namespace UnityArchitecture.SpaghettiPattern
             Title.text = item.itemName;
             chestItem = item;
             
+            Debug.Log(item != null ? $"Item Name: {item.itemName}, Sprite: {item.sprite}" : "Item is null");
             itemSprite.sprite = item.sprite;
 
-            borderImage.sprite = borderTiers[chestItem.tier - 1];
+            borderImage.sprite = borderTiers[item.tier - 1];
+            DescriptionText.gameObject.SetActive(true);
 
             foreach (var mod in chestItem.modifiers)
             {
                 // create a new description text
-                var description = Instantiate(DescriptionPrefab, DescriptionContainer);
+                var description = Instantiate(DescriptionText, DescriptionContainer);
                 
                 // we don't need a minus because negative values will already have a minus
                     var statSign = mod.modifierValue > 0 ? "+" : "";                
@@ -47,7 +48,6 @@ namespace UnityArchitecture.SpaghettiPattern
                         statSign + mod.modifierValue :
                         $"{statSign}{mod.modifierValue * 100}%";
 
-                    
                     // Format stat type name.
                     var statTypeString = mod.statType.ToString();
                     
@@ -69,12 +69,10 @@ namespace UnityArchitecture.SpaghettiPattern
                         new Color(1, 0.75f, 0.75f);
 
                 _descriptions.Add(description);
+                selectItemButton.onClick.AddListener(() => chestMenu.OnItemSelected(chestItem));
             }
-        }
 
-        public void ApplyItem()
-        {
-           _chestManager.ApplyItem(chestItem);
+            DescriptionText.gameObject.SetActive(false);
         }
     }
 }

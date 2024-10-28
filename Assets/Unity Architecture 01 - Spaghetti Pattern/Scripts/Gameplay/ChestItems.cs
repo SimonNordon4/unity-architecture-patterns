@@ -9,8 +9,22 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class ChestItems : MonoBehaviour
     {
-        public List<ChestItem> chestItems;
+        public string chestTableName = "ChestItems";
+        public int tier = 1;
+        public int spawnChance = 100;
+
+        public List<ChestItem> chestItems = new();
+
+        public void OnValidate()
+        {
+            foreach (var chestItem in chestItems)
+            {
+                chestItem.tier = tier;
+            }
+        }
     }
+
+
 
 #if UNITY_EDITOR
 
