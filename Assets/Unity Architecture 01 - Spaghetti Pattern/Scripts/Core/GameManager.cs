@@ -27,7 +27,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         #region Variables
 
-        [Header("Round")] public float roundDuration = 20f;
+        [Header("Round")]
         public float roundTime;
         public bool isPaused = false;
         public bool isGameActive = false;
@@ -98,7 +98,7 @@ namespace UnityArchitecture.SpaghettiPattern
             playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
             // clear all items
             currentlyHeldItems.Clear();
-            //UpdateItemUI();
+            // UpdateItemUI();
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Dash, 22f);

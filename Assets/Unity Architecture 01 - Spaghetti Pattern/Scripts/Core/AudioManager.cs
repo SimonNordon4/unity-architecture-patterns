@@ -26,7 +26,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public AudioClip buttonClick;
         
         private float _musicVolume = 0f;
-        private EnemyManager _enemyManager;
         public int maxEnemyVolume = 20;
         private int musicIndex = 0;
 
@@ -37,7 +36,6 @@ namespace UnityArchitecture.SpaghettiPattern
             _audioSources.Clear();
             _musicSource = gameObject.AddComponent<AudioSource>();
             _musicSource.clip = gameMusic[Random.Range(0, gameMusic.Length)];
-            _enemyManager = FindFirstObjectByType<EnemyManager>();
             _buttonSource = gameObject.AddComponent<AudioSource>();
 
             _audioSources = new List<AudioSource>();
@@ -56,7 +54,11 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             // pick a random music clip and play it
             musicIndex = Random.Range(0, gameMusic.Length);
-            // _musicSource.clip = gameMusic[musicIndex];
+            if(_musicSource == null)
+            {
+                _musicSource = gameObject.AddComponent<AudioSource>();
+            }
+            _musicSource.clip = gameMusic[musicIndex];
             _musicSource.volume = 0.1f * SettingsManager.instance.musicVolume;
             _musicSource.Play();
         }
@@ -92,7 +94,7 @@ namespace UnityArchitecture.SpaghettiPattern
             source.clip = definition.clips[Random.Range(0, definition.clips.Length)];
             source.volume = definition.volume * SettingsManager.instance.sfxVolume;
             source.pitch = Random.Range(definition.pitchVariation.x, definition.pitchVariation.y);
-            source.Play();
+            source.PlayOneShot(source.clip);
         }
 
         private AudioSource GetAudioSource()

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
+    [DefaultExecutionOrder(-9)]
     public class SettingsManager : MonoBehaviour
     {
         private static SettingsManager _instance;
@@ -21,7 +19,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public GameObject hyperText;
 
-        private void Start()
+        private void Awake()
         {
             Debug.Log("SettingsManager Start");
             musicVolume = AccountManager.Instance.settingsSave.musicVolume;

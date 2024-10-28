@@ -86,6 +86,7 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             _startRotation = localCanvas.rotation;
+            InitializeStats();
         }
 
         public void ResetStats()

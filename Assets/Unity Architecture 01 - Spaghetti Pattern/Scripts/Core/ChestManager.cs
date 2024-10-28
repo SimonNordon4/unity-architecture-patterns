@@ -49,6 +49,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Update()
         {
+            _timeSinceLastChestSpawn += Time.deltaTime;
             if (_timeSinceLastChestSpawn > chestSpawnTime)
             {
                 _timeSinceLastChestSpawn = 0f;
