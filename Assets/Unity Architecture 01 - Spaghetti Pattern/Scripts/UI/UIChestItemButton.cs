@@ -29,7 +29,6 @@ namespace UnityArchitecture.SpaghettiPattern
             Title.text = item.itemName;
             chestItem = item;
             
-            Debug.Log(item != null ? $"Item Name: {item.itemName}, Sprite: {item.sprite}" : "Item is null");
             itemSprite.sprite = item.sprite;
 
             borderImage.sprite = borderTiers[item.tier - 1];
