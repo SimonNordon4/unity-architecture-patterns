@@ -26,7 +26,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public AudioClip buttonClick;
         
         private float _musicVolume = 0f;
-        private EnemyManagerOld _enemyManager;
+        private EnemyManager _enemyManager;
         public int maxEnemyVolume = 20;
         private int musicIndex = 0;
 
@@ -37,7 +37,7 @@ namespace UnityArchitecture.SpaghettiPattern
             _audioSources.Clear();
             _musicSource = gameObject.AddComponent<AudioSource>();
             _musicSource.clip = gameMusic[Random.Range(0, gameMusic.Length)];
-            _enemyManager = FindFirstObjectByType<EnemyManagerOld>();
+            _enemyManager = FindFirstObjectByType<EnemyManager>();
             _buttonSource = gameObject.AddComponent<AudioSource>();
 
             _audioSources = new List<AudioSource>();

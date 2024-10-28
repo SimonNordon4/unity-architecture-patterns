@@ -5,7 +5,7 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class EnemyManager : MonoBehaviour
     {
-        [Header("References")] 
+        [Header("References")]
         public GameManager gameManager;
         public Transform playerTarget;
 
@@ -27,7 +27,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Update()
         {
-            if(!gameManager.isGameActive) return;
+            if (!gameManager.isGameActive) return;
 
             // Increment the spawn timer
             _timeSinceLastSpawn += Time.deltaTime;
@@ -52,7 +52,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             var currentBlock = enemyBlocks[currentBlockIndex];
 
-            if(enemiesAlive >= currentBlock.GetMaxEnemiesAlive())
+            if (enemiesAlive >= currentBlock.GetMaxEnemiesAlive())
             {
                 // Too many enemies alive; skip spawning
                 return;
@@ -93,7 +93,7 @@ namespace UnityArchitecture.SpaghettiPattern
             enemiesAlive--;
             enemyBlocks[currentBlockIndex].enemiesKilled++;
 
-            if(enemyBlocks[currentBlockIndex].enemiesKilled >= enemyBlocks[currentBlockIndex].enemiesToKill)
+            if (enemyBlocks[currentBlockIndex].enemiesKilled >= enemyBlocks[currentBlockIndex].enemiesToKill)
             {
                 SpawnBoss();
             }
@@ -145,7 +145,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             bossesAlive--;
 
-            if(bossesAlive <= 0)
+            if (bossesAlive <= 0)
             {
                 ProceedToNextBlock();
             }
@@ -158,7 +158,7 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             currentBlockIndex++;
 
-            if(currentBlockIndex >= enemyBlocks.Length)
+            if (currentBlockIndex >= enemyBlocks.Length)
             {
                 Debug.Log("All blocks completed! Player wins!");
                 gameManager.WinGame();
@@ -199,6 +199,43 @@ namespace UnityArchitecture.SpaghettiPattern
             float remainingEnemyCapacity = currentMaxEnemies > 0 ? 1f - ((float)enemiesAlive / currentMaxEnemies) : 1f;
             remainingEnemyCapacity = Mathf.Clamp01(remainingEnemyCapacity);
             return baseSpawnRate * remainingEnemyCapacity;
+        }
+
+        public void Reset()
+        {
+            // Destroy all active enemies
+            foreach (var enemy in activeEnemies)
+            {
+                if (enemy != null)
+                {
+                    Destroy(enemy.gameObject);
+                }
+            }
+            activeEnemies.Clear();
+
+            // Destroy all active bosses
+            foreach (var boss in activeBosses)
+            {
+                if (boss != null)
+                {
+                    Destroy(boss.gameObject);
+                }
+            }
+            activeBosses.Clear();
+
+            // Reset tracking variables
+            enemiesAlive = 0;
+            bossesAlive = 0;
+            currentBlockIndex = 0;
+            _timeSinceLastSpawn = 0f;
+
+            // Reset enemy blocks' kill counters
+            foreach (var block in enemyBlocks)
+            {
+                block.enemiesKilled = 0;
+            }
+
+            Debug.Log("EnemyManager has been reset.");
         }
     }
 }

@@ -10,11 +10,11 @@ namespace UnityArchitecture.SpaghettiPattern
     {
         public Stat(float initialValue)
         {
-            this.initialValue = initialValue;
-            value = initialValue;
+            baseValue = initialValue;
+            value = baseValue;
         }
 
-        public float initialValue = 1f;
+        public float baseValue = 1f;
         public float minimumValue = 0f;
         public float maximumValue = float.PositiveInfinity;
 
@@ -48,9 +48,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
                     // new flatsum += 2;
 
-                    if (flatSum + initialValue < minimumValue)
+                    if (flatSum + baseValue < minimumValue)
                     {
-                        var virtualFlatSum = initialValue + flatSum;
+                        var virtualFlatSum = baseValue + flatSum;
                         var difference = minimumValue - virtualFlatSum;
                         var reNormalizedFlatSum = difference + flatSum;
                         flatSum = reNormalizedFlatSum;
@@ -64,13 +64,13 @@ namespace UnityArchitecture.SpaghettiPattern
                 }
             }
 
-            value = Mathf.Clamp((initialValue + flatSum) * (percentageSum), minimumValue, maximumValue);
+            value = Mathf.Clamp((baseValue + flatSum) * percentageSum, minimumValue, maximumValue);
         }
 
         public void Reset()
         {
             _modifiers.Clear();
-            value = initialValue;
+            value = baseValue;
         }
 
         public void AddModifier(Modifier modifier)

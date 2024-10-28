@@ -135,8 +135,8 @@ namespace UnityArchitecture.SpaghettiPattern
             var playerController = FindFirstObjectByType<PlayerManager>();
             playerController.ResetPlayer();
 
-            var enemyManager = FindFirstObjectByType<EnemyManagerOld>();
-            enemyManager.ResetEnemyManager();
+            var enemyManager = FindFirstObjectByType<EnemyManager>();
+            enemyManager.Reset();
 
             var projectiles = FindObjectsByType<Projectile>(FindObjectsSortMode.None);
             foreach (var projectile in projectiles) Destroy(projectile.gameObject);

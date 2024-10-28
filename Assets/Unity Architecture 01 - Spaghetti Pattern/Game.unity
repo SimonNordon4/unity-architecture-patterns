@@ -834,91 +834,91 @@ MonoBehaviour:
   enemyManager: {fileID: 644039393}
   playerCurrentHealth: 10
   playerMaxHealth:
-    initialValue: 10
+    baseValue: 10
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 10
   healthRegen:
-    initialValue: 1
+    baseValue: 1
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 1
   playerSpeed:
-    initialValue: 5
+    baseValue: 5
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 5
   armor:
-    initialValue: 0
+    baseValue: 0
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 0
   dodge:
-    initialValue: 0
+    baseValue: 0
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 0
   dashCooldown:
-    initialValue: 8
+    baseValue: 8
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 8
   dashDistance:
-    initialValue: 0
+    baseValue: 0
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 0
   damage:
-    initialValue: 1
+    baseValue: 1
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 1
   critChance:
-    initialValue: 0
+    baseValue: 0
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 0
   critDamage:
-    initialValue: 1.5
+    baseValue: 1.5
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 1.5
   range:
-    initialValue: 5
+    baseValue: 5
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 5
   firerate:
-    initialValue: 2
+    baseValue: 0.5
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 2
   knockback:
-    initialValue: 1
+    baseValue: 1
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 1
   pierce:
-    initialValue: 0
+    baseValue: 0
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
     value: 0
   bulletSize:
-    initialValue: 1
+    baseValue: 1
     minimumValue: 0
     maximumValue: Infinity
     _modifiers: []
@@ -3828,7 +3828,7 @@ GameObject:
   - component: {fileID: 1884674989}
   - component: {fileID: 1884674990}
   m_Layer: 0
-  m_Name: ChestManager
+  m_Name: Chest Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3889,7 +3889,7 @@ GameObject:
   - component: {fileID: 1926671863}
   - component: {fileID: 1926671862}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: Audio Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
