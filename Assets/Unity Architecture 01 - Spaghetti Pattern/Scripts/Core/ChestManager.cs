@@ -15,11 +15,11 @@ namespace UnityArchitecture.SpaghettiPattern
         private float _timeSinceLastChestSpawn = 0f;
         
         public Vector2 chestBounds = new(20f, 20f);
-        public ChestItemsConfig tier1ChestItems;
-        public ChestItemsConfig tier2ChestItems;
-        public ChestItemsConfig tier3ChestItems;
-        public ChestItemsConfig tier4ChestItems;
-        public ChestItemsConfig tier5ChestItems;
+        public ChestItems tier1ChestItems;
+        public ChestItems tier2ChestItems;
+        public ChestItems tier3ChestItems;
+        public ChestItems tier4ChestItems;
+        public ChestItems tier5ChestItems;
         private ChestItem[][] _allItems;
         public float miniChestCooldown = 15f;
         public Chest chestPrefab;
@@ -160,7 +160,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     // We have found the item to spawn
                     var item = possibleItems[x];
                     alreadyAddedItems.Add(item);
-                    // newChestItemButton.Initialize(item);
+                    newChestItemButton.Initialize(item, this);
                     break;
                 }
 

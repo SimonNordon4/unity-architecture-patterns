@@ -7,35 +7,15 @@ using UnityEditor;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
-    [CreateAssetMenu(fileName = "ChestItemsConfig", menuName = "UnityArchitecture/SpaghettiPattern/ChestItemsConfig", order = 1)]
-    public class ChestItemsConfig : ScriptableObject
+    public class ChestItems : MonoBehaviour
     {
         public List<ChestItem> chestItems;
-
-#if UNITY_EDITOR
-        [ContextMenu("Get All")]
-        public void GetAll()
-        {
-            // Get all chest items in the project
-            var guids = AssetDatabase.FindAssets("t:ChestItem");
-            chestItems = new List<ChestItem>();
-            foreach (var guid in guids)
-            {
-                var path = AssetDatabase.GUIDToAssetPath(guid);
-                var chestItem = AssetDatabase.LoadAssetAtPath<ChestItem>(path);
-                chestItems.Add(chestItem);
-            }
-            // save
-            EditorUtility.SetDirty(this);
-            AssetDatabase.SaveAssets();
-        }
-#endif
     }
 
 #if UNITY_EDITOR
 
-    [CustomEditor(typeof(ChestItemsConfig))]
-    public class ChestItemsConfigEditor : Editor
+    [CustomEditor(typeof(ChestItems))]
+    public class ChestItemsEditor : Editor
     {
         public override void OnInspectorGUI()
         {
@@ -51,7 +31,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 statDictionary.Add((StatType)statType, 0);
             }
 
-            var config = target as ChestItemsConfig;
+            var config = target as ChestItems;
 
             foreach (var chestItem in config.chestItems)
             {
