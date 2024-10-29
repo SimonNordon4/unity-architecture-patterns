@@ -110,6 +110,26 @@ namespace UnityArchitecture.SpaghettiPattern
             hudMenu.SetActive(false);
         }
 
+        [ContextMenu("Save Chest Items")]
+        public void SaveChestItems()
+        {
+            allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
+            foreach (var chestItems in allChestItems)
+            {
+                chestItems.Save();
+            }
+        }
+
+        [ContextMenu("Load Chest Items")]
+        public void LoadChestItems()
+        {
+            allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
+            foreach (var chestItems in allChestItems)
+            {
+                chestItems.Load();
+            }
+        }
+
 
 
         // private void UpdateItemUI()

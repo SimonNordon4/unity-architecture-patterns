@@ -3994,11 +3994,26 @@ MonoBehaviour:
   playerManager: {fileID: 460763656}
   chestSpawnTime: 15
   chestBounds: {x: 20, y: 20}
-  tier1ChestItems: {fileID: 1884674991}
-  tier2ChestItems: {fileID: 1884674995}
-  tier3ChestItems: {fileID: 1884674994}
-  tier4ChestItems: {fileID: 1884674993}
-  tier5ChestItems: {fileID: 1884674992}
+  tier1ChestItems:
+    jsonFile: 
+    tier: 1
+    chestItems: []
+  tier2ChestItems:
+    jsonFile: 
+    tier: 2
+    chestItems: []
+  tier3ChestItems:
+    jsonFile: 
+    tier: 3
+    chestItems: []
+  tier4ChestItems:
+    jsonFile: 
+    tier: 4
+    chestItems: []
+  tier5ChestItems:
+    jsonFile: 
+    tier: 5
+    chestItems: []
   allChestItems: []
   miniChestCooldown: 15
   chestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42,
@@ -4021,6 +4036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFile: 
   chestTableName: Tier 1 Items
   tier: 1
   chestItems:
@@ -4118,13 +4134,6 @@ MonoBehaviour:
       modifierType: 1
       modifierValue: 0.25
     tier: 1
-  - itemName: Bullet Size
-    sprite: {fileID: 21300000, guid: 9fd890680fcb5d24f9b43f2ce72ed21f, type: 3}
-    modifiers:
-    - statType: 14
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
 --- !u!114 &1884674992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4137,16 +4146,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFile: 
   chestTableName: Tier 5 Items
   tier: 1
-  chestItems:
-  - itemName: Pistol Test
-    sprite: {fileID: 21300000, guid: ccbcd2962ce8bb84182d1d780620ce02, type: 3}
-    modifiers:
-    - statType: 7
-      modifierType: 1
-      modifierValue: 1
-    tier: 1
+  chestItems: []
 --- !u!114 &1884674993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4159,16 +4162,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFile: 
   chestTableName: Tier 4 Items
   tier: 1
-  chestItems:
-  - itemName: Pistol Test
-    sprite: {fileID: 21300000, guid: ccbcd2962ce8bb84182d1d780620ce02, type: 3}
-    modifiers:
-    - statType: 7
-      modifierType: 1
-      modifierValue: 1
-    tier: 1
+  chestItems: []
 --- !u!114 &1884674994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4181,16 +4178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFile: 
   chestTableName: Tier 3 Items
   tier: 1
-  chestItems:
-  - itemName: Pistol Test
-    sprite: {fileID: 21300000, guid: ccbcd2962ce8bb84182d1d780620ce02, type: 3}
-    modifiers:
-    - statType: 7
-      modifierType: 1
-      modifierValue: 1
-    tier: 1
+  chestItems: []
 --- !u!114 &1884674995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4203,6 +4194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jsonFile: 
   chestTableName: Tier 1 Items
   tier: 1
   chestItems:
@@ -4292,13 +4284,6 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 8b766e7ef6d2f874b9e4f7f9bea1cf7b, type: 3}
     modifiers:
     - statType: 12
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Bullet Size
-    sprite: {fileID: 21300000, guid: 9fd890680fcb5d24f9b43f2ce72ed21f, type: 3}
-    modifiers:
-    - statType: 14
       modifierType: 1
       modifierValue: 0.25
     tier: 1
