@@ -43,9 +43,8 @@ namespace UnityArchitecture.SpaghettiPattern
                     var statSign = mod.modifierValue > 0 ? "+" : "";                
 
                     // Format stat value.
-                    var statValueString = mod.modifierType != ModifierType.Percentage ?
-                        statSign + mod.modifierValue :
-                        $"{statSign}{mod.modifierValue * 100}%";
+                    var statValueString = statSign + mod.modifierValue;
+          
 
                     // Format stat type name.
                     var statTypeString = mod.statType.ToString();

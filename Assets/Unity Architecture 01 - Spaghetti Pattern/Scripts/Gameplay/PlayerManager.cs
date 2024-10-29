@@ -28,9 +28,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public Stat playerSpeed = new(5);
         public Stat armor = new(0);
         public Stat dodge = new(0);
-        public Stat dashCooldown = new(8);
-        public Stat dashDistance = new(0);
-
         public Stat damage = new(1);
         public Stat critChance = new(0);
         public Stat critDamage = new(1.5f);
@@ -38,7 +35,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public Stat firerate = new(0.5f);
         public Stat knockback = new(1);
         public Stat pierce = new(0);
-        public Stat bulletSize = new(1);
 
         public readonly Dictionary<StatType, Stat> Stats = new();
 
@@ -55,23 +51,14 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private Coroutine _dodgeTextCoroutine;
         private Coroutine _damageTextCoroutine;
-        private bool _isDashing;
-        private bool _canTakeDamage = true;
-
-        [Header("Dash")]
-        public float dashTime = 0.2f;
-        private bool _dashOnCooldown = false;
-        private float _timeSinceLastDash = 0f;
 
         [Header("Effects")]
         public ParticleSystem shootEffect;
-        public ParticleSystem dashParticle;
 
         [Header("Debug")] public bool isDebugMode = false;
 
         [Header("Sound")]
         public SoundDefinition shootSound;
-        public SoundDefinition dashSound;
         public SoundDefinition deathSound;
         public SoundDefinition healthPackSound;
         public SoundDefinition takeDamageSound;
@@ -102,8 +89,6 @@ namespace UnityArchitecture.SpaghettiPattern
             Stats.Add(StatType.Speed, playerSpeed);
             Stats.Add(StatType.Armor, armor);
             Stats.Add(StatType.Dodge, dodge);
-            Stats.Add(StatType.DashCooldown, dashCooldown);
-            Stats.Add(StatType.DashDistance, dashDistance);
             Stats.Add(StatType.Damage, damage);
             Stats.Add(StatType.CritChance, critChance);
             Stats.Add(StatType.CritDamage, critDamage);
@@ -111,64 +96,11 @@ namespace UnityArchitecture.SpaghettiPattern
             Stats.Add(StatType.FireRate, firerate);
             Stats.Add(StatType.KnockBack, knockback);
             Stats.Add(StatType.Pierce, pierce);
-            Stats.Add(StatType.BulletSize, bulletSize);
-        }
-
-        private IEnumerator Dash()
-        {
-            _isDashing = true;
-
-            var elapsedTime = 0f;
-            var startPosition = transform.position;
-            var dashDestination = transform.forward * dashDistance.value + transform.position;
-
-            while (elapsedTime < dashTime)
-            {
-                elapsedTime += Time.deltaTime;
-
-                var normalizedTime = elapsedTime / dashTime;
-                var inverseQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
-
-                var desiredPos = Vector3.Lerp(startPosition, dashDestination, inverseQuadraticTime);
-
-                // clamp the position to the level bounds
-                transform.position = new Vector3(Mathf.Clamp(desiredPos.x, -gameManager.levelBounds.x, gameManager.levelBounds.x),
-                    transform.position.y,
-                    Mathf.Clamp(desiredPos.z, -gameManager.levelBounds.y, gameManager.levelBounds.y));
-
-                if (!gameManager.isGameActive)
-                {
-                    _isDashing = false;
-                    yield break;
-                }
-
-                yield return new WaitForEndOfFrame();
-            }
-
-            _isDashing = false;
-            _dashOnCooldown = true;
         }
 
         private void Update()
         {
-            if(_dashOnCooldown)
-            {
-                _timeSinceLastDash -= Time.deltaTime;
-                if(_timeSinceLastDash > dashCooldown.value)
-                {
-                    _dashOnCooldown = false;
-                }
-            }
-
             if (!GameManager.instance.isGameActive) return;
-
-            if (Input.GetKeyDown(KeyCode.Space) && !_dashOnCooldown && !_isDashing)
-            {
-                AudioManager.instance.PlaySound(dashSound);
-                dashParticle.Play();
-            }
-
-            if (_isDashing) return;
 
             // Get Closest enemy target.
             var closestDistance = Mathf.Infinity;
@@ -350,8 +282,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void TakeDamage(int damageAmount)
         {
-            if (!_canTakeDamage) return;
-            if (_isDashing) return;
             // Check if damage is dodged.
             var hitChance = Random.Range(0, 100);
 

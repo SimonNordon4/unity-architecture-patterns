@@ -18,53 +18,28 @@ namespace UnityArchitecture.SpaghettiPattern
         public float minimumValue = 0f;
         public float maximumValue = float.PositiveInfinity;
 
-        [SerializeField]
-        private List<Modifier> _modifiers = new();
+        [SerializeField] private List<Modifier> _modifiers = new();
 
         public float value = 1f;
 
         private void Evaluate()
         {
-            float flatSum = 0;
-            float percentageSum = 1; // Start with 1 so it represents 100% at start.
+            float addedValue = 0;
 
             foreach (var modifier in _modifiers)
             {
-                if (modifier.modifierType == ModifierType.Flat)
+                addedValue += modifier.modifierValue;
+
+                if (addedValue + baseValue < minimumValue)
                 {
-                    flatSum += modifier.modifierValue;
-
-                    // intialValue = 1.5, flatsum = -3, minimumValue = 1
-                    // actualValue = 1.5 - 3 = -1.5
-                    // difference = 1 - (-1.5) = 2.5
-                    // reNormalizedFlatSum = 2.5 + (-3) = -0.5
-
-                    // minimumValue = initialValue + flatSum + x
-                    // 1 = 2 + -3 + x
-
-                    // x = minimumValue - initialValue - flatSum
-                    // x = 1 - 2 -(-3)
-                    // x = 2
-
-                    // new flatsum += 2;
-
-                    if (flatSum + baseValue < minimumValue)
-                    {
-                        var virtualFlatSum = baseValue + flatSum;
-                        var difference = minimumValue - virtualFlatSum;
-                        var reNormalizedFlatSum = difference + flatSum;
-                        flatSum = reNormalizedFlatSum;
-                    }
-
-                }
-                else if (modifier.modifierType == ModifierType.Percentage)
-                {
-                    // Convert percentage to a multiplier. e.g., 10% becomes 1.10, -20% becomes 0.80
-                    percentageSum += modifier.modifierValue;
+                    var virtualFlatSum = baseValue + addedValue;
+                    var difference = minimumValue - virtualFlatSum;
+                    var reNormalizedFlatSum = difference + addedValue;
+                    addedValue = reNormalizedFlatSum;
                 }
             }
 
-            value = Mathf.Clamp((baseValue + flatSum) * percentageSum, minimumValue, maximumValue);
+            value = Mathf.Clamp((baseValue + addedValue), minimumValue, maximumValue);
         }
 
         public void Reset()

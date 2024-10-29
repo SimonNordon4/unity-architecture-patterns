@@ -43,6 +43,9 @@ namespace UnityArchitecture.SpaghettiPattern
                 chestBounds = GameManager.instance.levelBounds;
 
             allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
+            
+            foreach (var chestItem in allChestItems)
+                chestItem.SetTier();
 
             SpawnChest();
         }
@@ -109,27 +112,6 @@ namespace UnityArchitecture.SpaghettiPattern
             chestMenu.SetActive(true);
             hudMenu.SetActive(false);
         }
-
-        [ContextMenu("Save Chest Items")]
-        public void SaveChestItems()
-        {
-            allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
-            foreach (var chestItems in allChestItems)
-            {
-                chestItems.Save();
-            }
-        }
-
-        [ContextMenu("Load Chest Items")]
-        public void LoadChestItems()
-        {
-            allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
-            foreach (var chestItems in allChestItems)
-            {
-                chestItems.Load();
-            }
-        }
-
 
 
         // private void UpdateItemUI()

@@ -962,18 +962,6 @@ MonoBehaviour:
     maximumValue: Infinity
     _modifiers: []
     value: 0
-  dashCooldown:
-    baseValue: 8
-    minimumValue: 0
-    maximumValue: Infinity
-    _modifiers: []
-    value: 8
-  dashDistance:
-    baseValue: 0
-    minimumValue: 0
-    maximumValue: Infinity
-    _modifiers: []
-    value: 0
   damage:
     baseValue: 1
     minimumValue: 0
@@ -1016,23 +1004,14 @@ MonoBehaviour:
     maximumValue: Infinity
     _modifiers: []
     value: 0
-  bulletSize:
-    baseValue: 1
-    minimumValue: 0
-    maximumValue: Infinity
-    _modifiers: []
-    value: 1
   projectilePrefab: {fileID: 7416635416557640102, guid: 7c63aa3a650f02b4594fc8b55be3e4f5,
     type: 3}
   localCanvas: {fileID: 7481550565855445088}
   dodgeTextGo: {fileID: 9084586833988933064}
   damageTextGo: {fileID: 7288289568393495249}
-  dashTime: 0.2
   shootEffect: {fileID: 1308151052}
-  dashParticle: {fileID: 547831697}
   isDebugMode: 1
   shootSound: {fileID: 11400000, guid: 62b2c577a034cfe429f46d850500a392, type: 2}
-  dashSound: {fileID: 11400000, guid: d0a437dc538fef844b8b66dde0a22632, type: 2}
   deathSound: {fileID: 11400000, guid: b77996f8e576e9e4e9ff9e6e91e62d39, type: 2}
   healthPackSound: {fileID: 11400000, guid: 205272d1cf842894f8e611ea23a2b1a4, type: 2}
   takeDamageSound: {fileID: 11400000, guid: d658cbabcaab8b343b83677f86e40c42, type: 2}
@@ -1303,12 +1282,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38874cea95e81344f8628e064bbef63e, type: 3}
---- !u!198 &547831697 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3407604102439438465, guid: 38874cea95e81344f8628e064bbef63e,
-    type: 3}
-  m_PrefabInstance: {fileID: 547831696}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &547831698 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3407604102439438471, guid: 38874cea95e81344f8628e064bbef63e,
@@ -3952,11 +3925,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1884674989}
   - component: {fileID: 1884674990}
-  - component: {fileID: 1884674991}
-  - component: {fileID: 1884674995}
-  - component: {fileID: 1884674994}
-  - component: {fileID: 1884674993}
-  - component: {fileID: 1884674992}
   m_Layer: 0
   m_Name: Chest Manager
   m_TagString: Untagged
@@ -3995,26 +3963,79 @@ MonoBehaviour:
   chestSpawnTime: 15
   chestBounds: {x: 20, y: 20}
   tier1ChestItems:
-    jsonFile: 
     tier: 1
-    chestItems: []
+    chestItems:
+    - itemName: Steak
+      sprite: {fileID: 21300000, guid: 768f9fee62118ba4d94d57bb0cb06c89, type: 3}
+      modifiers:
+      - statType: 0
+        modifierValue: 3
+      - statType: 1
+        modifierValue: 0.2
+      tier: 1
+    - itemName: Bullet
+      sprite: {fileID: 21300000, guid: 670182a550fbca74fb086af66fd38e8b, type: 3}
+      modifiers:
+      - statType: 5
+        modifierValue: 1
+      - statType: 10
+        modifierValue: 0.25
+      tier: 1
+    - itemName: Ninjet
+      sprite: {fileID: 21300000, guid: 87191d2030d517c439672c935276c834, type: 3}
+      modifiers:
+      - statType: 2
+        modifierValue: 0.1
+      - statType: 4
+        modifierValue: 3
+      tier: 1
+    - itemName: Reloader
+      sprite: {fileID: 21300000, guid: 0ca43489b024d1243ba7124acde0fa1f, type: 3}
+      modifiers:
+      - statType: 9
+        modifierValue: 0.1
+      - statType: 6
+        modifierValue: 3
+      tier: 1
+    - itemName: Locked On
+      sprite: {fileID: 21300000, guid: 295f5ed55bce57c42845c56d91778a58, type: 3}
+      modifiers:
+      - statType: 8
+        modifierValue: 0.5
+      - statType: 7
+        modifierValue: 10
+      tier: 1
   tier2ChestItems:
-    jsonFile: 
     tier: 2
     chestItems: []
   tier3ChestItems:
-    jsonFile: 
     tier: 3
     chestItems: []
   tier4ChestItems:
-    jsonFile: 
     tier: 4
     chestItems: []
   tier5ChestItems:
-    jsonFile: 
     tier: 5
     chestItems: []
-  allChestItems: []
+  allChestItems:
+  - tier: 1
+    chestItems:
+    - itemName: Steak
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 0
+        modifierValue: 1
+      - statType: 1
+        modifierValue: 0.1
+      tier: 1
+  - tier: 2
+    chestItems: []
+  - tier: 3
+    chestItems: []
+  - tier: 4
+    chestItems: []
+  - tier: 5
+    chestItems: []
   miniChestCooldown: 15
   chestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42,
     type: 3}
@@ -4024,269 +4045,6 @@ MonoBehaviour:
   tier5Pity: 0
   chestMenu: {fileID: 16506741}
   hudMenu: {fileID: 290299293}
---- !u!114 &1884674991
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884674988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFile: 
-  chestTableName: Tier 1 Items
-  tier: 1
-  chestItems:
-  - itemName: Max Health
-    sprite: {fileID: 21300000, guid: 768f9fee62118ba4d94d57bb0cb06c89, type: 3}
-    modifiers:
-    - statType: 0
-      modifierType: 0
-      modifierValue: 3
-    tier: 1
-  - itemName: Health Regen
-    sprite: {fileID: 21300000, guid: 2861d46572a4507449116781e1388818, type: 3}
-    modifiers:
-    - statType: 1
-      modifierType: 1
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Speed
-    sprite: {fileID: 21300000, guid: 5777482c1962aed4a82e83a3da7f3ae8, type: 3}
-    modifiers:
-    - statType: 2
-      modifierType: 1
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Armor
-    sprite: {fileID: 21300000, guid: e452258e1729d354ea646ec75314d70f, type: 3}
-    modifiers:
-    - statType: 3
-      modifierType: 0
-      modifierValue: 1
-    tier: 1
-  - itemName: Dodge
-    sprite: {fileID: 21300000, guid: 1ca5cd998507cf84a8cbfcd49b0d643f, type: 3}
-    modifiers:
-    - statType: 4
-      modifierType: 1
-      modifierValue: 0.03
-    tier: 1
-  - itemName: Dash
-    sprite: {fileID: 21300000, guid: 373fff9661ffd3844817e495fe818992, type: 3}
-    modifiers:
-    - statType: 5
-      modifierType: 1
-      modifierValue: 0.05
-    - statType: 6
-      modifierType: 0
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Damage
-    sprite: {fileID: 21300000, guid: 670182a550fbca74fb086af66fd38e8b, type: 3}
-    modifiers:
-    - statType: 7
-      modifierType: 0
-      modifierValue: 1
-    tier: 1
-  - itemName: Damage %
-    sprite: {fileID: 21300000, guid: ccbcd2962ce8bb84182d1d780620ce02, type: 3}
-    modifiers:
-    - statType: 7
-      modifierType: 1
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Critical Chance
-    sprite: {fileID: 21300000, guid: 809585f675f11f5489e15bd42e30f303, type: 3}
-    modifiers:
-    - statType: 8
-      modifierType: 1
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Critical Damage
-    sprite: {fileID: 21300000, guid: 12ba72665edcbe146bd229621f21f04d, type: 3}
-    modifiers:
-    - statType: 9
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Critical Damage
-    sprite: {fileID: 21300000, guid: e1f5ccc808a34364582950b13cccb4cc, type: 3}
-    modifiers:
-    - statType: 10
-      modifierType: 0
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Fire Rate
-    sprite: {fileID: 21300000, guid: 0ca43489b024d1243ba7124acde0fa1f, type: 3}
-    modifiers:
-    - statType: 11
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Knock Back
-    sprite: {fileID: 21300000, guid: 8b766e7ef6d2f874b9e4f7f9bea1cf7b, type: 3}
-    modifiers:
-    - statType: 12
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
---- !u!114 &1884674992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884674988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFile: 
-  chestTableName: Tier 5 Items
-  tier: 1
-  chestItems: []
---- !u!114 &1884674993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884674988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFile: 
-  chestTableName: Tier 4 Items
-  tier: 1
-  chestItems: []
---- !u!114 &1884674994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884674988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFile: 
-  chestTableName: Tier 3 Items
-  tier: 1
-  chestItems: []
---- !u!114 &1884674995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884674988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcf1336eaff718a4b93a2a59db591c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jsonFile: 
-  chestTableName: Tier 1 Items
-  tier: 1
-  chestItems:
-  - itemName: Healthy
-    sprite: {fileID: 21300000, guid: 93f5e762c3f0c9e4b8fbc1e5a33c2663, type: 3}
-    modifiers:
-    - statType: 0
-      modifierType: 0
-      modifierValue: 5
-    - statType: 1
-      modifierType: 1
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Speed
-    sprite: {fileID: 21300000, guid: ca9785b81f23ea8479933cdab1f12201, type: 3}
-    modifiers:
-    - statType: 2
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Bulk Up
-    sprite: {fileID: 21300000, guid: 7813be7952f9918419b0f30082e0fd02, type: 3}
-    modifiers:
-    - statType: 3
-      modifierType: 0
-      modifierValue: 2
-    - statType: 0
-      modifierType: 0
-      modifierValue: 2
-    tier: 1
-  - itemName: Ninja
-    sprite: {fileID: 21300000, guid: 373fff9661ffd3844817e495fe818992, type: 3}
-    modifiers:
-    - statType: 5
-      modifierType: 1
-      modifierValue: 0.1
-    - statType: 6
-      modifierType: 0
-      modifierValue: 0.1
-    - statType: 4
-      modifierType: 1
-      modifierValue: 0.03
-    tier: 1
-  - itemName: Damage
-    sprite: {fileID: 21300000, guid: 670182a550fbca74fb086af66fd38e8b, type: 3}
-    modifiers:
-    - statType: 7
-      modifierType: 0
-      modifierValue: 1
-    tier: 1
-  - itemName: Damage %
-    sprite: {fileID: 21300000, guid: ccbcd2962ce8bb84182d1d780620ce02, type: 3}
-    modifiers:
-    - statType: 7
-      modifierType: 1
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Critical Chance
-    sprite: {fileID: 21300000, guid: 809585f675f11f5489e15bd42e30f303, type: 3}
-    modifiers:
-    - statType: 8
-      modifierType: 1
-      modifierValue: 0.1
-    tier: 1
-  - itemName: Critical Damage
-    sprite: {fileID: 21300000, guid: 12ba72665edcbe146bd229621f21f04d, type: 3}
-    modifiers:
-    - statType: 9
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Critical Damage
-    sprite: {fileID: 21300000, guid: e1f5ccc808a34364582950b13cccb4cc, type: 3}
-    modifiers:
-    - statType: 10
-      modifierType: 0
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Fire Rate
-    sprite: {fileID: 21300000, guid: 0ca43489b024d1243ba7124acde0fa1f, type: 3}
-    modifiers:
-    - statType: 11
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
-  - itemName: Knock Back
-    sprite: {fileID: 21300000, guid: 8b766e7ef6d2f874b9e4f7f9bea1cf7b, type: 3}
-    modifiers:
-    - statType: 12
-      modifierType: 1
-      modifierValue: 0.25
-    tier: 1
 --- !u!1 &1926671861
 GameObject:
   m_ObjectHideFlags: 0
