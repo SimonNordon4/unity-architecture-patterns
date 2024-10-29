@@ -33,7 +33,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public bool isGameActive = false;
         public Vector2 levelBounds = new(25f, 25f);
 
-        public readonly List<ChestItem> currentlyHeldItems = new();
+
 
         [Header("UI")]
         public GameObject pauseMenu;
@@ -97,7 +97,7 @@ namespace UnityArchitecture.SpaghettiPattern
             roundTime = 0f;
             playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
             // clear all items
-            currentlyHeldItems.Clear();
+
             // UpdateItemUI();
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
             TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
@@ -236,7 +236,6 @@ namespace UnityArchitecture.SpaghettiPattern
             pauseMenu.SetActive(false);
             gameOverMenu.SetActive(false);
             winMenu.SetActive(false);
-            // chestItemMenu.SetActive(false);
         }
 
         public void QuitApplication()

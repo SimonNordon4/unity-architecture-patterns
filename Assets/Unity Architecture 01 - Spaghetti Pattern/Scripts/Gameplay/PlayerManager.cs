@@ -17,14 +17,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public Vector3 targetDirection;
 
-        [Header("References")]
-        public GameManager gameManager;
+        [Header("References")] public GameManager gameManager;
         public EnemyManager enemyManager;
 
-        [Header("Stats")] 
-        public int playerCurrentHealth = 10;
+        [Header("Stats")] public int playerCurrentHealth = 10;
         public Stat playerMaxHealth = new(10);
-        public Stat healthRegen = new(1);
+        public Stat healthRegen = new(0);
         public Stat playerSpeed = new(5);
         public Stat armor = new(0);
         public Stat dodge = new(0);
@@ -38,13 +36,13 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public readonly Dictionary<StatType, Stat> Stats = new();
 
-        [Header("Pistol")]
-        public GameObject projectilePrefab;
+        [Header("Items")] public readonly List<ChestItem> currentlyHeldItems = new();
+
+        [Header("Pistol")] public GameObject projectilePrefab;
         private float _timeSinceLastFire = 0.0f;
         private Transform _closestTarget = null;
 
-        [Header("UI")]
-        public Transform localCanvas;
+        [Header("UI")] public Transform localCanvas;
         public GameObject dodgeTextGo;
         public GameObject damageTextGo;
         private Quaternion _startRotation;
@@ -52,13 +50,11 @@ namespace UnityArchitecture.SpaghettiPattern
         private Coroutine _dodgeTextCoroutine;
         private Coroutine _damageTextCoroutine;
 
-        [Header("Effects")]
-        public ParticleSystem shootEffect;
+        [Header("Effects")] public ParticleSystem shootEffect;
 
         [Header("Debug")] public bool isDebugMode = false;
 
-        [Header("Sound")]
-        public SoundDefinition shootSound;
+        [Header("Sound")] public SoundDefinition shootSound;
         public SoundDefinition deathSound;
         public SoundDefinition healthPackSound;
         public SoundDefinition takeDamageSound;
@@ -73,12 +69,14 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             _startRotation = localCanvas.rotation;
+            currentlyHeldItems.Clear();
             InitializeStats();
         }
 
         public void ResetStats()
         {
             Stats.Clear();
+            currentlyHeldItems.Clear();
             InitializeStats();
         }
 
@@ -96,6 +94,47 @@ namespace UnityArchitecture.SpaghettiPattern
             Stats.Add(StatType.FireRate, firerate);
             Stats.Add(StatType.KnockBack, knockback);
             Stats.Add(StatType.Pierce, pierce);
+            playerMaxHealth.Reset();
+            healthRegen.Reset();
+            playerSpeed.Reset();
+            armor.Reset();
+            dodge.Reset();
+            damage.Reset();
+            critChance.Reset();
+            critDamage.Reset();
+            range.Reset();
+            firerate.Reset();
+            knockback.Reset();
+            pierce.Reset();
+
+            playerCurrentHealth = (int)playerMaxHealth.value;
+        }
+
+        public void AddItem(ChestItem item)
+        {
+            Debug.Log("Adding item: " + item.itemName); 
+            currentlyHeldItems.Add(item);
+
+// Add modifiers to the stats.
+            foreach (var mod in item.modifiers)
+            {
+                var stat = Stats[mod.statType];
+                stat.AddModifier(mod);
+
+                // TODO: This might be broken.
+                AccountManager.Instance.CheckIfHighestStat(mod.statType, stat.value);
+
+                // If it's a max health mod, we need to also increase the current health.
+                if (mod.statType == StatType.MaxHealth)
+                {
+                    AccountManager.Instance.statistics.totalDamageHealed += (int)mod.modifierValue;
+
+                    var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue, 1,
+                        (int)playerMaxHealth.value);
+
+                    playerCurrentHealth = newHealth;
+                }
+            }
         }
 
         private void Update()
@@ -134,7 +173,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
             if (!targetIsNull)
             {
-                targetDirection = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
+                targetDirection = Vector3.ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up)
+                    .normalized;
                 if (targetDirection.magnitude < 0.1f) targetDirection = transform.forward;
             }
             else
@@ -166,7 +206,6 @@ namespace UnityArchitecture.SpaghettiPattern
                         {
                             ShootPredictive();
                         }
-
                     }
                 }
             }
@@ -294,7 +333,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             var armorMitigation = armor.value / (armor.value + 100);
 
-            damageAmount = Mathf.RoundToInt(1-armorMitigation);
+            damageAmount = Mathf.RoundToInt(1 - armorMitigation);
             // We should never be invincible imo. hard cap to 1.
             if (damageAmount <= 0)
             {
@@ -356,10 +395,12 @@ namespace UnityArchitecture.SpaghettiPattern
                 elapsedTime += Time.deltaTime;
                 var normalizedTime = elapsedTime / 0.4f;
                 var inversedQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
-                t.position = Vector3.Lerp(startPosition + transform.position, targetPosition + transform.position, inversedQuadraticTime);
+                t.position = Vector3.Lerp(startPosition + transform.position, targetPosition + transform.position,
+                    inversedQuadraticTime);
                 t.localScale = Vector3.Lerp(startScale, targetScale, inversedQuadraticTime);
                 yield return new WaitForEndOfFrame();
             }
+
             dodgeTextGo.SetActive(false);
             yield return null;
         }
@@ -384,17 +425,18 @@ namespace UnityArchitecture.SpaghettiPattern
                 var normalizedTime = elapsedTime / 0.4f;
                 var quadraticTime = normalizedTime * normalizedTime;
                 var inversedQuadraticTime = 1 - Mathf.Pow(1 - normalizedTime, 2);
-                t.position = Vector3.Lerp(startPosition + transform.position, targetPosition + transform.position, inversedQuadraticTime);
+                t.position = Vector3.Lerp(startPosition + transform.position, targetPosition + transform.position,
+                    inversedQuadraticTime);
                 t.localScale = Vector3.Lerp(startScale, targetScale, inversedQuadraticTime);
                 yield return new WaitForEndOfFrame();
             }
+
             damageTextGo.SetActive(false);
             yield return null;
         }
 
         public void OnTriggerEnter(Collider other)
         {
-
             if (other.CompareTag("Spawn Indicator"))
             {
                 Destroy(other.gameObject);
@@ -404,9 +446,9 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 AudioManager.instance.PlaySound(healthPackSound);
                 var healthGained =
-                 (int)Mathf.Clamp(playerCurrentHealth + playerMaxHealth.value * 0.1f + 1,
-                    0f,
-                    playerMaxHealth.value);
+                    (int)Mathf.Clamp(playerCurrentHealth + playerMaxHealth.value * 0.1f + 1,
+                        0f,
+                        playerMaxHealth.value);
 
                 AccountManager.Instance.statistics.totalDamageHealed += healthGained;
                 playerCurrentHealth = healthGained;

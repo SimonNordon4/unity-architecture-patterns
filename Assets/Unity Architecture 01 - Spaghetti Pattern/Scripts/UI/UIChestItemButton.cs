@@ -67,8 +67,8 @@ namespace UnityArchitecture.SpaghettiPattern
                         new Color(1, 0.75f, 0.75f);
 
                 _descriptions.Add(description);
-                selectItemButton.onClick.AddListener(() => chestMenu.OnItemSelected(chestItem));
             }
+            selectItemButton.onClick.AddListener(() => chestMenu.OnItemSelected(chestItem));
 
             DescriptionText.gameObject.SetActive(false);
         }

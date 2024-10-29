@@ -21,6 +21,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
             // Figure out how many items this chest will have.
             var numberOfItems = CalculateNumberOfItems();
+            
+            
 
             for (var i = 0; i < numberOfItems; i++)
             {
@@ -50,11 +52,13 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             // we wanted a weight average between 2 - 5 items spawning.
             var itemsChance = Random.Range(0, 100);
+            
+            Debug.Log("Item number Chance: " + itemsChance);
 
             var numberOfItems = itemsChance switch
             {
-                > 90 => 5,
-                > 75 => 4,
+                > 95 => 5,
+                > 85 => 4,
                 > 50 => 3,
                 _ => 2,
             };
@@ -66,14 +70,17 @@ namespace UnityArchitecture.SpaghettiPattern
         private int CalculateItemTier()
         {
             var tierChance = Random.Range(0, 100);
+            
+            Debug.Log("Item tier Chance: " + tierChance);
 
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch
             {
                 var t when t > 99 - chestManager.tier5Pity => 5,
                 var t when t > 90 - chestManager.tier4Pity => 4,
-                var t when t > 50 - chestManager.tier3Pity => 3,
-                _ => 2,
+                var t when t > 75 - chestManager.tier3Pity => 3,
+                var t when t > 50 => 2,
+                _ => 1,
             };
 
             // Increase the pity counters

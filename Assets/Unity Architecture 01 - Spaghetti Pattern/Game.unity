@@ -4007,35 +4007,209 @@ MonoBehaviour:
       tier: 1
   tier2ChestItems:
     tier: 2
-    chestItems: []
-  tier3ChestItems:
-    tier: 3
-    chestItems: []
-  tier4ChestItems:
-    tier: 4
-    chestItems: []
-  tier5ChestItems:
-    tier: 5
-    chestItems: []
-  allChestItems:
-  - tier: 1
     chestItems:
-    - itemName: Steak
-      sprite: {fileID: 0}
+    - itemName: Big Bullet
+      sprite: {fileID: 21300000, guid: 801f420c3784a3b45a858d21756f8608, type: 3}
+      modifiers:
+      - statType: 5
+        modifierValue: 2
+      - statType: 10
+        modifierValue: 0.5
+      - statType: 9
+        modifierValue: -0.1
+      tier: 1
+    - itemName: Rain of Bullets
+      sprite: {fileID: 21300000, guid: 62daeeae1c2ff89468d1975907a37a7a, type: 3}
+      modifiers:
+      - statType: 9
+        modifierValue: 0.2
+      - statType: 6
+        modifierValue: 3
+      - statType: 8
+        modifierValue: -0.5
+      - statType: 2
+        modifierValue: -0.1
+      tier: 1
+    - itemName: Zoomies
+      sprite: {fileID: 21300000, guid: 6351293ceae657e42b4ebf53fcccc56d, type: 3}
+      modifiers:
+      - statType: 2
+        modifierValue: 0.25
+      - statType: 4
+        modifierValue: 6
+      - statType: 3
+        modifierValue: -1
+      tier: 1
+    - itemName: Bulk
+      sprite: {fileID: 21300000, guid: e452258e1729d354ea646ec75314d70f, type: 3}
       modifiers:
       - statType: 0
-        modifierValue: 1
+        modifierValue: 5
       - statType: 1
-        modifierValue: 0.1
+        modifierValue: 0.2
+      - statType: 3
+        modifierValue: 2
+      - statType: 4
+        modifierValue: -3
+      - statType: 2
+        modifierValue: -1
       tier: 1
-  - tier: 2
-    chestItems: []
-  - tier: 3
-    chestItems: []
-  - tier: 4
-    chestItems: []
-  - tier: 5
-    chestItems: []
+    - itemName: Assassin
+      sprite: {fileID: 21300000, guid: 87191d2030d517c439672c935276c834, type: 3}
+      modifiers:
+      - statType: 6
+        modifierValue: 5
+      - statType: 7
+        modifierValue: 25
+      - statType: 10
+        modifierValue: -0.5
+      tier: 1
+  tier3ChestItems:
+    tier: 3
+    chestItems:
+    - itemName: Awp
+      sprite: {fileID: 21300000, guid: 56e4609e4f6c10745b0896b377509465, type: 3}
+      modifiers:
+      - statType: 5
+        modifierValue: 4
+      - statType: 6
+        modifierValue: 3
+      - statType: 7
+        modifierValue: 25
+      - statType: 8
+        modifierValue: 2
+      - statType: 9
+        modifierValue: -0.5
+      tier: 1
+    - itemName: Bomba
+      sprite: {fileID: 21300000, guid: d659c6366be716b408ad5dba912e9406, type: 3}
+      modifiers:
+      - statType: 0
+        modifierValue: 10
+      - statType: 1
+        modifierValue: 0.5
+      - statType: 3
+        modifierValue: 3
+      - statType: 2
+        modifierValue: -0.1
+      tier: 1
+    - itemName: Minigun
+      sprite: {fileID: 21300000, guid: 9596a9b4fb0026041acf9d6af313e364, type: 3}
+      modifiers:
+      - statType: 9
+        modifierValue: 1
+      - statType: 6
+        modifierValue: 10
+      - statType: 7
+        modifierValue: -10
+      - statType: 10
+        modifierValue: -0.5
+      tier: 1
+    - itemName: Cannon
+      sprite: {fileID: 21300000, guid: 8b766e7ef6d2f874b9e4f7f9bea1cf7b, type: 3}
+      modifiers:
+      - statType: 5
+        modifierValue: 2
+      - statType: 7
+        modifierValue: 15
+      - statType: 3
+        modifierValue: 5
+      - statType: 10
+        modifierValue: 1
+      - statType: 2
+        modifierValue: -0.1
+      - statType: 4
+        modifierValue: -3
+      tier: 1
+  tier4ChestItems:
+    tier: 4
+    chestItems:
+    - itemName: Fat Cannon
+      sprite: {fileID: 21300000, guid: 52f403eb8e1c44d43b203f47d2c1730c, type: 3}
+      modifiers:
+      - statType: 5
+        modifierValue: 4
+      - statType: 7
+        modifierValue: 25
+      - statType: 10
+        modifierValue: 2
+      - statType: 2
+        modifierValue: -0.2
+      - statType: 4
+        modifierValue: -6
+      tier: 1
+    - itemName: Vagabond
+      sprite: {fileID: 21300000, guid: 27a4d13e8339c1948be0c71a98831778, type: 3}
+      modifiers:
+      - statType: 5
+        modifierValue: 2
+      - statType: 6
+        modifierValue: 5
+      - statType: 9
+        modifierValue: 0.2
+      - statType: 2
+        modifierValue: 0.1
+      - statType: 1
+        modifierValue: -0.5
+      tier: 1
+    - itemName: Tunk
+      sprite: {fileID: 21300000, guid: 7813be7952f9918419b0f30082e0fd02, type: 3}
+      modifiers:
+      - statType: 3
+        modifierValue: 10
+      - statType: 0
+        modifierValue: 10
+      - statType: 1
+        modifierValue: 1
+      - statType: 5
+        modifierValue: -2
+      - statType: 6
+        modifierValue: -10
+      tier: 1
+    - itemName: Sharp shot
+      sprite: {fileID: 21300000, guid: b7ffdd4321e98504c86e878a101fdc55, type: 3}
+      modifiers:
+      - statType: 11
+        modifierValue: 1
+      - statType: 8
+        modifierValue: 1
+      tier: 1
+  tier5ChestItems:
+    tier: 5
+    chestItems:
+    - itemName: Divinity
+      sprite: {fileID: 21300000, guid: e3778abf7f0090b45b0195c2bbc39a45, type: 3}
+      modifiers:
+      - statType: 0
+        modifierValue: 10
+      - statType: 1
+        modifierValue: 2
+      - statType: 3
+        modifierValue: 20
+      tier: 1
+    - itemName: Bang
+      sprite: {fileID: 21300000, guid: e0dc91605b50348429a3e9b2b6b59433, type: 3}
+      modifiers:
+      - statType: 9
+        modifierValue: 1
+      - statType: 6
+        modifierValue: 5
+      - statType: 2
+        modifierValue: 0.2
+      - statType: 8
+        modifierValue: -0.5
+      tier: 1
+    - itemName: Damage
+      sprite: {fileID: 21300000, guid: 9c1e8cf3206de744da3136033aecef32, type: 3}
+      modifiers:
+      - statType: 5
+        modifierValue: 5
+      - statType: 7
+        modifierValue: 50
+      - statType: 0
+        modifierValue: -5
+      tier: 1
+  allChestItems: []
   miniChestCooldown: 15
   chestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42,
     type: 3}

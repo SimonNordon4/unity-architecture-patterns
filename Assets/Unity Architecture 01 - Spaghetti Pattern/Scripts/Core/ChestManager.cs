@@ -21,7 +21,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public ChestItems tier4ChestItems;
         public ChestItems tier5ChestItems;
         public ChestItems[] allChestItems;
-        public float miniChestCooldown = 15f;
         public Chest chestPrefab;
         public Chest currentChest = null;
 
@@ -138,28 +137,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void ApplyItem(ChestItem item)
         {
-            GameManager.instance.currentlyHeldItems.Add(item);
-
-            // Add modifiers to the stats.
-            foreach (var mod in item.modifiers)
-            {
-                var stat = playerManager.Stats[mod.statType];
-                stat.AddModifier(mod);
-
-                // TODO: This might be broken.
-                AccountManager.Instance.CheckIfHighestStat(mod.statType, stat.value);
-
-                // If it's a max health mod, we need to also increase the current health.
-                if (mod.statType == StatType.MaxHealth)
-                {
-                    AccountManager.Instance.statistics.totalDamageHealed += (int)mod.modifierValue;
-
-                    var newHealth = Mathf.Clamp(playerManager.playerCurrentHealth + (int)mod.modifierValue, 1,
-                        (int)playerManager.playerMaxHealth.value);
-
-                    playerManager.playerCurrentHealth = newHealth;
-                }
-            }
+            playerManager.AddItem(item);
 
             // Attempt to not dash when pressing space to select an item in teh chest menu.
             StartCoroutine(WaitOneFrameToUnpause());
