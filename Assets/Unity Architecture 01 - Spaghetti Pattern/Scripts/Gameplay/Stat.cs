@@ -8,23 +8,23 @@ namespace UnityArchitecture.SpaghettiPattern
     [Serializable]
     public class Stat
     {
-        public Stat(float initialValue)
+        public Stat(int initialValue)
         {
             baseValue = initialValue;
             value = baseValue;
         }
 
-        public float baseValue = 1f;
-        public float minimumValue = 0f;
-        public float maximumValue = float.PositiveInfinity;
+        public int baseValue = 1;
+        public int minimumValue = 0;
+        public int maximumValue = int.MaxValue;
 
         [SerializeField] private List<Modifier> _modifiers = new();
 
-        public float value = 1f;
+        public int value;
 
         private void Evaluate()
         {
-            float addedValue = 0;
+            int addedValue = 0;
 
             foreach (var modifier in _modifiers)
             {
@@ -39,7 +39,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 }
             }
 
-            value = Mathf.Clamp((baseValue + addedValue), minimumValue, maximumValue);
+            value = Mathf.Clamp((int)(baseValue + addedValue), minimumValue, maximumValue);
         }
 
         public void Reset()

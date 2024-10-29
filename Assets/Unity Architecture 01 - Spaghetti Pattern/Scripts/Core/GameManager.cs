@@ -23,7 +23,7 @@ namespace UnityArchitecture.SpaghettiPattern
             private set => _instance = value;
         }
 
-        private PlayerManager playerManager;
+        public PlayerManager playerManager;
 
         #region Variables
 
@@ -65,10 +65,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Start()
         {
-            playerManager = FindObjectsByType<PlayerManager>(FindObjectsSortMode.None)[0];
-            playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
-
-            
             isGameActive = true;
             StartNewGame();
         }

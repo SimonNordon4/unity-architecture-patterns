@@ -20,17 +20,17 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("References")] public GameManager gameManager;
         public EnemyManager enemyManager;
 
-        [Header("Stats")] public int playerCurrentHealth = 10;
-        public Stat playerMaxHealth = new(10);
+        [Header("Stats")] public int playerCurrentHealth = 5;
+        public Stat playerMaxHealth = new(5);
         public Stat healthRegen = new(0);
         public Stat playerSpeed = new(5);
         public Stat armor = new(0);
         public Stat dodge = new(0);
         public Stat damage = new(1);
         public Stat critChance = new(0);
-        public Stat critDamage = new(1.5f);
+        public Stat critDamage = new(150);
         public Stat range = new(5);
-        public Stat firerate = new(0.5f);
+        public Stat firerate = new(5);
         public Stat knockback = new(1);
         public Stat pierce = new(0);
 
@@ -183,7 +183,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
             // Fire Pistol if possible.
             _timeSinceLastFire += Time.deltaTime;
-            if (_timeSinceLastFire > 1 / firerate.value)
+            
+            // This is dividing firerate by 10 and inverting it. 
+            // FireRate = 5 -> 0.5 shots/s
+            // FireRate = 10 -> 1 shot/s
+            // FireRate = 20 -> 2 shots/s
+            if (_timeSinceLastFire > 10f / firerate.value)
             {
                 if (!targetIsNull)
                 {
@@ -248,7 +253,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var projectile = projectileGo.GetComponent<Projectile>();
             projectile.damage = Mathf.RoundToInt(damage.value);
             projectile.knockBackIntensity = knockback.value;
-            projectile.pierceCount = (int)pierce.value;
+            projectile.pierceCount = Mathf.RoundToInt(pierce.value + 1); // I don't know why I have to add 1 here.
             _timeSinceLastFire = 0.0f;
         }
 
@@ -374,6 +379,8 @@ namespace UnityArchitecture.SpaghettiPattern
                         AccountManager.Instance.AchievementUnlocked(a);
                     }
                 }
+                
+                GameManager.instance.LoseGame();
             }
         }
 

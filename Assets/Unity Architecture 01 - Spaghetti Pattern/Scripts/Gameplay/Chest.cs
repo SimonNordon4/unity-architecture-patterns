@@ -17,7 +17,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public void GenerateItems(ChestManager chestManager)
         {
             Console.Log("\tChest.GenerateItems()", LogFilter.Chest, this);
-            var alreadyAddedItems = new HashSet<ChestItem>();
 
             var numberOfItems = CalculateNumberOfItems();
 
@@ -39,7 +38,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
                 foreach (var chestItem in currentChestTier.chestItems)
                 {
-                    if (alreadyAddedItems.Contains(chestItem)) continue;
+                    if (items.Contains(chestItem)) continue;
                     validPotentialItems.Add(chestItem);
                 }
 
