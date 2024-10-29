@@ -16,6 +16,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void GenerateItems(ChestManager chestManager)
         {
+            Console.Log("\tChest.GenerateItems()", LogFilter.Chest, this);
             // Store a hashset of all the items we have already added to the options, so we don't add duplicates.
             var alreadyAddedItems = new HashSet<ChestItem>();
 
@@ -52,8 +53,6 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             // we wanted a weight average between 2 - 5 items spawning.
             var itemsChance = Random.Range(0, 100);
-            
-            Debug.Log("Item number Chance: " + itemsChance);
 
             var numberOfItems = itemsChance switch
             {
@@ -62,7 +61,8 @@ namespace UnityArchitecture.SpaghettiPattern
                 > 50 => 3,
                 _ => 2,
             };
-
+            
+            Console.Log($"\t\t Item Chance {itemsChance} resulting in {numberOfItems} items", LogFilter.Chest, this);
             return  numberOfItems;
         }
 
@@ -71,8 +71,6 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             var tierChance = Random.Range(0, 100);
             
-            Debug.Log("Item tier Chance: " + tierChance);
-
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch
             {
@@ -100,6 +98,10 @@ namespace UnityArchitecture.SpaghettiPattern
 
             // clamp the results to the min max tiers
             itemTier = Mathf.Clamp(itemTier, minTier, maxTier);
+            
+            Console.Log($"\t\t Tier Chance {tierChance} resulting in tier {itemTier} with pity chances " +
+                        $"{chestManager.tier3Pity}, {chestManager.tier4Pity}, {chestManager.tier5Pity}",
+                LogFilter.Chest, this);
 
             return itemTier;
         }

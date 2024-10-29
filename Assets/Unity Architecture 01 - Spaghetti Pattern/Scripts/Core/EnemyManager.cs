@@ -77,6 +77,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
             enemiesAlive++;
             activeEnemies.Add(enemy);
+
+            Console.Log($"Spawn Enemy. alive: {enemiesAlive}," +
+                        $" type: {enemyPrefab.gameObject.name}," +
+                        $" health mult: {healthMultiplier:F1}," +
+                        $" damage mult {damageMultiplier:F1}",
+                LogFilter.Enemy, this);
         }
 
         /// <summary>
@@ -97,6 +103,7 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 SpawnBoss();
             }
+            
         }
 
         /// <summary>
@@ -127,6 +134,8 @@ namespace UnityArchitecture.SpaghettiPattern
                 bossesAlive++;
                 activeBosses.Add(boss);
             }
+            
+            Console.Log("EnemyManager.SpawnBoss()", LogFilter.Enemy, this);
 
             // Optionally, stop spawning regular enemies when bosses are active
             // This can be handled by checking if bossesAlive > 0 before spawning
@@ -138,6 +147,7 @@ namespace UnityArchitecture.SpaghettiPattern
         /// <param name="boss">The boss that died.</param>
         public void BossDied(EnemyController boss)
         {
+            Console.Log("EnemyManager.BossDied()", LogFilter.Enemy, this);
             if (activeBosses.Contains(boss))
             {
                 activeBosses.Remove(boss);
@@ -156,6 +166,7 @@ namespace UnityArchitecture.SpaghettiPattern
         /// </summary>
         private void ProceedToNextBlock()
         {
+            Console.Log($"EnemyManager.ProceedToNextBlock() current: {currentBlockIndex} next: {currentBlockIndex+1}", LogFilter.Enemy, this);
             currentBlockIndex++;
 
             if (currentBlockIndex >= enemyBlocks.Length)
@@ -170,6 +181,8 @@ namespace UnityArchitecture.SpaghettiPattern
                 enemiesAlive = 0;
                 enemyBlocks[currentBlockIndex].enemiesKilled = 0;
             }
+            
+            
         }
 
         /// <summary>
@@ -203,6 +216,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void Reset()
         {
+            Console.Log("EnemyManager.Reset()", LogFilter.Enemy, this); 
             // Destroy all active enemies
             foreach (var enemy in activeEnemies)
             {
@@ -234,8 +248,6 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 block.enemiesKilled = 0;
             }
-
-            Debug.Log("EnemyManager has been reset.");
         }
     }
 }

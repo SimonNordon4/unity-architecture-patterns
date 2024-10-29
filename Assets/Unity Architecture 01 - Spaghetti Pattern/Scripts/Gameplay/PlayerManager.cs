@@ -112,7 +112,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void AddItem(ChestItem item)
         {
-            Debug.Log("Adding item: " + item.itemName); 
             currentlyHeldItems.Add(item);
 
 // Add modifiers to the stats.

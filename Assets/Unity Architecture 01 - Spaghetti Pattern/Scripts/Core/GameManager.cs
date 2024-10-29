@@ -89,7 +89,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void StartNewGame()
         {
-            Debug.Log("Start New Game");
+            Console.Log("GameManager.StartNewGame()", LogFilter.Game, this);
             HideAll();
             AccountManager.Instance.statistics.gamesPlayed++;
             hudMenu.SetActive(true);
@@ -108,6 +108,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void TogglePauseGame()
         {
+            Console.Log("GameManager.TogglePauseGame()", LogFilter.Game, this);
             // If the game is active and we're not already paused.
             if (isGameActive && !isPaused)
             {
@@ -129,9 +130,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void ResetGame()
         {
+            Console.Log("GameManager.ResetGame()", LogFilter.Game, this);
             isPaused = false;
             playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
-            Debug.Log("Reset Game");
             var playerController = FindFirstObjectByType<PlayerManager>();
             playerController.ResetPlayer();
 
@@ -158,6 +159,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void WinGame()
         {
+            Console.Log("GameManager.WinGame()", LogFilter.Game, this);
             AccountManager.Instance.Save();
             HideAll();
             winMenu.SetActive(true);
@@ -221,6 +223,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void LoseGame()
         {
+            Console.Log("GameManager.LoseGame()", LogFilter.Game, this);
             AudioManager.instance.StopMusic();
             Debug.Log("Lose Game");
             HideAll();
@@ -319,15 +322,6 @@ namespace UnityArchitecture.SpaghettiPattern
         //     }
         // }
 
-        #region Chest Creation
-
-
-
-        
-
-        
-
-        #endregion
 
         #region Enemy Died Events
 

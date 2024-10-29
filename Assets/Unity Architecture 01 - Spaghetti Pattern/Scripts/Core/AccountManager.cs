@@ -56,6 +56,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void Save()
         {
+            Console.Log("AccountManager.Save()", LogFilter.Account, this);
             var accountSave = new AccountSave();
 
             var json = JsonUtility.ToJson(accountSave);
@@ -75,7 +76,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Load()
         {
-            
+            Console.Log("AccountManager.Load()", LogFilter.Account, this);
             var json = PlayerPrefs.GetString("statistics");
             if (string.IsNullOrEmpty(json))
             {
@@ -123,7 +124,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void CreateAchievements()
         {
-            Debug.Log("Creating achievements");
+            Console.Log("AccountManager.CreateAchievements()", LogFilter.Account, this);
             var achievements = new List<Achievement>
             {
                 new Achievement()
@@ -382,6 +383,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void ProcessStatAchievement(Achievement achievement, float value, int target)
         {
+            Console.Log($"\t\tProcessing stat achievement: {achievement.name} {value}", LogFilter.Account, this);
             if (value > achievement.progress)
                 achievement.progress = Mathf.Clamp((int)value, 0, achievement.goal);
             if (value >= target)
@@ -391,6 +393,7 @@ namespace UnityArchitecture.SpaghettiPattern
         // We can also add our own custom achievements here.
         public void CheckIfHighestStat(StatType type, float value)
         {
+            Console.Log($"\tChecking if highest stat: {type} {value}", LogFilter.Account, this);
             switch (type)
             {
                 case StatType.Damage:

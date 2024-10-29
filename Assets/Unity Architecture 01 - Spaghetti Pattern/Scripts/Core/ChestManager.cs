@@ -71,6 +71,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void SpawnChest()
         {
+            Console.Log("ChestManager.SpawnChest()", LogFilter.Chest, this);
             var chest = Instantiate(chestPrefab, GetRandomChestSpawn(), Quaternion.identity);
             chest.minTier = 1;
             chest.maxTier = 5;
@@ -80,6 +81,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void SpawnBossChest(Vector3 position)
         {
+            Console.Log("ChestManager.SpawnBossChest()", LogFilter.Chest, this);
             var chest = Instantiate(chestPrefab, position, Quaternion.identity);
             chest.minTier = 3;
             chest.maxTier = 5;
