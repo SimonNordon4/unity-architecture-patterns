@@ -33,8 +33,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public GameObject chestMenu;
         public GameObject hudMenu;
 
-
-
         public void Start()
         {
             // Chest has to spawn inside the level.

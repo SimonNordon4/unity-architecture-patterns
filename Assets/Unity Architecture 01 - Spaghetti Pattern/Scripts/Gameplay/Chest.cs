@@ -13,39 +13,43 @@ namespace UnityArchitecture.SpaghettiPattern
         public ChestManager chestManager;
 
         public List<ChestItem> items = new();
-
+        
         public void GenerateItems(ChestManager chestManager)
         {
             Console.Log("\tChest.GenerateItems()", LogFilter.Chest, this);
-            // Store a hashset of all the items we have already added to the options, so we don't add duplicates.
             var alreadyAddedItems = new HashSet<ChestItem>();
 
-            // Figure out how many items this chest will have.
             var numberOfItems = CalculateNumberOfItems();
-            
-            
+
+            // Flags to check if a tier item has been added
+            bool tier3Added = false;
+            bool tier4Added = false;
+            bool tier5Added = false;
 
             for (var i = 0; i < numberOfItems; i++)
             {
-                // Get the tier of the item to be spawned.
                 var tier = CalculateItemTier();
 
-                // Get the list of items based on the select tier.
-                var currentChestTier = chestManager.allChestItems[tier - 1];
+                if (tier == 3) tier3Added = true;
+                if (tier == 4) tier4Added = true;
+                if (tier == 5) tier5Added = true;
 
-                // We want to make sure we don't add the same item twice.
+                var currentChestTier = chestManager.allChestItems[tier - 1];
                 var validPotentialItems = new List<ChestItem>();
+
                 foreach (var chestItem in currentChestTier.chestItems)
                 {
-                    // check if the chest item has already been added.
                     if (alreadyAddedItems.Contains(chestItem)) continue;
                     validPotentialItems.Add(chestItem);
                 }
 
-                // Now just select a random item from the list of valid items.
                 var randomItemIndex = Random.Range(0, validPotentialItems.Count);
                 items.Add(validPotentialItems[randomItemIndex]);
             }
+
+            chestManager.tier3Pity = tier3Added ? 0 : chestManager.tier3Pity + 1;
+            chestManager.tier4Pity = tier4Added ? 0 : chestManager.tier4Pity + 1;
+            chestManager.tier5Pity = tier5Added ? 0 : chestManager.tier5Pity + 1;
         }
 
 

@@ -7,6 +7,7 @@ namespace UnityArchitecture.SpaghettiPattern
     {
         [Header("References")]
         public GameManager gameManager;
+        public ChestManager chestManager;
         public Transform playerTarget;
 
         [Header("Spawn Settings")]
@@ -91,6 +92,8 @@ namespace UnityArchitecture.SpaghettiPattern
         /// <param name="enemy">The enemy that died.</param>
         public void EnemyDied(EnemyController enemy)
         {
+            chestManager.ReduceChestSpawnTime();
+            
             if (activeEnemies.Contains(enemy))
             {
                 activeEnemies.Remove(enemy);

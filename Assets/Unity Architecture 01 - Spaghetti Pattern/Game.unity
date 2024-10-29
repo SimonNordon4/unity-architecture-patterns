@@ -3960,7 +3960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerManager: {fileID: 460763656}
-  chestSpawnTime: 15
+  chestSpawnTime: 25
   chestBounds: {x: 20, y: 20}
   tier1ChestItems:
     tier: 1
@@ -4210,7 +4210,6 @@ MonoBehaviour:
         modifierValue: -5
       tier: 1
   allChestItems: []
-  miniChestCooldown: 15
   chestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42,
     type: 3}
   currentChest: {fileID: 0}
