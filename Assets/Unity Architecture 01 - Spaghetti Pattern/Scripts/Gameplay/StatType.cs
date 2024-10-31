@@ -9,7 +9,6 @@
         Dodge,
         Damage,
         CritChance,
-        CritDamage,
         Range,
         FireRate,
         KnockBack,

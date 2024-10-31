@@ -28,7 +28,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public Stat dodge = new(0);
         public Stat damage = new(1);
         public Stat critChance = new(0);
-        public Stat critDamage = new(150);
         public Stat range = new(5);
         public Stat firerate = new(5);
         public Stat knockback = new(1);
@@ -89,7 +88,6 @@ namespace UnityArchitecture.SpaghettiPattern
             Stats.Add(StatType.Dodge, dodge);
             Stats.Add(StatType.Damage, damage);
             Stats.Add(StatType.CritChance, critChance);
-            Stats.Add(StatType.CritDamage, critDamage);
             Stats.Add(StatType.Range, range);
             Stats.Add(StatType.FireRate, firerate);
             Stats.Add(StatType.KnockBack, knockback);
@@ -101,7 +99,6 @@ namespace UnityArchitecture.SpaghettiPattern
             dodge.Reset();
             damage.Reset();
             critChance.Reset();
-            critDamage.Reset();
             range.Reset();
             firerate.Reset();
             knockback.Reset();
