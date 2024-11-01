@@ -1758,6 +1758,8 @@ GameObject:
   - component: {fileID: 644039391}
   - component: {fileID: 644039393}
   - component: {fileID: 644039392}
+  - component: {fileID: 644039395}
+  - component: {fileID: 644039394}
   m_Layer: 0
   m_Name: Enemy Manager
   m_TagString: Untagged
@@ -1999,11 +2001,238 @@ MonoBehaviour:
   playerTarget: {fileID: 460763660}
   baseSpawnRate: 1
   enemyBlocks:
-  - {fileID: 644039392}
+  - {fileID: 644039394}
+  - {fileID: 644039395}
   currentBlockIndex: 0
   enemiesAlive: 0
   activeEnemies: []
   activeBosses: []
+--- !u!114 &644039394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644039389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcc600df7abc8041ac8d2b69cca803f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockName: Test Block 2
+  enemiesToKill: 5
+  maxEnemiesAliveRange: {x: 5, y: 10}
+  maxEnemiesAliveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyPrefabs:
+  - {fileID: 4762536625162360883, guid: dd5272bd10cb7324291201b5bcf23e3e, type: 3}
+  - {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb, type: 3}
+  enemySpawnWeightCurves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bossEnemies:
+  - {fileID: 3398716774413508842, guid: dcb647f9e14c5c0439f72ab7f9083aad, type: 3}
+  - {fileID: 4854293698142422470, guid: db4682bc0d9c6994da682d08cc960706, type: 3}
+  healthMultiplierRange: {x: 1, y: 4}
+  damageMultiplierRange: {x: 1, y: 4}
+  healthMultiplierCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  damageMultiplierCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemiesKilled: 0
+--- !u!114 &644039395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644039389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcc600df7abc8041ac8d2b69cca803f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockName: ' Test Block 1'
+  enemiesToKill: 5
+  maxEnemiesAliveRange: {x: 5, y: 10}
+  maxEnemiesAliveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyPrefabs:
+  - {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127, type: 3}
+  enemySpawnWeightCurves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  bossEnemies:
+  - {fileID: 7093774422563631258, guid: f7e56782f91ac4a4881149cff781afd9, type: 3}
+  - {fileID: 6149539934083174838, guid: 10abf6de3beb8f14d99c3707b8da5b61, type: 3}
+  healthMultiplierRange: {x: 1, y: 4}
+  damageMultiplierRange: {x: 1, y: 4}
+  healthMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  damageMultiplierCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemiesKilled: 0
 --- !u!1001 &654366051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2195,8 +2424,6 @@ MonoBehaviour:
   levelBounds: {x: 17.5, y: 17.5}
   pauseMenu: {fileID: 1510460245}
   hudMenu: {fileID: 290299293}
-  gameOverMenu: {fileID: 0}
-  winMenu: {fileID: 0}
   HealthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175,
     type: 3}
 --- !u!4 &801546266
@@ -2559,6 +2786,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6607d20f41e0454686b1c9252a9bbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuScene: 0
+  gameScene: 1
+  gameWon: 2
+  gameLost: 3
+  dungeonScene: 4
 --- !u!1001 &1308151050
 PrefabInstance:
   m_ObjectHideFlags: 0
