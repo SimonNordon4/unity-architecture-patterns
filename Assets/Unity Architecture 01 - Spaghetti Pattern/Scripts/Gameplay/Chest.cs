@@ -10,15 +10,17 @@ namespace UnityArchitecture.SpaghettiPattern
         public Vector2Int options = new(0, 0);
 
         public SoundDefinition openSound;
-        public ChestManager chestManager;
+        
 
         public List<ChestItem> items = new();
         
-        public void GenerateItems(ChestManager chestManager)
+        public void GenerateItems()
         {
             Console.Log("\tChest.GenerateItems()", LogFilter.Chest, this);
 
             var numberOfItems = CalculateNumberOfItems();
+            
+            var chestManager = ChestManager.Instance;
 
             // Flags to check if a tier item has been added
             bool tier3Added = false;
@@ -72,15 +74,17 @@ namespace UnityArchitecture.SpaghettiPattern
         // Return the tier
         private int CalculateItemTier()
         {
+            var chestManager = ChestManager.Instance;
+            
             var tierChance = Random.Range(0, 100);
             
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch
             {
                 var t when t > 99 - chestManager.tier5Pity => 5,
-                var t when t > 90 - chestManager.tier4Pity => 4,
-                var t when t > 75 - chestManager.tier3Pity => 3,
-                var t when t > 50 => 2,
+                var t when t > 95 - chestManager.tier4Pity => 4,
+                var t when t > 85 - chestManager.tier3Pity => 3,
+                var t when t > 75 => 2,
                 _ => 1,
             };
 
@@ -99,8 +103,10 @@ namespace UnityArchitecture.SpaghettiPattern
             else if (itemTier == 3)
                 chestManager.tier3Pity=0;
 
+            // This will set it so that the max tier per block is 2,3,4,5... etc to stop stupid scaling.
+            var adjustedMaxTier = Mathf.Clamp(EnemyManager.Instance.currentBlockIndex + 3, 1, 5);
             // clamp the results to the min max tiers
-            itemTier = Mathf.Clamp(itemTier, minTier, maxTier);
+            itemTier = Mathf.Clamp(itemTier, minTier, adjustedMaxTier);
             
             Console.Log($"\t\t Tier Chance {tierChance} resulting in tier {itemTier} with pity chances " +
                         $"{chestManager.tier3Pity}, {chestManager.tier4Pity}, {chestManager.tier5Pity}",
@@ -114,7 +120,7 @@ namespace UnityArchitecture.SpaghettiPattern
             if (other.CompareTag("Player"))
             {
                 AudioManager.instance.PlaySound(openSound);
-                chestManager.PickupChest(this);
+                ChestManager.Instance.PickupChest(this);
                 Destroy(gameObject);
             }
         }

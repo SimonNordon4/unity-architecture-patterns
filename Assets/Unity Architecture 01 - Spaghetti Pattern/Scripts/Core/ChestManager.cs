@@ -1,13 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
     public class ChestManager : MonoBehaviour
     {
+        private static ChestManager _instance;
+
+        public static ChestManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindFirstObjectByType<ChestManager>();
+                return _instance;
+            }
+            private set => _instance = value;
+        }
+        
         [Header("References")]
         public PlayerManager playerManager;
 
@@ -73,8 +88,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var chest = Instantiate(chestPrefab, GetRandomChestSpawn(), Quaternion.identity);
             chest.minTier = 1;
             chest.maxTier = 5;
-            chest.chestManager = this;
-            chest.GenerateItems(this);
+            chest.GenerateItems();
         }
 
         private void SpawnBossChest(Vector3 position)
@@ -83,8 +97,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var chest = Instantiate(chestPrefab, position, Quaternion.identity);
             chest.minTier = 3;
             chest.maxTier = 5;
-            chest.chestManager = this;
-            chest.GenerateItems(this);
+            chest.GenerateItems();
         }
 
         public void PickupChest(Chest chest)
@@ -162,5 +175,41 @@ namespace UnityArchitecture.SpaghettiPattern
             tier4Pity = 0;
             tier5Pity = 0;
         }
+
+        [ContextMenu("Populate Items")]
+        public void PopulateItemsInEditor()
+        {
+            
+            var allTierLists = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
+
+            // Clear existing items
+            foreach (var chestItems in allTierLists)
+            {
+                chestItems.chestItems.Clear();
+            }
+
+            // Populate each chest with one item per stat type
+            foreach (var statType in Enum.GetValues(typeof(StatType)))
+            {
+                foreach (var chestItems in allTierLists)
+                {
+                    var newItem = new ChestItem
+                    {
+                        itemName = $"{statType}",
+                        modifiers = new Modifier[]
+                        {
+                            new()
+                            {
+                                statType = (StatType)statType,
+                                modifierValue = 1
+                            }
+                        }
+                    };
+                    
+                    chestItems.chestItems.Add(newItem);
+                }
+            }
+        }
+
     }
 }

@@ -974,12 +974,6 @@ MonoBehaviour:
     maximumValue: 2147483647
     _modifiers: []
     value: 0
-  critDamage:
-    baseValue: 150
-    minimumValue: 0
-    maximumValue: 2147483647
-    _modifiers: []
-    value: 150
   range:
     baseValue: 5
     minimumValue: 0
@@ -987,11 +981,11 @@ MonoBehaviour:
     _modifiers: []
     value: 5
   firerate:
-    baseValue: 5
+    baseValue: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 5
+    value: 10
   knockback:
     baseValue: 1
     minimumValue: 0
@@ -3967,323 +3961,407 @@ MonoBehaviour:
   tier1ChestItems:
     tier: 1
     chestItems:
-    - itemName: Steak
-      sprite: {fileID: 21300000, guid: 768f9fee62118ba4d94d57bb0cb06c89, type: 3}
+    - itemName: Max Health
+      sprite: {fileID: 0}
       modifiers:
       - statType: 0
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 1
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 3
       tier: 1
-    - itemName: Bullet
-      sprite: {fileID: 21300000, guid: 670182a550fbca74fb086af66fd38e8b, type: 3}
+    - itemName: Health Regen
+      sprite: {fileID: 0}
       modifiers:
-      - statType: 5
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 10
-        modifierValue: 0
-        isPercentage: 0
+      - statType: 1
+        modifierValue: 1
       tier: 1
-    - itemName: Ninjet
-      sprite: {fileID: 21300000, guid: 87191d2030d517c439672c935276c834, type: 3}
+    - itemName: Speed
+      sprite: {fileID: 0}
       modifiers:
       - statType: 2
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 4
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 1
       tier: 1
-    - itemName: Reloader
-      sprite: {fileID: 21300000, guid: 0ca43489b024d1243ba7124acde0fa1f, type: 3}
+    - itemName: Armor
+      sprite: {fileID: 0}
       modifiers:
-      - statType: 9
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 6
-        modifierValue: 0
-        isPercentage: 0
+      - statType: 3
+        modifierValue: 1
       tier: 1
-    - itemName: Locked On
-      sprite: {fileID: 21300000, guid: 295f5ed55bce57c42845c56d91778a58, type: 3}
+    - itemName: Dodge
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 4
+        modifierValue: 3
+      tier: 1
+    - itemName: Damage
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 5
+        modifierValue: 1
+      tier: 1
+    - itemName: Crit Chance
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 6
+        modifierValue: 3
+      tier: 1
+    - itemName: Range
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 7
+        modifierValue: 1
+      tier: 1
+    - itemName: Fire Rate
+      sprite: {fileID: 0}
       modifiers:
       - statType: 8
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 7
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 1
+      tier: 1
+    - itemName: Knock Back
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 9
+        modifierValue: 1
       tier: 1
   tier2ChestItems:
     tier: 2
     chestItems:
-    - itemName: Big Bullet
-      sprite: {fileID: 21300000, guid: 801f420c3784a3b45a858d21756f8608, type: 3}
+    - itemName: Max Health
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 0
+        modifierValue: 6
+      tier: 1
+    - itemName: Health Regen
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 1
+        modifierValue: 2
+      tier: 1
+    - itemName: Speed
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 2
+        modifierValue: 2
+      tier: 1
+    - itemName: Armor
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 3
+        modifierValue: 2
+      tier: 1
+    - itemName: Dodge
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 4
+        modifierValue: 6
+      tier: 1
+    - itemName: Damage
+      sprite: {fileID: 0}
       modifiers:
       - statType: 5
         modifierValue: 1
-        isPercentage: 0
-      - statType: 10
+      tier: 6
+    - itemName: Crit Chance
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 6
         modifierValue: 1
-        isPercentage: 0
-      - statType: 9
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
-    - itemName: Rain of Bullets
-      sprite: {fileID: 21300000, guid: 62daeeae1c2ff89468d1975907a37a7a, type: 3}
+      tier: 2
+    - itemName: Range
+      sprite: {fileID: 0}
       modifiers:
-      - statType: 9
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 6
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 8
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 2
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
-    - itemName: Zoomies
-      sprite: {fileID: 21300000, guid: 6351293ceae657e42b4ebf53fcccc56d, type: 3}
-      modifiers:
-      - statType: 2
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 4
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 3
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
-    - itemName: Bulk
-      sprite: {fileID: 21300000, guid: e452258e1729d354ea646ec75314d70f, type: 3}
-      modifiers:
-      - statType: 0
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 1
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 3
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 4
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 2
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
-    - itemName: Assassin
-      sprite: {fileID: 21300000, guid: 87191d2030d517c439672c935276c834, type: 3}
-      modifiers:
-      - statType: 6
-        modifierValue: 0
-        isPercentage: 0
       - statType: 7
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 10
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
+        modifierValue: 1
+      tier: 2
+    - itemName: Fire Rate
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 8
+        modifierValue: 1
+      tier: 2
+    - itemName: Knock Back
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 9
+        modifierValue: 1
+      tier: 2
   tier3ChestItems:
     tier: 3
     chestItems:
-    - itemName: Awp
-      sprite: {fileID: 21300000, guid: 56e4609e4f6c10745b0896b377509465, type: 3}
-      modifiers:
-      - statType: 5
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 6
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 7
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 8
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 9
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
-    - itemName: Bomba
-      sprite: {fileID: 21300000, guid: d659c6366be716b408ad5dba912e9406, type: 3}
+    - itemName: Max Health
+      sprite: {fileID: 0}
       modifiers:
       - statType: 0
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 10
       - statType: 1
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 3
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 2
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 2
+      - statType: 4
+        modifierValue: -3
       tier: 1
-    - itemName: Minigun
-      sprite: {fileID: 21300000, guid: 9596a9b4fb0026041acf9d6af313e364, type: 3}
+    - itemName: HealthRegen
+      sprite: {fileID: 0}
       modifiers:
-      - statType: 9
-        modifierValue: 0
-        isPercentage: 0
+      - statType: 1
+        modifierValue: 6
       - statType: 6
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 7
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 10
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: -3
       tier: 1
-    - itemName: Cannon
-      sprite: {fileID: 21300000, guid: 8b766e7ef6d2f874b9e4f7f9bea1cf7b, type: 3}
+    - itemName: Speed
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 2
+        modifierValue: 4
+      - statType: 0
+        modifierValue: -3
+      tier: 1
+    - itemName: Armor
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 3
+        modifierValue: 4
+      - statType: 2
+        modifierValue: -1
+      tier: 1
+    - itemName: Dodge
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 4
+        modifierValue: 12
+      - statType: 2
+        modifierValue: 1
+      - statType: 3
+        modifierValue: -2
+      tier: 1
+    - itemName: Damage
+      sprite: {fileID: 0}
       modifiers:
       - statType: 5
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 4
+      - statType: 8
+        modifierValue: -2
+      tier: 1
+    - itemName: CritChance
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 6
+        modifierValue: 12
+      - statType: 5
+        modifierValue: -1
+      tier: 1
+    - itemName: Range
+      sprite: {fileID: 0}
+      modifiers:
       - statType: 7
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 3
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 10
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 5
+      - statType: 8
+        modifierValue: -1
+      tier: 1
+    - itemName: FireRate
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 8
+        modifierValue: 4
+      - statType: 9
+        modifierValue: -1
+      tier: 1
+    - itemName: Knock Back
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 9
+        modifierValue: 5
       - statType: 2
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 4
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: -1
+      tier: 1
+    - itemName: Pierce
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 10
+        modifierValue: 1
+      - statType: 9
+        modifierValue: -2
+      - statType: 5
+        modifierValue: -2
       tier: 1
   tier4ChestItems:
     tier: 4
     chestItems:
-    - itemName: Fat Cannon
-      sprite: {fileID: 21300000, guid: 52f403eb8e1c44d43b203f47d2c1730c, type: 3}
+    - itemName: All In
+      sprite: {fileID: 0}
       modifiers:
-      - statType: 5
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 7
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 10
-        modifierValue: 0
-        isPercentage: 0
+      - statType: 0
+        modifierValue: 20
       - statType: 2
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 4
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
-    - itemName: Vagabond
-      sprite: {fileID: 21300000, guid: 27a4d13e8339c1948be0c71a98831778, type: 3}
-      modifiers:
-      - statType: 5
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 6
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 9
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 2
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 2
       - statType: 1
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: -4
       tier: 1
-    - itemName: Tunk
-      sprite: {fileID: 21300000, guid: 7813be7952f9918419b0f30082e0fd02, type: 3}
+    - itemName: Come at Me
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 1
+        modifierValue: 12
+      - statType: 4
+        modifierValue: 12
+      - statType: 2
+        modifierValue: -2
+      tier: 1
+    - itemName: Speed
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 2
+        modifierValue: 1
+      tier: 1
+    - itemName: Cannon
+      sprite: {fileID: 0}
       modifiers:
       - statType: 3
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 10
       - statType: 0
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 1
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 5
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 6
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 5
+      - statType: 9
+        modifierValue: 4
+      - statType: 2
+        modifierValue: -2
       tier: 1
-    - itemName: Sharp shot
-      sprite: {fileID: 21300000, guid: b7ffdd4321e98504c86e878a101fdc55, type: 3}
+    - itemName: Light Foot
+      sprite: {fileID: 0}
       modifiers:
-      - statType: 11
-        modifierValue: 0
-        isPercentage: 0
+      - statType: 4
+        modifierValue: 25
+      - statType: 2
+        modifierValue: 2
+      - statType: 3
+        modifierValue: -4
+      tier: 1
+    - itemName: BFG
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 5
+        modifierValue: 8
+      - statType: 6
+        modifierValue: 8
+      - statType: 7
+        modifierValue: 8
       - statType: 8
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: -5
+      tier: 1
+    - itemName: CritChance
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 6
+        modifierValue: 25
+      - statType: 8
+        modifierValue: 2
+      - statType: 9
+        modifierValue: -6
+      tier: 1
+    - itemName: Range
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 7
+        modifierValue: 12
+      - statType: 5
+        modifierValue: 4
+      - statType: 2
+        modifierValue: -2
+      tier: 1
+    - itemName: Smaller Bullets
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 8
+        modifierValue: 8
+      - statType: 6
+        modifierValue: 6
+      - statType: 10
+        modifierValue: -1
+      tier: 1
+    - itemName: Close quarters
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 9
+        modifierValue: 12
+      - statType: 0
+        modifierValue: 6
+      - statType: 7
+        modifierValue: -10
+      tier: 1
+    - itemName: Pierce
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 10
+        modifierValue: 1
+      - statType: 5
+        modifierValue: 2
+      - statType: 8
+        modifierValue: 2
       tier: 1
   tier5ChestItems:
     tier: 5
     chestItems:
-    - itemName: Divinity
-      sprite: {fileID: 21300000, guid: e3778abf7f0090b45b0195c2bbc39a45, type: 3}
+    - itemName: No Escape
+      sprite: {fileID: 0}
       modifiers:
       - statType: 0
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 20
       - statType: 1
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 3
-        modifierValue: 0
-        isPercentage: 0
-      tier: 1
-    - itemName: Bang
-      sprite: {fileID: 21300000, guid: e0dc91605b50348429a3e9b2b6b59433, type: 3}
-      modifiers:
-      - statType: 9
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 6
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 20
       - statType: 2
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 8
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: -4
+      - statType: 4
+        modifierValue: -10
+      tier: 1
+    - itemName: Lightning
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 2
+        modifierValue: 10
+      - statType: 4
+        modifierValue: 15
+      - statType: 0
+        modifierValue: -5
+      - statType: 3
+        modifierValue: -2
+      tier: 1
+    - itemName: Armor
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 3
+        modifierValue: 20
+      - statType: 2
+        modifierValue: -2
       tier: 1
     - itemName: Damage
-      sprite: {fileID: 21300000, guid: 9c1e8cf3206de744da3136033aecef32, type: 3}
+      sprite: {fileID: 0}
       modifiers:
       - statType: 5
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 12
+      - statType: 10
+        modifierValue: 1
+      - statType: 9
+        modifierValue: 12
+      tier: 1
+    - itemName: CritChance
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 6
+        modifierValue: 20
+      - statType: 4
+        modifierValue: 20
+      tier: 1
+    - itemName: Range
+      sprite: {fileID: 0}
+      modifiers:
       - statType: 7
-        modifierValue: 0
-        isPercentage: 0
-      - statType: 0
-        modifierValue: 0
-        isPercentage: 0
+        modifierValue: 15
+      - statType: 10
+        modifierValue: 1
+      tier: 1
+    - itemName: FireRate
+      sprite: {fileID: 0}
+      modifiers:
+      - statType: 8
+        modifierValue: 10
+      - statType: 10
+        modifierValue: -1
       tier: 1
   allChestItems: []
   chestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42,

@@ -5,6 +5,20 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class EnemyManager : MonoBehaviour
     {
+        
+        private static EnemyManager _instance;
+
+        public static EnemyManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = FindFirstObjectByType<EnemyManager>();
+                return _instance;
+            }
+            private set => _instance = value;
+        }
+        
         [Header("References")]
         public GameManager gameManager;
         public ChestManager chestManager;
