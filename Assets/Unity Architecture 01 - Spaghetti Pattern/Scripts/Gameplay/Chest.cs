@@ -9,7 +9,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public int maxTier = 5;
         public Vector2Int options = new(0, 0);
 
-        public SoundDefinition openSound;
+        public AudioClip openSound;
         
 
         public List<ChestItem> items = new();

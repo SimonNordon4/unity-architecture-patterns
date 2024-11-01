@@ -75,7 +75,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
  
             
-            if (GameManager.instance.isGameActive)
+            if (GameManager.Instance.isGameActive)
             {
                 _musicVolume = Mathf.Lerp(_musicVolume, SettingsManager.instance.musicVolume, Time.deltaTime);
             }
@@ -88,12 +88,17 @@ namespace UnityArchitecture.SpaghettiPattern
         }
 
 
-        public void PlaySound(SoundDefinition definition)
+        public void PlaySound(AudioClip audioClip)
         {
+            if (audioClip == null)
+            {
+                Debug.LogWarning("Audio clip is null", this);
+                return;
+            }
             var source = GetAudioSource();
-            source.clip = definition.clips[Random.Range(0, definition.clips.Length)];
-            source.volume = definition.volume * SettingsManager.instance.sfxVolume;
-            source.pitch = Random.Range(definition.pitchVariation.x, definition.pitchVariation.y);
+            source.clip = audioClip;
+            source.volume = SettingsManager.instance.sfxVolume;
+            source.pitch = 1f;
             source.PlayOneShot(source.clip);
         }
 

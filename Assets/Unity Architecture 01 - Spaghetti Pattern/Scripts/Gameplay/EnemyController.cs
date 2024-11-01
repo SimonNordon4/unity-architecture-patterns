@@ -49,10 +49,9 @@ namespace UnityArchitecture.SpaghettiPattern
         public ParticleSystem deathEffect;
 
         [Header("Sounds")]
-        public SoundDefinition deathSound;
-
-        public SoundDefinition onHitSound;
-        public SoundDefinition attackSound;
+        public AudioClip deathSound;
+        public AudioClip onHitSound;
+        public AudioClip attackSound;
 
         private Coroutine damageTextCoroutine = null;
         public Coroutine knockBackCoroutine = null;
@@ -64,12 +63,12 @@ namespace UnityArchitecture.SpaghettiPattern
             healthBarUI.SetActive(SettingsManager.instance.showEnemyHealthBars);
             UpdateHealthText();
             _radius = transform.localScale.x;
-            randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+            randomPosition = new Vector3(Random.Range(GameManager.Instance.levelBounds.x * -1, GameManager.Instance.levelBounds.x), 0, Random.Range(GameManager.Instance.levelBounds.y * -1, GameManager.Instance.levelBounds.y));
         }
 
         protected virtual void Update()
         {
-            if (GameManager.instance.isGameActive == false) return;
+            if (GameManager.Instance.isGameActive == false) return;
 
             if (isKnockedBack) return;
 
@@ -124,7 +123,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             if (distance < tolerance + 0.5f)
             {
-                randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+                randomPosition = new Vector3(Random.Range(GameManager.Instance.levelBounds.x * -1, GameManager.Instance.levelBounds.x), 0, Random.Range(GameManager.Instance.levelBounds.y * -1, GameManager.Instance.levelBounds.y));
             }
 
             var avoidanceDirection = GetAvoidanceFromOtherEnemies();
@@ -187,9 +186,9 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             // if the position is over the boundary, clamp it back to the boundary
             var pos = transform.position;
-            pos.x = Mathf.Clamp(pos.x, -GameManager.instance.levelBounds.x, GameManager.instance.levelBounds.x);
+            pos.x = Mathf.Clamp(pos.x, -GameManager.Instance.levelBounds.x, GameManager.Instance.levelBounds.x);
             pos.y = transform.localScale.y;
-            pos.z = Mathf.Clamp(pos.z, -GameManager.instance.levelBounds.y, GameManager.instance.levelBounds.y);
+            pos.z = Mathf.Clamp(pos.z, -GameManager.Instance.levelBounds.y, GameManager.Instance.levelBounds.y);
             transform.position = pos;
         }
 
@@ -215,7 +214,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 var pos = transform.position;
                 var projectedPosition = new Vector3(pos.x, 0, pos.z);
                 var dead = Instantiate(deathEffect, projectedPosition, Quaternion.identity);
-                GameManager.instance.StartCoroutine(DestroyAfter(dead.gameObject));
+                GameManager.Instance.StartCoroutine(DestroyAfter(dead.gameObject));
                 if(isBoss)
                 {
                     enemyManager.BossDied(this);

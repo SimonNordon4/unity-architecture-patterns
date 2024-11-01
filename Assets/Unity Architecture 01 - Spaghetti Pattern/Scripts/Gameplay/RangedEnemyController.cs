@@ -30,7 +30,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         protected override void Update()
         {
-            if (GameManager.instance.isGameActive == false) return;
+            if (GameManager.Instance.isGameActive == false) return;
 
             if (isKnockedBack) return;
 
@@ -69,7 +69,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
                 if (distanceToRandom < tolerance + 0.5f)
                 {
-                    randomPosition = new Vector3(Random.Range(GameManager.instance.levelBounds.x * -1, GameManager.instance.levelBounds.x), 0, Random.Range(GameManager.instance.levelBounds.y * -1, GameManager.instance.levelBounds.y));
+                    randomPosition = new Vector3(Random.Range(GameManager.Instance.levelBounds.x * -1, GameManager.Instance.levelBounds.x), 0, Random.Range(GameManager.Instance.levelBounds.y * -1, GameManager.Instance.levelBounds.y));
                 }
 
                 var avoidanceDirection = GetAvoidanceFromOtherEnemies();

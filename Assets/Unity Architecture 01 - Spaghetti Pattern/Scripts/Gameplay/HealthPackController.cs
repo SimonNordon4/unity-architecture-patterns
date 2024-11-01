@@ -13,7 +13,7 @@ namespace UnityArchitecture.SpaghettiPattern
         // Update is called once per frame
         void Update()
         {
-            if (!GameManager.instance.isGameActive) return;
+            if (!GameManager.Instance.isGameActive) return;
 
             _aliveTime += Time.deltaTime;
             if (_aliveTime > lifeTime)

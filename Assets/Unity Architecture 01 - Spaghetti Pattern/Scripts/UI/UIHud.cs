@@ -15,7 +15,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void Update()
         {
-            roundTimer.text = $"Round: {GameManager.instance.roundTime:00}";
+            roundTimer.text = $"Round: {GameManager.Instance.roundTime:00}";
             healthBar.fillAmount = playerManager.playerCurrentHealth / (float)playerManager.playerMaxHealth.value;
             healthBarText.text = $"{playerManager.playerCurrentHealth}/{playerManager.playerMaxHealth.value}";
             var currentBlock = enemyManager.enemyBlocks[enemyManager.currentBlockIndex];

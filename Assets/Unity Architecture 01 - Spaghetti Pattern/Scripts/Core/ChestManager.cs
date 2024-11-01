@@ -51,8 +51,8 @@ namespace UnityArchitecture.SpaghettiPattern
         public void Start()
         {
             // Chest has to spawn inside the level.
-            if (chestBounds.magnitude > GameManager.instance.levelBounds.magnitude)
-                chestBounds = GameManager.instance.levelBounds;
+            if (chestBounds.magnitude > GameManager.Instance.levelBounds.magnitude)
+                chestBounds = GameManager.Instance.levelBounds;
 
             allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
             
@@ -104,7 +104,7 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             // monitor stats.
             AccountManager.Instance.statistics.totalChestsOpened++;
-            GameManager.instance.isGameActive = false;
+            GameManager.Instance.isGameActive = false;
 
             List<Achievement> achievements = AccountManager.Instance.achievementSave.achievements
                 .Where(a => a.name == AchievementName.Open100Chests ||
@@ -163,7 +163,7 @@ namespace UnityArchitecture.SpaghettiPattern
         private IEnumerator WaitOneFrameToUnpause()
         {
             yield return new WaitForEndOfFrame();
-            GameManager.instance.isGameActive = true;
+            GameManager.Instance.isGameActive = true;
         }
 
         public void Reset()

@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
+using Random = UnityEngine.Random;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
@@ -12,7 +14,7 @@ namespace UnityArchitecture.SpaghettiPattern
     {
         private static GameManager _instance;
 
-        public static GameManager instance
+        public static GameManager Instance
         {
             get
             {
@@ -20,12 +22,9 @@ namespace UnityArchitecture.SpaghettiPattern
                     _instance = FindFirstObjectByType<GameManager>();
                 return _instance;
             }
-            private set => _instance = value;
         }
 
         public PlayerManager playerManager;
-
-        #region Variables
 
         [Header("Round")]
         public float roundTime;
@@ -33,38 +32,24 @@ namespace UnityArchitecture.SpaghettiPattern
         public bool isGameActive = false;
         public Vector2 levelBounds = new(25f, 25f);
 
-
-
         [Header("UI")]
         public GameObject pauseMenu;
         public GameObject hudMenu;
-        public GameObject gameOverMenu;
-        public GameObject winMenu;
-
-        // public List<TextMeshProUGUI> GoldTexts = new();
-        // public List<TextMeshProUGUI> GoldSubTexts = new();
-
-        // [Header("Stat UI")] public List<RectTransform> StatContainers = new();
-        // private Dictionary<StatType, List<TextMeshProUGUI>> statTexts = new();
-        // public Color defaultStatColor;
-        // public Color plusStatColor;
-        // public Color minusStatColor;
-        // public TMP_FontAsset statFont;
-
-        // [Header("Item UI")] public RectTransform itemHoverImageContainer;
-        // private readonly List<GameObject> _itemHoverImages = new();
-        // public UIChestItemHoverImage itemHoverImagePrefab;
-
 
         [Header("Health Packs")] 
         public GameObject HealthPackPrefab;
 
-        #endregion
-
-        #region Unity Functions
+        private void Awake()
+        {
+            if (_instance != null)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
+            SceneManager.Instance.LoadEnvironment();
             isGameActive = true;
             StartNewGame();
         }
@@ -79,14 +64,9 @@ namespace UnityArchitecture.SpaghettiPattern
             if (Input.GetKeyDown(KeyCode.F)) TogglePauseGame();
         }
 
-        #endregion
-
-        #region Application State
-
         public void StartNewGame()
         {
             Console.Log("GameManager.StartNewGame()", LogFilter.Game, this);
-            HideAll();
             AccountManager.Instance.statistics.gamesPlayed++;
             hudMenu.SetActive(true);
             isGameActive = true;
@@ -108,7 +88,6 @@ namespace UnityArchitecture.SpaghettiPattern
             // If the game is active and we're not already paused.
             if (isGameActive && !isPaused)
             {
-                HideAll();
                 isGameActive = false;
                 isPaused = true;
                 pauseMenu.SetActive(true);
@@ -116,7 +95,6 @@ namespace UnityArchitecture.SpaghettiPattern
             // If the game is not active and we are paused.
             else if (!isGameActive && isPaused)
             {
-                HideAll();
                 isGameActive = true;
                 isPaused = false;
                 hudMenu.SetActive(true);
@@ -157,8 +135,6 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             Console.Log("GameManager.WinGame()", LogFilter.Game, this);
             AccountManager.Instance.Save();
-            HideAll();
-            winMenu.SetActive(true);
             isGameActive = false;
             AccountManager.Instance.statistics.gamesWon++;
 
@@ -215,27 +191,17 @@ namespace UnityArchitecture.SpaghettiPattern
 
             roundTime = 0f;
             AudioManager.instance.StopMusic();
+            SceneManager.Instance.LoadGameWon();
         }
 
         public void LoseGame()
         {
             Console.Log("GameManager.LoseGame()", LogFilter.Game, this);
             AudioManager.instance.StopMusic();
-            Debug.Log("Lose Game");
-            HideAll();
-            gameOverMenu.SetActive(true);
             isGameActive = false;
-
-            TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Buy, 2f);
+            SceneManager.Instance.LoadGameLost();
         }
 
-        private void HideAll()
-        {
-            hudMenu.SetActive(false);
-            pauseMenu.SetActive(false);
-            gameOverMenu.SetActive(false);
-            winMenu.SetActive(false);
-        }
 
         public void QuitApplication()
         {
@@ -248,78 +214,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
             Application.Quit();
         }
-
-        #endregion
-
-        // private void PopulateStatsUI()
-        // {
-        //     foreach (var statContainer in StatContainers)
-        //     {
-        //         // get all the children of the stat container and destroy them.
-        //         foreach (Transform child in statContainer) Destroy(child.gameObject);
-
-        //         foreach (var key in _stats.Keys)
-        //         {
-        //             Debug.Log("Creating stat for: " + key);
-        //             var newStatText = Instantiate(new GameObject(key.ToString()).AddComponent<TextMeshProUGUI>(),
-        //                 statContainer);
-        //             newStatText.fontSize = 24;
-        //             newStatText.font = statFont;
-        //             newStatText.color = defaultStatColor;
-        //             // set the width of the text transform to 400
-        //             newStatText.rectTransform.sizeDelta = new Vector2(400, 32);
-
-        //             if (statTexts.ContainsKey(key))
-        //             {
-        //                 statTexts[key].Add(newStatText);
-        //             }
-        //             else
-        //             {
-        //                 statTexts.Add(key, new List<TextMeshProUGUI>() { newStatText });
-        //             }
-        //         }
-        //     }
-
-        //     // clean up bonky stats created in the hierarchy.
-        //     var bonkyStats = FindObjectsByType<TextMeshProUGUI>(FindObjectsSortMode.None);
-        //     foreach (var bonkyText in bonkyStats)
-        //     {
-        //         if (bonkyText.transform.parent == null)
-        //             Destroy(bonkyText.gameObject);
-        //     }
-
-
-        //     UpdateStatsUI();
-        // }
-
-        // private void UpdateStatsUI()
-        // {
-        //     foreach (var key in statTexts.Keys)
-        //     {
-        //         var statTypeText = key.ToString();
-        //         for (var i = 1; i < statTypeText.Length; i++)
-        //             if (char.IsUpper(statTypeText[i]))
-        //             {
-        //                 statTypeText = statTypeText.Insert(i, " ");
-        //                 i++;
-        //             }
-
-        //         foreach (var newStatText in statTexts[key])
-        //         {
-        //             newStatText.text = $"{statTypeText}: {_stats[key].value:F1}";
-        //             // check if the stat value is above, below or equal to the initial value.
-        //             if (_stats[key].value > _stats[key].initialValue)
-        //                 newStatText.color = plusStatColor;
-        //             else if (_stats[key].value < _stats[key].initialValue)
-        //                 newStatText.color = minusStatColor;
-        //             else
-        //                 newStatText.color = defaultStatColor;
-        //         }
-        //     }
-        // }
-
-
-        #region Enemy Died Events
 
         public void OnEnemyDied(GameObject enemy)
         {
@@ -377,7 +271,5 @@ namespace UnityArchitecture.SpaghettiPattern
             AccountManager.Instance.statistics.totalBossKills++;
             AccountManager.Instance.statistics.totalKills++;
         }
-
-        #endregion
     }
 }

@@ -53,11 +53,11 @@ namespace UnityArchitecture.SpaghettiPattern
 
         [Header("Debug")] public bool isDebugMode = false;
 
-        [Header("Sound")] public SoundDefinition shootSound;
-        public SoundDefinition deathSound;
-        public SoundDefinition healthPackSound;
-        public SoundDefinition takeDamageSound;
-        public SoundDefinition blockSound;
+        [Header("Sound")] public AudioClip shootSound;
+        public AudioClip deathSound;
+        public AudioClip healthPackSound;
+        public AudioClip takeDamageSound;
+        public AudioClip blockSound;
 
         private void Awake()
         {
@@ -135,7 +135,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Update()
         {
-            if (!GameManager.instance.isGameActive) return;
+            if (!GameManager.Instance.isGameActive) return;
 
             // Get Closest enemy target.
             var closestDistance = Mathf.Infinity;
@@ -377,7 +377,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     }
                 }
                 
-                GameManager.instance.LoseGame();
+                GameManager.Instance.LoseGame();
             }
         }
 

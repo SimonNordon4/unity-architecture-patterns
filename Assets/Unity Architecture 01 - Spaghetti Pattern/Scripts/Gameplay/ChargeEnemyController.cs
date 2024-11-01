@@ -24,7 +24,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         protected override void Update()
         {
-            if (GameManager.instance.isGameActive == false) return;
+            if (GameManager.Instance.isGameActive == false) return;
             healthBarUI.transform.rotation = uiStartRotation;
             if (isKnockedBack) return;
             if (_isCharging) return;
@@ -98,7 +98,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 chargedDistance += distanceThisFrame;
                 ClampTransformToLevelBounds();
 
-                if (GameManager.instance.isGameActive == false)
+                if (GameManager.Instance.isGameActive == false)
                 {
                     _isCharging = false;
                     yield break;

@@ -4,17 +4,23 @@ using static UnityEngine.SceneManagement.SceneManager;
 
 public class SceneManager : MonoBehaviour
 {
-    private int mainMenuScene = 0;
-    private int gameScene = 1;
-    private int dungeonScene = 2;
+    private static SceneManager _instance;
 
-    public void Start()
+    public static SceneManager Instance
     {
-        if (GetActiveScene().buildIndex == gameScene)
+        get
         {
-            LoadSceneAsync(dungeonScene, LoadSceneMode.Additive);       
+            if (_instance == null)
+                _instance = FindFirstObjectByType<SceneManager>();
+            return _instance;
         }
     }
+    
+    public int mainMenuScene = 0;
+    public int gameScene = 1;
+    public int gameWon = 2;
+    public int gameLost = 3;
+    public int dungeonScene = 4;
 
     public void LoadMainMenu()
     {
@@ -24,5 +30,20 @@ public class SceneManager : MonoBehaviour
     public void LoadGame() 
     {
         LoadSceneAsync(gameScene, LoadSceneMode.Single);
+    }
+
+    public void LoadGameWon()
+    {
+        LoadSceneAsync(gameWon, LoadSceneMode.Single);
+    }
+
+    public void LoadGameLost()
+    {
+        LoadSceneAsync(gameLost, LoadSceneMode.Single);
+    }
+
+    public void LoadEnvironment()
+    {
+        LoadSceneAsync(dungeonScene, LoadSceneMode.Additive);
     }
 }

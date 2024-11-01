@@ -27,7 +27,7 @@ namespace UnityArchitecture.SpaghettiPattern
             // set the scale of the projectile equal to the bullet size
             transform.localScale = Vector3.one * projectileSize;
             
-            if (GameManager.instance.isGameActive == false) return;
+            if (GameManager.Instance.isGameActive == false) return;
 
             if (_timeAlive > projectileLifetime)
                 Destroy(gameObject);
@@ -74,7 +74,7 @@ namespace UnityArchitecture.SpaghettiPattern
             if (hitEffect != null)
             {
                 var effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-                GameManager.instance.StartCoroutine(DestroyAfter(effect));
+                GameManager.Instance.StartCoroutine(DestroyAfter(effect));
             }
             Destroy(gameObject);
         }

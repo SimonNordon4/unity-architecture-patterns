@@ -25,7 +25,7 @@ namespace UnityArchitecture.SpaghettiPattern
         // Update is called once per frame
         void LateUpdate()
         {
-            if (!GameManager.instance.isGameActive) return;
+            if (!GameManager.Instance.isGameActive) return;
             var gunRotation = Quaternion.LookRotation(playerController.targetDirection);
             gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, gunRotation, Time.deltaTime * gunRotationSpeed);
             _transform.position = _transformToFollow.position + offset;
