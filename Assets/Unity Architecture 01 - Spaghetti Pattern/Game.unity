@@ -2005,6 +2005,7 @@ MonoBehaviour:
   - {fileID: 644039395}
   currentBlockIndex: 0
   enemiesAlive: 0
+  totalEnemiesKilled: 0
   activeEnemies: []
   activeBosses: []
 --- !u!114 &644039394
@@ -3283,7 +3284,7 @@ PrefabInstance:
     - target: {fileID: 64691947155147397, guid: 6c78fc28b4983a44591d4e539fb4f771,
         type: 3}
       propertyPath: m_BlockingMask.m_Bits
-      value: 4294967295
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 3644179087129842617, guid: 6c78fc28b4983a44591d4e539fb4f771,
         type: 3}

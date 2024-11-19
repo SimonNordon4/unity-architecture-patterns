@@ -22,6 +22,11 @@ public class SceneManager : MonoBehaviour
     public int gameLost = 3;
     public int dungeonScene = 4;
 
+    private void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
+
     public void LoadMainMenu()
     {
         LoadSceneAsync(mainMenuScene, LoadSceneMode.Single);

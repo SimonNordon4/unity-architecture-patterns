@@ -82,7 +82,8 @@ namespace UnityArchitecture.SpaghettiPattern
         private IEnumerator DestroyAfter(ParticleSystem effect)
         {
             yield return new WaitForSeconds(1f);
-            Destroy(effect.gameObject);
+            if(effect!=null)
+                Destroy(effect.gameObject);
         }
     }
 }

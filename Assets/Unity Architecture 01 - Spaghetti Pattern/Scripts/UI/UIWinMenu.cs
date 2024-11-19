@@ -1,22 +1,18 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
-    public class UILoseMenu : MonoBehaviour
+    public class UIWinMenu : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI timerText;
-        [SerializeField] private TextMeshProUGUI enemiesKilledText;
         [SerializeField] private Button playAgainButton;
         [SerializeField] private Button mainMenuButton;
 
         private void Start()
         {
             timerText.text = $"Time Alive: {Mathf.FloorToInt(GameManager.Instance.roundTime / 60):00}:{Mathf.FloorToInt(GameManager.Instance.roundTime % 60):00}"; 
-            enemiesKilledText.text = $"Enemies Killed: {EnemyManager.Instance.totalEnemiesKilled}";
-
             playAgainButton.onClick.AddListener(LoadGame);
             mainMenuButton.onClick.AddListener(LoadMainMenu);
         }

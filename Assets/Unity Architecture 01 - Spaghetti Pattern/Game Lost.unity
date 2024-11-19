@@ -242,6 +242,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemies killed
       objectReference: {fileID: 0}
+    - target: {fileID: 2602507266376614235, guid: d223a316630c5d445b33484a2009c639,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1297.314
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602507266376614235, guid: d223a316630c5d445b33484a2009c639,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 214.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2602507266376614235, guid: d223a316630c5d445b33484a2009c639,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 64.923
+      objectReference: {fileID: 0}
     - target: {fileID: 3272166713217357734, guid: d223a316630c5d445b33484a2009c639,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -261,6 +276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358680183300131910, guid: d223a316630c5d445b33484a2009c639,
+        type: 3}
+      propertyPath: m_text
+      value: 'Enemies Killed: 5'
       objectReference: {fileID: 0}
     - target: {fileID: 3815968188970936889, guid: d223a316630c5d445b33484a2009c639,
         type: 3}
@@ -310,7 +330,7 @@ PrefabInstance:
     - target: {fileID: 8442134610775342852, guid: d223a316630c5d445b33484a2009c639,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 967.699
+      value: 1359.655
       objectReference: {fileID: 0}
     - target: {fileID: 8442134610775342852, guid: d223a316630c5d445b33484a2009c639,
         type: 3}
@@ -403,6 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1643900518}
   enemiesKilledText: {fileID: 1643900517}
+  playAgainButton: {fileID: 1066001969}
+  mainMenuButton: {fileID: 1763589877}
 --- !u!1 &950054174
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +562,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950054174}
   m_CullTransparentMesh: 1
+--- !u!114 &1066001969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1704715319331919103, guid: d223a316630c5d445b33484a2009c639,
+    type: 3}
+  m_PrefabInstance: {fileID: 679710809}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1448781201
 GameObject:
   m_ObjectHideFlags: 0
