@@ -45,6 +45,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Start()
         {
+            DontDestroyOnLoad(gameObject);
             SceneManager.Instance.LoadEnvironment();
             isGameActive = true;
             StartNewGame();

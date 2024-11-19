@@ -36,9 +36,16 @@ namespace UnityArchitecture.SpaghettiPattern
         public int enemiesAlive = 0;
         private int bossesAlive = 0;
 
+        public int totalEnemiesKilled = 0;
+
         // Lists to keep track of active enemies and bosses
         public List<EnemyController> activeEnemies = new();
         public List<EnemyController> activeBosses = new();
+
+        private void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
 
         private void Update()
         {
@@ -106,6 +113,7 @@ namespace UnityArchitecture.SpaghettiPattern
         /// <param name="enemy">The enemy that died.</param>
         public void EnemyDied(EnemyController enemy)
         {
+            totalEnemiesKilled++;
             chestManager.ReduceChestSpawnTime();
             
             if (activeEnemies.Contains(enemy))
