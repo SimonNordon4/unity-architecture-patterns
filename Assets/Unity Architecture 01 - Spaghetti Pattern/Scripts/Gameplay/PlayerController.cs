@@ -111,6 +111,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void AddItem(ChestItem item)
         {
+            Debug.Log("Adding Item");
             currentlyHeldItems.Add(item);
 
             // Add modifiers to the stats.
@@ -118,8 +119,6 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 var stat = Stats[mod.statType];
                 stat.AddModifier(mod);
-
-                // TODO: This might be broken.
 
                 // If it's a max health mod, we need to also increase the current health.
                 if (mod.statType == StatType.MaxHealth)
@@ -239,11 +238,16 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             
             
-            _timeSinceLastFire += Time.deltaTime;
+            
             // Calculate health regeneration
             if (playerCurrentHealth < playerMaxHealth.value)
             {
-                if (_timeSinceLastHealthRegen > 100f / healthRegen.value) // Changed from 1f to 10f
+                _timeSinceLastFire += Time.deltaTime;
+                // This is dividing regen by 100 and inverting it. 
+                // FireRate = 10 -> 0.1 hp/s
+                // FireRate = 100 -> 1 hp/s
+                // FireRate = 200 -> 2 hp/s
+                if (_timeSinceLastHealthRegen > 100f / healthRegen.value)
                 {
                     _timeSinceLastHealthRegen = 0;
                     playerCurrentHealth += 1;

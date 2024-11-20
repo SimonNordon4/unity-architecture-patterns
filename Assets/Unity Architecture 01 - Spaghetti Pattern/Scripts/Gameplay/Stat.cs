@@ -38,9 +38,8 @@ namespace UnityArchitecture.SpaghettiPattern
                     scalingPercentage += modifier.modifierValue;
                 }
             }
-
-            var scaledValue = baseValue + baseValue * scalingPercentage;
-            value = Mathf.Clamp(scaledValue + flatPercentage, minimumValue, maximumValue);
+            var scaledValue = baseValue + baseValue * (scalingPercentage / 100f);
+            value = (int)Mathf.Clamp(scaledValue + flatPercentage, minimumValue, maximumValue);
         }
 
         public void Reset()
