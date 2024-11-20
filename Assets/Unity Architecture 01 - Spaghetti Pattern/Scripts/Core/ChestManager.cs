@@ -33,7 +33,6 @@ namespace UnityArchitecture.SpaghettiPattern
         public ChestItems tier2ChestItems;
         public ChestItems tier3ChestItems;
         public ChestItems tier4ChestItems;
-        public ChestItems tier5ChestItems;
         public ChestItems[] allChestItems;
         public Chest chestPrefab;
         public Chest currentChest = null;
@@ -53,11 +52,8 @@ namespace UnityArchitecture.SpaghettiPattern
             if (chestBounds.magnitude > GameManager.Instance.levelBounds.magnitude)
                 chestBounds = GameManager.Instance.levelBounds;
 
-            allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
+            allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems };
             
-            foreach (var chestItem in allChestItems)
-                chestItem.SetTier();
-
             SpawnChest();
         }
 
@@ -83,7 +79,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void SpawnChest()
         {
-            Console.Log("ChestManager.SpawnChest()", LogFilter.Chest, this);
             var chest = Instantiate(chestPrefab, GetRandomChestSpawn(), Quaternion.identity);
             chest.minTier = 1;
             chest.maxTier = 5;
@@ -92,7 +87,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void SpawnBossChest(Vector3 position)
         {
-            Console.Log("ChestManager.SpawnBossChest()", LogFilter.Chest, this);
             var chest = Instantiate(chestPrefab, position, Quaternion.identity);
             chest.minTier = 3;
             chest.maxTier = 5;
@@ -140,7 +134,7 @@ namespace UnityArchitecture.SpaghettiPattern
         [ContextMenu("Populate Items")]
         public void PopulateItemsInEditor()
         {
-            var allTierLists = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
+            var allTierLists = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems};
 
             // Clear existing items
             foreach (var chestItems in allTierLists)

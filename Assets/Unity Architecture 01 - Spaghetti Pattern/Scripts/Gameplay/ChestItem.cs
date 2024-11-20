@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
-    [Serializable]
-    public class ChestItem
+    [CreateAssetMenu(menuName="SpaghettiPattern/ChestItem")]
+    public class ChestItem : ScriptableObject
     {
         public string itemName = "New Item";
         public Sprite sprite;

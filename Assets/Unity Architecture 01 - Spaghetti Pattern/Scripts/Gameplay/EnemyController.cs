@@ -150,7 +150,6 @@ namespace UnityArchitecture.SpaghettiPattern
             var avoidanceDirection = Vector3.zero;
             for (var i = 0; i < totalEnemies; i++)
             {
-
                 var enemy = _nearbyEnemies[i];
                 if (enemy == null)
                 {
