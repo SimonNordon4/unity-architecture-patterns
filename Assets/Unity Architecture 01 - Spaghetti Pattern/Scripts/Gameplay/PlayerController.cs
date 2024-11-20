@@ -58,6 +58,8 @@ namespace UnityArchitecture.SpaghettiPattern
         public AudioClip healthPackSound;
         public AudioClip takeDamageSound;
         public AudioClip blockSound;
+        
+        private float _timeSinceLastHealthRegen = 0.0f;
 
         private void Awake()
         {
@@ -122,11 +124,11 @@ namespace UnityArchitecture.SpaghettiPattern
                 // If it's a max health mod, we need to also increase the current health.
                 if (mod.statType == StatType.MaxHealth)
                 {
-                    var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue, 1,
-                        (int)playerMaxHealth.value);
+                    var newHealth = Mathf.Clamp(playerCurrentHealth + mod.modifierValue, 1,
+                        playerMaxHealth.value);
 
                     playerCurrentHealth = newHealth;
-                }
+                } 
             }
         }
 
@@ -186,7 +188,7 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 if (!targetIsNull)
                 {
-                    if (closestDistance <= range.value)
+                    if (closestDistance <= range.value * 0.5f)
                     {
                         var isKnockBack = false;
                         if (_closestTarget.TryGetComponent<EnemyController>(out var enemyController))
@@ -207,7 +209,6 @@ namespace UnityArchitecture.SpaghettiPattern
                     }
                 }
             }
-
 
             var dir = Vector3.zero;
 
@@ -233,8 +234,20 @@ namespace UnityArchitecture.SpaghettiPattern
             // Apply movement
             if (dir.magnitude > 0)
             {
-                _transform.position += dir.normalized * (Time.deltaTime * playerSpeed.value);
+                _transform.position += dir.normalized * (Time.deltaTime * playerSpeed.value * 0.5f);
                 _transform.rotation = Quaternion.LookRotation(dir);
+            }
+            
+            
+            _timeSinceLastFire += Time.deltaTime;
+            // Calculate health regeneration
+            if (playerCurrentHealth < playerMaxHealth.value)
+            {
+                if (_timeSinceLastHealthRegen > 100f / healthRegen.value) // Changed from 1f to 10f
+                {
+                    _timeSinceLastHealthRegen = 0;
+                    playerCurrentHealth += 1;
+                }
             }
         }
 
@@ -247,7 +260,8 @@ namespace UnityArchitecture.SpaghettiPattern
             var projectile = projectileGo.GetComponent<Projectile>();
             projectile.damage = Mathf.RoundToInt(damage.value);
             projectile.knockBackIntensity = knockback.value;
-            projectile.pierceCount = Mathf.RoundToInt(pierce.value + 1); // I don't know why I have to add 1 here.
+            projectile.pierceCount = Mathf.RoundToInt(pierce.value / 100);
+            projectile.critChance = critChance.value;
             _timeSinceLastFire = 0.0f;
         }
 
@@ -278,17 +292,12 @@ namespace UnityArchitecture.SpaghettiPattern
             // Aim the projectile towards the predicted position
             var shootDirection = (predictedTargetPosition - _transform.position).normalized;
 
-            if (isDebugMode)
-            {
-                // draw a line from the player to the predicted position
-                Debug.DrawLine(_transform.position, predictedTargetPosition, Color.green,
-                    1 / firerate.value);
-            }
 
             projectileGo.transform.forward = shootDirection;
             projectile.damage = Mathf.RoundToInt(damage.value);
             projectile.knockBackIntensity = knockback.value;
-            projectile.pierceCount = (int)pierce.value;
+            projectile.pierceCount = Mathf.RoundToInt(pierce.value / 100);
+            projectile.critChance = critChance.value;
             _timeSinceLastFire = 0.0f;
         }
 
@@ -346,7 +355,6 @@ namespace UnityArchitecture.SpaghettiPattern
             _damageTextCoroutine = StartCoroutine(ShowDamageText(damageAmount));
 
             AudioManager.Instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
-
 
             playerCurrentHealth -= damageAmount;
 

@@ -859,7 +859,7 @@ MonoBehaviour:
     _modifiers: []
     value: 10
   healthRegen:
-    baseValue: 1
+    baseValue: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
@@ -2713,11 +2713,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6607d20f41e0454686b1c9252a9bbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuScene: 0
-  gameScene: 1
-  gameWon: 2
-  gameLost: 3
-  dungeonScene: 4
 --- !u!1001 &1308151050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3045,12 +3040,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1330594700}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1393467224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3,
-    type: 3}
-  m_PrefabInstance: {fileID: 462989477}
-  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1469503882
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3187,12 +3176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6012bb67d4e9c5c4095c5fae0a86c2dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hyperText: {fileID: 0}
-  showDamageNumbers: 1
-  showEnemyHealthBars: 1
-  musicVolume: 1
-  sfxVolume: 1
-  isHyperMode: 0
 --- !u!1001 &1634653621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3385,7 +3368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b22ef3bd6e261645999aba663cd5067, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphy: {fileID: 1393467224}
 --- !u!4 &1645930826
 Transform:
   m_ObjectHideFlags: 0
