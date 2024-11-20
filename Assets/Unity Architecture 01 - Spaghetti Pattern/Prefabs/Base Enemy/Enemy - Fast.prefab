@@ -85,16 +85,15 @@ MonoBehaviour:
   knockBackFactor: 2
   isUnstoppable: 0
   isKnockedBack: 0
-  baseHealth: 1
+  baseHealth: 15
   currentHealth: 1
-  baseDamage: 0
+  baseDamage: 1
   currentDamage: 1
   damageCooldown: 1
   deathEffect: {fileID: 2222448280298337007, guid: 511271b22a6b58e44a6648522aee243a,
     type: 3}
-  deathSound: {fileID: 11400000, guid: e37a38038d712774185b93770c3839fc, type: 2}
-  onHitSound: {fileID: 11400000, guid: e4497588438a4934d9aaf5204c81b0e3, type: 2}
-  attackSound: {fileID: 11400000, guid: d658cbabcaab8b343b83677f86e40c42, type: 2}
+  deathSound: {fileID: 8300000, guid: 7e1a65be295458741a40f044dac69a4d, type: 3}
+  onHitSound: {fileID: 8300000, guid: 158dc253b674d7844ac30e67f376db37, type: 3}
 --- !u!54 &8753269173837899488
 Rigidbody:
   m_ObjectHideFlags: 0

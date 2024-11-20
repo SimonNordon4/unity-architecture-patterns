@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Debug = UnityEngine.Debug;
@@ -35,8 +36,9 @@ namespace UnityArchitecture.SpaghettiPattern
         public int gameLost = 3;
         public int dungeonScene = 4;
 
-        private GameObject _pauseMenu;
-        private GameObject _hudMenu;
+        [Header("UI")]
+        public GameObject hudMenu;
+        public GameObject pauseMenu;
 
         [Header("Settings")]
         public bool showDamageNumbers = true;
@@ -45,15 +47,39 @@ namespace UnityArchitecture.SpaghettiPattern
         public float sfxVolume = 1f;
 
         [Header("Health Packs")] 
-        public GameObject healthPackPrefab; 
+        public GameObject healthPackPrefab;
+
+        private void Awake()
+        {
+            // If the scene is the game scene, this should become the new GameManager.
+            if (SceneManager.GetActiveScene().buildIndex == gameScene)
+            {
+                if (_instance != null)
+                {
+                    Destroy(_instance); 
+                }
+                
+                _instance = this;
+                StartNewGame();
+            }
+            else
+            {
+                // If this is a random scene, and the game manager already exists, destroy this instance.
+                if (_instance != null)
+                {
+                    Destroy(this);
+                }
+                else
+                {
+                    _instance = this;
+                }
+            }
+            DontDestroyOnLoad(this);
+        }
 
         private void Start()
         {
-            DontDestroyOnLoad(gameObject);
-            
-            // if the scene index is 1 start a new game
-            if (SceneManager.GetActiveScene().buildIndex == gameScene)
-                StartNewGame();
+
         }
 
         private void Update()
@@ -86,14 +112,16 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 isGameActive = false;
                 isPaused = true;
-                _pauseMenu.SetActive(true);
+                pauseMenu.SetActive(true);
+                hudMenu.SetActive(false);
             }
             // If the game is not active and we are paused.
             else if (!isGameActive && isPaused)
             {
                 isGameActive = true;
                 isPaused = false;
-                _hudMenu.SetActive(true);
+                hudMenu.SetActive(true);
+                pauseMenu.SetActive(false);
             }
             // Do nothing otherwise.
         }
@@ -194,9 +222,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
     public void LoadEnvironment()
     {
-        SceneManager.LoadScene(dungeonScene, LoadSceneMode.Additive);
+        if (!SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded)
+        {
+            SceneManager.LoadScene(dungeonScene, LoadSceneMode.Additive);
+        }
     }
-#endregion
+    #endregion
 
 #region Settings
         public void SetMusicVolume(float volume)

@@ -43,7 +43,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     var statSign = mod.modifierValue > 0 ? "+" : "";                
 
                     // Format stat value.
-                    var statValueString = statSign + mod.modifierValue;
+                    var statValueString = statSign + mod.modifierValue + "%";
           
 
                     // Format stat type name.

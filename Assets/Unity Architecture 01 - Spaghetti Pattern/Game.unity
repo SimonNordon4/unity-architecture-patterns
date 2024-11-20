@@ -1677,8 +1677,6 @@ GameObject:
   m_Component:
   - component: {fileID: 644039391}
   - component: {fileID: 644039393}
-  - component: {fileID: 644039392}
-  - component: {fileID: 644039395}
   - component: {fileID: 644039394}
   m_Layer: 0
   m_Name: Enemy Manager
@@ -1702,208 +1700,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &644039392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644039389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fcc600df7abc8041ac8d2b69cca803f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockName: Block 1 (Easy)
-  enemiesToKill: 200
-  maxEnemiesAliveRange: {x: 3, y: 6}
-  maxEnemiesAliveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: -0.02125537
-      outSlope: -0.02125537
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.20178384
-      value: -0.00428899
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.79990774
-      value: 0.9991844
-      inSlope: 2.0298085
-      outSlope: -0.028916152
-      tangentMode: 1
-      weightedMode: 0
-      inWeight: 0.06537733
-      outWeight: 0.26667005
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.0040759714
-      outSlope: 0.0040759714
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemyPrefabs:
-  - {fileID: 6612436184476467086, guid: 6da49f7eb69c8fc49964a213d0376127, type: 3}
-  - {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb, type: 3}
-  - {fileID: 5963634728595224897, guid: 8debcb394b618d74c8fda6a50c2f492d, type: 3}
-  enemySpawnWeightCurves:
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.011970318
-      outSlope: 0.011970318
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.19817302
-      value: 0.002372194
-      inSlope: 0.011970318
-      outSlope: 93.81428
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.20342709
-      value: 0.49527946
-      inSlope: 93.81428
-      outSlope: 0.000002210087
-      tangentMode: 69
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.99902344
-      value: 0.49528122
-      inSlope: 0.000002210087
-      outSlope: 0.000002210087
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0011024475
-      value: 0.0025138855
-      inSlope: 0.53406805
-      outSlope: 0.53406805
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.0568788
-    - serializedVersion: 3
-      time: 1
-      value: 0.17048533
-      inSlope: 0.06351831
-      outSlope: 0.06351831
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.05121988
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  bossEnemies:
-  - {fileID: 4276726426749855420, guid: 85f16814ab695244ebb62b31c360ca24, type: 3}
-  healthMultiplierRange: {x: 1, y: 4}
-  damageMultiplierRange: {x: 1, y: 4}
-  healthMultiplierCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  damageMultiplierCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemiesKilled: 0
 --- !u!114 &644039393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1922,7 +1718,6 @@ MonoBehaviour:
   baseSpawnRate: 1
   enemyBlocks:
   - {fileID: 644039394}
-  - {fileID: 644039395}
   currentBlockIndex: 0
   enemiesAlive: 0
   totalEnemiesKilled: 0
@@ -1940,116 +1735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fcc600df7abc8041ac8d2b69cca803f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockName: Test Block 2
+  blockName: Unnamed Block
   enemiesToKill: 5
-  maxEnemiesAliveRange: {x: 5, y: 10}
-  maxEnemiesAliveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemyPrefabs:
-  - {fileID: 4762536625162360883, guid: dd5272bd10cb7324291201b5bcf23e3e, type: 3}
-  - {fileID: 1745328069275983232, guid: 8484d40e5461e59478c18489957a7ceb, type: 3}
-  enemySpawnWeightCurves:
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  bossEnemies:
-  - {fileID: 3398716774413508842, guid: dcb647f9e14c5c0439f72ab7f9083aad, type: 3}
-  - {fileID: 4854293698142422470, guid: db4682bc0d9c6994da682d08cc960706, type: 3}
-  healthMultiplierRange: {x: 1, y: 4}
-  damageMultiplierRange: {x: 1, y: 4}
-  healthMultiplierCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  damageMultiplierCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemiesKilled: 0
---- !u!114 &644039395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644039389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fcc600df7abc8041ac8d2b69cca803f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockName: ' Test Block 1'
-  enemiesToKill: 5
-  maxEnemiesAliveRange: {x: 5, y: 10}
+  maxEnemiesAliveRange: {x: 1, y: 1}
   maxEnemiesAliveCurve:
     serializedVersion: 2
     m_Curve:
@@ -2101,8 +1789,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   bossEnemies:
-  - {fileID: 7093774422563631258, guid: f7e56782f91ac4a4881149cff781afd9, type: 3}
-  - {fileID: 6149539934083174838, guid: 10abf6de3beb8f14d99c3707b8da5b61, type: 3}
+  - {fileID: 4276726426749855420, guid: 85f16814ab695244ebb62b31c360ca24, type: 3}
   healthMultiplierRange: {x: 1, y: 4}
   damageMultiplierRange: {x: 1, y: 4}
   healthMultiplierCurve:
@@ -2110,9 +1797,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -2120,8 +1807,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -2134,9 +1821,9 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -2144,8 +1831,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
@@ -2348,6 +2035,8 @@ MonoBehaviour:
   gameWon: 2
   gameLost: 3
   dungeonScene: 4
+  hudMenu: {fileID: 1011829834}
+  pauseMenu: {fileID: 1157388973}
   showDamageNumbers: 1
   showEnemyHealthBars: 1
   musicVolume: 1
@@ -2657,6 +2346,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1011829834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6846504844029640349, guid: 6c78fc28b4983a44591d4e539fb4f771,
+    type: 3}
+  m_PrefabInstance: {fileID: 1634653621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1079578952 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 778175332418278668, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,
@@ -2713,6 +2408,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6607d20f41e0454686b1c9252a9bbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1157388973 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5393296879404737001, guid: d6ca6737c939f69478c326a2df84ced1,
+    type: 3}
+  m_PrefabInstance: {fileID: 211062563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1308151050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2831,215 +2532,6 @@ ParticleSystem:
     type: 3}
   m_PrefabInstance: {fileID: 1308151050}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1330594700
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1634653622}
-    m_Modifications:
-    - target: {fileID: 2543487375684705104, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2543487375684705104, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2543487375684705104, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957236276285107449, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 12.644287
-      objectReference: {fileID: 0}
-    - target: {fileID: 2957236276285107449, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996623895730904623, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996623895730904623, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996623895730904623, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 124.33295
-      objectReference: {fileID: 0}
-    - target: {fileID: 2996623895730904623, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -54.7479
-      objectReference: {fileID: 0}
-    - target: {fileID: 3285229811889280349, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3285229811889280349, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079365025990258300, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079365025990258300, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079365025990258300, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 615
-      objectReference: {fileID: 0}
-    - target: {fileID: 4079365025990258300, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -120
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5086133137030815603, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879947728325405965, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_Name
-      value: UI Achievement Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 5879947728325405965, guid: a0d115da6b825bc4e9d01766d8652658,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a0d115da6b825bc4e9d01766d8652658, type: 3}
---- !u!224 &1330594701 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4104965244190045159, guid: a0d115da6b825bc4e9d01766d8652658,
-    type: 3}
-  m_PrefabInstance: {fileID: 1330594700}
-  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1469503882
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3132,50 +2624,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1611055694
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1611055695}
-  - component: {fileID: 1611055696}
-  m_Layer: 0
-  m_Name: Settings Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1611055695
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611055694}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1611055696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611055694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6012bb67d4e9c5c4095c5fae0a86c2dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1634653621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3318,18 +2766,14 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3714594234758484432, guid: 6c78fc28b4983a44591d4e539fb4f771,
         type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1330594701}
-    - targetCorrespondingSourceObject: {fileID: 3714594234758484432, guid: 6c78fc28b4983a44591d4e539fb4f771,
-        type: 3}
-      insertIndex: 3
       addedObject: {fileID: 613896890}
     - targetCorrespondingSourceObject: {fileID: 3714594234758484432, guid: 6c78fc28b4983a44591d4e539fb4f771,
         type: 3}
-      insertIndex: 4
+      insertIndex: 3
       addedObject: {fileID: 2070123359}
     - targetCorrespondingSourceObject: {fileID: 3714594234758484432, guid: 6c78fc28b4983a44591d4e539fb4f771,
         type: 3}
-      insertIndex: 5
+      insertIndex: 4
       addedObject: {fileID: 16506738}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c78fc28b4983a44591d4e539fb4f771, type: 3}
@@ -4108,7 +3552,6 @@ SceneRoots:
   - {fileID: 299859323}
   - {fileID: 1151007442}
   - {fileID: 801546266}
-  - {fileID: 1611055695}
   - {fileID: 644039391}
   - {fileID: 1884674989}
   - {fileID: 1926671863}

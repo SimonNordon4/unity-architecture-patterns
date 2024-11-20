@@ -95,6 +95,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
         type: 3}
+      propertyPath: baseHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
+        type: 3}
       propertyPath: deathSound
       value: 
       objectReference: {fileID: 8300000, guid: 7e1a65be295458741a40f044dac69a4d, type: 3}
@@ -126,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
         type: 3}
       propertyPath: currentHealth
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2867387066201989286, guid: c353f26a0b60cf84c981a76558c0e9f7,
         type: 3}
