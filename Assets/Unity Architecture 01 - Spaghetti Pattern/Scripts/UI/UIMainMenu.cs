@@ -35,7 +35,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void OnPlayPressed()
         {
-            // TODO: Game Manager Load Scene Main Game.
+            GameManager.Instance.LoadGame();
             UISettingsMenu.SetActive(false);
         }
 

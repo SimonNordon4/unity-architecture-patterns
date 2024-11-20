@@ -49,6 +49,10 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
+            
+            // if the scene index is 1 start a new game
+            if (SceneManager.GetActiveScene().buildIndex == gameScene)
+                StartNewGame();
         }
 
         private void Update()
@@ -174,6 +178,7 @@ namespace UnityArchitecture.SpaghettiPattern
     public void LoadGame() 
     {
         SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
+        StartNewGame();
     }
 
     public void LoadGameWon()
