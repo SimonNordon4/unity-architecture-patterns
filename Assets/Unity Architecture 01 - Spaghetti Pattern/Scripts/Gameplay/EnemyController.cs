@@ -204,7 +204,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void TakeDamage(int damage, bool isCritical=false)
         {
-            AccountManager.Instance.statistics.totalDamageDealt += damage;
             // Take damage, die if at 0.
             currentHealth -= damage;
             UpdateHealthText();

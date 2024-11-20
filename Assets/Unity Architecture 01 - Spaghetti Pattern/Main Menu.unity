@@ -299,86 +299,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 13.016, y: 0, z: 0}
---- !u!1 &1489974772
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1489974773}
-  - component: {fileID: 1489974774}
-  m_Layer: 0
-  m_Name: Account Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1489974773
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489974772}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1489974774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1489974772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3760da61d7d40f8a317f22c29a105fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  statistics:
-    totalKills: 0
-    totalBossKills: 0
-    totalGoldEarned: 0
-    totalChestsOpened: 0
-    totalDeaths: 0
-    totalDamageDealt: 0
-    totalDamageTaken: 0
-    totalDamageHealed: 0
-    gamesWon: 0
-    gamesPlayed: 0
-    fastestWin: 0
-    highestPistolDamage: 0
-    highestPistolRange: 0
-    highestPistolFireRate: 0
-    highestPistolKnockBack: 0
-    highestPistolPierce: 0
-    highestPlayerSpeed: 0
-    highestPlayerHealth: 0
-    highestSwordDamage: 0
-    highestSwordRange: 0
-    highestSwordAttackSpeed: 0
-    highestSwordKnockBack: 0
-    highestSwordArc: 0
-    highestHealthPackSpawnRate: 0
-    highestLuck: 0
-    highestBlock: 0
-  achievementSave:
-    achievements: []
-  settingsSave:
-    musicVolume: 1
-    sfxVolume: 1
-    showDamageNumbers: 1
-    showEnemyHealthBars: 1
-    isHyperMode: 0
-  debugSkipLoad: 0
 --- !u!1 &1613666171
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +883,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1489974773}
   - {fileID: 1005797380}
   - {fileID: 1448781205}
   - {fileID: 1613666174}

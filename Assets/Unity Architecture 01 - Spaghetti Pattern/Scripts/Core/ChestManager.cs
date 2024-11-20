@@ -11,7 +11,6 @@ namespace UnityArchitecture.SpaghettiPattern
     public class ChestManager : MonoBehaviour
     {
         private static ChestManager _instance;
-
         public static ChestManager Instance
         {
             get
@@ -103,50 +102,12 @@ namespace UnityArchitecture.SpaghettiPattern
         public void PickupChest(Chest chest)
         {
             // monitor stats.
-            AccountManager.Instance.statistics.totalChestsOpened++;
             GameManager.Instance.isGameActive = false;
-
-            List<Achievement> achievements = AccountManager.Instance.achievementSave.achievements
-                .Where(a => a.name == AchievementName.Open100Chests ||
-                            a.name == AchievementName.Open1000Chests).ToList();
-            foreach (var a in achievements)
-            {
-                if (a.isCompleted) continue;
-                a.progress++;
-                if (a.progress >= a.goal)
-                {
-                    a.isCompleted = true;
-                    AccountManager.Instance.AchievementUnlocked(a);
-                }
-            }
 
             currentChest = chest;
             chestMenu.SetActive(true);
             hudMenu.SetActive(false);
         }
-
-
-        // private void UpdateItemUI()
-        // {
-        //     foreach (var item in _itemHoverImages) Destroy(item);
-        //     _itemHoverImages.Clear();
-
-        //     // Create a dictionary of every item and how many of them there are.
-        //     var itemDictionary = new Dictionary<ChestItem, int>();
-        //     foreach (var item in GameManager.instance.currentlyHeldItems)
-        //         if (itemDictionary.ContainsKey(item))
-        //             itemDictionary[item]++;
-        //         else
-        //             itemDictionary.Add(item, 1);
-
-        //     // Create a new item hover image for each item in the dictionary.
-        //     foreach (var item in itemDictionary.Keys)
-        //     {
-        //         var newHoverImage = Instantiate(itemHoverImagePrefab, itemHoverImageContainer);
-        //         newHoverImage.Initialize(item, itemDictionary[item]);
-        //         _itemHoverImages.Add(newHoverImage.gameObject);
-        //     }
-        // }
 
         public void ApplyItem(ChestItem item)
         {
@@ -179,7 +140,6 @@ namespace UnityArchitecture.SpaghettiPattern
         [ContextMenu("Populate Items")]
         public void PopulateItemsInEditor()
         {
-            
             var allTierLists = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems, tier5ChestItems };
 
             // Clear existing items

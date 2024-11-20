@@ -118,12 +118,10 @@ namespace UnityArchitecture.SpaghettiPattern
                 stat.AddModifier(mod);
 
                 // TODO: This might be broken.
-                AccountManager.Instance.CheckIfHighestStat(mod.statType, stat.value);
 
                 // If it's a max health mod, we need to also increase the current health.
                 if (mod.statType == StatType.MaxHealth)
                 {
-                    AccountManager.Instance.statistics.totalDamageHealed += (int)mod.modifierValue;
 
                     var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue, 1,
                         (int)playerMaxHealth.value);
@@ -350,7 +348,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
             AudioManager.instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
 
-            AccountManager.Instance.statistics.totalDamageTaken += damageAmount;
 
             playerCurrentHealth -= damageAmount;
 
@@ -358,25 +355,7 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 playerCurrentHealth = 0;
 
-                AccountManager.Instance.statistics.totalDeaths++;
                 AudioManager.instance.PlaySound(deathSound);
-                gameManager.LoseGame();
-
-                List<Achievement> dieAchievements = AccountManager.Instance.achievementSave.achievements
-                    .Where(a => a.name == AchievementName.Die ||
-                                a.name == AchievementName.Die50Times ||
-                                a.name == AchievementName.Die100Times).ToList();
-                foreach (var a in dieAchievements)
-                {
-                    if (a.isCompleted) return;
-                    a.progress++;
-                    if (a.progress >= a.goal)
-                    {
-                        a.isCompleted = true;
-                        AccountManager.Instance.AchievementUnlocked(a);
-                    }
-                }
-                
                 GameManager.Instance.LoseGame();
             }
         }
@@ -453,7 +432,6 @@ namespace UnityArchitecture.SpaghettiPattern
                         0f,
                         playerMaxHealth.value);
 
-                AccountManager.Instance.statistics.totalDamageHealed += healthGained;
                 playerCurrentHealth = healthGained;
 
                 Destroy(other.gameObject);

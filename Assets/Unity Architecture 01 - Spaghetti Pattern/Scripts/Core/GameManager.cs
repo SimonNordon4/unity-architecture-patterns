@@ -64,18 +64,11 @@ namespace UnityArchitecture.SpaghettiPattern
         public void StartNewGame()
         {
             Console.Log("GameManager.StartNewGame()", LogFilter.Game, this);
-            AccountManager.Instance.statistics.gamesPlayed++;
             hudMenu.SetActive(true);
             isGameActive = true;
             roundTime = 0f;
             playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
             // clear all items
-
-            // UpdateItemUI();
-            TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Wasd, 2f);
-            TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Chest, 12f);
-            TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Dash, 22f);
-            TutorialManager.instance.ShowTip(TutorialManager.TutorialMessage.Pause, 28f);
             AudioManager.instance.OnStartGame();
         }
 
@@ -131,60 +124,8 @@ namespace UnityArchitecture.SpaghettiPattern
         public void WinGame()
         {
             Console.Log("GameManager.WinGame()", LogFilter.Game, this);
-            AccountManager.Instance.Save();
+
             isGameActive = false;
-            AccountManager.Instance.statistics.gamesWon++;
-
-            // check if faster time
-            if (AccountManager.Instance.statistics.fastestWin == 0 ||
-                roundTime < AccountManager.Instance.statistics.fastestWin)
-                AccountManager.Instance.statistics.fastestWin = roundTime;
-
-            List<Achievement> achievements = AccountManager.Instance.achievementSave.achievements
-                .Where(a => a.name == AchievementName.BeatTheGame ||
-                            a.name == AchievementName.BeatTheGame10Times).ToList();
-            foreach (var a in achievements)
-            {
-                if (a.isCompleted) return;
-                a.progress++;
-                if (a.progress >= a.goal)
-                {
-                    a.isCompleted = true;
-                    AccountManager.Instance.AchievementUnlocked(a);
-                }
-            }
-
-            var under1hour = AccountManager.Instance.achievementSave.achievements
-                .First(x => x.name == AchievementName.WinInUnder1Hour);
-
-            if (!under1hour.isCompleted)
-            {
-                if (under1hour.progress > roundTime)
-                    under1hour.progress = (int)roundTime;
-                under1hour.isCompleted = roundTime < under1hour.goal;
-            }
-
-
-            var under45mins = AccountManager.Instance.achievementSave.achievements
-                .First(x => x.name == AchievementName.WinInUnder45Minutes);
-
-            if (!under45mins.isCompleted)
-            {
-                if (under45mins.progress > roundTime)
-                    under45mins.progress = (int)roundTime;
-                under45mins.isCompleted = roundTime < under45mins.goal;
-            }
-
-
-            var under30mins = AccountManager.Instance.achievementSave.achievements
-                .First(x => x.name == AchievementName.WinInUnder30Minutes);
-
-            if (!under30mins.isCompleted)
-            {
-                if (under30mins.progress > roundTime)
-                    under30mins.progress = (int)roundTime;
-                under30mins.isCompleted = roundTime < under30mins.goal;
-            }
 
             roundTime = 0f;
             AudioManager.instance.StopMusic();
@@ -202,8 +143,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void QuitApplication()
         {
-            AccountManager.Instance.Save();
-
             Debug.Log("Quit Application");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -222,51 +161,14 @@ namespace UnityArchitecture.SpaghettiPattern
                 var healthPack = Instantiate(HealthPackPrefab, pos, Quaternion.identity);
             }
 
-            AccountManager.Instance.statistics.totalKills++;
 
-            // get all boss enemy achievements
-            List<Achievement> bossEnemyAchievements = AccountManager.Instance.achievementSave.achievements
-                .Where(a => a.name == AchievementName.Kill1000Enemies ||
-                            a.name == AchievementName.Kill10000Enemies ||
-                            a.name == AchievementName.Kill100000Enemies ||
-                            a.name == AchievementName.Kill100Enemies).ToList();
 
-            foreach (var a in bossEnemyAchievements)
-            {
-                if (a.isCompleted) return;
-                a.progress++;
-                if (a.progress >= a.goal)
-                {
-                    a.isCompleted = true;
-                    AccountManager.Instance.AchievementUnlocked(a);
-                }
-            }
+            
         }
 
         public void OnBossEnemyDied(GameObject enemy)
         {
-            // get all boss enemy achievements
-            List<Achievement> bossEnemyAchievements = AccountManager.Instance.achievementSave.achievements
-                .Where(a => a.name == AchievementName.Kill100Bosses ||
-                            a.name == AchievementName.Kill1000Bosses ||
-                            a.name == AchievementName.Kill1000Enemies ||
-                            a.name == AchievementName.Kill10000Enemies ||
-                            a.name == AchievementName.Kill100000Enemies ||
-                            a.name == AchievementName.Kill100Enemies).ToList();
 
-            foreach (var a in bossEnemyAchievements)
-            {
-                if (a.isCompleted) return;
-                a.progress++;
-                if (a.progress >= a.goal)
-                {
-                    a.isCompleted = true;
-                    AccountManager.Instance.AchievementUnlocked(a);
-                }
-            }
-
-            AccountManager.Instance.statistics.totalBossKills++;
-            AccountManager.Instance.statistics.totalKills++;
         }
     }
 }
