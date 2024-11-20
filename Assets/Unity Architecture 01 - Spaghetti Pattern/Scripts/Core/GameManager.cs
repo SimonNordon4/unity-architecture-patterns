@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -47,18 +46,9 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Health Packs")] 
         public GameObject healthPackPrefab;
 
-        private void Awake()
-        {
-            if (_instance != null)
-            {
-                Destroy(gameObject);
-            }
-        }
-
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
-            StartNewGame();
         }
 
         private void Update()
