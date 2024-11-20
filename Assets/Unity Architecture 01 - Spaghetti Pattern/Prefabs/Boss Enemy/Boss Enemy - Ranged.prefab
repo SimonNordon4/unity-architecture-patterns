@@ -90,6 +90,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867387066201989286, guid: 369029da34577a949a3f5024d45fa564,
         type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8df4cf3017cdd05429fe819ebc0d4e8c, type: 3}
+    - target: {fileID: 2867387066201989286, guid: 369029da34577a949a3f5024d45fa564,
+        type: 3}
+      propertyPath: onHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 158dc253b674d7844ac30e67f376db37, type: 3}
+    - target: {fileID: 2867387066201989286, guid: 369029da34577a949a3f5024d45fa564,
+        type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 485e88dee3980a54ebfbbef8267f9dff, type: 3}
+    - target: {fileID: 2867387066201989286, guid: 369029da34577a949a3f5024d45fa564,
+        type: 3}
       propertyPath: bulletCount
       value: 3
       objectReference: {fileID: 0}
@@ -132,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 6537234263106401617, guid: 369029da34577a949a3f5024d45fa564,
         type: 3}
       propertyPath: m_Name
-      value: Elite Enemy - Ranged
+      value: Boss Enemy - Ranged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2227820027837659595, guid: 369029da34577a949a3f5024d45fa564, type: 3}

@@ -85,6 +85,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2867387066201989286, guid: 0d9762daa9bdaf84ea931897b1fa7b4e,
         type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e1a65be295458741a40f044dac69a4d, type: 3}
+    - target: {fileID: 2867387066201989286, guid: 0d9762daa9bdaf84ea931897b1fa7b4e,
+        type: 3}
+      propertyPath: onHitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 76e82582c98360d45bb4fd362e085179, type: 3}
+    - target: {fileID: 2867387066201989286, guid: 0d9762daa9bdaf84ea931897b1fa7b4e,
+        type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f6a66d7940701b498e5fceca59331c4, type: 3}
+    - target: {fileID: 2867387066201989286, guid: 0d9762daa9bdaf84ea931897b1fa7b4e,
+        type: 3}
       propertyPath: bulletCount
       value: 3
       objectReference: {fileID: 0}
@@ -132,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 6537234263106401617, guid: 0d9762daa9bdaf84ea931897b1fa7b4e,
         type: 3}
       propertyPath: m_Name
-      value: Elite Enemy - Wanderer Ranged
+      value: Boss Enemy - Wanderer Ranged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -234,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: a404afef28c36de408fe3f350dfad0b9,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 78a8e2e8a4e49db4195f4f8e015f1189, type: 2}
     - target: {fileID: 919132149155446097, guid: a404afef28c36de408fe3f350dfad0b9,
