@@ -25,15 +25,14 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void LoadMainMenu()
         {
-            SceneManager.Instance.LoadMainMenu();
+            GameManager.Instance.LoadMainMenu();
         }
 
         public void LoadGame()
         {
             Destroy(GameManager.Instance.gameObject);
             Destroy(EnemyManager.Instance.gameObject);
-            SceneManager.Instance.LoadGame();
-            Destroy(SceneManager.Instance);
+            GameManager.Instance.LoadGame();
         }
     }
 }

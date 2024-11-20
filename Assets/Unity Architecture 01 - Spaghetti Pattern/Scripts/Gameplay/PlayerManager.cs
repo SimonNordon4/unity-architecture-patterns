@@ -195,7 +195,7 @@ namespace UnityArchitecture.SpaghettiPattern
                             isKnockBack = enemyController.isKnockedBack;
                         }
 
-                        AudioManager.instance.PlaySound(shootSound);
+                        AudioManager.Instance.PlaySound(shootSound);
                         shootEffect.Play();
                         if (isKnockBack)
                         {
@@ -346,7 +346,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             _damageTextCoroutine = StartCoroutine(ShowDamageText(damageAmount));
 
-            AudioManager.instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
+            AudioManager.Instance.PlaySound(damageAmount > 0 ? takeDamageSound : blockSound);
 
 
             playerCurrentHealth -= damageAmount;
@@ -355,7 +355,7 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 playerCurrentHealth = 0;
 
-                AudioManager.instance.PlaySound(deathSound);
+                AudioManager.Instance.PlaySound(deathSound);
                 GameManager.Instance.LoseGame();
             }
         }
@@ -426,7 +426,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             if (other.CompareTag("Health Pack"))
             {
-                AudioManager.instance.PlaySound(healthPackSound);
+                AudioManager.Instance.PlaySound(healthPackSound);
                 var healthGained =
                     (int)Mathf.Clamp(playerCurrentHealth + playerMaxHealth.value * 0.1f + 1,
                         0f,

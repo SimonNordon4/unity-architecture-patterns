@@ -16,13 +16,13 @@ namespace UnityArchitecture.SpaghettiPattern
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (_button != null && !_button.interactable) return;
-            AudioManager.instance.ButtonHover();
+            AudioManager.Instance.ButtonHover();
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             if (_button != null && !_button.interactable) return;
-            AudioManager.instance.ButtonClick();
+            AudioManager.Instance.ButtonClick();
         }
     }
 }

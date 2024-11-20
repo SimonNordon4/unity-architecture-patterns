@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -28,12 +28,24 @@ namespace UnityArchitecture.SpaghettiPattern
         public bool isGameActive = false;
         public Vector2 levelBounds = new(25f, 25f);
 
-        [Header("UI")]
-        public GameObject pauseMenu;
-        public GameObject hudMenu;
+        [Header("Scenes")]
+        public int mainMenuScene = 0;
+        public int gameScene = 1;
+        public int gameWon = 2;
+        public int gameLost = 3;
+        public int dungeonScene = 4;
+
+        private GameObject _pauseMenu;
+        private GameObject _hudMenu;
+
+        [Header("Settings")]
+        public bool showDamageNumbers = true;
+        public bool showEnemyHealthBars = true;
+        public float musicVolume = 1f;
+        public float sfxVolume = 1f;
 
         [Header("Health Packs")] 
-        public GameObject HealthPackPrefab;
+        public GameObject healthPackPrefab;
 
         private void Awake()
         {
@@ -46,8 +58,6 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             DontDestroyOnLoad(gameObject);
-            SceneManager.Instance.LoadEnvironment();
-            isGameActive = true;
             StartNewGame();
         }
 
@@ -61,15 +71,16 @@ namespace UnityArchitecture.SpaghettiPattern
             if (Input.GetKeyDown(KeyCode.F)) TogglePauseGame();
         }
 
+#region GamePlay
+
         public void StartNewGame()
         {
-            Console.Log("GameManager.StartNewGame()", LogFilter.Game, this);
-            hudMenu.SetActive(true);
+            LoadEnvironment();
             isGameActive = true;
             roundTime = 0f;
             playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
             // clear all items
-            AudioManager.instance.OnStartGame();
+            AudioManager.Instance.OnStartGame();
         }
 
         public void TogglePauseGame()
@@ -80,14 +91,14 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 isGameActive = false;
                 isPaused = true;
-                pauseMenu.SetActive(true);
+                _pauseMenu.SetActive(true);
             }
             // If the game is not active and we are paused.
             else if (!isGameActive && isPaused)
             {
                 isGameActive = true;
                 isPaused = false;
-                hudMenu.SetActive(true);
+                _hudMenu.SetActive(true);
             }
             // Do nothing otherwise.
         }
@@ -128,16 +139,16 @@ namespace UnityArchitecture.SpaghettiPattern
             isGameActive = false;
 
             roundTime = 0f;
-            AudioManager.instance.StopMusic();
-            SceneManager.Instance.LoadGameWon();
+            AudioManager.Instance.StopMusic();
+            LoadGameWon();
         }
 
         public void LoseGame()
         {
             Console.Log("GameManager.LoseGame()", LogFilter.Game, this);
-            AudioManager.instance.StopMusic();
+            AudioManager.Instance.StopMusic();
             isGameActive = false;
-            SceneManager.Instance.LoadGameLost();
+            LoadGameLost();
         }
 
 
@@ -158,17 +169,80 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 var position = enemy.transform.position;
                 var pos = new Vector3(position.x, 0f, position.z);
-                var healthPack = Instantiate(HealthPackPrefab, pos, Quaternion.identity);
+                var healthPack = Instantiate(healthPackPrefab, pos, Quaternion.identity);
             }
-
-
-
-            
         }
 
-        public void OnBossEnemyDied(GameObject enemy)
+#endregion
+
+#region Scene Managment
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
+    }
+
+    public void LoadGame() 
+    {
+        SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
+    }
+
+    public void LoadGameWon()
+    {
+        SceneManager.LoadScene(gameWon, LoadSceneMode.Single);
+    }
+
+    public void LoadGameLost()
+    {
+        SceneManager.LoadScene(gameLost, LoadSceneMode.Single);
+    }
+
+    public void LoadEnvironment()
+    {
+        SceneManager.LoadScene(dungeonScene, LoadSceneMode.Additive);
+    }
+#endregion
+
+#region Settings
+        public void SetMusicVolume(float volume)
         {
-
+            musicVolume = volume;
+            SaveSettings();
         }
+
+        public void SetSfxVolume(float volume)
+        {
+            sfxVolume = volume;
+            SaveSettings();
+        }
+
+        public void SetShowEnemyHealthBars(bool show)
+        {
+            showEnemyHealthBars = show;
+            // get every enemy in the scene
+            var enemies = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
+            foreach (var enemy in enemies)
+            {
+                enemy.SetHealthBarVisibility(showEnemyHealthBars);
+            }
+            SaveSettings();
+        }
+
+        public void ShowDamageNumbers(bool show)
+        {
+            showDamageNumbers = show;
+            SaveSettings();
+        }
+
+        public void SaveSettings()
+        {
+            // TODO
+        }
+
+        public void LoadSettings()
+        {
+            // TODO
+        }
+#endregion
+
     }
 }

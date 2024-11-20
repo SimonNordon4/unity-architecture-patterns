@@ -103,7 +103,7 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             if (other.CompareTag("Player"))
             {
-                AudioManager.instance.PlaySound(openSound);
+                AudioManager.Instance.PlaySound(openSound);
                 ChestManager.Instance.PickupChest(this);
                 Destroy(gameObject);
             }

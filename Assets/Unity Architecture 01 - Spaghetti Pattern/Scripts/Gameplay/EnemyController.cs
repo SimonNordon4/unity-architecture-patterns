@@ -51,16 +51,15 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Sounds")]
         public AudioClip deathSound;
         public AudioClip onHitSound;
-        public AudioClip attackSound;
 
-        private Coroutine damageTextCoroutine = null;
-        public Coroutine knockBackCoroutine = null;
+        private Coroutine _damageTextCoroutine = null;
+        private Coroutine _knockBackCoroutine = null;
 
         protected virtual void Start()
         {
             // de-parent so we don't follow the enemy rotation.
             uiStartRotation = healthBarUI.transform.rotation;
-            healthBarUI.SetActive(SettingsManager.instance.showEnemyHealthBars);
+            healthBarUI.SetActive(GameManager.Instance.showEnemyHealthBars);
             UpdateHealthText();
             _radius = transform.localScale.x;
             randomPosition = new Vector3(Random.Range(GameManager.Instance.levelBounds.x * -1, GameManager.Instance.levelBounds.x), 0, Random.Range(GameManager.Instance.levelBounds.y * -1, GameManager.Instance.levelBounds.y));
@@ -208,7 +207,7 @@ namespace UnityArchitecture.SpaghettiPattern
             UpdateHealthText();
             if (currentHealth <= 0)
             {
-                AudioManager.instance.PlaySound(deathSound);
+                AudioManager.Instance.PlaySound(deathSound);
                 var pos = transform.position;
                 var projectedPosition = new Vector3(pos.x, 0, pos.z);
                 var dead = Instantiate(deathEffect, projectedPosition, Quaternion.identity);
@@ -226,9 +225,9 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             else
             {
-                AudioManager.instance.PlaySound(onHitSound);
-                if (damageTextCoroutine != null) StopCoroutine(damageTextCoroutine);
-                damageTextCoroutine = StartCoroutine(ShowDamageText(damage));
+                AudioManager.Instance.PlaySound(onHitSound);
+                if (_damageTextCoroutine != null) StopCoroutine(_damageTextCoroutine);
+                _damageTextCoroutine = StartCoroutine(ShowDamageText(damage));
             }
         }
 
@@ -291,9 +290,9 @@ namespace UnityArchitecture.SpaghettiPattern
         public virtual void ApplyKnockBack(Vector3 direction, float intensity)
         {
             if (isUnstoppable) return;
-            if (isKnockedBack && knockBackCoroutine != null) StopCoroutine(knockBackCoroutine);
+            if (isKnockedBack && _knockBackCoroutine != null) StopCoroutine(_knockBackCoroutine);
             isKnockedBack = true;
-            knockBackCoroutine = StartCoroutine(KnockBackRoutine(direction * intensity));
+            _knockBackCoroutine = StartCoroutine(KnockBackRoutine(direction * intensity));
         }
 
         // Create a coroutine that will move the enemy in the direction of the knockback for 0.4 seconds with the given intensity being the distance the enemy will move.

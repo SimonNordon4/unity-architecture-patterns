@@ -5,7 +5,7 @@ namespace UnityArchitecture.SpaghettiPattern
     public class AudioManager : MonoBehaviour
     {
         private static AudioManager _instance;
-        public static AudioManager instance
+        public static AudioManager Instance
         {
             get
             {
@@ -59,7 +59,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 _musicSource = gameObject.AddComponent<AudioSource>();
             }
             _musicSource.clip = gameMusic[musicIndex];
-            _musicSource.volume = 0.1f * SettingsManager.instance.musicVolume;
+            _musicSource.volume = 0.1f * GameManager.Instance.musicVolume;
             _musicSource.Play();
         }
 
@@ -77,11 +77,11 @@ namespace UnityArchitecture.SpaghettiPattern
             
             if (GameManager.Instance.isGameActive)
             {
-                _musicVolume = Mathf.Lerp(_musicVolume, SettingsManager.instance.musicVolume, Time.deltaTime);
+                _musicVolume = Mathf.Lerp(_musicVolume, GameManager.Instance.musicVolume, Time.deltaTime);
             }
             else
             {
-                _musicVolume = Mathf.Lerp(_musicVolume, 0.1f * SettingsManager.instance.musicVolume, 2f * Time.deltaTime);
+                _musicVolume = Mathf.Lerp(_musicVolume, 0.1f * GameManager.Instance.musicVolume, 2f * Time.deltaTime);
             }
             
             _musicSource.volume = _musicVolume;
@@ -97,7 +97,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             var source = GetAudioSource();
             source.clip = audioClip;
-            source.volume = SettingsManager.instance.sfxVolume;
+            source.volume = GameManager.Instance.sfxVolume;
             source.pitch = 1f;
             source.PlayOneShot(source.clip);
         }
@@ -120,13 +120,13 @@ namespace UnityArchitecture.SpaghettiPattern
         public void ButtonHover()
         {
             if(_buttonSource.isPlaying) return;
-            _buttonSource.volume = 0.5f * SettingsManager.instance.sfxVolume;
+            _buttonSource.volume = 0.5f * GameManager.Instance.sfxVolume;
             _buttonSource.PlayOneShot(buttonHover);
         }
         
         public void ButtonClick()
         {
-            _buttonSource.volume = 1f * SettingsManager.instance.sfxVolume;
+            _buttonSource.volume = 1f * GameManager.Instance.sfxVolume;
             _buttonSource.PlayOneShot(buttonClick);
         }
     }

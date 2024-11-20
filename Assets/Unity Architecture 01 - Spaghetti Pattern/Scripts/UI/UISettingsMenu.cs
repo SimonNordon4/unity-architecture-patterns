@@ -17,27 +17,27 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void OnEnable()
         {
-            healthBarToggle.isOn = SettingsManager.instance.showEnemyHealthBars;
-            showDamageToggle.isOn = SettingsManager.instance.showDamageNumbers;
+            healthBarToggle.isOn = GameManager.Instance.showEnemyHealthBars;
+            showDamageToggle.isOn = GameManager.Instance.showDamageNumbers;
 
-            musicSlider.value = SettingsManager.instance.musicVolume;
-            actionSlider.value = SettingsManager.instance.sfxVolume;
-            musicText.text = $"{SettingsManager.instance.musicVolume * 100f:F0}%";
-            actionText.text = $"{SettingsManager.instance.sfxVolume * 100f:F0}%";
+            musicSlider.value = GameManager.Instance.musicVolume;
+            actionSlider.value = GameManager.Instance.sfxVolume;
+            musicText.text = $"{GameManager.Instance.musicVolume * 100f:F0}%";
+            actionText.text = $"{GameManager.Instance.sfxVolume * 100f:F0}%";
         }
 
         public void UpdateMusicVolume()
         {
             var value = musicSlider.value;
             musicText.text = $"{(value * 100):F0}%";
-            SettingsManager.instance.SetMusicVolume(value);
+            GameManager.Instance.SetMusicVolume(value);
         }
 
         public void UpdateSoundVolume()
         {
             var value = actionSlider.value;
             actionText.text = $"{value * 100:F0}%";
-            SettingsManager.instance.SetSfxVolume(value);
+            GameManager.Instance.SetSfxVolume(value);
         }
     }
 }
