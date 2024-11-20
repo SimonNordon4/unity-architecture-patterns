@@ -6,5 +6,6 @@ namespace UnityArchitecture.SpaghettiPattern
     {
         public StatType statType;
         public int modifierValue = 0;
+        public bool isFlatPercentage = false;
     }
 }

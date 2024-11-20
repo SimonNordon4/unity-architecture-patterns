@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
@@ -7,7 +8,7 @@ namespace UnityArchitecture.SpaghettiPattern
     public class UIHud : MonoBehaviour
     {
         public EnemyManager enemyManager;
-        public PlayerManager playerManager;
+        [FormerlySerializedAs("playerManager")] public PlayerController playerController;
         public TextMeshProUGUI roundTimer;
         public TextMeshProUGUI enemiesRemaining;
         public Image healthBar;
@@ -16,8 +17,8 @@ namespace UnityArchitecture.SpaghettiPattern
         public void Update()
         {
             roundTimer.text = $"Round: {GameManager.Instance.roundTime:00}";
-            healthBar.fillAmount = playerManager.playerCurrentHealth / (float)playerManager.playerMaxHealth.value;
-            healthBarText.text = $"{playerManager.playerCurrentHealth}/{playerManager.playerMaxHealth.value}";
+            healthBar.fillAmount = playerController.playerCurrentHealth / (float)playerController.playerMaxHealth.value;
+            healthBarText.text = $"{playerController.playerCurrentHealth}/{playerController.playerMaxHealth.value}";
             var currentBlock = enemyManager.enemyBlocks[enemyManager.currentBlockIndex];
             enemiesRemaining.text = $"Enemies Left: {currentBlock.enemiesKilled}/{currentBlock.enemiesToKill}";   
 

@@ -853,19 +853,19 @@ MonoBehaviour:
   enemyManager: {fileID: 644039393}
   playerCurrentHealth: 10
   playerMaxHealth:
-    baseValue: 5
-    minimumValue: 0
+    baseValue: 10
+    minimumValue: 1
     maximumValue: 2147483647
     _modifiers: []
-    value: 5
+    value: 10
   healthRegen:
-    baseValue: 0
+    baseValue: 1
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 0
+    value: 1
   playerSpeed:
-    baseValue: 5
+    baseValue: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
@@ -879,39 +879,39 @@ MonoBehaviour:
   dodge:
     baseValue: 0
     minimumValue: 0
-    maximumValue: 2147483647
+    maximumValue: 60
     _modifiers: []
     value: 0
   damage:
-    baseValue: 1
-    minimumValue: 0
-    maximumValue: 2147483647
-    _modifiers: []
-    value: 1
-  critChance:
-    baseValue: 0
-    minimumValue: 0
-    maximumValue: 2147483647
-    _modifiers: []
-    value: 0
-  range:
-    baseValue: 5
-    minimumValue: 0
-    maximumValue: 2147483647
-    _modifiers: []
-    value: 5
-  firerate:
     baseValue: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
     value: 10
-  knockback:
-    baseValue: 1
+  critChance:
+    baseValue: 0
+    minimumValue: 0
+    maximumValue: 100
+    _modifiers: []
+    value: 0
+  range:
+    baseValue: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 1
+    value: 10
+  firerate:
+    baseValue: 10
+    minimumValue: 1
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 10
+  knockback:
+    baseValue: 10
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 10
   pierce:
     baseValue: 0
     minimumValue: 0
@@ -1392,7 +1392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 644039393}
-  playerManager: {fileID: 460763656}
+  playerController: {fileID: 460763656}
   roundTimer: {fileID: 2039543987}
   enemiesRemaining: {fileID: 188888847}
   healthBar: {fileID: 1079578952}
@@ -2338,15 +2338,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb60339036ad7e84d9b215de184f3e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManager: {fileID: 0}
+  playerController: {fileID: 0}
   roundTime: 0
   isPaused: 0
   isGameActive: 0
   levelBounds: {x: 17.5, y: 17.5}
-  pauseMenu: {fileID: 1510460245}
-  hudMenu: {fileID: 290299293}
-  HealthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175,
-    type: 3}
+  mainMenuScene: 0
+  gameScene: 1
+  gameWon: 2
+  gameLost: 3
+  dungeonScene: 4
+  showDamageNumbers: 1
+  showEnemyHealthBars: 1
+  musicVolume: 1
+  sfxVolume: 1
+  healthPackPrefab: {fileID: 0}
 --- !u!4 &801546266
 Transform:
   m_ObjectHideFlags: 0
@@ -3106,12 +3112,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
   m_RespectSceneVisibilityWhenBakingGI: 0
---- !u!1 &1510460245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5393296879404737001, guid: d6ca6737c939f69478c326a2df84ced1,
-    type: 3}
-  m_PrefabInstance: {fileID: 211062563}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1574519681
 GameObject:
   m_ObjectHideFlags: 1
@@ -3445,7 +3445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404afc42365080240b00c08066a659ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerManager: {fileID: 460763656}
+  playerController: {fileID: 460763656}
   chestSpawnTime: 25
   chestBounds: {x: 20, y: 20}
   tier1ChestItems: {fileID: 11400000, guid: e9a9e0870d7d4bb4d920b131bd1b991f, type: 2}

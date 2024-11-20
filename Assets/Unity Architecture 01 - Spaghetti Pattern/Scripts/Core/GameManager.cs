@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -19,7 +20,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
         }
 
-        public PlayerManager playerManager;
+        [FormerlySerializedAs("playerManager")] public PlayerController playerController;
 
         [Header("Round")]
         public float roundTime;
@@ -44,7 +45,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public float sfxVolume = 1f;
 
         [Header("Health Packs")] 
-        public GameObject healthPackPrefab;
+        public GameObject healthPackPrefab; 
 
         private void Start()
         {
@@ -72,7 +73,7 @@ namespace UnityArchitecture.SpaghettiPattern
             LoadEnvironment();
             isGameActive = true;
             roundTime = 0f;
-            playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
+            playerController.playerCurrentHealth = (int)playerController.playerMaxHealth.value;
             // clear all items
             AudioManager.Instance.OnStartGame();
         }
@@ -101,8 +102,8 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             Console.Log("GameManager.ResetGame()", LogFilter.Game, this);
             isPaused = false;
-            playerManager.playerCurrentHealth = (int)playerManager.playerMaxHealth.value;
-            var playerController = FindFirstObjectByType<PlayerManager>();
+            this.playerController.playerCurrentHealth = (int)this.playerController.playerMaxHealth.value;
+            var playerController = FindFirstObjectByType<PlayerController>();
             playerController.ResetPlayer();
 
             var enemyManager = FindFirstObjectByType<EnemyManager>();
@@ -115,7 +116,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var spawnIndicators = GameObject.FindGameObjectsWithTag("Spawn Indicator");
             foreach (var spawnIndicator in spawnIndicators) Destroy(spawnIndicator);
 
-            playerManager.ResetStats();
+            this.playerController.ResetStats();
 
             // Remove all chests.
             var chests = FindObjectsByType<Chest>(FindObjectsSortMode.None);

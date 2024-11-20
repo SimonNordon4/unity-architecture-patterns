@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -22,8 +23,8 @@ namespace UnityArchitecture.SpaghettiPattern
             private set => _instance = value;
         }
         
-        [Header("References")]
-        public PlayerManager playerManager;
+        [FormerlySerializedAs("playerManager")] [Header("References")]
+        public PlayerController playerController;
 
         [Header("Chests")]
         public float chestSpawnTime = 15f;
@@ -105,7 +106,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void ApplyItem(ChestItem item)
         {
-            playerManager.AddItem(item);
+            playerController.AddItem(item);
 
             // Attempt to not dash when pressing space to select an item in teh chest menu.
             StartCoroutine(WaitOneFrameToUnpause());

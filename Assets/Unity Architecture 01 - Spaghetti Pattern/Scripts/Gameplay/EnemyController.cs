@@ -252,7 +252,7 @@ namespace UnityArchitecture.SpaghettiPattern
             // Continuously damage the player.
             if (other.CompareTag("Player"))
             {
-                var playerController = other.GetComponent<PlayerManager>();
+                var playerController = other.GetComponent<PlayerController>();
                 if (playerController != null)
                 {
                     if (_timeSinceLastDamage >= damageCooldown)

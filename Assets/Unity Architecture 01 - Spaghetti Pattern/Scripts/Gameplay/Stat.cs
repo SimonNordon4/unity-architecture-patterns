@@ -24,22 +24,23 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Evaluate()
         {
-            int addedValue = 0;
+            int scalingPercentage = 0;
+            int flatPercentage = 0;
 
             foreach (var modifier in _modifiers)
             {
-                addedValue += modifier.modifierValue;
-
-                if (addedValue + baseValue < minimumValue)
+                if (modifier.isFlatPercentage)
                 {
-                    var virtualFlatSum = baseValue + addedValue;
-                    var difference = minimumValue - virtualFlatSum;
-                    var reNormalizedFlatSum = difference + addedValue;
-                    addedValue = reNormalizedFlatSum;
+                    flatPercentage += modifier.modifierValue;
+                }
+                else
+                {
+                    scalingPercentage += modifier.modifierValue;
                 }
             }
 
-            value = Mathf.Clamp((int)(baseValue + addedValue), minimumValue, maximumValue);
+            var scaledValue = baseValue + baseValue * scalingPercentage;
+            value = Mathf.Clamp(scaledValue + flatPercentage, minimumValue, maximumValue);
         }
 
         public void Reset()

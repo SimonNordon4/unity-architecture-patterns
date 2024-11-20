@@ -60,7 +60,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             if (canAttackPlayer && other.CompareTag("Player"))
             {
-                var playerController = other.GetComponent<PlayerManager>();
+                var playerController = other.GetComponent<PlayerController>();
                 playerController.TakeDamage(damage);
                 pierceCount--;
                 if (pierceCount <= 0)

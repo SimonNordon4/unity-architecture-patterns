@@ -8,7 +8,7 @@ using UnityEngine.UI;
 namespace UnityArchitecture.SpaghettiPattern
 {
     [DefaultExecutionOrder(10)]
-    public class PlayerManager : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         private Transform _transform;
 
@@ -104,14 +104,14 @@ namespace UnityArchitecture.SpaghettiPattern
             knockback.Reset();
             pierce.Reset();
 
-            playerCurrentHealth = (int)playerMaxHealth.value;
+            playerCurrentHealth = playerMaxHealth.value;
         }
 
         public void AddItem(ChestItem item)
         {
             currentlyHeldItems.Add(item);
 
-// Add modifiers to the stats.
+            // Add modifiers to the stats.
             foreach (var mod in item.modifiers)
             {
                 var stat = Stats[mod.statType];
@@ -122,7 +122,6 @@ namespace UnityArchitecture.SpaghettiPattern
                 // If it's a max health mod, we need to also increase the current health.
                 if (mod.statType == StatType.MaxHealth)
                 {
-
                     var newHealth = Mathf.Clamp(playerCurrentHealth + (int)mod.modifierValue, 1,
                         (int)playerMaxHealth.value);
 
