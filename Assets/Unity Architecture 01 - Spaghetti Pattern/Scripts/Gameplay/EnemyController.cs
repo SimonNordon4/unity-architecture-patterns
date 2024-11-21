@@ -292,7 +292,7 @@ namespace UnityArchitecture.SpaghettiPattern
             if (isUnstoppable) return;
             if (isKnockedBack && _knockBackCoroutine != null) StopCoroutine(_knockBackCoroutine);
             isKnockedBack = true;
-            _knockBackCoroutine = StartCoroutine(KnockBackRoutine(direction * intensity));
+            _knockBackCoroutine = StartCoroutine(KnockBackRoutine(direction * intensity * 0.1f));
         }
 
         // Create a coroutine that will move the enemy in the direction of the knockback for 0.4 seconds with the given intensity being the distance the enemy will move.
