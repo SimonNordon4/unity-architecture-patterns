@@ -35086,6 +35086,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
         type: 3}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
+        type: 3}
       propertyPath: bulletCount
       value: 4
       objectReference: {fileID: 0}
@@ -35099,6 +35104,11 @@ PrefabInstance:
       propertyPath: spawnEffect
       value: 
       objectReference: {fileID: 3720868554079499253}
+    - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
+        type: 3}
+      propertyPath: moveBehaviour
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
         type: 3}
       propertyPath: projectileSpeed
