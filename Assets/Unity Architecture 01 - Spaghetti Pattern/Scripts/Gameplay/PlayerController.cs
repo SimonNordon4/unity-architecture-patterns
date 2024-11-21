@@ -141,6 +141,9 @@ namespace UnityArchitecture.SpaghettiPattern
             _closestTarget = null;
             foreach (var enemy in enemyManager.activeEnemies)
             {
+                // ignore enemies that are spawning.
+                if (enemy.isSpawning) continue;
+                
                 var distance = Vector3.Distance(_transform.position, enemy.transform.position);
                 // now we minus the radius of the enemy from the distance, so that we get the distance to its edge.
                 distance -= enemy.transform.localScale.x * 0.5f;
@@ -154,6 +157,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
             foreach (var enemy in enemyManager.activeBosses)
             {
+                // ignore enemies that are spawning.
+                if (enemy.isSpawning) continue;
+                
                 var distance = Vector3.Distance(_transform.position, enemy.transform.position);
                 // now we minus the radius of the enemy from the distance, so that we get the distance to its edge.
                 distance -= enemy.transform.localScale.x * 0.5f;

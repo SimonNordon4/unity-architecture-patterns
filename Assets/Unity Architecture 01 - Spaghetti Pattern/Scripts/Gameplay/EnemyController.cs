@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
@@ -18,8 +20,10 @@ namespace UnityArchitecture.SpaghettiPattern
         public bool isBoss = false;
 
         [Header("UI")]
+        public Color damageColor = Color.red;
+        public Color critColor = Color.yellow;
         public GameObject healthBarUI;
-        public TextMeshProUGUI healthText;
+        public Image healthBar;
         protected Quaternion uiStartRotation;
         public TextMeshProUGUI damageText;
         public MoveBehaviour moveBehaviour = MoveBehaviour.TowardsPlayer;
@@ -36,6 +40,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         [Header("Health")]
         public int baseHealth = 5;
+        public int maxHealth = 5;
         public int currentHealth = 5;
 
         [Header("Attack")]
@@ -46,11 +51,16 @@ namespace UnityArchitecture.SpaghettiPattern
         protected readonly List<Transform> _nearbyEnemies = new(4);
 
         [Header("Effects")]
+        public ParticleSystem spawnEffect;
         public ParticleSystem deathEffect;
-
+        public GameObject meshObject;
+        public bool isSpawning = true;
+        public float spawnTime = 1f;
+        private float _spawnTimeElapsed = 0f;
+        
         [Header("Sounds")]
-        public AudioClip deathSound;
-        public AudioClip onHitSound;
+        public AudioClip[] deathSounds;
+        public AudioClip[] attackSounds;
 
         private Coroutine _damageTextCoroutine = null;
         private Coroutine _knockBackCoroutine = null;
@@ -60,14 +70,31 @@ namespace UnityArchitecture.SpaghettiPattern
             // de-parent so we don't follow the enemy rotation.
             uiStartRotation = healthBarUI.transform.rotation;
             healthBarUI.SetActive(GameManager.Instance.showEnemyHealthBars);
-            UpdateHealthText();
+            UpdateHealthBar();
             _radius = transform.localScale.x;
             randomPosition = new Vector3(Random.Range(GameManager.Instance.levelBounds.x * -1, GameManager.Instance.levelBounds.x), 0, Random.Range(GameManager.Instance.levelBounds.y * -1, GameManager.Instance.levelBounds.y));
+            meshObject.SetActive(false);
+            spawnEffect.Play();
         }
 
         protected virtual void Update()
         {
             if (GameManager.Instance.isGameActive == false) return;
+
+            // If the enemy is spawning, then do nothing other than play the spawn animation and wait.
+            if (isSpawning)
+            {
+                _spawnTimeElapsed += Time.deltaTime;
+                if (_spawnTimeElapsed >= spawnTime)
+                {
+                    isSpawning = false;
+                    spawnEffect.Stop();
+                    deathEffect.Play();
+                    meshObject.SetActive(true);
+                }
+
+                return;
+            }
 
             if (isKnockedBack) return;
 
@@ -195,18 +222,21 @@ namespace UnityArchitecture.SpaghettiPattern
             healthBarUI.SetActive(visible);
         }
 
-        protected void UpdateHealthText()
+        protected void UpdateHealthBar()
         {
-            healthText.text = currentHealth.ToString();
+            var fillamount = (float)currentHealth / maxHealth;
+            healthBar.fillAmount = fillamount;
         }
 
         public void TakeDamage(int damage, bool isCritical=false)
         {
             // Take damage, die if at 0.
             currentHealth -= damage;
-            UpdateHealthText();
+            UpdateHealthBar();
             if (currentHealth <= 0)
             {
+                // select a random death sound
+                var deathSound = deathSounds[Random.Range(0, deathSounds.Length)];
                 AudioManager.Instance.PlaySound(deathSound);
                 var pos = transform.position;
                 var projectedPosition = new Vector3(pos.x, 0, pos.z);
@@ -225,9 +255,8 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             else
             {
-                AudioManager.Instance.PlaySound(onHitSound);
                 if (_damageTextCoroutine != null) StopCoroutine(_damageTextCoroutine);
-                _damageTextCoroutine = StartCoroutine(ShowDamageText(damage));
+                _damageTextCoroutine = StartCoroutine(ShowDamageText(damage, isCritical));
             }
         }
 
@@ -257,11 +286,12 @@ namespace UnityArchitecture.SpaghettiPattern
                 {
                     if (_timeSinceLastDamage >= damageCooldown)
                     {
-
+                        // select a random damage sound
+                        var attackSound = attackSounds[Random.Range(0, attackSounds.Length)];
+                        AudioManager.Instance.PlaySound(attackSound);
                         playerController.TakeDamage(currentDamage);
                         _timeSinceLastDamage = 0f;
                     }
-
                 }
             }
         }
@@ -269,10 +299,12 @@ namespace UnityArchitecture.SpaghettiPattern
         public void ApplyMultipliers(float healthMultiplier, float damageMultiplier)
         {
             // Apply multipliers and round to nearest integer
+            maxHealth = Mathf.RoundToInt(baseHealth * healthMultiplier);
             currentHealth = Mathf.RoundToInt(baseHealth * healthMultiplier);
             currentDamage = Mathf.RoundToInt(baseDamage * damageMultiplier);
 
             // Ensure that health and damage are at least 1
+            maxHealth = Mathf.Max(maxHealth, 1);
             currentHealth = Mathf.Max(currentHealth, 1);
             currentDamage = Mathf.Max(currentDamage, 1);
         }
@@ -326,9 +358,9 @@ namespace UnityArchitecture.SpaghettiPattern
             isKnockedBack = false;
         }
 
-        protected virtual IEnumerator ShowDamageText(int damage)
+        protected virtual IEnumerator ShowDamageText(int damage, bool isCritical = false)
         {
-
+            damageText.color = isCritical ? damageColor : critColor;
             damageText.text = damage.ToString();
             GameObject o = damageText.gameObject;
             o.SetActive(true);

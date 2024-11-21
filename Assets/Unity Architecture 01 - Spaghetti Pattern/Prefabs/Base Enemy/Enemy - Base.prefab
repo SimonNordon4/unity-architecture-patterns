@@ -15149,8 +15149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   isBoss: 0
+  damageColor: {r: 1, g: 0.63529414, b: 0.57254905, a: 1}
+  critColor: {r: 1, g: 0.7372549, b: 0, a: 1}
   healthBarUI: {fileID: 3787276329848463215}
-  healthText: {fileID: 0}
+  healthBar: {fileID: 231379115260788723}
   damageText: {fileID: 5851752787693418871}
   moveBehaviour: 0
   playerTarget: {fileID: 0}
@@ -15160,14 +15162,26 @@ MonoBehaviour:
   isUnstoppable: 0
   isKnockedBack: 0
   baseHealth: 20
+  maxHealth: 20
   currentHealth: 20
   baseDamage: 3
   currentDamage: 3
   damageCooldown: 1
+  spawnEffect: {fileID: 1619590815701662952}
   deathEffect: {fileID: 2655698013664812886, guid: 6c0e619bc40e7c546ade06b953ee344a,
     type: 3}
-  deathSound: {fileID: 8300000, guid: 8df4cf3017cdd05429fe819ebc0d4e8c, type: 3}
-  onHitSound: {fileID: 8300000, guid: 158dc253b674d7844ac30e67f376db37, type: 3}
+  meshObject: {fileID: 82655444155578701}
+  isSpawning: 1
+  spawnTime: 1
+  deathSounds:
+  - {fileID: 8300000, guid: 7b502b71de2912a46abd0c1453f456f0, type: 3}
+  - {fileID: 8300000, guid: 8df4cf3017cdd05429fe819ebc0d4e8c, type: 3}
+  - {fileID: 8300000, guid: 7e1a65be295458741a40f044dac69a4d, type: 3}
+  attackSounds:
+  - {fileID: 8300000, guid: 3f6a66d7940701b498e5fceca59331c4, type: 3}
+  - {fileID: 8300000, guid: 158dc253b674d7844ac30e67f376db37, type: 3}
+  - {fileID: 8300000, guid: 76e82582c98360d45bb4fd362e085179, type: 3}
+  - {fileID: 8300000, guid: 485e88dee3980a54ebfbbef8267f9dff, type: 3}
 --- !u!54 &4216894148820731118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15227,10 +15241,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8326671110523752596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 12.63}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6158578072362832071
 CanvasRenderer:
@@ -15287,7 +15301,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &851267044520867615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15345,8 +15359,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287800063
-  m_fontColor: {r: 1, g: 0.6358452, b: 0.5707547, a: 1}
+    rgba: 4278238463
+  m_fontColor: {r: 1, g: 0.73840225, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15404,7 +15418,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7801283757718993530
@@ -25640,7 +25654,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 12.63}
+  m_SizeDelta: {x: 57.12, y: 12.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6979620087772617829
 CanvasRenderer:
@@ -25663,7 +25677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.5529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -35855,6 +35869,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+--- !u!1 &82655444155578701 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8d0d55f62c99584d98a53604dcacfac,
+    type: 3}
+  m_PrefabInstance: {fileID: 1001153035514676252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &751668054090671095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,

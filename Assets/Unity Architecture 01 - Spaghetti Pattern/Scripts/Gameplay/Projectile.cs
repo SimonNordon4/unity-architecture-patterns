@@ -45,7 +45,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
                 // Check if critical hit
                 var isCritical = Random.Range(0f, 1f) < critChance;
-                damage = (int)(damage * (isCritical ? critDamage : 1));
+                
+                // Critical chance doubles damage.
+                damage *= (isCritical ? 2 : 1);
 
                 enemyController.TakeDamage(damage, isCritical);
 
