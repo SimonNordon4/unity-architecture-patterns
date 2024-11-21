@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
@@ -23,24 +24,45 @@ namespace UnityArchitecture.SpaghettiPattern
         public GameManager gameManager;
         public ChestManager chestManager;
         public Transform playerTarget;
+        
+        [Header("Enemy Stats")]
+        public float healthMultiplier = 1f;
+        public float damageMultiplier = 1f;
 
         [Header("Spawn Settings")]
+        public int maxEnemiesAlive = 3;
         public float baseSpawnRate = 1f;
+        public float currentSpawnRate = 1f;
         private float _timeSinceLastSpawn = 0f;
 
-        [Header("Enemy Blocks Configuration")]
-        public EnemyBlock[] enemyBlocks;
-        public int currentBlockIndex = 0;
-
         // Tracking active enemies and bosses
-        public int enemiesAlive = 0;
-        private int bossesAlive = 0;
-
+        public int enemyKillProgressCount = 0;
+        public bool progressPaused = false;
         public int totalEnemiesKilled = 0;
 
         // Lists to keep track of active enemies and bosses
         public List<EnemyController> activeEnemies = new();
         public List<EnemyController> activeBosses = new();
+        public List<EnemyController> spawnableEnemies = new();
+        
+        [Header("Prefabs")]
+        public EnemyController normalEnemyPrefab;
+        public EnemyController fastEnemyPrefab;
+        public EnemyController bigEnemyPrefab;
+        public EnemyController chargerEnemyPrefab;
+        public EnemyController rangedEnemyPrefab;
+        public EnemyController wandererEnemyPrefab;
+        public EnemyController wandererRangedEnemyPrefab;
+        public EnemyController wandererExploderEnemyPrefab;
+        
+        public EnemyController normalBossEnemyPrefab;
+        public EnemyController fastBossEnemyPrefab;
+        public EnemyController bigBossEnemyPrefab;
+        public EnemyController chargerBossEnemyPrefab;
+        public EnemyController rangedBossEnemyPrefab;
+        public EnemyController wandererBossEnemyPrefab;
+        public EnemyController wandererRangedBossEnemyPrefab;
+        public EnemyController wandererExploderBossEnemyPrefab;
 
         private void Start()
         {
@@ -57,54 +79,23 @@ namespace UnityArchitecture.SpaghettiPattern
             if (_timeSinceLastSpawn > GetSpawnRate())
             {
                 _timeSinceLastSpawn = 0f;
-                SpawnEnemy();
+                // pick a random enemy from the spawnable list
+                var enemyPrefab = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)];
+                SpawnEnemy(enemyPrefab);
             }
         }
 
         /// <summary>
         /// Spawns a regular enemy based on the current block's configuration.
         /// </summary>
-        private void SpawnEnemy()
+        private void SpawnEnemy(EnemyController enemyPrefab)
         {
-            if (currentBlockIndex >= enemyBlocks.Length)
-            {
-                Debug.LogWarning("All blocks have been completed. No more enemies to spawn.");
-                return;
-            }
-
-            var currentBlock = enemyBlocks[currentBlockIndex];
-
-            if (enemiesAlive >= currentBlock.GetMaxEnemiesAlive())
-            {
-                // Too many enemies alive; skip spawning
-                return;
-            }
-
-            var enemyPrefab = currentBlock.GetEnemy();
-
-            if (enemyPrefab == null)
-            {
-                Debug.LogError($"Failed to get enemy prefab for block: {currentBlock.blockName}");
-                return;
-            }
 
             var enemy = Instantiate(enemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
             enemy.playerTarget = playerTarget;
             enemy.enemyManager = this;
-
-            // Apply health and damage multipliers
-            float healthMultiplier = currentBlock.GetHealthMultiplier();
-            float damageMultiplier = currentBlock.GetDamageMultiplier();
             enemy.ApplyMultipliers(healthMultiplier, damageMultiplier);
-
-            enemiesAlive++;
             activeEnemies.Add(enemy);
-
-            Console.Log($"Spawn Enemy. alive: {enemiesAlive}," +
-                        $" type: {enemyPrefab.gameObject.name}," +
-                        $" health mult: {healthMultiplier:F1}," +
-                        $" damage mult {damageMultiplier:F1}",
-                LogFilter.Enemy, this);
         }
 
         /// <summary>
@@ -114,56 +105,28 @@ namespace UnityArchitecture.SpaghettiPattern
         public void EnemyDied(EnemyController enemy)
         {
             totalEnemiesKilled++;
+            
+            if(!progressPaused)
+                enemyKillProgressCount++;
+            
             chestManager.ReduceChestSpawnTime();
             
             if (activeEnemies.Contains(enemy))
             {
                 activeEnemies.Remove(enemy);
             }
-
-            enemiesAlive--;
-            enemyBlocks[currentBlockIndex].enemiesKilled++;
-
-            if (enemyBlocks[currentBlockIndex].enemiesKilled >= enemyBlocks[currentBlockIndex].enemiesToKill)
-            {
-                SpawnBoss();
-            }
-            
         }
 
         /// <summary>
         /// Spawns all boss enemies defined in the current block.
         /// </summary>
-        public void SpawnBoss()
+        public void SpawnBoss(EnemyController bossEnemyPrefab)
         {
-            var currentBlock = enemyBlocks[currentBlockIndex];
-
-            if (currentBlock.bossEnemies == null || currentBlock.bossEnemies.Length == 0)
-            {
-                Debug.LogWarning($"No boss enemies assigned for block: {currentBlock.blockName}");
-                ProceedToNextBlock();
-                return;
-            }
-
-            foreach (var bossPrefab in currentBlock.bossEnemies)
-            {
-                var boss = Instantiate(bossPrefab, GetRandomSpawnPoint(), Quaternion.identity);
-                boss.playerTarget = playerTarget;
-                boss.enemyManager = this;
-
-                // Apply health and damage multipliers
-                float healthMultiplier = currentBlock.GetHealthMultiplier();
-                float damageMultiplier = currentBlock.GetDamageMultiplier();
-                boss.ApplyMultipliers(healthMultiplier, damageMultiplier);
-
-                bossesAlive++;
-                activeBosses.Add(boss);
-            }
-            
-            Console.Log("EnemyManager.SpawnBoss()", LogFilter.Enemy, this);
-
-            // Optionally, stop spawning regular enemies when bosses are active
-            // This can be handled by checking if bossesAlive > 0 before spawning
+            var enemy = Instantiate(bossEnemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
+            enemy.playerTarget = playerTarget;
+            enemy.enemyManager = this;
+            enemy.ApplyMultipliers(healthMultiplier, damageMultiplier);
+            activeBosses.Add(enemy);
         }
 
         /// <summary>
@@ -172,42 +135,10 @@ namespace UnityArchitecture.SpaghettiPattern
         /// <param name="boss">The boss that died.</param>
         public void BossDied(EnemyController boss)
         {
-            Console.Log("EnemyManager.BossDied()", LogFilter.Enemy, this);
             if (activeBosses.Contains(boss))
             {
                 activeBosses.Remove(boss);
             }
-
-            bossesAlive--;
-
-            if (bossesAlive <= 0)
-            {
-                ProceedToNextBlock();
-            }
-        }
-
-        /// <summary>
-        /// Handles the transition to the next block.
-        /// </summary>
-        private void ProceedToNextBlock()
-        {
-            Console.Log($"EnemyManager.ProceedToNextBlock() current: {currentBlockIndex} next: {currentBlockIndex+1}", LogFilter.Enemy, this);
-            currentBlockIndex++;
-
-            if (currentBlockIndex >= enemyBlocks.Length)
-            {
-                Debug.Log("All blocks completed! Player wins!");
-                gameManager.WinGame();
-            }
-            else
-            {
-                Debug.Log($"Block {currentBlockIndex + 1} started.");
-                // Reset tracking variables for the new block
-                enemiesAlive = 0;
-                enemyBlocks[currentBlockIndex].enemiesKilled = 0;
-            }
-            
-            
         }
 
         /// <summary>
@@ -228,12 +159,7 @@ namespace UnityArchitecture.SpaghettiPattern
         /// <returns>Spawn interval in seconds.</returns>
         private float GetSpawnRate()
         {
-            if (currentBlockIndex >= enemyBlocks.Length)
-            {
-                return baseSpawnRate;
-            }
-
-            float currentMaxEnemies = enemyBlocks[currentBlockIndex].GetMaxEnemiesAlive();
+            float currentMaxEnemies = maxEnemiesAlive;
             float remainingEnemyCapacity = currentMaxEnemies > 0 ? 1f - ((float)enemiesAlive / currentMaxEnemies) : 1f;
             remainingEnemyCapacity = Mathf.Clamp01(remainingEnemyCapacity);
             return baseSpawnRate * remainingEnemyCapacity;
@@ -265,14 +191,7 @@ namespace UnityArchitecture.SpaghettiPattern
             // Reset tracking variables
             enemiesAlive = 0;
             bossesAlive = 0;
-            currentBlockIndex = 0;
             _timeSinceLastSpawn = 0f;
-
-            // Reset enemy blocks' kill counters
-            foreach (var block in enemyBlocks)
-            {
-                block.enemiesKilled = 0;
-            }
         }
     }
 }
