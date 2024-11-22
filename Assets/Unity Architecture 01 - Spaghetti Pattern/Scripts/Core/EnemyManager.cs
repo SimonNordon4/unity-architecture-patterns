@@ -31,7 +31,6 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Spawn Settings")]
         public int maxEnemiesAlive = 3;
         public float baseSpawnRate = 1f;
-        public float currentSpawnRate = 1f;
         private float _timeSinceLastSpawn = 0f;
 
         // Tracking active enemies and bosses
@@ -83,6 +82,88 @@ namespace UnityArchitecture.SpaghettiPattern
                 var enemyPrefab = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)];
                 SpawnEnemy(enemyPrefab);
             }
+
+            switch (enemyKillProgressCount)
+            {
+                case 0:
+                    spawnableEnemies = new List<EnemyController>{normalEnemyPrefab};
+                    healthMultiplier = 1f;
+                    damageMultiplier = 1f;
+                    maxEnemiesAlive = 3;
+                    break;
+                case 10:
+                    spawnableEnemies = new List<EnemyController> {normalEnemyPrefab, fastEnemyPrefab};
+                    healthMultiplier = 1.25f;
+                    damageMultiplier = 1.25f;
+                    maxEnemiesAlive = 5;
+                    break;
+                case 20:
+                    spawnableEnemies = new List<EnemyController> {normalEnemyPrefab,normalEnemyPrefab, fastEnemyPrefab, bigEnemyPrefab};
+                    healthMultiplier = 1.5f;
+                    damageMultiplier = 1.5f;
+                    maxEnemiesAlive = 7;
+                    break;
+                case 40:
+                    spawnableEnemies = new List<EnemyController> {normalEnemyPrefab,normalEnemyPrefab, fastEnemyPrefab,fastEnemyPrefab, bigEnemyPrefab};
+                    healthMultiplier = 2f;
+                    damageMultiplier = 2f;
+                    maxEnemiesAlive = 9;
+                    break;
+                case 51:
+                    spawnableEnemies = new List<EnemyController> {normalEnemyPrefab,rangedEnemyPrefab};
+                    healthMultiplier = 2.25f;
+                    damageMultiplier = 2.25f;
+                    maxEnemiesAlive = 10;
+                    break;
+                case 71:
+                    spawnableEnemies = new List<EnemyController> {normalEnemyPrefab, chargerEnemyPrefab};
+                    healthMultiplier = 3f;
+                    damageMultiplier = 3f;
+                    maxEnemiesAlive = 12;
+                    break;
+                case 91:
+                    spawnableEnemies = new List<EnemyController> {fastEnemyPrefab, fastEnemyPrefab, fastEnemyPrefab, bigEnemyPrefab};
+                    healthMultiplier = 4f;
+                    damageMultiplier = 4f;
+                    maxEnemiesAlive = 30;
+                    break;
+                case 121:
+                    spawnableEnemies = new List<EnemyController> { wandererEnemyPrefab, normalEnemyPrefab };
+                    healthMultiplier = 5f;
+                    damageMultiplier = 5f;
+                    maxEnemiesAlive = 15;
+                    break;
+                case 151:
+                    spawnableEnemies = new List<EnemyController> { wandererEnemyPrefab, wandererRangedEnemyPrefab };
+                    healthMultiplier = 6f;
+                    damageMultiplier = 6f;
+                    maxEnemiesAlive = 18;
+                    break;
+                case 181:
+                    spawnableEnemies = new List<EnemyController> { wandererEnemyPrefab, wandererRangedEnemyPrefab, wandererExploderEnemyPrefab };
+                    healthMultiplier = 7f;
+                    damageMultiplier = 7f;
+                    maxEnemiesAlive = 21;
+                    break;
+                case 211:
+                    spawnableEnemies = new List<EnemyController> { fastEnemyPrefab, normalEnemyPrefab, chargerEnemyPrefab, rangedEnemyPrefab };
+                    healthMultiplier = 8f;
+                    damageMultiplier = 8f;
+                    maxEnemiesAlive = 24;
+                    break;
+                case 241:
+                    spawnableEnemies = new List<EnemyController> { bigEnemyPrefab, normalEnemyPrefab, bigEnemyPrefab, wandererExploderEnemyPrefab };
+                    healthMultiplier = 9f;
+                    damageMultiplier = 9f;
+                    maxEnemiesAlive = 27;
+                    break;
+                case 271:
+                    spawnableEnemies = new List<EnemyController> { normalEnemyPrefab, fastEnemyPrefab, bigEnemyPrefab, chargerEnemyPrefab, rangedEnemyPrefab, wandererEnemyPrefab, wandererRangedEnemyPrefab, wandererExploderEnemyPrefab};
+                    healthMultiplier = 10f;
+                    damageMultiplier = 10f;
+                    maxEnemiesAlive = 30;
+                    break;
+            }
         }
 
         /// <summary>
@@ -90,7 +171,6 @@ namespace UnityArchitecture.SpaghettiPattern
         /// </summary>
         private void SpawnEnemy(EnemyController enemyPrefab)
         {
-
             var enemy = Instantiate(enemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
             enemy.playerTarget = playerTarget;
             enemy.enemyManager = this;
@@ -105,9 +185,65 @@ namespace UnityArchitecture.SpaghettiPattern
         public void EnemyDied(EnemyController enemy)
         {
             totalEnemiesKilled++;
-            
-            if(!progressPaused)
+
+            if (!progressPaused)
+            {
                 enemyKillProgressCount++;
+
+                switch (enemyKillProgressCount)
+                {
+                    case 30:
+                        SpawnBoss(normalBossEnemyPrefab);
+                        break;
+                    case 50:
+                        SpawnBoss(fastBossEnemyPrefab);
+                        break;
+                    case 70:
+                        SpawnBoss(rangedBossEnemyPrefab);
+                        break;
+                    case 90:
+                        SpawnBoss(chargerEnemyPrefab);
+                        break;
+                    case 120:
+                        SpawnBoss(normalBossEnemyPrefab);
+                        SpawnBoss(fastBossEnemyPrefab);
+                        SpawnBoss(rangedBossEnemyPrefab);
+                        break;
+                    case 150:
+                        SpawnBoss(rangedBossEnemyPrefab);
+                        SpawnBoss(wandererBossEnemyPrefab);
+                        break;
+                    case 180:
+                        SpawnBoss(wandererRangedBossEnemyPrefab);
+                        SpawnBoss(wandererBossEnemyPrefab);
+                        break;
+                    case 210:
+                        SpawnBoss(wandererRangedBossEnemyPrefab);
+                        SpawnBoss(wandererBossEnemyPrefab);
+                        SpawnBoss(wandererExploderBossEnemyPrefab);
+                        break;
+                    case 240:
+                        SpawnBoss(rangedBossEnemyPrefab);
+                        SpawnBoss(rangedBossEnemyPrefab);
+                        SpawnBoss(rangedBossEnemyPrefab);
+                        break;
+                    case 270:
+                        SpawnBoss(bigBossEnemyPrefab);
+                        break;
+                    case 300:
+                        SpawnBoss(normalBossEnemyPrefab);
+                        SpawnBoss(fastBossEnemyPrefab);
+                        SpawnBoss(bigBossEnemyPrefab);
+                        SpawnBoss(rangedBossEnemyPrefab);
+                        SpawnBoss(chargerBossEnemyPrefab);
+                        SpawnBoss(wandererBossEnemyPrefab);
+                        SpawnBoss(wandererRangedEnemyPrefab);
+                        SpawnBoss(wandererExploderBossEnemyPrefab);
+                        break;
+                        
+                }
+            }
+               
             
             chestManager.ReduceChestSpawnTime();
             
@@ -117,6 +253,8 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             
             Destroy(enemy);
+            
+            
         }
 
         /// <summary>
@@ -124,6 +262,7 @@ namespace UnityArchitecture.SpaghettiPattern
         /// </summary>
         public void SpawnBoss(EnemyController bossEnemyPrefab)
         {
+            progressPaused = true;
             var enemy = Instantiate(bossEnemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
             enemy.playerTarget = playerTarget;
             enemy.enemyManager = this;
@@ -140,6 +279,18 @@ namespace UnityArchitecture.SpaghettiPattern
             if (activeBosses.Contains(boss))
             {
                 activeBosses.Remove(boss);
+            }
+            
+            Destroy(boss);
+
+            if (activeBosses.Count == 0)
+            {
+                progressPaused = false;
+
+                if (enemyKillProgressCount >= 300)
+                {
+                    GameManager.Instance.WinGame();
+                }
             }
         }
 

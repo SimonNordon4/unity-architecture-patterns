@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: eb5f3e68e004b3641b8d2cab4caacffb, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -1715,14 +1715,49 @@ MonoBehaviour:
   gameManager: {fileID: 801546265}
   chestManager: {fileID: 1884674990}
   playerTarget: {fileID: 460763660}
+  healthMultiplier: 1
+  damageMultiplier: 1
+  maxEnemiesAlive: 3
   baseSpawnRate: 1
-  enemyBlocks:
-  - {fileID: 644039394}
-  currentBlockIndex: 0
-  enemiesAlive: 0
+  currentSpawnRate: 1
+  enemyKillProgressCount: 0
+  progressPaused: 0
   totalEnemiesKilled: 0
   activeEnemies: []
   activeBosses: []
+  spawnableEnemies: []
+  normalEnemyPrefab: {fileID: 1789236594020257121, guid: 6da49f7eb69c8fc49964a213d0376127,
+    type: 3}
+  fastEnemyPrefab: {fileID: 3163243409447693203, guid: ebbd69594e1752a4c870f0694d24fee4,
+    type: 3}
+  bigEnemyPrefab: {fileID: 3646742763120384505, guid: 8a1c6812267448a43ae6da496a3509cf,
+    type: 3}
+  chargerEnemyPrefab: {fileID: 933711525596607090, guid: 98378aa32770bbc46b1feb51f918bcdc,
+    type: 3}
+  rangedEnemyPrefab: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
+    type: 3}
+  wandererEnemyPrefab: {fileID: 9142820688143490496, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+    type: 3}
+  wandererRangedEnemyPrefab: {fileID: 4168508261120575890, guid: 7dcf970b9a32d0e46b4ef6f50128866e,
+    type: 3}
+  wandererExploderEnemyPrefab: {fileID: 6554371576644043995, guid: 17ced219ca47ec7418be23a8566c2b15,
+    type: 3}
+  normalBossEnemyPrefab: {fileID: 196245622651881401, guid: 09e671a4c2e2b334585fc3fad37417c0,
+    type: 3}
+  fastBossEnemyPrefab: {fileID: 830930813700638643, guid: 3c6d1ca0dbeb1f64fa5d552265e0f212,
+    type: 3}
+  bigBossEnemyPrefab: {fileID: 717436014592111309, guid: f4f373520b164f84581068eb92725d06,
+    type: 3}
+  chargerBossEnemyPrefab: {fileID: 3536713475665606339, guid: 28e8998c9c56a0e4fa11d83ab32d56a0,
+    type: 3}
+  rangedBossEnemyPrefab: {fileID: 2573671226165147436, guid: 60b8667576b3b254aac598bf37ff754e,
+    type: 3}
+  wandererBossEnemyPrefab: {fileID: 6763599493432808439, guid: 9fdd464dab5ba1447bf2873f678eb45c,
+    type: 3}
+  wandererRangedBossEnemyPrefab: {fileID: 6414642450711893702, guid: d6c51586e00120f42b5711bbb3e6a44e,
+    type: 3}
+  wandererExploderBossEnemyPrefab: {fileID: 3664556069068995892, guid: f679e24b37316ba47b05af2cd629a65d,
+    type: 3}
 --- !u!114 &644039394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2495,7 +2530,7 @@ LightingSettings:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  serializedVersion: 8
+  serializedVersion: 9
   m_EnableBakedLightmaps: 1
   m_EnableRealtimeLightmaps: 0
   m_RealtimeEnvironmentLighting: 1
