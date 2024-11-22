@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 1278
+    x: 8
     y: 51
-    width: 2562
+    width: 5104
     height: 1333
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: ' Hot Reload'
   m_RootView: {fileID: 3}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -39,12 +39,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 2078
+    x: 4637
     y: 0
-    width: 484
-    height: 448
-  m_MinSize: {x: 51, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 467
+    height: 445
+  m_MinSize: {x: 462, y: 456}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -70,12 +70,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2562
+    width: 5104
     height: 1333
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
-  m_TopViewHeight: 30
+  m_TopViewHeight: 36
   m_UseBottomView: 1
   m_BottomViewHeight: 20
 --- !u!114 &4
@@ -95,8 +95,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2562
-    height: 30
+    width: 5104
+    height: 36
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
   m_LastLoadedLayoutName: 
@@ -117,7 +117,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 1313
-    width: 2562
+    width: 5104
     height: 20
   m_MinSize: {x: 0, y: 0}
   m_MaxSize: {x: 0, y: 0}
@@ -138,13 +138,14 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 30
-    width: 2562
-    height: 1283
+    y: 36
+    width: 5104
+    height: 1277
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 56
+  controlID: 51
+  draggingID: 0
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,12 +165,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2562
-    height: 1283
+    width: 5104
+    height: 1277
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
-  controlID: 57
+  controlID: 52
+  draggingID: 0
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -191,12 +193,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 2562
-    height: 835
+    width: 5104
+    height: 832
   m_MinSize: {x: 400, y: 50}
   m_MaxSize: {x: 32384, y: 8096}
   vertical: 0
-  controlID: 58
+  controlID: 53
+  draggingID: 0
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -214,10 +217,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 420
-    height: 835
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 835
+    height: 832
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -238,12 +241,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 420
+    x: 835
     y: 0
-    width: 557
-    height: 835
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 1110
+    height: 832
+  m_MinSize: {x: 277, y: 76}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -265,12 +268,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 977
+    x: 1945
     y: 0
-    width: 717
-    height: 835
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 1429
+    height: 832
+  m_MinSize: {x: 202, y: 226}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -292,12 +295,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1694
+    x: 3374
     y: 0
-    width: 868
-    height: 835
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+    width: 1730
+    height: 832
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 23}
   m_Panes:
   - {fileID: 23}
@@ -322,13 +325,14 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 835
-    width: 2562
-    height: 448
+    y: 832
+    width: 5104
+    height: 445
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 135
+  controlID: 174
+  draggingID: 0
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -346,10 +350,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1259
-    height: 448
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 10001, y: 10021}
+    width: 2508
+    height: 445
+  m_MinSize: {x: 231, y: 276}
+  m_MaxSize: {x: 10001, y: 10026}
   m_ActualView: {fileID: 24}
   m_Panes:
   - {fileID: 24}
@@ -370,12 +374,12 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1259
+    x: 2508
     y: 0
-    width: 819
-    height: 448
-  m_MinSize: {x: 102, y: 121}
-  m_MaxSize: {x: 4002, y: 4021}
+    width: 2129
+    height: 445
+  m_MinSize: {x: 102, y: 126}
+  m_MaxSize: {x: 4002, y: 4026}
   m_ActualView: {fileID: 25}
   m_Panes:
   - {fileID: 25}
@@ -423,12 +427,6920 @@ MonoBehaviour:
   logPanelAutoScroll: 1
   currentFrame: 31664
   logs:
-    lastGrabbedIndex: -1
-    lastGrabbedCount: 0
+    lastGrabbedIndex: 9
+    lastGrabbedCount: 10
     proEntries: []
-    newEntries: []
-    resetCompilerErrorEntries: 1
-    compilerErrorEntries: []
+    newEntries:
+    - logType: 2
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 5
+      nativeIdentifier: 0
+      originalUnityConsoleLog: 'The project currently uses the compatibility mode
+        where the Render Graph API is disabled. Support for this mode will be removed
+        in future Unity versions. Migrate existing ScriptableRenderPasses to the
+        new RenderGraph API. After the migration, disable the compatibility mode
+        in Edit > Projects Settings > Graphics > Render Graph.
+
+        UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes
+        ()'
+      originalLog: The project currently uses the compatibility mode where the Render
+        Graph API is disabled. Support for this mode will be removed in future Unity
+        versions. Migrate existing ScriptableRenderPasses to the new RenderGraph
+        API. After the migration, disable the compatibility mode in Edit > Projects
+        Settings > Graphics > Render Graph.
+      originalStackTrace: '
+
+        UnityEditor.EditorAssemblies:ProcessInitializeOnLoadMethodAttributes
+        ()
+
+'
+      nativeFileName: ./Library/PackageCache/com.unity.render-pipelines.universal/Runtime/Data/UniversalRenderPipelineAsset.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 427
+      watchName: 
+      logText: The project currently uses the compatibility mode where the Render
+        Graph API is disabled. Support for this mode will be removed in future Unity
+        versions. Migrate existing ScriptableRenderPasses to the new RenderGraph
+        API. After the migration, disable the compatibility mode in Edit > Projects
+        Settings > Graphics > Render Graph.
+      logTruncatedText: The project currently uses the compatibility mode where the
+        Render Graph API is disabled. Support for this mode will be removed in future
+        Unity versions. Migrate existing ScriptableRenderPasses to the new RenderGraph
+        API. After the migration, disable the compatibility mode in Edit > Projects
+        Settings > Graphics > Render Graph.
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:19:27
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: EditorAssemblies
+        methodName: ProcessInitializeOnLoadMethodAttributes
+        namespaceName: UnityEditor
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: EditorAssemblies.ProcessInitializeOnLoadMethodAttributes()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters: []
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 1
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 6
+      nativeIdentifier: 0
+      originalUnityConsoleLog: 'ConsolePro3: No Settings for ConsolePro3StandardSettings
+        found, using defaults!
+
+        UnityEngine.Debug:Log (object)'
+      originalLog: 'ConsolePro3: No Settings for ConsolePro3StandardSettings found,
+        using defaults!'
+      originalStackTrace: '
+
+        UnityEngine.Debug:Log (object)
+
+        FlyingWormConsole3.ConsoleProUserSettings:LoadSettings<FlyingWormConsole3.StandardSettings>
+        (string,System.Func`1<FlyingWormConsole3.StandardSettings>,System.Func`2<FlyingWormConsole3.StandardSettings,
+        bool>)
+
+        FlyingWormConsole3.ConsoleProUserSettings:get_Standard ()
+
+        FlyingWormConsole3.ConsoleProLogs:get_HideOtherLogsFromCompilerError
+        ()
+
+        FlyingWormConsole3.ConsolePro3Window:Init ()
+
+        FlyingWormConsole3.ConsolePro3Window:EditorUpdate
+        ()
+
+        UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+'
+      nativeFileName: 
+      nativeFileNamePretty: 
+      nativeLineNumber: 0
+      watchName: 
+      logText: 'ConsolePro3: No Settings for ConsolePro3StandardSettings found, using
+        defaults!'
+      logTruncatedText: 'ConsolePro3: No Settings for ConsolePro3StandardSettings
+        found, using defaults!'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:20:35
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: LoadSettings<FlyingWormConsole3.StandardSettings>
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.LoadSettings<FlyingWormConsole3.StandardSettings>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: get_Standard
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.get_Standard()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProLogs
+        methodName: get_HideOtherLogsFromCompilerError
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProLogs.get_HideOtherLogsFromCompilerError()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: Init
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.Init()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: EditorUpdate
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.EditorUpdate()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: EditorApplication
+        methodName: Internal_CallUpdateFunctions
+        namespaceName: UnityEditor
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: EditorApplication.Internal_CallUpdateFunctions()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters: []
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 1
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 7
+      nativeIdentifier: 0
+      originalUnityConsoleLog: 'ConsolePro3: No Settings for ConsolePro3StandardFilterSettings
+        found, using defaults!
+
+        UnityEngine.Debug:Log (object)'
+      originalLog: 'ConsolePro3: No Settings for ConsolePro3StandardFilterSettings
+        found, using defaults!'
+      originalStackTrace: '
+
+        UnityEngine.Debug:Log (object)
+
+        FlyingWormConsole3.ConsoleProUserSettings:LoadSettings<FlyingWormConsole3.ListOfStandardFilterItems>
+        (string,System.Func`1<FlyingWormConsole3.ListOfStandardFilterItems>,System.Func`2<FlyingWormConsole3.ListOfStandardFilterItems,
+        bool>)
+
+        FlyingWormConsole3.ConsoleProUserSettings:get_StandardFilters
+        ()
+
+        FlyingWormConsole3.ConsoleProLogs:ClearFilteredEntryCounts ()
+
+        FlyingWormConsole3.ConsoleProLogs:ClearEntries
+        ()
+
+        FlyingWormConsole3.ConsolePro3Window:Init ()
+
+        FlyingWormConsole3.ConsolePro3Window:EditorUpdate
+        ()
+
+        UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+'
+      nativeFileName: 
+      nativeFileNamePretty: 
+      nativeLineNumber: 0
+      watchName: 
+      logText: 'ConsolePro3: No Settings for ConsolePro3StandardFilterSettings found,
+        using defaults!'
+      logTruncatedText: 'ConsolePro3: No Settings for ConsolePro3StandardFilterSettings
+        found, using defaults!'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:20:35
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: LoadSettings<FlyingWormConsole3.ListOfStandardFilterItems>
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.LoadSettings<FlyingWormConsole3.ListOfStandardFilterItems>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: get_StandardFilters
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.get_StandardFilters()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProLogs
+        methodName: ClearFilteredEntryCounts
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProLogs.ClearFilteredEntryCounts()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProLogs
+        methodName: ClearEntries
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProLogs.ClearEntries()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: Init
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.Init()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: EditorUpdate
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.EditorUpdate()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: EditorApplication
+        methodName: Internal_CallUpdateFunctions
+        namespaceName: UnityEditor
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: EditorApplication.Internal_CallUpdateFunctions()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters: []
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 1
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 8
+      nativeIdentifier: 0
+      originalUnityConsoleLog: 'ConsolePro3: No Settings for ConsolePro3CustomFilterSettings
+        found, using defaults!
+
+        UnityEngine.Debug:Log (object)'
+      originalLog: 'ConsolePro3: No Settings for ConsolePro3CustomFilterSettings
+        found, using defaults!'
+      originalStackTrace: '
+
+        UnityEngine.Debug:Log (object)
+
+        FlyingWormConsole3.ConsoleProUserSettings:LoadSettings<FlyingWormConsole3.ListOfCustomFilterItems>
+        (string,System.Func`1<FlyingWormConsole3.ListOfCustomFilterItems>,System.Func`2<FlyingWormConsole3.ListOfCustomFilterItems,
+        bool>)
+
+        FlyingWormConsole3.ConsoleProUserSettings:get_CustomFilters
+        ()
+
+        FlyingWormConsole3.ConsoleProLogs:ClearFilteredEntryCounts ()
+
+        FlyingWormConsole3.ConsoleProLogs:ClearEntries
+        ()
+
+        FlyingWormConsole3.ConsolePro3Window:Init ()
+
+        FlyingWormConsole3.ConsolePro3Window:EditorUpdate
+        ()
+
+        UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+'
+      nativeFileName: 
+      nativeFileNamePretty: 
+      nativeLineNumber: 0
+      watchName: 
+      logText: 'ConsolePro3: No Settings for ConsolePro3CustomFilterSettings found,
+        using defaults!'
+      logTruncatedText: 'ConsolePro3: No Settings for ConsolePro3CustomFilterSettings
+        found, using defaults!'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:20:35
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: LoadSettings<FlyingWormConsole3.ListOfCustomFilterItems>
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.LoadSettings<FlyingWormConsole3.ListOfCustomFilterItems>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: get_CustomFilters
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.get_CustomFilters()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProLogs
+        methodName: ClearFilteredEntryCounts
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProLogs.ClearFilteredEntryCounts()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProLogs
+        methodName: ClearEntries
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProLogs.ClearEntries()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: Init
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.Init()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: EditorUpdate
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.EditorUpdate()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: EditorApplication
+        methodName: Internal_CallUpdateFunctions
+        namespaceName: UnityEditor
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: EditorApplication.Internal_CallUpdateFunctions()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters: []
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 1
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 9
+      nativeIdentifier: 0
+      originalUnityConsoleLog: 'ConsolePro3: No Settings for ConsolePro3ColumnSettings
+        found, using defaults!
+
+        UnityEngine.Debug:Log (object)'
+      originalLog: 'ConsolePro3: No Settings for ConsolePro3ColumnSettings found,
+        using defaults!'
+      originalStackTrace: '
+
+        UnityEngine.Debug:Log (object)
+
+        FlyingWormConsole3.ConsoleProUserSettings:LoadSettings<FlyingWormConsole3.ListOfColumnItems>
+        (string,System.Func`1<FlyingWormConsole3.ListOfColumnItems>,System.Func`2<FlyingWormConsole3.ListOfColumnItems,
+        bool>)
+
+        FlyingWormConsole3.ConsoleProUserSettings:get_Columns ()
+
+        FlyingWormConsole3.ConsolePro3Window:SetColumnsFromSettings
+        ()
+
+        FlyingWormConsole3.ConsolePro3Window:InitChildPanels ()
+
+        FlyingWormConsole3.ConsolePro3Window:Init
+        ()
+
+        FlyingWormConsole3.ConsolePro3Window:EditorUpdate ()
+
+        UnityEditor.EditorApplication:Internal_CallUpdateFunctions
+        ()
+
+'
+      nativeFileName: 
+      nativeFileNamePretty: 
+      nativeLineNumber: 0
+      watchName: 
+      logText: 'ConsolePro3: No Settings for ConsolePro3ColumnSettings found, using
+        defaults!'
+      logTruncatedText: 'ConsolePro3: No Settings for ConsolePro3ColumnSettings found,
+        using defaults!'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:20:35
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 0
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: LoadSettings<FlyingWormConsole3.ListOfColumnItems>
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.LoadSettings<FlyingWormConsole3.ListOfColumnItems>()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsoleProUserSettings
+        methodName: get_Columns
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsoleProUserSettings.get_Columns()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: SetColumnsFromSettings
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.SetColumnsFromSettings()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: InitChildPanels
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.InitChildPanels()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: Init
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.Init()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: ConsolePro3Window
+        methodName: EditorUpdate
+        namespaceName: FlyingWormConsole3
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: ConsolePro3Window.EditorUpdate()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      - fileName: None
+        fileNameWithoutAssets: None
+        fileNameWithoutAssetsPlusLineNumber: None
+        fileNameWithoutPath: None
+        fileNameWithoutPathPlusLineNumber: None
+        fileNamePretty: None
+        instanceID: -1
+        className: EditorApplication
+        methodName: Internal_CallUpdateFunctions
+        namespaceName: UnityEditor
+        lineNumberString: 0
+        charNumber: 0
+        stackLabel: EditorApplication.Internal_CallUpdateFunctions()
+        stackLabel2: 
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters: []
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    resetCompilerErrorEntries: 0
+    compilerErrorEntries:
+    - logType: 6
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 0
+      nativeIdentifier: 1234
+      originalUnityConsoleLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs(163,81):
+        error CS0103: The name ''enemiesAlive'' does not exist in the current context
+
+'
+      originalLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs(163,81):
+        error CS0103: The name ''enemiesAlive'' does not exist in the current context'
+      originalStackTrace: '
+
+'
+      nativeFileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 163
+      watchName: 
+      logText: The name 'enemiesAlive' does not exist in the current context
+      logTruncatedText: The name 'enemiesAlive' does not exist in the current context
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:19:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 1832
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+        fileNameWithoutAssets: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Unity Architecture 01 - Spaghetti
+          Pattern\Scripts\Core\EnemyManager.cs:163
+        fileNameWithoutPath: EnemyManager.cs
+        fileNameWithoutPathPlusLineNumber: EnemyManager.cs:163
+        fileNamePretty: EnemyManager
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 163
+        charNumber: 81
+        stackLabel: Compiler Error
+        stackLabel2: ' at Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs:163
+          column 81'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters:
+      - name: Error
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: 445b7350-ab89-4807-a336-ddeba12a994e
+        filterName: 
+        mainColor: {r: 1, g: 0, b: 0, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 1
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 0, b: 0, a: 0.7}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 95b91e79-64bd-4585-9f9e-093c1a1750ff
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 218db06c-7a65-422a-ba38-58f598d1ab3e
+                logType: 3
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 243a4638-05cb-48b4-bde1-08e404af175e
+                logType: 6
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 6ebf3ae0-f7f1-4e23-83ca-594a71d7d24d
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: X
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 6
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 1
+      nativeIdentifier: 1234
+      originalUnityConsoleLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs(192,13):
+        error CS0103: The name ''enemiesAlive'' does not exist in the current context
+
+'
+      originalLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs(192,13):
+        error CS0103: The name ''enemiesAlive'' does not exist in the current context'
+      originalStackTrace: '
+
+'
+      nativeFileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 192
+      watchName: 
+      logText: The name 'enemiesAlive' does not exist in the current context
+      logTruncatedText: The name 'enemiesAlive' does not exist in the current context
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:19:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 1832
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+        fileNameWithoutAssets: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Unity Architecture 01 - Spaghetti
+          Pattern\Scripts\Core\EnemyManager.cs:192
+        fileNameWithoutPath: EnemyManager.cs
+        fileNameWithoutPathPlusLineNumber: EnemyManager.cs:192
+        fileNamePretty: EnemyManager
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 192
+        charNumber: 13
+        stackLabel: Compiler Error
+        stackLabel2: ' at Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs:192
+          column 13'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters:
+      - name: Error
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: 445b7350-ab89-4807-a336-ddeba12a994e
+        filterName: 
+        mainColor: {r: 1, g: 0, b: 0, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 1
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 0, b: 0, a: 0.7}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 95b91e79-64bd-4585-9f9e-093c1a1750ff
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 218db06c-7a65-422a-ba38-58f598d1ab3e
+                logType: 3
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 243a4638-05cb-48b4-bde1-08e404af175e
+                logType: 6
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 6ebf3ae0-f7f1-4e23-83ca-594a71d7d24d
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: X
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 6
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 2
+      nativeIdentifier: 1234
+      originalUnityConsoleLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs(193,13):
+        error CS0103: The name ''bossesAlive'' does not exist in the current context
+
+'
+      originalLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs(193,13):
+        error CS0103: The name ''bossesAlive'' does not exist in the current context'
+      originalStackTrace: '
+
+'
+      nativeFileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 193
+      watchName: 
+      logText: The name 'bossesAlive' does not exist in the current context
+      logTruncatedText: The name 'bossesAlive' does not exist in the current context
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:19:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 1832
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+        fileNameWithoutAssets: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Unity Architecture 01 - Spaghetti
+          Pattern\Scripts\Core\EnemyManager.cs:193
+        fileNameWithoutPath: EnemyManager.cs
+        fileNameWithoutPathPlusLineNumber: EnemyManager.cs:193
+        fileNamePretty: EnemyManager
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 193
+        charNumber: 13
+        stackLabel: Compiler Error
+        stackLabel2: ' at Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\Core\EnemyManager.cs:193
+          column 13'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters:
+      - name: Error
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: 445b7350-ab89-4807-a336-ddeba12a994e
+        filterName: 
+        mainColor: {r: 1, g: 0, b: 0, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 1
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 0, b: 0, a: 0.7}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 95b91e79-64bd-4585-9f9e-093c1a1750ff
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 218db06c-7a65-422a-ba38-58f598d1ab3e
+                logType: 3
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 243a4638-05cb-48b4-bde1-08e404af175e
+                logType: 6
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 6ebf3ae0-f7f1-4e23-83ca-594a71d7d24d
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: X
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 6
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 3
+      nativeIdentifier: 1234
+      originalUnityConsoleLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs(22,70):
+        error CS1061: ''EnemyManager'' does not contain a definition for ''currentBlockIndex''
+        and no accessible extension method ''currentBlockIndex'' accepting a first
+        argument of type ''EnemyManager'' could be found (are you missing a using
+        directive or an assembly reference?)
+
+'
+      originalLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs(22,70):
+        error CS1061: ''EnemyManager'' does not contain a definition for ''currentBlockIndex''
+        and no accessible extension method ''currentBlockIndex'' accepting a first
+        argument of type ''EnemyManager'' could be found (are you missing a using
+        directive or an assembly reference?)'
+      originalStackTrace: '
+
+'
+      nativeFileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 22
+      watchName: 
+      logText: '''EnemyManager'' does not contain a definition for ''currentBlockIndex''
+        and no accessible extension method ''currentBlockIndex'' accepting a first
+        argument of type ''EnemyManager'' could be found (are you missing a using
+        directive or an assembly reference?)'
+      logTruncatedText: '''EnemyManager'' does not contain a definition for ''currentBlockIndex''
+        and no accessible extension method ''currentBlockIndex'' accepting a first
+        argument of type ''EnemyManager'' could be found (are you missing a using
+        directive or an assembly reference?)'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:19:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 1834
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs
+        fileNameWithoutAssets: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Unity Architecture 01 - Spaghetti
+          Pattern\Scripts\UI\UIHud.cs:22
+        fileNameWithoutPath: UIHud.cs
+        fileNameWithoutPathPlusLineNumber: UIHud.cs:22
+        fileNamePretty: UIHud
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 22
+        charNumber: 70
+        stackLabel: Compiler Error
+        stackLabel2: ' at Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs:22
+          column 70'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters:
+      - name: Error
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: 445b7350-ab89-4807-a336-ddeba12a994e
+        filterName: 
+        mainColor: {r: 1, g: 0, b: 0, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 1
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 0, b: 0, a: 0.7}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 95b91e79-64bd-4585-9f9e-093c1a1750ff
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 218db06c-7a65-422a-ba38-58f598d1ab3e
+                logType: 3
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 243a4638-05cb-48b4-bde1-08e404af175e
+                logType: 6
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 6ebf3ae0-f7f1-4e23-83ca-594a71d7d24d
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: X
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+    - logType: 6
+      ignore: 0
+      processed: 1
+      tempFilterProcessed: 1
+      remoteEndPoint: Local
+      logPanelVisible: 1
+      logPanelIndex: 0
+      logOutputHeight: -1
+      listIndex: 0
+      nativeIndex: 4
+      nativeIdentifier: 1234
+      originalUnityConsoleLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs(22,45):
+        error CS1061: ''EnemyManager'' does not contain a definition for ''enemyBlocks''
+        and no accessible extension method ''enemyBlocks'' accepting a first argument
+        of type ''EnemyManager'' could be found (are you missing a using directive
+        or an assembly reference?)
+
+'
+      originalLog: 'Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs(22,45):
+        error CS1061: ''EnemyManager'' does not contain a definition for ''enemyBlocks''
+        and no accessible extension method ''enemyBlocks'' accepting a first argument
+        of type ''EnemyManager'' could be found (are you missing a using directive
+        or an assembly reference?)'
+      originalStackTrace: '
+
+'
+      nativeFileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs
+      nativeFileNamePretty: 
+      nativeLineNumber: 22
+      watchName: 
+      logText: '''EnemyManager'' does not contain a definition for ''enemyBlocks''
+        and no accessible extension method ''enemyBlocks'' accepting a first argument
+        of type ''EnemyManager'' could be found (are you missing a using directive
+        or an assembly reference?)'
+      logTruncatedText: '''EnemyManager'' does not contain a definition for ''enemyBlocks''
+        and no accessible extension method ''enemyBlocks'' accepting a first argument
+        of type ''EnemyManager'' could be found (are you missing a using directive
+        or an assembly reference?)'
+      logColumnText: 
+      fileName: 
+      className: 
+      namespaceName: 
+      lineCount: 1
+      hasSourceCode: 0
+      timeStamp: 19:19:18
+      timeFrame: -1
+      timeStampDateTimeNow: 
+      instanceID: 1834
+      collapsedCount: 0
+      cachedHeight: -1
+      cachedHeightLogWidth: 0
+      stackEntries:
+      - fileName: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs
+        fileNameWithoutAssets: Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs
+        fileNameWithoutAssetsPlusLineNumber: Assets\Unity Architecture 01 - Spaghetti
+          Pattern\Scripts\UI\UIHud.cs:22
+        fileNameWithoutPath: UIHud.cs
+        fileNameWithoutPathPlusLineNumber: UIHud.cs:22
+        fileNamePretty: UIHud
+        instanceID: -1
+        className: Compiler
+        methodName: Compiler
+        namespaceName: None
+        lineNumberString: 22
+        charNumber: 45
+        stackLabel: Compiler Error
+        stackLabel2: ' at Assets\Unity Architecture 01 - Spaghetti Pattern\Scripts\UI\UIHud.cs:22
+          column 45'
+        stackLabel1Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel1Width: 0
+        stackLabel1Height: 0
+        stackLabel2Content:
+          m_Text: 
+          m_Image: {fileID: 0}
+          m_Tooltip: 
+          m_TextWithWhitespace: 
+        stackLabel2Width: 0
+        stackLabel2Height: 0
+        stackSourceLineHeight: 0
+        sourceCode: []
+        sourceCodeUpdated: 0
+        sourceCodeHighlightIndex: -1
+        showSource: 1
+        keywordTokens:
+        - abstract
+        - add
+        - alias
+        - as
+        - ascending
+        - async
+        - await
+        - base
+        - bool
+        - break
+        - by
+        - byte
+        - case
+        - catch
+        - char
+        - checked
+        - class
+        - const
+        - continue
+        - decimal
+        - default
+        - delegate
+        - descending
+        - do
+        - double
+        - dynamic
+        - else
+        - enum
+        - equals
+        - event
+        - explicit
+        - extern
+        - false
+        - finally
+        - fixed
+        - float
+        - for
+        - foreach
+        - from
+        - get
+        - global
+        - goto
+        - group
+        - if
+        - implicit
+        - in
+        - int
+        - interface
+        - internal
+        - into
+        - is
+        - join
+        - let
+        - lock
+        - long
+        - nameof
+        - namespace
+        - new
+        - null
+        - object
+        - on
+        - operator
+        - orderby
+        - out
+        - override
+        - params
+        - partial
+        - private
+        - protected
+        - public
+        - readonly
+        - ref
+        - remove
+        - return
+        - sbyte
+        - sealed
+        - select
+        - set
+        - short
+        - sizeof
+        - stackalloc
+        - static
+        - string
+        - struct
+        - switch
+        - this
+        - throw
+        - true
+        - try
+        - typeof
+        - uint
+        - ulong
+        - unchecked
+        - unsafe
+        - ushort
+        - using
+        - value
+        - var
+        - virtual
+        - void
+        - volatile
+        - when
+        - where
+        - while
+        - yield
+      ignoredStackEntries: []
+      lastMatchedCount: 0
+      belongsToFilters:
+      - name: Error
+        isEnabled: 1
+        collapsed: 1
+        itemGUID: 445b7350-ab89-4807-a336-ddeba12a994e
+        filterName: 
+        mainColor: {r: 1, g: 0, b: 0, a: 0.7}
+        isStandardFilter: 1
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 1
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 0, b: 0, a: 0.7}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 1
+        useIconTexture: 0
+        filterFormatVersion: 1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list:
+          - name: 
+            isEnabled: 1
+            collapsed: 0
+            itemGUID: 95b91e79-64bd-4585-9f9e-093c1a1750ff
+            searchString: <Any>
+            searchType: 1
+            removeSearchStringFromLog: 0
+            logTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 218db06c-7a65-422a-ba38-58f598d1ab3e
+                logType: 3
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 243a4638-05cb-48b4-bde1-08e404af175e
+                logType: 6
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            columnTypeList:
+              list:
+              - name: 
+                isEnabled: 1
+                collapsed: 0
+                itemGUID: 6ebf3ae0-f7f1-4e23-83ca-594a71d7d24d
+                columnType: 1
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+            sourceCodeList:
+              list: []
+              selectionList: 0
+              collapsable: 1
+              collapsed: 0
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 3
+          iconType2: 1
+          iconText: X
+          useIconTextFirstLetter: 0
+          useIconLogColor: 0
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 7
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
+      belongsToStandardFilters: []
+      assignedTempFilter:
+        name: 
+        isEnabled: 1
+        collapsed: 0
+        itemGUID: 
+        filterName: 
+        mainColor: {r: 1, g: 1, b: 1, a: 1}
+        isStandardFilter: 0
+        isTempFilter: 0
+        filterOnly: 0
+        useAdvancedColors: 0
+        customTextColor: {r: 1, g: 1, b: 1, a: 1}
+        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
+        swallowStandard: 1
+        standardCanSwallow: 0
+        overrideStandardColors: 1
+        overrideStandardIcon: 1
+        collapseIconBackground: 0
+        collapseIconSymbol: 0
+        collapseIconLetter: 0
+        collapseIconTexture: 0
+        useIconBackground: 1
+        useIconSymbol: 0
+        useIconLetter: 0
+        useIconTexture: 0
+        filterFormatVersion: -1
+        iconColorize: 0
+        useAndOpForSearchList: 0
+        searchList:
+          list: []
+          selectionList: 0
+          collapsable: 1
+          collapsed: 0
+        iconLetter:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconSymbol:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconBackground:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        iconTexture:
+          name: 
+          isEnabled: 1
+          collapsed: 0
+          itemGUID: 
+          iconType: 1
+          iconType2: 1
+          iconText: A
+          useIconTextFirstLetter: 1
+          useIconLogColor: 1
+          iconColor: {r: 1, g: 1, b: 1, a: 1}
+          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
+          iconTextureGUID: 
+          useIconShadow: 1
+          iconOffset: {x: 0, y: 0}
+          iconShadowOffset: {x: 0.5, y: 0.5}
+          iconSize: 13
+        showInToolbar: 1
+        hideLabelInToolbar: 0
+        hideWhenNoMatches: 0
     timeFrames: 
     _filteredEntries: []
 --- !u!114 &17
@@ -443,7 +7355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62a84c0b148b0a4582bdd9f1a69e6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 50, y: 50}
+  m_MinSize: {x: 461, y: 430}
   m_MaxSize: {x: 4000, y: 4000}
   m_TitleContent:
     m_Text: ' Hot Reload'
@@ -452,10 +7364,10 @@ MonoBehaviour:
     m_TextWithWhitespace: " Hot Reload\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 2079
-    y: 19
-    width: 483
-    height: 427
+    x: 4638
+    y: 24
+    width: 466
+    height: 419
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -489,10 +7401,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 978
-    y: 19
-    width: 715
-    height: 814
+    x: 1946
+    y: 24
+    width: 1427
+    height: 806
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1124,7 +8036,7 @@ MonoBehaviour:
         m_Value: 0
       m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 0.4}
       m_Pivot: {x: 0, y: 0, z: 0}
-      m_Size: {x: 0.5, y: 0.5}
+      m_Size: {x: 1, y: 1}
     zGrid:
       m_Fade:
         m_Target: 0
@@ -1197,9 +8109,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 19
-    width: 419
-    height: 814
+    y: 24
+    width: 834
+    height: 806
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1216,7 +8128,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 62e5fbffdce7fbffb21afcffd62ffcff5830fcffda30fcff5c31fcffa231fcffde31fcff2432fcff6032fcffe232fcff6433fcffa8b9fcff00e6fcffd613ffffa01cffff8a2dffff84a6ffffc4baffff1afaffffdafaffff
+      m_ExpandedIDs: 969fffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1263,10 +8175,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 421
-    y: 19
-    width: 555
-    height: 814
+    x: 836
+    y: 24
+    width: 1108
+    height: 806
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1425,10 +8337,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1695
-    y: 19
-    width: 867
-    height: 814
+    x: 3375
+    y: 24
+    width: 1729
+    height: 806
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1446,7 +8358,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 867, y: 488}
+  m_TargetSize: {x: 1396, y: 785}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -1461,10 +8373,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -433.5
-    m_HBaseRangeMax: 433.5
-    m_VBaseRangeMin: -244
-    m_VBaseRangeMax: 244
+    m_HBaseRangeMin: -698
+    m_HBaseRangeMax: 698
+    m_VBaseRangeMin: -392.5
+    m_VBaseRangeMax: 392.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -1482,23 +8394,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 867
-      height: 793
+      width: 1729
+      height: 785
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 433.5, y: 396.5}
+    m_Translation: {x: 864.5, y: 392.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -433.5
-      y: -396.5
-      width: 867
-      height: 793
+      x: -864.5
+      y: -392.5
+      width: 1729
+      height: 785
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 867, y: 814}
+  m_LastWindowPixelSize: {x: 1729, y: 806}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -1516,7 +8428,7 @@ MonoBehaviour:
   m_Script: {fileID: 12014, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
+  m_MinSize: {x: 230, y: 250}
   m_MaxSize: {x: 10000, y: 10000}
   m_TitleContent:
     m_Text: Project
@@ -1527,9 +8439,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 19
-    width: 1258
-    height: 427
+    y: 24
+    width: 2507
+    height: 419
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1568,10 +8480,10 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 327}
-    m_SelectedIDs: ae850000
-    m_LastClickedID: 34222
-    m_ExpandedIDs: 000000008a8b00008c8b00008e8b0000908b0000928b0000948b0000968b0000988b00009a8b00009c8b00009e8b0000a08b0000a28b0000a48b0000a68b0000a88b0000aa8b0000ac8b0000
+    scrollPos: {x: 0, y: 385}
+    m_SelectedIDs: b8bb0000
+    m_LastClickedID: 48056
+    m_ExpandedIDs: 000000001e8a0000208a0000228a0000248a0000268a0000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1600,7 +8512,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008a8b00008c8b00008e8b0000908b0000928b0000948b0000968b0000988b00009a8b00009c8b00009e8b0000a08b0000a28b0000a48b0000a68b0000a88b0000aa8b0000ac8b0000
+    m_ExpandedIDs: 000000001e8a0000208a0000228a0000248a0000268a0000288a00002a8a00002c8a00002e8a0000308a0000328a0000348a0000368a0000388a00003a8a00003c8a00003e8a0000408a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1680,10 +8592,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1260
-    y: 19
-    width: 817
-    height: 427
+    x: 2509
+    y: 24
+    width: 2127
+    height: 419
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0

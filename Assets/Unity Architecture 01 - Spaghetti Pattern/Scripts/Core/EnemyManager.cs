@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
@@ -39,6 +38,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public int enemyKillProgressCount = 0;
         public bool progressPaused = false;
         public int totalEnemiesKilled = 0;
+
 
         // Lists to keep track of active enemies and bosses
         public List<EnemyController> activeEnemies = new();
@@ -115,6 +115,8 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 activeEnemies.Remove(enemy);
             }
+            
+            Destroy(enemy);
         }
 
         /// <summary>
@@ -159,15 +161,13 @@ namespace UnityArchitecture.SpaghettiPattern
         /// <returns>Spawn interval in seconds.</returns>
         private float GetSpawnRate()
         {
-            float currentMaxEnemies = maxEnemiesAlive;
-            float remainingEnemyCapacity = currentMaxEnemies > 0 ? 1f - ((float)enemiesAlive / currentMaxEnemies) : 1f;
+            var remainingEnemyCapacity = 1f - (activeEnemies.Count / maxEnemiesAlive);
             remainingEnemyCapacity = Mathf.Clamp01(remainingEnemyCapacity);
             return baseSpawnRate * remainingEnemyCapacity;
         }
 
         public void Reset()
         {
-            Console.Log("EnemyManager.Reset()", LogFilter.Enemy, this); 
             // Destroy all active enemies
             foreach (var enemy in activeEnemies)
             {
@@ -189,8 +189,6 @@ namespace UnityArchitecture.SpaghettiPattern
             activeBosses.Clear();
 
             // Reset tracking variables
-            enemiesAlive = 0;
-            bossesAlive = 0;
             _timeSinceLastSpawn = 0f;
         }
     }
