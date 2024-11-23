@@ -1,6 +1,5 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
@@ -19,7 +18,16 @@ namespace UnityArchitecture.SpaghettiPattern
             roundTimer.text = $"Round: {GameManager.Instance.roundTime:00}";
             healthBar.fillAmount = playerController.playerCurrentHealth / (float)playerController.playerMaxHealth.value;
             healthBarText.text = $"{playerController.playerCurrentHealth}/{playerController.playerMaxHealth.value}";
-            enemiesRemaining.text = $"Enemies Killed: {enemyManager.totalEnemiesKilled}";   
+
+            if (enemyManager.activeBosses.Count > 0)
+            {
+                enemiesRemaining.text = "Defeat the Boss!";
+            }
+            else
+            {
+                enemiesRemaining.text = $"Enemies Killed: {enemyManager.enemyKillProgressCount}/300";    
+            }
+               
         }
     }
 }

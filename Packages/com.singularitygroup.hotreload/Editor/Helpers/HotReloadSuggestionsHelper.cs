@@ -304,7 +304,7 @@ namespace SingularityGroup.HotReload.Editor {
                     try {
                         var runningUnities = Process.GetProcessesByName("Unity").Length;
                         var runningPatchers = Process.GetProcessesByName("CodePatcherCLI").Length;
-                        return runningUnities > runningPatchers;
+                        return runningPatchers > 0 && runningUnities > runningPatchers;
                     } catch (ArgumentException) {
                         // On some devices GetProcessesByName throws ArgumentException for no good reason.
                         // it happens rarely and the feature is not the most important so proper solution is not required

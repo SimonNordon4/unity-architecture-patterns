@@ -1677,7 +1677,6 @@ GameObject:
   m_Component:
   - component: {fileID: 644039391}
   - component: {fileID: 644039393}
-  - component: {fileID: 644039394}
   m_Layer: 0
   m_Name: Enemy Manager
   m_TagString: Untagged
@@ -1758,124 +1757,6 @@ MonoBehaviour:
     type: 3}
   wandererExploderBossEnemyPrefab: {fileID: 3664556069068995892, guid: f679e24b37316ba47b05af2cd629a65d,
     type: 3}
---- !u!114 &644039394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644039389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fcc600df7abc8041ac8d2b69cca803f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockName: Unnamed Block
-  enemiesToKill: 5
-  maxEnemiesAliveRange: {x: 1, y: 1}
-  maxEnemiesAliveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemyPrefabs:
-  - {fileID: 1789236594020257121, guid: 6da49f7eb69c8fc49964a213d0376127, type: 3}
-  enemySpawnWeightCurves:
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  bossEnemies:
-  - {fileID: 1789236594020257121, guid: 6da49f7eb69c8fc49964a213d0376127, type: 3}
-  healthMultiplierRange: {x: 1, y: 1}
-  damageMultiplierRange: {x: 1, y: 1}
-  healthMultiplierCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  damageMultiplierCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  enemiesKilled: 0
 --- !u!1001 &654366051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2060,7 +1941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb60339036ad7e84d9b215de184f3e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 460763656}
   roundTime: 0
   isPaused: 0
   isGameActive: 0
@@ -2076,7 +1957,8 @@ MonoBehaviour:
   showEnemyHealthBars: 1
   musicVolume: 1
   sfxVolume: 1
-  healthPackPrefab: {fileID: 0}
+  healthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175,
+    type: 3}
 --- !u!4 &801546266
 Transform:
   m_ObjectHideFlags: 0
@@ -2746,7 +2628,7 @@ PrefabInstance:
     - target: {fileID: 7411516201457442527, guid: 6c78fc28b4983a44591d4e539fb4f771,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2779,50 +2661,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1634653621}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1645930824
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1645930826}
-  - component: {fileID: 1645930825}
-  m_Layer: 0
-  m_Name: Debug Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1645930825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645930824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b22ef3bd6e261645999aba663cd5067, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1645930826
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1645930824}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1884674988
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,6 +3396,5 @@ SceneRoots:
   - {fileID: 1634653621}
   - {fileID: 92739890}
   - {fileID: 1948004394}
-  - {fileID: 1645930826}
   - {fileID: 462989477}
   - {fileID: 1574519683}

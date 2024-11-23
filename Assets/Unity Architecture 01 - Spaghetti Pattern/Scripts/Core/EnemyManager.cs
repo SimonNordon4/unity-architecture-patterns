@@ -31,6 +31,7 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Spawn Settings")]
         public int maxEnemiesAlive = 3;
         public float baseSpawnRate = 1f;
+        public float currentSpawnRate = 1f;
         private float _timeSinceLastSpawn = 0f;
 
         // Tracking active enemies and bosses
@@ -72,10 +73,11 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             if (!gameManager.isGameActive) return;
 
+            currentSpawnRate = activeEnemies.Count > 0 ? Mathf.Clamp01(baseSpawnRate * (activeEnemies.Count / (float)maxEnemiesAlive)) : 1f;            
             // Increment the spawn timer
             _timeSinceLastSpawn += Time.deltaTime;
 
-            if (_timeSinceLastSpawn > GetSpawnRate())
+            if (_timeSinceLastSpawn > currentSpawnRate && activeEnemies.Count < maxEnemiesAlive)
             {
                 _timeSinceLastSpawn = 0f;
                 // pick a random enemy from the spawnable list
@@ -175,6 +177,8 @@ namespace UnityArchitecture.SpaghettiPattern
             enemy.playerTarget = playerTarget;
             enemy.enemyManager = this;
             enemy.ApplyMultipliers(healthMultiplier, damageMultiplier);
+            enemy.isBoss = false;
+            enemy.countsTowardsProgress = !progressPaused;
             activeEnemies.Add(enemy);
         }
 
@@ -188,7 +192,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
             if (!progressPaused)
             {
-                enemyKillProgressCount++;
+                if(enemy.countsTowardsProgress)
+                    enemyKillProgressCount++;
 
                 switch (enemyKillProgressCount)
                 {
@@ -252,9 +257,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 activeEnemies.Remove(enemy);
             }
             
-            Destroy(enemy);
-            
-            
+            Destroy(enemy.gameObject);
         }
 
         /// <summary>
@@ -267,6 +270,7 @@ namespace UnityArchitecture.SpaghettiPattern
             enemy.playerTarget = playerTarget;
             enemy.enemyManager = this;
             enemy.ApplyMultipliers(healthMultiplier, damageMultiplier);
+            enemy.isBoss = true;
             activeBosses.Add(enemy);
         }
 
@@ -281,10 +285,11 @@ namespace UnityArchitecture.SpaghettiPattern
                 activeBosses.Remove(boss);
             }
             
-            Destroy(boss);
+            Destroy(boss.gameObject);
 
             if (activeBosses.Count == 0)
             {
+                enemyKillProgressCount++;
                 progressPaused = false;
 
                 if (enemyKillProgressCount >= 300)
@@ -300,21 +305,11 @@ namespace UnityArchitecture.SpaghettiPattern
         /// <returns>A random Vector3 position.</returns>
         private Vector3 GetRandomSpawnPoint()
         {
-            float spawnRadius = 20f; // Adjust as needed
-            Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
+            // TODO: Fix this.
+            float spawnRadius = GameManager.Instance.levelBounds.x; // Adjust as needed
+            Vector2 randomDirection = Random.insideUnitCircle.normalized;
             Vector3 spawnPos = playerTarget.position + new Vector3(randomDirection.x, 0, randomDirection.y) * spawnRadius;
             return spawnPos;
-        }
-
-        /// <summary>
-        /// Calculates the current spawn rate based on the block's maximum enemies alive.
-        /// </summary>
-        /// <returns>Spawn interval in seconds.</returns>
-        private float GetSpawnRate()
-        {
-            var remainingEnemyCapacity = 1f - (activeEnemies.Count / maxEnemiesAlive);
-            remainingEnemyCapacity = Mathf.Clamp01(remainingEnemyCapacity);
-            return baseSpawnRate * remainingEnemyCapacity;
         }
 
         public void Reset()

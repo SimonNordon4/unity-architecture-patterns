@@ -17,8 +17,11 @@ MonoBehaviour:
   modifiers:
   - statType: 4
     modifierValue: 3
+    isFlatPercentage: 1
   - statType: 2
-    modifierValue: 10
+    modifierValue: 5
+    isFlatPercentage: 0
   - statType: 3
     modifierValue: -10
+    isFlatPercentage: 1
   tier: 1

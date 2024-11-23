@@ -17,7 +17,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         [Header("References")]
         public EnemyManager enemyManager;
-        public bool isBoss = false;
+
 
         [Header("UI")]
         public Color damageColor = Color.red;
@@ -54,9 +54,13 @@ namespace UnityArchitecture.SpaghettiPattern
         public ParticleSystem spawnEffect;
         public ParticleSystem deathEffect;
         public GameObject meshObject;
+        
+        [Header("Stats")]
         public bool isSpawning = true;
         public float spawnTime = 1f;
-        private float _spawnTimeElapsed = 0f;
+        protected float _spawnTimeElapsed = 0f;
+        public bool isBoss = false;
+        public bool countsTowardsProgress = false;
         
         [Header("Sounds")]
         public AudioClip[] deathSounds;
@@ -67,9 +71,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
         protected virtual void Start()
         {
+            healthBarUI.SetActive(false);
             // de-parent so we don't follow the enemy rotation.
             uiStartRotation = healthBarUI.transform.rotation;
-            healthBarUI.SetActive(GameManager.Instance.showEnemyHealthBars);
             UpdateHealthBar();
             _radius = transform.localScale.x;
             randomPosition = new Vector3(Random.Range(GameManager.Instance.levelBounds.x * -1, GameManager.Instance.levelBounds.x), 0, Random.Range(GameManager.Instance.levelBounds.y * -1, GameManager.Instance.levelBounds.y));
@@ -88,11 +92,15 @@ namespace UnityArchitecture.SpaghettiPattern
                 if (_spawnTimeElapsed >= spawnTime)
                 {
                     isSpawning = false;
-                    spawnEffect.Stop();
                     deathEffect.Play();
+                    spawnEffect.Stop();
                     meshObject.SetActive(true);
+                    if (GameManager.Instance.showEnemyHealthBars)
+                    {
+                        healthBarUI.SetActive(true);
+                    }
                 }
-
+                
                 return;
             }
 
@@ -240,8 +248,9 @@ namespace UnityArchitecture.SpaghettiPattern
                 AudioManager.Instance.PlaySound(deathSound);
                 var pos = transform.position;
                 var projectedPosition = new Vector3(pos.x, 0, pos.z);
-                var dead = Instantiate(deathEffect, projectedPosition, Quaternion.identity);
-                GameManager.Instance.StartCoroutine(DestroyAfter(dead.gameObject));
+                var deathParticleEffect = Instantiate(deathEffect, projectedPosition, Quaternion.identity);
+                deathParticleEffect.Play();
+                GameManager.Instance.StartCoroutine(DestroyAfter(deathParticleEffect.gameObject));
                 if(isBoss)
                 {
                     enemyManager.BossDied(this);

@@ -157,6 +157,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             foreach (var enemy in enemyManager.activeBosses)
             {
+                if(enemy == null) continue;
                 // ignore enemies that are spawning.
                 if (enemy.isSpawning) continue;
                 
@@ -189,7 +190,8 @@ namespace UnityArchitecture.SpaghettiPattern
             // FireRate = 5 -> 0.5 shots/s
             // FireRate = 10 -> 1 shot/s
             // FireRate = 20 -> 2 shots/s
-            if (_timeSinceLastFire > 10f / firerate.value)
+            var effectiveFireRate = 10f / firerate.value;
+            if (_timeSinceLastFire > effectiveFireRate)
             {
                 if (!targetIsNull)
                 {
@@ -248,11 +250,11 @@ namespace UnityArchitecture.SpaghettiPattern
             // Calculate health regeneration
             if (playerCurrentHealth < playerMaxHealth.value)
             {
-                _timeSinceLastFire += Time.deltaTime;
+                _timeSinceLastHealthRegen += Time.deltaTime;
                 // This is dividing regen by 100 and inverting it. 
-                // FireRate = 10 -> 0.1 hp/s
-                // FireRate = 100 -> 1 hp/s
-                // FireRate = 200 -> 2 hp/s
+                // HealthRegen = 10 -> 0.1 hp/s
+                // HealthRegen = 100 -> 1 hp/s
+                // HealthRegen = 200 -> 2 hp/s
                 if (_timeSinceLastHealthRegen > 100f / healthRegen.value)
                 {
                     _timeSinceLastHealthRegen = 0;
@@ -348,9 +350,10 @@ namespace UnityArchitecture.SpaghettiPattern
                 return;
             }
 
-            var armorMitigation = armor.value / (armor.value + 100);
+            var armorMitigation = armor.value / (armor.value + 100f);
+            
 
-            damageAmount = Mathf.RoundToInt(1 - armorMitigation);
+            damageAmount = Mathf.RoundToInt(damageAmount - armorMitigation);
             // We should never be invincible imo. hard cap to 1.
             if (damageAmount <= 0)
             {

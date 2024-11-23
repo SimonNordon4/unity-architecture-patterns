@@ -14892,7 +14892,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -24859,7 +24859,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -30028,7 +30028,7 @@ ParticleSystem:
   emitterVelocityMode: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -35108,6 +35108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveBehaviour
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
+        type: 3}
+      propertyPath: damageCooldown
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
         type: 3}

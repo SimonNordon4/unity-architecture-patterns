@@ -201,6 +201,7 @@ namespace UnityArchitecture.SpaghettiPattern
 #region Scene Managment
     public void LoadMainMenu()
     {
+        UnloadEnvironment();
         SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
     }
 
@@ -212,11 +213,13 @@ namespace UnityArchitecture.SpaghettiPattern
 
     public void LoadGameWon()
     {
+        UnloadEnvironment();
         SceneManager.LoadScene(gameWon, LoadSceneMode.Single);
     }
 
     public void LoadGameLost()
     {
+        UnloadEnvironment();
         SceneManager.LoadScene(gameLost, LoadSceneMode.Single);
     }
 
@@ -225,6 +228,14 @@ namespace UnityArchitecture.SpaghettiPattern
         if (!SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded)
         {
             SceneManager.LoadScene(dungeonScene, LoadSceneMode.Additive);
+        }
+    }
+
+    private void UnloadEnvironment()
+    {
+        if (SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(dungeonScene);
         }
     }
     #endregion

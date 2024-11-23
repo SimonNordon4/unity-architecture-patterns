@@ -9,7 +9,7 @@ using UnityEngine;
 namespace SingularityGroup.HotReload.Editor {
     class DefaultCompileChecker : ICompileChecker {
         const string recompileFilePath = PackageConst.LibraryCachePath + "/recompile.txt";
-        bool hasCompileErrors;
+        public bool hasCompileErrors { get; private set;  }
         bool recompile;
         public DefaultCompileChecker() {
             CompilationPipeline.assemblyCompilationFinished += DetectCompileErrors;
@@ -42,13 +42,12 @@ namespace SingularityGroup.HotReload.Editor {
                     return;
                 }
             }
+            hasCompileErrors = false;
         }
 
         void OnCompilationFinished(object _) {
-            if(hasCompileErrors) {
-                //Don't recompile on compile errors.
-                hasCompileErrors = false;
-            } else {
+            //Don't recompile on compile errors
+            if(!hasCompileErrors) {
                 Directory.CreateDirectory(Path.GetDirectoryName(recompileFilePath));
                 File.WriteAllText(recompileFilePath, EditorAnalyticsSessionInfo.id.ToString());
             }

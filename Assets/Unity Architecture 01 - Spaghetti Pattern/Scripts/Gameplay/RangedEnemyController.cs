@@ -32,6 +32,25 @@ namespace UnityArchitecture.SpaghettiPattern
         {
             if (GameManager.Instance.isGameActive == false) return;
 
+            // If the enemy is spawning, then do nothing other than play the spawn animation and wait.
+            if (isSpawning)
+            {
+                _spawnTimeElapsed += Time.deltaTime;
+                if (_spawnTimeElapsed >= spawnTime)
+                {
+                    isSpawning = false;
+                    deathEffect.Play();
+                    spawnEffect.Stop();
+                    meshObject.SetActive(true);
+                    if (GameManager.Instance.showEnemyHealthBars)
+                    {
+                        healthBarUI.SetActive(true);
+                    }
+                }
+                
+                return;
+            }
+            
             if (isKnockedBack) return;
 
 
