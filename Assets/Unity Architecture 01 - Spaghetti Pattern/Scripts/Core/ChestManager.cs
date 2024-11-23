@@ -41,7 +41,6 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Pity")]
         public int tier3Pity;
         public int tier4Pity;
-        public int tier5Pity;
 
         [Header("UI")]
         public GameObject chestMenu;
@@ -60,6 +59,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Update()
         {
+            if (GameManager.Instance.isPaused) return;
+            
             _timeSinceLastChestSpawn += Time.deltaTime;
             if (_timeSinceLastChestSpawn > chestSpawnTime)
             {
@@ -86,7 +87,7 @@ namespace UnityArchitecture.SpaghettiPattern
             chest.GenerateItems();
         }
 
-        private void SpawnBossChest(Vector3 position)
+        public void SpawnBossChest(Vector3 position)
         {
             var chest = Instantiate(chestPrefab, position, Quaternion.identity);
             chest.minTier = 3;
@@ -129,7 +130,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
             tier3Pity = 0;
             tier4Pity = 0;
-            tier5Pity = 0;
         }
 
         [ContextMenu("Populate Items")]
@@ -148,19 +148,7 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 foreach (var chestItems in allTierLists)
                 {
-                    var newItem = new ChestItem
-                    {
-                        itemName = $"{statType}",
-                        modifiers = new Modifier[]
-                        {
-                            new()
-                            {
-                                statType = (StatType)statType,
-                                modifierValue = 1
-                            }
-                        }
-                    };
-                    
+                    var newItem = ScriptableObject.CreateInstance<ChestItem>();
                     chestItems.chestItems.Add(newItem);
                 }
             }

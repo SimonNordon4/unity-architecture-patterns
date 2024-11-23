@@ -58,9 +58,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
             var numberOfItems = itemsChance switch
             {
-                > 95 => 5,
-                > 85 => 4,
-                > 50 => 3,
+                > 90 => 5,
+                > 75 => 4,
+                > 25 => 3,
                 _ => 2,
             };
             
@@ -74,14 +74,16 @@ namespace UnityArchitecture.SpaghettiPattern
             var chestManager = ChestManager.Instance;
             
             var tierChance = Random.Range(0, 100);
+
+            // We want better items to spawn as time goes on.
+            var enemyProgress = (EnemyManager.Instance.enemyKillProgressCount / 300f) * 5f;
             
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch
             {
-
-                var t when t > 99 - chestManager.tier4Pity => 4,
-                var t when t > 90 - chestManager.tier3Pity => 3,
-                var t when t > 75 => 2,
+                var t when t > 99 - chestManager.tier4Pity - enemyProgress => 4,
+                var t when t > 90 - chestManager.tier3Pity - enemyProgress => 3,
+                var t when t > 75 - enemyProgress => 2,
                 _ => 1,
             };
 

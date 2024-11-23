@@ -35083,6 +35083,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8809588604056416271}
     - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8, type: 3}
+      propertyPath: shadowObject
+      value: 
+      objectReference: {fileID: 4199561640605580931}
+    - target: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8, type: 3}
       propertyPath: moveBehaviour
       value: 1
       objectReference: {fileID: 0}
@@ -35102,5 +35106,10 @@ PrefabInstance:
 --- !u!4 &346315608537664701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5683981801514615846, guid: 0421abe8bebd29945b94d898aa9df9f8, type: 3}
+  m_PrefabInstance: {fileID: 5345723706312214683}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4199561640605580931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8099728794123318808, guid: 0421abe8bebd29945b94d898aa9df9f8, type: 3}
   m_PrefabInstance: {fileID: 5345723706312214683}
   m_PrefabAsset: {fileID: 0}

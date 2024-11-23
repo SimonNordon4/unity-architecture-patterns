@@ -35136,12 +35136,13 @@ MonoBehaviour:
   baseHealth: 20
   maxHealth: 20
   currentHealth: 20
-  baseDamage: 5
-  currentDamage: 5
+  baseDamage: 2
+  currentDamage: 2
   damageCooldown: 0.2
   spawnEffect: {fileID: 5299916473067181458}
   deathEffect: {fileID: 4926775300955829037}
   meshObject: {fileID: 7592844116621182407}
+  shadowObject: {fileID: 6571977595746549366}
   isSpawning: 1
   spawnTime: 1
   isBoss: 0
@@ -35171,6 +35172,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6571977595746549366 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3697119956580139772, guid: 1c95ab97b703a5a4ea03366bf8725f5e, type: 3}
+  m_PrefabInstance: {fileID: 7528494441611132042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6698416215983334373 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3787276329848463215, guid: 1c95ab97b703a5a4ea03366bf8725f5e, type: 3}

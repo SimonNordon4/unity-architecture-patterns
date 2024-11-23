@@ -36,6 +36,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     deathEffect.Play();
                     spawnEffect.Stop();
                     meshObject.SetActive(true);
+                    shadowObject.SetActive(true);
                     if (GameManager.Instance.showEnemyHealthBars)
                     {
                         healthBarUI.SetActive(true);

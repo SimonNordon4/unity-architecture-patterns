@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
@@ -31,7 +29,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public Stat range = new(5);
         public Stat firerate = new(5);
         public Stat knockback = new(1);
-        public Stat pierce = new(0);
+        public Stat pierce = new(1);
 
         public readonly Dictionary<StatType, Stat> Stats = new();
 
@@ -105,6 +103,14 @@ namespace UnityArchitecture.SpaghettiPattern
             firerate.Reset();
             knockback.Reset();
             pierce.Reset();
+            
+            // make player a little stronger.
+            firerate.AddModifier(new Modifier
+            {
+                statType = StatType.MaxHealth,
+                modifierValue = 25,
+                isFlatPercentage = false
+            });
 
             playerCurrentHealth = playerMaxHealth.value;
         }
@@ -272,7 +278,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var projectile = projectileGo.GetComponent<Projectile>();
             projectile.damage = Mathf.RoundToInt(damage.value);
             projectile.knockBackIntensity = knockback.value;
-            projectile.pierceCount = Mathf.RoundToInt(pierce.value / 100);
+            projectile.pierceCount = pierce.value / 100;
             projectile.critChance = critChance.value;
             _timeSinceLastFire = 0.0f;
         }
@@ -308,7 +314,7 @@ namespace UnityArchitecture.SpaghettiPattern
             projectileGo.transform.forward = shootDirection;
             projectile.damage = Mathf.RoundToInt(damage.value);
             projectile.knockBackIntensity = knockback.value;
-            projectile.pierceCount = Mathf.RoundToInt(pierce.value / 100);
+            projectile.pierceCount = Mathf.FloorToInt(pierce.value - 1);
             projectile.critChance = critChance.value;
             _timeSinceLastFire = 0.0f;
         }
@@ -351,7 +357,6 @@ namespace UnityArchitecture.SpaghettiPattern
             }
 
             var armorMitigation = armor.value / (armor.value + 100f);
-            
 
             damageAmount = Mathf.RoundToInt(damageAmount - armorMitigation);
             // We should never be invincible imo. hard cap to 1.
@@ -376,9 +381,18 @@ namespace UnityArchitecture.SpaghettiPattern
                 playerCurrentHealth = 0;
 
                 AudioManager.Instance.PlaySound(deathSound);
-                GameManager.Instance.LoseGame();
+                StartCoroutine(WaitAndLoseGame());
             }
         }
+
+        private IEnumerator WaitAndLoseGame()
+        {
+            yield return new WaitForSeconds(1f);
+            GameManager.Instance.LoseGame();
+        }
+
+        
+        
 
         private IEnumerator ShowDodgeText()
         {

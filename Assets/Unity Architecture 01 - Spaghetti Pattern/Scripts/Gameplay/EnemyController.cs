@@ -54,6 +54,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public ParticleSystem spawnEffect;
         public ParticleSystem deathEffect;
         public GameObject meshObject;
+        public GameObject shadowObject;
         
         [Header("Stats")]
         public bool isSpawning = true;
@@ -78,6 +79,7 @@ namespace UnityArchitecture.SpaghettiPattern
             _radius = transform.localScale.x;
             randomPosition = new Vector3(Random.Range(GameManager.Instance.levelBounds.x * -1, GameManager.Instance.levelBounds.x), 0, Random.Range(GameManager.Instance.levelBounds.y * -1, GameManager.Instance.levelBounds.y));
             meshObject.SetActive(false);
+            shadowObject.SetActive(false);
             spawnEffect.Play();
         }
 
@@ -95,6 +97,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     deathEffect.Play();
                     spawnEffect.Stop();
                     meshObject.SetActive(true);
+                    shadowObject.SetActive(true);
                     if (GameManager.Instance.showEnemyHealthBars)
                     {
                         healthBarUI.SetActive(true);

@@ -60,7 +60,6 @@ namespace UnityArchitecture.SpaghettiPattern
                 }
                 
                 _instance = this;
-                StartNewGame();
             }
             else
             {
@@ -79,7 +78,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Start()
         {
-
+            // If the scene is the game scene, this should become the new GameManager.
+            if (SceneManager.GetActiveScene().buildIndex == gameScene)
+            {
+                Debug.Log("Game Scene detected, starting Game...");
+                StartNewGame();
+            }
         }
 
         private void Update()
@@ -208,7 +212,6 @@ namespace UnityArchitecture.SpaghettiPattern
     public void LoadGame() 
     {
         SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
-        StartNewGame();
     }
 
     public void LoadGameWon()
@@ -227,6 +230,7 @@ namespace UnityArchitecture.SpaghettiPattern
     {
         if (!SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded)
         {
+            Debug.Log("Loading Environment");
             SceneManager.LoadScene(dungeonScene, LoadSceneMode.Additive);
         }
     }

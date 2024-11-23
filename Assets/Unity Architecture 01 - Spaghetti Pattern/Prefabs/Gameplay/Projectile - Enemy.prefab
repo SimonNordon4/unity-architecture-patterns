@@ -100,8 +100,11 @@ MonoBehaviour:
   projectileLifetime: 15
   knockBackIntensity: 0
   pierceCount: 1
+  critChance: 0
+  critDamage: 1.5
   canAttackPlayer: 1
   canAttackEnemy: 0
+  projectileSize: 1
   hitEffect: {fileID: 0}
 --- !u!1 &907859431583672324
 GameObject:
@@ -9937,7 +9940,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3160393026085202967}

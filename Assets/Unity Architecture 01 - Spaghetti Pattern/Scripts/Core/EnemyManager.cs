@@ -284,11 +284,11 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 activeBosses.Remove(boss);
             }
-            
-            Destroy(boss.gameObject);
 
             if (activeBosses.Count == 0)
             {
+                ChestManager.Instance.SpawnBossChest(boss.transform.position);
+                
                 enemyKillProgressCount++;
                 progressPaused = false;
 
@@ -297,6 +297,8 @@ namespace UnityArchitecture.SpaghettiPattern
                     GameManager.Instance.WinGame();
                 }
             }
+            
+            Destroy(boss.gameObject);
         }
 
         /// <summary>
@@ -306,7 +308,7 @@ namespace UnityArchitecture.SpaghettiPattern
         private Vector3 GetRandomSpawnPoint()
         {
             // TODO: Fix this.
-            float spawnRadius = GameManager.Instance.levelBounds.x; // Adjust as needed
+            float spawnRadius = GameManager.Instance.levelBounds.x * 0.5f; // Adjust as needed
             Vector2 randomDirection = Random.insideUnitCircle.normalized;
             Vector3 spawnPos = playerTarget.position + new Vector3(randomDirection.x, 0, randomDirection.y) * spawnRadius;
             return spawnPos;
