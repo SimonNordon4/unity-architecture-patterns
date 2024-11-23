@@ -124,42 +124,42 @@ namespace UnityArchitecture.SpaghettiPattern
                     maxEnemiesAlive = 12;
                     break;
                 case 91:
-                    spawnableEnemies = new List<EnemyController> {fastEnemyPrefab, fastEnemyPrefab, fastEnemyPrefab, bigEnemyPrefab};
-                    healthMultiplier = 4f;
-                    damageMultiplier = 4f;
-                    maxEnemiesAlive = 30;
+                    spawnableEnemies = new List<EnemyController> {fastEnemyPrefab};
+                    healthMultiplier = 2f;
+                    damageMultiplier = 2f;
+                    maxEnemiesAlive = 50;
                     break;
-                case 121:
+                case 221:
                     spawnableEnemies = new List<EnemyController> { wandererEnemyPrefab, normalEnemyPrefab };
                     healthMultiplier = 5f;
                     damageMultiplier = 5f;
                     maxEnemiesAlive = 15;
                     break;
-                case 151:
+                case 251:
                     spawnableEnemies = new List<EnemyController> { wandererEnemyPrefab, wandererRangedEnemyPrefab };
                     healthMultiplier = 6f;
                     damageMultiplier = 6f;
                     maxEnemiesAlive = 18;
                     break;
-                case 181:
+                case 281:
                     spawnableEnemies = new List<EnemyController> { wandererEnemyPrefab, wandererRangedEnemyPrefab, wandererExploderEnemyPrefab };
                     healthMultiplier = 7f;
                     damageMultiplier = 7f;
                     maxEnemiesAlive = 21;
                     break;
-                case 211:
+                case 311:
                     spawnableEnemies = new List<EnemyController> { fastEnemyPrefab, normalEnemyPrefab, chargerEnemyPrefab, rangedEnemyPrefab };
                     healthMultiplier = 8f;
                     damageMultiplier = 8f;
                     maxEnemiesAlive = 24;
                     break;
-                case 241:
+                case 341:
                     spawnableEnemies = new List<EnemyController> { bigEnemyPrefab, normalEnemyPrefab, bigEnemyPrefab, wandererExploderEnemyPrefab };
                     healthMultiplier = 9f;
                     damageMultiplier = 9f;
                     maxEnemiesAlive = 27;
                     break;
-                case 271:
+                case 371:
                     spawnableEnemies = new List<EnemyController> { normalEnemyPrefab, fastEnemyPrefab, bigEnemyPrefab, chargerEnemyPrefab, rangedEnemyPrefab, wandererEnemyPrefab, wandererRangedEnemyPrefab, wandererExploderEnemyPrefab};
                     healthMultiplier = 10f;
                     damageMultiplier = 10f;
@@ -189,6 +189,8 @@ namespace UnityArchitecture.SpaghettiPattern
         public void EnemyDied(EnemyController enemy)
         {
             totalEnemiesKilled++;
+            
+            GameManager.Instance.EnemyDied(enemy);
 
             if (!progressPaused)
             {
@@ -204,25 +206,28 @@ namespace UnityArchitecture.SpaghettiPattern
                         SpawnBoss(fastBossEnemyPrefab);
                         break;
                     case 70:
+                        spawnableEnemies = new List<EnemyController> { rangedEnemyPrefab };
                         SpawnBoss(rangedBossEnemyPrefab);
                         break;
                     case 90:
-                        SpawnBoss(chargerEnemyPrefab);
+                        SpawnBoss(chargerBossEnemyPrefab);
                         break;
                     case 120:
-                        SpawnBoss(normalBossEnemyPrefab);
                         SpawnBoss(fastBossEnemyPrefab);
-                        SpawnBoss(rangedBossEnemyPrefab);
+                        SpawnBoss(fastBossEnemyPrefab);
+                        SpawnBoss(fastBossEnemyPrefab);
                         break;
-                    case 150:
+                    case 250:
+                        spawnableEnemies = new List<EnemyController> { wandererEnemyPrefab };
                         SpawnBoss(rangedBossEnemyPrefab);
                         SpawnBoss(wandererBossEnemyPrefab);
                         break;
-                    case 180:
+                    case 280:
+                        spawnableEnemies = new List<EnemyController> { wandererRangedEnemyPrefab, wandererEnemyPrefab };
                         SpawnBoss(wandererRangedBossEnemyPrefab);
                         SpawnBoss(wandererBossEnemyPrefab);
                         break;
-                    case 210:
+                    case 310:
                         SpawnBoss(wandererRangedBossEnemyPrefab);
                         SpawnBoss(wandererBossEnemyPrefab);
                         SpawnBoss(wandererExploderBossEnemyPrefab);
@@ -231,11 +236,15 @@ namespace UnityArchitecture.SpaghettiPattern
                         SpawnBoss(rangedBossEnemyPrefab);
                         SpawnBoss(rangedBossEnemyPrefab);
                         SpawnBoss(rangedBossEnemyPrefab);
+                        spawnableEnemies = new List<EnemyController> { rangedEnemyPrefab };
                         break;
-                    case 270:
+                    case 370:
+                        spawnableEnemies = new List<EnemyController> { rangedEnemyPrefab, bigEnemyPrefab };
+                        SpawnBoss(bigBossEnemyPrefab);
                         SpawnBoss(bigBossEnemyPrefab);
                         break;
-                    case 300:
+                    case 400:
+                        spawnableEnemies = new List<EnemyController>(0);
                         SpawnBoss(normalBossEnemyPrefab);
                         SpawnBoss(fastBossEnemyPrefab);
                         SpawnBoss(bigBossEnemyPrefab);

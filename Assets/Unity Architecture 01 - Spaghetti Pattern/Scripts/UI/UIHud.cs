@@ -15,7 +15,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void Update()
         {
-            roundTimer.text = $"Round: {GameManager.Instance.roundTime:00}";
+            roundTimer.text = $"{(int)(GameManager.Instance.roundTime / 60):00}:{(int)(GameManager.Instance.roundTime % 60):00}";  
             healthBar.fillAmount = playerController.playerCurrentHealth / (float)playerController.playerMaxHealth.value;
             healthBarText.text = $"{playerController.playerCurrentHealth}/{playerController.playerMaxHealth.value}";
 
@@ -25,7 +25,7 @@ namespace UnityArchitecture.SpaghettiPattern
             }
             else
             {
-                enemiesRemaining.text = $"Enemies Killed: {enemyManager.enemyKillProgressCount}/300";    
+                enemiesRemaining.text = $"Enemies Killed: {enemyManager.enemyKillProgressCount}/400";    
             }
                
         }

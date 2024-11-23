@@ -89,9 +89,11 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void SpawnBossChest(Vector3 position)
         {
-            var chest = Instantiate(chestPrefab, position, Quaternion.identity);
-            chest.minTier = 3;
-            chest.maxTier = 5;
+            var groundPosition = new Vector3(position.x, 0, position.z);
+            var chest = Instantiate(chestPrefab, groundPosition, Quaternion.identity);
+            chest.minTier = 2;
+            chest.maxTier = 4;
+            chest.transform.localScale *= 1.5f; // Make the boss chest 50% larger
             chest.GenerateItems();
         }
 

@@ -44,11 +44,14 @@ namespace UnityArchitecture.SpaghettiPattern
                 var enemyController = other.GetComponent<EnemyController>();
 
                 // Check if critical hit
-                var isCritical = critChance > Random.Range(0f, 100f) ;
+                var critRoll = Random.Range(0f, 100f);
+                var isCritical = critChance > critRoll ;
+                
+                
                 
                 // Critical chance doubles damage.
                 damage *= (isCritical ? 2 : 1);
-
+                Debug.Log($"Is Critical? {isCritical} crit roll {critRoll} crit chance {critChance} damage: {damage}");
                 enemyController.TakeDamage(damage, isCritical);
 
                 // We have to ensure we didn't just kill the enemy.
@@ -56,7 +59,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     enemyController.ApplyKnockBack(transform.forward, knockBackIntensity);
 
                 pierceCount--;
-                if (pierceCount <= 0)
+                if (pierceCount < 0)
                     Die();
             }
 

@@ -107,7 +107,7 @@ namespace UnityArchitecture.SpaghettiPattern
             // make player a little stronger.
             firerate.AddModifier(new Modifier
             {
-                statType = StatType.MaxHealth,
+                statType = StatType.FireRate,
                 modifierValue = 25,
                 isFlatPercentage = false
             });
@@ -129,8 +129,12 @@ namespace UnityArchitecture.SpaghettiPattern
                 // If it's a max health mod, we need to also increase the current health.
                 if (mod.statType == StatType.MaxHealth)
                 {
-                    var newHealth = Mathf.Clamp(playerCurrentHealth + mod.modifierValue, 1,
-                        playerMaxHealth.value);
+                    // We want to change this to equal the additional amount.
+                    var addedHealth = playerMaxHealth.baseValue * mod.modifierValue * 0.01f;
+                    Debug.Log("Added Health: " + addedHealth);
+                    
+                    var newHealth = Mathf.RoundToInt(Mathf.Clamp(addedHealth + playerCurrentHealth, 1,
+                        playerMaxHealth.value));
 
                     playerCurrentHealth = newHealth;
                 } 
@@ -258,10 +262,10 @@ namespace UnityArchitecture.SpaghettiPattern
             {
                 _timeSinceLastHealthRegen += Time.deltaTime;
                 // This is dividing regen by 100 and inverting it. 
-                // HealthRegen = 10 -> 0.1 hp/s
-                // HealthRegen = 100 -> 1 hp/s
-                // HealthRegen = 200 -> 2 hp/s
-                if (_timeSinceLastHealthRegen > 100f / healthRegen.value)
+                // HealthRegen = 10 -> 0.2 hp/s
+                // HealthRegen = 100 -> 2 hp/s
+                // HealthRegen = 200 -> 4 hp/s
+                if (_timeSinceLastHealthRegen > 50f / healthRegen.value)
                 {
                     _timeSinceLastHealthRegen = 0;
                     playerCurrentHealth += 1;
@@ -280,6 +284,7 @@ namespace UnityArchitecture.SpaghettiPattern
             projectile.knockBackIntensity = knockback.value;
             projectile.pierceCount = pierce.value / 100;
             projectile.critChance = critChance.value;
+            Debug.Log("Crit Chance = " + critChance.value);
             _timeSinceLastFire = 0.0f;
         }
 
@@ -314,8 +319,9 @@ namespace UnityArchitecture.SpaghettiPattern
             projectileGo.transform.forward = shootDirection;
             projectile.damage = Mathf.RoundToInt(damage.value);
             projectile.knockBackIntensity = knockback.value;
-            projectile.pierceCount = Mathf.FloorToInt(pierce.value - 1);
+            projectile.pierceCount = pierce.value / 100;
             projectile.critChance = critChance.value;
+            Debug.Log("Crit Chance = " + critChance.value);
             _timeSinceLastFire = 0.0f;
         }
 

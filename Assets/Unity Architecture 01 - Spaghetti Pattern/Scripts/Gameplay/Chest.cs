@@ -76,7 +76,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var tierChance = Random.Range(0, 100);
 
             // We want better items to spawn as time goes on.
-            var enemyProgress = (EnemyManager.Instance.enemyKillProgressCount / 300f) * 5f;
+            var enemyProgress = (EnemyManager.Instance.enemyKillProgressCount / 400f) * 5f;
             
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch
@@ -97,6 +97,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
             else if (itemTier == 3)
                 chestManager.tier3Pity=0;
+            
+            itemTier = Mathf.Clamp(itemTier, minTier, maxTier);
 
             return itemTier;
         }

@@ -178,6 +178,20 @@ namespace UnityArchitecture.SpaghettiPattern
             LoadGameLost();
         }
 
+        public void EnemyDied(EnemyController enemy)
+        {
+            var healthPackChance = (1 - playerController.playerCurrentHealth / playerController.playerMaxHealth.value) * 0.15f;
+            var rollChance = Random.Range(0f, 1f);
+
+            // Max 15% chance to spawn a hp pack.
+            if (rollChance < healthPackChance)
+            {
+                var healthPack = Instantiate(healthPackPrefab);
+                var groundPos = new Vector3(enemy.transform.position.x, 0f, enemy.transform.position.z);
+                healthPack.transform.position = groundPos;
+            }
+        }
+
 
         public void QuitApplication()
         {
