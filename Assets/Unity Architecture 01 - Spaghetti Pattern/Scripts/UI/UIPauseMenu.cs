@@ -1,18 +1,32 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
     public class UIPauseMenu : MonoBehaviour
     {
         public PlayerController playerController;
+        
+        [Header("Buttons")]
+        public Button resume;
+        public Button restart;
+        public Button settings;
+        public Button quit;
+        
+        [Header("Stats")]
         public RectTransform statContainer;
-        public RectTransform itemContainer;
+        
         public TextMeshProUGUI textDescriptionPrefab;
 
         public List<TextMeshProUGUI> textDescriptions = new();
 
+        [Header("Items")]
+        public RectTransform itemContainer;
+        public UIChestItemHoverImage chestItemHoverImagePrefab;
+        public List<UIChestItemHoverImage> chestItemHoverImages = new();
+        
         private void OnEnable()
         {
             foreach (TextMeshProUGUI textDescription in textDescriptions)
@@ -22,6 +36,14 @@ namespace UnityArchitecture.SpaghettiPattern
             
             textDescriptions.Clear();
             PopulateStats();
+
+            foreach (UIChestItemHoverImage chestItemHoverImage in chestItemHoverImages)
+            {
+                Destroy(chestItemHoverImage.gameObject);
+            }
+            chestItemHoverImages.Clear();
+            
+            PopulateItems();
         }
 
 
@@ -71,6 +93,31 @@ namespace UnityArchitecture.SpaghettiPattern
             textDescriptions.Add(rangeText);
             textDescriptions.Add(knockbackText);
             textDescriptions.Add(pierceText);
+        }
+
+        public void PopulateItems()
+        {
+            var currentItems = playerController.currentlyHeldItems;
+            var itemCounts = new Dictionary<ChestItem, int>();
+
+            foreach (var item in currentItems)
+            {
+                if (itemCounts.ContainsKey(item))
+                {
+                    itemCounts[item]++;
+                }
+                else
+                {
+                    itemCounts[item] = 1;
+                }
+            }
+
+            foreach (var kvp in itemCounts)
+            {
+                var hoverImage = Instantiate(chestItemHoverImagePrefab, itemContainer);
+                hoverImage.Initialize(kvp.Key, kvp.Value);
+                chestItemHoverImages.Add(hoverImage);
+            }
         }
     }
 }
