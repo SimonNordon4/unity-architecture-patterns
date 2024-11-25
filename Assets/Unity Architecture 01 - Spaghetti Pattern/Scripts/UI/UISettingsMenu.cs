@@ -14,6 +14,8 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public TextMeshProUGUI musicText;
         public TextMeshProUGUI actionText;
+        
+        public Button backButton;
 
         private void OnEnable()
         {
@@ -24,20 +26,51 @@ namespace UnityArchitecture.SpaghettiPattern
             actionSlider.value = GameManager.Instance.sfxVolume;
             musicText.text = $"{GameManager.Instance.musicVolume * 100f:F0}%";
             actionText.text = $"{GameManager.Instance.sfxVolume * 100f:F0}%";
+            
+            backButton.onClick.AddListener(GameManager.Instance.HideSettingsMenu);
+            healthBarToggle.onValueChanged.AddListener(GameManager.Instance.SetShowEnemyHealthBars);
+            showDamageToggle.onValueChanged.AddListener(GameManager.Instance.ShowDamageNumbers);
+            musicSlider.onValueChanged.AddListener(UpdateMusicVolume);
+            actionSlider.onValueChanged.AddListener(UpdateSoundVolume);
+            GameManager.Instance.LoadSettings();
         }
 
-        public void UpdateMusicVolume()
+
+        private void OnDisable()
+        {
+            backButton.onClick.RemoveAllListeners();
+            healthBarToggle.onValueChanged.RemoveAllListeners();
+            showDamageToggle.onValueChanged.RemoveAllListeners();
+            musicSlider.onValueChanged.RemoveAllListeners();
+            actionSlider.onValueChanged.RemoveAllListeners();
+        }
+
+        public void UpdateMusicVolume(float volume)
         {
             var value = musicSlider.value;
             musicText.text = $"{(value * 100):F0}%";
             GameManager.Instance.SetMusicVolume(value);
+            GameManager.Instance.SaveSettings();
         }
 
-        public void UpdateSoundVolume()
+        public void UpdateSoundVolume(float volume)
         {
             var value = actionSlider.value;
             actionText.text = $"{value * 100:F0}%";
             GameManager.Instance.SetSfxVolume(value);
+            GameManager.Instance.SaveSettings();
+        }
+
+        public void UpdateHealthBars(bool health)
+        {
+            GameManager.Instance.SetShowEnemyHealthBars(health);
+            GameManager.Instance.SaveSettings();
+        }
+
+        public void UpdateDamageNumbers(bool damage)
+        {
+            GameManager.Instance.ShowDamageNumbers(damage);
+            GameManager.Instance.SaveSettings();
         }
     }
 }

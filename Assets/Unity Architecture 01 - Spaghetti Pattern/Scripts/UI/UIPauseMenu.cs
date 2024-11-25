@@ -27,6 +27,8 @@ namespace UnityArchitecture.SpaghettiPattern
         public UIChestItemHoverImage chestItemHoverImagePrefab;
         public List<UIChestItemHoverImage> chestItemHoverImages = new();
         
+        
+        
         private void OnEnable()
         {
             foreach (TextMeshProUGUI textDescription in textDescriptions)
@@ -44,6 +46,19 @@ namespace UnityArchitecture.SpaghettiPattern
             chestItemHoverImages.Clear();
             
             PopulateItems();
+            
+            resume.onClick.AddListener(GameManager.Instance.TogglePauseGame);
+            restart.onClick.AddListener(GameManager.Instance.StartNewGame);
+            settings.onClick.AddListener(GameManager.Instance.ShowSettingsMenu);
+            quit.onClick.AddListener(GameManager.Instance.LoadMainMenu);
+        }
+
+        private void OnDisable()
+        {
+            resume.onClick.RemoveAllListeners();
+            restart.onClick.RemoveAllListeners();
+            settings.onClick.RemoveAllListeners();
+            quit.onClick.RemoveAllListeners();
         }
 
 

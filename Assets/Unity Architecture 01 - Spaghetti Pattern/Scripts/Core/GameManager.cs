@@ -39,6 +39,7 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("UI")]
         public GameObject hudMenu;
         public GameObject pauseMenu;
+        public GameObject settingsMenu;
 
         [Header("Settings")]
         public bool showDamageNumbers = true;
@@ -128,6 +129,20 @@ namespace UnityArchitecture.SpaghettiPattern
                 pauseMenu.SetActive(false);
             }
             // Do nothing otherwise.
+        }
+
+        public void ShowSettingsMenu()
+        {
+            settingsMenu.SetActive(true);
+            pauseMenu.SetActive(false);
+            hudMenu.SetActive(false);
+        }
+
+        public void HideSettingsMenu()
+        {
+            settingsMenu.SetActive(false);
+            pauseMenu.SetActive(true);
+            hudMenu.SetActive(false);
         }
 
         public void ResetGame()
