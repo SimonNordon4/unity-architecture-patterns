@@ -98,7 +98,7 @@ namespace UnityArchitecture.SpaghettiPattern
             var source = GetAudioSource();
             source.clip = audioClip;
             source.volume = GameManager.Instance.sfxVolume;
-            source.pitch = 1f;
+            source.pitch = Random.Range(0.8f, 1.2f); // Added random pitch shift
             source.PlayOneShot(source.clip);
         }
 
