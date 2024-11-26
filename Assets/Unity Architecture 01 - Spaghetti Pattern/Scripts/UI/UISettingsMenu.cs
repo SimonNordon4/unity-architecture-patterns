@@ -19,6 +19,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void OnEnable()
         {
+            GameManager.Instance.LoadSettings();
             healthBarToggle.isOn = GameManager.Instance.showEnemyHealthBars;
             showDamageToggle.isOn = GameManager.Instance.showDamageNumbers;
 
@@ -27,18 +28,20 @@ namespace UnityArchitecture.SpaghettiPattern
             musicText.text = $"{GameManager.Instance.musicVolume * 100f:F0}%";
             actionText.text = $"{GameManager.Instance.sfxVolume * 100f:F0}%";
             
-            backButton.onClick.AddListener(GameManager.Instance.HideSettingsMenu);
-            healthBarToggle.onValueChanged.AddListener(GameManager.Instance.SetShowEnemyHealthBars);
-            showDamageToggle.onValueChanged.AddListener(GameManager.Instance.ShowDamageNumbers);
+            if(backButton != null)
+                backButton.onClick.AddListener(GameManager.Instance.HideSettingsMenu);
+            healthBarToggle.onValueChanged.AddListener(UpdateHealthBars);
+            showDamageToggle.onValueChanged.AddListener(UpdateDamageNumbers);
             musicSlider.onValueChanged.AddListener(UpdateMusicVolume);
             actionSlider.onValueChanged.AddListener(UpdateSoundVolume);
-            GameManager.Instance.LoadSettings();
+            
         }
 
 
         private void OnDisable()
         {
-            backButton.onClick.RemoveAllListeners();
+            if(backButton != null)
+                backButton.onClick.RemoveAllListeners();
             healthBarToggle.onValueChanged.RemoveAllListeners();
             showDamageToggle.onValueChanged.RemoveAllListeners();
             musicSlider.onValueChanged.RemoveAllListeners();

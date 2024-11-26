@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 86328
+  controlID: 3669
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -46,10 +46,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 2969
+    x: 2597
     y: 82
-    width: 871
-    height: 813
+    width: 1243
+    height: 812
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 871, y: 490}
+  m_TargetSize: {x: 1243, y: 699}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -82,10 +82,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -435.5
-    m_HBaseRangeMax: 435.5
-    m_VBaseRangeMin: -245
-    m_VBaseRangeMax: 245
+    m_HBaseRangeMin: -621.5
+    m_HBaseRangeMax: 621.5
+    m_VBaseRangeMin: -349.5
+    m_VBaseRangeMax: 349.5
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -103,23 +103,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 871
-      height: 792
+      width: 1243
+      height: 791
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 435.5, y: 396}
+    m_Translation: {x: 621.5, y: 395.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -435.5
-      y: -396
-      width: 871
-      height: 792
+      x: -621.5
+      y: -395.5
+      width: 1243
+      height: 791
     m_MinimalGUI: 1
   m_defaultScale: 1
-  m_LastWindowPixelSize: {x: 871, y: 813}
+  m_LastWindowPixelSize: {x: 1243, y: 812}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 4}
-  - {fileID: 14}
+  - {fileID: 15}
   m_Position:
     serializedVersion: 2
     x: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
-  controlID: 86329
+  controlID: 3670
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -166,18 +166,18 @@ MonoBehaviour:
   m_Children:
   - {fileID: 5}
   - {fileID: 7}
-  - {fileID: 10}
-  - {fileID: 13}
+  - {fileID: 11}
+  - {fileID: 14}
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
     width: 2562
-    height: 839
+    height: 838
   m_MinSize: {x: 400, y: 50}
   m_MaxSize: {x: 32384, y: 8096}
   vertical: 0
-  controlID: 86221
+  controlID: 3596
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -197,7 +197,7 @@ MonoBehaviour:
     x: 0
     y: 0
     width: 417
-    height: 839
+    height: 838
   m_MinSize: {x: 201, y: 226}
   m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 6}
@@ -229,7 +229,7 @@ MonoBehaviour:
     x: 1279
     y: 82
     width: 416
-    height: 813
+    height: 812
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: e2d7f7fff4d7f7ff04d8f7ff0c34f8fff010faff6a6bfbff6674fbff7003fdff52d0fdff6a8effff00fbfffff4ffffffbe810000
+      m_ExpandedIDs: 90beffff1cbfffff52bfffff5cbfffff8abfffff4ac0ffff66c2ffff14c4ffff00fbfffff4ffffff2eb00000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -289,15 +289,16 @@ MonoBehaviour:
     x: 417
     y: 0
     width: 557
-    height: 839
-  m_MinSize: {x: 277, y: 76}
-  m_MaxSize: {x: 4002, y: 4026}
+    height: 838
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
   - {fileID: 9}
+  - {fileID: 10}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -322,7 +323,7 @@ MonoBehaviour:
     x: 1696
     y: 82
     width: 555
-    height: 813
+    height: 812
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -391,6 +392,70 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 13854, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MinSize: {x: 310, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_TitleContent:
+    m_Text: Project Settings
+    m_Image: {fileID: -5712115415447495865, guid: 0000000000000000d000000000000000, type: 0}
+    m_Tooltip: 
+    m_TextWithWhitespace: "Project Settings\u200B"
+  m_Pos:
+    serializedVersion: 2
+    x: 1696
+    y: 82
+    width: 555
+    height: 812
+  m_SerializedDataModeController:
+    m_DataMode: 0
+    m_PreferredDataMode: 0
+    m_SupportedDataModes: 
+    isAutomatic: 1
+  m_ViewDataDictionary: {fileID: 0}
+  m_OverlayCanvas:
+    m_LastAppliedPresetName: Default
+    m_SaveData: []
+    m_ContainerData: []
+    m_OverlaysVisible: 1
+  m_PosLeft: {x: 0, y: 0}
+  m_PosRight: {x: 0, y: 0}
+  m_Scope: 1
+  m_SplitterFlex: 0.2
+  m_SearchText: 
+  m_TreeViewState:
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 23e57dba
+    m_LastClickedID: -1166154461
+    m_ExpandedIDs: 00000000e594f01ac53aba5a
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: 
+      m_OriginalName: 
+      m_EditFieldRect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      m_UserData: 0
+      m_IsWaitingForDelay: 0
+      m_IsRenaming: 0
+      m_OriginalEventType: 11
+      m_IsRenamingFilename: 0
+      m_TrimLeadingAndTrailingWhitespace: 0
+      m_ClientGUIView: {fileID: 0}
+    m_SearchString: 
+--- !u!114 &11
+MonoBehaviour:
+  m_ObjectHideFlags: 52
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: SceneView
@@ -400,17 +465,17 @@ MonoBehaviour:
     serializedVersion: 2
     x: 974
     y: 0
-    width: 716
-    height: 839
+    width: 344
+    height: 838
   m_MinSize: {x: 202, y: 226}
   m_MaxSize: {x: 4002, y: 4026}
-  m_ActualView: {fileID: 11}
+  m_ActualView: {fileID: 12}
   m_Panes:
-  - {fileID: 11}
   - {fileID: 12}
+  - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &11
+--- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -433,8 +498,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 2253
     y: 82
-    width: 714
-    height: 813
+    width: 342
+    height: 812
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1031,9 +1096,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 1.8628372, y: 3.1579847, z: -0.042360544}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 1.8628372, y: 3.1579847, z: -0.042360544}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1083,9 +1148,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0.33174503, y: -0.43297026, z: 0.175252, w: 0.81961507}
   m_Size:
-    m_Target: 0.58499706
+    m_Target: 10
     speed: 2
-    m_Value: 0.58499706
+    m_Value: 10
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1106,7 +1171,7 @@ MonoBehaviour:
   m_LastSceneViewRotation: {x: 0.060552, y: 0.9388, z: -0.25710338, w: 0.22110245}
   m_LastSceneViewOrtho: 0
   m_Viewpoint:
-    m_SceneView: {fileID: 11}
+    m_SceneView: {fileID: 12}
     m_CameraOverscanSettings:
       m_Opacity: 50
       m_Scale: 1
@@ -1116,7 +1181,7 @@ MonoBehaviour:
   m_LastLockedObject: {fileID: 0}
   m_LastDebugDrawMode: 35
   m_ViewIsLockedToObject: 0
---- !u!114 &12
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1188,7 +1253,7 @@ MonoBehaviour:
   m_CurrentEditor: 0
   m_LayerEditor:
     m_SelectedLayerIndex: 0
---- !u!114 &13
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1203,18 +1268,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1690
+    x: 1318
     y: 0
-    width: 872
-    height: 839
-  m_MinSize: {x: 201, y: 226}
-  m_MaxSize: {x: 4001, y: 4026}
+    width: 1244
+    height: 838
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &14
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1227,21 +1292,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Children:
-  - {fileID: 15}
-  - {fileID: 17}
-  - {fileID: 20}
+  - {fileID: 16}
+  - {fileID: 18}
+  - {fileID: 21}
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 839
+    y: 838
     width: 2562
-    height: 455
+    height: 456
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 86330
+  controlID: 3671
   draggingID: 0
---- !u!114 &15
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1258,16 +1323,16 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1255
-    height: 455
+    width: 1000
+    height: 456
   m_MinSize: {x: 231, y: 276}
   m_MaxSize: {x: 10001, y: 10026}
-  m_ActualView: {fileID: 16}
+  m_ActualView: {fileID: 17}
   m_Panes:
-  - {fileID: 16}
+  - {fileID: 17}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &16
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1289,9 +1354,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 1279
-    y: 921
-    width: 1254
-    height: 429
+    y: 920
+    width: 999
+    height: 430
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1314,7 +1379,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Unity Architecture 01 - Spaghetti Pattern/ScriptableObjects
+    - Assets/Unity Architecture 01 - Spaghetti Pattern/Scripts/UI
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1324,16 +1389,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Unity Architecture 01 - Spaghetti Pattern/ScriptableObjects
+  - Assets/Unity Architecture 01 - Spaghetti Pattern/Scripts/UI
   m_LastFoldersGridSize: 16
   m_LastProjectPath: E:\repos\unity-architecture-patterns
   m_LockTracker:
-    m_IsLocked: 1
+    m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 423}
-    m_SelectedIDs: 78960000
-    m_LastClickedID: 38520
-    m_ExpandedIDs: 000000008c9400008e94000090940000929400009494000096940000989400009a9400009c9400009e940000a0940000a2940000a4940000a6940000a8940000aa940000ac940000ae9400006a95000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 508}
+    m_SelectedIDs: c4960000
+    m_LastClickedID: 38596
+    m_ExpandedIDs: 00000000be950000c0950000c2950000c4950000c6950000c8950000ca950000cc950000ce950000d0950000d2950000d4950000d6950000d8950000da950000dc950000de950000e09500009c96000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1350,7 +1415,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 15}
+      m_ClientGUIView: {fileID: 16}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -1362,7 +1427,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c9400008e94000090940000929400009494000096940000989400009a9400009c9400009e940000a0940000a2940000a4940000a6940000a8940000aa940000ac940000ae94000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000be950000c0950000c2950000c4950000c6950000c8950000ca950000cc950000ce950000d0950000d2950000d4950000d6950000d8950000da950000dc950000de950000e095000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1390,7 +1455,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000044540000aab80200a02801004e2e010012310100222d0100ee2f01008e2f0100e62c0100c41301001a720100d26cffffea8d000096a00000c28e00009caa00008a3e010088490200f6810000a88100009095000066810000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1408,7 +1473,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 15}
+      m_ClientGUIView: {fileID: 16}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -1416,11 +1481,11 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 114}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 16
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
---- !u!114 &17
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1435,19 +1500,19 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1255
+    x: 1000
     y: 0
-    width: 840
-    height: 455
+    width: 1095
+    height: 456
   m_MinSize: {x: 102, y: 126}
   m_MaxSize: {x: 4002, y: 4026}
-  m_ActualView: {fileID: 18}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 18}
   - {fileID: 19}
+  - {fileID: 20}
   m_Selected: 0
   m_LastSelected: 1
---- !u!114 &18
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1468,10 +1533,10 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 2534
-    y: 921
-    width: 838
-    height: 429
+    x: 2279
+    y: 920
+    width: 1093
+    height: 430
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1483,7 +1548,7 @@ MonoBehaviour:
     m_SaveData: []
     m_ContainerData: []
     m_OverlaysVisible: 1
---- !u!114 &19
+--- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1524,1736 +1589,15 @@ MonoBehaviour:
   logPanelAutoScroll: 1
   currentFrame: 31664
   logs:
-    lastGrabbedIndex: 0
-    lastGrabbedCount: 1
+    lastGrabbedIndex: -1
+    lastGrabbedCount: 0
     proEntries: []
-    newEntries:
-    - logType: 2
-      ignore: 0
-      processed: 1
-      tempFilterProcessed: 1
-      remoteEndPoint: Local
-      logPanelVisible: 1
-      logPanelIndex: 0
-      logOutputHeight: -1
-      listIndex: 0
-      nativeIndex: 0
-      nativeIdentifier: 0
-      originalUnityConsoleLog: 'The GUID inside ''Assets/Unity Architecture - Shared
-        Assets/UI Testing.unity.meta'' cannot be extracted by the YAML Parser. Attempting
-        to extract it via string matching instead. Please verify the file does not
-        contain unexpected data.
-
-        UnityEditor.AssetDatabase:Refresh ()'
-      originalLog: The GUID inside 'Assets/Unity Architecture - Shared Assets/UI
-        Testing.unity.meta' cannot be extracted by the YAML Parser. Attempting to
-        extract it via string matching instead. Please verify the file does not contain
-        unexpected data.
-      originalStackTrace: '
-
-        UnityEditor.AssetDatabase:Refresh ()
-
-        Packages.Rider.Editor.RiderScriptEditor:SyncIfNeeded
-        (bool) (at ./Library/PackageCache/com.unity.ide.rider/Rider/Editor/RiderScriptEditor.cs:285)
-
-        System.Reflection.MethodBase:Invoke
-        (object,object[])
-
-        JetBrains.Rider.Unity.Editor.RiderPackageInterop:TrySyncIfNeeded
-        (bool)
-
-        JetBrains.Rider.Unity.Editor.RiderPackageInterop:SyncSolution
-        ()
-
-        JetBrains.Rider.Unity.Editor.UnityEditorProtocol/<>c:<AdviseOnRefresh>b__11_0
-        (JetBrains.Lifetimes.Lifetime,JetBrains.Rider.Model.Unity.BackendUnity.RefreshType)
-
-        JetBrains.Rd.Tasks.RdCall`2<JetBrains.Rider.Model.Unity.BackendUnity.RefreshType,
-        JetBrains.Core.Unit>:RunHandler (JetBrains.Rider.Model.Unity.BackendUnity.RefreshType,JetBrains.Lifetimes.Lifetime,object)
-
-        JetBrains.Rd.Tasks.RdCall`2/<>c__DisplayClass24_0<JetBrains.Rider.Model.Unity.BackendUnity.RefreshType,
-        JetBrains.Core.Unit>:<OnWireReceived>b__0 ()
-
-        JetBrains.Rd.Impl.MessageBroker/RdWireableDispatchHelper/<>c__DisplayClass12_0:<DoDispatch>b__0
-        ()
-
-        JetBrains.Rider.Unity.Editor.MainThreadDispatcher:DispatchTasks
-        ()
-
-        UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
-
-'
-      nativeFileName: ./Library/PackageCache/com.unity.ide.rider/Rider/Editor/RiderScriptEditor.cs
-      nativeFileNamePretty: 
-      nativeLineNumber: 285
-      watchName: 
-      logText: The GUID inside 'Assets/Unity Architecture - Shared Assets/UI Testing.unity.meta'
-        cannot be extracted by the YAML Parser. Attempting to extract it via string
-        matching instead. Please verify the file does not contain unexpected data.
-      logTruncatedText: The GUID inside 'Assets/Unity Architecture - Shared Assets/UI
-        Testing.unity.meta' cannot be extracted by the YAML Parser. Attempting to
-        extract it via string matching instead. Please verify the file does not contain
-        unexpected data.
-      logColumnText: 
-      fileName: 
-      className: 
-      namespaceName: 
-      lineCount: 1
-      hasSourceCode: 0
-      timeStamp: 14:32:57
-      timeFrame: -1
-      timeStampDateTimeNow: 
-      instanceID: 0
-      collapsedCount: 0
-      cachedHeight: -1
-      cachedHeightLogWidth: 0
-      stackEntries:
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: AssetDatabase
-        methodName: Refresh
-        namespaceName: UnityEditor
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: AssetDatabase.Refresh()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: ./Library/PackageCache/com.unity.ide.rider/Rider/Editor/RiderScriptEditor.cs
-        fileNameWithoutAssets: ./Library/PackageCache/com.unity.ide.rider/Rider/Editor/RiderScriptEditor.cs
-        fileNameWithoutAssetsPlusLineNumber: ./Library/PackageCache/com.unity.ide.rider/Rider/Editor/RiderScriptEditor.cs:285
-        fileNameWithoutPath: RiderScriptEditor.cs
-        fileNameWithoutPathPlusLineNumber: RiderScriptEditor.cs:285
-        fileNamePretty: RiderScriptEditor
-        instanceID: -1
-        className: RiderScriptEditor
-        methodName: SyncIfNeeded
-        namespaceName: Packages.Rider.Editor
-        lineNumberString: 285
-        charNumber: 0
-        stackLabel: RiderScriptEditor.SyncIfNeeded()
-        stackLabel2: ' at ./Library/PackageCache/com.unity.ide.rider/Rider/Editor/RiderScriptEditor.cs:285'
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: MethodBase
-        methodName: Invoke
-        namespaceName: System.Reflection
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: MethodBase.Invoke()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: RiderPackageInterop
-        methodName: TrySyncIfNeeded
-        namespaceName: JetBrains.Rider.Unity.Editor
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: RiderPackageInterop.TrySyncIfNeeded()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: RiderPackageInterop
-        methodName: SyncSolution
-        namespaceName: JetBrains.Rider.Unity.Editor
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: RiderPackageInterop.SyncSolution()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: UnityEditorProtocol/<>c
-        methodName: <AdviseOnRefresh>b__11_0
-        namespaceName: JetBrains.Rider.Unity.Editor
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: UnityEditorProtocol/<>c.<AdviseOnRefresh>b__11_0()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: JetBrains.Rd.Tasks.RdCall`2<JetBrains.Rider.Model.Unity.BackendUnity.RefreshType,
-          JetBrains.Core.Unit>
-        methodName: RunHandler
-        namespaceName: None
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: JetBrains.Rd.Tasks.RdCall`2<JetBrains.Rider.Model.Unity.BackendUnity.RefreshType,
-          JetBrains.Core.Unit>.RunHandler()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: JetBrains.Rd.Tasks.RdCall`2/<>c__DisplayClass24_0<JetBrains.Rider.Model.Unity.BackendUnity.RefreshType,
-          JetBrains.Core.Unit>
-        methodName: <OnWireReceived>b__0
-        namespaceName: None
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: JetBrains.Rd.Tasks.RdCall`2/<>c__DisplayClass24_0<JetBrains.Rider.Model.Unity.BackendUnity.RefreshType,
-          JetBrains.Core.Unit>.<OnWireReceived>b__0()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: MessageBroker/RdWireableDispatchHelper/<>c__DisplayClass12_0
-        methodName: <DoDispatch>b__0
-        namespaceName: JetBrains.Rd.Impl
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: MessageBroker/RdWireableDispatchHelper/<>c__DisplayClass12_0.<DoDispatch>b__0()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: MainThreadDispatcher
-        methodName: DispatchTasks
-        namespaceName: JetBrains.Rider.Unity.Editor
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: MainThreadDispatcher.DispatchTasks()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      - fileName: None
-        fileNameWithoutAssets: None
-        fileNameWithoutAssetsPlusLineNumber: None
-        fileNameWithoutPath: None
-        fileNameWithoutPathPlusLineNumber: None
-        fileNamePretty: None
-        instanceID: -1
-        className: EditorApplication
-        methodName: Internal_CallUpdateFunctions
-        namespaceName: UnityEditor
-        lineNumberString: 0
-        charNumber: 0
-        stackLabel: EditorApplication.Internal_CallUpdateFunctions()
-        stackLabel2: 
-        stackLabel1Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel1Width: 0
-        stackLabel1Height: 0
-        stackLabel2Content:
-          m_Text: 
-          m_Image: {fileID: 0}
-          m_Tooltip: 
-          m_TextWithWhitespace: 
-        stackLabel2Width: 0
-        stackLabel2Height: 0
-        stackSourceLineHeight: 0
-        sourceCode: []
-        sourceCodeUpdated: 0
-        sourceCodeHighlightIndex: -1
-        showSource: 1
-        keywordTokens:
-        - abstract
-        - add
-        - alias
-        - as
-        - ascending
-        - async
-        - await
-        - base
-        - bool
-        - break
-        - by
-        - byte
-        - case
-        - catch
-        - char
-        - checked
-        - class
-        - const
-        - continue
-        - decimal
-        - default
-        - delegate
-        - descending
-        - do
-        - double
-        - dynamic
-        - else
-        - enum
-        - equals
-        - event
-        - explicit
-        - extern
-        - false
-        - finally
-        - fixed
-        - float
-        - for
-        - foreach
-        - from
-        - get
-        - global
-        - goto
-        - group
-        - if
-        - implicit
-        - in
-        - int
-        - interface
-        - internal
-        - into
-        - is
-        - join
-        - let
-        - lock
-        - long
-        - nameof
-        - namespace
-        - new
-        - null
-        - object
-        - on
-        - operator
-        - orderby
-        - out
-        - override
-        - params
-        - partial
-        - private
-        - protected
-        - public
-        - readonly
-        - ref
-        - remove
-        - return
-        - sbyte
-        - sealed
-        - select
-        - set
-        - short
-        - sizeof
-        - stackalloc
-        - static
-        - string
-        - struct
-        - switch
-        - this
-        - throw
-        - true
-        - try
-        - typeof
-        - uint
-        - ulong
-        - unchecked
-        - unsafe
-        - ushort
-        - using
-        - value
-        - var
-        - virtual
-        - void
-        - volatile
-        - when
-        - where
-        - while
-        - yield
-      ignoredStackEntries: []
-      lastMatchedCount: 0
-      belongsToFilters: []
-      belongsToStandardFilters: []
-      assignedTempFilter:
-        name: 
-        isEnabled: 1
-        collapsed: 0
-        itemGUID: 
-        filterName: 
-        mainColor: {r: 1, g: 1, b: 1, a: 1}
-        isStandardFilter: 0
-        isTempFilter: 0
-        filterOnly: 0
-        useAdvancedColors: 0
-        customTextColor: {r: 1, g: 1, b: 1, a: 1}
-        customBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
-        swallowStandard: 1
-        standardCanSwallow: 0
-        overrideStandardColors: 1
-        overrideStandardIcon: 1
-        collapseIconBackground: 0
-        collapseIconSymbol: 0
-        collapseIconLetter: 0
-        collapseIconTexture: 0
-        useIconBackground: 1
-        useIconSymbol: 0
-        useIconLetter: 0
-        useIconTexture: 0
-        filterFormatVersion: -1
-        iconColorize: 0
-        useAndOpForSearchList: 0
-        searchList:
-          list: []
-          selectionList: 0
-          collapsable: 1
-          collapsed: 0
-        iconLetter:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconSymbol:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconBackground:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        iconTexture:
-          name: 
-          isEnabled: 1
-          collapsed: 0
-          itemGUID: 
-          iconType: 1
-          iconType2: 1
-          iconText: A
-          useIconTextFirstLetter: 1
-          useIconLogColor: 1
-          iconColor: {r: 1, g: 1, b: 1, a: 1}
-          iconBuiltInID: BACKGROUNDS_ECPBGROUNDEDSQUARE
-          iconTextureGUID: 
-          useIconShadow: 1
-          iconOffset: {x: 0, y: 0}
-          iconShadowOffset: {x: 0.5, y: 0.5}
-          iconSize: 13
-        showInToolbar: 1
-        hideLabelInToolbar: 0
-        hideWhenNoMatches: 0
+    newEntries: []
     resetCompilerErrorEntries: 1
     compilerErrorEntries: []
     timeFrames: 
     _filteredEntries: []
---- !u!114 &20
+--- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3271,15 +1615,15 @@ MonoBehaviour:
     x: 2095
     y: 0
     width: 467
-    height: 455
+    height: 456
   m_MinSize: {x: 462, y: 456}
   m_MaxSize: {x: 4001, y: 4026}
-  m_ActualView: {fileID: 21}
+  m_ActualView: {fileID: 22}
   m_Panes:
-  - {fileID: 21}
+  - {fileID: 22}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &21
+--- !u!114 &22
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3301,9 +1645,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 3374
-    y: 921
+    y: 920
     width: 466
-    height: 429
+    height: 430
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0

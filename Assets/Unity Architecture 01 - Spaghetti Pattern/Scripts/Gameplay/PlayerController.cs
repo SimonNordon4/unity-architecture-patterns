@@ -117,7 +117,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void AddItem(ChestItem item)
         {
-            Debug.Log("Adding Item");
             currentlyHeldItems.Add(item);
 
             // Add modifiers to the stats.
@@ -321,7 +320,6 @@ namespace UnityArchitecture.SpaghettiPattern
             projectile.knockBackIntensity = knockback.value;
             projectile.pierceCount = pierce.value / 100;
             projectile.critChance = critChance.value;
-            Debug.Log("Crit Chance = " + critChance.value);
             _timeSinceLastFire = 0.0f;
         }
 

@@ -44,7 +44,12 @@ namespace UnityArchitecture.SpaghettiPattern
 
                     // Format stat value.
                     var statValueString = statSign + mod.modifierValue + "%";
-          
+
+                    // Armor is not percentage
+                    if (mod.statType == StatType.Armor)
+                    {
+                        statValueString = statSign + mod.modifierValue;
+                    }
 
                     // Format stat type name.
                     var statTypeString = mod.statType.ToString();

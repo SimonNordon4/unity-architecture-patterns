@@ -82,7 +82,6 @@ namespace UnityArchitecture.SpaghettiPattern
             // If the scene is the game scene, this should become the new GameManager.
             if (SceneManager.GetActiveScene().buildIndex == gameScene)
             {
-                Debug.Log("Game Scene detected, starting Game...");
                 StartNewGame();
             }
         }
@@ -119,6 +118,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 isPaused = true;
                 pauseMenu.SetActive(true);
                 hudMenu.SetActive(false);
+                Time.timeScale = 0f;
             }
             // If the game is not active and we are paused.
             else if (!isGameActive && isPaused)
@@ -127,6 +127,7 @@ namespace UnityArchitecture.SpaghettiPattern
                 isPaused = false;
                 hudMenu.SetActive(true);
                 pauseMenu.SetActive(false);
+                Time.timeScale = 1f;
             }
             // Do nothing otherwise.
         }
@@ -210,7 +211,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void QuitApplication()
         {
-            Debug.Log("Quit Application");
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
 #endif
@@ -306,12 +306,19 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void SaveSettings()
         {
-            // TODO
+            PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+            PlayerPrefs.SetFloat("SfxVolume", sfxVolume);
+            PlayerPrefs.SetInt("ShowEnemyHealthBars", showEnemyHealthBars ? 1 : 0);
+            PlayerPrefs.SetInt("ShowDamageNumbers", showDamageNumbers ? 1 : 0);
+            PlayerPrefs.Save();
         }
 
         public void LoadSettings()
         {
-            // TODO
+            musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
+            sfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
+            showEnemyHealthBars = PlayerPrefs.GetInt("ShowEnemyHealthBars", 1) == 1;
+            showDamageNumbers = PlayerPrefs.GetInt("ShowDamageNumbers", 1) == 1;
         }
 #endregion
 

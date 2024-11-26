@@ -51,7 +51,6 @@ namespace UnityArchitecture.SpaghettiPattern
                 
                 // Critical chance doubles damage.
                 damage *= (isCritical ? 2 : 1);
-                Debug.Log($"Is Critical? {isCritical} crit roll {critRoll} crit chance {critChance} damage: {damage}");
                 enemyController.TakeDamage(damage, isCritical);
 
                 // We have to ensure we didn't just kill the enemy.

@@ -48,7 +48,9 @@ namespace UnityArchitecture.SpaghettiPattern
             PopulateItems();
             
             resume.onClick.AddListener(GameManager.Instance.TogglePauseGame);
-            restart.onClick.AddListener(GameManager.Instance.StartNewGame);
+            
+            restart.onClick.AddListener(ResetClicked);
+            
             settings.onClick.AddListener(GameManager.Instance.ShowSettingsMenu);
             quit.onClick.AddListener(GameManager.Instance.LoadMainMenu);
         }
@@ -61,6 +63,12 @@ namespace UnityArchitecture.SpaghettiPattern
             quit.onClick.RemoveAllListeners();
         }
 
+        public void ResetClicked()
+        {
+            GameManager.Instance.ResetGame();
+            GameManager.Instance.StartNewGame();
+            gameObject.SetActive(false);
+        }
 
         private void PopulateStats()
         {
