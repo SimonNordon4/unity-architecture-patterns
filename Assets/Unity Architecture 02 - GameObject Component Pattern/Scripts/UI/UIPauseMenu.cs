@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,7 +53,7 @@ namespace UnityArchitecture.SpaghettiPattern
             restart.onClick.AddListener(ResetClicked);
             
             settings.onClick.AddListener(GameManager.Instance.ShowSettingsMenu);
-            quit.onClick.AddListener(GameManager.Instance.LoadMainMenu);
+            quit.onClick.AddListener(SceneLoader.Instance.LoadMainMenu);
         }
 
         private void OnDisable()

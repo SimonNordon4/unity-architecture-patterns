@@ -1,3 +1,4 @@
+using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +36,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void OnPlayPressed()
         {
-            GameManager.Instance.LoadGame();
+            SceneLoader.Instance.LoadGame();
             UISettingsMenu.SetActive(false);
         }
 

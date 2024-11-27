@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -29,12 +30,7 @@ namespace UnityArchitecture.SpaghettiPattern
         public bool isGameActive = false;
         public Vector2 levelBounds = new(25f, 25f);
 
-        [Header("Scenes")]
-        public int mainMenuScene = 0;
-        public int gameScene = 1;
-        public int gameWon = 2;
-        public int gameLost = 3;
-        public int dungeonScene = 4;
+
 
         [Header("UI")]
         public GameObject hudMenu;
@@ -53,7 +49,7 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Awake()
         {
             // If the scene is the game scene, this should become the new GameManager.
-            if (SceneManager.GetActiveScene().buildIndex == gameScene)
+            if (SceneLoader.Instance.CurrentMainScene == SceneLoader.Instance.gameScene)
             {
                 if (_instance != null)
                 {
@@ -80,7 +76,7 @@ namespace UnityArchitecture.SpaghettiPattern
         private void Start()
         {
             // If the scene is the game scene, this should become the new GameManager.
-            if (SceneManager.GetActiveScene().buildIndex == gameScene)
+            if (SceneLoader.Instance.CurrentMainScene == SceneLoader.Instance.gameScene)
             {
                 StartNewGame();
             }
@@ -100,7 +96,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void StartNewGame()
         {
-            LoadEnvironment();
+            SceneLoader.Instance.LoadEnvironment();
             isGameActive = true;
             roundTime = 0f;
             playerController.playerCurrentHealth = (int)playerController.playerMaxHealth.value;
@@ -183,7 +179,7 @@ namespace UnityArchitecture.SpaghettiPattern
 
             roundTime = 0f;
             AudioManager.Instance.StopMusic();
-            LoadGameWon();
+            SceneLoader.Instance.LoadGameWon();
         }
 
         public void LoseGame()
@@ -191,7 +187,7 @@ namespace UnityArchitecture.SpaghettiPattern
             Console.Log("GameManager.LoseGame()", LogFilter.Game, this);
             AudioManager.Instance.StopMusic();
             isGameActive = false;
-            LoadGameLost();
+            SceneLoader.Instance.LoadGameLost();
         }
 
         public void EnemyDied(EnemyController enemy)
@@ -230,48 +226,6 @@ namespace UnityArchitecture.SpaghettiPattern
         }
 
 #endregion
-
-#region Scene Managment
-    public void LoadMainMenu()
-    {
-        UnloadEnvironment();
-        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
-    }
-
-    public void LoadGame() 
-    {
-        SceneManager.LoadScene(gameScene, LoadSceneMode.Single);
-    }
-
-    public void LoadGameWon()
-    {
-        UnloadEnvironment();
-        SceneManager.LoadScene(gameWon, LoadSceneMode.Single);
-    }
-
-    public void LoadGameLost()
-    {
-        UnloadEnvironment();
-        SceneManager.LoadScene(gameLost, LoadSceneMode.Single);
-    }
-
-    public void LoadEnvironment()
-    {
-        if (!SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded)
-        {
-            Debug.Log("Loading Environment");
-            SceneManager.LoadScene(dungeonScene, LoadSceneMode.Additive);
-        }
-    }
-
-    private void UnloadEnvironment()
-    {
-        if (SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded)
-        {
-            SceneManager.UnloadSceneAsync(dungeonScene);
-        }
-    }
-    #endregion
 
 #region Settings
         public void SetMusicVolume(float volume)

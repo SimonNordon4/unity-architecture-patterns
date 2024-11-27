@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityArchitecture.GameObjectComponentPattern;
 
 namespace UnityArchitecture.SpaghettiPattern
 {
@@ -29,14 +30,14 @@ namespace UnityArchitecture.SpaghettiPattern
 
         public void LoadMainMenu()
         {
-            GameManager.Instance.LoadMainMenu();
+            SceneLoader.Instance.LoadMainMenu();
         }
 
         public void LoadGame()
         {
             Destroy(GameManager.Instance.gameObject);
             Destroy(EnemyManager.Instance.gameObject);
-            GameManager.Instance.LoadGame();
+            SceneLoader.Instance.LoadGame();
         }
     }
 }
