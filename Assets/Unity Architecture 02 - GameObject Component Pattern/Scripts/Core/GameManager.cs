@@ -22,10 +22,9 @@ namespace UnityArchitecture.SpaghettiPattern
         [FormerlySerializedAs("playerManager")] public PlayerController playerController;
 
         [Header("Round")]
-        public float roundTime;
         public bool isPaused = false;
         public bool isGameActive = false;
-        public Vector2 levelBounds = new(25f, 25f);
+        
 
         [Header("UI")]
         public GameObject hudMenu;
@@ -74,11 +73,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void Update()
         {
-            if (isGameActive)
-            {
-                roundTime += Time.deltaTime;
-            }
-
             if (Input.GetKeyDown(KeyCode.F)) TogglePauseGame();
         }
 
@@ -167,7 +161,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
             isGameActive = false;
 
-            roundTime = 0f;
             AudioManager.Instance.StopMusic();
             SceneLoader.Instance.LoadGameWon();
         }

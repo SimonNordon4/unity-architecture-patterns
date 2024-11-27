@@ -394,11 +394,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2058758190}
-  - component: {fileID: 2058758191}
   - component: {fileID: 2058758193}
   - component: {fileID: 2058758192}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Application
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,32 +418,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2058758191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058758189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb60339036ad7e84d9b215de184f3e58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  roundTime: 0
-  isPaused: 0
-  isGameActive: 0
-  levelBounds: {x: 25, y: 25}
-  hudMenu: {fileID: 0}
-  pauseMenu: {fileID: 0}
-  settingsMenu: {fileID: 3423699580671672161}
-  showDamageNumbers: 1
-  showEnemyHealthBars: 1
-  musicVolume: 1
-  sfxVolume: 1
-  healthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175,
-    type: 3}
 --- !u!114 &2058758192
 MonoBehaviour:
   m_ObjectHideFlags: 0
