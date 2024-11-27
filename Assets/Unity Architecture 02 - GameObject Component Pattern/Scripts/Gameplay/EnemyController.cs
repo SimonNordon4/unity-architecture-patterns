@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -98,7 +99,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     spawnEffect.Stop();
                     meshObject.SetActive(true);
                     shadowObject.SetActive(true);
-                    if (GameManager.Instance.showEnemyHealthBars)
+                    if (UserSettings.Instance.ShowEnemyHealthBars)
                     {
                         healthBarUI.SetActive(true);
                     }

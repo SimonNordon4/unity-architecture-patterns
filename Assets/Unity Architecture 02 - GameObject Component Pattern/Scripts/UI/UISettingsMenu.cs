@@ -1,4 +1,5 @@
 using TMPro;
+using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,8 @@ namespace UnityArchitecture.SpaghettiPattern
 {
     public class UISettingsMenu : MonoBehaviour
     {
+
+
         public Toggle healthBarToggle;
         public Toggle showDamageToggle;
 
@@ -19,14 +22,14 @@ namespace UnityArchitecture.SpaghettiPattern
 
         private void OnEnable()
         {
-            GameManager.Instance.LoadSettings();
-            healthBarToggle.isOn = GameManager.Instance.showEnemyHealthBars;
-            showDamageToggle.isOn = GameManager.Instance.showDamageNumbers;
+            UserSettings.Instance.LoadSettings();
+            healthBarToggle.isOn = UserSettings.Instance.ShowEnemyHealthBars;
+            showDamageToggle.isOn = UserSettings.Instance.ShowDamageNumbers;
 
-            musicSlider.value = GameManager.Instance.musicVolume;
-            actionSlider.value = GameManager.Instance.sfxVolume;
-            musicText.text = $"{GameManager.Instance.musicVolume * 100f:F0}%";
-            actionText.text = $"{GameManager.Instance.sfxVolume * 100f:F0}%";
+            musicSlider.value = UserSettings.Instance.MusicVolume;
+            actionSlider.value = UserSettings.Instance.SfxVolume;
+            musicText.text = $"{UserSettings.Instance.MusicVolume * 100f:F0}%";
+            actionText.text = $"{UserSettings.Instance.SfxVolume * 100f:F0}%";
             
             if(backButton != null)
                 backButton.onClick.AddListener(GameManager.Instance.HideSettingsMenu);
@@ -51,29 +54,25 @@ namespace UnityArchitecture.SpaghettiPattern
         public void UpdateMusicVolume(float volume)
         {
             var value = musicSlider.value;
-            musicText.text = $"{(value * 100):F0}%";
-            GameManager.Instance.SetMusicVolume(value);
-            GameManager.Instance.SaveSettings();
+            musicText.text = $"{value * 100:F0}%";
+            UserSettings.Instance.SetMusicVolume(value);
         }
 
         public void UpdateSoundVolume(float volume)
         {
             var value = actionSlider.value;
             actionText.text = $"{value * 100:F0}%";
-            GameManager.Instance.SetSfxVolume(value);
-            GameManager.Instance.SaveSettings();
+            UserSettings.Instance.SetSfxVolume(value);
         }
 
         public void UpdateHealthBars(bool health)
         {
-            GameManager.Instance.SetShowEnemyHealthBars(health);
-            GameManager.Instance.SaveSettings();
+            UserSettings.Instance.SetShowEnemyHealthBars(health);
         }
 
         public void UpdateDamageNumbers(bool damage)
         {
-            GameManager.Instance.ShowDamageNumbers(damage);
-            GameManager.Instance.SaveSettings();
+            UserSettings.Instance.SetShowDamageNumbers(damage);
         }
     }
 }

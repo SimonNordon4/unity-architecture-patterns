@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 
 namespace UnityArchitecture.SpaghettiPattern
@@ -43,7 +44,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     spawnEffect.Stop();
                     meshObject.SetActive(true);
                     shadowObject.SetActive(true);
-                    if (GameManager.Instance.showEnemyHealthBars)
+                    if (UserSettings.Instance.ShowEnemyHealthBars)
                     {
                         healthBarUI.SetActive(true);
                     }

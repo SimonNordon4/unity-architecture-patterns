@@ -3,6 +3,9 @@ using UnityEngine.SceneManagement;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
+    /// <summary>
+    /// Manages scene loading and unloading in the game, ensuring a singleton instance for persistent access.
+    /// </summary>
     public class SceneLoader : MonoBehaviour
     {
         private static SceneLoader _instance;

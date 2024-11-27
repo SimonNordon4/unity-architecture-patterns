@@ -1,9 +1,6 @@
-﻿using System;
-using UnityArchitecture.GameObjectComponentPattern;
+﻿using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
-using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 namespace UnityArchitecture.SpaghettiPattern
@@ -30,18 +27,11 @@ namespace UnityArchitecture.SpaghettiPattern
         public bool isGameActive = false;
         public Vector2 levelBounds = new(25f, 25f);
 
-
-
         [Header("UI")]
         public GameObject hudMenu;
         public GameObject pauseMenu;
         public GameObject settingsMenu;
 
-        [Header("Settings")]
-        public bool showDamageNumbers = true;
-        public bool showEnemyHealthBars = true;
-        public float musicVolume = 1f;
-        public float sfxVolume = 1f;
 
         [Header("Health Packs")] 
         public GameObject healthPackPrefab;
@@ -227,54 +217,6 @@ namespace UnityArchitecture.SpaghettiPattern
 
 #endregion
 
-#region Settings
-        public void SetMusicVolume(float volume)
-        {
-            musicVolume = volume;
-            SaveSettings();
-        }
-
-        public void SetSfxVolume(float volume)
-        {
-            sfxVolume = volume;
-            SaveSettings();
-        }
-
-        public void SetShowEnemyHealthBars(bool show)
-        {
-            showEnemyHealthBars = show;
-            // get every enemy in the scene
-            var enemies = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
-            foreach (var enemy in enemies)
-            {
-                enemy.SetHealthBarVisibility(showEnemyHealthBars);
-            }
-            SaveSettings();
-        }
-
-        public void ShowDamageNumbers(bool show)
-        {
-            showDamageNumbers = show;
-            SaveSettings();
-        }
-
-        public void SaveSettings()
-        {
-            PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-            PlayerPrefs.SetFloat("SfxVolume", sfxVolume);
-            PlayerPrefs.SetInt("ShowEnemyHealthBars", showEnemyHealthBars ? 1 : 0);
-            PlayerPrefs.SetInt("ShowDamageNumbers", showDamageNumbers ? 1 : 0);
-            PlayerPrefs.Save();
-        }
-
-        public void LoadSettings()
-        {
-            musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1.0f);
-            sfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1.0f);
-            showEnemyHealthBars = PlayerPrefs.GetInt("ShowEnemyHealthBars", 1) == 1;
-            showDamageNumbers = PlayerPrefs.GetInt("ShowDamageNumbers", 1) == 1;
-        }
-#endregion
 
     }
 }

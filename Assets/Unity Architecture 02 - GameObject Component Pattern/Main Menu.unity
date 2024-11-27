@@ -395,6 +395,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2058758190}
   - component: {fileID: 2058758191}
+  - component: {fileID: 2058758193}
+  - component: {fileID: 2058758192}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -434,11 +436,6 @@ MonoBehaviour:
   isPaused: 0
   isGameActive: 0
   levelBounds: {x: 25, y: 25}
-  mainMenuScene: 0
-  gameScene: 1
-  gameWon: 2
-  gameLost: 3
-  dungeonScene: 4
   hudMenu: {fileID: 0}
   pauseMenu: {fileID: 0}
   settingsMenu: {fileID: 3423699580671672161}
@@ -448,6 +445,34 @@ MonoBehaviour:
   sfxVolume: 1
   healthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175,
     type: 3}
+--- !u!114 &2058758192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058758189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfb6f3573947dc542b1b357bb88b3ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ShowDamageNumbers>k__BackingField: 1
+  <ShowEnemyHealthBars>k__BackingField: 1
+  <MusicVolume>k__BackingField: 1
+  <SfxVolume>k__BackingField: 1
+--- !u!114 &2058758193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058758189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58d60974f39336c4bae506bd5f46163c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2106149902
 PrefabInstance:
   m_ObjectHideFlags: 0
