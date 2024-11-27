@@ -1,4 +1,3 @@
-using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
@@ -11,7 +10,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         protected Movement movement;
         protected Stat speedStat;
 
-        protected virtual void Awake()
+        protected void Awake()
         {
             movement = GetComponent<Movement>();
             speedStat = GetComponent<Stats>().GetStat(StatType.Speed);

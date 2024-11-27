@@ -791,7 +791,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 293031458}
-  m_Layer: 0
+  - component: {fileID: 293031463}
+  - component: {fileID: 293031462}
+  - component: {fileID: 293031461}
+  - component: {fileID: 293031460}
+  - component: {fileID: 293031459}
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,9 +815,143 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 614786314}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293031459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f96c8b903ba4f2aa02ca746305bba85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &293031460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f8035ab8c1a9a4b8b265721759e3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CanMove>k__BackingField: 1
+  _level: {fileID: 801546268}
+--- !u!114 &293031461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d6c3e5c6c0c4f6285db97c1e0832472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateInterval: 0.2
+--- !u!114 &293031462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c724e25735458e8aa20eef377275dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialTarget: {fileID: 0}
+  <targetLayer>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &293031463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0201c7fc7d734234fb7efe5638c0d6dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <MaxHealth>k__BackingField:
+    <baseValue>k__BackingField: 5
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 5
+  <HealthRegen>k__BackingField:
+    <baseValue>k__BackingField: 0
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 0
+  <Speed>k__BackingField:
+    <baseValue>k__BackingField: 5
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 5
+  <Armor>k__BackingField:
+    <baseValue>k__BackingField: 0
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 0
+  <Dodge>k__BackingField:
+    <baseValue>k__BackingField: 0
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 0
+  <Damage>k__BackingField:
+    <baseValue>k__BackingField: 1
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 1
+  <CritChance>k__BackingField:
+    <baseValue>k__BackingField: 0
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 0
+  <Range>k__BackingField:
+    <baseValue>k__BackingField: 5
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 5
+  <Firerate>k__BackingField:
+    <baseValue>k__BackingField: 5
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 5
+  <KnockBack>k__BackingField:
+    <baseValue>k__BackingField: 1
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 1
+  <Pierce>k__BackingField:
+    <baseValue>k__BackingField: 1
+    minimumValue: 0
+    maximumValue: 2147483647
+    _modifiers: []
+    value: 1
 --- !u!1 &299859322
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,7 +1044,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &460763656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +1059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 963194227}
   targetDirection: {x: 0, y: 0, z: 0}
-  level: {fileID: 0}
+  level: {fileID: 801546268}
   gameManager: {fileID: 801546265}
   enemyManager: {fileID: 644039393}
   playerCurrentHealth: 20
@@ -1768,6 +1907,114 @@ MonoBehaviour:
   musicText: {fileID: 432524527}
   actionText: {fileID: 1939382892}
   backButton: {fileID: 1000118472}
+--- !u!1 &614786313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 614786314}
+  - component: {fileID: 614786317}
+  - component: {fileID: 614786316}
+  - component: {fileID: 614786315}
+  m_Layer: 6
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &614786314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614786313}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 293031458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &614786315
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614786313}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &614786316
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614786313}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &614786317
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614786313}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &644039389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3134,7 +3381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 165cfd0544bec4841bb9666f2dfd3c80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 460763656}
+  combatTarget: {fileID: 293031462}
   gunPivot: {fileID: 76706869}
   rotationSpeed: 10
   gunRotationSpeed: 20

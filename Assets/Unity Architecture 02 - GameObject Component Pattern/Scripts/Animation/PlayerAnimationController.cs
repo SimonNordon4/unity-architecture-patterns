@@ -4,20 +4,24 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class PlayerAnimationController : MonoBehaviour
     {
-        public PlayerController playerController;
+        [SerializeField]
+        private CombatTarget combatTarget;
         private Transform _transformToFollow;
 
-        public Transform gunPivot;
+        [SerializeField]
+        private Transform gunPivot;
 
         private Vector3 offset;
         private Transform _transform;
 
-        public float rotationSpeed = 1f;
-        public float gunRotationSpeed = 1f;
+        [SerializeField]
+        private float rotationSpeed = 1f;
+        [SerializeField]
+        private float gunRotationSpeed = 1f;
         // Start is called before the first frame update
         void Start()
         {
-            _transformToFollow = playerController.transform;
+            _transformToFollow = combatTarget.transform;
             _transform = transform;
             offset = transform.position - _transformToFollow.position;
         }
@@ -26,7 +30,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         void LateUpdate()
         {
             if (!GameManager.Instance.isGameActive) return;
-            var gunRotation = Quaternion.LookRotation(playerController.targetDirection);
+            var gunRotation = Quaternion.LookRotation(combatTarget.TargetDirection);
             gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, gunRotation, Time.deltaTime * gunRotationSpeed);
             _transform.position = _transformToFollow.position + offset;
             _transform.rotation = Quaternion.Lerp(_transform.rotation, _transformToFollow.rotation, Time.deltaTime * rotationSpeed);

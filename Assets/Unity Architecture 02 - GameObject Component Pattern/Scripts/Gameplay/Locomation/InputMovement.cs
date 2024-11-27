@@ -4,39 +4,22 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(Stats))]
-    public class InputMovement : MonoBehaviour
+    public class InputMovement : MoveBase
     {
-        private Movement _movement;
-        private Stats _stats;
-        private Stat _speedStat;
-        private Vector3 _lastDirection;
-
-        private void Awake()
-        {
-            _movement = GetComponent<Movement>();
-            _stats = GetComponent<Stats>();
-        }
-
- 
-
-        private void Start()
-        {
-            _speedStat = _stats.GetStat(StatType.Speed);
-        }
-
         private void Update()
         {
-            float moveHorizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow
-            float moveVertical = Input.GetAxis("Vertical"); // W/S or Up/Down Arrow
+            float moveHorizontal = 0f;
+            float moveVertical = 0f;
+
+            if (Input.GetKey(KeyCode.D)) moveHorizontal += 1f;
+            if (Input.GetKey(KeyCode.A)) moveHorizontal -= 1f;
+            if (Input.GetKey(KeyCode.W)) moveVertical += 1f;
+            if (Input.GetKey(KeyCode.S)) moveVertical -= 1f;
+
             var direction = new Vector3(moveHorizontal, 0, moveVertical).normalized;
             
-            if (direction != _lastDirection)
-            {
-                _lastDirection = direction;
-            }
-
-            _movement.SetVelocity(_lastDirection * _speedStat.value);
-            _movement.SetLookDirection(_lastDirection);
+            movement.SetVelocity(direction * speedStat.value);
+            movement.SetLookDirection(direction);
         }
     }
 }

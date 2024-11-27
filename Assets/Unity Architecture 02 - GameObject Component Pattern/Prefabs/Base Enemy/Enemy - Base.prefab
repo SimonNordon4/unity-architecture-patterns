@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 522022155550848926}
   - component: {fileID: 8976490315571894656}
   - component: {fileID: 5193906183096176197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HCFX_ElementOrb_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4923,7 +4923,7 @@ GameObject:
   - component: {fileID: 2077722484863473963}
   - component: {fileID: 1237176316663220349}
   - component: {fileID: 3520719210267104713}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: floor_energy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9872,7 +9872,7 @@ GameObject:
   - component: {fileID: 6766262348687417059}
   - component: {fileID: 8028989309680012955}
   - component: {fileID: 3878463880167909382}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9981,7 +9981,7 @@ GameObject:
   - component: {fileID: 153443969089409951}
   - component: {fileID: 7047060643550699690}
   - component: {fileID: 7093389414931688757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10083,7 +10083,7 @@ GameObject:
   - component: {fileID: 8400099527742482899}
   - component: {fileID: 1619590815701662952}
   - component: {fileID: 5292237220030820080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawn Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15084,7 +15084,7 @@ GameObject:
   - component: {fileID: 7889219596017474619}
   - component: {fileID: 4216894148820731118}
   - component: {fileID: 6612436184476467086}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy - Base
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -15221,7 +15221,7 @@ GameObject:
   - component: {fileID: 5272526671083899208}
   - component: {fileID: 6158578072362832071}
   - component: {fileID: 231379115260788723}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Health Bar Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15296,7 +15296,7 @@ GameObject:
   - component: {fileID: 851267044520867615}
   - component: {fileID: 105405970816587453}
   - component: {fileID: 5851752787693418871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15353,7 +15353,8 @@ MonoBehaviour:
   m_text: 0000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15432,7 +15433,7 @@ GameObject:
   - component: {fileID: 1334878891315947449}
   - component: {fileID: 1275470131596469383}
   - component: {fileID: 1713561745944272647}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mesh_splash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20450,7 +20451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4716590777708851733}
   - component: {fileID: 3180644528504327768}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20599,7 +20600,7 @@ GameObject:
   - component: {fileID: 8757145792245989995}
   - component: {fileID: 634158663914254116}
   - component: {fileID: 74613963932207155}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Death Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25629,7 +25630,7 @@ GameObject:
   - component: {fileID: 8326671110523752596}
   - component: {fileID: 6979620087772617829}
   - component: {fileID: 9217725683385834994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Health Bar Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25705,7 +25706,7 @@ GameObject:
   - component: {fileID: 2128824704659337553}
   - component: {fileID: 6643290754258302296}
   - component: {fileID: 7216038689111883106}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle_up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30635,7 +30636,7 @@ GameObject:
   - component: {fileID: 8174622166265624616}
   - component: {fileID: 8547039201545406204}
   - component: {fileID: 1308871223445484960}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35799,57 +35800,75 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 992837262857138370}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_RootOrder
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.21
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.00000003774895
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: -7511558181221131132, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4e3bd59701d1d144f9cb63d728c96ff2, type: 2}
-    - target: {fileID: 919132149155446097, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+    - target: {fileID: 919132149155446097, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
       propertyPath: m_Name
       value: Enemy Mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c8d0d55f62c99584d98a53604dcacfac,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35858,11 +35877,13 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
 --- !u!1 &82655444155578701 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8d0d55f62c99584d98a53604dcacfac,
+    type: 3}
   m_PrefabInstance: {fileID: 1001153035514676252}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &751668054090671095 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac, type: 3}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8d0d55f62c99584d98a53604dcacfac,
+    type: 3}
   m_PrefabInstance: {fileID: 1001153035514676252}
   m_PrefabAsset: {fileID: 0}

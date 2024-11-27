@@ -1,5 +1,4 @@
-﻿using UnityArchitecture.GameObjectComponentPattern;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {

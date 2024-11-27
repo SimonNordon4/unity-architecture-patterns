@@ -9,7 +9,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public bool HasTarget { get; private set; }
         public Transform Target { get; private set; }
 
-        public Vector3 TargetDirection => HasTarget ? (Target.position - _transform.position).normalized : Vector3.zero;
+        public Vector3 TargetDirection => HasTarget ? (Target.position - _transform.position).normalized : -Vector3.forward;
         public float TargetDistance => HasTarget ? Vector3.Distance(_transform.position, Target.position) : 0f;
 
         private readonly Collider[] _colliders = new Collider[128];
