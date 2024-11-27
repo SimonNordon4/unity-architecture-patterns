@@ -782,6 +782,37 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 566238458}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &293031457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 293031458}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &293031458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299859322
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,71 +920,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 963194227}
   targetDirection: {x: 0, y: 0, z: 0}
+  level: {fileID: 0}
   gameManager: {fileID: 801546265}
   enemyManager: {fileID: 644039393}
   playerCurrentHealth: 20
   playerMaxHealth:
-    baseValue: 20
+    <baseValue>k__BackingField: 5
     minimumValue: 1
     maximumValue: 2147483647
     _modifiers: []
     value: 20
   healthRegen:
-    baseValue: 10
+    <baseValue>k__BackingField: 0
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
     value: 1
   playerSpeed:
-    baseValue: 10
+    <baseValue>k__BackingField: 5
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
     value: 5
   armor:
-    baseValue: 0
+    <baseValue>k__BackingField: 0
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
     value: 0
   dodge:
-    baseValue: 0
+    <baseValue>k__BackingField: 0
     minimumValue: 0
     maximumValue: 60
     _modifiers: []
     value: 0
   damage:
-    baseValue: 10
+    <baseValue>k__BackingField: 1
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
     value: 10
   critChance:
-    baseValue: 0
+    <baseValue>k__BackingField: 0
     minimumValue: 0
     maximumValue: 100
     _modifiers: []
     value: 0
   range:
-    baseValue: 10
+    <baseValue>k__BackingField: 5
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
     value: 10
   firerate:
-    baseValue: 10
+    <baseValue>k__BackingField: 5
     minimumValue: 1
     maximumValue: 2147483647
     _modifiers: []
     value: 10
   knockback:
-    baseValue: 10
+    <baseValue>k__BackingField: 1
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
     value: 10
   pierce:
-    baseValue: 0
+    <baseValue>k__BackingField: 1
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
@@ -2003,6 +2035,9 @@ GameObject:
   m_Component:
   - component: {fileID: 801546266}
   - component: {fileID: 801546265}
+  - component: {fileID: 801546269}
+  - component: {fileID: 801546268}
+  - component: {fileID: 801546267}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -2023,10 +2058,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 460763656}
-  roundTime: 0
   isPaused: 0
   isGameActive: 0
   levelBounds: {x: 17.5, y: 17.5}
+  roundTime: 0
   hudMenu: {fileID: 290299293}
   pauseMenu: {fileID: 1157388973}
   settingsMenu: {fileID: 590339656}
@@ -2047,6 +2082,44 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &801546267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801546264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01187d1ceb9ab4643aae2d36241b19bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <RoundTime>k__BackingField: 0
+--- !u!114 &801546268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801546264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f919f1144e2931c47b9a96a8a8f98aac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Bounds>k__BackingField: {x: 17.5, y: 17.5}
+--- !u!114 &801546269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801546264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25f2542e34707af41bf8994c3777bdfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &890691772 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8352148465792819484, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,
@@ -3638,6 +3711,7 @@ SceneRoots:
   - {fileID: 644039391}
   - {fileID: 1884674989}
   - {fileID: 1000354785}
+  - {fileID: 293031458}
   - {fileID: 460763660}
   - {fileID: 654366051}
   - {fileID: 963194228}

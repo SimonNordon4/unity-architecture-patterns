@@ -5,26 +5,21 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     [RequireComponent(typeof(Movement))]
     [RequireComponent(typeof(KnockBackReceiver))]
+    [RequireComponent(typeof(MoveBase))]
     public class KnockBack : MonoBehaviour
     {
         [field:SerializeField]public bool CanBeKnockedBack { get; set; } = true;
 
         [SerializeField] private float knockBackFactor = 1f;
-        [SerializeField] private MonoBehaviour defaultMovement;
-
+        private MoveBase _defaultMovement;
         private Movement _movement;
         private KnockBackReceiver _knockBackReceiver;
         private Transform _transform;
 
         
-
         private void Awake()
         {
-            if(defaultMovement == null)
-            {
-                Debug.LogError("Default Movement can not be none", this);
-            }
-
+            _defaultMovement = GetComponent<MoveBase>();
             _movement = GetComponent<Movement>();
             _knockBackReceiver = GetComponent<KnockBackReceiver>();
             _transform = transform;
@@ -49,7 +44,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         private IEnumerator KnockBackRoutine(Vector3 knockBackVector)
         {
-            defaultMovement.enabled = false;
+            _defaultMovement.enabled = false;
             var knockBackTime = 0.20f * knockBackVector.magnitude;
             var elapsedTime = 0f;
 
@@ -74,7 +69,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 yield return new WaitForEndOfFrame();
             }
             
-            defaultMovement.enabled = true;
+            _defaultMovement.enabled = true;
         }
     }
 }

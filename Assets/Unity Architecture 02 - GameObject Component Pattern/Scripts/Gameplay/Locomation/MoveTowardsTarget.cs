@@ -2,33 +2,33 @@
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class MoveTowardsTarget : MonoBehaviour
+    [RequireComponent(typeof(CombatTarget))]
+    [RequireComponent(typeof(AvoidAllies))]
+    public class MoveTowardsTarget : MoveBase
     {
-        [SerializeField] private Movement movement;
-        [SerializeField] private Stats stats;
-        [SerializeField] private CombatTarget target;
-        [SerializeField] private AvoidAllies avoidance;
-
-        private Stat _moveSpeed;
+        private CombatTarget _target;
+        private AvoidAllies _avoidance;
+    
         
         private void Start()
         {
-            _moveSpeed = stats.GetStat(StatType.Speed);
+            _target = GetComponent<CombatTarget>();
+            _avoidance = GetComponent<AvoidAllies>();
         }
 
         public void Update()
         {
-            if (!target.HasTarget) return;
+            if (!_target.HasTarget) return;
             
-            var velocity = target.TargetDirection * _moveSpeed.value;
-            var lookDirection = target.TargetDirection;
+            var velocity = _target.TargetDirection * speedStat.value;
+            var lookDirection = _target.TargetDirection;
 
-            if (target.TargetDistance < 0.5f)
+            if (_target.TargetDistance < 0.5f)
             {
                 velocity = Vector3.zero;
             }
 
-            velocity += avoidance.avoidanceDirection;
+            velocity += _avoidance.avoidanceDirection;
             
             movement.SetLookDirection(lookDirection);
             movement.SetVelocity(velocity);

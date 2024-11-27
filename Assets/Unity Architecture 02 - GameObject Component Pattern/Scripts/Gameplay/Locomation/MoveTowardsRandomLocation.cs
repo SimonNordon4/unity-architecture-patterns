@@ -1,21 +1,20 @@
-﻿using UnityEngine;
+﻿using UnityArchitecture.GameObjectComponentPattern;
+using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class MoveTowardsRandomLocation : MonoBehaviour
+   
+    public class MoveTowardsRandomLocation : MoveBase
     {
         [SerializeField] private Level level;
-        [SerializeField] private Movement movement;
-        [SerializeField] private Stats stat;
-        
-        private Stat _speedStat;
         
         private float _distanceToTarget;
         private Vector3 _randomLocation;
 
         private void Start()
         {
-            _speedStat = stat.GetStat(StatType.Speed);
+            movement = GetComponent<Movement>();
+            speedStat = GetComponent<Stats>().GetStat(StatType.Speed);
             _randomLocation = GetRandomLocation();
         }
 
@@ -24,7 +23,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             // move towards random location
             var position = transform.position;
             var direction = (_randomLocation - position).normalized;
-            var speed = _speedStat.value;
+            var speed = speedStat.value;
             var velocity = direction * speed;
             movement.SetVelocity(velocity);
             movement.SetLookDirection(direction);
