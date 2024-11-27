@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class ButtonAudio : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler
     {

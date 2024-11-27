@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using GameObjectComponent.Game;
 using TMPro;
 using UnityEngine;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     [DefaultExecutionOrder(10)]
     public class PlayerController : MonoBehaviour
@@ -21,17 +20,17 @@ namespace UnityArchitecture.SpaghettiPattern
         public EnemyManager enemyManager;
 
         [Header("Stats")] public int playerCurrentHealth = 5;
-        public Stat playerMaxHealth = new(5);
-        public Stat healthRegen = new(0);
-        public Stat playerSpeed = new(5);
-        public Stat armor = new(0);
-        public Stat dodge = new(0);
-        public Stat damage = new(1);
-        public Stat critChance = new(0);
-        public Stat range = new(5);
-        public Stat firerate = new(5);
-        public Stat knockback = new(1);
-        public Stat pierce = new(1);
+        public Stat playerMaxHealth = new Stat(5, StatType.MaxHealth);
+        public Stat healthRegen = new Stat(0, StatType.HealthRegen);
+        public Stat playerSpeed = new Stat(5, StatType.Speed);
+        public Stat armor = new Stat(0, StatType.Armor);
+        public Stat dodge = new Stat(0, StatType.Dodge);
+        public Stat damage = new Stat(1, StatType.Damage);
+        public Stat critChance = new Stat(0, StatType.CritChance);
+        public Stat range = new Stat(5, StatType.Range);
+        public Stat firerate = new Stat(5, StatType.FireRate);
+        public Stat knockback = new Stat(1, StatType.KnockBack);
+        public Stat pierce = new Stat(1, StatType.Pierce);
 
         public readonly Dictionary<StatType, Stat> Stats = new();
 
@@ -240,13 +239,13 @@ namespace UnityArchitecture.SpaghettiPattern
                 dir += Vector3.back;
 
             // Check if the player is at the level bounds, if they are, make sure they cant move in the direction of the bound
-            if (_transform.position.x <= -level.bounds.x && dir.x < 0)
+            if (_transform.position.x <= -level.Bounds.x && dir.x < 0)
                 dir.x = 0;
-            if (_transform.position.x >= level.bounds.x && dir.x > 0)
+            if (_transform.position.x >= level.Bounds.x && dir.x > 0)
                 dir.x = 0;
-            if (_transform.position.z <= -level.bounds.y && dir.z < 0)
+            if (_transform.position.z <= -level.Bounds.y && dir.z < 0)
                 dir.z = 0;
-            if (_transform.position.z >= level.bounds.y && dir.z > 0)
+            if (_transform.position.z >= level.Bounds.y && dir.z > 0)
                 dir.z = 0;
 
             // Apply movement
@@ -332,15 +331,15 @@ namespace UnityArchitecture.SpaghettiPattern
             var cameraWishPosition = _transform.position + _cameraOffset;
 
             // We want the same level bound logic for the camera, but it stops its position if the player is within 5m of the level bounds
-            if (_transform.position.x <= -level.bounds.x + 5 ||
-                _transform.position.x >= level.bounds.x - 5)
+            if (_transform.position.x <= -level.Bounds.x + 5 ||
+                _transform.position.x >= level.Bounds.x - 5)
             {
                 cameraWishPosition =
                     new Vector3(gameCamera.transform.position.x, cameraWishPosition.y, cameraWishPosition.z);
             }
 
-            if (_transform.position.z <= -level.bounds.y + 5 ||
-                _transform.position.z >= level.bounds.y - 5)
+            if (_transform.position.z <= -level.Bounds.y + 5 ||
+                _transform.position.z >= level.Bounds.y - 5)
             {
                 cameraWishPosition =
                     new Vector3(cameraWishPosition.x, cameraWishPosition.y, gameCamera.transform.position.z);

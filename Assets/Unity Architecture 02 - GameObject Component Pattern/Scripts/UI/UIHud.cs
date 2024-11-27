@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class UIHud : MonoBehaviour
     {

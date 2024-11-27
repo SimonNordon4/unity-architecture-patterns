@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityArchitecture.GameObjectComponentPattern;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class UILoseMenu : MonoBehaviour
     {

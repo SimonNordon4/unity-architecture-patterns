@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class PlayerAnimationController : MonoBehaviour
     {

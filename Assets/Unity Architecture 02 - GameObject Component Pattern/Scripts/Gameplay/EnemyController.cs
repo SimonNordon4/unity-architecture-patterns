@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class EnemyController : MonoBehaviour
     {

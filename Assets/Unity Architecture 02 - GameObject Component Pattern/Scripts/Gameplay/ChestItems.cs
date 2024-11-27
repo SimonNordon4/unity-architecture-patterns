@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     [CreateAssetMenu(menuName="SpaghettiPattern/ChestItems")]
     public class ChestItems : ScriptableObject

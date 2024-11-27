@@ -2,7 +2,7 @@ using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     /// <summary>
     /// Controls the main menu UI. Responsible for switching between the other UI Scenes.

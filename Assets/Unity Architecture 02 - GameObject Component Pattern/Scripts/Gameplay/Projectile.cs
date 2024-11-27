@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class Projectile : MonoBehaviour
     {

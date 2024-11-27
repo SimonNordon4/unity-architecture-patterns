@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     [RequireComponent(typeof(Image))]
     public class UIChestItemHoverImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler

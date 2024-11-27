@@ -2,7 +2,7 @@ using System.Collections;
 using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class ChargeEnemyController : EnemyController
     {

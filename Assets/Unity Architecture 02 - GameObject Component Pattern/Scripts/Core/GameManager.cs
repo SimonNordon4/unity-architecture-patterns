@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-namespace UnityArchitecture.SpaghettiPattern
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class GameManager : MonoBehaviour
     {
