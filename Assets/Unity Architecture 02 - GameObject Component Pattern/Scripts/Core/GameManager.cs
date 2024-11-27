@@ -24,6 +24,8 @@ namespace UnityArchitecture.SpaghettiPattern
         [Header("Round")]
         public bool isPaused = false;
         public bool isGameActive = false;
+        public Vector2 levelBounds = new Vector2(10, 10);
+        public float roundTime = 0;
         
 
         [Header("UI")]
@@ -151,7 +153,7 @@ namespace UnityArchitecture.SpaghettiPattern
             foreach (var chest in chests) Destroy(chest.gameObject);
 
             // Remove all healthpacks
-            var healthPacks = FindObjectsByType<HealthPackController>(FindObjectsSortMode.None);
+            var healthPacks = FindObjectsByType<HealthPack>(FindObjectsSortMode.None);
             foreach (var healthPack in healthPacks) Destroy(healthPack.gameObject);
         }
 
