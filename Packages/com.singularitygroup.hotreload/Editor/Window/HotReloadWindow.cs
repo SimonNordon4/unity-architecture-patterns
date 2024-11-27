@@ -54,7 +54,11 @@ namespace SingularityGroup.HotReload.Editor {
         [MenuItem("Window/Hot Reload &#H")]
         internal static void Open() {
             // opening the window on CI systems was keeping Unity open indefinitely
-            if (EditorWindowHelper.IsHumanControllingUs()) {
+            if (EditorWindowHelper.IsHumanControllingUs() 
+                // Don't open Hot Reload window inside Virtual Player folder
+                // This is a heuristic since user might have the main player inside VP user-created folder, but that will be rare
+                && new DirectoryInfo(Path.GetFullPath("..")).Name != "VP"
+            ) {
                 if (Current) {
                     Current.Show();
                     Current.Focus();

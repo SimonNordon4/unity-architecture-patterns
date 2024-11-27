@@ -1,9 +1,6 @@
-// File: Assets/Editor/CopyScriptsToClipboard.cs
-
 using UnityEngine;
 using UnityEditor;
 using System.IO;
-using System.Linq;
 
 namespace UnityArchitecture.SharedAssets
 {

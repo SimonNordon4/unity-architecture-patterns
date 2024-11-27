@@ -55,6 +55,7 @@ namespace SingularityGroup.HotReload.Editor {
         
         internal static Config config;
 
+        internal static ICompileChecker compileChecker;
         static bool quitting;
         static EditorCodePatcher() {
             if(init) {
@@ -79,7 +80,7 @@ namespace SingularityGroup.HotReload.Editor {
 
             UpdateHost();
             licenseType = UnityLicenseHelper.GetLicenseType();
-            var compileChecker = CompileChecker.Create();
+            compileChecker = CompileChecker.Create();
             compileChecker.onCompilationFinished += OnCompilationFinished;
             EditorApplication.delayCall += InstallUtility.CheckForNewInstall;
             AddEditorFocusChangedHandler(OnEditorFocusChanged);
@@ -603,6 +604,12 @@ namespace SingularityGroup.HotReload.Editor {
             if (!_compileError) {
                 HotReloadTimelineHelper.EventsTimeline.RemoveAll(x => x.alertType == AlertType.CompileError);
             }
+            
+            // attempt to recompile if previous Unity compilation had compilation errors
+            // because new changes might've fixed those errors
+            if (compileChecker.hasCompileErrors) {
+                HotReloadRunTab.Recompile();
+            }
 
             if (HotReloadWindow.Current) {
                 HotReloadWindow.Current.Repaint();
@@ -815,7 +822,8 @@ namespace SingularityGroup.HotReload.Editor {
             
             bool consumptionsChanged = Status?.freeSessionRunning != resp.freeSessionRunning || Status?.freeSessionEndTime != resp.freeSessionEndTime;
             bool expiresAtChanged = Status?.licenseExpiresAt != resp.licenseExpiresAt;
-            if (resp.consumptionsUnavailableReason == ConsumptionsUnavailableReason.UnrecoverableError
+            if (!EditorCodePatcher.LoginNotRequired 
+                && resp.consumptionsUnavailableReason == ConsumptionsUnavailableReason.UnrecoverableError
                 && Status?.consumptionsUnavailableReason != ConsumptionsUnavailableReason.UnrecoverableError
             ) {
                 Log.Error("Free charges unavailabe. Please contact support if the issue persists.");
