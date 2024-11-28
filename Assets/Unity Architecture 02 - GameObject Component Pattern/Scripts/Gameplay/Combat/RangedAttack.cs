@@ -28,7 +28,7 @@ private void Start()
 
         private void Update()
         {
-            var inverseAttackSpeed = 1f / _fireRate.value;
+            var inverseAttackSpeed = 10f / _fireRate.value;
             if(_timeSinceLastAttack < inverseAttackSpeed)
             {
                 _timeSinceLastAttack += Time.deltaTime;
@@ -40,7 +40,7 @@ private void Start()
                 return;
             }
             
-            if (_target.TargetDistance > _range.value)
+            if (_target.TargetDistance > _range.value * 0.5f)
             {
                 return;
             }
@@ -49,7 +49,7 @@ private void Start()
             {
                 Damage = _damage.value,
                 KnockBack = _knockBack.value,
-                Range = _range.value,
+                Range = _range.value * 0.5f,
                 AttackSpeed = _fireRate.value,
                 Pierce = _pierce.value,
             };
