@@ -23,6 +23,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public int value;
 
+        public Action<Modifier> onModifierAdded;
+
         private void Evaluate()
         {
             int scalingPercentage = 0;
@@ -53,6 +55,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             _modifiers.Add(modifier);
             Evaluate();
+            onModifierAdded?.Invoke(modifier);
         }
     }
 }

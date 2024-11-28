@@ -1,18 +1,17 @@
-﻿using GameplayComponents.Actor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameplayComponents.Life
+namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class Dodge : GameplayComponent
+    [RequireComponent(typeof(Stats))]
+    public class Dodge : MonoBehaviour
     {
-        [SerializeField] private Stats stats;
         private Stat _dodgeStat;
         public UnityEvent onDodged = new();
         
-        private void Start()
+        private void Awake()
         {
-            _dodgeStat = stats.GetStat(StatType.Dodge);
+            _dodgeStat = GetComponent<Stats>().GetStat(StatType.Dodge);
         }
 
         public bool CalculateDodge()
