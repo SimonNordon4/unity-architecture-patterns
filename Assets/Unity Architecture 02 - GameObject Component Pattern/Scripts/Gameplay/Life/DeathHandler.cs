@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +9,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
     public class DeathHandler : MonoBehaviour
     {
         public UnityEvent onDeath = new();
-        public Action<DeathHandler> OnDeath;
         private Health _health;
 
         private void Awake()
@@ -29,7 +29,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void OnHealthDepleted()
         {
             onDeath?.Invoke();
-            OnDeath?.Invoke(this);
         }
     }
 }

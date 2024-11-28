@@ -1,6 +1,8 @@
-﻿namespace UnityArchitecture.GameObjectComponentPattern
+﻿using UnityEngine;
+
+namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class PickupPool : PoolBase<HealthPack>
+    public class PickupPool : MonoBehaviour
     {
         
     }

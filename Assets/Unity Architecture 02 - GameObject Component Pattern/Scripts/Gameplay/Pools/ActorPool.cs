@@ -4,17 +4,14 @@ using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
-
+    [RequireComponent(typeof(ActorFactory))]
     public class ActorPool : MonoBehaviour
     {
         [SerializeField]
         private ActorFactory actorFactory;
 
-        public override FactoryBase<PoolableActor> Factory 
-        {
-            get => actorFactory;
-            protected set => actorFactory = (ActorFactory)value;
-        }
+        public readonly Queue<PoolableActor> InactivePool = new();
+        public readonly List<PoolableActor> ActivePool = new();
 
         public event Action<PoolableActor> OnActorGet;
         public event Action<PoolableActor> OnActorReturn;
@@ -26,12 +23,11 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public PoolableActor Get(Vector3 position, bool startActive = true)
         {
-            
             PoolableActor actor = null;
 
             if (InactivePool.Count == 0)
             {
-                actor = Factory.Create(position, false);
+                actor = actorFactory.Create(position);
                 actor.Construct(this);
                 actor.transform.position = position;
                 actor.gameObject.SetActive(startActive);
@@ -44,48 +40,23 @@ namespace UnityArchitecture.GameObjectComponentPattern
             }
 
             OnActorGet?.Invoke(actor);
-            ActivePool.Enqueue(actor);
+            ActivePool.Add(actor);
             actor.onActorGet?.Invoke();
             return actor;
         }
 
+        public void Return(PoolableActor actor)
+        {
+            actor.gameObject.SetActive(false);
+            InactivePool.Enqueue(actor);
+        }
+
         public void ReturnAllActiveActors()
         {
-            for (var i = _activeActors.Count - 1; i >= 0; i--)
+            for (var i = ActivePool.Count - 1; i >= 0; i--)
             {
-                _activeActors[i].Return();
+                ActivePool[i].Return();
             }
-        }
-
-        // destroy all actors in the pool
-        public void FlushPool()
-        {
-            ReturnAllActiveActors();
-            foreach (var pool in _inactivePools)
-            {
-                foreach (var actor in pool.Value)
-                {
-                    Destroy(actor.gameObject);
-                }
-            }
-            _inactivePools.Clear();
-        }
-
-        public void ResetAllPools()
-        {
-            ReturnAllActiveActors();
-            foreach (var pool in _inactivePools)
-            {
-                foreach (var actor in pool.Value)
-                {
-                    Destroy(actor.gameObject);
-                }
-            }
-            
-            _inactivePools.Clear();
-            OnActorReturn = null;
-        }
-    
-
+        } 
     }
 }

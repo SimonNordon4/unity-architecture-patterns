@@ -7,40 +7,31 @@ namespace UnityArchitecture.GameObjectComponentPattern
     public class EntitySpawnDelay : MonoBehaviour
     {
         [SerializeField] private Movement movement;
-        [SerializeField] private MeshRenderer enemyMesh;
+        [SerializeField] private GameObject enemyMesh;
         [SerializeField] private ParticleSystem spawnInParticle;
-        [SerializeField] private ParticlePool deathParticlePool;
+        [SerializeField] private ParticleSystem deathParticle;
         [SerializeField] private float spawnTime = 1f;
         [SerializeField] private TrailRenderer trailRenderer;
+
+        private LayerMask _originalLayerMask;
+        private LayerMask _neutralLayerMask = 0;
         
         private bool _isSpawned = false;
 
-        public UnityEvent onCancelled = new();
         public UnityEvent onSpawned = new();
-        
-        public void Construct(ParticlePool newDeathParticlePool)
-        {
-            deathParticlePool = newDeathParticlePool;
-        }
 
         private void Awake()
         {
-            _originalLayer = gameObject.layer;
-        }
-
-        private void Start()
-        {
-            var main = spawnInParticle.main; 
-            main.startColor = definition.enemyColor;
+            _originalLayerMask = gameObject.layer;
         }
 
         void OnEnable()
         {
-            movement.canMove = false;
+            movement.enabled = false;
             spawnInParticle.Play();
             enemyMesh.SetActive(false);
             StopAllCoroutines();
-            gameObject.layer = spawningLayer;
+            gameObject.layer = _neutralLayerMask;
             StartCoroutine(SpawnIn());
             trailRenderer.Clear();
         }
@@ -49,15 +40,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             StopAllCoroutines();
             _isSpawned = false;
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if(_isSpawned) return;
-            if (interruptLayer == (interruptLayer | (1 << other.gameObject.layer)))
-            {
-                CancelSpawnIn();
-            }
         }
 
         private IEnumerator SpawnIn()
@@ -69,25 +51,12 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 yield return new WaitForEndOfFrame();
             }
             spawnInParticle.Stop();
-            deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
-            movement.canMove = true;
+            deathParticle.Play();
+            movement.enabled = true;
             _isSpawned = true;
-            gameObject.layer = _originalLayer;
+            gameObject.layer = _originalLayerMask;
             onSpawned.Invoke();
             enemyMesh.SetActive(true);
-        }
-
-        private void CancelSpawnIn()
-        {
-            gameObject.layer = _originalLayer;
-            onCancelled.Invoke();
-            StopAllCoroutines();
-            deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
-        }
-
-        public void PlayDeathParticle()
-        {
-            deathParticlePool.GetForParticleDuration(transform.position, definition.enemyColor);
         }
     }
 }
