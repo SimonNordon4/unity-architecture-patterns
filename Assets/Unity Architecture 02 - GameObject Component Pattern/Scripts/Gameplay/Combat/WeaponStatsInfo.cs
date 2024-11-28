@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace GameplayComponents.Combat
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public struct WeaponStatsInfo
     {

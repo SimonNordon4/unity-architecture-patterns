@@ -1,15 +1,12 @@
-﻿using GameplayComponents.Locomotion;
-using Pools;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GameplayComponents.Combat.Weapons
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     // Smart Pistol uses prediction on where to shoot.
     public class SmartPistolWeapon : BaseWeapon
     {
-        [SerializeField] private MunitionPool munitionPool;
+        [SerializeField] private ProjectilePool projectilePool;
         [SerializeField] private Transform projectileSpawnPoint;
-        [SerializeField] private MunitionDefinition munitionDefinition;
         [SerializeField] private float projectileSpeed = 10f;
         
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
@@ -20,14 +17,14 @@ namespace GameplayComponents.Combat.Weapons
             }
             
             var projectileStartPosition = projectileSpawnPoint.position;
-            var targetPosition = target.target.position;
+            var targetPosition = target.Target.position;
             
             // Calculate the time it would take for the projectile to reach the target's current position
-            var shootDirection = target.targetDirection;
+            var shootDirection = target.TargetDirection;
             
-            if(target.target.TryGetComponent<Movement>(out var movement))
+            if(target.Target.TryGetComponent<Movement>(out var movement))
             {
-                var distanceToTarget = target.targetDistance;
+                var distanceToTarget = target.TargetDistance;
                 var timeToTarget = distanceToTarget / projectileSpeed;
                 var velocity = movement.velocity;
                 var predictedTargetPosition = targetPosition + velocity * timeToTarget;
@@ -46,7 +43,7 @@ namespace GameplayComponents.Combat.Weapons
                 shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up).normalized;
             }
             
-            var projectile = munitionPool.Get(munitionDefinition, projectileStartPosition, shootDirection);
+            var projectile = projectilePool.Get(projectileStartPosition, shootDirection);
             
             projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
 

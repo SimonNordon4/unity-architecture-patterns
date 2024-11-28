@@ -279,7 +279,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 .ProjectOnPlane(_closestTarget.position - _transform.position, Vector3.up).normalized;
             var projectileGo = Instantiate(projectilePrefab, _transform.position,
                 Quaternion.LookRotation(directionToTarget));
-            var projectile = projectileGo.GetComponent<Projectile>();
+            var projectile = projectileGo.GetComponent<Old_Projectile>();
             projectile.damage = Mathf.RoundToInt(damage.value);
             projectile.knockBackIntensity = knockback.value;
             projectile.pierceCount = pierce.value / 100;
@@ -291,7 +291,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void ShootPredictive()
         {
             var projectileGo = Instantiate(projectilePrefab, _transform.position, Quaternion.identity);
-            var projectile = projectileGo.GetComponent<Projectile>();
+            var projectile = projectileGo.GetComponent<Old_Projectile>();
 
             // Calculate the time it would take for the projectile to reach the target's current position
             var distanceToTarget = Vector3.Distance(_transform.position, _closestTarget.position);

@@ -139,7 +139,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
                 // Create and setup the projectile
                 var projectileGo = Instantiate(projectilePrefab, transform.position, Quaternion.LookRotation(dir));
-                var projectile = projectileGo.GetComponent<Projectile>();
+                var projectile = projectileGo.GetComponent<Old_Projectile>();
                 projectile.damage = currentDamage;
                 projectile.projectileSpeed = projectileSpeed;
             }

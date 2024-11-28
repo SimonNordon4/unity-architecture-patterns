@@ -1,8 +1,9 @@
 ﻿using System;
+using UnityEngine;
 
-namespace GameplayComponents.Life
+namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class DamageReceiver : GameplayComponent
+    public class DamageReceiver : MonoBehaviour
     {
         public event Action<int> OnDamageReceived;
 

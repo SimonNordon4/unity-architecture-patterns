@@ -4914,7 +4914,7 @@ GameObject:
   - component: {fileID: 1117882308014300288}
   - component: {fileID: 140431083069213032}
   - component: {fileID: 6212744212222371705}
-  - component: {fileID: 4280159458387746827}
+  - component: {fileID: 6930718117842919371}
   m_Layer: 0
   m_Name: Projectile - Player
   m_TagString: Projectile
@@ -4986,7 +4986,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4280159458387746827
+--- !u!114 &6930718117842919371
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4995,15 +4995,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7416635416557640102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37909ee19846194988a70f4264f9410, type: 3}
+  m_Script: {fileID: 11500000, guid: e33d2846dc8f4e10abc41f250bd8e331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 20
-  damage: 1
-  projectileLifetime: 5
-  knockBackIntensity: 1
-  pierceCount: 1
-  canAttackPlayer: 0
-  canAttackEnemy: 1
-  hitEffect: {fileID: 198141734499153464, guid: 7658ae01d0a0655468898c47617f4de6,
-    type: 3}
+  lifeTime: 3

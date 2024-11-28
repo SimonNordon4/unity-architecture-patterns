@@ -139,7 +139,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             var enemyManager = FindFirstObjectByType<EnemyManager>();
             enemyManager.Reset();
 
-            var projectiles = FindObjectsByType<Projectile>(FindObjectsSortMode.None);
+            var projectiles = FindObjectsByType<Old_Projectile>(FindObjectsSortMode.None);
             foreach (var projectile in projectiles) Destroy(projectile.gameObject);
 
             // find all objects with tag "Spawn Indicator" and destroy them.

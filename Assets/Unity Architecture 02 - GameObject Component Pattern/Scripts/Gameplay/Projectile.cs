@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class Projectile : MonoBehaviour
+    public class Old_Projectile : MonoBehaviour
     {
         public float projectileSpeed = 10f;
         public int damage = 1;
