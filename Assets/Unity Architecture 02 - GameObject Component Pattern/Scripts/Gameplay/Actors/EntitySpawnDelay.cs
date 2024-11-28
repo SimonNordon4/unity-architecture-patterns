@@ -1,21 +1,13 @@
 ﻿using System.Collections;
-using GameObjectComponent.Definitions;
-using GameObjectComponent.Game;
-using GameObjectComponent.Pools;
-using GameplayComponents.Locomotion;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GameplayComponents.Actor
+namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class ActorSpawnDelay : MonoBehaviour
+    public class EntitySpawnDelay : MonoBehaviour
     {
-        [SerializeField] private ActorDefinition definition;
-        [SerializeField] private LayerMask interruptLayer;
-        [SerializeField] private LayerMask spawningLayer;
-        private LayerMask _originalLayer;
         [SerializeField] private Movement movement;
-        [SerializeField] private GameObject enemyMesh;
+        [SerializeField] private MeshRenderer enemyMesh;
         [SerializeField] private ParticleSystem spawnInParticle;
         [SerializeField] private ParticlePool deathParticlePool;
         [SerializeField] private float spawnTime = 1f;
@@ -73,7 +65,7 @@ namespace GameplayComponents.Actor
             var countdown = spawnTime;
             while (countdown > 0)
             {
-                countdown -= GameTime.deltaTime;
+                countdown -= Time.deltaTime;
                 yield return new WaitForEndOfFrame();
             }
             spawnInParticle.Stop();

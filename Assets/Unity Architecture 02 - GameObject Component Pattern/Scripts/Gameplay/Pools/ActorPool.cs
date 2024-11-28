@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using GameObjectComponent.Definitions;
-using GameplayComponents;
-using GameplayComponents.Actor;
-using GameplayComponents.Life;
 using UnityEngine;
 
-namespace Pools
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     [RequireComponent(typeof(ActorFactory))]
-    public class ActorPool : GameplayComponent
+    public class ActorPool : PoolBase<PoolableActor>
     {
         public ActorFactory factory { get; private set; }
         private readonly Dictionary<ActorDefinition, Queue<PoolableActor>> _inactivePools = new();

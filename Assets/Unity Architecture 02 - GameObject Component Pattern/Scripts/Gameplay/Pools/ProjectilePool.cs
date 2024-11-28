@@ -12,7 +12,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public Projectile Get(Vector3 position, Vector3 direction, bool startActive = true)
         {
-            
             Projectile projectile = null;
 
             if (_inactiveProjectiles.Count == 0)

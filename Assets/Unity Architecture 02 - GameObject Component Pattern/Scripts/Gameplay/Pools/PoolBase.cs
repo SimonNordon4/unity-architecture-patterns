@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameObjectComponent.Pools
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public abstract class PoolBase<T> : MonoBehaviour where T : Component
     {
@@ -14,6 +14,7 @@ namespace GameObjectComponent.Pools
         public Queue<T> inactivePool { get; protected set; } = new();
         public Queue<T> activePool { get; protected set; } = new();
 
+        // Allows for parent pool injection.
         public virtual void Construct(PoolBase<T> newPool)
         {
             inactivePool = newPool.activePool;
