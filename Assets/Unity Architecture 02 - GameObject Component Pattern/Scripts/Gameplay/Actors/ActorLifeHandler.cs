@@ -4,20 +4,20 @@ using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class EntitySpawnDelay : MonoBehaviour
+
+    [RequireComponent(typeof(Movement))]
+    public class ActorLifeHandler : MonoBehaviour
     {
-        [SerializeField] private Movement movement;
+        
         [SerializeField] private GameObject enemyMesh;
         [SerializeField] private ParticleSystem spawnInParticle;
         [SerializeField] private ParticleSystem deathParticle;
         [SerializeField] private float spawnTime = 1f;
         [SerializeField] private TrailRenderer trailRenderer;
-
+        private Movement _movement;
         private LayerMask _originalLayerMask;
         private LayerMask _neutralLayerMask = 0;
         
-        private bool _isSpawned = false;
-
         public UnityEvent onSpawned = new();
 
         private void Awake()
@@ -27,7 +27,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         void OnEnable()
         {
-            movement.enabled = false;
+            _movement.enabled = false;
             spawnInParticle.Play();
             enemyMesh.SetActive(false);
             StopAllCoroutines();
@@ -39,7 +39,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void OnDisable()
         {
             StopAllCoroutines();
-            _isSpawned = false;
         }
 
         private IEnumerator SpawnIn()
@@ -52,8 +51,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             }
             spawnInParticle.Stop();
             deathParticle.Play();
-            movement.enabled = true;
-            _isSpawned = true;
+            _movement.enabled = true;
             gameObject.layer = _originalLayerMask;
             onSpawned.Invoke();
             enemyMesh.SetActive(true);
