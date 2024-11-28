@@ -27,8 +27,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
             // if(actor.TryGetComponent<ActorSpawnDelay>(out var spawnDelay))
             //     spawnDelay.Construct(deathParticlePool);
             
-            if(actor.TryGetComponent<ProjectilePool>(out var bulletPool))
-                bulletPool.Construct(projectilePool);
+            // if(actor.TryGetComponent<ProjectilePool>(out var bulletPool))
+            //     bulletPool.Construct(projectilePool);
             
             // if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))
             //     actorSoundProxy.Construct(soundManager);

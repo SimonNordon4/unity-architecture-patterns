@@ -1,71 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
-    [RequireComponent(typeof(ActorFactory))]
-    public class ActorPool : PoolBase<PoolableActor>
+
+    public class ActorPool : MonoBehaviour
     {
-        public ActorFactory factory { get; private set; }
-        private readonly Dictionary<ActorDefinition, Queue<PoolableActor>> _inactivePools = new();
-        private readonly List<PoolableActor> _activeActors = new();
+        [SerializeField]
+        private ActorFactory actorFactory;
+
+        public override FactoryBase<PoolableActor> Factory 
+        {
+            get => actorFactory;
+            protected set => actorFactory = (ActorFactory)value;
+        }
+
         public event Action<PoolableActor> OnActorGet;
         public event Action<PoolableActor> OnActorReturn;
 
         private void Awake()
         {
-            factory = GetComponent<ActorFactory>();
+            actorFactory = GetComponent<ActorFactory>();
         }
 
-        public PoolableActor Get([DisallowNull]ActorDefinition definition, Vector3 position, bool startActive = true)
+        public PoolableActor Get(Vector3 position, bool startActive = true)
         {
-            if (!_inactivePools.TryGetValue(definition, out var queue))
-            {
-                queue = new Queue<PoolableActor>();
-                _inactivePools.Add(definition, queue);
-            }
             
             PoolableActor actor = null;
 
-            if (queue.Count == 0)
+            if (InactivePool.Count == 0)
             {
-                actor = CreateActor(definition, position);
-                actor.Construct(this, definition);
+                actor = Factory.Create(position, false);
+                actor.Construct(this);
                 actor.transform.position = position;
                 actor.gameObject.SetActive(startActive);
             }
             else
             {
-                actor = queue.Dequeue();
+                actor = InactivePool.Dequeue();
                 actor.transform.position = position;
                 actor.gameObject.SetActive(startActive);
             }
 
             OnActorGet?.Invoke(actor);
-            _activeActors.Add(actor);
+            ActivePool.Enqueue(actor);
             actor.onActorGet?.Invoke();
             return actor;
-        }
-
-        public void Return(PoolableActor poolableActor, ActorDefinition definition)
-        {
-            poolableActor.onActorReturn?.Invoke();
-            _activeActors.Remove(poolableActor);
-            
-            poolableActor.gameObject.SetActive(false);
-            
-            OnActorReturn?.Invoke(poolableActor);
-            
-            // Add the enemy to the queue
-            _inactivePools[definition].Enqueue(poolableActor);
-        }
-
-        private PoolableActor CreateActor(ActorDefinition definition, Vector3 position)
-        {
-            var newEnemy = factory.Create(definition, position);
-            return newEnemy;
         }
 
         public void ReturnAllActiveActors()
@@ -104,11 +85,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             _inactivePools.Clear();
             OnActorReturn = null;
         }
-        
-        public override void OnGameEnd()
-        {
-            ResetAllPools();
-        }
+    
 
     }
 }
