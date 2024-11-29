@@ -28,6 +28,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnHealthDepleted()
         {
+            Debug.Log("enemy Died");
             onDeath?.Invoke();
         }
     }

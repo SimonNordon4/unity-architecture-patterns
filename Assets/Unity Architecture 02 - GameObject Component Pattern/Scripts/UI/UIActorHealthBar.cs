@@ -27,9 +27,9 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         
 
-        private void UpdateHealthBar(int arg0)
-        {
-            fillBar.fillAmount = arg0 / health.maxHealth;
+        private void UpdateHealthBar(int currentHealth)
+        {  
+            fillBar.fillAmount = currentHealth / (float)health.maxHealth;
         }
     }
 }

@@ -15299,20 +15299,7 @@ MonoBehaviour:
   <currentHealth>k__BackingField: 0
   OnHealthChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.EventDubbger,
-          GameObjectComponentPattern
-        m_MethodName: DebugEvent
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Health Changed
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnHealthDepleted:
     m_PersistentCalls:
       m_Calls: []
