@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace SingularityGroup.HotReload.Editor {
     class LegacyCompileChecker : ICompileChecker {
         const string timestampFilePath = PackageConst.LibraryCachePath + "/lastCompileTimestamp.txt";
+        public bool hasCompileErrors { get; }
         const string assemblyPath = "Library/ScriptAssemblies";
         bool recompile;
         public LegacyCompileChecker() {

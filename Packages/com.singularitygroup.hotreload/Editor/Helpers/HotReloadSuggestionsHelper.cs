@@ -85,9 +85,9 @@ namespace SingularityGroup.HotReload.Editor {
             return null;
         }
         
-        internal static readonly OpenURLButton recompileTroubleshootingButton = new OpenURLButton("Documentation", Constants.RecompileTroubleshootingURL);
-        internal static readonly OpenURLButton featuresDocumentationButton = new OpenURLButton("Documentation", Constants.FeaturesDocumentationURL);
-        internal static readonly OpenURLButton multipleEditorsDocumentationButton = new OpenURLButton("Documentation", Constants.MultipleEditorsURL);
+        internal static readonly OpenURLButton recompileTroubleshootingButton = new OpenURLButton("Docs", Constants.RecompileTroubleshootingURL);
+        internal static readonly OpenURLButton featuresDocumentationButton = new OpenURLButton("Docs", Constants.FeaturesDocumentationURL);
+        internal static readonly OpenURLButton multipleEditorsDocumentationButton = new OpenURLButton("Docs", Constants.MultipleEditorsURL);
         public static Dictionary<HotReloadSuggestionKind, AlertEntry> suggestionMap = new Dictionary<HotReloadSuggestionKind, AlertEntry> {
             { HotReloadSuggestionKind.UnityBestDevelopmentToolAward2023, new AlertEntry(
                 AlertType.Suggestion, 
@@ -304,7 +304,7 @@ namespace SingularityGroup.HotReload.Editor {
                     try {
                         var runningUnities = Process.GetProcessesByName("Unity").Length;
                         var runningPatchers = Process.GetProcessesByName("CodePatcherCLI").Length;
-                        return runningUnities > runningPatchers;
+                        return runningPatchers > 0 && runningUnities > runningPatchers;
                     } catch (ArgumentException) {
                         // On some devices GetProcessesByName throws ArgumentException for no good reason.
                         // it happens rarely and the feature is not the most important so proper solution is not required

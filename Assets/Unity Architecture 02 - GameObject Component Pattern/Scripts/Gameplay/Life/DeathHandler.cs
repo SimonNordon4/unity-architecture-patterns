@@ -18,12 +18,12 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnEnable()
         {
-            _health.OnHealthDepleted += OnHealthDepleted;
+            _health.OnHealthDepleted.AddListener(OnHealthDepleted);
         }
 
         private void OnDisable()
         {
-            _health.OnHealthDepleted -= OnHealthDepleted;
+            _health.OnHealthDepleted.RemoveListener(OnHealthDepleted);
         }
 
         private void OnHealthDepleted()

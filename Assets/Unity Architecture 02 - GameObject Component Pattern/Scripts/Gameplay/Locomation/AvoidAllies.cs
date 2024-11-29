@@ -3,17 +3,23 @@ using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
+    [RequireComponent(typeof(CapsuleCollider))]
     public class AvoidAllies : MonoBehaviour
     {
         [SerializeField] private float repulsionForce = 1f;
-        [SerializeField] private CapsuleCollider body;
+        private CapsuleCollider _body;
         public Vector3 avoidanceDirection { get; private set; }
         private readonly List<Transform> _nearbyEnemies = new(4);
         private float _radius;
 
+        private void Awake()
+        {
+            _body = GetComponent<CapsuleCollider>();
+        }
+
         private void Start()
         {
-            _radius = body.radius;
+            _radius = _body.radius;
         }
 
         private void Update()

@@ -1070,6 +1070,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <currentHealth>k__BackingField: 0
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHealthDepleted:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &293031471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,7 +2071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &644039391
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,6 +2736,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1121866898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1121866902}
+  - component: {fileID: 1121866901}
+  - component: {fileID: 1121866900}
+  - component: {fileID: 1121866899}
+  m_Layer: 0
+  m_Name: Enemy Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1121866899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121866898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a44f2dd1c8746bb9d3b759001e792b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 801546268}
+  <initialTarget>k__BackingField: {fileID: 293031458}
+  projectilePool: {fileID: 0}
+  actorPrefab: {fileID: 5172155972417676999, guid: 6da49f7eb69c8fc49964a213d0376127,
+    type: 3}
+--- !u!114 &1121866900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121866898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98bcd83f541439685cd02609483ae4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorFactory: {fileID: 1121866899}
+--- !u!114 &1121866901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121866898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a005bc5435fc544438eba8f3b9d80873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalEnemyPool: {fileID: 1121866900}
+  level: {fileID: 801546268}
+--- !u!4 &1121866902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121866898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157388973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5393296879404737001, guid: d6ca6737c939f69478c326a2df84ced1,
@@ -4006,6 +4090,7 @@ SceneRoots:
   - {fileID: 801546266}
   - {fileID: 1926671863}
   - {fileID: 644039391}
+  - {fileID: 1121866902}
   - {fileID: 1884674989}
   - {fileID: 1000354785}
   - {fileID: 293031458}

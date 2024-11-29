@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
@@ -10,8 +11,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private Stat _maxHealthStat;
         private int maxHealth => _maxHealthStat.value;
 
-        public Action<int> OnHealthChanged;
-        public Action OnHealthDepleted;
+        public UnityEvent<int> OnHealthChanged;
+        public UnityEvent OnHealthDepleted;
 
         private void Awake()
         {

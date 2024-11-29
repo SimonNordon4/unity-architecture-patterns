@@ -59,6 +59,7 @@ namespace SingularityGroup.HotReload.Editor {
         private const string RunTabUnsupportedChangesFilterKey = "HotReloadWindow.RunTabUnsupportedChangesFilter";
         private const string RunTabCompileErrorFilterKey = "HotReloadWindow.RunTabCompileErrorFilter";
         private const string RunTabPartiallyAppliedPatchesFilterKey = "HotReloadWindow.RunTabPartiallyAppliedPatchesFilter";
+        private const string RunTabUndetectedPatchesFilterKey = "HotReloadWindow.RunTabUndetectedPatchesFilter";
         private const string RunTabAppliedPatchesFilterKey = "HotReloadWindow.RunTabAppliedPatchesFilter";
         private const string RecompileDialogueShownKey = "HotReloadWindow.RecompileDialogueShown";
         private const string OpenedWindowAtLeastOnceKey = "HotReloadWindow.OpenedWindowAtLeastOnce";
@@ -390,6 +391,11 @@ namespace SingularityGroup.HotReload.Editor {
         public static bool RunTabPartiallyAppliedPatchesFilter {
             get { return EditorPrefs.GetBool(RunTabPartiallyAppliedPatchesFilterKey, true); }
             set { EditorPrefs.SetBool(RunTabPartiallyAppliedPatchesFilterKey, value); }
+        }
+        
+        public static bool RunTabUndetectedPatchesFilter {
+            get { return EditorPrefs.GetBool(RunTabUndetectedPatchesFilterKey, true); }
+            set { EditorPrefs.SetBool(RunTabUndetectedPatchesFilterKey, value); }
         }
         
         public static bool RunTabAppliedPatchesFilter {
