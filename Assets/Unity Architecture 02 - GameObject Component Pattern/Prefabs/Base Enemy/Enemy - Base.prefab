@@ -9871,7 +9871,6 @@ GameObject:
   - component: {fileID: 1619015346005832967}
   - component: {fileID: 6766262348687417059}
   - component: {fileID: 8028989309680012955}
-  - component: {fileID: 3878463880167909382}
   m_Layer: 7
   m_Name: Shadow
   m_TagString: Untagged
@@ -9947,28 +9946,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3878463880167909382
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3697119956580139772}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3787276329848463215
 GameObject:
   m_ObjectHideFlags: 0
@@ -9981,6 +9958,7 @@ GameObject:
   - component: {fileID: 153443969089409951}
   - component: {fileID: 7047060643550699690}
   - component: {fileID: 7093389414931688757}
+  - component: {fileID: 6189054487072402653}
   m_Layer: 7
   m_Name: Enemy Canvas
   m_TagString: Untagged
@@ -10006,7 +9984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.58}
+  m_AnchoredPosition: {x: 0, y: 2.337}
   m_SizeDelta: {x: 80, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &153443969089409951
@@ -10072,6 +10050,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 55
+--- !u!114 &6189054487072402653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3787276329848463215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a09b2a689d8e7b4bbab4d439c234184, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 7107618307500073617}
+  fillBar: {fileID: 231379115260788723}
 --- !u!1 &4741749269254944534
 GameObject:
   m_ObjectHideFlags: 0
@@ -15366,11 +15358,11 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.EventDubbger,
+      - m_Target: {fileID: 3677801144576041349}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.PoolableActor,
           GameObjectComponentPattern
-        m_MethodName: DebugEvent
-        m_Mode: 5
+        m_MethodName: Return
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

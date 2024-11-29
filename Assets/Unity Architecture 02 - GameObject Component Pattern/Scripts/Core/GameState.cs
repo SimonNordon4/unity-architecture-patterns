@@ -13,26 +13,31 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void StartGame()
         {
+            Debug.Log("Game Started");
             OnGameStarted?.Invoke();
         }
 
         public void WinGame()
         {
+            Debug.Log("Game Won");
             OnGameWon?.Invoke();
         }
 
         public void LoseGame()
         {
+            Debug.Log("Game Lost");
             OnGameLost?.Invoke();
         }
 
         public void PauseGame()
         {
+            Debug.Log("Game Paused");
             OnGamePaused?.Invoke();
         }
 
         public void ResumeGame()
         {
+            Debug.Log("Game Resumed");
             OnGameResumed?.Invoke();
         }
     }

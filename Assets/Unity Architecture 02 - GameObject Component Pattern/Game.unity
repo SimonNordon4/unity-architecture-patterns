@@ -805,6 +805,7 @@ GameObject:
   - component: {fileID: 293031470}
   - component: {fileID: 293031469}
   - component: {fileID: 293031468}
+  - component: {fileID: 293031473}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1100,6 +1101,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e94ecaaeff45b6877278567ba59e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &293031473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e20b34633c46b98ed7385bae8e87c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 801546269}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.GameState,
+          GameObjectComponentPattern
+        m_MethodName: LoseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &299859322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2770,7 +2799,7 @@ MonoBehaviour:
   level: {fileID: 801546268}
   <initialTarget>k__BackingField: {fileID: 293031458}
   projectilePool: {fileID: 0}
-  actorPrefab: {fileID: 5172155972417676999, guid: 6da49f7eb69c8fc49964a213d0376127,
+  actorPrefab: {fileID: 8077942847663723370, guid: 6da49f7eb69c8fc49964a213d0376127,
     type: 3}
 --- !u!114 &1121866900
 MonoBehaviour:

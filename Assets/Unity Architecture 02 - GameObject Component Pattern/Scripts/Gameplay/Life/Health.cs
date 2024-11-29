@@ -9,7 +9,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
     {
         [field: SerializeField] public int currentHealth { get; private set; }
         private Stat _maxHealthStat;
-        private int maxHealth => _maxHealthStat.value;
+        public int maxHealth => _maxHealthStat.value;
 
         public UnityEvent<int> OnHealthChanged;
         public UnityEvent OnHealthDepleted;

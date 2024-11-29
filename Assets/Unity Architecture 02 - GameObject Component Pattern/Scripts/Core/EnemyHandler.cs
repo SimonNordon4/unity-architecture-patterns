@@ -10,6 +10,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         [SerializeField] private Level level;
         private float spawnTimer;
         private const float SPAWN_INTERVAL = 1f;
+        private int spawnedEnemies = 0;
 
         private void Start()
         {
@@ -18,6 +19,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void Update()
         {
+            if(spawnedEnemies > 3) return;
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0f)
             {
@@ -28,6 +30,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void SpawnEnemy()
         {
+            spawnedEnemies++;
             Vector3 randomPosition = new Vector3(
                 Random.Range(-level.Bounds.x, level.Bounds.x),
                 1,
