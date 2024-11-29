@@ -1129,6 +1129,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  deathDelay: 1
 --- !u!1 &299859322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,6 +1761,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 566238460}
+    - targetCorrespondingSourceObject: {fileID: 5624873259123158377, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 566238461}
   m_SourcePrefab: {fileID: 100100000, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a, type: 3}
 --- !u!224 &566238459 stripped
 RectTransform:
@@ -1783,7 +1788,20 @@ MonoBehaviour:
   playerController: {fileID: 460763656}
   roundTimer: {fileID: 2039543987}
   enemiesRemaining: {fileID: 188888847}
-  healthBar: {fileID: 1079578952}
+--- !u!114 &566238461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290299293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c4333f98347674c8cd343927c8da90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 293031470}
+  fillBar: {fileID: 1079578952}
   healthBarText: {fileID: 890691772}
 --- !u!1 &590339656 stripped
 GameObject:
@@ -2436,6 +2454,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f2542e34707af41bf8994c3777bdfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnGameStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameWon:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameLost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1949976523}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.SceneLoader,
+          GameObjectComponentPattern
+        m_MethodName: LoadGameLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGamePaused:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameResumed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &890691772 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8352148465792819484, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,

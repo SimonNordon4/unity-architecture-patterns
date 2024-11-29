@@ -1,15 +1,16 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class GameState : MonoBehaviour
     {
-        public Action OnGameStarted = delegate { };
-        public Action OnGameWon = delegate { };
-        public Action OnGameLost = delegate { };
-        public Action OnGamePaused = delegate { };
-        public Action OnGameResumed = delegate { };
+        public UnityEvent OnGameStarted = new();
+        public UnityEvent OnGameWon = new();
+        public UnityEvent OnGameLost = new();
+        public UnityEvent OnGamePaused = new();
+        public UnityEvent OnGameResumed = new();
 
         public void StartGame()
         {

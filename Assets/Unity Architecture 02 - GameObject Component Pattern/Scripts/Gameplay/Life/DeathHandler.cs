@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +9,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
     {
         public UnityEvent onDeath = new();
         private Health _health;
+
+        [SerializeField]private float deathDelay = 1f;
 
         private void Awake()
         {
@@ -28,7 +29,12 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnHealthDepleted()
         {
-            Debug.Log("enemy Died");
+            StartCoroutine(OnDeathCoroutine());
+        }
+
+        private IEnumerator OnDeathCoroutine()
+        {
+            yield return new WaitForSeconds(deathDelay);
             onDeath?.Invoke();
         }
     }
