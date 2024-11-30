@@ -15237,29 +15237,29 @@ MonoBehaviour:
     _modifiers: []
     value: 0
   <Range>k__BackingField:
-    <baseValue>k__BackingField: 5
+    <baseValue>k__BackingField: 1
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 5
+    value: 1
   <Firerate>k__BackingField:
-    <baseValue>k__BackingField: 5
+    <baseValue>k__BackingField: 20
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 5
+    value: 20
   <KnockBack>k__BackingField:
-    <baseValue>k__BackingField: 1
+    <baseValue>k__BackingField: 0
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 1
+    value: 0
   <Pierce>k__BackingField:
-    <baseValue>k__BackingField: 1
+    <baseValue>k__BackingField: 0
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 1
+    value: 0
 --- !u!114 &2103351661443389608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15358,6 +15358,7 @@ MonoBehaviour:
           m_StringArgument: Enemy Died
           m_BoolArgument: 0
         m_CallState: 2
+  deathDelay: 1
 --- !u!114 &5042127886549934696
 MonoBehaviour:
   m_ObjectHideFlags: 0

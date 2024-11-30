@@ -8,18 +8,43 @@ namespace UnityArchitecture.GameObjectComponentPattern
         [SerializeField]
         private ActorPool normalEnemyPool;
         [SerializeField] private Level level;
+        [SerializeField] private GameState gameState;
         private float spawnTimer;
         private const float SPAWN_INTERVAL = 1f;
         private int spawnedEnemies = 0;
+        private int enemiesKilled = 0;
 
         private void Start()
         {
             spawnTimer = SPAWN_INTERVAL;
         }
 
+        private void OnEnable()
+        {
+            normalEnemyPool.OnActorReturn.AddListener(EnemyDied);
+        }
+
+        private void EnemyDied(PoolableActor actor)
+        {
+            Debug.Log("Enemy Died!");
+            enemiesKilled++;
+            if(enemiesKilled == 4)
+            {
+                gameState.WinGame();
+            }
+        }
+
+        private void OnDisable()
+        {
+            normalEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+        }
+
         private void Update()
         {
-            if(spawnedEnemies > 3) return;
+            if(spawnedEnemies == 4)
+            {
+                return;
+            }
             spawnTimer -= Time.deltaTime;
             if (spawnTimer <= 0f)
             {

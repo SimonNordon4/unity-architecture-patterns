@@ -896,11 +896,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <MaxHealth>k__BackingField:
-    <baseValue>k__BackingField: 5
+    <baseValue>k__BackingField: 20
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 5
+    value: 20
   <HealthRegen>k__BackingField:
     <baseValue>k__BackingField: 0
     minimumValue: 0
@@ -938,11 +938,11 @@ MonoBehaviour:
     _modifiers: []
     value: 0
   <Range>k__BackingField:
-    <baseValue>k__BackingField: 5
+    <baseValue>k__BackingField: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 5
+    value: 10
   <Firerate>k__BackingField:
     <baseValue>k__BackingField: 10
     minimumValue: 0
@@ -956,11 +956,11 @@ MonoBehaviour:
     _modifiers: []
     value: 1
   <Pierce>k__BackingField:
-    <baseValue>k__BackingField: 1
+    <baseValue>k__BackingField: 0
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 1
+    value: 0
 --- !u!114 &293031464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2459,7 +2459,20 @@ MonoBehaviour:
       m_Calls: []
   OnGameWon:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1949976523}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.SceneLoader,
+          GameObjectComponentPattern
+        m_MethodName: LoadGameWon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnGameLost:
     m_PersistentCalls:
       m_Calls:
@@ -2860,6 +2873,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actorFactory: {fileID: 1121866899}
+  OnActorGet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActorReturn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1121866901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2874,6 +2893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalEnemyPool: {fileID: 1121866900}
   level: {fileID: 801546268}
+  gameState: {fileID: 801546269}
 --- !u!4 &1121866902
 Transform:
   m_ObjectHideFlags: 0

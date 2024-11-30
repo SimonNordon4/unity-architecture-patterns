@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
@@ -13,8 +14,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public readonly Queue<PoolableActor> InactivePool = new();
         public readonly List<PoolableActor> ActivePool = new();
 
-        public event Action<PoolableActor> OnActorGet;
-        public event Action<PoolableActor> OnActorReturn;
+        public UnityEvent<PoolableActor> OnActorGet = new();
+        public UnityEvent<PoolableActor> OnActorReturn = new();
 
         private void Awake()
         {
@@ -49,6 +50,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             actor.gameObject.SetActive(false);
             InactivePool.Enqueue(actor);
+            OnActorReturn?.Invoke(actor);
         }
 
         public void ReturnAllActiveActors()
