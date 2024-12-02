@@ -10,8 +10,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public UnityEvent onDeath = new();
         private Health _health;
 
-        [SerializeField]private float deathDelay = 1f;
-
         private void Awake()
         {
             _health = GetComponent<Health>();
@@ -29,12 +27,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnHealthDepleted()
         {
-            StartCoroutine(OnDeathCoroutine());
-        }
-
-        private IEnumerator OnDeathCoroutine()
-        {
-            yield return new WaitForSeconds(deathDelay);
             onDeath?.Invoke();
         }
     }

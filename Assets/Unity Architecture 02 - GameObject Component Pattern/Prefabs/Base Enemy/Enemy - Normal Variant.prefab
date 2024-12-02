@@ -93,46 +93,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8077942847663723370}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Return
-      objectReference: {fileID: 0}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityArchitecture.GameObjectComponentPattern.PoolableActor, GameObjectComponentPattern
-      objectReference: {fileID: 0}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -231,15 +191,3 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8077942847663723370 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3677801144576041349, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4832558796777566959}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 723273570661736895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82909656621f4bbab8987d389edcb655, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
