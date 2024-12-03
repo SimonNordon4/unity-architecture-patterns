@@ -81,6 +81,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public void SetToMaxHealth()
         {
             currentHealth = maxHealth;
+            OnHealthChanged?.Invoke(currentHealth);
         }
     }
 }

@@ -46,6 +46,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void EnemyDied(PoolableActor actor)
         {
+            _activeEnemies.Remove(actor);
             totalEnemiesKilled++;
 
             if (_progressPaused) return;

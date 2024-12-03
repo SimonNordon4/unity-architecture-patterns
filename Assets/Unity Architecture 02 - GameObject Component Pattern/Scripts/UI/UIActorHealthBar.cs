@@ -12,6 +12,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void OnEnable()
         {
             health.OnHealthChanged.AddListener(UpdateHealthBar);
+            UpdateHealthBar(health.currentHealth);
         }
 
         
