@@ -17,8 +17,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void Return()
         {
-            Debug.Log("Returning Actor to Pool");
             _pool.Return(this);
+            onActorReturn?.Invoke();
         }
     }
 }
