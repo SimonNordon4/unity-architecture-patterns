@@ -80,6 +80,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
             {
                 _timeSinceLastSpawn = 0f;
                 // pick a random enemy from the spawnable list
+
+
                 var enemyPrefab = spawnableEnemies[Random.Range(0, spawnableEnemies.Count)];
                 SpawnEnemy(enemyPrefab);
             }
@@ -231,7 +233,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
                         SpawnBoss(wandererBossEnemyPrefab);
                         SpawnBoss(wandererExploderBossEnemyPrefab);
                         break;
-                    case 240:
+                    case 340:
                         SpawnBoss(rangedBossEnemyPrefab);
                         SpawnBoss(rangedBossEnemyPrefab);
                         SpawnBoss(rangedBossEnemyPrefab);
