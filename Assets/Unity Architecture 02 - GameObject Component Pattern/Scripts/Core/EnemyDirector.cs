@@ -130,14 +130,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 stats.MaxHealth.AddModifier(new Modifier
                 {
                     statType = StatType.MaxHealth,
-                    modifierValue = Mathf.RoundToInt(_waves[_waveIndex].healthMultiplier * 100),
+                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].healthMultiplier-1) * 100),
                     isFlatPercentage = false
                 });
 
                 stats.Damage.AddModifier(new Modifier
                 {
                     statType = StatType.Damage,
-                    modifierValue = Mathf.RoundToInt(_waves[_waveIndex].damageMultiplier * 100),
+                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].damageMultiplier-1) * 100),
                     isFlatPercentage = false
                 });
             }
