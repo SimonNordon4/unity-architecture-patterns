@@ -58,7 +58,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             spawnedEnemies++;
             Vector3 randomPosition = new Vector3(
                 Random.Range(-level.Bounds.x, level.Bounds.x),
-                1,
+                0f,
                 Random.Range(-level.Bounds.y, level.Bounds.y)
             );
 
