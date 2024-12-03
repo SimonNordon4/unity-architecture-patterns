@@ -109,7 +109,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             OnBossDied?.Invoke(actor);
         }
 
-        public void SpawnEnemy(EnemyType enemyType)
+        public PoolableActor SpawnEnemy(EnemyType enemyType)
         {
             PoolableActor enemy = null;
 
@@ -125,9 +125,11 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 enemy.transform.position = randomPosition;
                 enemy.gameObject.SetActive(true);
             }
+
+            return enemy;
         }
 
-        public void SpawnBoss(EnemyType enemyType)
+        public PoolableActor SpawnBoss(EnemyType enemyType)
         {
             PoolableActor enemy = null;
 
@@ -143,6 +145,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 enemy.transform.position = randomPosition;
                 enemy.gameObject.SetActive(true);
             }
+
+            return enemy;
         }
     }
 }
