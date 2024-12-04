@@ -9,18 +9,19 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         private CombatTarget _target;
         private AvoidAllies _avoidance;
-        private Stat _rangeState;
 
         [SerializeField] private float acceleration = 2f;
 
         private Stat _rangeStat;
-        private Stat _moveStat;
+        private Stat _speedStat;
 
         private Vector3 _lastVelocity;
 
         private void Start()
         {
-            _rangeStat = GetComponent<Stats>().GetStat(StatType.Range);
+            var stats = GetComponent<Stats>();
+            _rangeStat = stats.GetStat(StatType.Range);
+            _speedStat = stats.GetStat(StatType.Speed);
             _target = GetComponent<CombatTarget>();
             _avoidance = GetComponent<AvoidAllies>();
         }
@@ -32,11 +33,11 @@ namespace UnityArchitecture.GameObjectComponentPattern
             var desiredVelocity = Vector3.zero;
             var lookDirection = _target.TargetDirection;
 
-            if (_target.TargetDistance > _rangeStat.value)
+            if (_target.TargetDistance > _rangeStat.value * 0.5f)
             {
                 desiredVelocity = _target.TargetDirection * Speed;
             }
-            else if (_target.TargetDistance < _rangeStat.value)
+            else if (_target.TargetDistance < _rangeStat.value * 0.5f - 1)
             {
                 desiredVelocity = -_target.TargetDirection * Speed;
             }

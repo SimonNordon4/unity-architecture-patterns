@@ -917,6 +917,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 293031458}
+  - component: {fileID: 293031475}
+  - component: {fileID: 293031474}
   - component: {fileID: 293031463}
   - component: {fileID: 293031462}
   - component: {fileID: 293031461}
@@ -1254,6 +1256,56 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!136 &293031474
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2.2246022
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.6123011, z: 0}
+--- !u!54 &293031475
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &299859322
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,6 +3783,8 @@ GameObject:
   - component: {fileID: 1003667304}
   - component: {fileID: 1003667303}
   - component: {fileID: 1003667302}
+  - component: {fileID: 1003667306}
+  - component: {fileID: 1003667307}
   m_Layer: 0
   m_Name: Enemy Test Handler
   m_TagString: Untagged
@@ -3752,8 +3806,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: {fileID: 801546268}
   <initialTarget>k__BackingField: {fileID: 293031458}
-  projectilePool: {fileID: 0}
-  actorPrefab: {fileID: 1598753622268625867, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+  projectilePool: {fileID: 1003667306}
+  actorPrefab: {fileID: 8083090277699704161, guid: 0421abe8bebd29945b94d898aa9df9f8,
     type: 3}
 --- !u!114 &1003667303
 MonoBehaviour:
@@ -3807,6 +3861,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1003667306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003667301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded862d4759f448a9be6fd67c79f53c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factory: {fileID: 1003667307}
+--- !u!114 &1003667307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003667301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268832ebe93a4f728c6ce1e321624c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 5300578428285203675, guid: c870654b17240b94cbfebd5581f1b369,
+    type: 3}
 --- !u!114 &1079578952 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 778175332418278668, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,

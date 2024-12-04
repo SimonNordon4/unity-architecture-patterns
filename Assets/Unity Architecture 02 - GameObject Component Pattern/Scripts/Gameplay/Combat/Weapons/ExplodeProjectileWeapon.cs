@@ -1,14 +1,12 @@
-﻿using Pools;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GameplayComponents.Combat.Weapons
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class ExplodeProjectileWeapon : BaseWeapon
     {
-        [SerializeField]private MunitionDefinition munitionDefinition;
         [SerializeField]private Transform projectileSpawnPoint;
         [SerializeField]private int numberOfProjectiles = 3;
-        [SerializeField] private MunitionPool pool;
+        [SerializeField] private ProjectilePool pool;
         [SerializeField] private float projectileSpeed = 5f;
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
@@ -25,7 +23,7 @@ namespace GameplayComponents.Combat.Weapons
                 var direction = Quaternion.Euler(0, projectileAngle, 0) * transform.forward;
                 
                 // spawn the projectile
-                var projectile = pool.Get(munitionDefinition, projectileSpawnPoint.position, direction);
+                var projectile = pool.Get(projectileSpawnPoint.position, direction);
                 
                 // set the projectile stats
                 projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);

@@ -6,9 +6,15 @@ namespace UnityArchitecture.GameObjectComponentPattern
     public class ProjectilePool : MonoBehaviour
     {
         [SerializeField]private ProjectileFactory factory;
-        
         private Queue<Projectile> _inactiveProjectiles = new();
         private List<Projectile> _activeProjectiles = new();
+
+        public void Construct(ProjectilePool newPool)
+        {
+            _inactiveProjectiles = newPool._inactiveProjectiles;
+            _activeProjectiles = newPool._activeProjectiles;
+            factory = newPool.factory;
+        }
 
         public Projectile Get(Vector3 position, Vector3 direction, bool startActive = true)
         {

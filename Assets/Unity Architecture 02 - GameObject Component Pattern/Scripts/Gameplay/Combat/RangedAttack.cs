@@ -16,21 +16,22 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private Stat _pierce;
 
         private float _timeSinceLastAttack = 0f;
-        
-private void Start()
-{
-    _target = GetComponent<CombatTarget>();
-    var stats = GetComponent<Stats>();
-    _damage = stats.GetStat(StatType.Damage);
-    _knockBack = stats.GetStat(StatType.KnockBack);
-    _range = stats.GetStat(StatType.Range);
-    _fireRate = stats.GetStat(StatType.FireRate);
-    _pierce = stats.GetStat(StatType.Pierce);}
+
+        private void Start()
+        {
+            _target = GetComponent<CombatTarget>();
+            var stats = GetComponent<Stats>();
+            _damage = stats.GetStat(StatType.Damage);
+            _knockBack = stats.GetStat(StatType.KnockBack);
+            _range = stats.GetStat(StatType.Range);
+            _fireRate = stats.GetStat(StatType.FireRate);
+            _pierce = stats.GetStat(StatType.Pierce);
+        }
 
         private void Update()
         {
             var inverseAttackSpeed = 10f / _fireRate.value;
-            if(_timeSinceLastAttack < inverseAttackSpeed)
+            if (_timeSinceLastAttack < inverseAttackSpeed)
             {
                 _timeSinceLastAttack += Time.deltaTime;
                 return;
@@ -40,12 +41,12 @@ private void Start()
             {
                 return;
             }
-            
+
             if (_target.TargetDistance > _range.value * 0.5f)
             {
                 return;
             }
-            
+
             var info = new WeaponStatsInfo
             {
                 Damage = _damage.value,
@@ -54,9 +55,9 @@ private void Start()
                 AttackSpeed = _fireRate.value,
                 Pierce = _pierce.value,
             };
-            
+
             weapon.Attack(info, _target);
-            
+
             _timeSinceLastAttack = 0f;
         }
     }
