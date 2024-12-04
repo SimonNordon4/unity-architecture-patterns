@@ -167,7 +167,7 @@ PrefabInstance:
     - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
       propertyPath: <MaxHealth>k__BackingField.value
-      value: 1000
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
@@ -178,11 +178,6 @@ PrefabInstance:
         type: 3}
       propertyPath: <Damage>k__BackingField.<baseValue>k__BackingField
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      propertyPath: <MaxHealth>k__BackingField.<baseValue>k__BackingField
-      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
@@ -254,19 +249,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8330935252219986354}
-    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6729891999880133724}
-    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2213545278355444343}
     - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4626495270347124708}
+    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3926561684874543185}
   m_SourcePrefab: {fileID: 100100000, guid: 1c95ab97b703a5a4ea03366bf8725f5e, type: 3}
 --- !u!1 &2405962524993187802 stripped
 GameObject:
@@ -299,36 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f6745e325c34cc5bd58619258f06185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8330935252219986354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2405962524993187802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d26d180ca92d4495a4cf5b8b6ac104d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weapon: {fileID: 6729891999880133724}
---- !u!114 &6729891999880133724
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2405962524993187802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e15fd668b1db4448e35a893f74e4c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls: []
-  chargeSpeed: 10
-  chargeDistance: 5
 --- !u!114 &2213545278355444343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,3 +316,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CanBeKnockedBack>k__BackingField: 1
   knockBackFactor: 1
+--- !u!114 &3926561684874543185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2405962524993187802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a94a77dfdbfda64e9f9ff82c9711397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargeSpeed: 10
+  chargeDistance: 8
+  chargeCooldown: 3
+  chargeUpTime: 0.5
