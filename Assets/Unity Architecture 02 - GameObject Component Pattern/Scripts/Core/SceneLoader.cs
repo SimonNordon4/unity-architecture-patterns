@@ -68,7 +68,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             if (!SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded)
             {
-                Debug.Log("Loading Environment");
                 SceneManager.LoadScene(dungeonScene, LoadSceneMode.Additive);
             }
         }

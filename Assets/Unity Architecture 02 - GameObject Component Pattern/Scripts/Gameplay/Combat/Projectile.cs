@@ -56,7 +56,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Collided with " + other.name);
             // check if other is in target layer
             if (_targetLayer != (_targetLayer | (1 << other.gameObject.layer))) return;
             
