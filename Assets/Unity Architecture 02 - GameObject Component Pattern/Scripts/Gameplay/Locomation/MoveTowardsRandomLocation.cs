@@ -5,7 +5,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
    
     public class MoveTowardsRandomLocation : MoveBase
     {
-        [SerializeField] private Level level;
+
         
         private float _distanceToTarget;
         private Vector3 _randomLocation;
@@ -36,7 +36,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         private Vector3 GetRandomLocation()
         {
-            var bounds = level.Bounds;
+            var bounds = movement.Level.Bounds;
             
             var randomX = Random.Range(-bounds.x, bounds.x);
             var randomZ = Random.Range(-bounds.y, bounds.y);

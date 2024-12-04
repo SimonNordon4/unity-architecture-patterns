@@ -35099,10 +35099,35 @@ PrefabInstance:
       propertyPath: onActorGet.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 8770601535019911205}
+    - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: <Speed>k__BackingField.value
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: <Damage>k__BackingField.value
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: <Speed>k__BackingField.<baseValue>k__BackingField
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: <Damage>k__BackingField.<baseValue>k__BackingField
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
       propertyPath: m_Name
       value: Enemy - Wanderer Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6612436184476467086, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
@@ -35152,7 +35177,15 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8680252430047031228}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3473202828829338557}
+    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1382196191373782044}
   m_SourcePrefab: {fileID: 100100000, guid: 1c95ab97b703a5a4ea03366bf8725f5e, type: 3}
 --- !u!4 &2946059422781461132 stripped
 Transform:
@@ -35160,3 +35193,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2676762523785110094}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7799357902571909406 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2676762523785110094}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3473202828829338557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799357902571909406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4a333ff2b745afaabcdb4d4597d264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1382196191373782044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799357902571909406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1046686aa344a1baf2ff352fb17f581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CanBeKnockedBack>k__BackingField: 1
+  knockBackFactor: 1

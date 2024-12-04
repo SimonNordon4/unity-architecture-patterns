@@ -4,11 +4,11 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class Movement : MonoBehaviour
     {
-        [SerializeField] private Level _level;
+        [field:SerializeField] public Level Level { get; private set;}
 
         public void Construct(Level newLevel)
         {
-            _level = newLevel;
+            Level = newLevel;
         }
         
         public Vector3 velocity { get; private set; }
@@ -28,8 +28,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
             var position = _transform.position;
             
             // clamp newPosition to level bounds
-            var x = Mathf.Clamp(position.x, -_level.Bounds.x, _level.Bounds.x);
-            var y = Mathf.Clamp(position.z, -_level.Bounds.y, _level.Bounds.y);
+            var x = Mathf.Clamp(position.x, -Level.Bounds.x, Level.Bounds.x);
+            var y = Mathf.Clamp(position.z, -Level.Bounds.y, Level.Bounds.y);
             
             var newPosition = new Vector3(x, position.y, y);
 
