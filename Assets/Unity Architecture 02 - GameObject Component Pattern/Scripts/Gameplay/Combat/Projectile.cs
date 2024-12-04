@@ -59,6 +59,12 @@ namespace UnityArchitecture.GameObjectComponentPattern
             // check if other is in target layer
             if (_targetLayer != (_targetLayer | (1 << other.gameObject.layer))) return;
             
+
+            if (other.TryGetComponent(out KnockBackReceiver knockBackReceiver))
+            {
+                knockBackReceiver.ApplyKnockBack(_projectileTransform.forward * _knockBackForce);
+            }
+
             // check if other has a damage receiver
             if (other.TryGetComponent(out DamageReceiver damageReceiver))
             {
@@ -71,10 +77,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 _pierceValue--;
             }
 
-            if (other.TryGetComponent(out KnockBackReceiver knockBackReceiver))
-            {
-                knockBackReceiver.ApplyKnockBack(_projectileTransform.forward * _knockBackForce);
-            }
         }
         
         public virtual void EndProjectile()

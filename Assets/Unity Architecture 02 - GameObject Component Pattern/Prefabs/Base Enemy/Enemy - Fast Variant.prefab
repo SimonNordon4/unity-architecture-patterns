@@ -225,8 +225,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
+      propertyPath: <Speed>k__BackingField.value
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
       propertyPath: <Damage>k__BackingField.value
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: <MaxHealth>k__BackingField.value
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5159892503237138225, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
@@ -247,6 +257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemy - Fast Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6643290754258302296, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
         type: 3}
@@ -368,6 +383,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2012920933033793767}
+    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6633596942388535834}
+    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5685996298107322982}
   m_SourcePrefab: {fileID: 100100000, guid: 1c95ab97b703a5a4ea03366bf8725f5e, type: 3}
 --- !u!1 &4123935333755914061 stripped
 GameObject:
@@ -428,3 +451,29 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6633596942388535834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123935333755914061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241e67b80a014efdac8005922af4bfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5685996298107322982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123935333755914061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1046686aa344a1baf2ff352fb17f581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CanBeKnockedBack>k__BackingField: 1
+  knockBackFactor: 1

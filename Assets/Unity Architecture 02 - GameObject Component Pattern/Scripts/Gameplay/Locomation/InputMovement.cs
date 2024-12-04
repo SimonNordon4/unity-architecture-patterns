@@ -18,7 +18,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
             var direction = new Vector3(moveHorizontal, 0, moveVertical).normalized;
             
-            movement.SetVelocity(direction * speedStat.value);
+            movement.SetVelocity(direction * Speed);
             movement.SetLookDirection(direction);
         }
     }

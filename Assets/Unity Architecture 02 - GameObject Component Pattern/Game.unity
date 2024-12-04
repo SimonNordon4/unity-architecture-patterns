@@ -978,7 +978,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f8035ab8c1a9a4b8b265721759e3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CanMove>k__BackingField: 1
   _level: {fileID: 801546268}
 --- !u!114 &293031461
 MonoBehaviour:
@@ -3813,6 +3812,9 @@ MonoBehaviour:
   normalEnemyPool: {fileID: 1003667303}
   level: {fileID: 801546268}
   gameState: {fileID: 801546269}
+  spawnInterval: 0.75
+  maxEnemies: 5
+  enemyToKill: 20
 --- !u!4 &1003667305
 Transform:
   m_ObjectHideFlags: 0

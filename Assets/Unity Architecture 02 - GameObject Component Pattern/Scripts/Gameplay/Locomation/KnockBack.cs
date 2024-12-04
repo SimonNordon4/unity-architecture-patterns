@@ -39,7 +39,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             if(CanBeKnockedBack == false) return;
             if(knockBackFactor <= 0) return;
-            StartCoroutine(KnockBackRoutine(knockBackVector));
+            // We scale down by 10% for balancing.
+            StartCoroutine(KnockBackRoutine(knockBackVector * 0.1f));
         }
         
         private IEnumerator KnockBackRoutine(Vector3 knockBackVector)

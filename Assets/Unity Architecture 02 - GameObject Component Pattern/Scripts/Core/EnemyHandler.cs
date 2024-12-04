@@ -10,13 +10,15 @@ namespace UnityArchitecture.GameObjectComponentPattern
         [SerializeField] private Level level;
         [SerializeField] private GameState gameState;
         private float spawnTimer;
-        private const float SPAWN_INTERVAL = 1f;
+        public float spawnInterval = 1f;
         private int spawnedEnemies = 0;
         private int enemiesKilled = 0;
+        public int maxEnemies = 4;
+        public int enemyToKill = 20;
 
         private void Start()
         {
-            spawnTimer = SPAWN_INTERVAL;
+            spawnTimer = spawnInterval;
         }
 
         private void OnEnable()
@@ -28,7 +30,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             Debug.Log("Enemy Died!");
             enemiesKilled++;
-            if(enemiesKilled == 4)
+            if(enemiesKilled == enemyToKill)
             {
                 gameState.WinGame();
             }
@@ -41,7 +43,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void Update()
         {
-            if(spawnedEnemies == 4)
+            if(spawnedEnemies == maxEnemies)
             {
                 return;
             }
@@ -49,7 +51,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             if (spawnTimer <= 0f)
             {
                 SpawnEnemy();
-                spawnTimer = SPAWN_INTERVAL;
+                spawnTimer = spawnInterval;
             }
         }
 
