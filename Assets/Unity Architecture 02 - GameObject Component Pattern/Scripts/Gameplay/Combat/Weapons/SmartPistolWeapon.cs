@@ -26,14 +26,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
             {
                 var distanceToTarget = target.TargetDistance;
                 var timeToTarget = distanceToTarget / projectileSpeed;
-                var velocity = movement.velocity;
+                var velocity = movement.velocity * 1f;
                 var predictedTargetPosition = targetPosition + velocity * timeToTarget;
                 
                 // // now get the distance to that position
                 // distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
                 // timeToTarget = distanceToTarget / projectileSpeed;
                 // predictedTargetPosition = targetPosition + velocity * timeToTarget;
-                //
+                
                 // // iterate again
                 // distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
                 // timeToTarget = distanceToTarget /projectileSpeed;

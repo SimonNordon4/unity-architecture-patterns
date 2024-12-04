@@ -28,6 +28,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.96
       objectReference: {fileID: 0}
+    - target: {fileID: 1273074575153233185, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2946059422781461132, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -96,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 3408014671488172473, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: 1.1599997
       objectReference: {fileID: 0}
     - target: {fileID: 3408014671488172473, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
@@ -118,30 +123,60 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.638005
       objectReference: {fileID: 0}
+    - target: {fileID: 5213451176781430389, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6119984652225321669, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.03
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6119984652225321669, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.03
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6119984652225321669, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.03
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6119984652225321669, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 2.4300003
+      value: 3.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115225280900019583, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+        type: 3}
+      propertyPath: <Speed>k__BackingField.value
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115225280900019583, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+        type: 3}
+      propertyPath: <MaxHealth>k__BackingField.value
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115225280900019583, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+        type: 3}
+      propertyPath: <Speed>k__BackingField.<baseValue>k__BackingField
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115225280900019583, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+        type: 3}
+      propertyPath: <MaxHealth>k__BackingField.<baseValue>k__BackingField
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7799357902571909406, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
       propertyPath: m_Name
       value: Boss Enemy - Wanderer Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799357902571909406, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8680252430047031228, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
         type: 3}
