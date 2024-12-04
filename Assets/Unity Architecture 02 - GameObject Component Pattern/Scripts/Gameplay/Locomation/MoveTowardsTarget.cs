@@ -23,7 +23,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             var velocity = _target.TargetDirection * Speed;
             var lookDirection = _target.TargetDirection;
 
-            if (_target.TargetDistance < 0.5f)
+            if (_target.TargetDistance < 0.75f)
             {
                 velocity = Vector3.zero;
             }
