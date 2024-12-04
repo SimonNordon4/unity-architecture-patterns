@@ -20,7 +20,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             if (!_target.HasTarget) return;
             
-            var velocity = _target.TargetDirection * speedStat.value;
+            var velocity = _target.TargetDirection * Speed;
             var lookDirection = _target.TargetDirection;
 
             if (_target.TargetDistance < 0.5f)

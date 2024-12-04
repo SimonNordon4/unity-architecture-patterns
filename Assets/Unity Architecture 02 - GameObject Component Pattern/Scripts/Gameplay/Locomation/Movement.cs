@@ -4,7 +4,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class Movement : MonoBehaviour
     {
-        [field: SerializeField] public bool CanMove { get;  set; } = true;
         [SerializeField] private Level _level;
 
         public void Construct(Level newLevel)
@@ -26,7 +25,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         public void LateUpdate()
         {
-            if(!CanMove) return;
             var position = _transform.position;
             
             // clamp newPosition to level bounds

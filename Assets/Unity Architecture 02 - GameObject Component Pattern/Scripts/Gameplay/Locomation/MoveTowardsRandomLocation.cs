@@ -22,8 +22,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             // move towards random location
             var position = transform.position;
             var direction = (_randomLocation - position).normalized;
-            var speed = speedStat.value;
-            var velocity = direction * speed;
+            var velocity = direction * Speed;
             movement.SetVelocity(velocity);
             movement.SetLookDirection(direction);
             

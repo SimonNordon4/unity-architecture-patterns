@@ -9,6 +9,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
     {
         protected Movement movement;
         protected Stat speedStat;
+        protected float Speed => speedStat.value * 0.5f;
 
         protected void Awake()
         {

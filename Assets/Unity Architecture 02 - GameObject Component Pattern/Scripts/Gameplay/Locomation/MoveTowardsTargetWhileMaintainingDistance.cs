@@ -34,11 +34,11 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
             if (_target.TargetDistance > _rangeStat.value)
             {
-                desiredVelocity = _target.TargetDirection * _moveStat.value;
+                desiredVelocity = _target.TargetDirection * Speed;
             }
             else if (_target.TargetDistance < _rangeStat.value)
             {
-                desiredVelocity = -_target.TargetDirection * _moveStat.value;
+                desiredVelocity = -_target.TargetDirection * Speed;
             }
 
             desiredVelocity += _avoidance.avoidanceDirection;

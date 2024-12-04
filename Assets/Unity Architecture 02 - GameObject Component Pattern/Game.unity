@@ -1028,17 +1028,17 @@ MonoBehaviour:
     _modifiers: []
     value: 20
   <HealthRegen>k__BackingField:
-    <baseValue>k__BackingField: 0
+    <baseValue>k__BackingField: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 0
+    value: 10
   <Speed>k__BackingField:
-    <baseValue>k__BackingField: 5
+    <baseValue>k__BackingField: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 5
+    value: 10
   <Armor>k__BackingField:
     <baseValue>k__BackingField: 0
     minimumValue: 0
@@ -1052,11 +1052,11 @@ MonoBehaviour:
     _modifiers: []
     value: 0
   <Damage>k__BackingField:
-    <baseValue>k__BackingField: 1
+    <baseValue>k__BackingField: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 1
+    value: 10
   <CritChance>k__BackingField:
     <baseValue>k__BackingField: 0
     minimumValue: 0
@@ -1076,11 +1076,11 @@ MonoBehaviour:
     _modifiers: []
     value: 10
   <KnockBack>k__BackingField:
-    <baseValue>k__BackingField: 1
+    <baseValue>k__BackingField: 10
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 1
+    value: 10
   <Pierce>k__BackingField:
     <baseValue>k__BackingField: 0
     minimumValue: 0
@@ -3743,6 +3743,91 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1003667301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1003667305}
+  - component: {fileID: 1003667304}
+  - component: {fileID: 1003667303}
+  - component: {fileID: 1003667302}
+  m_Layer: 0
+  m_Name: Enemy Test Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1003667302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003667301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a44f2dd1c8746bb9d3b759001e792b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: {fileID: 801546268}
+  <initialTarget>k__BackingField: {fileID: 293031458}
+  projectilePool: {fileID: 0}
+  actorPrefab: {fileID: 8077942847663723370, guid: 6da49f7eb69c8fc49964a213d0376127,
+    type: 3}
+--- !u!114 &1003667303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003667301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98bcd83f541439685cd02609483ae4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actorFactory: {fileID: 1003667302}
+  OnActorGet:
+    m_PersistentCalls:
+      m_Calls: []
+  OnActorReturn:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1003667304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003667301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a005bc5435fc544438eba8f3b9d80873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalEnemyPool: {fileID: 1003667303}
+  level: {fileID: 801546268}
+  gameState: {fileID: 801546269}
+--- !u!4 &1003667305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003667301}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5361791, y: 0.29142082, z: 2.8668842}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1079578952 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 778175332418278668, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,
@@ -3786,7 +3871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1121866902
 Transform:
   m_ObjectHideFlags: 0
@@ -5689,6 +5774,7 @@ SceneRoots:
   - {fileID: 1926671863}
   - {fileID: 644039391}
   - {fileID: 1121866902}
+  - {fileID: 1003667305}
   - {fileID: 1884674989}
   - {fileID: 1000354785}
   - {fileID: 293031458}
