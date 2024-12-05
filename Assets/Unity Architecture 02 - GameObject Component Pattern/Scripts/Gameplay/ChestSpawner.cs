@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class ChestSpawner : MonoBehaviour
     {
+        public UnityEvent<Chest> OnChestSpawned = new();
 
-        //TODO: Break off Chest Spawner from chest.
+        
         [Header("Chests")]
         public float chestSpawnTime = 15f;
         private float _timeSinceLastChestSpawn = 0f;
@@ -24,7 +26,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public void Start()
         {
             allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems };
-
             SpawnChest();
         }
 
@@ -42,7 +43,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             var chest = Instantiate(chestPrefab, GetRandomChestSpawn(), Quaternion.identity);
             chest.Construct(1,4,tier3Pity, tier4Pity);
-            (tier3Pity, tier4Pity) = chest.GenerateItems();
+            (tier3Pity, tier4Pity) = chest.GenerateItems(allChestItems);
+            OnChestSpawned.Invoke(chest);    
         }
 
         public void SpawnBossChest(Vector3 position)
@@ -51,7 +53,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
             var chest = Instantiate(chestPrefab, groundPosition, Quaternion.identity);
             chest.Construct(2,4,tier3Pity, tier4Pity);
             chest.transform.localScale *= 1.5f; // Make the boss chest 50% larger
-            (tier3Pity, tier4Pity) = chest.GenerateItems();
+            (tier3Pity, tier4Pity) = chest.GenerateItems(allChestItems);
+            OnChestSpawned.Invoke(chest);
         }
     }
 }

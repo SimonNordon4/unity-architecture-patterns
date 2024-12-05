@@ -1,19 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class Chest : MonoBehaviour
     {
+        public UnityEvent<Chest> OnChestOpened = new();
         [field:SerializeField] public int MinTier {get;private set;} = 1;
         [field:SerializeField] public int MaxTier {get;private set;} = 4;
 
         private int _tier3Pity;
         private int _tier4Pity;
-        private ChestPickupHandler _chestPickupHandler;
-        
-        public AudioClip openSound;
-        
 
         public List<ChestItem> items = new();
 
@@ -116,8 +114,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             if (other.CompareTag("Player"))
             {
-                AudioManager.Instance.PlaySound(openSound);
-                ChestManager.Instance.PickupChest(this);
+                OnChestOpened.Invoke(this);
                 Destroy(gameObject);
             }
         }
