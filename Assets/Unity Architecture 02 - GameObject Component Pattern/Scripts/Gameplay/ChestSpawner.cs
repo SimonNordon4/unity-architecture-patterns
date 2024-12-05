@@ -6,7 +6,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
     public class ChestSpawner : MonoBehaviour
     {
         public UnityEvent<Chest> OnChestSpawned = new();
-
         
         [Header("Chests")]
         public float chestSpawnTime = 15f;
@@ -26,6 +25,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public void Start()
         {
             allChestItems = new[] { tier1ChestItems, tier2ChestItems, tier3ChestItems, tier4ChestItems };
+            SpawnChest();
+        }
+        
+        private void Update()
+        {
+            _timeSinceLastChestSpawn += Time.deltaTime;
+            if (!(_timeSinceLastChestSpawn > chestSpawnTime)) return;
+            _timeSinceLastChestSpawn = 0f;
             SpawnChest();
         }
 

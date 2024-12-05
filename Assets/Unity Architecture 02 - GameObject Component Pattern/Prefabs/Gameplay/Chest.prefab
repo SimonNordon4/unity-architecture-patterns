@@ -68,11 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a847b670bf84ea1b18401abfbf912cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minTier: 1
-  maxTier: 1
-  options: {x: 0, y: 0}
-  openSound: {fileID: 11400000, guid: c13e0c3716d8d9e428c464fc0be88c9c, type: 2}
-  chestManager: {fileID: 0}
+  OnChestOpened:
+    m_PersistentCalls:
+      m_Calls: []
+  <MinTier>k__BackingField: 1
+  <MaxTier>k__BackingField: 4
+  pickupLayer:
+    serializedVersion: 2
+    m_Bits: 64
   items: []
 --- !u!1001 &2050442779887469948
 PrefabInstance:

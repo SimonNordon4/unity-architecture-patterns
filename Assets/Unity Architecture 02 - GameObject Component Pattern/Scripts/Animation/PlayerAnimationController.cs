@@ -29,7 +29,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         // Update is called once per frame
         void LateUpdate()
         {
-            if (!GameManager.Instance.isGameActive) return;
             var gunRotation = Quaternion.LookRotation(combatTarget.TargetDirection);
             gunPivot.rotation = Quaternion.Lerp(gunPivot.rotation, gunRotation, Time.deltaTime * gunRotationSpeed);
             _transform.position = _transformToFollow.position + offset;

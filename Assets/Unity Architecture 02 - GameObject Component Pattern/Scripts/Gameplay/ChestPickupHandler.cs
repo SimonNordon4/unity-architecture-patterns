@@ -7,7 +7,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
     [RequireComponent(typeof(ChestSpawner))]
     public class ChestPickupHandler : MonoBehaviour
     {
-        public UnityEvent OnChestPickup = new();
+        public UnityEvent<Chest> OnChestPickup = new();
         
         [SerializeField]private GameState gameState;
         
@@ -34,7 +34,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             chest.OnChestOpened.RemoveListener(PickupChest);
             gameState.PauseGame();
-            OnChestPickup.Invoke();
+            OnChestPickup.Invoke(chest);
+            CurrentChest = chest;
+            SelectItem(new ChestItem());
+        }
+
+        public void SelectItem(ChestItem item)
+        {
+            Destroy(CurrentChest.gameObject);
         }
 
     }

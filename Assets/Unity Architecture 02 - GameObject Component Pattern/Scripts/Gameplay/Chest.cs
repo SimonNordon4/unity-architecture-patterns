@@ -12,7 +12,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private int _tier3Pity;
         private int _tier4Pity;
-
         public List<ChestItem> items = new();
 
         public void Construct(int minTier, int maxTier, int tier3Pity, int tier4Pity)
@@ -25,8 +24,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         public (int,int) GenerateItems(ChestItems[] chestItems)
         {
-            Console.Log("\tChest.GenerateItems()", LogFilter.Chest, this);
-
             var numberOfItems = CalculateNumberOfItems();
             
             // Flags to check if a tier item has been added
@@ -73,7 +70,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 _ => 2,
             };
             
-            Console.Log($"\t\t Item Chance {itemsChance} resulting in {numberOfItems} items", LogFilter.Chest, this);
             return  numberOfItems;
         }
 
@@ -83,7 +79,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             var tierChance = Random.Range(0, 100);
 
             // We want better items to spawn as time goes on.
-            var enemyProgress = (EnemyManager.Instance.enemyKillProgressCount / 400f) * 5f;
+            var enemyProgress = 1f; //(EnemyManager.Instance.enemyKillProgressCount / 400f) * 5f;
             
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch
@@ -112,11 +108,12 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player"))
             {
                 OnChestOpened.Invoke(this);
                 Destroy(gameObject);
             }
+
         }
     }
 }
