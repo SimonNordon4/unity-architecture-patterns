@@ -100,7 +100,9 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void Update()
         {
-            _currentSpawnRate = _activeEnemies.Count > 0 ? Mathf.Clamp01(_activeEnemies.Count / (float)_waves[_waveIndex].maxEnemiesAlive) : 1f;
+            _currentSpawnRate = _activeEnemies.Count > 0
+                ? Mathf.Clamp01(_activeEnemies.Count / (float)_waves[_waveIndex].maxEnemiesAlive)
+                : 1f;
             _timeSinceLastSpawn += Time.deltaTime;
 
             if (_timeSinceLastSpawn > _currentSpawnRate && _activeEnemies.Count < _waves[_waveIndex].maxEnemiesAlive)
@@ -115,8 +117,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
             // If progress is paused, we only want to spawn enemies that are meant to be spawned alongside the boss.
             List<EnemyType> enemySpawnPool;
 
-            
-            if (_waves[_waveIndex].bossEnemyTypes.Count <= 0) // If there are no bosses this waves, spawn normal enemies always.
+            if (_waves[_waveIndex].bossEnemyTypes.Count <=
+                0) // If there are no bosses this waves, spawn normal enemies always.
             {
                 enemySpawnPool = _waves[_waveIndex].enemyTypes;
             }
@@ -136,14 +138,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 stats.MaxHealth.AddModifier(new Modifier
                 {
                     statType = StatType.MaxHealth,
-                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].healthMultiplier-1) * 100),
+                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].healthMultiplier - 1) * 100),
                     isFlatPercentage = false
                 });
 
                 stats.Damage.AddModifier(new Modifier
                 {
                     statType = StatType.Damage,
-                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].damageMultiplier-1) * 100),
+                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].damageMultiplier - 1) * 100),
                     isFlatPercentage = false
                 });
             }

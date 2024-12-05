@@ -6,8 +6,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class ActorLifecycle : MonoBehaviour
     {
-        [SerializeField] private float spawnInDelay = 1f;
-        [SerializeField] private float spawnOutDelay = 1f;
+        private float spawnInDelay = 1f;
+        private float spawnOutDelay = 0.3f;
 
         public UnityEvent OnSpawnIn = new UnityEvent();
         public UnityEvent OnSpawnOut = new UnityEvent();

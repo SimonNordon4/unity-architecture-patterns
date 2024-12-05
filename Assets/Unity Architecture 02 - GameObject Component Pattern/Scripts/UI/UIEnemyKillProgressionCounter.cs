@@ -12,18 +12,18 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnEnable()
         {
-            enemySpawner.OnEnemyDied.AddListener(UpdateProgessText);
-            enemySpawner.OnBossDied.AddListener(UpdateProgessText);
-            UpdateProgessText(null);
+            enemySpawner.OnEnemyDied.AddListener(UpdateProgressText);
+            enemySpawner.OnBossDied.AddListener(UpdateProgressText);
+            UpdateProgressText(null);
         }
 
         private void OnDisable()
         {
-            enemySpawner.OnEnemyDied.RemoveListener(UpdateProgessText);
-            enemySpawner.OnBossDied.RemoveListener(UpdateProgessText);
+            enemySpawner.OnEnemyDied.RemoveListener(UpdateProgressText);
+            enemySpawner.OnBossDied.RemoveListener(UpdateProgressText);
         }
 
-        private void UpdateProgessText(PoolableActor enemy)
+        private void UpdateProgressText(PoolableActor enemy)
         {
             if(enemyDirector.FightingBoss)
             {
@@ -31,7 +31,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 return;
             }
 
-            progressText.text = $"Enemies Left: {enemyDirector.EnemyKillProgressCount / enemyDirector.EnemiesToKill}";
+            progressText.text = $"Enemies Left: {enemyDirector.EnemyKillProgressCount} / {enemyDirector.EnemiesToKill}";
         }
     }
 }

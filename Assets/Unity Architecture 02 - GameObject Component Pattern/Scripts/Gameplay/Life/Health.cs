@@ -31,19 +31,9 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnMaxHealthModifierAdded(Modifier hpMod)
         {
-            var hpChange = hpMod.modifierValue;
-
-            // If the max health has increased, increase the current health by the difference
-            if (hpChange > 0)
-            {
-                currentHealth += hpChange;
-            }
-            // If the max health has decreased, clamp the current health to the new max health if it's greater than the new max health
-            else if (currentHealth > maxHealth)
-            {
-                currentHealth = maxHealth;
-            }
-
+            var hpChange = hpMod.modifierValue * _maxHealthStat.baseValue;
+            currentHealth += hpChange;
+            currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             OnHealthChanged?.Invoke(currentHealth);
         }
 
@@ -54,7 +44,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void SetHealth(int health)
         {
-            currentHealth = health;
+            currentHealth = Mathf.Clamp(health, 0, maxHealth);
             OnHealthChanged?.Invoke(currentHealth);
         }
 
