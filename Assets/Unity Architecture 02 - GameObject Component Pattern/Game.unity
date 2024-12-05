@@ -768,6 +768,8 @@ GameObject:
   - component: {fileID: 293031475}
   - component: {fileID: 293031474}
   - component: {fileID: 293031463}
+  - component: {fileID: 293031476}
+  - component: {fileID: 293031477}
   - component: {fileID: 293031462}
   - component: {fileID: 293031461}
   - component: {fileID: 293031467}
@@ -1154,6 +1156,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &293031476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a839696f05af4647b7d59950c119d4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <items>k__BackingField: []
+  onItemAdded:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &293031477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5abb764273ee4441a4fee98121274c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &299859322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1874,6 +1904,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 566238462}
+    - targetCorrespondingSourceObject: {fileID: 5624873259123158377, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 566238463}
   m_SourcePrefab: {fileID: 100100000, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a, type: 3}
 --- !u!224 &566238459 stripped
 RectTransform:
@@ -1910,6 +1944,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundTimerText: {fileID: 2039543987}
   roundTimer: {fileID: 801546267}
+--- !u!114 &566238463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290299293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d8fca0fb36eb34cbeb8153f25f0a36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressText: {fileID: 1537216601}
+  enemyDirector: {fileID: 1121866905}
+  enemySpawner: {fileID: 1121866903}
 --- !u!1 &574705507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3523,7 +3572,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnEnemyDied:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1491741408}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.ChestSpawner,
+          GameObjectComponentPattern
+        m_MethodName: ReduceChestSpawnTime
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnBossDied:
     m_PersistentCalls:
       m_Calls: []
@@ -4134,6 +4196,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   gameState: {fileID: 801546269}
+  playerInventory: {fileID: 293031476}
 --- !u!114 &1509624758 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2127899612812649953, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
@@ -4144,6 +4207,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1537216601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5185305119991050257, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 566238458}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1574519681

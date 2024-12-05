@@ -16,8 +16,12 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private EnemyDirectorWave[] _waves;
         private int _waveIndex = 0;
 
-        public int enemyKillProgressCount { get; private set; }
-        public int totalEnemiesKilled { get; private set; }
+        public int EnemyKillProgressCount { get; private set; }
+        public int TotalEnemiesKilled { get; private set; }
+        public bool FightingBoss => _progressPaused;
+        public int CurrentWave => _waveIndex;
+        public int EnemiesToKill => 400;
+        public int BossesToDefeat => _activeBosses.Count;
 
         private bool _progressPaused;
         private float _currentSpawnRate;
@@ -36,6 +40,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             _spawner.OnEnemyDied.AddListener(EnemyDied);
             _spawner.OnBossDied.AddListener(BossDied);
+            _progressPaused = false;
         }
 
         void OnDisable()
@@ -47,14 +52,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void EnemyDied(PoolableActor actor)
         {
             _activeEnemies.Remove(actor);
-            totalEnemiesKilled++;
+            TotalEnemiesKilled++;
 
             if (_progressPaused) return;
 
-            enemyKillProgressCount++;
+            EnemyKillProgressCount++;
 
             // If the enemy kill count has hit the next breakpoint, we want to spawn the bosses of the current wave & pause progress.
-            if (enemyKillProgressCount >= _waves[_waveIndex].enemiesToKill && !_progressPaused)
+            if (EnemyKillProgressCount >= _waves[_waveIndex].enemiesToKill && !_progressPaused)
             {
                 // If there are no bosses in the current wave, we want to progress to the next wave.
                 if (_waves[_waveIndex].bossTypes.Count == 0)
