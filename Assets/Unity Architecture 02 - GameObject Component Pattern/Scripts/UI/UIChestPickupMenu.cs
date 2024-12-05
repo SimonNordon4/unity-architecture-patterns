@@ -34,6 +34,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public void OnItemSelected(ChestItem item)
         {
             chestPickupHandler.SelectItem(item);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +10,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public UnityEvent<Chest> OnChestPickup = new();
         
         [SerializeField]private GameState gameState;
+        [SerializeField]private Inventory playerInventory;
         
         private ChestSpawner _chestSpawner;
         public Chest CurrentChest { get; private set; } = null;
@@ -33,7 +33,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void PickupChest(Chest chest)
         {
-            Debug.Log("Picked up Chest");
             chest.OnChestOpened.RemoveListener(PickupChest);
             gameState.PauseGame();
             CurrentChest = chest;
@@ -42,10 +41,9 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void SelectItem(ChestItem item)
         {
-            var newItem = Instantiate(item);
-            Debug.Log(newItem.name);
+            Debug.Log($"Selecting Item {item.itemName}");
+            playerInventory.AddItem(item);
             StartCoroutine(WaitOneFrameToUnpause());
-
         }
         
         private IEnumerator WaitOneFrameToUnpause()
