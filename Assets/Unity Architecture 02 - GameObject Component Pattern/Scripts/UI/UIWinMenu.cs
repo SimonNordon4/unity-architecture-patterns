@@ -1,5 +1,4 @@
 using TMPro;
-using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.UI;
 
