@@ -5,23 +5,32 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class Chest : MonoBehaviour
     {
-        public int minTier = 1;
-        public int maxTier = 4;
-        public Vector2Int options = new(0, 0);
+        [field:SerializeField] public int MinTier {get;private set;} = 1;
+        [field:SerializeField] public int MaxTier {get;private set;} = 4;
 
+        private int _tier3Pity;
+        private int _tier4Pity;
+        private ChestPickupHandler _chestPickupHandler;
+        
         public AudioClip openSound;
         
 
         public List<ChestItem> items = new();
+
+        public void Construct(int minTier, int maxTier, int tier3Pity, int tier4Pity)
+        {
+            MinTier = minTier;
+            MaxTier = maxTier;
+            _tier3Pity = tier3Pity;
+            _tier4Pity = tier4Pity;
+        }
         
-        public void GenerateItems()
+        public (int,int) GenerateItems(ChestItems[] chestItems)
         {
             Console.Log("\tChest.GenerateItems()", LogFilter.Chest, this);
 
             var numberOfItems = CalculateNumberOfItems();
             
-            var chestManager = ChestManager.Instance;
-
             // Flags to check if a tier item has been added
             bool tier3Added = false;
             bool tier4Added = false;
@@ -33,7 +42,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 if (tier == 3) tier3Added = true;
                 if (tier == 4) tier4Added = true;
 
-                var currentChestTier = chestManager.allChestItems[tier - 1];
+                var currentChestTier = chestItems[tier - 1];
                 var validPotentialItems = new List<ChestItem>();
 
                 foreach (var chestItem in currentChestTier.chestItems)
@@ -46,8 +55,10 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 items.Add(validPotentialItems[randomItemIndex]);
             }
 
-            chestManager.tier3Pity = tier3Added ? 0 : chestManager.tier3Pity + 1;
-            chestManager.tier4Pity = tier4Added ? 0 : chestManager.tier4Pity + 1;
+            _tier3Pity = tier3Added ? 0 : _tier3Pity + 1;
+            _tier4Pity = tier4Added ? 0 : _tier4Pity + 1;
+            
+            return (_tier3Pity, _tier4Pity);
         }
 
 
@@ -71,8 +82,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         // Return the tier
         private int CalculateItemTier()
         {
-            var chestManager = ChestManager.Instance;
-            
             var tierChance = Random.Range(0, 100);
 
             // We want better items to spawn as time goes on.
@@ -81,24 +90,24 @@ namespace UnityArchitecture.GameObjectComponentPattern
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch
             {
-                var t when t > 99 - chestManager.tier4Pity - enemyProgress => 4,
-                var t when t > 90 - chestManager.tier3Pity - enemyProgress => 3,
+                var t when t > 99 - _tier4Pity - enemyProgress => 4,
+                var t when t > 90 - _tier3Pity - enemyProgress => 3,
                 var t when t > 75 - enemyProgress => 2,
                 _ => 1,
             };
 
             // Increase the pity counters
-            chestManager.tier4Pity++;
-            chestManager.tier3Pity++;
+            _tier4Pity++;
+            _tier3Pity++;
 
             // Reset the pity counters if we recieve that item tier.
             if  (itemTier == 4)
-                chestManager.tier4Pity = 0;
+                _tier4Pity = 0;
 
             else if (itemTier == 3)
-                chestManager.tier3Pity=0;
+                _tier3Pity=0;
             
-            itemTier = Mathf.Clamp(itemTier, minTier, maxTier);
+            itemTier = Mathf.Clamp(itemTier, MinTier, MaxTier);
 
             return itemTier;
         }

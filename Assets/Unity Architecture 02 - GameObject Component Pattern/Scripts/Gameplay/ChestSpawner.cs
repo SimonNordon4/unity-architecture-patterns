@@ -16,7 +16,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public ChestItems tier4ChestItems;
         public ChestItems[] allChestItems;
         public Chest chestPrefab;
-        public Chest currentChest = null;
 
         [Header("Pity")]
         public int tier3Pity;
@@ -42,19 +41,17 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void SpawnChest()
         {
             var chest = Instantiate(chestPrefab, GetRandomChestSpawn(), Quaternion.identity);
-            chest.minTier = 1;
-            chest.maxTier = 5;
-            chest.GenerateItems();
+            chest.Construct(1,4,tier3Pity, tier4Pity);
+            (tier3Pity, tier4Pity) = chest.GenerateItems();
         }
 
         public void SpawnBossChest(Vector3 position)
         {
             var groundPosition = new Vector3(position.x, 0, position.z);
             var chest = Instantiate(chestPrefab, groundPosition, Quaternion.identity);
-            chest.minTier = 2;
-            chest.maxTier = 4;
+            chest.Construct(2,4,tier3Pity, tier4Pity);
             chest.transform.localScale *= 1.5f; // Make the boss chest 50% larger
-            chest.GenerateItems();
+            (tier3Pity, tier4Pity) = chest.GenerateItems();
         }
     }
 }

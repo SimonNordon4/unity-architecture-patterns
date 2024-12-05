@@ -82,8 +82,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void SpawnChest()
         {
             var chest = Instantiate(chestPrefab, GetRandomChestSpawn(), Quaternion.identity);
-            chest.minTier = 1;
-            chest.maxTier = 5;
+            chest.MinTier = 1;
+            chest.MaxTier = 5;
             chest.GenerateItems();
         }
 
@@ -91,8 +91,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             var groundPosition = new Vector3(position.x, 0, position.z);
             var chest = Instantiate(chestPrefab, groundPosition, Quaternion.identity);
-            chest.minTier = 2;
-            chest.maxTier = 4;
+            chest.MinTier = 2;
+            chest.MaxTier = 4;
             chest.transform.localScale *= 1.5f; // Make the boss chest 50% larger
             chest.GenerateItems();
         }
