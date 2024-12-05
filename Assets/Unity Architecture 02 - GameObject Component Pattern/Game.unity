@@ -281,8 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b790508eec56fa408426fe017e9ce61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chestManager: {fileID: 1884674990}
-  gameManager: {fileID: 0}
+  chestPickupHandler: {fileID: 1491741410}
   chestItemButtonContainer: {fileID: 16506739}
   chestItemButtonPrefab: {fileID: 2855125897568215862, guid: f7dd97587af69dd47aa30cd185b6cf28,
     type: 3}
@@ -2279,96 +2278,6 @@ MonoBehaviour:
   musicText: {fileID: 432524527}
   actionText: {fileID: 1939382892}
   backButton: {fileID: 1000118472}
---- !u!1 &644039389
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 644039391}
-  - component: {fileID: 644039393}
-  m_Layer: 0
-  m_Name: Enemy Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &644039391
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644039389}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &644039393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 644039389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8526cb9492e4b458b2173e7e4079fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  chestManager: {fileID: 1884674990}
-  playerTarget: {fileID: 0}
-  healthMultiplier: 1
-  damageMultiplier: 1
-  maxEnemiesAlive: 3
-  baseSpawnRate: 1
-  currentSpawnRate: 1
-  enemyKillProgressCount: 0
-  progressPaused: 0
-  totalEnemiesKilled: 0
-  activeEnemies: []
-  activeBosses: []
-  spawnableEnemies: []
-  normalEnemyPrefab: {fileID: 1789236594020257121, guid: 6da49f7eb69c8fc49964a213d0376127,
-    type: 3}
-  fastEnemyPrefab: {fileID: 3163243409447693203, guid: ebbd69594e1752a4c870f0694d24fee4,
-    type: 3}
-  bigEnemyPrefab: {fileID: 3646742763120384505, guid: 8a1c6812267448a43ae6da496a3509cf,
-    type: 3}
-  chargerEnemyPrefab: {fileID: 933711525596607090, guid: 98378aa32770bbc46b1feb51f918bcdc,
-    type: 3}
-  rangedEnemyPrefab: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8,
-    type: 3}
-  wandererEnemyPrefab: {fileID: 9142820688143490496, guid: fff2d2c7fc779b94d9a4dfde5bb47119,
-    type: 3}
-  wandererRangedEnemyPrefab: {fileID: 4168508261120575890, guid: 7dcf970b9a32d0e46b4ef6f50128866e,
-    type: 3}
-  wandererExploderEnemyPrefab: {fileID: 6554371576644043995, guid: 17ced219ca47ec7418be23a8566c2b15,
-    type: 3}
-  normalBossEnemyPrefab: {fileID: 196245622651881401, guid: 09e671a4c2e2b334585fc3fad37417c0,
-    type: 3}
-  fastBossEnemyPrefab: {fileID: 830930813700638643, guid: 3c6d1ca0dbeb1f64fa5d552265e0f212,
-    type: 3}
-  bigBossEnemyPrefab: {fileID: 717436014592111309, guid: f4f373520b164f84581068eb92725d06,
-    type: 3}
-  chargerBossEnemyPrefab: {fileID: 3536713475665606339, guid: 28e8998c9c56a0e4fa11d83ab32d56a0,
-    type: 3}
-  rangedBossEnemyPrefab: {fileID: 2573671226165147436, guid: 60b8667576b3b254aac598bf37ff754e,
-    type: 3}
-  wandererBossEnemyPrefab: {fileID: 6763599493432808439, guid: 9fdd464dab5ba1447bf2873f678eb45c,
-    type: 3}
-  wandererRangedBossEnemyPrefab: {fileID: 6414642450711893702, guid: d6c51586e00120f42b5711bbb3e6a44e,
-    type: 3}
-  wandererExploderBossEnemyPrefab: {fileID: 3664556069068995892, guid: f679e24b37316ba47b05af2cd629a65d,
-    type: 3}
 --- !u!1001 &654366051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3523,123 +3432,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1003667301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1003667305}
-  - component: {fileID: 1003667304}
-  - component: {fileID: 1003667303}
-  - component: {fileID: 1003667302}
-  - component: {fileID: 1003667306}
-  - component: {fileID: 1003667307}
-  m_Layer: 0
-  m_Name: Enemy Test Handler
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1003667302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003667301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a44f2dd1c8746bb9d3b759001e792b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: {fileID: 801546268}
-  <initialTarget>k__BackingField: {fileID: 293031458}
-  projectilePool: {fileID: 1003667306}
-  actorPrefab: {fileID: 5110770576997889092, guid: 8f61aa960c6aa374f815024eacbd0f86,
-    type: 3}
---- !u!114 &1003667303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003667301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f98bcd83f541439685cd02609483ae4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  actorFactory: {fileID: 1003667302}
-  OnActorGet:
-    m_PersistentCalls:
-      m_Calls: []
-  OnActorReturn:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1003667304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003667301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a005bc5435fc544438eba8f3b9d80873, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalEnemyPool: {fileID: 1003667303}
-  level: {fileID: 801546268}
-  gameState: {fileID: 801546269}
-  spawnInterval: 0.75
-  maxEnemies: 5
-  enemyToKill: 20
---- !u!4 &1003667305
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003667301}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5361791, y: 0.29142082, z: 2.8668842}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1003667306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003667301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded862d4759f448a9be6fd67c79f53c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  factory: {fileID: 1003667307}
---- !u!114 &1003667307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003667301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 268832ebe93a4f728c6ce1e321624c67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 5300578428285203675, guid: c870654b17240b94cbfebd5581f1b369,
-    type: 3}
 --- !u!114 &1079578952 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 778175332418278668, guid: 1b20d9c4a2fbdc94bb3c2460fc425f3a,
@@ -4328,7 +4120,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnChestPickup:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 16506741}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   gameState: {fileID: 801546269}
 --- !u!114 &1509624758 stripped
 MonoBehaviour:
@@ -4693,114 +4497,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 211062563}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1884674988
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1884674989}
-  - component: {fileID: 1884674990}
-  m_Layer: 0
-  m_Name: Chest Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1884674989
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884674988}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1884674990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884674988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404afc42365080240b00c08066a659ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  chestSpawnTime: 15
-  chestBounds: {x: 20, y: 20}
-  tier1ChestItems: {fileID: 11400000, guid: e9a9e0870d7d4bb4d920b131bd1b991f, type: 2}
-  tier2ChestItems: {fileID: 11400000, guid: 10bc3920ee24d6842897cbef400fde35, type: 2}
-  tier3ChestItems: {fileID: 11400000, guid: fcb89902c86b3994bb5a6c1f9f0897ee, type: 2}
-  tier4ChestItems: {fileID: 11400000, guid: 0554a2e86f0ea36459086c8c318adfc6, type: 2}
-  allChestItems: []
-  chestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42,
-    type: 3}
-  currentChest: {fileID: 0}
-  tier3Pity: 0
-  tier4Pity: 0
-  chestMenu: {fileID: 16506741}
-  hudMenu: {fileID: 290299293}
---- !u!1 &1926671861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1926671863}
-  - component: {fileID: 1926671862}
-  m_Layer: 0
-  m_Name: Audio Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1926671862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926671861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc8eae0a7034d4eaf9e960e7ecf6f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHover: {fileID: 8300000, guid: f5c5f438581b89c4b96789e177c6254a, type: 3}
-  buttonClick: {fileID: 8300000, guid: b7cd703bfb101f4489fce92b8bbf68e1, type: 3}
-  maxEnemyVolume: 20
-  gameMusic:
-  - {fileID: 8300000, guid: 50f0f3c17b68def4186e98c8a3fba505, type: 3}
---- !u!4 &1926671863
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1926671861}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1939382892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8766843434120088245, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
@@ -5283,11 +4979,7 @@ SceneRoots:
   - {fileID: 299859323}
   - {fileID: 1949976525}
   - {fileID: 801546266}
-  - {fileID: 1926671863}
-  - {fileID: 644039391}
   - {fileID: 1121866902}
-  - {fileID: 1003667305}
-  - {fileID: 1884674989}
   - {fileID: 1491741409}
   - {fileID: 1000354785}
   - {fileID: 293031458}

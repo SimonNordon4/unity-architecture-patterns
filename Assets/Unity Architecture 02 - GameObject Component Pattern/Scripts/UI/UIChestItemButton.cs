@@ -18,7 +18,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         private readonly List<TextMeshProUGUI> _descriptions = new();
 
-        public void Initialize(ChestItem item, UIChestItemMenu chestMenu)
+        public void Initialize(ChestItem item, UIChestPickupMenu chestMenu)
         {
             foreach (var description in _descriptions)
             {

@@ -4,13 +4,9 @@ using UnityEngine.UI;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
-    public class UIChestItemMenu : MonoBehaviour
+    public class UIChestPickupMenu : MonoBehaviour
     {
-        [Header("References")]
-        public ChestManager chestManager;
-        public GameManager gameManager;
-
-        [Header("Chest UI")]
+        [SerializeField]private ChestPickupHandler chestPickupHandler;
         public RectTransform chestItemButtonContainer;
         public UIChestItemButton chestItemButtonPrefab;
         private readonly List<UIChestItemButton> _chestItemButtons = new();
@@ -18,9 +14,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void OnEnable()
         {
-            var chest = chestManager.currentChest;
-
-            gameManager.isPaused = true;
+            var chest = chestPickupHandler.CurrentChest;
 
             foreach (var cib in _chestItemButtons) Destroy(cib.gameObject);
             _chestItemButtons.Clear();
@@ -39,8 +33,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void OnItemSelected(ChestItem item)
         {
-            chestManager.ApplyItem(item);
-            gameManager.isPaused = false;
+            chestPickupHandler.SelectItem(item);
         }
     }
 }

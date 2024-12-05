@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -32,16 +33,26 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void PickupChest(Chest chest)
         {
+            Debug.Log("Picked up Chest");
             chest.OnChestOpened.RemoveListener(PickupChest);
             gameState.PauseGame();
-            OnChestPickup.Invoke(chest);
             CurrentChest = chest;
-            SelectItem(new ChestItem());
+            OnChestPickup.Invoke(chest);
         }
 
         public void SelectItem(ChestItem item)
         {
-            Destroy(CurrentChest.gameObject);
+            var newItem = Instantiate(item);
+            Debug.Log(newItem.name);
+            StartCoroutine(WaitOneFrameToUnpause());
+
+        }
+        
+        private IEnumerator WaitOneFrameToUnpause()
+        {
+            yield return new WaitForEndOfFrame();
+            gameState.ResumeGame();
+            //Destroy(CurrentChest.gameObject);
         }
 
     }
