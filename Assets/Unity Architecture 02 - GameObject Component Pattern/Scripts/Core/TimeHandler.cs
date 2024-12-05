@@ -8,7 +8,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         public void PauseTime()
         {
-            Debug.Log(Time.timeScale);
             Time.timeScale = 0;
         }
 

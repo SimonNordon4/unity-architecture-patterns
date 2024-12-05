@@ -24,25 +24,21 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public void StartGame()
         {
             IsPaused = false;
-            Debug.Log("Game Started");
             onGameStarted?.Invoke();
         }
 
         public void WinGame()
         {
-            Debug.Log("Game Won");
             onGameWon?.Invoke();
         }
 
         public void LoseGame()
         {
-            Debug.Log("Game Lost");
             onGameLost?.Invoke();
         }
 
         public void PauseGame()
         {
-            Debug.Log("Game Paused");
             onGamePaused?.Invoke();
             IsPaused = !IsPaused;
         }
@@ -50,7 +46,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public void ResumeGame()
         {
             IsPaused = !IsPaused;   
-            Debug.Log("Game Resumed");
             onGameResumed?.Invoke();
         }
     }

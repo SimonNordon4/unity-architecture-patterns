@@ -11,7 +11,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void AddItem(ChestItem chestItem)
         {
-            Debug.Log($"Chest item added: {chestItem.itemName}");
             items.Add(chestItem);
             onItemAdded.Invoke(chestItem);
         }

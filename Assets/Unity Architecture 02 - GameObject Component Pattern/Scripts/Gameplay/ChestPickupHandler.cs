@@ -41,7 +41,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         public void SelectItem(ChestItem item)
         {
-            Debug.Log($"Selecting Item {item.itemName}");
             playerInventory.AddItem(item);
             StartCoroutine(WaitOneFrameToUnpause());
         }
