@@ -15,6 +15,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private int _damage;
         private float _knockBackForce;
         private float _pierceValue;
+        private bool _isCrit;
         
         public void Construct(ProjectilePool pool)
         {
@@ -45,13 +46,24 @@ namespace UnityArchitecture.GameObjectComponentPattern
         }
 
         public void Set(LayerMask targetLayer = default, float speed = 10f, int damage = 1,
-            float knockBackForce = 1f, int pierce = 0)
+            float knockBackForce = 1f, int pierce = 0, bool isCrit = false)
         {
             _targetLayer = targetLayer;
             _speed = speed;
             _damage = damage;
             _knockBackForce = knockBackForce;
             _pierceValue = pierce;
+            _isCrit = isCrit;
+        }
+
+        public void Set(WeaponStatsInfo info, LayerMask targetLayer = default, float speed = 10f)
+        {
+            _targetLayer = targetLayer;
+            _speed = speed;
+            _damage = info.Damage;
+            _knockBackForce = info.KnockBack;
+            _pierceValue = info.Pierce;
+            _isCrit = info.IsCrit;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -68,7 +80,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             // check if other has a damage receiver
             if (other.TryGetComponent(out DamageReceiver damageReceiver))
             {
-                damageReceiver.TakeDamage(_damage);
+                damageReceiver.TakeDamage(_isCrit ? _damage * 2 : _damage, _isCrit);
                 if (_pierceValue <= 0)
                 {
                     EndProjectile();

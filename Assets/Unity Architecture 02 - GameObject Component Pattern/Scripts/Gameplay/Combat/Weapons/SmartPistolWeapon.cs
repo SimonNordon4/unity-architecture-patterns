@@ -45,7 +45,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             
             var projectile = projectilePool.Get(projectileStartPosition, shootDirection);
             
-            projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
+            projectile.Set(info, target.targetLayer, projectileSpeed);
 
             onAttack.Invoke();
         }

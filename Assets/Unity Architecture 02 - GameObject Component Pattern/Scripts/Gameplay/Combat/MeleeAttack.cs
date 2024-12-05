@@ -13,6 +13,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private Stat _knockBack;
         private Stat _range;
         private Stat _fireRate;
+        private Stat _critChance;
 
         private float _timeSinceLastAttack = 0f;
 
@@ -24,6 +25,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             _range = stats.GetStat(StatType.Range);
             _fireRate = stats.GetStat(StatType.FireRate);
             _target = GetComponent<CombatTarget>();
+            _critChance = stats.GetStat(StatType.CritChance);
         }
 
         private void Update()
@@ -51,7 +53,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
                 Damage = (int)_damage.value,
                 KnockBack = _knockBack.value,
                 Range = _range.value,
-                AttackSpeed = _fireRate.value
+                AttackSpeed = _fireRate.value,
+                IsCrit = Random.Range(0f, 100f) < _critChance.value
             };
 
             weapon.Attack(info, _target);

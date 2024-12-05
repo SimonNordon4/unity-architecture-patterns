@@ -9,5 +9,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public float Range;
         public float AttackSpeed;
         public int Pierce;
+        public bool IsCrit;
     }
 }
