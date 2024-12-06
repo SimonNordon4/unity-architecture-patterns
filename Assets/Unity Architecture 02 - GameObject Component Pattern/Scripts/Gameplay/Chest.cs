@@ -79,7 +79,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
             var tierChance = Random.Range(0, 100);
 
             // We want better items to spawn as time goes on.
-            var enemyProgress = 1f; //(EnemyManager.Instance.enemyKillProgressCount / 400f) * 5f;
+            var enemyProgress = EnemyDirector.Instance.ProgressPercentage * 5f;
             
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch

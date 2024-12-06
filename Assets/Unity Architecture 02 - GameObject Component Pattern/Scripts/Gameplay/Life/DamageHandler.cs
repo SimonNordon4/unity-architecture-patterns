@@ -15,7 +15,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private Armor _block;
 
         public event Action<Vector3> OnDodge;
-        public event Action<Vector3, int> OnCriticalHit;
         public event Action<Vector3, int> OnDamage;
 
         private void Awake()

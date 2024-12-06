@@ -1,20 +1,29 @@
+﻿using UnityEngine;
+using UnityEngine.Events;
 
-using UnityEngine;
 namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class HealthPack : MonoBehaviour
     {
-        private float _lifeTime = 5f;
-        private float _aliveTime = 0f;
+        [SerializeField] private LayerMask targetLayer;
+        [SerializeField] private int baseHealthRecovery = 3;
+        [SerializeField] private float missingHealthRecoveryMultiplier = 0.1f;
 
-        // Update is called once per frame
-        void Update()
+        public UnityEvent onPickedUp = new();
+
+        private void OnTriggerEnter(Collider other)
         {
-            _aliveTime += Time.deltaTime;
-            if (_aliveTime > _lifeTime)
-            {
-                Destroy(gameObject);
-            }
+            // check if other is in target layer
+            if (targetLayer != (targetLayer | (1 << other.gameObject.layer))) return;
+            
+            // check if there's a health component
+            if (!other.TryGetComponent<Health>(out var health)) return;
+            
+            var missingHealth = health.maxHealth - health.currentHealth;
+            var healthToRecover = baseHealthRecovery + (int)(missingHealth * missingHealthRecoveryMultiplier);
+            health.AddHealth(healthToRecover);
+            onPickedUp.Invoke();
+            Destroy(gameObject);
         }
     }
 }

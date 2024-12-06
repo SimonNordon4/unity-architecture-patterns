@@ -25,6 +25,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         }
 
         public UnityEvent allWavesFinished = new();
+        public UnityEvent<Vector3> enemyKilledAtPosition = new();
 
         private EnemySpawner _spawner;
         private EnemyDirectorWave[] _waves;
@@ -36,6 +37,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public int CurrentWave => _waveIndex;
         public int EnemiesToKill => 400;
         public int BossesToDefeat => _activeBosses.Count;
+        public float ProgressPercentage => (float)EnemyKillProgressCount / EnemiesToKill;
 
         private bool _progressPaused;
         private float _currentSpawnRate;
@@ -73,6 +75,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void EnemyDied(PoolableActor actor)
         {
+            enemyKilledAtPosition.Invoke(actor.transform.position);
             _activeEnemies.Remove(actor);
             TotalEnemiesKilled++;
 
@@ -101,6 +104,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void BossDied(PoolableActor bossActor)
         {
+            enemyKilledAtPosition.Invoke(bossActor.transform.position);
             _activeBosses.Remove(bossActor);
 
             if (_activeBosses.Count == 0)

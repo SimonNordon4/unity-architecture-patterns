@@ -1,9 +1,35 @@
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class HealthPackSpawner : MonoBehaviour
     {
-        //TODO:
+        [SerializeField] private SoundManager soundManager;
+        [SerializeField] private HealthPack healthPackPrefab;
+        
+        private readonly List<HealthPack> _healthPacks = new();
+        
+        public void SpawnHealthPack(Vector3 position)
+        {
+            var randomChance = Random.Range(0, 100);
+            if (!(randomChance < 3)) return;
+            
+            var pos = new Vector3(position.x, 0f, position.z);
+            var healthPack = Instantiate(healthPackPrefab, pos, Quaternion.identity);
+            if(healthPack.TryGetComponent<SoundProxy>(out var soundProxy))
+                soundProxy.Construct(soundManager);
+            _healthPacks.Add(healthPack);
+        }
+        
+        public void DestroyAllHealthPacks()
+        {
+            foreach (var healthPack in _healthPacks.Where(healthPack => healthPack != null))
+            {
+                Destroy(healthPack.gameObject);
+            }
+            _healthPacks.Clear();
+        }
     }
 }
