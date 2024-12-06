@@ -8,45 +8,47 @@ namespace UnityArchitecture.GameObjectComponentPattern
         [SerializeField] private ProjectilePool projectilePool;
         [SerializeField] private Transform projectileSpawnPoint;
         [SerializeField] private float projectileSpeed = 10f;
-        
+
         public override void Attack(WeaponStatsInfo info, CombatTarget target)
         {
             if (target == null)
             {
                 Debug.LogError("Target is null.");
             }
-            
+
             var projectileStartPosition = projectileSpawnPoint.position;
             var targetPosition = target.Target.position;
-            
-            // Calculate the time it would take for the projectile to reach the target's current position
-            var shootDirection = target.TargetDirection;
-            
-            if(target.Target.TryGetComponent<Movement>(out var movement))
-            {
-                var distanceToTarget = target.TargetDistance;
-                var timeToTarget = distanceToTarget / projectileSpeed;
-                var velocity = movement.velocity * 1f;
-                var predictedTargetPosition = targetPosition + velocity * timeToTarget;
-                
-                // // now get the distance to that position
-                // distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
-                // timeToTarget = distanceToTarget / projectileSpeed;
-                // predictedTargetPosition = targetPosition + velocity * timeToTarget;
-                
-                // // iterate again
-                // distanceToTarget = Vector3.Distance(targetPosition, predictedTargetPosition);
-                // timeToTarget = distanceToTarget /projectileSpeed;
-                // predictedTargetPosition = targetPosition + velocity * timeToTarget;
-            
-                // Aim the projectile towards the predicted position
-                shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up).normalized;
-            }
-            
-            var projectile = projectilePool.Get(projectileStartPosition, shootDirection);
-            
-            projectile.Set(info, target.targetLayer, projectileSpeed);
 
+// Calculate predicted position
+            Vector3 directionToTarget = targetPosition - projectileStartPosition;
+            float distanceToTarget = directionToTarget.magnitude;
+            float timeToTarget = distanceToTarget / projectileSpeed;
+
+            Vector3 predictedTargetPosition = targetPosition;
+
+            if (target.Target.TryGetComponent<Movement>(out var movement))
+            {
+                var predictedPosition = targetPosition + movement.velocity * timeToTarget;
+                // If predicted position ends up behind you, revert to direct line-of-sight attack
+                var forwardDirection = (projectileSpawnPoint.forward).normalized;
+                var predictedDirection = (predictedPosition - projectileStartPosition).normalized;
+
+                if (Vector3.Dot(forwardDirection, predictedDirection) < 0f)
+                {
+                    // Predicted position is behind, fallback to direct direction
+                    predictedTargetPosition = targetPosition;
+                }
+                else
+                {
+                    predictedTargetPosition = predictedPosition;
+                }
+            }
+
+// Now calculate the shoot direction on the plane
+            var shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up)
+                .normalized;
+            var projectile = projectilePool.Get(projectileStartPosition, shootDirection);
+            projectile.Set(info, target.targetLayer, projectileSpeed);
             onAttack.Invoke();
         }
     }

@@ -33,6 +33,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         
         public UnityEvent<bool> showDamageNumbersChanged = new();
         public UnityEvent<bool> showHealthBarChanged = new();
+        public UnityEvent<float> musicVolumeChanged = new();
 
         private void Awake()
         {
