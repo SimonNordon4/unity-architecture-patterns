@@ -10,6 +10,20 @@ namespace UnityArchitecture.GameObjectComponentPattern
     [RequireComponent(typeof(EnemyDirectorWave))]
     public class EnemyDirector : MonoBehaviour
     {
+        private static EnemyDirector _instance;
+        public static EnemyDirector Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindFirstObjectByType<EnemyDirector>();
+                }
+
+                return _instance;
+            }
+        }
+
         public UnityEvent allWavesFinished = new();
 
         private EnemySpawner _spawner;
@@ -32,6 +46,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void Awake()
         {
+            if (_instance != null && _instance != this)
+            {
+                Destroy(_instance.gameObject);
+            }
+
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+
             _spawner = GetComponent<EnemySpawner>();
             _waves = GetComponents<EnemyDirectorWave>().OrderBy(x => x.enemiesToKill).ToArray();
         }

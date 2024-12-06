@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace UnityArchitecture.GameObjectComponentPattern
@@ -32,7 +33,17 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void Awake()
         {
             DontDestroyOnLoad(gameObject);
+            
+        }
+
+        private void OnEnable()
+        {
             LoadSettings();
+        }
+
+        private void OnDisable()
+        {
+            SaveSettings();
         }
 
         public void SetMusicVolume(float volume)

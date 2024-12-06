@@ -2008,7 +2008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundTimerText: {fileID: 2039543987}
-  roundTimer: {fileID: 801546267}
+  roundTimer: {fileID: 1121866919}
 --- !u!114 &566238463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2907,7 +2907,6 @@ GameObject:
   - component: {fileID: 801546266}
   - component: {fileID: 801546269}
   - component: {fileID: 801546268}
-  - component: {fileID: 801546267}
   - component: {fileID: 801546270}
   - component: {fileID: 801546271}
   m_Layer: 0
@@ -2932,19 +2931,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &801546267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801546264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01187d1ceb9ab4643aae2d36241b19bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <CurrentTime>k__BackingField: 0
 --- !u!114 &801546268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2999,6 +2985,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1121866919}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.RoundTimer,
+          GameObjectComponentPattern
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onGameWon:
     m_PersistentCalls:
       m_Calls:
@@ -3028,6 +3027,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1121866919}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.RoundTimer,
+          GameObjectComponentPattern
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onGameLost:
     m_PersistentCalls:
       m_Calls:
@@ -3048,6 +3060,19 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.SceneLoader,
           GameObjectComponentPattern
         m_MethodName: LoadGameLost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1121866919}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.RoundTimer,
+          GameObjectComponentPattern
+        m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3685,6 +3710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1121866902}
+  - component: {fileID: 1121866919}
   - component: {fileID: 1121866905}
   - component: {fileID: 1121866903}
   - component: {fileID: 1121866904}
@@ -3822,7 +3848,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allWavesFinished:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 801546269}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.GameState,
+          GameObjectComponentPattern
+        m_MethodName: WinGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1121866906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4070,6 +4109,19 @@ MonoBehaviour:
   healthMultiplier: 10
   damageMultiplier: 10
   maxEnemiesAlive: 30
+--- !u!114 &1121866919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121866898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01187d1ceb9ab4643aae2d36241b19bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CurrentTime>k__BackingField: 0
 --- !u!1 &1157388973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5393296879404737001, guid: d6ca6737c939f69478c326a2df84ced1,

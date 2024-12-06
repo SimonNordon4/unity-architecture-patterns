@@ -32,7 +32,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
             showDamageToggle.onValueChanged.AddListener(UpdateDamageNumbers);
             musicSlider.onValueChanged.AddListener(UpdateMusicVolume);
             actionSlider.onValueChanged.AddListener(UpdateSoundVolume);
-            
         }
 
 
