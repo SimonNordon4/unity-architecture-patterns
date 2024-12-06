@@ -2263,6 +2263,76 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 590339656}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1157388973}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4504713456494912232, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -2385,13 +2455,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6edcbbd25083c46861802e4a0b795e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  userSettings: {fileID: 1949976524}
   healthBarToggle: {fileID: 734845743}
   showDamageToggle: {fileID: 1976949115}
   musicSlider: {fileID: 102871509}
   actionSlider: {fileID: 1509624758}
   musicText: {fileID: 432524527}
   actionText: {fileID: 1939382892}
-  backButton: {fileID: 1000118472}
 --- !u!1001 &654366051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3067,6 +3137,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 590339656}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &801546270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3551,18 +3633,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999567777}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1000118472 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3977608188780797114, guid: dc3d1833fd9f52b4d89b3c68bf76a180,
-    type: 3}
-  m_PrefabInstance: {fileID: 613896889}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1000354784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4305,6 +4375,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1157388973}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   gameState: {fileID: 801546269}
   playerInventory: {fileID: 293031476}

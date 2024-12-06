@@ -1,5 +1,4 @@
 using TMPro;
-using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class UISettingsMenu : MonoBehaviour
     {
-
+        [SerializeField]private UserSettings userSettings;
 
         public Toggle healthBarToggle;
         public Toggle showDamageToggle;
@@ -18,21 +17,17 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public TextMeshProUGUI musicText;
         public TextMeshProUGUI actionText;
         
-        public Button backButton;
-
         private void OnEnable()
         {
-            UserSettings.Instance.LoadSettings();
-            healthBarToggle.isOn = UserSettings.Instance.ShowEnemyHealthBars;
-            showDamageToggle.isOn = UserSettings.Instance.ShowDamageNumbers;
+            userSettings.LoadSettings();
+            healthBarToggle.isOn = userSettings.ShowEnemyHealthBars;
+            showDamageToggle.isOn = userSettings.ShowDamageNumbers;
 
-            musicSlider.value = UserSettings.Instance.MusicVolume;
-            actionSlider.value = UserSettings.Instance.SfxVolume;
-            musicText.text = $"{UserSettings.Instance.MusicVolume * 100f:F0}%";
-            actionText.text = $"{UserSettings.Instance.SfxVolume * 100f:F0}%";
+            musicSlider.value = userSettings.MusicVolume;
+            actionSlider.value = userSettings.SfxVolume;
+            musicText.text = $"{userSettings.MusicVolume * 100f:F0}%";
+            actionText.text = $"{userSettings.SfxVolume * 100f:F0}%";
             
-            if(backButton != null)
-                backButton.onClick.AddListener(GameManager.Instance.HideSettingsMenu);
             healthBarToggle.onValueChanged.AddListener(UpdateHealthBars);
             showDamageToggle.onValueChanged.AddListener(UpdateDamageNumbers);
             musicSlider.onValueChanged.AddListener(UpdateMusicVolume);
@@ -43,8 +38,6 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void OnDisable()
         {
-            if(backButton != null)
-                backButton.onClick.RemoveAllListeners();
             healthBarToggle.onValueChanged.RemoveAllListeners();
             showDamageToggle.onValueChanged.RemoveAllListeners();
             musicSlider.onValueChanged.RemoveAllListeners();
@@ -55,24 +48,24 @@ namespace UnityArchitecture.GameObjectComponentPattern
         {
             var value = musicSlider.value;
             musicText.text = $"{value * 100:F0}%";
-            UserSettings.Instance.SetMusicVolume(value);
+            userSettings.SetMusicVolume(value);
         }
 
         public void UpdateSoundVolume(float volume)
         {
             var value = actionSlider.value;
             actionText.text = $"{value * 100:F0}%";
-            UserSettings.Instance.SetSfxVolume(value);
+            userSettings.SetSfxVolume(value);
         }
 
         public void UpdateHealthBars(bool health)
         {
-            UserSettings.Instance.SetShowEnemyHealthBars(health);
+            userSettings.SetShowEnemyHealthBars(health);
         }
 
         public void UpdateDamageNumbers(bool damage)
         {
-            UserSettings.Instance.SetShowDamageNumbers(damage);
+            userSettings.SetShowDamageNumbers(damage);
         }
     }
 }
