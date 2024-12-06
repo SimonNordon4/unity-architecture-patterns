@@ -26,6 +26,13 @@ namespace UnityArchitecture.GameObjectComponentPattern
             gameState.onGameResumed.AddListener(ResumeTrack);
             gameState.onGameLost.AddListener(StopTrack);
             gameState.onGameWon.AddListener(StopTrack);
+            
+            userSettings.musicVolumeChanged.AddListener(UpdateMusicVolume);
+        }
+
+        private void UpdateMusicVolume(float newVolume)
+        {
+            _audioSource.volume = musicVolume;
         }
 
         private void OnDisable()
@@ -35,6 +42,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
             gameState.onGameResumed.RemoveListener(ResumeTrack);
             gameState.onGameLost.RemoveListener(StopTrack);
             gameState.onGameWon.RemoveListener(StopTrack);
+            
+            userSettings.musicVolumeChanged.RemoveListener(UpdateMusicVolume);
         }
         
         private void ResumeTrack()
