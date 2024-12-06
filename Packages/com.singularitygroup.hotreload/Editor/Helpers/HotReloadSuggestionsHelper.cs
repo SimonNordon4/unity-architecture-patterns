@@ -85,9 +85,9 @@ namespace SingularityGroup.HotReload.Editor {
             return null;
         }
         
-        internal static readonly OpenURLButton recompileTroubleshootingButton = new OpenURLButton("Documentation", Constants.RecompileTroubleshootingURL);
-        internal static readonly OpenURLButton featuresDocumentationButton = new OpenURLButton("Documentation", Constants.FeaturesDocumentationURL);
-        internal static readonly OpenURLButton multipleEditorsDocumentationButton = new OpenURLButton("Documentation", Constants.MultipleEditorsURL);
+        internal static readonly OpenURLButton recompileTroubleshootingButton = new OpenURLButton("Docs", Constants.RecompileTroubleshootingURL);
+        internal static readonly OpenURLButton featuresDocumentationButton = new OpenURLButton("Docs", Constants.FeaturesDocumentationURL);
+        internal static readonly OpenURLButton multipleEditorsDocumentationButton = new OpenURLButton("Docs", Constants.MultipleEditorsURL);
         public static Dictionary<HotReloadSuggestionKind, AlertEntry> suggestionMap = new Dictionary<HotReloadSuggestionKind, AlertEntry> {
             { HotReloadSuggestionKind.UnityBestDevelopmentToolAward2023, new AlertEntry(
                 AlertType.Suggestion, 

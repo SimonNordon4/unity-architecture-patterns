@@ -22,7 +22,11 @@ namespace SingularityGroup.HotReload.Editor {
         public static void HandleEditorStart(string updatedFromVersion) {
             var showOnStartup = HotReloadPrefs.ShowOnStartup;
             if (showOnStartup == ShowOnStartupEnum.Always || (showOnStartup == ShowOnStartupEnum.OnNewVersion && !String.IsNullOrEmpty(updatedFromVersion))) {
-                HotReloadWindow.Open();
+                // Don't open Hot Reload window inside Virtual Player folder
+                // This is a heuristic since user might have the main player inside VP user-created folder, but that will be rare
+                if (new DirectoryInfo(Path.GetFullPath("..")).Name != "VP") {
+                    HotReloadWindow.Open();
+                }
             }
             if (HotReloadPrefs.LaunchOnEditorStart) {
                 EditorCodePatcher.DownloadAndRun().Forget();
@@ -45,7 +49,11 @@ namespace SingularityGroup.HotReload.Editor {
             if (EditorCodePatcher.licenseType == UnityLicenseType.UnityPro) {
                 RedeemLicenseHelper.I.StartRegistration();
             }
-            HotReloadWindow.Open();
+            // Don't open Hot Reload window inside Virtual Player folder
+            // This is a heuristic since user might have the main player inside VP user-created folder, but that will be rare
+            if (new DirectoryInfo(Path.GetFullPath("..")).Name != "VP") {
+                HotReloadWindow.Open();
+            }
             HotReloadPrefs.AllowDisableUnityAutoRefresh = true;
             HotReloadPrefs.AllAssetChanges = true;
             HotReloadPrefs.AutoRecompileUnsupportedChanges = true;

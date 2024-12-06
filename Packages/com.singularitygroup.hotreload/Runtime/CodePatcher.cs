@@ -24,6 +24,7 @@ namespace SingularityGroup.HotReload {
     class RegisterPatchesResult {
         // note: doesn't include removals and method definition changes (e.g. renames)
         public readonly List<MethodPatch> patchedMethods = new List<MethodPatch>();
+        public readonly List<SMethod> patchedSMethods = new List<SMethod>();
         public readonly List<Tuple<SMethod, string>> patchFailures = new List<Tuple<SMethod, string>>();
     }
     
@@ -164,6 +165,7 @@ namespace SingularityGroup.HotReload {
                         MethodUtils.DisableVisibilityChecks(newMethod);
                         if (!patch.patchMethods.Any(m => m.metadataToken == sMethod.metadataToken)) {
                             result.patchedMethods.Add(new MethodPatch(null, null, newMethod));
+                            result.patchedSMethods.Add(sMethod);
                             previousPatchMethods[newMethod] = newMethod;
                             newMethods.Add(newMethod);
                         }
@@ -224,6 +226,7 @@ namespace SingularityGroup.HotReload {
                         originalMethod = null;
                     }
                     patchesResult.patchedMethods.Add(new MethodPatch(originalMethod, previousMethod, patchMethod));
+                    patchesResult.patchedSMethods.Add(sOriginalMethod);
                     previousPatchMethods[state.match] = patchMethod;
                     try {
                         Dispatch.OnHotReloadLocal(state.match, patchMethod);

@@ -21,7 +21,8 @@ namespace SingularityGroup.HotReload.Editor {
         UnsupportedChange,
         CompileError,
         PartiallySupportedChange,
-        AppliedChange
+        AppliedChange,
+        UndetectedChange,
     }
     
     internal enum AlertEntryType {
@@ -29,6 +30,7 @@ namespace SingularityGroup.HotReload.Editor {
         Failure,
         PatchApplied,
         PartiallySupportedChange,
+        UndetectedChange,
     }
     
     internal enum EntryType {
@@ -55,8 +57,9 @@ namespace SingularityGroup.HotReload.Editor {
         public readonly EntryType entryType;
         public readonly bool detiled;
         public readonly DateTime createdAt;
+        public readonly string[] patchedMethodsDisplayNames;
 
-        public AlertData(AlertEntryType alertEntryType, DateTime createdAt, bool detiled = false, EntryType entryType = EntryType.Standalone, string errorString = null, string methodName = null, string methodSimpleName = null, PartiallySupportedChange partiallySupportedChange = default(PartiallySupportedChange)) {
+        public AlertData(AlertEntryType alertEntryType, DateTime createdAt, bool detiled = false, EntryType entryType = EntryType.Standalone, string errorString = null, string methodName = null, string methodSimpleName = null, PartiallySupportedChange partiallySupportedChange = default(PartiallySupportedChange), string[] patchedMethodsDisplayNames = null) {
             this.alertEntryType = alertEntryType;
             this.createdAt = createdAt;
             this.detiled = detiled;
@@ -65,6 +68,7 @@ namespace SingularityGroup.HotReload.Editor {
             this.methodName = methodName;
             this.methodSimpleName = methodSimpleName;
             this.partiallySupportedChange = partiallySupportedChange;
+            this.patchedMethodsDisplayNames = patchedMethodsDisplayNames;
         }
     }
     
@@ -118,20 +122,26 @@ namespace SingularityGroup.HotReload.Editor {
                             break;
                         case AlertEntryType.Failure:
                             if (alertData.entryType == EntryType.Parent) {
-                                CreateReloadFinishedWithWarningsEventEntry(createdAt: alertData.createdAt);
+                                CreateReloadFinishedWithWarningsEventEntry(createdAt: alertData.createdAt, patchedMethodsDisplayNames: alertData.patchedMethodsDisplayNames);
                             } else {
                                 CreatePatchFailureEventEntry(errorString: alertData.errorString, methodName: alertData.methodName, methodSimpleName: alertData.methodSimpleName, entryType: alertData.entryType, createdAt: alertData.createdAt);
                             }
                             break;
                         case AlertEntryType.PatchApplied:
-                            CreateReloadFinishedEventEntry(createdAt: alertData.createdAt);
+                            CreateReloadFinishedEventEntry(
+                                createdAt: alertData.createdAt,
+                                patchedMethodsDisplayNames: alertData.patchedMethodsDisplayNames
+                            );
                             break;
                         case AlertEntryType.PartiallySupportedChange:
                             if (alertData.entryType == EntryType.Parent) {
-                                CreateReloadPartiallyAppliedEventEntry(createdAt: alertData.createdAt);
+                                CreateReloadPartiallyAppliedEventEntry(createdAt: alertData.createdAt, patchedMethodsDisplayNames: alertData.patchedMethodsDisplayNames);
                             } else {
                                 CreatePartiallyAppliedEventEntry(alertData.partiallySupportedChange, entryType: alertData.entryType, detailed: alertData.detiled, createdAt: alertData.createdAt);
                             }
+                            break;
+                        case AlertEntryType.UndetectedChange:
+                            CreateReloadUndetectedChangeEventEntry(createdAt: alertData.createdAt);
                             break;
                     }
                 }
@@ -171,6 +181,7 @@ namespace SingularityGroup.HotReload.Editor {
             { AlertType.CompileError, "error" },
             { AlertType.PartiallySupportedChange, "infos" },
             { AlertType.AppliedChange, "applied_patch" },
+            { AlertType.UndetectedChange, "undetected" },
         };
         
         public static Dictionary<PartiallySupportedChange, string> partiallySupportedChangeDescriptions = new Dictionary<PartiallySupportedChange, string> {
@@ -188,6 +199,7 @@ namespace SingularityGroup.HotReload.Editor {
         internal static List<AlertEntry> Suggestions = new List<AlertEntry>();
         internal static int UnsupportedChangesCount => EventsTimeline.Count(alert => alert.alertType == AlertType.UnsupportedChange && alert.entryType != EntryType.Child);
         internal static int PartiallySupportedChangesCount => EventsTimeline.Count(alert => alert.alertType == AlertType.PartiallySupportedChange && alert.entryType != EntryType.Child);
+        internal static int UndetectedChangesCount => EventsTimeline.Count(alert => alert.alertType == AlertType.UndetectedChange && alert.entryType != EntryType.Child);
         internal static int CompileErrorsCount => EventsTimeline.Count(alert => alert.alertType == AlertType.CompileError);
         internal static int AppliedChangesCount => EventsTimeline.Count(alert => alert.alertType == AlertType.AppliedChange);
 
@@ -200,6 +212,9 @@ namespace SingularityGroup.HotReload.Editor {
             }
             if (HotReloadPrefs.RunTabPartiallyAppliedPatchesFilter) {
                 total += PartiallySupportedChangesCount;
+            }
+            if (HotReloadPrefs.RunTabUndetectedPatchesFilter) {
+                total += UndetectedChangesCount;
             }
             if (HotReloadPrefs.RunTabCompileErrorFilter) {
                 total += CompileErrorsCount;
@@ -261,6 +276,14 @@ namespace SingularityGroup.HotReload.Editor {
                 HotReloadPrefs.RunTabAppliedPatchesFilter = GUILayout.Toggle(
                     HotReloadPrefs.RunTabAppliedPatchesFilter,
                     new GUIContent(text, GetFilterIcon(AppliedChangesCount, AlertType.AppliedChange)), 
+                    HotReloadWindowStyles.EventFiltersStyle);
+                
+                GUILayout.Space(-1f);
+                
+                text = UndetectedChangesCount > 999 ? "999+" : " " + UndetectedChangesCount;
+                HotReloadPrefs.RunTabUndetectedPatchesFilter = GUILayout.Toggle(
+                    HotReloadPrefs.RunTabUndetectedPatchesFilter,
+                    new GUIContent(text, GetFilterIcon(UnsupportedChangesCount, AlertType.UndetectedChange)), 
                     HotReloadWindowStyles.EventFiltersStyle);
                 
                 GUILayout.Space(-1f);
@@ -332,40 +355,113 @@ namespace SingularityGroup.HotReload.Editor {
                 alertData: new AlertData(AlertEntryType.Failure, createdAt: timestamp, errorString: errorString, methodName: methodName, methodSimpleName: methodSimpleName, entryType: entryType)
             ));
         }
+
+        public static T[] TruncateList<T>(T[] originalList, int len) {
+            if (originalList.Length <= len) {
+                return originalList;
+            }
+            // Create a new list with a maximum of 25 items
+            T[] truncatedList = new T[len];
+
+            for (int i = 0; i < originalList.Length && i < len; i++) {
+                truncatedList[i] = originalList[i];
+            }
+
+            return truncatedList;
+        }
         
-        internal static void CreateReloadFinishedEventEntry(DateTime? createdAt = null) {
+        internal static void CreateReloadFinishedEventEntry(DateTime? createdAt = null, string[] patchedMethodsDisplayNames = null) {
+            var truncated = false;
+            if (patchedMethodsDisplayNames?.Length > 25) {
+                patchedMethodsDisplayNames = TruncateList(patchedMethodsDisplayNames, 25);
+                truncated = true;
+            }
+            var patchesList = patchedMethodsDisplayNames?.Length > 0 ? string.Join("\n• ", patchedMethodsDisplayNames) : "";
             var timestamp = createdAt ?? DateTime.Now;
-            InsertEntry(new AlertEntry(
+            var entry = new AlertEntry(
                 timestamp: timestamp,
-                alertType : AlertType.AppliedChange, 
+                alertType: AlertType.AppliedChange,
                 title: EditorIndicationState.IndicationText[EditorIndicationState.IndicationStatus.Reloaded],
-                description: "No issues found",
-                entryType: EntryType.Standalone,
-                alertData: new AlertData(AlertEntryType.PatchApplied, createdAt: timestamp, entryType: EntryType.Standalone)
-            ));
+                description: patchedMethodsDisplayNames?.Length > 0 
+                    ? $"• {(truncated ? patchesList + "\n..." : patchesList)}" 
+                    : "No issues found",
+                entryType: patchedMethodsDisplayNames?.Length > 0 ? EntryType.Parent : EntryType.Standalone,
+                alertData: new AlertData(
+                    AlertEntryType.PatchApplied, 
+                    createdAt: timestamp, 
+                    entryType: EntryType.Standalone,
+                    patchedMethodsDisplayNames: patchedMethodsDisplayNames)
+            );
+            
+            InsertEntry(entry);
+            if (patchedMethodsDisplayNames?.Length > 0) {
+                expandedEntries.Add(entry);
+            }
         }
         
-        internal static void CreateReloadFinishedWithWarningsEventEntry(DateTime? createdAt = null) {
+        internal static void CreateReloadFinishedWithWarningsEventEntry(DateTime? createdAt = null, string[] patchedMethodsDisplayNames = null) {
+            var truncated = false;
+            if (patchedMethodsDisplayNames?.Length > 25) {
+                patchedMethodsDisplayNames = TruncateList(patchedMethodsDisplayNames, 25);
+                truncated = true;
+            }
+            var patchesList = patchedMethodsDisplayNames?.Length > 0 ? string.Join("\n• ", patchedMethodsDisplayNames) : "";
             var timestamp = createdAt ?? DateTime.Now;
-            InsertEntry(new AlertEntry(
+            var entry = new AlertEntry(
                 timestamp: timestamp,
-                alertType : AlertType.UnsupportedChange, 
+                alertType: AlertType.UnsupportedChange,
                 title: EditorIndicationState.IndicationText[EditorIndicationState.IndicationStatus.Unsupported],
-                description: "See detailed entries below",
+                description: patchedMethodsDisplayNames?.Length > 0 ? $"• {(truncated ? patchesList + "\n...\n\nSee unsupported changes below" : patchesList + "\n\nSee unsupported changes below")}" : "See detailed entries below",
                 entryType: EntryType.Parent,
-                alertData: new AlertData(AlertEntryType.Failure, createdAt: timestamp, entryType: EntryType.Parent)
-            ));
+                alertData: new AlertData(AlertEntryType.Failure, createdAt: timestamp, entryType: EntryType.Parent, patchedMethodsDisplayNames: patchedMethodsDisplayNames)
+            );
+            InsertEntry(entry);
+            if (patchedMethodsDisplayNames?.Length > 0) {
+                expandedEntries.Add(entry);
+            }
         }
         
-        internal static void CreateReloadPartiallyAppliedEventEntry(DateTime? createdAt = null) {
+        internal static void CreateReloadPartiallyAppliedEventEntry(DateTime? createdAt = null, string[] patchedMethodsDisplayNames = null) {
+            var truncated = false;
+            if (patchedMethodsDisplayNames?.Length > 25) {
+                patchedMethodsDisplayNames = TruncateList(patchedMethodsDisplayNames, 25);
+                truncated = true;
+            }
+            var patchesList = patchedMethodsDisplayNames?.Length > 0 ? string.Join("\n• ", patchedMethodsDisplayNames) : "";
+            var timestamp = createdAt ?? DateTime.Now;
+            var entry = new AlertEntry(
+                timestamp: timestamp,
+                alertType: AlertType.PartiallySupportedChange,
+                title: EditorIndicationState.IndicationText[EditorIndicationState.IndicationStatus.PartiallySupported],
+                description: patchedMethodsDisplayNames?.Length > 0 ? $"• {(truncated ? patchesList + "\n...\n\nSee partially applied changes below" : patchesList + "\n\nSee partially applied changes below")}"  : "See detailed entries below",
+                entryType: EntryType.Parent,
+                alertData: new AlertData(AlertEntryType.PartiallySupportedChange, createdAt: timestamp, entryType: EntryType.Parent, patchedMethodsDisplayNames: patchedMethodsDisplayNames)
+            );
+            InsertEntry(entry);
+            if (patchedMethodsDisplayNames?.Length > 0) {
+                expandedEntries.Add(entry);
+            }
+        }
+        
+        internal static void CreateReloadUndetectedChangeEventEntry(DateTime? createdAt = null) {
             var timestamp = createdAt ?? DateTime.Now;
             InsertEntry(new AlertEntry(
                 timestamp: timestamp,
-                alertType : AlertType.PartiallySupportedChange, 
-                title: EditorIndicationState.IndicationText[EditorIndicationState.IndicationStatus.PartiallySupported],
-                description: "See detailed entries below",
-                entryType: EntryType.Parent,
-                alertData: new AlertData(AlertEntryType.PartiallySupportedChange, createdAt: timestamp, entryType: EntryType.Parent)
+                alertType : AlertType.UndetectedChange, 
+                title: EditorIndicationState.IndicationText[EditorIndicationState.IndicationStatus.Undetected],
+                description: "Code semantics didn't change (e.g. whitespace) or the change requires manual recompile.\n\n" +
+                           "Recompile to force-apply changes.",
+                actionData: () => {
+                    GUILayout.Space(10f);
+                    using (new EditorGUILayout.HorizontalScope()) {
+                        RenderCompileButton();
+                        GUILayout.FlexibleSpace();
+                        OpenURLButton.Render("Docs", Constants.UndetectedChangesURL);
+                        GUILayout.Space(10f);
+                    }
+                },
+                entryType: EntryType.Foldout,
+                alertData: new AlertData(AlertEntryType.UndetectedChange, createdAt: timestamp, entryType: EntryType.Parent)
             ));
         }
         

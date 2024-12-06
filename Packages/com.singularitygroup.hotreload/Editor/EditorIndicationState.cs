@@ -20,6 +20,7 @@ namespace SingularityGroup.HotReload.Editor {
             CompileErrors,
             ActivationFailed,
             FinishRegistration,
+            Undetected,
         }
 
         internal static readonly string greyIconPath = "grey";
@@ -34,6 +35,7 @@ namespace SingularityGroup.HotReload.Editor {
             // log icons:
             { IndicationStatus.Reloaded, HotReloadTimelineHelper.alertIconString[AlertType.AppliedChange] },
             { IndicationStatus.Unsupported, HotReloadTimelineHelper.alertIconString[AlertType.UnsupportedChange] },
+            { IndicationStatus.Undetected, HotReloadTimelineHelper.alertIconString[AlertType.UndetectedChange] },
             { IndicationStatus.PartiallySupported, HotReloadTimelineHelper.alertIconString[AlertType.PartiallySupportedChange] },
             { IndicationStatus.CompileErrors, HotReloadTimelineHelper.alertIconString[AlertType.CompileError] },
             // spinner:
@@ -68,6 +70,7 @@ namespace SingularityGroup.HotReload.Editor {
             { IndicationStatus.CompileErrors, "Scripts have compile errors" },
             { IndicationStatus.ActivationFailed, "Activation failed" },
             { IndicationStatus.Loading, "Loading" },
+            { IndicationStatus.Undetected, "No changes applied"},
         };
 
         private const int MinSpinnerDuration = 200;
@@ -145,6 +148,9 @@ namespace SingularityGroup.HotReload.Editor {
                     }
                     if (EditorCodePatcher._appliedPartially) {
                         return IndicationStatus.PartiallySupported;
+                    }
+                    if (EditorCodePatcher._appliedUndetected) {
+                        return IndicationStatus.Undetected;
                     }
                     return IndicationStatus.Reloaded;
                 case PatchStatus.Patching:     return IndicationStatus.Patching;
