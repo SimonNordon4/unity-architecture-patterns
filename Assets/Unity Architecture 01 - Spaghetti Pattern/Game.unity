@@ -1038,6 +1038,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+--- !u!1 &462989478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 177638, guid: 0abab5bb77339e4428787a870eb31bd3, type: 3}
+  m_PrefabInstance: {fileID: 462989477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &547831696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1790,6 +1795,7 @@ MonoBehaviour:
   musicVolume: 1
   sfxVolume: 1
   healthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175, type: 3}
+  graphy: {fileID: 462989478}
 --- !u!4 &801546266
 Transform:
   m_ObjectHideFlags: 0

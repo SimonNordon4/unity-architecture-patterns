@@ -212,7 +212,7 @@ namespace UnityArchitecture.SpaghettiPattern
                     case 90:
                         SpawnBoss(chargerBossEnemyPrefab);
                         break;
-                    case 120:
+                    case 220:
                         SpawnBoss(fastBossEnemyPrefab);
                         SpawnBoss(fastBossEnemyPrefab);
                         SpawnBoss(fastBossEnemyPrefab);
