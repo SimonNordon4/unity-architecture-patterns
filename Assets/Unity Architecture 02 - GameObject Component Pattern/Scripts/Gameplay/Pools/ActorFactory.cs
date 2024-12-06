@@ -8,6 +8,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         [field:SerializeField] public Transform initialTarget { get; private set; }
         [SerializeField] private ProjectilePool projectilePool;
         [SerializeField] private PoolableActor actorPrefab;
+        [SerializeField] private SoundManager soundManager;
+        [SerializeField] private UserSettings userSettings;
 
         public PoolableActor Create(Vector3 position = new(), bool startActive = true)
         {
@@ -24,8 +26,22 @@ namespace UnityArchitecture.GameObjectComponentPattern
             if(actor.TryGetComponent<ProjectilePool>(out var bulletPool))
                 bulletPool.Construct(projectilePool);
             
-            // if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))
-            //     actorSoundProxy.Construct(soundManager);
+            if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))
+                actorSoundProxy.Construct(soundManager);
+
+            UIActorHealthBar healthBar = actor.GetComponentInChildren<UIActorHealthBar>();
+            
+            if (healthBar != null)
+            {
+                healthBar.Construct(userSettings);
+            }
+            
+            UIDamageNumber damageNumber = actor.GetComponentInChildren<UIDamageNumber>();
+            if (damageNumber != null)
+            {
+                damageNumber.Construct(userSettings);
+            }
+
             
             actor.gameObject.SetActive(true);
 

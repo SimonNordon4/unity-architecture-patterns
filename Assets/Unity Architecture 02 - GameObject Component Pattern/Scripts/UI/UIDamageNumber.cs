@@ -13,6 +13,20 @@ namespace UnityArchitecture.GameObjectComponentPattern
         [SerializeField]private Color damageColor = Color.yellow;
         [SerializeField]private Color critColor = Color.red;
         private Vector3 _originalPosition;
+        
+        private UserSettings _userSettings;
+
+        public void Construct(UserSettings userSettings)
+        {
+            _userSettings = userSettings;
+            _userSettings.showDamageNumbersChanged.AddListener(ToggleDamageNumbers);
+        }
+
+        private void ToggleDamageNumbers(bool arg0)
+        {
+            StopAllCoroutines();
+            damageText.gameObject.SetActive(false);
+        }
 
         private void OnEnable()
         {
@@ -37,6 +51,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
 
         private void ProcessDamage(int damage, bool isCritical)
         {
+            if (!_userSettings.ShowDamageNumbers) return;
             StartCoroutine(ShowDamageText(damage,isCritical));
         }
         

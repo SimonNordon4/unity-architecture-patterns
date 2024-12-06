@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
@@ -29,6 +30,9 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public float MusicVolume {get; private set;} = 1f;
         [field:SerializeField] 
         public float SfxVolume {get; private set;} = 1f;
+        
+        public UnityEvent<bool> showDamageNumbersChanged = new();
+        public UnityEvent<bool> showHealthBarChanged = new();
 
         private void Awake()
         {
@@ -61,13 +65,14 @@ namespace UnityArchitecture.GameObjectComponentPattern
         public void SetShowEnemyHealthBars(bool show)
         {
             ShowEnemyHealthBars = show;
-            //TODO: add event
+            showHealthBarChanged.Invoke(show);
             SaveSettings();
         }
 
         public void SetShowDamageNumbers(bool show)
         {
             ShowDamageNumbers = show;
+            showDamageNumbersChanged.Invoke(show);
             SaveSettings();
         }
 

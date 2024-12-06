@@ -369,6 +369,11 @@ PrefabInstance:
       propertyPath: InitialModule.startColor.maxColor.r
       value: 0.96470594
       objectReference: {fileID: 0}
+    - target: {fileID: 9092190676316162844, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+        type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[8].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 8df4cf3017cdd05429fe819ebc0d4e8c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -394,6 +399,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5685996298107322982}
   m_SourcePrefab: {fileID: 100100000, guid: 1c95ab97b703a5a4ea03366bf8725f5e, type: 3}
+--- !u!114 &5837566528758841 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8085847610484437028, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8080036847672169501}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4123935333755914061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69ece41d53ab412f998fe578d691e15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4123935333755914061 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5267285107322196816, guid: 1c95ab97b703a5a4ea03366bf8725f5e,
@@ -452,7 +469,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onAttack:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5837566528758841}
+        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.SoundProxy,
+          GameObjectComponentPattern
+        m_MethodName: PlaySound
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 158dc253b674d7844ac30e67f376db37,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5685996298107322982
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,8 +1,6 @@
-﻿
-using GameObjectComponent.Definitions;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GameObjectComponent.App
+namespace UnityArchitecture.GameObjectComponentPattern
 {
     public class SoundProxy : MonoBehaviour
     {
@@ -13,9 +11,9 @@ namespace GameObjectComponent.App
             _soundManager = soundManager;
         }
         
-        public void PlaySound(SoundDefinition soundDefinition)
+        public void PlaySound(AudioClip clip)
         {
-            _soundManager.PlaySound(soundDefinition);
+            _soundManager.PlaySound(clip);
         }
     }
 }

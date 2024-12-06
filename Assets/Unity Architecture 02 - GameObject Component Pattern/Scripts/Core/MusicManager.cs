@@ -1,15 +1,15 @@
-﻿using GameObjectComponent.Game;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GameObjectComponent.App
+namespace UnityArchitecture.GameObjectComponentPattern  
 {
     [RequireComponent(typeof(AudioSource))]
     public class MusicManager : MonoBehaviour
     {
         [SerializeField] private GameState gameState;
+        [SerializeField]private UserSettings userSettings;
         [SerializeField] private AudioClip[] musicTracks;
-        
         [SerializeField] private float musicVolume = 0.5f;
+      
         
         private AudioSource _audioSource;
 
@@ -21,22 +21,20 @@ namespace GameObjectComponent.App
 
         private void OnEnable()
         {
-            gameState.OnGameStart += PlayRandomTrack;
-            gameState.OnGamePause += PauseTrack;
-            gameState.OnGameResume += ResumeTrack;
-            gameState.OnGameQuit += StopTrack;
-            gameState.OnGameLost += StopTrack;
-            gameState.OnGameWon += StopTrack;
+            gameState.onGameStarted.AddListener(PlayRandomTrack);
+            gameState.onGamePaused.AddListener(PauseTrack);
+            gameState.onGameResumed.AddListener(ResumeTrack);
+            gameState.onGameLost.AddListener(StopTrack);
+            gameState.onGameWon.AddListener(StopTrack);
         }
 
         private void OnDisable()
         {
-            gameState.OnGameStart -= PlayRandomTrack;
-            gameState.OnGamePause -= PauseTrack;
-            gameState.OnGameResume -= ResumeTrack;
-            gameState.OnGameQuit -= StopTrack;
-            gameState.OnGameLost -= StopTrack;
-            gameState.OnGameWon -= StopTrack;
+            gameState.onGameStarted.RemoveListener(PlayRandomTrack);
+            gameState.onGamePaused.RemoveListener(PauseTrack);
+            gameState.onGameResumed.RemoveListener(ResumeTrack);
+            gameState.onGameLost.RemoveListener(StopTrack);
+            gameState.onGameWon.RemoveListener(StopTrack);
         }
         
         private void ResumeTrack()
@@ -52,7 +50,7 @@ namespace GameObjectComponent.App
             var randomIndex = Random.Range(0, musicTracks.Length);
             _audioSource.clip = musicTracks[randomIndex];
             _audioSource.loop = true;
-            _audioSource.volume = musicVolume;
+            _audioSource.volume = userSettings.MusicVolume * musicVolume;
             _audioSource.Play();
         }
 
@@ -67,14 +65,6 @@ namespace GameObjectComponent.App
         private void StopTrack()
         {
             _audioSource.Stop();
-        }
-        
-        public void SetVolume(float volume)
-        {
-            volume = Mathf.Clamp01(volume);
-            musicVolume = volume;
-            if(_audioSource != null)
-                _audioSource.volume = volume;
         }
     }
 }

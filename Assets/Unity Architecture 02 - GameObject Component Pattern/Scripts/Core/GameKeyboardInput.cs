@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.GameObjectComponentPattern
 {
@@ -7,7 +8,11 @@ namespace UnityArchitecture.GameObjectComponentPattern
     public class GameKeyboardInput : MonoBehaviour
     {
         [SerializeField] private KeyCode pauseKey = KeyCode.F;
+        [SerializeField] private KeyCode debugKey = KeyCode.G;
         private GameState _gameState;
+
+        [SerializeField] private GameObject graphy;
+
 
         private void Awake()
         {
@@ -24,6 +29,13 @@ namespace UnityArchitecture.GameObjectComponentPattern
             {
                 _gameState.PauseGame();
             }
+
+            if (Input.GetKeyDown(debugKey))
+            {
+                graphy.SetActive(!graphy.activeSelf);
+            }
+            
+            
         }
     }
 }
