@@ -49,6 +49,9 @@ namespace UnityArchitecture.SpaghettiPattern
 
         [Header("Health Packs")] 
         public GameObject healthPackPrefab;
+        
+        [Header("Debug")]
+        public GameObject graphy;
 
         private void Awake()
         {
@@ -94,6 +97,11 @@ namespace UnityArchitecture.SpaghettiPattern
             }
 
             if (Input.GetKeyDown(KeyCode.F)) TogglePauseGame();
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                graphy.SetActive(!graphy.activeSelf);
+            }
         }
 
 #region GamePlay
