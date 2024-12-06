@@ -20,7 +20,8 @@ namespace UnityArchitecture.GameObjectComponentPattern
         [field:SerializeField] public Stat Pierce { get; private set; } = new(1, StatType.Pierce);
 
         private List<Stat> stats = new();
-
+        public List<Stat> StatsList => new(stats);
+        
         private void Awake()
         {
             stats.Add(MaxHealth);

@@ -9959,13 +9959,14 @@ GameObject:
   - component: {fileID: 7047060643550699690}
   - component: {fileID: 7093389414931688757}
   - component: {fileID: 6189054487072402653}
+  - component: {fileID: 9183462613293212287}
   m_Layer: 7
   m_Name: Enemy Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8199727574296934539
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10064,6 +10065,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 7107618307500073617}
   fillBar: {fileID: 231379115260788723}
+--- !u!114 &9183462613293212287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3787276329848463215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f95235f36af43a2b801b3ea0390fd4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageReceiver: {fileID: 2103351661443389608}
+  damageText: {fileID: 5851752787693418871}
+  damageColor: {r: 1, g: 0.7437371, b: 0.23113209, a: 1}
+  critColor: {r: 1, g: 0.5801887, b: 0.5801887, a: 1}
 --- !u!1 &4741749269254944534
 GameObject:
   m_ObjectHideFlags: 0
@@ -15242,7 +15259,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3787276329848463215}
+      - m_Target: {fileID: 8545537075846597384}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -15295,8 +15312,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00699919f5048a388851814a0d61543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInDelay: 1
-  spawnOutDelay: 1
   OnSpawnIn:
     m_PersistentCalls:
       m_Calls:
@@ -15360,7 +15375,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 3787276329848463215}
+      - m_Target: {fileID: 8545537075846597384}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -15450,11 +15465,11 @@ MonoBehaviour:
     _modifiers: []
     value: 0
   <Speed>k__BackingField:
-    <baseValue>k__BackingField: 9
+    <baseValue>k__BackingField: 8
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 9
+    value: 8
   <Armor>k__BackingField:
     <baseValue>k__BackingField: 0
     minimumValue: 0
@@ -15661,7 +15676,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3787276329848463215}
+      - m_Target: {fileID: 8545537075846597384}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -15710,7 +15725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f8035ab8c1a9a4b8b265721759e3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: {fileID: 0}
+  <Level>k__BackingField: {fileID: 0}
 --- !u!114 &8789716957981044398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26165,7 +26180,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8326671110523752596
 RectTransform:
   m_ObjectHideFlags: 0

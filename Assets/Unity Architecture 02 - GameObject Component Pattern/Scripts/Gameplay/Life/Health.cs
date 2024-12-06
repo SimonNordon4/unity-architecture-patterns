@@ -32,6 +32,7 @@ namespace UnityArchitecture.GameObjectComponentPattern
         private void OnMaxHealthModifierAdded(Modifier hpMod)
         {
             var hpChange = hpMod.modifierValue * _maxHealthStat.baseValue;
+            if (hpChange < 0) return;
             currentHealth += hpChange;
             currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
             OnHealthChanged?.Invoke(currentHealth);

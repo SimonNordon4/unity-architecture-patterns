@@ -1,6 +1,5 @@
-using System.Collections.Generic;
+ using System.Collections.Generic;
 using TMPro;
-using UnityArchitecture.GameObjectComponentPattern;
 using UnityEngine;
 using UnityEngine.UI;
 
