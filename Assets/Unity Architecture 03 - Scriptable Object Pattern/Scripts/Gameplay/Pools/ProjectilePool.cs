@@ -5,13 +5,21 @@ namespace UnityArchitecture.ScriptableObjectPattern
 {
     public class ProjectilePool : ScriptableObject
     {
-        [SerializeField]private Projectile projectilePrefab;
-        private readonly Queue<Projectile> _inactiveProjectiles = new();
-        private readonly List<Projectile> _activeProjectiles = new();
+        [SerializeField]private GameObject projectilePrefab;
+        private readonly Queue<GameObject> _inactiveProjectiles = new();
+        private readonly List<GameObject> _activeProjectiles = new();
+
+        private void Awake()
+        {
+            if (!projectilePrefab.TryGetComponent<Projectile>(out var projectile))
+            {
+                Debug.LogError("Projectile Prefab doesn't contain a Projectile component.", this);
+            }
+        }
 
         public Projectile Get(Vector3 position, Vector3 direction, bool startActive = true)
         {
-            Projectile projectile = null;
+            GameObject projectile = null;
 
             if (_inactiveProjectiles.Count == 0)
             {
@@ -26,22 +34,19 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 projectile.gameObject.SetActive(startActive);
             }
             
-            projectile.Construct(this);
             projectile.gameObject.SetActive(startActive);
-            projectile.enabled = startActive;
-
             _activeProjectiles.Add(projectile);
-            return projectile;
+            return projectile.GetComponent<Projectile>();
         }
         
-        public void Return(Projectile projectile)
+        public void Return(GameObject projectile)
         {
             _activeProjectiles.Remove(projectile);
             projectile.gameObject.SetActive(false);
             _inactiveProjectiles.Enqueue(projectile);
         }
         
-        private Projectile CreateProjectile(Vector3 position, Vector3 direction)
+        private GameObject CreateProjectile(Vector3 position, Vector3 direction)
         {
             return Instantiate(projectilePrefab, position, Quaternion.LookRotation(direction));
         }

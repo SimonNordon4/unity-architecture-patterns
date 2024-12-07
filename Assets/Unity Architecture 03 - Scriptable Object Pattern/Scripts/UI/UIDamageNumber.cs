@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -14,13 +13,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
         [SerializeField]private Color critColor = Color.red;
         private Vector3 _originalPosition;
         
-        private UserSettings _userSettings;
-
-        public void Construct(UserSettings userSettings)
-        {
-            _userSettings = userSettings;
-            _userSettings.showDamageNumbersChanged.AddListener(ToggleDamageNumbers);
-        }
+        [SerializeField]
+        private UserSettings userSettings;
 
         private void ToggleDamageNumbers(bool arg0)
         {
@@ -31,8 +25,9 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private void OnEnable()
         {
             damageReceiver.OnDamageReceived += ProcessDamage;
+            userSettings.showDamageNumbersChanged.AddListener(ToggleDamageNumbers);
         }
-
+        
         private void Start()
         {
             _originalPosition = transform.localPosition;
@@ -41,7 +36,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private void OnDisable()
         {
             damageReceiver.OnDamageReceived -= ProcessDamage;
-            
+            userSettings.showDamageNumbersChanged.RemoveListener(ToggleDamageNumbers);
             StopAllCoroutines();
             // On Disable we want to reset the position of the text and disable it
             damageText.transform.position = _originalPosition;
@@ -51,7 +46,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         private void ProcessDamage(int damage, bool isCritical)
         {
-            if (!_userSettings.ShowDamageNumbers) return;
+            if (!userSettings.ShowDamageNumbers) return;
             StartCoroutine(ShowDamageText(damage,isCritical));
         }
         

@@ -10066,6 +10066,7 @@ MonoBehaviour:
   health: {fileID: 7107618307500073617}
   fillBar: {fileID: 231379115260788723}
   healthBar: {fileID: 8545537075846597384}
+  userSettings: {fileID: 11400000, guid: 47a59ed36efef9f43bf65e6dcec747a0, type: 2}
 --- !u!114 &9183462613293212287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10082,6 +10083,7 @@ MonoBehaviour:
   damageText: {fileID: 5851752787693418871}
   damageColor: {r: 1, g: 0.7437371, b: 0.23113209, a: 1}
   critColor: {r: 1, g: 0.5801887, b: 0.5801887, a: 1}
+  userSettings: {fileID: 11400000, guid: 47a59ed36efef9f43bf65e6dcec747a0, type: 2}
 --- !u!1 &4741749269254944534
 GameObject:
   m_ObjectHideFlags: 0
@@ -15093,7 +15095,6 @@ GameObject:
   - component: {fileID: 992837262857138370}
   - component: {fileID: 7889219596017474619}
   - component: {fileID: 4216894148820731118}
-  - component: {fileID: 3677801144576041349}
   - component: {fileID: 1471595145065993448}
   - component: {fileID: 5159892503237138225}
   - component: {fileID: 1512120678652169564}
@@ -15184,7 +15185,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3677801144576041349
+--- !u!114 &1471595145065993448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15193,25 +15194,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5267285107322196816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c10c3b93f18a9be40af0f27c48e9a8c3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2df2a2251b7bc504fb26492121c67d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onActorGet:
+  OnCreated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1471595145065993448}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.ActorLifecycle,
-          GameObjectComponentPattern
-        m_MethodName: SpawnIn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 3697119956580139772}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -15273,8 +15261,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1512120678652169564}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.Team,
-          GameObjectComponentPattern
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.Team,
+          ScriptableObjectPattern
         m_MethodName: ChangeTeam
         m_Mode: 3
         m_Arguments:
@@ -15286,8 +15274,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7107618307500073617}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.Health,
-          GameObjectComponentPattern
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.Health,
+          ScriptableObjectPattern
         m_MethodName: SetToMaxHealth
         m_Mode: 1
         m_Arguments:
@@ -15298,21 +15286,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  onActorReturn:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1471595145065993448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267285107322196816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2df2a2251b7bc504fb26492121c67d1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   OnSpawnIn:
     m_PersistentCalls:
       m_Calls:
@@ -15428,7 +15401,7 @@ MonoBehaviour:
   OnSpawnOut:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3677801144576041349}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.PoolableActor,
           GameObjectComponentPattern
         m_MethodName: Return

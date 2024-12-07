@@ -9,11 +9,13 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private float spawnInDelay = 1f;
         private float spawnOutDelay = 0.3f;
 
+        public UnityEvent OnCreated = new UnityEvent();
         public UnityEvent OnSpawnIn = new UnityEvent();
         public UnityEvent OnSpawnOut = new UnityEvent();
 
         public void SpawnIn()
         {
+            OnCreated.Invoke();
             StartCoroutine(SpawnCoroutine(spawnInDelay, OnSpawnIn));
         }
 

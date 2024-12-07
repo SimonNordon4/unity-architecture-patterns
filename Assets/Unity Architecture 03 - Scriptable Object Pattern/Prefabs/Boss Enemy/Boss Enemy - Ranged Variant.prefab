@@ -238,6 +238,18 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3.1344776
       objectReference: {fileID: 0}
+    - target: {fileID: 6290099947754201100, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
+      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 8a32f7a7e41b1c347ac07ee58c6b6f67, type: 2}
+    - target: {fileID: 6290099947754201100, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
+      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Return
+      objectReference: {fileID: 0}
+    - target: {fileID: 6290099947754201100, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
+      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 6520719251884233105}
     - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: range
       value: 5

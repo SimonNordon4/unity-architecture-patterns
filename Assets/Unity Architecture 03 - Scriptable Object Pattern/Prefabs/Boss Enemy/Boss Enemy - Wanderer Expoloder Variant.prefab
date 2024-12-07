@@ -64,6 +64,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7028730989725204777, guid: 7d2dc3b803d93ed49acc310f8297653c, type: 3}
+      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c308fb9d5ff99d41b5a653a25c70d16, type: 2}
+    - target: {fileID: 7028730989725204777, guid: 7d2dc3b803d93ed49acc310f8297653c, type: 3}
+      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Return
+      objectReference: {fileID: 0}
     - target: {fileID: 7174466777304637638, guid: 7d2dc3b803d93ed49acc310f8297653c, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.58272

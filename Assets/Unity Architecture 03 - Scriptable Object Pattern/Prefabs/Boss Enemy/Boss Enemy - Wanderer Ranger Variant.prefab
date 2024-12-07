@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3341080464339827543, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
+      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 1bc49e737e9a9bf41b040deefe6ae876, type: 2}
+    - target: {fileID: 3341080464339827543, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
+      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Return
+      objectReference: {fileID: 0}
     - target: {fileID: 3485705963354491976, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5

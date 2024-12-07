@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
     public class Projectile : MonoBehaviour
     {
-        [SerializeField] private float lifeTime = 3f;
+        public UnityEvent<Projectile> onEnd = new();
+        [SerializeField]
+        private float lifeTime = 3f;
         private float _timeAlive = 0f;
-        private UnityEngine.Transform _projectileTransform;
+        private Transform _projectileTransform;
 
-        private ProjectilePool _pool;
+        
         
         private LayerMask _targetLayer;
         private float _speed;
@@ -17,10 +21,6 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private float _pierceValue;
         private bool _isCrit;
         
-        public void Construct(ProjectilePool pool)
-        {
-            _pool = pool;
-        }
 
         private void OnEnable()
         {
@@ -93,7 +93,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         
         public virtual void EndProjectile()
         {
-            _pool.Return(this);
+            onEnd?.Invoke(this);
         }
     }
 }

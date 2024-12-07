@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UnityArchitecture.ScriptableObjectPattern
@@ -9,14 +10,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
         [SerializeField]private Health health;
         [SerializeField]private Image fillBar;
         [SerializeField]private GameObject healthBar;
-        
-        private UserSettings _userSettings;
+        [SerializeField] private UserSettings userSettings;
 
-        public void Construct(UserSettings userSettings)
-        {
-            _userSettings = userSettings;
-            _userSettings.showHealthBarChanged.AddListener(ToggleHealthBar);
-        }
 
         private void ToggleHealthBar(bool show)
         {
@@ -25,11 +20,11 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         private void OnEnable()
         {
-            if (_userSettings != null)
+            if (userSettings != null)
             {
-                healthBar.SetActive(_userSettings.ShowEnemyHealthBars);
+                healthBar.SetActive(userSettings.ShowEnemyHealthBars);
             }
-            
+            userSettings.showHealthBarChanged.AddListener(ToggleHealthBar);
             health.OnHealthChanged.AddListener(UpdateHealthBar);
             UpdateHealthBar(health.currentHealth);
         }
@@ -38,6 +33,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private void OnDisable()
         {
             health.OnHealthChanged.RemoveListener(UpdateHealthBar);
+            userSettings.showHealthBarChanged.RemoveListener(ToggleHealthBar);
         }
 
         private void Update()
