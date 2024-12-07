@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class EnemyDirectorWave : MonoBehaviour
+    public class EnemyDirectorWave : ScriptableObject
     {
         public int enemiesToKill = 10;
         public List<EnemyType> enemyTypes = new();

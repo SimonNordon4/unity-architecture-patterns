@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff413cbe2900b0c449cc4b7769ba068b, type: 3}
+  m_Name: Wave 14
+  m_EditorClassIdentifier: 
+  enemiesToKill: 400
+  enemyTypes: 0000000001000000020000000300000004000000050000000600000007000000
+  bossEnemyTypes: 04000000
+  bossTypes: 0000000001000000020000000300000004000000050000000600000007000000
+  healthMultiplier: 10
+  damageMultiplier: 10
+  maxEnemiesAlive: 30

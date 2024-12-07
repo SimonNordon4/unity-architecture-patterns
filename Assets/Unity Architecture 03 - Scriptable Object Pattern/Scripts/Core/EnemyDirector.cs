@@ -2,12 +2,12 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
     [RequireComponent(typeof(EnemySpawner))]
-    [RequireComponent(typeof(EnemyDirectorWave))]
     public class EnemyDirector : MonoBehaviour
     {
         private static EnemyDirector _instance;
@@ -28,7 +28,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
         public UnityEvent<Vector3> enemyKilledAtPosition = new();
 
         private EnemySpawner _spawner;
-        private EnemyDirectorWave[] _waves;
+        [SerializeField]
+        private EnemyDirectorWave[] waves;
         private int _waveIndex = 0;
 
         public int EnemyKillProgressCount { get; private set; }
@@ -57,7 +58,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
             DontDestroyOnLoad(gameObject);
 
             _spawner = GetComponent<EnemySpawner>();
-            _waves = GetComponents<EnemyDirectorWave>().OrderBy(x => x.enemiesToKill).ToArray();
+            waves = GetComponents<EnemyDirectorWave>().OrderBy(x => x.enemiesToKill).ToArray();
         }
 
         void OnEnable()
@@ -84,16 +85,16 @@ namespace UnityArchitecture.ScriptableObjectPattern
             EnemyKillProgressCount++;
 
             // If the enemy kill count has hit the next breakpoint, we want to spawn the bosses of the current wave & pause progress.
-            if (EnemyKillProgressCount >= _waves[_waveIndex].enemiesToKill && !_progressPaused)
+            if (EnemyKillProgressCount >= waves[_waveIndex].enemiesToKill && !_progressPaused)
             {
                 // If there are no bosses in the current wave, we want to progress to the next wave.
-                if (_waves[_waveIndex].bossTypes.Count == 0)
+                if (waves[_waveIndex].bossTypes.Count == 0)
                 {
                     ProgressToNextWave();
                     return;
                 }
 
-                foreach (var type in _waves[_waveIndex].bossTypes)
+                foreach (var type in waves[_waveIndex].bossTypes)
                 {
                     SpawnBoss(type);
                     _progressPaused = true;
@@ -117,7 +118,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         {
             _waveIndex++;
 
-            if (_waveIndex >= _waves.Length)
+            if (_waveIndex >= waves.Length)
             {
                 allWavesFinished?.Invoke();
                 _progressPaused = true;
@@ -127,11 +128,11 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private void Update()
         {
             _currentSpawnRate = _activeEnemies.Count > 0
-                ? Mathf.Clamp01(_activeEnemies.Count / (float)_waves[_waveIndex].maxEnemiesAlive)
+                ? Mathf.Clamp01(_activeEnemies.Count / (float)waves[_waveIndex].maxEnemiesAlive)
                 : 1f;
             _timeSinceLastSpawn += Time.deltaTime;
 
-            if (_timeSinceLastSpawn > _currentSpawnRate && _activeEnemies.Count < _waves[_waveIndex].maxEnemiesAlive)
+            if (_timeSinceLastSpawn > _currentSpawnRate && _activeEnemies.Count < waves[_waveIndex].maxEnemiesAlive)
             {
                 _timeSinceLastSpawn = 0f;
                 SpawnEnemy();
@@ -143,35 +144,35 @@ namespace UnityArchitecture.ScriptableObjectPattern
             // If progress is paused, we only want to spawn enemies that are meant to be spawned alongside the boss.
             List<EnemyType> enemySpawnPool;
 
-            if (_waves[_waveIndex].bossEnemyTypes.Count <=
+            if (waves[_waveIndex].bossEnemyTypes.Count <=
                 0) // If there are no bosses this waves, spawn normal enemies always.
             {
-                enemySpawnPool = _waves[_waveIndex].enemyTypes;
+                enemySpawnPool = waves[_waveIndex].enemyTypes;
             }
             else if (_progressPaused) // If Progress is paused and there are bosses this wave, only spawn boss enemies.
             {
-                enemySpawnPool = _waves[_waveIndex].bossEnemyTypes;
+                enemySpawnPool = waves[_waveIndex].bossEnemyTypes;
             }
             else // Normally, just spawn normal enemies.
             {
-                enemySpawnPool = _waves[_waveIndex].enemyTypes;
+                enemySpawnPool = waves[_waveIndex].enemyTypes;
             }
 
-            var enemyType = _waves[_waveIndex].enemyTypes[Random.Range(0, enemySpawnPool.Count)];
+            var enemyType = waves[_waveIndex].enemyTypes[Random.Range(0, enemySpawnPool.Count)];
             var enemy = _spawner.SpawnEnemy(enemyType);
             if (enemy.TryGetComponent<Stats>(out var stats))
             {
                 stats.MaxHealth.AddModifier(new Modifier
                 {
                     statType = StatType.MaxHealth,
-                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].healthMultiplier - 1) * 100),
+                    modifierValue = Mathf.RoundToInt((waves[_waveIndex].healthMultiplier - 1) * 100),
                     isFlatPercentage = false
                 });
 
                 stats.Damage.AddModifier(new Modifier
                 {
                     statType = StatType.Damage,
-                    modifierValue = Mathf.RoundToInt((_waves[_waveIndex].damageMultiplier - 1) * 100),
+                    modifierValue = Mathf.RoundToInt((waves[_waveIndex].damageMultiplier - 1) * 100),
                     isFlatPercentage = false
                 });
             }
@@ -187,14 +188,14 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 stats.MaxHealth.AddModifier(new Modifier
                 {
                     statType = StatType.MaxHealth,
-                    modifierValue = Mathf.RoundToInt(_waves[_waveIndex].healthMultiplier * 100),
+                    modifierValue = Mathf.RoundToInt(waves[_waveIndex].healthMultiplier * 100),
                     isFlatPercentage = false
                 });
 
                 stats.Damage.AddModifier(new Modifier
                 {
                     statType = StatType.Damage,
-                    modifierValue = Mathf.RoundToInt(_waves[_waveIndex].damageMultiplier * 100),
+                    modifierValue = Mathf.RoundToInt(waves[_waveIndex].damageMultiplier * 100),
                     isFlatPercentage = false
                 });
             }
