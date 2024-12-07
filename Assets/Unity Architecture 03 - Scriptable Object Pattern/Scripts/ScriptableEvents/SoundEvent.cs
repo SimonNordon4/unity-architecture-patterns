@@ -1,11 +1,11 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
     public class SoundEvent : ScriptableObject
     {
-        public event Action<AudioClip> OnPlaySound;
+        public UnityEvent<AudioClip> OnPlaySound = new();
 
         public void PlaySound(AudioClip clip)
         {
