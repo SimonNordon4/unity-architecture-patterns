@@ -3,18 +3,11 @@ using UnityEngine;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class ProjectilePool : MonoBehaviour
+    public class ProjectilePool : ScriptableObject
     {
-        [SerializeField]private ProjectileFactory factory;
-        private Queue<Projectile> _inactiveProjectiles = new();
-        private List<Projectile> _activeProjectiles = new();
-
-        public void Construct(ProjectilePool newPool)
-        {
-            _inactiveProjectiles = newPool._inactiveProjectiles;
-            _activeProjectiles = newPool._activeProjectiles;
-            factory = newPool.factory;
-        }
+        [SerializeField]private Projectile projectilePrefab;
+        private readonly Queue<Projectile> _inactiveProjectiles = new();
+        private readonly List<Projectile> _activeProjectiles = new();
 
         public Projectile Get(Vector3 position, Vector3 direction, bool startActive = true)
         {
@@ -50,16 +43,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         
         private Projectile CreateProjectile(Vector3 position, Vector3 direction)
         {
-            return factory.Create(position, direction);
-        }
-        
-        public void ReturnAllProjectiles()
-        {
-            foreach (var projectile in _activeProjectiles)
-            {
-                projectile.gameObject.SetActive(false);
-                _inactiveProjectiles.Enqueue(projectile);
-            }
+            return Instantiate(projectilePrefab, position, Quaternion.LookRotation(direction));
         }
     }
 }
