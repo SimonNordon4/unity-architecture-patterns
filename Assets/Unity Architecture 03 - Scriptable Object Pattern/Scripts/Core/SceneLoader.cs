@@ -6,40 +6,14 @@ namespace UnityArchitecture.ScriptableObjectPattern
     /// <summary>
     /// Manages scene loading and unloading in the game, ensuring a singleton instance for persistent access.
     /// </summary>
-    public class SceneLoader : MonoBehaviour
+    public class SceneLoader : ScriptableObject
     {
-        private static SceneLoader _instance;
-        public static SceneLoader Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = FindAnyObjectByType<SceneLoader>();
-                    if (_instance == null)
-                    {
-                        GameObject singleton = new GameObject(typeof(SceneLoader).Name);
-                        _instance = singleton.AddComponent<SceneLoader>();
-                        DontDestroyOnLoad(singleton);
-                    }
-                }
-                return _instance;
-            }
-        }
-
-        public int CurrentMainScene => SceneManager.GetActiveScene().buildIndex;
-        public bool IsEnvironmentLoaded => SceneManager.GetSceneByBuildIndex(dungeonScene).isLoaded;
-
         public readonly int mainMenuScene = 0;
         public readonly int gameScene = 1;
         public readonly int gameWon = 2;
         public readonly int gameLost = 3;
         public readonly int dungeonScene = 4;
 
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
 
         public void LoadMainMenu()
         {

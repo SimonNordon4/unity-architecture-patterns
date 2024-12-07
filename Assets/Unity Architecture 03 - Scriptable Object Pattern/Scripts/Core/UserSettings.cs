@@ -1,26 +1,10 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class UserSettings : MonoBehaviour
+    public class UserSettings : ScriptableObject
     {
-        private static UserSettings _instance;
-
-        public static UserSettings Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    GameObject obj = new GameObject("UserSettings");
-                    _instance = obj.AddComponent<UserSettings>();
-                    DontDestroyOnLoad(obj);
-                }
-                return _instance;
-            }
-        }
 
         [field:SerializeField] 
         public bool ShowDamageNumbers {get; private set;} = true;
@@ -34,12 +18,6 @@ namespace UnityArchitecture.ScriptableObjectPattern
         public UnityEvent<bool> showDamageNumbersChanged = new();
         public UnityEvent<bool> showHealthBarChanged = new();
         public UnityEvent<float> musicVolumeChanged = new();
-
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-            
-        }
 
         private void OnEnable()
         {
