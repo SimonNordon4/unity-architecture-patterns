@@ -43,8 +43,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private float _currentSpawnRate;
         private float _timeSinceLastSpawn;
 
-        private readonly List<PoolableActor> _activeEnemies = new();
-        private readonly List<PoolableActor> _activeBosses = new();
+        private readonly List<GameObject> _activeEnemies = new();
+        private readonly List<GameObject> _activeBosses = new();
 
         private void Awake()
         {
@@ -62,18 +62,18 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         void OnEnable()
         {
-            _spawner.OnEnemyDied.AddListener(EnemyDied);
-            _spawner.OnBossDied.AddListener(BossDied);
+            // _spawner.OnEnemyDied.AddListener(EnemyDied);
+            // _spawner.OnBossDied.AddListener(BossDied);
             _progressPaused = false;
         }
 
         void OnDisable()
         {
-            _spawner.OnEnemyDied.RemoveListener(EnemyDied);
-            _spawner.OnBossDied.RemoveListener(BossDied);
+            // _spawner.OnEnemyDied.RemoveListener(EnemyDied);
+            // _spawner.OnBossDied.RemoveListener(BossDied);
         }
 
-        private void EnemyDied(PoolableActor actor)
+        private void EnemyDied(GameObject actor)
         {
             enemyKilledAtPosition.Invoke(actor.transform.position);
             _activeEnemies.Remove(actor);
@@ -102,7 +102,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         }
 
 
-        private void BossDied(PoolableActor bossActor)
+        private void BossDied(GameObject bossActor)
         {
             enemyKilledAtPosition.Invoke(bossActor.transform.position);
             _activeBosses.Remove(bossActor);

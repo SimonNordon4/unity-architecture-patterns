@@ -59,44 +59,44 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 { EnemyType.WandererExploder, wandererExploderBossEnemyPool }  
             };
             
-            normalEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            fastEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            bigEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            chargerEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            rangedEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            wandererEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            wandererRangedEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            wandererExploderEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            
-            normalBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            fastBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            bigBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            chargerBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            rangedBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            wandererBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            wandererRangedBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
-            wandererExploderBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // normalEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // fastEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // bigEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // chargerEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // rangedEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // wandererEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // wandererRangedEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // wandererExploderEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            //
+            // normalBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // fastBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // bigBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // chargerBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // rangedBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // wandererBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // wandererRangedBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
+            // wandererExploderBossEnemyPool.OnActorReturn.AddListener(EnemyDied);
         }
 
         private void OnDisable()
         {
-            normalEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            fastEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            bigEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            chargerEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            rangedEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            wandererEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            wandererRangedEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            wandererExploderEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            
-            normalBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            fastBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            bigBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            chargerBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            rangedBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            wandererBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            wandererRangedBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
-            wandererExploderBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // normalEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // fastEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // bigEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // chargerEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // rangedEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // wandererEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // wandererRangedEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // wandererExploderEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            //
+            // normalBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // fastBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // bigBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // chargerBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // rangedBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // wandererBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // wandererRangedBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
+            // wandererExploderBossEnemyPool.OnActorReturn.RemoveListener(EnemyDied);
         }
 
         public void EnemyDied(PoolableActor actor)
@@ -109,9 +109,9 @@ namespace UnityArchitecture.ScriptableObjectPattern
             OnBossDied?.Invoke(actor);
         }
 
-        public PoolableActor SpawnEnemy(EnemyType enemyType)
+        public GameObject SpawnEnemy(EnemyType enemyType)
         {
-            PoolableActor enemy = null;
+            GameObject enemy = null;
 
             var randomPosition = new Vector3(
                 Random.Range(-level.Bounds.x, level.Bounds.x),
@@ -129,9 +129,9 @@ namespace UnityArchitecture.ScriptableObjectPattern
             return enemy;
         }
 
-        public PoolableActor SpawnBoss(EnemyType enemyType)
+        public GameObject SpawnBoss(EnemyType enemyType)
         {
-            PoolableActor enemy = null;
+            GameObject enemy = null;
 
             var randomPosition = new Vector3(
                 Random.Range(-level.Bounds.x, level.Bounds.x),

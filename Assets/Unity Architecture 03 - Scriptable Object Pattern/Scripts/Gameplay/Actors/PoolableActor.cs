@@ -17,7 +17,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         public void Return()
         {
-            _pool.Return(this);
+            //_pool.Return(this);
             onActorReturn?.Invoke();
         }
     }

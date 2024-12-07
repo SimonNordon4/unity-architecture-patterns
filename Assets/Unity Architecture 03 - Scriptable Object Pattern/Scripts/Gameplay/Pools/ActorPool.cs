@@ -1,64 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    [RequireComponent(typeof(ActorFactory))]
-    public class ActorPool : MonoBehaviour
+    public class ActorPool : ScriptableObject
     {
         [SerializeField]
-        private ActorFactory actorFactory;
+        private GameObject actorPrefab;
 
-        public readonly Queue<PoolableActor> InactivePool = new();
-        public readonly List<PoolableActor> ActivePool = new();
+        private readonly Queue<GameObject> _inactivePool = new();
 
-        public UnityEvent<PoolableActor> OnActorGet = new();
-        public UnityEvent<PoolableActor> OnActorReturn = new();
-
-        private void Awake()
+        public GameObject Get(Vector3 position, bool startActive = true)
         {
-            actorFactory = GetComponent<ActorFactory>();
-        }
-
-        public PoolableActor Get(Vector3 position, bool startActive = true)
-        {
-            PoolableActor actor = null;
-
-            if (InactivePool.Count == 0)
-            {
-                actor = actorFactory.Create(position);
-                actor.Construct(this);
-                actor.transform.position = position;
-                actor.gameObject.SetActive(startActive);
-            }
-            else
-            {
-                actor = InactivePool.Dequeue();
-                actor.transform.position = position;
-                actor.gameObject.SetActive(startActive);
-            }
-
-            OnActorGet?.Invoke(actor);
-            ActivePool.Add(actor);
-            actor.onActorGet?.Invoke();
+            var actor = _inactivePool.Count == 0 ?
+                Instantiate(actorPrefab, position, Quaternion.identity) :
+                _inactivePool.Dequeue();
+            
+            actor.gameObject.SetActive(startActive);
             return actor;
         }
 
-        public void Return(PoolableActor actor)
+        public void Return(GameObject actor)
         {
             actor.gameObject.SetActive(false);
-            InactivePool.Enqueue(actor);
-            OnActorReturn?.Invoke(actor);
+            _inactivePool.Enqueue(actor);
         }
-
-        public void ReturnAllActiveActors()
-        {
-            for (var i = ActivePool.Count - 1; i >= 0; i--)
-            {
-                ActivePool[i].Return();
-            }
-        } 
     }
 }
