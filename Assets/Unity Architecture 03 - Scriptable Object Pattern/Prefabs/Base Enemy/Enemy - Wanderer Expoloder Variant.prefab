@@ -109,28 +109,12 @@ PrefabInstance:
       value: 0.36741573
       objectReference: {fileID: 0}
     - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: d04d3b833dcc91f4da51a12b9a271d2f, type: 2}
+      objectReference: {fileID: 11400000, guid: e31dbfb2129849849bab76582edab4bf, type: 2}
     - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Return
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityArchitecture.ScriptableObjectPattern.ActorPool, ScriptableObjectPattern
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 4394969533755278993}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1619590815701662952, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -278,5 +262,5 @@ MonoBehaviour:
       m_Calls: []
   projectileSpawnPoint: {fileID: 891879679577937834}
   numberOfProjectiles: 4
-  pool: {fileID: 11400000, guid: 9c482d5bb83bfda46a148a89d9a87f0c, type: 2}
+  pool: {fileID: 11400000, guid: 893f1cc451af2fc4196af2cd165871b6, type: 2}
   projectileSpeed: 2.5

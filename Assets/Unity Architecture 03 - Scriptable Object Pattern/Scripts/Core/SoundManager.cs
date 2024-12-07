@@ -14,12 +14,12 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         private void OnEnable()
         {
-            soundEvent.OnPlaySound += PlaySound;
+            soundEvent.OnPlaySound.AddListener(PlaySound);
         }
 
         private void OnDisable()
         {
-            soundEvent.OnPlaySound -= PlaySound;
+            soundEvent.OnPlaySound.RemoveListener(PlaySound);
         }
 
         private AudioSource GetAudioSource()

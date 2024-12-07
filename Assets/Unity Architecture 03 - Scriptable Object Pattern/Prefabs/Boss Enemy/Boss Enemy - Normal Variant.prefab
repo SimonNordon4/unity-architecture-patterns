@@ -126,22 +126,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1789236594020257121, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1789236594020257121, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1789236594020257121, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
-      propertyPath: baseHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1789236594020257121, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
-      propertyPath: currentHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 3345209097463115476, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
       propertyPath: m_Height
       value: 2.8362813
@@ -269,15 +253,11 @@ PrefabInstance:
     - target: {fileID: 6304077834952680967, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: ddb4fd48d7e35ac48a4ca28f691e57b6, type: 2}
+      objectReference: {fileID: 11400000, guid: 943b7f5ba860869408cc8976347dc56f, type: 2}
     - target: {fileID: 6304077834952680967, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Return
       objectReference: {fileID: 0}
-    - target: {fileID: 6304077834952680967, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 1181073484242594663}
     - target: {fileID: 8619794436035014016, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -290,11 +270,6 @@ PrefabInstance:
       addedObject: {fileID: 1661593516260615230}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
---- !u!1 &1181073484242594663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 723273570661736895, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
-  m_PrefabInstance: {fileID: 1904338099606981336}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5986222795503819712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5295886283032809752, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}

@@ -110,22 +110,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 4.59
       objectReference: {fileID: 0}
-    - target: {fileID: 1931424437495300412, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5977902
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931424437495300412, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.13980824
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931424437495300412, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.5977902
-      objectReference: {fileID: 0}
-    - target: {fileID: 1931424437495300412, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.67469
-      objectReference: {fileID: 0}
     - target: {fileID: 2325798535037580583, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
       propertyPath: m_Name
       value: Boss Enemy - Big Variant
@@ -156,22 +140,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3369920059467788614, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
       propertyPath: <MaxHealth>k__BackingField.<baseValue>k__BackingField
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646742763120384505, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: maxHealth
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646742763120384505, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: moveSpeed
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646742763120384505, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: baseHealth
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 3646742763120384505, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: currentHealth
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6760142002570934552, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
@@ -237,26 +205,10 @@ PrefabInstance:
     - target: {fileID: 9021806717259084447, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 5bdc53e8d9a4fbc45b7a50d06636c255, type: 2}
+      objectReference: {fileID: 11400000, guid: 23e631fa3467b4444a5df28940f5ebda, type: 2}
     - target: {fileID: 9021806717259084447, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Return
-      objectReference: {fileID: 0}
-    - target: {fileID: 9084453996026262912, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8588613
-      objectReference: {fileID: 0}
-    - target: {fileID: 9084453996026262912, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8588613
-      objectReference: {fileID: 0}
-    - target: {fileID: 9084453996026262912, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8588613
-      objectReference: {fileID: 0}
-    - target: {fileID: 9084453996026262912, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.82087
       objectReference: {fileID: 0}
     - target: {fileID: 9162616826091901808, guid: 1649805b3d80648418e465f0e29a70f3, type: 3}
       propertyPath: m_LocalScale.x

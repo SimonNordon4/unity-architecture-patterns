@@ -109,28 +109,12 @@ PrefabInstance:
       value: 0.34117648
       objectReference: {fileID: 0}
     - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: be1d25b8d76d8ea418af884573a2eb0b, type: 2}
+      objectReference: {fileID: 11400000, guid: ff69f9a1e331ed844ade4732d8749180, type: 2}
     - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Return
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityArchitecture.ScriptableObjectPattern.ActorPool, ScriptableObjectPattern
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 738568943272961972}
-    - target: {fileID: 1471595145065993448, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1619590815701662952, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
@@ -297,7 +281,7 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
-  projectilePool: {fileID: 11400000, guid: 9c482d5bb83bfda46a148a89d9a87f0c, type: 2}
+  projectilePool: {fileID: 11400000, guid: 893f1cc451af2fc4196af2cd165871b6, type: 2}
   projectileSpawnPoint: {fileID: 4224775421938349711}
   projectileSpeed: 2.5
 --- !u!4 &4224775421938349711 stripped

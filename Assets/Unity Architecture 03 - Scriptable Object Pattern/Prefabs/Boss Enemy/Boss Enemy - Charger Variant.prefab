@@ -12,34 +12,6 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 869925886254892453, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0401601
-      objectReference: {fileID: 0}
-    - target: {fileID: 869925886254892453, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.09101504
-      objectReference: {fileID: 0}
-    - target: {fileID: 869925886254892453, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0401601
-      objectReference: {fileID: 0}
-    - target: {fileID: 933711525596607090, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 933711525596607090, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: moveSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 933711525596607090, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: baseHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 933711525596607090, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: currentHealth
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 1851503941767545857, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.04
@@ -75,18 +47,6 @@ PrefabInstance:
     - target: {fileID: 3450051065148173243, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
       propertyPath: <MaxHealth>k__BackingField.<baseValue>k__BackingField
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3824741679049121378, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0401601
-      objectReference: {fileID: 0}
-    - target: {fileID: 3824741679049121378, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0401601
-      objectReference: {fileID: 0}
-    - target: {fileID: 3824741679049121378, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0401601
       objectReference: {fileID: 0}
     - target: {fileID: 6698416215983334373, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
       propertyPath: m_IsActive
@@ -155,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 8941530039206471778, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 81e7425e56c000f4d8dd8fee15b74474, type: 2}
+      objectReference: {fileID: 11400000, guid: b45ee4d3249ad254885774d66344fd30, type: 2}
     - target: {fileID: 8941530039206471778, guid: 04ac4775818243944b6a43da19bc9b99, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Return

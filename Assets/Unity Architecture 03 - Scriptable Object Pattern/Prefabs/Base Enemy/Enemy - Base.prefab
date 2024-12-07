@@ -15401,14 +15401,14 @@ MonoBehaviour:
   OnSpawnOut:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.PoolableActor,
-          GameObjectComponentPattern
+      - m_Target: {fileID: 11400000, guid: 1296f10c3d65f0441b91ca2ef9d116b2, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.ActorPool,
+          ScriptableObjectPattern
         m_MethodName: Return
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 5267285107322196816}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -15695,6 +15695,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 7b502b71de2912a46abd0c1453f456f0, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 86e2bd6bc8c1f804488af76122afe955, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.EnemyDiedEvent,
+          ScriptableObjectPattern
+        m_MethodName: Invoke
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 5267285107322196816}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

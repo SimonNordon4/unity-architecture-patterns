@@ -142,18 +142,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 3.41
       objectReference: {fileID: 0}
-    - target: {fileID: 5194551075858043433, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0401601
-      objectReference: {fileID: 0}
-    - target: {fileID: 5194551075858043433, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0401601
-      objectReference: {fileID: 0}
-    - target: {fileID: 5194551075858043433, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0401601
-      objectReference: {fileID: 0}
     - target: {fileID: 5280678866595862291, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
@@ -214,18 +202,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5988271997762166034, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0401601
-      objectReference: {fileID: 0}
-    - target: {fileID: 5988271997762166034, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.09101504
-      objectReference: {fileID: 0}
-    - target: {fileID: 5988271997762166034, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0401601
-      objectReference: {fileID: 0}
     - target: {fileID: 6147746156741640675, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: m_LocalScale.x
       value: 3.1344776
@@ -241,51 +217,11 @@ PrefabInstance:
     - target: {fileID: 6290099947754201100, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: 8a32f7a7e41b1c347ac07ee58c6b6f67, type: 2}
+      objectReference: {fileID: 11400000, guid: d2cd30a8f0d04724da6e1dfbaa93748c, type: 2}
     - target: {fileID: 6290099947754201100, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Return
       objectReference: {fileID: 0}
-    - target: {fileID: 6290099947754201100, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
-      value: 
-      objectReference: {fileID: 6520719251884233105}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: range
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: baseDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: baseHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: bulletCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: currentDamage
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: currentHealth
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: projectileSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8355962154729357577, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 652769875280677792, guid: 1aa209014d8975947b424d39ca015947, type: 3}
     - target: {fileID: 8622652408319863691, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -326,7 +262,7 @@ MonoBehaviour:
   onAttack:
     m_PersistentCalls:
       m_Calls: []
-  munitionPool: {fileID: 11400000, guid: 756212b8509448744b6be895a97e69fe, type: 2}
+  munitionPool: {fileID: 11400000, guid: a7198aa1f9254104db5286eee7a78943, type: 2}
   projectileSpawnPoint: {fileID: 7701359640995971242}
   projectileSpeed: 2.5
   numberOfProjectiles: 3
