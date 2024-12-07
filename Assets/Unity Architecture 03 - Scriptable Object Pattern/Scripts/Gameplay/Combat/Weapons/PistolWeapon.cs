@@ -5,7 +5,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class PistolWeapon : BaseWeapon
     {
         [SerializeField]private ProjectilePool projectilePool;
-        [SerializeField]private Transform projectileSpawnPoint;
+        [SerializeField]private UnityEngine.Transform projectileSpawnPoint;
         [SerializeField]private float projectileSpeed = 10f;
                 
         public override void Attack(WeaponStatsInfo info, CombatTarget target)

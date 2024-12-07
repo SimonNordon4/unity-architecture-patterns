@@ -14,7 +14,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private MoveBase _defaultMovement;
         private Movement _movement;
         private KnockBackReceiver _knockBackReceiver;
-        private Transform _transform;
+        private UnityEngine.Transform _transform;
 
         
         private void Awake()

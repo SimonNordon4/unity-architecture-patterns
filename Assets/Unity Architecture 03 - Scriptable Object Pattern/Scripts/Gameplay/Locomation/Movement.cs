@@ -16,7 +16,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         
         public float acceleration { get; private set; }
 
-        private Transform _transform;
+        private UnityEngine.Transform _transform;
 
         private void Awake()
         {

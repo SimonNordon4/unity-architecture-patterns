@@ -4,7 +4,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 {
     public class ExplodeProjectileWeapon : BaseWeapon
     {
-        [SerializeField]private Transform projectileSpawnPoint;
+        [SerializeField]private UnityEngine.Transform projectileSpawnPoint;
         [SerializeField]private int numberOfProjectiles = 3;
         [SerializeField] private ProjectilePool pool;
         [SerializeField] private float projectileSpeed = 5f;

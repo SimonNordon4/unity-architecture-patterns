@@ -1,14 +1,27 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
     public class SoundManager : MonoBehaviour
     {
+        [SerializeField]private SoundEvent soundEvent;
         [SerializeField]private UserSettings userSettings;
         private Queue<AudioSource> _audioSources = new Queue<AudioSource>();
-        
+
+        private void OnEnable()
+        {
+            soundEvent.OnPlaySound += PlaySound;
+        }
+
+        private void OnDisable()
+        {
+            soundEvent.OnPlaySound -= PlaySound;
+        }
+
         private AudioSource GetAudioSource()
         {
             if (_audioSources.Count > 0)

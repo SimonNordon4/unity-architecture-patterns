@@ -9,7 +9,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         [SerializeField] private float repulsionForce = 1f;
         private CapsuleCollider _body;
         public Vector3 avoidanceDirection { get; private set; }
-        private readonly List<Transform> _nearbyEnemies = new(4);
+        private readonly List<UnityEngine.Transform> _nearbyEnemies = new(4);
         private float _radius;
 
         private void Awake()

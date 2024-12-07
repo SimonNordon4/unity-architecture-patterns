@@ -9,7 +9,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class GameCamera : MonoBehaviour
     {
         [Header("Dependencies")]
-        [SerializeField] private Transform characterTransform;
+        [SerializeField] private UnityEngine.Transform characterTransform;
         [SerializeField] private Level level;
 
 

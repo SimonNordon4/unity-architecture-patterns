@@ -5,7 +5,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class ActorFactory : MonoBehaviour
     {
         [SerializeField] private Level level;
-        [field:SerializeField] public Transform initialTarget { get; private set; }
+        [field:SerializeField] public UnityEngine.Transform initialTarget { get; private set; }
         [SerializeField] private ProjectilePool projectilePool;
         [SerializeField] private PoolableActor actorPrefab;
         [SerializeField] private SoundManager soundManager;
@@ -17,18 +17,12 @@ namespace UnityArchitecture.ScriptableObjectPattern
             
             var actor = Instantiate(actorPrefab, position, Quaternion.identity, null);
 
-            if (actor.TryGetComponent<Movement>(out var movement))
-                movement.Construct(level);
-
             if (actor.TryGetComponent<CombatTarget>(out var target))
                 target.SetTarget(initialTarget);
             
             if(actor.TryGetComponent<ProjectilePool>(out var bulletPool))
                 bulletPool.Construct(projectilePool);
             
-            if(actor.TryGetComponent<SoundProxy>(out var actorSoundProxy))
-                actorSoundProxy.Construct(soundManager);
-
             UIActorHealthBar healthBar = actor.GetComponentInChildren<UIActorHealthBar>();
             
             if (healthBar != null)
@@ -41,7 +35,6 @@ namespace UnityArchitecture.ScriptableObjectPattern
             {
                 damageNumber.Construct(userSettings);
             }
-
             
             actor.gameObject.SetActive(true);
 

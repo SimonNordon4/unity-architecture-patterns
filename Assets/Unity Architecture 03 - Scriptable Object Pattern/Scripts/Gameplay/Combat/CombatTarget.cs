@@ -5,15 +5,16 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class CombatTarget : MonoBehaviour
     {
         [SerializeField] private Transform initialTarget;
+        [SerializeField] private TransformData initialTargetData;
         [field: SerializeField] public LayerMask targetLayer { get; private set; }
         public bool HasTarget { get; private set; }
-        public Transform Target { get; private set; }
+        public UnityEngine.Transform Target { get; private set; }
 
         public Vector3 TargetDirection => HasTarget ? (Target.position - _transform.position).normalized : -Vector3.forward;
         public float TargetDistance => HasTarget ? Vector3.Distance(_transform.position, Target.position) : 0f;
 
         private readonly Collider[] _colliders = new Collider[128];
-        private Transform _transform;
+        private UnityEngine.Transform _transform;
         private GameObjectEvents _targetEvents;
 
         private void Awake()
@@ -23,9 +24,14 @@ namespace UnityArchitecture.ScriptableObjectPattern
             {
                 SetTarget(initialTarget);
             }
+
+            if (initialTargetData != null && !initialTargetData.IsNull)
+            {
+                SetTarget(initialTargetData.Data);
+            }
         }
         
-        public void SetTarget(Transform newTarget)
+        public void SetTarget(UnityEngine.Transform newTarget)
         {
             if (targetLayer != (targetLayer | (1 << newTarget.gameObject.layer)))
             {
@@ -86,7 +92,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
             _targetEvents.OnDisabled += RemoveTarget;
         }
 
-        private GameObjectEvents GetGameObjectEvents(Transform sampleTarget)
+        private GameObjectEvents GetGameObjectEvents(UnityEngine.Transform sampleTarget)
         {
             return sampleTarget.TryGetComponent<GameObjectEvents>(out var events) ? events : Target.gameObject.AddComponent<GameObjectEvents>();
         }

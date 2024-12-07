@@ -5,7 +5,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class SpreadShotWeapon : BaseWeapon
     {
         [SerializeField]private ProjectilePool munitionPool;
-        [SerializeField]private Transform projectileSpawnPoint;
+        [SerializeField]private UnityEngine.Transform projectileSpawnPoint;
         [SerializeField]private float projectileSpeed = 10f;
         [SerializeField]private int numberOfProjectiles = 3;
         [SerializeField]private float spreadAngle = 30f;

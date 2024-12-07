@@ -18,8 +18,6 @@ namespace UnityArchitecture.ScriptableObjectPattern
             
             var pos = new Vector3(position.x, 0f, position.z);
             var healthPack = Instantiate(healthPackPrefab, pos, Quaternion.identity);
-            if(healthPack.TryGetComponent<SoundProxy>(out var soundProxy))
-                soundProxy.Construct(soundManager);
             _healthPacks.Add(healthPack);
         }
         

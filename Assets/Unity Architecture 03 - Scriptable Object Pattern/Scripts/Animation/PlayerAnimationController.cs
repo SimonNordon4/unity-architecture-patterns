@@ -6,13 +6,13 @@ namespace UnityArchitecture.ScriptableObjectPattern
     {
         [SerializeField]
         private CombatTarget combatTarget;
-        private Transform _transformToFollow;
+        private UnityEngine.Transform _transformToFollow;
 
         [SerializeField]
-        private Transform gunPivot;
+        private UnityEngine.Transform gunPivot;
 
         private Vector3 offset;
-        private Transform _transform;
+        private UnityEngine.Transform _transform;
 
         [SerializeField]
         private float rotationSpeed = 1f;

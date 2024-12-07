@@ -751,6 +751,7 @@ GameObject:
   - component: {fileID: 293031469}
   - component: {fileID: 293031468}
   - component: {fileID: 293031473}
+  - component: {fileID: 293031479}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1175,6 +1176,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95562f8fd14954d4fb7ab20a27861ae2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &293031479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293031457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de58e6f4b48fae04bbd5a5eb203cf96f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 11400000, guid: 70576860ce2385e43b7609139944d36a, type: 2}
 --- !u!1 &299859322
 GameObject:
   m_ObjectHideFlags: 0
@@ -4466,6 +4480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564aa58dde8e53448ad3891e878d9bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundEvent: {fileID: 11400000, guid: 3adc65eefda135045aa52f7330541179, type: 2}
   userSettings: {fileID: 11400000, guid: 47a59ed36efef9f43bf65e6dcec747a0, type: 2}
 --- !u!114 &1711381443
 MonoBehaviour:

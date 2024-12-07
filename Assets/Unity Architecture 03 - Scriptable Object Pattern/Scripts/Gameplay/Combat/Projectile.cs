@@ -6,7 +6,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
     {
         [SerializeField] private float lifeTime = 3f;
         private float _timeAlive = 0f;
-        private Transform _projectileTransform;
+        private UnityEngine.Transform _projectileTransform;
 
         private ProjectilePool _pool;
         

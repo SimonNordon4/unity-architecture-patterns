@@ -15106,7 +15106,6 @@ GameObject:
   - component: {fileID: 5042127886549934696}
   - component: {fileID: 8789716957981044398}
   - component: {fileID: 9039024591728250680}
-  - component: {fileID: 8085847610484437028}
   m_Layer: 7
   m_Name: Enemy - Base
   m_TagString: Enemy
@@ -15715,9 +15714,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8085847610484437028}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.SoundProxy,
-          GameObjectComponentPattern
+      - m_Target: {fileID: 11400000, guid: 3adc65eefda135045aa52f7330541179, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.SoundEvent,
+          ScriptableObjectPattern
         m_MethodName: PlaySound
         m_Mode: 2
         m_Arguments:
@@ -15766,21 +15765,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialTarget: {fileID: 0}
+  initialTargetData: {fileID: 11400000, guid: 70576860ce2385e43b7609139944d36a, type: 2}
   <targetLayer>k__BackingField:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &8085847610484437028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267285107322196816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30aaeab27f7983b45930372ffae27e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7446167167716101165
 GameObject:
   m_ObjectHideFlags: 0
