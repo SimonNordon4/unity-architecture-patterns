@@ -128,6 +128,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 3.48
       objectReference: {fileID: 0}
+    - target: {fileID: 6559552686993942866, guid: 24976046dbdeeed44994dd3c4c8c5c18, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}
+    - target: {fileID: 6559552686993942866, guid: 24976046dbdeeed44994dd3c4c8c5c18, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_MethodName
+      value: Invoke
+      objectReference: {fileID: 0}
     - target: {fileID: 7115225280900019583, guid: 24976046dbdeeed44994dd3c4c8c5c18, type: 3}
       propertyPath: <Speed>k__BackingField.value
       value: 14

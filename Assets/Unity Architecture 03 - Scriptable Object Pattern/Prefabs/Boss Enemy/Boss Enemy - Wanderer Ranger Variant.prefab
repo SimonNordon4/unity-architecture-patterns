@@ -88,6 +88,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4907852913043334307, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}
+    - target: {fileID: 4907852913043334307, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_MethodName
+      value: Invoke
+      objectReference: {fileID: 0}
     - target: {fileID: 5474839820126672692, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 3.11

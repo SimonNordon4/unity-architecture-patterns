@@ -178,6 +178,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.9
       objectReference: {fileID: 0}
+    - target: {fileID: 4412755366516636147, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}
+    - target: {fileID: 4412755366516636147, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_MethodName
+      value: Invoke
+      objectReference: {fileID: 0}
     - target: {fileID: 5295886283032809752, guid: 4baa35c11c89a5e43adea9687dce7095, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5

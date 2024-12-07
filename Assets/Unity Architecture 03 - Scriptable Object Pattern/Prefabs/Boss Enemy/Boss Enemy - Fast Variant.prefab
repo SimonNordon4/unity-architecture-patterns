@@ -24,6 +24,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 1.85
       objectReference: {fileID: 0}
+    - target: {fileID: 1013307221576032001, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}
+    - target: {fileID: 1013307221576032001, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_MethodName
+      value: Invoke
+      objectReference: {fileID: 0}
     - target: {fileID: 2116179313030924326, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
       propertyPath: m_Height
       value: 2.6743228
