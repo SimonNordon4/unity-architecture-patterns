@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce9147cf088015f4baa21f766394a1c1, type: 3}
+  m_Name: T4 Pierce
+  m_EditorClassIdentifier: 
+  itemName: Pierce
+  sprite: {fileID: 21300000, guid: e7ff8a872178351418a639c82631e655, type: 3}
+  modifiers:
+  - statType: 10
+    modifierValue: 100
+    isFlatPercentage: 1
+  - statType: 6
+    modifierValue: 5
+    isFlatPercentage: 1
+  - statType: 7
+    modifierValue: 25
+    isFlatPercentage: 0
+  tier: 4
