@@ -1,82 +1,47 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    [RequireComponent(typeof(EnemySpawner))]
-    public class EnemyDirector : MonoBehaviour
+    public class EnemyDirector : ScriptableObject
     {
-        private static EnemyDirector _instance;
-        public static EnemyDirector Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = FindFirstObjectByType<EnemyDirector>();
-                }
-
-                return _instance;
-            }
-        }
-
         public UnityEvent allWavesFinished = new();
-        public UnityEvent<Vector3> enemyKilledAtPosition = new();
 
-        private EnemySpawner _spawner;
-        [SerializeField]
-        private EnemyDirectorWave[] waves;
+        [SerializeField] private EnemiesPool enemiesPool;
+        [SerializeField] private EnemyDiedEvent enemyDiedEvent;
+        [SerializeField] private EnemyDiedEvent bossDiedEvent;
+        [SerializeField] private EnemyDirectorWave[] waves;
         private int _waveIndex = 0;
-
-        public int EnemyKillProgressCount { get; private set; }
-        public int TotalEnemiesKilled { get; private set; }
-        public bool FightingBoss => _progressPaused;
-        public int CurrentWave => _waveIndex;
-        public int EnemiesToKill => 400;
-        public int BossesToDefeat => _activeBosses.Count;
-        public float ProgressPercentage => (float)EnemyKillProgressCount / EnemiesToKill;
-
         private bool _progressPaused;
-        private float _currentSpawnRate;
-        private float _timeSinceLastSpawn;
-
+        
         private readonly List<GameObject> _activeEnemies = new();
         private readonly List<GameObject> _activeBosses = new();
-
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-            {
-                Destroy(_instance.gameObject);
-            }
-
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-
-            _spawner = GetComponent<EnemySpawner>();
-            waves = GetComponents<EnemyDirectorWave>().OrderBy(x => x.enemiesToKill).ToArray();
-        }
+        
+        public int EnemyKillProgressCount { get; private set; }
+        public int TotalEnemiesKilled { get; private set; }
+        public bool IsFightingBoss => _progressPaused;
+        public int EnemiesToKill => waves[_waveIndex].enemiesToKill;
+        public int MaxEnemiesAlive => waves[_waveIndex].maxEnemiesAlive;
+        public int EnemiesLeft => _activeEnemies.Count;
+        public int BossesLeft => _activeBosses.Count;
+        public float ProgressPercentage => (float)EnemyKillProgressCount / EnemiesToKill;
 
         void OnEnable()
         {
-            // _spawner.OnEnemyDied.AddListener(EnemyDied);
-            // _spawner.OnBossDied.AddListener(BossDied);
-            _progressPaused = false;
+            enemyDiedEvent.OnEnemyDied.AddListener(EnemyDied);
+            bossDiedEvent.OnEnemyDied.AddListener(BossDied);
+            
         }
 
         void OnDisable()
         {
-            // _spawner.OnEnemyDied.RemoveListener(EnemyDied);
-            // _spawner.OnBossDied.RemoveListener(BossDied);
+            enemyDiedEvent.OnEnemyDied.RemoveListener(EnemyDied);
+            bossDiedEvent.OnEnemyDied.RemoveListener(BossDied);
         }
-
+        
         private void EnemyDied(GameObject actor)
         {
-            enemyKilledAtPosition.Invoke(actor.transform.position);
             _activeEnemies.Remove(actor);
             TotalEnemiesKilled++;
 
@@ -101,11 +66,9 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 }
             }
         }
-
-
+        
         private void BossDied(GameObject bossActor)
         {
-            enemyKilledAtPosition.Invoke(bossActor.transform.position);
             _activeBosses.Remove(bossActor);
 
             if (_activeBosses.Count == 0)
@@ -113,7 +76,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 ProgressToNextWave();
             }
         }
-
+        
         private void ProgressToNextWave()
         {
             _waveIndex++;
@@ -124,22 +87,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 _progressPaused = true;
             }
         }
-
-        private void Update()
-        {
-            _currentSpawnRate = _activeEnemies.Count > 0
-                ? Mathf.Clamp01(_activeEnemies.Count / (float)waves[_waveIndex].maxEnemiesAlive)
-                : 1f;
-            _timeSinceLastSpawn += Time.deltaTime;
-
-            if (_timeSinceLastSpawn > _currentSpawnRate && _activeEnemies.Count < waves[_waveIndex].maxEnemiesAlive)
-            {
-                _timeSinceLastSpawn = 0f;
-                SpawnEnemy();
-            }
-        }
-
-        private void SpawnEnemy()
+        
+        public void SpawnEnemy()
         {
             // If progress is paused, we only want to spawn enemies that are meant to be spawned alongside the boss.
             List<EnemyType> enemySpawnPool;
@@ -159,7 +108,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
             }
 
             var enemyType = waves[_waveIndex].enemyTypes[Random.Range(0, enemySpawnPool.Count)];
-            var enemy = _spawner.SpawnEnemy(enemyType);
+            var enemy = enemiesPool.GetEnemyByType(enemyType);
             if (enemy.TryGetComponent<Stats>(out var stats))
             {
                 stats.MaxHealth.AddModifier(new Modifier
@@ -179,10 +128,10 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
             _activeEnemies.Add(enemy);
         }
-
+        
         private void SpawnBoss(EnemyType type)
         {
-            var enemy = _spawner.SpawnBoss(type);
+            var enemy = enemiesPool.GetBossByType(type);
             if (enemy.TryGetComponent<Stats>(out var stats))
             {
                 stats.MaxHealth.AddModifier(new Modifier

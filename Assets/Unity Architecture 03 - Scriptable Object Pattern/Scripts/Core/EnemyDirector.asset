@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 553f058320c14cff93411ebdfa17a218, type: 3}
+  m_Name: EnemyDirector
+  m_EditorClassIdentifier: 
+  allWavesFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  enemiesPool: {fileID: 11400000, guid: ce1a7a091a48fb64aa40b4300922866c, type: 2}
+  enemyDiedEvent: {fileID: 11400000, guid: 86e2bd6bc8c1f804488af76122afe955, type: 2}
+  bossDiedEvent: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}
+  waves:
+  - {fileID: 11400000, guid: be87a89ac5d246a4591771f7ac3b056b, type: 2}
+  - {fileID: 11400000, guid: 2560bde9901e07a4ea236de7fb7abc45, type: 2}
+  - {fileID: 11400000, guid: f7e40515682cd4a4ab571bcd867bbcb5, type: 2}
+  - {fileID: 11400000, guid: f0ae470bad972444684735d90bd0354b, type: 2}
+  - {fileID: 11400000, guid: 0c6345b9c55cce246a2f9249e70f2635, type: 2}
+  - {fileID: 11400000, guid: a70f3e471634b9a419e1b04b2dcad5ac, type: 2}
+  - {fileID: 11400000, guid: 85948164c64b8e749be92470747f25f5, type: 2}
+  - {fileID: 11400000, guid: 3e5225aaea3f70045bc212c48af323b8, type: 2}
+  - {fileID: 11400000, guid: 48b3b9b5607a32147832cad5347c583e, type: 2}
+  - {fileID: 11400000, guid: 61015ef9086a5304c815bbf8abe2e4cd, type: 2}
+  - {fileID: 11400000, guid: 716dd2326ced9224087e402431e56969, type: 2}
+  - {fileID: 11400000, guid: be315890c18eb6a4999c8440202fdf82, type: 2}
+  - {fileID: 11400000, guid: 3ba8f17ae3260864cac24f65ae8a3ac1, type: 2}
+  - {fileID: 11400000, guid: e3e04c74d1cf6b245a586ab9888744c8, type: 2}

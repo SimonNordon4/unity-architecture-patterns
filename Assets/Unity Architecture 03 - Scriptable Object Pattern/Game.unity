@@ -1480,8 +1480,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressText: {fileID: 1537216601}
-  enemyDirector: {fileID: 1121866905}
-  enemySpawner: {fileID: 1121866903}
+  director: {fileID: 0}
+  enemyDiedEvent: {fileID: 0}
+  bossDiedEvent: {fileID: 0}
 --- !u!1 &590339656 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 34738642702461295, guid: dc3d1833fd9f52b4d89b3c68bf76a180, type: 3}
@@ -2533,8 +2534,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1121866902}
   - component: {fileID: 1121866919}
-  - component: {fileID: 1121866905}
-  - component: {fileID: 1121866903}
   m_Layer: 0
   m_Name: Enemy Director
   m_TagString: Untagged
@@ -2557,113 +2556,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1121866903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121866898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de2af257edb294740a3b72c15a80c2b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnEnemyDied:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1491741408}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.ChestSpawner,
-          GameObjectComponentPattern
-        m_MethodName: ReduceChestSpawnTime
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnBossDied:
-    m_PersistentCalls:
-      m_Calls: []
-  level: {fileID: 11400000, guid: 6d0542248d95c9146bee46614eb242f5, type: 2}
-  normalEnemyPool: {fileID: 11400000, guid: edf55fd8823c7a14c8e07828a899b5f0, type: 2}
-  fastEnemyPool: {fileID: 11400000, guid: c5427d2656b3d2b459099ab88b3cdee6, type: 2}
-  bigEnemyPool: {fileID: 11400000, guid: 1296f10c3d65f0441b91ca2ef9d116b2, type: 2}
-  chargerEnemyPool: {fileID: 11400000, guid: 39a73689aea7742408ebdbcbe3315765, type: 2}
-  rangedEnemyPool: {fileID: 11400000, guid: ff69f9a1e331ed844ade4732d8749180, type: 2}
-  wandererEnemyPool: {fileID: 11400000, guid: c186ca30a8d33094995d121d0d3af156, type: 2}
-  wandererRangedEnemyPool: {fileID: 11400000, guid: 3655ee4fa3e9d454caca3de19368cfb3, type: 2}
-  wandererExploderEnemyPool: {fileID: 11400000, guid: e31dbfb2129849849bab76582edab4bf, type: 2}
-  normalBossEnemyPool: {fileID: 11400000, guid: 943b7f5ba860869408cc8976347dc56f, type: 2}
-  fastBossEnemyPool: {fileID: 11400000, guid: 9033c25e4f8d2264dbc2cfd9255fde82, type: 2}
-  bigBossEnemyPool: {fileID: 11400000, guid: 23e631fa3467b4444a5df28940f5ebda, type: 2}
-  chargerBossEnemyPool: {fileID: 11400000, guid: b45ee4d3249ad254885774d66344fd30, type: 2}
-  rangedBossEnemyPool: {fileID: 11400000, guid: d2cd30a8f0d04724da6e1dfbaa93748c, type: 2}
-  wandererBossEnemyPool: {fileID: 11400000, guid: 368f9400a5a07714d9381a20a4e2f398, type: 2}
-  wandererRangedBossEnemyPool: {fileID: 11400000, guid: 0e495ed333e1b4e4587a61b0442a25fb, type: 2}
-  wandererExploderBossEnemyPool: {fileID: 11400000, guid: 27b1e35dae77237419c1bf36d7fd9c78, type: 2}
---- !u!114 &1121866905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121866898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe8fc801deb66b48b7b6f44b0834ad6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allWavesFinished:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 801546269}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.GameState,
-          GameObjectComponentPattern
-        m_MethodName: WinGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  enemyKilledAtPosition:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 801546272}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.HealthPackSpawner,
-          GameObjectComponentPattern
-        m_MethodName: SpawnHealthPack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  waves:
-  - {fileID: 11400000, guid: be87a89ac5d246a4591771f7ac3b056b, type: 2}
-  - {fileID: 11400000, guid: 2560bde9901e07a4ea236de7fb7abc45, type: 2}
-  - {fileID: 11400000, guid: f7e40515682cd4a4ab571bcd867bbcb5, type: 2}
-  - {fileID: 11400000, guid: f0ae470bad972444684735d90bd0354b, type: 2}
-  - {fileID: 11400000, guid: 0c6345b9c55cce246a2f9249e70f2635, type: 2}
-  - {fileID: 11400000, guid: a70f3e471634b9a419e1b04b2dcad5ac, type: 2}
-  - {fileID: 11400000, guid: 85948164c64b8e749be92470747f25f5, type: 2}
-  - {fileID: 11400000, guid: 3e5225aaea3f70045bc212c48af323b8, type: 2}
-  - {fileID: 11400000, guid: 48b3b9b5607a32147832cad5347c583e, type: 2}
-  - {fileID: 11400000, guid: 61015ef9086a5304c815bbf8abe2e4cd, type: 2}
-  - {fileID: 11400000, guid: 716dd2326ced9224087e402431e56969, type: 2}
-  - {fileID: 11400000, guid: be315890c18eb6a4999c8440202fdf82, type: 2}
-  - {fileID: 11400000, guid: 3ba8f17ae3260864cac24f65ae8a3ac1, type: 2}
-  - {fileID: 11400000, guid: e3e04c74d1cf6b245a586ab9888744c8, type: 2}
 --- !u!114 &1121866919
 MonoBehaviour:
   m_ObjectHideFlags: 0

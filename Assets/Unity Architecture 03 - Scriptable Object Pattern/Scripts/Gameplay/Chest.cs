@@ -9,6 +9,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
         public UnityEvent<Chest> OnChestOpened = new();
         [field:SerializeField] public int MinTier {get;private set;} = 1;
         [field:SerializeField] public int MaxTier {get;private set;} = 4;
+        
+        [SerializeField]private EnemyDirector director;
 
         private int _tier3Pity;
         private int _tier4Pity;
@@ -79,7 +81,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
             var tierChance = Random.Range(0, 100);
 
             // We want better items to spawn as time goes on.
-            var enemyProgress = EnemyDirector.Instance.ProgressPercentage * 5f;
+            var enemyProgress = director.ProgressPercentage * 5f;
             
             // These pity numbers increase the chance of recieving a higher tier item each time we miss one.
             var itemTier = tierChance switch

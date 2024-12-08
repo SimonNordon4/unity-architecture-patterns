@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,31 +6,32 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class UIEnemyKillProgressionCounter : MonoBehaviour
     {
         [SerializeField]private TextMeshProUGUI progressText;
-        [SerializeField]private EnemyDirector enemyDirector;
-        [SerializeField]private EnemySpawner enemySpawner;
+        [SerializeField]private EnemyDirector director;
+        [SerializeField]private EnemyDiedEvent enemyDiedEvent;
+        [SerializeField]private EnemyDiedEvent bossDiedEvent;
 
         private void OnEnable()
         {
-            enemySpawner.OnEnemyDied.AddListener(UpdateProgressText);
-            enemySpawner.OnBossDied.AddListener(UpdateProgressText);
+            enemyDiedEvent.OnEnemyDied.AddListener(UpdateProgressText);
+            bossDiedEvent.OnEnemyDied.AddListener(UpdateProgressText);
             UpdateProgressText(null);
         }
 
         private void OnDisable()
         {
-            enemySpawner.OnEnemyDied.RemoveListener(UpdateProgressText);
-            enemySpawner.OnBossDied.RemoveListener(UpdateProgressText);
+            enemyDiedEvent.OnEnemyDied.RemoveListener(UpdateProgressText);
+            bossDiedEvent.OnEnemyDied.RemoveListener(UpdateProgressText);
         }
 
-        private void UpdateProgressText(PoolableActor enemy)
+        private void UpdateProgressText(GameObject enemy)
         {
-            if(enemyDirector.FightingBoss)
+            if(director.IsFightingBoss)
             {
-                progressText.text = enemyDirector.BossesToDefeat > 1 ? "Defeat all Bosses" : "Defeat the boss";
+                progressText.text = director.BossesLeft > 1 ? "Defeat all Bosses" : "Defeat the boss";
                 return;
             }
 
-            progressText.text = $"Enemies Left: {enemyDirector.EnemyKillProgressCount} / {enemyDirector.EnemiesToKill}";
+            progressText.text = $"Enemies Left: {director.EnemyKillProgressCount} / {director.EnemiesToKill}";
         }
     }
 }

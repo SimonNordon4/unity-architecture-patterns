@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c399ebbe9efa4469eed09be428658b, type: 3}
+  m_Name: EnemiesPool
+  m_EditorClassIdentifier: 
+  level: {fileID: 11400000, guid: 6d0542248d95c9146bee46614eb242f5, type: 2}
+  normalEnemyPool: {fileID: 11400000, guid: edf55fd8823c7a14c8e07828a899b5f0, type: 2}
+  fastEnemyPool: {fileID: 11400000, guid: c5427d2656b3d2b459099ab88b3cdee6, type: 2}
+  bigEnemyPool: {fileID: 11400000, guid: 1296f10c3d65f0441b91ca2ef9d116b2, type: 2}
+  chargerEnemyPool: {fileID: 11400000, guid: 39a73689aea7742408ebdbcbe3315765, type: 2}
+  rangedEnemyPool: {fileID: 11400000, guid: ff69f9a1e331ed844ade4732d8749180, type: 2}
+  wandererEnemyPool: {fileID: 11400000, guid: c186ca30a8d33094995d121d0d3af156, type: 2}
+  wandererRangedEnemyPool: {fileID: 11400000, guid: 3655ee4fa3e9d454caca3de19368cfb3, type: 2}
+  wandererExploderEnemyPool: {fileID: 11400000, guid: e31dbfb2129849849bab76582edab4bf, type: 2}
+  normalBossEnemyPool: {fileID: 11400000, guid: 943b7f5ba860869408cc8976347dc56f, type: 2}
+  fastBossEnemyPool: {fileID: 11400000, guid: 9033c25e4f8d2264dbc2cfd9255fde82, type: 2}
+  bigBossEnemyPool: {fileID: 11400000, guid: 23e631fa3467b4444a5df28940f5ebda, type: 2}
+  chargerBossEnemyPool: {fileID: 11400000, guid: b45ee4d3249ad254885774d66344fd30, type: 2}
+  rangedBossEnemyPool: {fileID: 11400000, guid: d2cd30a8f0d04724da6e1dfbaa93748c, type: 2}
+  wandererBossEnemyPool: {fileID: 11400000, guid: 368f9400a5a07714d9381a20a4e2f398, type: 2}
+  wandererRangedBossEnemyPool: {fileID: 11400000, guid: 0e495ed333e1b4e4587a61b0442a25fb, type: 2}
+  wandererExploderBossEnemyPool: {fileID: 11400000, guid: 27b1e35dae77237419c1bf36d7fd9c78, type: 2}
