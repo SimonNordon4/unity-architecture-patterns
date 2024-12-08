@@ -7,6 +7,11 @@ namespace UnityArchitecture.ScriptableObjectPattern
     {
         protected bool IsPlayMode;
 
+        public void OnDestroy()
+        {
+            Debug.Log($"Destroyed {GetType()}");
+        }
+
         /// <summary>
         /// Method to define how data should reset.
         /// Override this in derived classes.
@@ -16,6 +21,11 @@ namespace UnityArchitecture.ScriptableObjectPattern
         protected virtual void OnEnable()
         {
 #if UNITY_EDITOR
+            if (Application.isPlaying)
+            {
+                IsPlayMode = true;
+            }
+
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 #endif
         }
@@ -33,11 +43,18 @@ namespace UnityArchitecture.ScriptableObjectPattern
             {
                 IsPlayMode = true;
             }
+            else if (stateChange == PlayModeStateChange.ExitingEditMode)
+            {
+                // Avoid resetting data unnecessarily
+                Debug.Log("Exiting edit mode, skipping ResetData.");
+            }
             else if (IsPlayMode && stateChange == PlayModeStateChange.ExitingPlayMode)
             {
+                Debug.Log("ResetData called for: " + name);
                 ResetData();
                 IsPlayMode = false;
             }
         }
+
     }
 }
