@@ -4,8 +4,8 @@ using UnityEngine;
 namespace UnityArchitecture.ScriptableObjectPattern
 {
     public abstract class ScriptableData : ScriptableObject
-        {
-        private bool _isPlayMode;
+    {
+        protected bool IsPlayMode;
 
         /// <summary>
         /// Method to define how data should reset.
@@ -31,12 +31,12 @@ namespace UnityArchitecture.ScriptableObjectPattern
         {
             if (stateChange == PlayModeStateChange.EnteredPlayMode)
             {
-                _isPlayMode = true;
+                IsPlayMode = true;
             }
-            else if (_isPlayMode && stateChange == PlayModeStateChange.ExitingPlayMode)
+            else if (IsPlayMode && stateChange == PlayModeStateChange.ExitingPlayMode)
             {
                 ResetData();
-                _isPlayMode = false;
+                IsPlayMode = false;
             }
         }
     }
