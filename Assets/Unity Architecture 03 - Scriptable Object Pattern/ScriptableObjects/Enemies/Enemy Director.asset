@@ -14,7 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allWavesFinished:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: f74cab79199ffc14d9ce968bdef42196, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.SceneLoader,
+          ScriptableObjectPattern
+        m_MethodName: LoadGameWon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   enemiesPool: {fileID: 11400000, guid: ce1a7a091a48fb64aa40b4300922866c, type: 2}
   enemyDiedEvent: {fileID: 11400000, guid: 86e2bd6bc8c1f804488af76122afe955, type: 2}
   bossDiedEvent: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}

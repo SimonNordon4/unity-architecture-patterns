@@ -616,7 +616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &293031458
 Transform:
   m_ObjectHideFlags: 0
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464cafbfdbf401d43a363d7d8911df5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 293031470}
+  health: {fileID: 591701401}
   fillBar: {fileID: 1079578952}
   healthBarText: {fileID: 890691772}
 --- !u!114 &566238462
@@ -1522,7 +1522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &591701396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1822,11 +1822,11 @@ MonoBehaviour:
     _modifiers: []
     value: 0
   <Dodge>k__BackingField:
-    <baseValue>k__BackingField: 0
+    <baseValue>k__BackingField: 100
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 0
+    value: 100
   <Damage>k__BackingField:
     <baseValue>k__BackingField: 100
     minimumValue: 0
@@ -1846,11 +1846,11 @@ MonoBehaviour:
     _modifiers: []
     value: 10
   <Firerate>k__BackingField:
-    <baseValue>k__BackingField: 25
+    <baseValue>k__BackingField: 100
     minimumValue: 0
     maximumValue: 2147483647
     _modifiers: []
-    value: 25
+    value: 100
   <KnockBack>k__BackingField:
     <baseValue>k__BackingField: 10
     minimumValue: 0
@@ -3752,7 +3752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db675df3c65ce2448c097fe093bce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatTarget: {fileID: 293031462}
+  combatTarget: {fileID: 591701409}
   gunPivot: {fileID: 76706869}
   rotationSpeed: 10
   gunRotationSpeed: 20
