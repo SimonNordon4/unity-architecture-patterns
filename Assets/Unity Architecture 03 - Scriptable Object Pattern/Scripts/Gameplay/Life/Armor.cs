@@ -16,7 +16,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         {
             var armorMitigation = _armorStat.value / (_armorStat.value + 100f);
 
-            damageAmount = Mathf.RoundToInt(damageAmount - armorMitigation);
+            damageAmount = Mathf.RoundToInt(damageAmount - damageAmount * armorMitigation);
             // We should never be invincible imo. hard cap to 1.
             if (damageAmount <= 0)
             {

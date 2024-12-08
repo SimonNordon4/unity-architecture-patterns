@@ -91,7 +91,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         }
         
-        public virtual void EndProjectile()
+        public void EndProjectile()
         {
             onEnd?.Invoke(this);
         }
