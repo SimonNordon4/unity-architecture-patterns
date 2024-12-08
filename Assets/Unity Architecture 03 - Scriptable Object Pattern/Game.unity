@@ -1480,9 +1480,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressText: {fileID: 1537216601}
-  director: {fileID: 0}
-  enemyDiedEvent: {fileID: 0}
-  bossDiedEvent: {fileID: 0}
+  director: {fileID: 11400000, guid: bf10a7d5c656ad043a9f3cc27b21fc32, type: 2}
+  enemyDiedEvent: {fileID: 11400000, guid: 86e2bd6bc8c1f804488af76122afe955, type: 2}
+  bossDiedEvent: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}
 --- !u!1 &590339656 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 34738642702461295, guid: dc3d1833fd9f52b4d89b3c68bf76a180, type: 3}
@@ -2394,7 +2394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterTransform: {fileID: 293031458}
-  level: {fileID: 0}
+  level: {fileID: 11400000, guid: 6d0542248d95c9146bee46614eb242f5, type: 2}
   edgeDistance: 5
 --- !u!1 &999567777
 GameObject:
@@ -2534,6 +2534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121866902}
   - component: {fileID: 1121866919}
+  - component: {fileID: 1121866920}
   m_Layer: 0
   m_Name: Enemy Director
   m_TagString: Untagged
@@ -2569,6 +2570,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CurrentTime>k__BackingField: 0
+--- !u!114 &1121866920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121866898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c31884b91444f4abeda4c427e46bf3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 11400000, guid: bf10a7d5c656ad043a9f3cc27b21fc32, type: 2}
 --- !u!1 &1157388973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5393296879404737001, guid: d6ca6737c939f69478c326a2df84ced1, type: 3}
@@ -3105,7 +3119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEvent: {fileID: 11400000, guid: 3adc65eefda135045aa52f7330541179, type: 2}
-  userSettings: {fileID: 0}
+  userSettings: {fileID: 11400000, guid: 47a59ed36efef9f43bf65e6dcec747a0, type: 2}
 --- !u!114 &1711381443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,7 +3133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 801546269}
-  userSettings: {fileID: 0}
+  userSettings: {fileID: 11400000, guid: 47a59ed36efef9f43bf65e6dcec747a0, type: 2}
   musicTracks:
   - {fileID: 8300000, guid: 50f0f3c17b68def4186e98c8a3fba505, type: 3}
   - {fileID: 8300000, guid: ec55162519650a84b9787d3008990b5a, type: 3}

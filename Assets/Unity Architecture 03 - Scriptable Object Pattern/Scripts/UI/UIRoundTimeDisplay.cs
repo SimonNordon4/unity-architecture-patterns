@@ -9,7 +9,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         private void OnEnable()
         {
-            roundTimeText.text = $"Time Alive: {Mathf.FloorToInt(RoundTimer.Instance.CurrentTime / 60):00}:{Mathf.FloorToInt(RoundTimer.Instance.CurrentTime % 60):00}"; 
+            //roundTimeText.text = $"Time Alive: {Mathf.FloorToInt(RoundTimer.Instance.CurrentTime / 60):00}:{Mathf.FloorToInt(RoundTimer.Instance.CurrentTime % 60):00}"; 
         }
     }
 }
