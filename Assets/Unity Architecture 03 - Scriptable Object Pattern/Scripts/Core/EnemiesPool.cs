@@ -76,8 +76,6 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 enemy.gameObject.SetActive(true);
             }
             
-            Debug.Log($"Spawned enemy: {enemyType} at postion {randomPosition}");
-
             return enemy;
         }
 

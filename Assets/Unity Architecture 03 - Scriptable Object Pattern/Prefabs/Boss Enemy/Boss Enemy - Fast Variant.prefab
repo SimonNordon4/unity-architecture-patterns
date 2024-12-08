@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 137718758065089686, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.85
+      value: 3.4
       objectReference: {fileID: 0}
     - target: {fileID: 1013307221576032001, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
       propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[9].m_Target
@@ -59,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 4123935333755914061, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
       propertyPath: m_Name
       value: Boss Enemy - Fast Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123935333755914061, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7227759872048627957, guid: 097b2bdebbf35964b9a15e1624725052, type: 3}
       propertyPath: OnSpawnOut.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -84,7 +84,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
         private void BossDied(GameObject bossActor)
         {
             _activeBosses.Remove(bossActor);
-
+            Debug.Log($"Boss Died {bossActor.name} Bosses left: {_activeBosses.Count}");
+ 
             if (_activeBosses.Count == 0)
             {
                 ProgressToNextWave();
@@ -93,7 +94,9 @@ namespace UnityArchitecture.ScriptableObjectPattern
         
         private void ProgressToNextWave()
         {
+            Debug.Log("Progressing to wave " + _waveIndex);
             _waveIndex++;
+            _progressPaused = false;
 
             if (_waveIndex >= waves.Length)
             {
