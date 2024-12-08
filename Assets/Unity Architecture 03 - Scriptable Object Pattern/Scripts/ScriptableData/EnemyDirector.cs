@@ -25,6 +25,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         public int MaxEnemiesAlive => waves[_waveIndex].maxEnemiesAlive;
         public int EnemiesLeft => _activeEnemies.Count;
         public int BossesLeft => _activeBosses.Count;
+        public int TotalEnemiesToKill => 400;
         public float ProgressPercentage => (float)EnemyKillProgressCount / EnemiesToKill;
 
         public override void ResetData()

@@ -31,7 +31,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 return;
             }
 
-            progressText.text = $"Enemies Left: {director.EnemyKillProgressCount} / {director.EnemiesToKill}";
+            progressText.text = $"Enemies Left: {director.EnemyKillProgressCount} / {director.TotalEnemiesToKill}";
         }
     }
 }

@@ -41,5 +41,12 @@ namespace UnityArchitecture.ScriptableObjectPattern
         {
             return stats.FirstOrDefault(stat => stat.StatType == statType);
         }
+
+        public void ResetStats()
+        {
+            // Remove all modifiers
+            foreach (var stat in stats)
+                stat.Reset();
+        }
     }
 }

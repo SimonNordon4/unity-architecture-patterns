@@ -15197,6 +15197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df2a2251b7bc504fb26492121c67d1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnInDelay: 1
+  spawnOutDelay: 0.3
   OnCreated:
     m_PersistentCalls:
       m_Calls:
@@ -15708,6 +15710,19 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 5267285107322196816}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5159892503237138225}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.Stats,
+          ScriptableObjectPattern
+        m_MethodName: ResetStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
