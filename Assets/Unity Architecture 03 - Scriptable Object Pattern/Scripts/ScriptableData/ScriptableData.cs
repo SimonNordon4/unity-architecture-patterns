@@ -13,14 +13,14 @@ namespace UnityArchitecture.ScriptableObjectPattern
         /// </summary>
         public abstract void ResetData();
 
-        protected void OnEnable()
+        protected virtual void OnEnable()
         {
 #if UNITY_EDITOR
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 #endif
         }
 
-        protected void OnDisable()
+        protected virtual void OnDisable()
         {
 #if UNITY_EDITOR
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;

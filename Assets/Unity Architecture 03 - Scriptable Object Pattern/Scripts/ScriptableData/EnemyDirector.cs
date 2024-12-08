@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class EnemyDirector : ScriptableObject
+    public class EnemyDirector : ScriptableData
     {
         public UnityEvent allWavesFinished = new();
 
@@ -27,18 +27,31 @@ namespace UnityArchitecture.ScriptableObjectPattern
         public int BossesLeft => _activeBosses.Count;
         public float ProgressPercentage => (float)EnemyKillProgressCount / EnemiesToKill;
 
-        void OnEnable()
+        public override void ResetData()
         {
-            enemyDiedEvent.OnEnemyDied.AddListener(EnemyDied);
-            bossDiedEvent.OnEnemyDied.AddListener(BossDied);
-            
+            Debug.Log("Resetting data");
+            _waveIndex = 0;
+            _progressPaused = false;
+            EnemyKillProgressCount = 0;
+            TotalEnemiesKilled = 0;
+            _activeEnemies.Clear();
+            _activeBosses.Clear();
         }
 
-        void OnDisable()
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            enemyDiedEvent.OnEnemyDied.AddListener(EnemyDied);
+            bossDiedEvent.OnEnemyDied.AddListener(BossDied);
+        }
+
+        protected override void OnDisable()
         {
             enemyDiedEvent.OnEnemyDied.RemoveListener(EnemyDied);
             bossDiedEvent.OnEnemyDied.RemoveListener(BossDied);
+            base.OnDisable();
         }
+
         
         private void EnemyDied(GameObject actor)
         {

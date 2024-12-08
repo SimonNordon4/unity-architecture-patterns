@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class EnemyDiedEvent : ScriptableObject
+    public class EnemyDiedEvent : ScriptableEvent
     {
         public UnityEvent<GameObject> OnEnemyDied = new();
 
