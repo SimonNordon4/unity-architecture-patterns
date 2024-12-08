@@ -22,6 +22,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         public void Return(GameObject actor)
         {
+            actor.transform.position = Vector3.zero;
             actor.gameObject.SetActive(false);
             _inactivePool.Enqueue(actor);
         }

@@ -66,6 +66,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 0f,
                 Random.Range(-level.Bounds.y, level.Bounds.y)
             );
+            
+            
 
             if (_poolMap.TryGetValue(enemyType, out ActorPool pool))
             {
@@ -73,6 +75,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 enemy.transform.position = randomPosition;
                 enemy.gameObject.SetActive(true);
             }
+            
+            Debug.Log($"Spawned enemy: {enemyType} at postion {randomPosition}");
 
             return enemy;
         }

@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
+    [DefaultExecutionOrder(-5)]
     [RequireComponent(typeof(Stats))]
     public class Health : MonoBehaviour
     {
