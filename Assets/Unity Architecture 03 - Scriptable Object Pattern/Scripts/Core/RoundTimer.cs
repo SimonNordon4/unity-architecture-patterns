@@ -2,19 +2,11 @@ using UnityEngine;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class RoundTimer : MonoBehaviour
+    public class RoundTimer : ScriptableBehaviour
     {
-
         [field:SerializeField]
         public float CurrentTime {get;private set;} = 0f;
         private bool _isTimerPaused = false;
-
-
-        private void Update()
-        {
-            if (_isTimerPaused) return;
-            CurrentTime += Time.deltaTime;
-        }
 
         public void Reset()
         {
@@ -29,6 +21,18 @@ namespace UnityArchitecture.ScriptableObjectPattern
         public void Resume()
         {
             _isTimerPaused = false;
+        }
+
+        public override void ResetData()
+        {
+            _isTimerPaused = false;
+            CurrentTime = 0f;
+        }
+
+        public override void OnUpdate()
+        {
+            if (_isTimerPaused) return;
+            CurrentTime += Time.deltaTime;
         }
     }
 }

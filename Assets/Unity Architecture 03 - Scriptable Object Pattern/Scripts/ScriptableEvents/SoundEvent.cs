@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class SoundEvent : ScriptableObject
+    public class SoundEvent : ScriptableEvent
     {
         public UnityEvent<AudioClip> OnPlaySound = new();
 

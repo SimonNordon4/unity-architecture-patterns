@@ -2,7 +2,7 @@
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-    public class TimeHandler : MonoBehaviour
+    public class TimeHandler : ScriptableData
     {
         [SerializeField] private float defaultTimeScale = 1f;
         
@@ -12,6 +12,11 @@ namespace UnityArchitecture.ScriptableObjectPattern
         }
 
         public void ResumeTime()
+        {
+            Time.timeScale = defaultTimeScale;
+        }
+
+        public override void ResetData()
         {
             Time.timeScale = defaultTimeScale;
         }

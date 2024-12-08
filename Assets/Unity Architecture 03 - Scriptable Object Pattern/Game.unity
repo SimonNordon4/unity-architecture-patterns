@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundTimerText: {fileID: 2039543987}
-  roundTimer: {fileID: 1121866919}
+  roundTimer: {fileID: 0}
 --- !u!114 &566238463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1935,7 +1935,6 @@ GameObject:
   m_Component:
   - component: {fileID: 801546266}
   - component: {fileID: 801546269}
-  - component: {fileID: 801546270}
   - component: {fileID: 801546271}
   - component: {fileID: 801546272}
   m_Layer: 0
@@ -1975,9 +1974,9 @@ MonoBehaviour:
   onGameStarted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801546270}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.TimeHandler,
-          GameObjectComponentPattern
+      - m_Target: {fileID: 11400000, guid: a1b76d8a11690934f9bc9d12a408201b, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.TimeHandler,
+          ScriptableObjectPattern
         m_MethodName: ResumeTime
         m_Mode: 1
         m_Arguments:
@@ -2001,10 +2000,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1121866919}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.RoundTimer,
-          GameObjectComponentPattern
-        m_MethodName: Resume
+      - m_Target: {fileID: 11400000, guid: a66c8bac2e62e7e4a8234fe1b062b4d1, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.RoundTimer,
+          ScriptableObjectPattern
+        m_MethodName: Reset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2030,10 +2029,10 @@ MonoBehaviour:
   onGameWon:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801546270}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.TimeHandler,
-          GameObjectComponentPattern
-        m_MethodName: PauseTime
+      - m_Target: {fileID: 11400000, guid: a1b76d8a11690934f9bc9d12a408201b, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.TimeHandler,
+          ScriptableObjectPattern
+        m_MethodName: ResumeTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2056,9 +2055,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1121866919}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.RoundTimer,
-          GameObjectComponentPattern
+      - m_Target: {fileID: 11400000, guid: a66c8bac2e62e7e4a8234fe1b062b4d1, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.RoundTimer,
+          ScriptableObjectPattern
         m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
@@ -2072,10 +2071,10 @@ MonoBehaviour:
   onGameLost:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801546270}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.TimeHandler,
-          GameObjectComponentPattern
-        m_MethodName: PauseTime
+      - m_Target: {fileID: 11400000, guid: a1b76d8a11690934f9bc9d12a408201b, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.TimeHandler,
+          ScriptableObjectPattern
+        m_MethodName: ResumeTime
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2098,9 +2097,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1121866919}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.RoundTimer,
-          GameObjectComponentPattern
+      - m_Target: {fileID: 11400000, guid: a66c8bac2e62e7e4a8234fe1b062b4d1, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.RoundTimer,
+          ScriptableObjectPattern
         m_MethodName: Pause
         m_Mode: 1
         m_Arguments:
@@ -2114,9 +2113,9 @@ MonoBehaviour:
   onGamePaused:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801546270}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.TimeHandler,
-          GameObjectComponentPattern
+      - m_Target: {fileID: 11400000, guid: a1b76d8a11690934f9bc9d12a408201b, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.TimeHandler,
+          ScriptableObjectPattern
         m_MethodName: PauseTime
         m_Mode: 1
         m_Arguments:
@@ -2154,9 +2153,9 @@ MonoBehaviour:
   onGameResumed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 801546270}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.TimeHandler,
-          GameObjectComponentPattern
+      - m_Target: {fileID: 11400000, guid: a1b76d8a11690934f9bc9d12a408201b, type: 2}
+        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.TimeHandler,
+          ScriptableObjectPattern
         m_MethodName: ResumeTime
         m_Mode: 1
         m_Arguments:
@@ -2203,19 +2202,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &801546270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801546264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5d7a3c3caa9662499b0b2fd80cea728, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultTimeScale: 1
 --- !u!114 &801546271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2546,7 +2532,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1121866902}
-  - component: {fileID: 1121866919}
   - component: {fileID: 1121866920}
   m_Layer: 0
   m_Name: Enemy Director
@@ -2570,19 +2555,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1121866919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1121866898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b0e575cc6706f446b5ba5d3493dee43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <CurrentTime>k__BackingField: 0
 --- !u!114 &1121866920
 MonoBehaviour:
   m_ObjectHideFlags: 0
