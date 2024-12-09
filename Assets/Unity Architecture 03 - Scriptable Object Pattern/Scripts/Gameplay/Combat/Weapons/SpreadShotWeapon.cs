@@ -5,7 +5,6 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class SpreadShotWeapon : BaseWeapon
     {
         [SerializeField]private ProjectilePool munitionPool;
-        [SerializeField]private Transform projectileSpawnPoint;
         [SerializeField]private float projectileSpeed = 10f;
         [SerializeField]private int numberOfProjectiles = 3;
         [SerializeField]private float spreadAngle = 30f;
@@ -27,7 +26,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 var projectileDirection = Quaternion.Euler(0, offsetAngle, 0) * direction;
 
                 // Instantiate a projectile from the projectile pool
-                var projectile = munitionPool.Get(projectileSpawnPoint.position, projectileDirection);
+                var projectile = munitionPool.Get(origin.position, projectileDirection);
                 projectile.Set(target.targetLayer, projectileSpeed, info.Damage, info.KnockBack, info.Pierce);
             }
             

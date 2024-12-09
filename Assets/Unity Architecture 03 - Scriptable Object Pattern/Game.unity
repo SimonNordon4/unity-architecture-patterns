@@ -599,7 +599,6 @@ GameObject:
   - component: {fileID: 293031462}
   - component: {fileID: 293031461}
   - component: {fileID: 293031467}
-  - component: {fileID: 293031466}
   - component: {fileID: 293031459}
   - component: {fileID: 293031460}
   - component: {fileID: 293031472}
@@ -616,7 +615,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &293031458
 Transform:
   m_ObjectHideFlags: 0
@@ -765,49 +764,6 @@ MonoBehaviour:
     maximumValue: 2147483647
     _modifiers: []
     value: 0
---- !u!114 &293031466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293031457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4703ff1d2914f2e4db8db756270809fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1308151052}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1711381442}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.SoundManager,
-          GameObjectComponentPattern
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 20efbfae8530a4049bc2273a674afcc3, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  projectilePool: {fileID: 11400000, guid: fb168e69efff9f443b9914682781c3bd, type: 2}
-  projectileSpawnPoint: {fileID: 1308151051}
-  projectileSpeed: 10
 --- !u!114 &293031467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -820,7 +776,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d1fbdf6ccb3f94a9f383032ad8d049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 293031466}
+  projectileSpawnPoint: {fileID: 1308151051}
+  weapon: {fileID: 11400000, guid: 127308d70c1fa7d4da7b541452dc37ad, type: 2}
 --- !u!114 &293031468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1450,7 +1407,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 464cafbfdbf401d43a363d7d8911df5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 591701401}
+  health: {fileID: 293031470}
   fillBar: {fileID: 1079578952}
   healthBarText: {fileID: 890691772}
 --- !u!114 &566238462
@@ -1481,7 +1438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   progressText: {fileID: 1537216601}
   director: {fileID: 11400000, guid: bf10a7d5c656ad043a9f3cc27b21fc32, type: 2}
-  enemyDiedEvent: {fileID: 11400000, guid: 86e2bd6bc8c1f804488af76122afe955, type: 2}
+  actorDiedEvent: {fileID: 11400000, guid: 86e2bd6bc8c1f804488af76122afe955, type: 2}
   bossDiedEvent: {fileID: 11400000, guid: dd969bbce209e5d4ead39ee0927027da, type: 2}
 --- !u!1 &590339656 stripped
 GameObject:
@@ -1505,7 +1462,6 @@ GameObject:
   - component: {fileID: 591701409}
   - component: {fileID: 591701408}
   - component: {fileID: 591701407}
-  - component: {fileID: 591701406}
   - component: {fileID: 591701405}
   - component: {fileID: 591701404}
   - component: {fileID: 591701403}
@@ -1522,7 +1478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &591701396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1671,49 +1627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6265182327368654cb492c28b164cb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &591701406
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591701395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4703ff1d2914f2e4db8db756270809fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1308151052}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1711381442}
-        m_TargetAssemblyTypeName: UnityArchitecture.GameObjectComponentPattern.SoundManager,
-          GameObjectComponentPattern
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 20efbfae8530a4049bc2273a674afcc3, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  projectilePool: {fileID: 11400000, guid: fb168e69efff9f443b9914682781c3bd, type: 2}
-  projectileSpawnPoint: {fileID: 1308151051}
-  projectileSpeed: 10
 --- !u!114 &591701407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1726,7 +1639,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d1fbdf6ccb3f94a9f383032ad8d049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 591701406}
+  projectileSpawnPoint: {fileID: 0}
+  weapon: {fileID: 0}
 --- !u!114 &591701408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3148,11 +3062,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4205697589028422, guid: 7658ae01d0a0655468898c47617f4de6, type: 3}
   m_PrefabInstance: {fileID: 1308151050}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1308151052 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198141734499153464, guid: 7658ae01d0a0655468898c47617f4de6, type: 3}
-  m_PrefabInstance: {fileID: 1308151050}
-  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1469503882
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3752,7 +3661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db675df3c65ce2448c097fe093bce17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatTarget: {fileID: 591701409}
+  combatTarget: {fileID: 293031462}
   gunPivot: {fileID: 76706869}
   rotationSpeed: 10
   gunRotationSpeed: 20

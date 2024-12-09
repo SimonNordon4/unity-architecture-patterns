@@ -206,9 +206,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3231690201090225062}
-    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7494386346493464342}
   m_SourcePrefab: {fileID: 100100000, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
 --- !u!4 &891879679577937834 stripped
 Transform:
@@ -244,23 +241,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d1fbdf6ccb3f94a9f383032ad8d049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 7494386346493464342}
---- !u!114 &7494386346493464342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4394969533755278993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63aa693bbccd35d429307e3c7dedb936, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls: []
   projectileSpawnPoint: {fileID: 891879679577937834}
-  numberOfProjectiles: 4
-  pool: {fileID: 11400000, guid: 893f1cc451af2fc4196af2cd165871b6, type: 2}
-  projectileSpeed: 2.5
+  weapon: {fileID: 11400000, guid: a899aae9a3b87ae4d9d2e79abf8a55b1, type: 2}

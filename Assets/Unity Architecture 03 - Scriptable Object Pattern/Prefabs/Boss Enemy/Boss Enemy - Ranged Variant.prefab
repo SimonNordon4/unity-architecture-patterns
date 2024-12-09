@@ -117,7 +117,7 @@ PrefabInstance:
     - target: {fileID: 1662375047055654292, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 5966511918009799333}
+      objectReference: {fileID: 11400000, guid: 99936e01eda8d054c95633ea31599c7b, type: 2}
     - target: {fileID: 2699748561808153033, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -240,43 +240,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5280678866595862291, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5008227332604041973}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 738568943272961972, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5966511918009799333}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
 --- !u!4 &1804094507976499510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5280678866595862291, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-  m_PrefabInstance: {fileID: 5783135492014339621}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6520719251884233105 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 738568943272961972, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
-  m_PrefabInstance: {fileID: 5783135492014339621}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5966511918009799333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6520719251884233105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51df3c808b03e144f982e956356dba74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls: []
-  munitionPool: {fileID: 11400000, guid: a7198aa1f9254104db5286eee7a78943, type: 2}
-  projectileSpawnPoint: {fileID: 7701359640995971242}
-  projectileSpeed: 2.5
-  numberOfProjectiles: 3
-  spreadAngle: 30
---- !u!4 &7701359640995971242 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4224775421938349711, guid: 1bc9866ae7cfb48449d3463baeb53d0e, type: 3}
   m_PrefabInstance: {fileID: 5783135492014339621}
   m_PrefabAsset: {fileID: 0}

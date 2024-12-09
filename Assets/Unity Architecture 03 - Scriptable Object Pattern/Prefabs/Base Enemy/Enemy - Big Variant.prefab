@@ -311,9 +311,6 @@ PrefabInstance:
       addedObject: {fileID: 5713944112106421328}
     - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3618283257853021096}
-    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1121040940919950013}
   m_SourcePrefab: {fileID: 100100000, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
 --- !u!1 &2325798535037580583 stripped
@@ -358,35 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba0ebd2a173a7a44855f6e313d74942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 3618283257853021096}
---- !u!114 &3618283257853021096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2325798535037580583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9cf145d6665bdd4cb4713296329d48d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 3adc65eefda135045aa52f7330541179, type: 2}
-        m_TargetAssemblyTypeName: UnityArchitecture.ScriptableObjectPattern.SoundEvent,
-          ScriptableObjectPattern
-        m_MethodName: PlaySound
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 3f6a66d7940701b498e5fceca59331c4, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  weapon: {fileID: 11400000, guid: 80ffb73cbf89bbf4c8a28863257517c6, type: 2}
 --- !u!114 &1121040940919950013
 MonoBehaviour:
   m_ObjectHideFlags: 0

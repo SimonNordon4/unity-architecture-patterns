@@ -119,7 +119,7 @@ PrefabInstance:
     - target: {fileID: 8162974653760011612, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
       propertyPath: weapon
       value: 
-      objectReference: {fileID: 4957374377523882229}
+      objectReference: {fileID: 11400000, guid: 99936e01eda8d054c95633ea31599c7b, type: 2}
     - target: {fileID: 8298136171910069487, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
       propertyPath: m_Name
       value: Boss Enemy - Wanderer Ranger Variant
@@ -134,41 +134,8 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3485705963354491976, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8051351738006565014}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8298136171910069487, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4957374377523882229}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
---- !u!4 &2269124560566928781 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4879193575482518996, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
-  m_PrefabInstance: {fileID: 6686698068793108569}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3450613375874159798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8298136171910069487, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}
-  m_PrefabInstance: {fileID: 6686698068793108569}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4957374377523882229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3450613375874159798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51df3c808b03e144f982e956356dba74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls: []
-  munitionPool: {fileID: 11400000, guid: 893f1cc451af2fc4196af2cd165871b6, type: 2}
-  projectileSpawnPoint: {fileID: 2269124560566928781}
-  projectileSpeed: 2.5
-  numberOfProjectiles: 3
-  spreadAngle: 30
 --- !u!4 &7823978973397820433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3485705963354491976, guid: 3ef71657b3aa44d469d819555e768d35, type: 3}

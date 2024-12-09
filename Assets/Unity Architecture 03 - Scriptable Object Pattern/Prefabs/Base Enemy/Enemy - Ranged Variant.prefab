@@ -204,9 +204,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1662375047055654292}
-    - targetCorrespondingSourceObject: {fileID: 5267285107322196816, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2699748561808153033}
   m_SourcePrefab: {fileID: 100100000, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
 --- !u!1 &738568943272961972 stripped
 GameObject:
@@ -265,25 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d1fbdf6ccb3f94a9f383032ad8d049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 2699748561808153033}
---- !u!114 &2699748561808153033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738568943272961972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71c6e7680bf9e24382a75eafc234988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onAttack:
-    m_PersistentCalls:
-      m_Calls: []
-  projectilePool: {fileID: 11400000, guid: 893f1cc451af2fc4196af2cd165871b6, type: 2}
   projectileSpawnPoint: {fileID: 4224775421938349711}
-  projectileSpeed: 2.5
+  weapon: {fileID: 11400000, guid: d4336152596dbc647b32f5a9cc6aef80, type: 2}
 --- !u!4 &4224775421938349711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8757145792245989995, guid: f822a3021c0b4a741b0e9eba730d05b4, type: 3}
