@@ -291,8 +291,7 @@ MonoBehaviour:
     Hierachy.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a81e50688aadb414c8872d785e882662, type: 2}
-  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662,
-    type: 2}
+  m_sharedMaterial: {fileID: -3479970470993695708, guid: a81e50688aadb414c8872d785e882662, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -505,6 +504,148 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &1063280425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063280427}
+  - component: {fileID: 1063280426}
+  m_Layer: 0
+  m_Name: Scriptable Object Architecture Report
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1063280426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063280425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752c68adeb244786be1ef374c806465f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folderPath: Assets/Unity Architecture 03 - Scriptable Object Pattern/
+  numberOfCSharpScripts: 90
+  numberOfLinesOfCode: 4038
+  numberOfScriptableObjects: 94
+  averageLinesOfCode: 44.866665
+  medianLinesOfCode: 36.5
+  linesOfCodePerScript: 090000000a0000000b0000000c0000000c0000000c0000000d0000000e0000000e0000000e0000000f0000000f0000000f0000000f0000000f0000000f00000010000000100000001000000011000000110000001200000012000000130000001400000017000000170000001800000018000000190000001b0000001b0000001d0000001d0000001e0000001e0000001e000000210000002100000021000000220000002200000023000000230000002400000025000000250000002500000026000000260000002600000028000000290000002f000000320000003300000034000000340000003500000036000000370000003700000038000000390000003c0000003d000000410000004100000042000000430000004300000044000000460000004a0000004b0000004c0000004f0000004f00000051000000520000005300000056000000580000005a0000006300000064000000660000006f00000079000000ad000000
+  scriptNamesPerScript:
+  - ScriptableEvent.cs
+  - Level.cs
+  - Modifier.cs
+  - ApplicationHandler.cs
+  - ChestItems.cs
+  - Team.cs
+  - BaseWeapon.cs
+  - EnemyType.cs
+  - ChestItem.cs
+  - WeaponStatsInfo.cs
+  - SoundEvent.cs
+  - UIEscButtonSelector.cs
+  - UIRoundTimer.cs
+  - DamageReceiver.cs
+  - KnockBackReceiver.cs
+  - BodySlamWeapon.cs
+  - EnemyDirectorWave.cs
+  - UITotalEnemiesKilledText.cs
+  - ActorDiedEvent.cs
+  - StatType.cs
+  - UIRoundTimeDisplay.cs
+  - Inventory.cs
+  - PistolWeapon.cs
+  - TransformData.cs
+  - MoveBase.cs
+  - SimpleRotate.cs
+  - SetTransformData.cs
+  - TimeHandler.cs
+  - PoolableActor.cs
+  - InputMovement.cs
+  - EnemySpawner.cs
+  - Dodge.cs
+  - HealthPack.cs
+  - UIPlayerHealthBar.cs
+  - GameObjectEvents.cs
+  - Armor.cs
+  - ActorPool.cs
+  - SimpleBob.cs
+  - HealthPackSpawner.cs
+  - DeathHandler.cs
+  - AutoTargeting.cs
+  - ExplodeProjectileWeapon.cs
+  - ActorLifecycle.cs
+  - HealthRegen.cs
+  - SpreadShotWeapon.cs
+  - PopInOnEnable.cs
+  - InventoryHandler.cs
+  - MoveTowardsTarget.cs
+  - PlayerAnimationController.cs
+  - RoundTimer.cs
+  - UIEnemyKillProgressionCounter.cs
+  - UIChestPickupMenu.cs
+  - GameKeyboardInput.cs
+  - MoveTowardsRandomLocation.cs
+  - UIActorHealthBar.cs
+  - DamageHandler.cs
+  - GameState.cs
+  - Stats.cs
+  - SmartPistolWeapon.cs
+  - ProjectilePool.cs
+  - GameCamera.cs
+  - MoveTowardsTargetWhileMaintainingDistance.cs
+  - ChestPickupHandler.cs
+  - SceneLoader.cs
+  - ScriptableData.cs
+  - Stat.cs
+  - SoundManager.cs
+  - MeleeAttack.cs
+  - UIStatsDisplay.cs
+  - ChestSpawner.cs
+  - UIInventoryDisplay.cs
+  - RangedAttack.cs
+  - UISettingsMenu.cs
+  - AvoidAllies.cs
+  - UserSettings.cs
+  - KnockBack.cs
+  - MusicManager.cs
+  - Movement.cs
+  - UIChestItemButton.cs
+  - UIDamageNumber.cs
+  - Health.cs
+  - ScriptableBehaviour.cs
+  - UIWasdButtonSelector.cs
+  - UIChestItemHoverImage.cs
+  - Projectile.cs
+  - Charge.cs
+  - EnemiesPool.cs
+  - CombatTarget.cs
+  - Chest.cs
+  - EnemyDirector.cs
+--- !u!4 &1063280427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063280425}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1377950897
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,6 +714,145 @@ Transform:
   m_Children: []
   m_Father: {fileID: 373749581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1541115707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541115709}
+  - component: {fileID: 1541115708}
+  m_Layer: 0
+  m_Name: GameObject Component Architecture Report
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1541115708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541115707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752c68adeb244786be1ef374c806465f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  folderPath: Assets/Unity Architecture 02 - GameObject Component Pattern/
+  numberOfCSharpScripts: 87
+  numberOfLinesOfCode: 4104
+  numberOfScriptableObjects: 44
+  averageLinesOfCode: 47.172413
+  medianLinesOfCode: 37
+  linesOfCodePerScript: 090000000a0000000b0000000c0000000c0000000c0000000c0000000e0000000e0000000e0000000f0000000f0000000f0000000f0000000f0000000f0000001000000010000000110000001100000012000000120000001300000013000000140000001700000018000000190000001b0000001d0000001d0000001e0000001e0000001f00000021000000210000002200000023000000230000002300000025000000250000002500000025000000250000002600000028000000290000002d0000002f000000300000003300000033000000340000003400000034000000360000003700000037000000380000003d0000004000000041000000410000004200000043000000430000004300000046000000470000004a0000004c0000004f0000004f00000051000000520000005300000057000000580000005a000000610000006300000064000000690000007700000098000000cd000000
+  scriptNamesPerScript:
+  - PickupPool.cs
+  - Level.cs
+  - Modifier.cs
+  - ApplicationHandler.cs
+  - ChestItems.cs
+  - Team.cs
+  - BaseWeapon.cs
+  - EnemyType.cs
+  - ChestItem.cs
+  - WeaponStatsInfo.cs
+  - UIEscButtonSelector.cs
+  - UIRoundTimeDisplay.cs
+  - UIRoundTimer.cs
+  - DamageReceiver.cs
+  - KnockBackReceiver.cs
+  - BodySlamWeapon.cs
+  - EnemyDirectorWave.cs
+  - UITotalEnemiesKilledText.cs
+  - StatType.cs
+  - ProjectileFactory.cs
+  - Inventory.cs
+  - PistolWeapon.cs
+  - SoundProxy.cs
+  - TimeHandler.cs
+  - MoveBase.cs
+  - SimpleRotate.cs
+  - PoolableActor.cs
+  - InputMovement.cs
+  - Dodge.cs
+  - HealthPack.cs
+  - UIPlayerHealthBar.cs
+  - GameObjectEvents.cs
+  - Armor.cs
+  - ActorLifecycle.cs
+  - SimpleBob.cs
+  - DeathHandler.cs
+  - AutoTargeting.cs
+  - HealthPackSpawner.cs
+  - HealthRegen.cs
+  - ExplodeProjectileWeapon.cs
+  - PopInOnEnable.cs
+  - UIEnemyKillProgressionCounter.cs
+  - InventoryHandler.cs
+  - MoveTowardsTarget.cs
+  - SpreadShotWeapon.cs
+  - PlayerAnimationController.cs
+  - UIChestPickupMenu.cs
+  - GameKeyboardInput.cs
+  - Stats.cs
+  - MoveTowardsRandomLocation.cs
+  - GameCamera.cs
+  - RoundTimer.cs
+  - DamageHandler.cs
+  - GameState.cs
+  - SoundManager.cs
+  - ActorFactory.cs
+  - UIActorHealthBar.cs
+  - MoveTowardsTargetWhileMaintainingDistance.cs
+  - SmartPistolWeapon.cs
+  - ChestPickupHandler.cs
+  - Stat.cs
+  - ActorPool.cs
+  - MeleeAttack.cs
+  - ProjectilePool.cs
+  - UIStatsDisplay.cs
+  - ChestSpawner.cs
+  - UIInventoryDisplay.cs
+  - RangedAttack.cs
+  - UISettingsMenu.cs
+  - EnemyHandler.cs
+  - AvoidAllies.cs
+  - KnockBack.cs
+  - MusicManager.cs
+  - Movement.cs
+  - UIChestItemButton.cs
+  - Health.cs
+  - SceneLoader.cs
+  - UIDamageNumber.cs
+  - UIWasdButtonSelector.cs
+  - UIChestItemHoverImage.cs
+  - UserSettings.cs
+  - Projectile.cs
+  - Charge.cs
+  - CombatTarget.cs
+  - Chest.cs
+  - EnemySpawner.cs
+  - EnemyDirector.cs
+--- !u!4 &1541115709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541115707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2095577265
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +864,7 @@ GameObject:
   - component: {fileID: 2095577266}
   - component: {fileID: 2095577267}
   m_Layer: 0
-  m_Name: Architecture Reports
+  m_Name: Spaghetti Architecture Report
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,91 +897,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752c68adeb244786be1ef374c806465f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: Assets/
-  numberOfCSharpScripts: 77
-  numberOfLinesOfCode: 21656
-  numberOfScriptableObjects: 33
-  averageLinesOfCode: 281.24677
-  medianLinesOfCode: 130
-  linesOfCodePerScript: 050000000600000008000000110000001a0000001c0000001d000000220000002200000024000000260000002700000028000000290000002b00000034000000390000003c00000041000000420000004a0000004c0000005100000054000000580000005a0000005c000000600000006200000063000000680000006f000000710000007200000075000000760000007600000079000000820000008900000090000000920000009c000000a3000000b3000000b9000000c3000000c5000000d3000000e1000000e8000000ef000000f5000000f7000000f900000002010000080100000e010000260100003901000048010000550100008a0100008d010000aa0100001f0200003702000042020000b6020000eb02000069030000730300002f040000b6040000cc0600002507000032070000
+  folderPath: Assets/Unity Architecture 01 - Spaghetti Pattern/
+  numberOfCSharpScripts: 32
+  numberOfLinesOfCode: 3393
+  numberOfScriptableObjects: 44
+  averageLinesOfCode: 106.03125
+  medianLinesOfCode: 57
+  linesOfCodePerScript: 0b0000000c0000000e0000000f0000001100000017000000190000001c00000021000000210000002300000025000000260000002a0000002e00000039000000390000004f00000051000000580000005a0000005d00000074000000850000009200000095000000a0000000a30000004e0100006001000091010000e5010000
   scriptNamesPerScript:
-  - InlineAttribute.cs
-  - VFavoritesMenuItems.cs
-  - INetSerializable.cs
-  - PacketLayerBase.cs
-  - IModifiableState.cs
-  - IMovable.cs
-  - TestDebugger.cs
-  - BuildProfileSwitcherEditor.cs
-  - G_Graph.cs
-  - ScriptableObjectContextMenu.cs
-  - BuildProfileSwitcher.cs
-  - NtpRequest.cs
-  - G_RamMonitor.cs
-  - Crc32cLayer.cs
-  - Console.cs
-  - BaseChannel.cs
-  - VFavoritesState.cs
-  - XorEncryptLayer.cs
-  - G_ExtensionMethods.cs
-  - GraphyMenuItem.cs
-  - NetConstants.cs
-  - NetPacketPool.cs
-  - GUIDResetTool.cs
-  - G_Singleton.cs
-  - G_SafeArea.cs
-  - G_AudioText.cs
-  - NetDebug.cs
-  - G_RamText.cs
-  - NetStatistics.cs
-  - ConsoleProDebug.cs
-  - CopyClipsToClipboard.cs
-  - CRC32C.cs
-  - SequencedChannel.cs
-  - FolderArchitecureReport.cs
-  - G_Intstring.cs
-  - GraphyEditorStyle.cs
-  - FastBitConverter.cs
-  - G_GraphShader.cs
-  - VFavoritesMenu.cs
-  - ConnectionRequest.cs
-  - DropShadow.cs
-  - G_FpsMonitor.cs
-  - G_FpsText.cs
-  - FolderArchitectureReportEditor.cs
-  - G_FloatString.cs
-  - NetUtils.cs
-  - EnsureCorrectOdinVersion.cs
-  - G_FpsGraph.cs
-  - G_AudioMonitor.cs
-  - VFavoritesData.cs
-  - G_RamManager.cs
-  - G_AudioManager.cs
-  - NatPunchModule.cs
-  - INetEventListener.cs
-  - ConsoleProRemoteServer.cs
-  - G_FpsManager.cs
-  - G_RamGraph.cs
-  - NetPacket.cs
-  - G_AudioGraph.cs
-  - NetPacketProcessor.cs
-  - GenerateArchitectureReport.cs
-  - ReliableChannel.cs
-  - NetDataWriter.cs
-  - G_AdvancedData.cs
-  - NtpPacket.cs
-  - NetSocket.cs
-  - GraphyDebugger.cs
-  - GraphyDebuggerEditor.cs
-  - NetDataReader.cs
-  - NetSerializer.cs
-  - GraphyManagerEditor.cs
-  - MathematicsDrawers.cs
-  - GraphyManager.cs
-  - NetPeer.cs
-  - VFavoritesLibs.cs
-  - NetManager.cs
-  - VFavorites.cs
+  - Modifier.cs
+  - ChestItems.cs
+  - ChestItem.cs
+  - UIEscButtonSelector.cs
+  - StatType.cs
+  - SimpleRotate.cs
+  - HealthPackController.cs
+  - ButtonAudio.cs
+  - SimpleBob.cs
+  - UIHud.cs
+  - PlayerAnimationController.cs
+  - PopInOnEnable.cs
+  - UIWinMenu.cs
+  - UILoseMenu.cs
+  - UIChestItemMenu.cs
+  - Stat.cs
+  - UIMainMenu.cs
+  - UISettingsMenu.cs
+  - UIChestItemButton.cs
+  - UIWasdButtonSelector.cs
+  - UIChestItemHoverImage.cs
+  - Projectile.cs
+  - Chest.cs
+  - AudioManager.cs
+  - UIPauseMenu.cs
+  - RangedEnemyController.cs
+  - ChestManager.cs
+  - ChargeEnemyController.cs
+  - GameManager.cs
+  - EnemyManager.cs
+  - EnemyController.cs
+  - PlayerController.cs
 --- !u!1 &2119995670
 GameObject:
   m_ObjectHideFlags: 0
@@ -746,9 +981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94877ae02ae5ff248ac5b882bd6f2c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaghettiProfile: {fileID: 0}
-  gameObjectComponentProfile: {fileID: 0}
-  scriptableObjectProfile: {fileID: 0}
+  spaghettiProfile: {fileID: 11400000, guid: 4dc17531ce9652744bc2b3e1511e2c05, type: 2}
+  gameObjectComponentProfile: {fileID: 11400000, guid: 4e6a893fa8cf4454ca462179a01a19f3, type: 2}
+  scriptableObjectProfile: {fileID: 11400000, guid: 1d0ef63e1f3e87743a2dd39e41773cac, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -756,3 +991,5 @@ SceneRoots:
   - {fileID: 373749581}
   - {fileID: 2119995671}
   - {fileID: 2095577266}
+  - {fileID: 1541115709}
+  - {fileID: 1063280427}

@@ -6,6 +6,8 @@ public class BuildProfileSwitcherEditor : Editor
 {
     public override void OnInspectorGUI()
     {
+        // call base
+        base.OnInspectorGUI();
         // Get the target object
         var switcher = (BuildProfileSwitcher)target;
 
