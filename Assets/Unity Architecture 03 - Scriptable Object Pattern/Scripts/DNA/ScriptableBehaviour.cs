@@ -1,11 +1,9 @@
 ﻿using System;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevel;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
-
     public abstract class ScriptableBehaviour : ScriptableData
     {
         private bool _isActive;
@@ -19,7 +17,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         {
             base.OnEnable();
 #if UNITY_EDITOR
-            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+            UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 #endif
         }
 
@@ -27,7 +25,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
         {
             base.OnDisable();
 #if UNITY_EDITOR
-            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
+            UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
 #endif
             if (_isActive)
             {
@@ -35,17 +33,19 @@ namespace UnityArchitecture.ScriptableObjectPattern
             }
         }
 
-        private void OnPlayModeStateChanged(PlayModeStateChange stateChange)
+#if UNITY_EDITOR
+        private void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange stateChange)
         {
-            if (stateChange == PlayModeStateChange.EnteredPlayMode)
+            if (stateChange == UnityEditor.PlayModeStateChange.EnteredPlayMode)
             {
                 EnablePlayerLoop();
             }
-            else if (stateChange == PlayModeStateChange.ExitingPlayMode)
+            else if (stateChange == UnityEditor.PlayModeStateChange.ExitingPlayMode)
             {
                 DisablePlayerLoop();
             }
         }
+#endif
 
         private void EnablePlayerLoop()
         {

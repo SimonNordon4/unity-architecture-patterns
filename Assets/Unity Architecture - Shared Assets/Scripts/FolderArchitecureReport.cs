@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿
+#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.IO;
 using System.Linq;
@@ -112,3 +114,4 @@ public class FolderArchitectureReport : MonoBehaviour
         }
     }
 }
+#endif

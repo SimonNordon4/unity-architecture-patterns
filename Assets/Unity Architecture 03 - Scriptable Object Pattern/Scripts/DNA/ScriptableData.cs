@@ -36,7 +36,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
             EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
 #endif
         }
-
+#if UNITY_EDITOR
         private void OnPlayModeStateChanged(PlayModeStateChange stateChange)
         {
             if (stateChange == PlayModeStateChange.EnteredPlayMode)
@@ -55,6 +55,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 IsPlayMode = false;
             }
         }
+#endif
 
     }
 }

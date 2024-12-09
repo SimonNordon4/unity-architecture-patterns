@@ -1,10 +1,12 @@
-using System;
+#if UNITY_EDITOR
 using UnityEditor.Build.Profile;
+
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class BuildProfileSwitcher : MonoBehaviour
 {
+
     [SerializeField]private BuildProfile spaghettiProfile;
     [SerializeField]private BuildProfile gameObjectComponentProfile;
     [SerializeField]private BuildProfile scriptableObjectProfile;
@@ -35,4 +37,6 @@ public class BuildProfileSwitcher : MonoBehaviour
     {
         RefreshProfiles();
     }
+
 }
+#endif

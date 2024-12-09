@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿#if UNITY_EDITOR
+using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(BuildProfileSwitcher))]
@@ -34,3 +35,4 @@ public class BuildProfileSwitcherEditor : Editor
         }
     }
 }
+#endif
