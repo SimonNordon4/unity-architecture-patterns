@@ -11,6 +11,7 @@ public class FolderArchitectureReport : MonoBehaviour
     [Tooltip("The folder path relative to Assets (e.g., 'Assets/Scripts')")]
     public string folderPath = "Assets/";
 
+
     [HideInInspector]public int numberOfCSharpScripts;
     [HideInInspector]public int numberOfLinesOfCode;
     [HideInInspector]public int numberOfScriptableObjects;
@@ -23,6 +24,9 @@ public class FolderArchitectureReport : MonoBehaviour
     [HideInInspector]
     public List<string> scriptNamesPerScript = new List<string>();
 
+    /// <summary>
+    /// Generates the architecture report based on the specified folder.
+    /// </summary>
     public void GenerateReport()
     {
         // Reset previous report data
@@ -63,7 +67,7 @@ public class FolderArchitectureReport : MonoBehaviour
             }
         }
 
-        // Average and median calculations
+        // Calculate average and median lines of code
         if (numberOfCSharpScripts > 0)
         {
             averageLinesOfCode = (float)numberOfLinesOfCode / numberOfCSharpScripts;
@@ -79,6 +83,32 @@ public class FolderArchitectureReport : MonoBehaviour
         string[] scriptableObjectGUIDs = AssetDatabase.FindAssets("t:ScriptableObject", new[] { folderPath });
         numberOfScriptableObjects = scriptableObjectGUIDs.Length;
 
+        // Sort the scripts from least to most lines of code
+        SortScriptsByLines();
+
         Debug.Log($"Report generated for {folderPath}. Scripts: {numberOfCSharpScripts}, ScriptableObjects: {numberOfScriptableObjects}");
+    }
+
+    /// <summary>
+    /// Sorts the scripts and their corresponding lines of code in ascending order based on lines of code.
+    /// </summary>
+    private void SortScriptsByLines()
+    {
+        // Create a list of tuples pairing lines of code with script names
+        var scriptsWithLines = linesOfCodePerScript
+            .Select((lines, index) => new { Lines = lines, Name = scriptNamesPerScript[index] })
+            .OrderBy(script => script.Lines)
+            .ToList();
+
+        // Clear existing lists
+        linesOfCodePerScript.Clear();
+        scriptNamesPerScript.Clear();
+
+        // Populate the lists with sorted data
+        foreach (var script in scriptsWithLines)
+        {
+            linesOfCodePerScript.Add(script.Lines);
+            scriptNamesPerScript.Add(script.Name);
+        }
     }
 }
