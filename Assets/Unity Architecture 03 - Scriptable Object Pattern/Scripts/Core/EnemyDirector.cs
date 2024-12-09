@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
@@ -9,8 +10,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
         public UnityEvent allWavesFinished = new();
 
         [SerializeField] private EnemiesPool enemiesPool;
-        [SerializeField] private EnemyDiedEvent enemyDiedEvent;
-        [SerializeField] private EnemyDiedEvent bossDiedEvent;
+        [FormerlySerializedAs("enemyDiedEvent")] [SerializeField] private ActorDiedEvent actorDiedEvent;
+        [SerializeField] private ActorDiedEvent bossDiedEvent;
         [SerializeField] private EnemyDirectorWave[] waves;
         private int _waveIndex = 0;
         private bool _progressPaused;
@@ -42,14 +43,14 @@ namespace UnityArchitecture.ScriptableObjectPattern
         protected override void OnEnable()
         {
             base.OnEnable();
-            enemyDiedEvent.OnEnemyDied.AddListener(EnemyDied);
-            bossDiedEvent.OnEnemyDied.AddListener(BossDied);
+            actorDiedEvent.OnActorDied.AddListener(EnemyDied);
+            bossDiedEvent.OnActorDied.AddListener(BossDied);
         }
 
         protected override void OnDisable()
         {
-            enemyDiedEvent.OnEnemyDied.RemoveListener(EnemyDied);
-            bossDiedEvent.OnEnemyDied.RemoveListener(BossDied);
+            actorDiedEvent.OnActorDied.RemoveListener(EnemyDied);
+            bossDiedEvent.OnActorDied.RemoveListener(BossDied);
             base.OnDisable();
         }
 

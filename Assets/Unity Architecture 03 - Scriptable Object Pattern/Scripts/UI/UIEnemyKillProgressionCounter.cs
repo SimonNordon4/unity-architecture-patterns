@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace UnityArchitecture.ScriptableObjectPattern
 {
@@ -7,20 +8,20 @@ namespace UnityArchitecture.ScriptableObjectPattern
     {
         [SerializeField]private TextMeshProUGUI progressText;
         [SerializeField]private EnemyDirector director;
-        [SerializeField]private EnemyDiedEvent enemyDiedEvent;
-        [SerializeField]private EnemyDiedEvent bossDiedEvent;
+        [FormerlySerializedAs("enemyDiedEvent")] [SerializeField]private ActorDiedEvent actorDiedEvent;
+        [SerializeField]private ActorDiedEvent bossDiedEvent;
 
         private void OnEnable()
         {
-            enemyDiedEvent.OnEnemyDied.AddListener(UpdateProgressText);
-            bossDiedEvent.OnEnemyDied.AddListener(UpdateProgressText);
+            actorDiedEvent.OnActorDied.AddListener(UpdateProgressText);
+            bossDiedEvent.OnActorDied.AddListener(UpdateProgressText);
             UpdateProgressText(null);
         }
 
         private void OnDisable()
         {
-            enemyDiedEvent.OnEnemyDied.RemoveListener(UpdateProgressText);
-            bossDiedEvent.OnEnemyDied.RemoveListener(UpdateProgressText);
+            actorDiedEvent.OnActorDied.RemoveListener(UpdateProgressText);
+            bossDiedEvent.OnActorDied.RemoveListener(UpdateProgressText);
         }
 
         private void UpdateProgressText(GameObject enemy)

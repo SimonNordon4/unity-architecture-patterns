@@ -5,12 +5,12 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class SpreadShotWeapon : BaseWeapon
     {
         [SerializeField]private ProjectilePool munitionPool;
-        [SerializeField]private UnityEngine.Transform projectileSpawnPoint;
+        [SerializeField]private Transform projectileSpawnPoint;
         [SerializeField]private float projectileSpeed = 10f;
         [SerializeField]private int numberOfProjectiles = 3;
         [SerializeField]private float spreadAngle = 30f;
         
-        public override void Attack(WeaponStatsInfo info, CombatTarget target)
+        public override void Attack(WeaponStatsInfo info, CombatTarget target, Transform origin)
         {
             // Fire a bullet in the direction and an additional bullet offset by the spread angle
             var direction = target.TargetDirection;

@@ -57,7 +57,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 IsCrit = Random.Range(0f, 100f) < _critChance.value
             };
 
-            weapon.Attack(info, _target);
+            weapon.Attack(info, _target, transform);
 
             _timeSinceLastAttack = 0f;
         }

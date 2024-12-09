@@ -6,21 +6,19 @@ namespace UnityArchitecture.ScriptableObjectPattern
     public class SmartPistolWeapon : BaseWeapon
     {
         [SerializeField] private ProjectilePool projectilePool;
-        [SerializeField] private UnityEngine.Transform projectileSpawnPoint;
         [SerializeField] private float projectileSpeed = 10f;
 
-        public override void Attack(WeaponStatsInfo info, CombatTarget target)
+        public override void Attack(WeaponStatsInfo info, CombatTarget target, Transform origin)
         {
-            if (target == null)
+            if (target == null || target.Target == null || origin == null)
             {
                 Debug.LogError("Target is null.");
             }
 
-            var projectileStartPosition = projectileSpawnPoint.position;
             var targetPosition = target.Target.position;
 
-// Calculate predicted position
-            Vector3 directionToTarget = targetPosition - projectileStartPosition;
+            // Calculate predicted position
+            Vector3 directionToTarget = targetPosition - origin.position;
             float distanceToTarget = directionToTarget.magnitude;
             float timeToTarget = distanceToTarget / projectileSpeed;
 
@@ -30,8 +28,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
             {
                 var predictedPosition = targetPosition + movement.velocity * timeToTarget;
                 // If predicted position ends up behind you, revert to direct line-of-sight attack
-                var forwardDirection = (projectileSpawnPoint.forward).normalized;
-                var predictedDirection = (predictedPosition - projectileStartPosition).normalized;
+                var forwardDirection = (origin.forward).normalized;
+                var predictedDirection = (predictedPosition - origin.position).normalized;
 
                 if (Vector3.Dot(forwardDirection, predictedDirection) < 0f)
                 {
@@ -45,9 +43,9 @@ namespace UnityArchitecture.ScriptableObjectPattern
             }
 
 // Now calculate the shoot direction on the plane
-            var shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - projectileStartPosition, Vector3.up)
+            var shootDirection = Vector3.ProjectOnPlane(predictedTargetPosition - origin.position, Vector3.up)
                 .normalized;
-            var projectile = projectilePool.Get(projectileStartPosition, shootDirection);
+            var projectile = projectilePool.Get(origin.position, shootDirection);
             projectile.Set(info, target.targetLayer, projectileSpeed);
             onAttack.Invoke();
         }

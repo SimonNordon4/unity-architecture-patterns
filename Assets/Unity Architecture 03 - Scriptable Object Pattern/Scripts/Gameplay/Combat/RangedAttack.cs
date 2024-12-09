@@ -7,6 +7,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
     [RequireComponent(typeof(CombatTarget))]
     public class RangedAttack : MonoBehaviour
     {
+        [SerializeField] private Transform projectileSpawnPoint;
         [SerializeField] private BaseWeapon weapon;
         private CombatTarget _target;
         private Stat _damage;
@@ -59,7 +60,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 IsCrit = Random.Range(0f, 100f) < _critChance.value
             };
 
-            weapon.Attack(info, _target);
+            weapon.Attack(info, _target, projectileSpawnPoint);
 
             _timeSinceLastAttack = 0f;
         }
