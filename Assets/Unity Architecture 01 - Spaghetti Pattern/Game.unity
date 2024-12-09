@@ -250,13 +250,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 16506741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b790508eec56fa408426fe017e9ce61, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b357b9bb27506747a4eaa3fe8cdeae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chestManager: {fileID: 1884674990}
   gameManager: {fileID: 801546265}
   chestItemButtonContainer: {fileID: 16506739}
-  chestItemButtonPrefab: {fileID: 2855125897568215862, guid: f7dd97587af69dd47aa30cd185b6cf28, type: 3}
+  chestItemButtonPrefab: {fileID: 2855125897568215862, guid: 3d9cf951f6674f24aa8b0d7cf6693a61, type: 3}
   wasdButtonSelector: {fileID: 601126065}
 --- !u!4 &76706869 stripped
 Transform:
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 460763655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ca78bcd5f86e714eba6bbe368ef4b73, type: 3}
+  m_Script: {fileID: 11500000, guid: ba346c3a83b743840990073dbbcaea0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 963194227}
@@ -855,7 +855,7 @@ MonoBehaviour:
     maximumValue: 2147483647
     _modifiers: []
     value: 0
-  projectilePrefab: {fileID: 7416635416557640102, guid: 7c63aa3a650f02b4594fc8b55be3e4f5, type: 3}
+  projectilePrefab: {fileID: 7416635416557640102, guid: bc655b5cde878374b863d550703f8030, type: 3}
   localCanvas: {fileID: 7481550565855445088}
   dodgeTextGo: {fileID: 9084586833988933064}
   damageTextGo: {fileID: 7288289568393495249}
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 290299293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33f4b2b447d882b4c958a4cdd56bd3f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 488fee20ac6aafb4096f32e8ce3ca55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 644039393}
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 601126063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a90c85bed00124140bfbe5c02cad2514, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ae596f8b9401864fbf5036760a48798, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: []
@@ -1527,7 +1527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 590339656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef6edcbbd25083c46861802e4a0b795e, type: 3}
+  m_Script: {fileID: 11500000, guid: c1f9f87f944b77c42a9aa5442c31408d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthBarToggle: {fileID: 734845743}
@@ -1578,7 +1578,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 644039389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8526cb9492e4b458b2173e7e4079fb, type: 3}
+  m_Script: {fileID: 11500000, guid: ae8d437b574eba84bbcc9479503be674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 801546265}
@@ -1595,22 +1595,22 @@ MonoBehaviour:
   activeEnemies: []
   activeBosses: []
   spawnableEnemies: []
-  normalEnemyPrefab: {fileID: 1789236594020257121, guid: 6da49f7eb69c8fc49964a213d0376127, type: 3}
-  fastEnemyPrefab: {fileID: 3163243409447693203, guid: ebbd69594e1752a4c870f0694d24fee4, type: 3}
-  bigEnemyPrefab: {fileID: 3646742763120384505, guid: 8a1c6812267448a43ae6da496a3509cf, type: 3}
-  chargerEnemyPrefab: {fileID: 933711525596607090, guid: 98378aa32770bbc46b1feb51f918bcdc, type: 3}
-  rangedEnemyPrefab: {fileID: 8355962154729357577, guid: 0421abe8bebd29945b94d898aa9df9f8, type: 3}
-  wandererEnemyPrefab: {fileID: 9142820688143490496, guid: fff2d2c7fc779b94d9a4dfde5bb47119, type: 3}
-  wandererRangedEnemyPrefab: {fileID: 4168508261120575890, guid: 7dcf970b9a32d0e46b4ef6f50128866e, type: 3}
-  wandererExploderEnemyPrefab: {fileID: 6554371576644043995, guid: 17ced219ca47ec7418be23a8566c2b15, type: 3}
-  normalBossEnemyPrefab: {fileID: 196245622651881401, guid: 09e671a4c2e2b334585fc3fad37417c0, type: 3}
-  fastBossEnemyPrefab: {fileID: 830930813700638643, guid: 3c6d1ca0dbeb1f64fa5d552265e0f212, type: 3}
-  bigBossEnemyPrefab: {fileID: 717436014592111309, guid: f4f373520b164f84581068eb92725d06, type: 3}
-  chargerBossEnemyPrefab: {fileID: 3536713475665606339, guid: 28e8998c9c56a0e4fa11d83ab32d56a0, type: 3}
-  rangedBossEnemyPrefab: {fileID: 2573671226165147436, guid: 60b8667576b3b254aac598bf37ff754e, type: 3}
-  wandererBossEnemyPrefab: {fileID: 6763599493432808439, guid: 9fdd464dab5ba1447bf2873f678eb45c, type: 3}
-  wandererRangedBossEnemyPrefab: {fileID: 6414642450711893702, guid: d6c51586e00120f42b5711bbb3e6a44e, type: 3}
-  wandererExploderBossEnemyPrefab: {fileID: 3664556069068995892, guid: f679e24b37316ba47b05af2cd629a65d, type: 3}
+  normalEnemyPrefab: {fileID: 1789236594020257121, guid: ab54b4010add0614cbc279768aff0135, type: 3}
+  fastEnemyPrefab: {fileID: 3163243409447693203, guid: 709fe91b7d7dfa0499cc8541fefd4a7b, type: 3}
+  bigEnemyPrefab: {fileID: 3646742763120384505, guid: eb7f7ed8ba272b748b6e72232e0a13d7, type: 3}
+  chargerEnemyPrefab: {fileID: 933711525596607090, guid: b0f5ce7f52e2d994c92bac45b9d52e95, type: 3}
+  rangedEnemyPrefab: {fileID: 8355962154729357577, guid: b96c6086c91eac74196667571e7e1b52, type: 3}
+  wandererEnemyPrefab: {fileID: 9142820688143490496, guid: f8c8415ec1585cc4694e67d04619da98, type: 3}
+  wandererRangedEnemyPrefab: {fileID: 4168508261120575890, guid: fb8547d095b28d74499ac929067cd65f, type: 3}
+  wandererExploderEnemyPrefab: {fileID: 6554371576644043995, guid: b6dd386ad27aab648accb1a37f42ce05, type: 3}
+  normalBossEnemyPrefab: {fileID: 196245622651881401, guid: 17897e8eec14ecf48ac69617d7ae6f48, type: 3}
+  fastBossEnemyPrefab: {fileID: 830930813700638643, guid: fa023229cac86084fb3cfceb97367e5c, type: 3}
+  bigBossEnemyPrefab: {fileID: 717436014592111309, guid: b4b5862dd067f3e42b19063eb304c011, type: 3}
+  chargerBossEnemyPrefab: {fileID: 3536713475665606339, guid: a599f29c9b5c41b4dada56360504b5c5, type: 3}
+  rangedBossEnemyPrefab: {fileID: 2573671226165147436, guid: d6fb54aafa2d45a419b9fbd674ee5f27, type: 3}
+  wandererBossEnemyPrefab: {fileID: 6763599493432808439, guid: b14d067925bd9934d80353da92eed61b, type: 3}
+  wandererRangedBossEnemyPrefab: {fileID: 6414642450711893702, guid: 1b457399904df9c42bf04d5d3dde0f7d, type: 3}
+  wandererExploderBossEnemyPrefab: {fileID: 3664556069068995892, guid: a8ecdf5622b63aa4787854ac591e3395, type: 3}
 --- !u!1001 &654366051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 801546264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb60339036ad7e84d9b215de184f3e58, type: 3}
+  m_Script: {fileID: 11500000, guid: 01aee22383e656d4eb2cd7ecdb8822cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 460763656}
@@ -1794,7 +1794,7 @@ MonoBehaviour:
   showEnemyHealthBars: 1
   musicVolume: 1
   sfxVolume: 1
-  healthPackPrefab: {fileID: 7234621734897567206, guid: 8af589f94c99fde48926c8c21b3cd175, type: 3}
+  healthPackPrefab: {fileID: 7234621734897567206, guid: a3f1a7b447a8b6846b73cd5d3d129811, type: 3}
   graphy: {fileID: 462989478}
 --- !u!4 &801546266
 Transform:
@@ -2135,7 +2135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1157388973}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424cd4203ee97da4a8d9fc2634a140a1, type: 3}
+  m_Script: {fileID: 11500000, guid: e2485ca45fbcf044aacd23db09faa89d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 460763656}
@@ -2147,7 +2147,7 @@ MonoBehaviour:
   textDescriptionPrefab: {fileID: 8685286496474895521, guid: 8f02c3dfafd00554ab2630c1efade103, type: 3}
   textDescriptions: []
   itemContainer: {fileID: 2059281123}
-  chestItemHoverImagePrefab: {fileID: 5604448540276748600, guid: 7173d2f1a2868774cb8629c1c0148a36, type: 3}
+  chestItemHoverImagePrefab: {fileID: 5604448540276748600, guid: f59873597c10b444c82d605d340e25be, type: 3}
   chestItemHoverImages: []
 --- !u!1001 &1308151050
 PrefabInstance:
@@ -2560,18 +2560,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1884674988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 404afc42365080240b00c08066a659ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 033c39cc64d6e7a43aa626015750203a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 460763656}
   chestSpawnTime: 15
   chestBounds: {x: 20, y: 20}
-  tier1ChestItems: {fileID: 11400000, guid: e9a9e0870d7d4bb4d920b131bd1b991f, type: 2}
-  tier2ChestItems: {fileID: 11400000, guid: 10bc3920ee24d6842897cbef400fde35, type: 2}
-  tier3ChestItems: {fileID: 11400000, guid: fcb89902c86b3994bb5a6c1f9f0897ee, type: 2}
-  tier4ChestItems: {fileID: 11400000, guid: 0554a2e86f0ea36459086c8c318adfc6, type: 2}
+  tier1ChestItems: {fileID: 11400000, guid: 6d98be6592d24d94994806c7ce4ab561, type: 2}
+  tier2ChestItems: {fileID: 11400000, guid: 446a3d3ef75c62a419591a92ddf6c8f1, type: 2}
+  tier3ChestItems: {fileID: 11400000, guid: f0c2ca294b6bd8748b7a02a28abb9e5a, type: 2}
+  tier4ChestItems: {fileID: 11400000, guid: fe2ffbb52f78fbf4892d48d87646f2e2, type: 2}
   allChestItems: []
-  chestPrefab: {fileID: 7632869134034703769, guid: 05009adb41849034c9c826be32ae1a42, type: 3}
+  chestPrefab: {fileID: 7632869134034703769, guid: c48f4b634ad8ce74aa185256163aec6f, type: 3}
   currentChest: {fileID: 0}
   tier3Pity: 0
   tier4Pity: 0
@@ -2603,7 +2603,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926671861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc8eae0a7034d4eaf9e960e7ecf6f52, type: 3}
+  m_Script: {fileID: 11500000, guid: ce60810b15ee2384aaccd5515a0feae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonHover: {fileID: 8300000, guid: f5c5f438581b89c4b96789e177c6254a, type: 3}
@@ -2704,7 +2704,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2021525486}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165cfd0544bec4841bb9666f2dfd3c80, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b1027f0a5f47a543ae285a0485889d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 460763656}
