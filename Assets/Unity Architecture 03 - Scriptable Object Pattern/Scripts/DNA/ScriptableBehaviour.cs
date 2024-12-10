@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.LowLevel;
 
@@ -82,5 +83,11 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
             _isActive = false;
         }
+
+        public static void Initialize()
+        {
+            
+        }
+        
     }
 }

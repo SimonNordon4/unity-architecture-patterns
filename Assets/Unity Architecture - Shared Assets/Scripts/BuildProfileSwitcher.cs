@@ -1,42 +1,57 @@
 #if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.Build.Profile;
-
 using UnityEngine;
-
 
 public class BuildProfileSwitcher : MonoBehaviour
 {
+    private BuildProfile[] availableProfiles;
 
-    [SerializeField]private BuildProfile spaghettiProfile;
-    [SerializeField]private BuildProfile gameObjectComponentProfile;
-    [SerializeField]private BuildProfile scriptableObjectProfile;
-    
     public BuildProfile CurrentBuildProfile { get; private set; }
 
-    public void RefreshProfiles()
+    private void RefreshProfiles()
     {
+        availableProfiles = FetchAllBuildProfiles();
         CurrentBuildProfile = BuildProfile.GetActiveBuildProfile();
     }
 
-    public void SwitchToSpaghettiProfile()
+    private BuildProfile[] FetchAllBuildProfiles()
     {
-        BuildProfile.SetActiveBuildProfile(CurrentBuildProfile);
+        string[] guids = AssetDatabase.FindAssets("t:BuildProfile");
+        BuildProfile[] profiles = new BuildProfile[guids.Length];
+
+        for (int i = 0; i < guids.Length; i++)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+            profiles[i] = AssetDatabase.LoadAssetAtPath<BuildProfile>(path);
+        }
+
+        return profiles;
     }
 
-    public void SwitchToGameObjectProfile()
+    public void SwitchToProfile(string profileName)
     {
-        BuildProfile.SetActiveBuildProfile(gameObjectComponentProfile);
-    }
+        if (availableProfiles == null || availableProfiles.Length == 0)
+        {
+            RefreshProfiles();
+        }
 
-    public void SwitchToScriptableObjectProfile()
-    {
-        BuildProfile.SetActiveBuildProfile(scriptableObjectProfile);
+        foreach (var profile in availableProfiles)
+        {
+            if (profile.name == profileName)
+            {
+                BuildProfile.SetActiveBuildProfile(profile);
+                Debug.Log($"Switched to build profile: {profileName}");
+                return;
+            }
+        }
+
+        Debug.LogError($"Build profile '{profileName}' not found!");
     }
 
     private void OnValidate()
     {
         RefreshProfiles();
     }
-
 }
 #endif
