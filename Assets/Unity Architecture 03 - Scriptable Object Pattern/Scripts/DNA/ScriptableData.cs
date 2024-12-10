@@ -7,16 +7,12 @@ namespace UnityArchitecture.ScriptableObjectPattern
     {
         protected bool IsPlayMode;
 
-        public void OnDestroy()
-        {
-            Debug.Log($"Destroyed {GetType()}");
-        }
-
         /// <summary>
         /// Method to define how data should reset.
         /// Override this in derived classes.
         /// </summary>
         public abstract void ResetData();
+
 
         protected virtual void OnEnable()
         {
@@ -28,6 +24,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
             EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 #endif
+
         }
 
         protected virtual void OnDisable()
@@ -39,21 +36,17 @@ namespace UnityArchitecture.ScriptableObjectPattern
 #if UNITY_EDITOR
         private void OnPlayModeStateChanged(PlayModeStateChange stateChange)
         {
+
             if (stateChange == PlayModeStateChange.EnteredPlayMode)
             {
                 IsPlayMode = true;
             }
-            else if (stateChange == PlayModeStateChange.ExitingEditMode)
-            {
-                // Avoid resetting data unnecessarily
-                Debug.Log("Exiting edit mode, skipping ResetData.");
-            }
             else if (IsPlayMode && stateChange == PlayModeStateChange.ExitingPlayMode)
             {
-                Debug.Log("ResetData called for: " + name);
                 ResetData();
                 IsPlayMode = false;
             }
+
         }
 #endif
 

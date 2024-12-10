@@ -14,17 +14,18 @@ namespace UnityArchitecture.ScriptableObjectPattern
         /// </summary>
         public abstract void OnUpdate();
 
-        private void OnEnable()
+
+        protected override void OnEnable()
         {
-            base.OnEnable();
+            EnablePlayerLoop();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 #endif
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
-            base.OnDisable();
+            
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
 #endif
@@ -33,7 +34,6 @@ namespace UnityArchitecture.ScriptableObjectPattern
                 DisablePlayerLoop();
             }
         }
-
 #if UNITY_EDITOR
         private void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange stateChange)
         {
@@ -83,11 +83,5 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
             _isActive = false;
         }
-
-        public static void Initialize()
-        {
-            
-        }
-        
     }
 }

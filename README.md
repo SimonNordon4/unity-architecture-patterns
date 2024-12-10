@@ -10,7 +10,7 @@ Each architecture pattern is applied to create the same game, allowing for a dir
 
 The Game in Question, a Survivors Clone.
 
-For a more detailed breakdown of the code structure, see here:
+For a more detailed breakdown of the code structure, see the [Project Overview](resources/ProjectOverview.md).
 
 ## Architectural Patterns
 
