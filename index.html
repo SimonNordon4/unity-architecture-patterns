@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Architecture Patterns</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            padding-top: 60px;
+        }
+        .hero {
+            background-color: #1f1f1f;
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+            border-bottom: 1px solid #333333;
+        }
+        .section-title {
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333333;
+            padding-bottom: 10px;
+        }
+        .footer {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-top: 1px solid #333333;
+        }
+        .footer a {
+            color: #8698fc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        img.game-snapshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333333;
+        }
+        a.btn-primary {
+            background-color: #2f3e94;
+            
+        }
+        a.btn-primary:hover {
+            background-color: #677fea;
+                    }
+        a.btn-secondary {
+            background-color: #424444;
+            color: #ffffff;
+        }
+        a.btn-secondary:hover {
+            background-color: #6b6b6b;
+            color: #ffffff;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #e0e0e0;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #bb86fc;
+        }
+        .navbar-brand {
+            color: #bb86fc;
+        }
+        .navbar-brand:hover {
+            color: #ffffff;
+        }
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1f1f1f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #333333;
+            border-radius: 6px;
+            border: 3px solid #1f1f1f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Unity Architecture Patterns</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#patterns">Patterns</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contributions">Contributions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#license">License</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1 class="display-4">Unity Architecture Patterns</h1>
+            <p class="lead">Explore various software architecture patterns within the Unity Engine.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        
+        <!-- Project Overview -->
+        <section id="overview">
+            <h2 class="section-title">Project Overview</h2>
+            <p>
+                This project demonstrates how the same game can be developed using different architectural approaches, providing practical insights into their strengths and trade-offs.
+            </p>
+            <div class="text-center">
+                <img src="https://github.com/SimonNordon4/unity-architecture-patterns/blob/main/resources/game_snapshot.gif?raw=true" alt="Game Snapshot" class="game-snapshot">
+                <p class="mt-2"><em>The Game in Question, a Survivors Clone.</em></p>
+            </div>
+            <p>
+                For a more detailed breakdown of the code structure, see the <a href="resources/ProjectOverview.md">Project Overview</a>.
+            </p>
+        </section>
+
+        <!-- Architectural Patterns -->
+        <section id="patterns">
+            <h2 class="section-title">Architectural Patterns</h2>
+            
+            <!-- Spaghetti Pattern -->
+            <div class="mb-4">
+                <h3>Spaghetti</h3>
+                <p>
+                    The Spaghetti pattern is characterized by its lack of formal structure. Code is often written without clear organization, leading to tangled dependencies and difficulties in maintenance. This pattern is used as a baseline to highlight the advantages of more structured methodologies.
+                </p>
+                <a href="https://medium.com/@simon.nordon/unity-architecture-spaghetti-pattern-7e995648c7c8/" class="btn btn-primary mb-2" target="_blank">Spaghetti Pattern Blog Post</a>
+                <a href="https://simonnordon4.github.io/unity-architecture-patterns/Builds/SpaghettiPattern/" class="btn btn-secondary mb-2" target="_blank">Play the Spaghetti Pattern Game</a>
+            </div>
+            
+            <!-- GameObject-Component Pattern -->
+            <div class="mb-4">
+                <h3>GameObject-Component</h3>
+                <p>
+                    This pattern is central to Unity's design philosophy, emphasizing modularity and reusability. Game objects are built using separate components, each responsible for specific functionalities. This approach enhances code readability, maintainability, and allows for easy iteration and testing of different game behaviors.
+                </p>
+                <a href="https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/" class="btn btn-primary mb-2" target="_blank">GameObject Component Pattern Blog Post</a>
+                <a href="https://simonnordon4.github.io/unity-architecture-patterns/Builds/GameObjectComponentPattern/" class="btn btn-secondary mb-2" target="_blank">Play the GameObject Component Pattern Game</a>
+            </div>
+            
+            <!-- Scriptable Object Pattern -->
+            <div class="mb-4">
+                <h3>Scriptable Object</h3>
+                <p>
+                    This is Unity's new Paradigm pattern. It's designed to work similarly to the GameObject Component Pattern, but leans on an extended use of Scriptable Objects to provide better Dependency Management compared to traditional methods.
+                </p>
+                <a href="https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/" class="btn btn-primary mb-2" target="_blank">ScriptableObject Pattern Blog Post</a>
+                <a href="https://simonnordon4.github.io/unity-architecture-patterns/Builds/ScriptableObjectPattern/" class="btn btn-secondary mb-2" target="_blank">Play the ScriptableObject Pattern Game</a>
+            </div>
+            
+            <!-- DOTS ECS Pattern -->
+            <div class="mb-4">
+                <h3>DOTS ECS</h3>
+                <p><em>Planned</em></p>
+            </div>
+            
+            <!-- Reactive Programming (R3) Pattern -->
+            <div class="mb-4">
+                <h3>Reactive Programming (R3)</h3>
+                <p><em>Planned</em></p>
+            </div>
+            
+            <!-- IoC Container + MVC (VContainer) Pattern -->
+            <div class="mb-4">
+                <h3>IoC Container + MVC (VContainer)</h3>
+                <p><em>Planned</em></p>
+            </div>
+        </section>
+
+        <!-- Contributions -->
+        <section id="contributions">
+            <h2 class="section-title">Contributions</h2>
+            <p>
+                Contributions are welcome! Whether it's refining the existing patterns, adding new ones, or improving the documentation, your input can greatly benefit this project.
+            </p>
+        </section>
+
+        <!-- Support -->
+        <section id="support">
+            <h2 class="section-title">Support</h2>
+            <p>
+                If you find this repository helpful, consider giving it a star! Your support motivates further development and helps others discover this resource.
+            </p>
+        </section>
+
+        <!-- License -->
+        <section id="license">
+            <h2 class="section-title">License</h2>
+            
+            <!-- Code License -->
+            <div class="mb-3">
+                <h4>Code</h4>
+                <p>
+                    The C# code in this repository is released under the <a href="https://opensource.org/licenses/MIT" target="_blank">MIT License</a>.
+                </p>
+            </div>
+            
+            <!-- Media Assets License -->
+            <div>
+                <h4>Media Assets</h4>
+                <p>
+                    All media assets (including but not limited to images, sound files, animations, shaders, and 3D models) in this repository are proprietary. Unauthorized copying, modification, distribution, or use of these assets is strictly prohibited.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2024 Unity Architecture Patterns. All rights reserved.</p>
+            <p>
+                <a href="https://github.com/SimonNordon4/unity-architecture-patterns" target="_blank">GitHub Repository</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>
