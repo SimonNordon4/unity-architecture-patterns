@@ -19,32 +19,32 @@ The Spaghetti pattern is characterized by its lack of formal structure. Code is 
 
 ![]Spaghetti Pattern Details
 
-![]Spaghetti Pattern Blog Post
+![Spaghetti Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-spaghetti-pattern-7e995648c7c8/)
 
-![]Play the game made with Spaghetti Pattern!
+[![Play the game made with the Spaghetti Pattern!]()](https://simonnordon4.github.io/unity-architecture-patterns/Builds/SpaghettiPattern/)
 
 ### GameObject-Component
 This pattern is central to Unity's design philosophy, emphasizing modularity and reusability. Game objects are built using separate components, each responsible for specific functionalities. This approach enhances code readability, maintainability, and allows for easy iteration and testing of different game behaviors.
 
 ![]GameObject Component Pattern Details
 
-![]GameObject Component Pattern Blog Post
+![GameObject Component Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/)
 
-![]Play the game made with GameObject Component Pattern!
+[![Play the game made with the GameObject Component Pattern!]()](https://simonnordon4.github.io/unity-architecture-patterns/Builds/GameObjectComponentPattern/)
 
 ### Scriptable Object
 This is Unity's new Paradigm pattern. It's desgined to work similarly to the GameObject Component Pattern, but leans of an extended use of Scriptable Objects to provide better Dependency Management compared to traditional methods.
 
 ![]Scriptable Object Pattern Details
 
-![]Scriptable Object Pattern Blog Post
+![ScriptableObject Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/)
 
-![]Play the game made with Scriptable Object Pattern!
+[![Play the game made with the ScriptableObject Pattern!]()](https://simonnordon4.github.io/unity-architecture-patterns/Builds/ScriptableObjectPattern/)
 
 ### DOTS ECS
 Planned
 
-### Reactive Programming (UniRx)
+### Reactive Programming (R3)
 Planned
 
 ### IoC Container + MVC (VContainer)
