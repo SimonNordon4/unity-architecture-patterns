@@ -17,29 +17,29 @@ For a more detailed breakdown of the code structure, see the [Project Overview](
 ### Spaghetti
 The Spaghetti pattern is characterized by its lack of formal structure. Code is often written without clear organization, leading to tangled dependencies and difficulties in maintenance. This pattern is used as a baseline to highlight the advantages of more structured methodologies.
 
-![]Spaghetti Pattern Details
+[]Spaghetti Pattern Details
 
-![Spaghetti Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-spaghetti-pattern-7e995648c7c8/)
+[Spaghetti Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-spaghetti-pattern-7e995648c7c8/)
 
-[![Play the game made with the Spaghetti Pattern!]()](https://simonnordon4.github.io/unity-architecture-patterns/Builds/SpaghettiPattern/)
+[Play the game made with the Spaghetti Pattern!](https://simonnordon4.github.io/unity-architecture-patterns/Builds/SpaghettiPattern/)
 
 ### GameObject-Component
 This pattern is central to Unity's design philosophy, emphasizing modularity and reusability. Game objects are built using separate components, each responsible for specific functionalities. This approach enhances code readability, maintainability, and allows for easy iteration and testing of different game behaviors.
 
 ![]GameObject Component Pattern Details
 
-![GameObject Component Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/)
+[GameObject Component Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/)
 
-[![Play the game made with the GameObject Component Pattern!]()](https://simonnordon4.github.io/unity-architecture-patterns/Builds/GameObjectComponentPattern/)
+[Play the game made with the GameObject Component Pattern!](https://simonnordon4.github.io/unity-architecture-patterns/Builds/GameObjectComponentPattern/)
 
 ### Scriptable Object
 This is Unity's new Paradigm pattern. It's desgined to work similarly to the GameObject Component Pattern, but leans of an extended use of Scriptable Objects to provide better Dependency Management compared to traditional methods.
 
-![]Scriptable Object Pattern Details
+[]Scriptable Object Pattern Details
 
-![ScriptableObject Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/)
+[ScriptableObject Pattern Blog Post](https://medium.com/@simon.nordon/unity-architecture-gameobject-component-pattern-34a76a9eacfb/)
 
-[![Play the game made with the ScriptableObject Pattern!]()](https://simonnordon4.github.io/unity-architecture-patterns/Builds/ScriptableObjectPattern/)
+[Play the game made with the ScriptableObject Pattern!](https://simonnordon4.github.io/unity-architecture-patterns/Builds/ScriptableObjectPattern/)
 
 ### DOTS ECS
 Planned
