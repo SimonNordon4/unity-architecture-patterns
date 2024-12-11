@@ -2,6 +2,10 @@
 
 Explore the implementation of various software architecture patterns within the Unity Engine. This project demonstrates how the same game can be developed using different architectural approaches, providing practical insights into their strengths and trade-offs.
 
+## Support
+
+If you find this repository helpful, consider giving it a star! Your support motivates further development and helps others discover this resource.
+
 ## Project Overview
 
 Each architecture pattern is applied to create the same game, allowing for a direct comparison of coding styles, maintainability, scalability, and overall design efficiency. This approach offers a hands-on understanding of how different patterns affect game development in Unity.
@@ -49,9 +53,7 @@ Planned
 
 Contributions are welcome! Whether it's refining the existing patterns, adding new ones, or improving the documentation, your input can greatly benefit this project.
 
-## Support
 
-If you find this repository helpful, consider giving it a star! Your support motivates further development and helps others discover this resource.
 
 ## License
 
