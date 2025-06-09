@@ -17,6 +17,8 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         protected override void OnEnable()
         {
+            base.OnEnable();
+            
             EnablePlayerLoop();
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
@@ -25,6 +27,7 @@ namespace UnityArchitecture.ScriptableObjectPattern
 
         protected override void OnDisable()
         {
+            base.OnDisable();
             
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
